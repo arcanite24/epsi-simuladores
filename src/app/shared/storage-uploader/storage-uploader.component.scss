@@ -1,0 +1,14 @@
+//@import '../../scss/variables.scss';
+
+.barra-container {
+  width: 100%;
+  height: 2px;
+  background-color: rgba($color: #000000, $alpha: 0.4);
+}
+
+.barra {
+  height: 2px;
+  // TODO: Add theming support
+  background-color: red;
+  transition: width 0.1s ease-in-out;
+}

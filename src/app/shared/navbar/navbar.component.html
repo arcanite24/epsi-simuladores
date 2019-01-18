@@ -1,0 +1,13 @@
+<div class="epsi-navbar flex flex-row flex-start align-center">
+
+  <span (click)="router.navigate(['/home'])">Epsi Simuladores</span>
+
+  <button *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</button>
+  <button *ngIf="auth.loggedIn && auth.user.isAdmin" (click)="router.navigate(['/admin'])">Administrador</button>
+
+  <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn" (click)="router.navigate(['/profile'])">
+    <img [src]="auth.user.photoURL">
+    <span>{{auth.user.displayName}}</span>
+  </div>
+  
+</div>

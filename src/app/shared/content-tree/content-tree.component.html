@@ -1,0 +1,13 @@
+<div class="epsi-content-tree">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="content$ | async as content else loader">
+    <li *ngFor="let c of content">
+      <span>{{c.name}}</span>
+    </li>
+  </ul>
+
+</div>

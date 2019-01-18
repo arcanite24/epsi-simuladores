@@ -1,0 +1,29 @@
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h1>Editar Pregunta</h1>
+
+  <div class="epsi-input">
+    <label for="">Texto</label>
+    <textarea formControlName="text" rows="5"></textarea>
+  </div>
+
+  <hr>
+
+  <div class="respuestas-header flex flex-row flex-start">
+    <span>Respuestas</span>
+    <button class="ml-auto" type="button" (click)="addAnswer()">Nueva respuesta</button>
+  </div>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="editForm.value.respuestas as respuestas">
+    <epsi-answer-edit-item [answer]="r" [correcta]="editForm.value.correcta" (removed)="answerRemoved($event)" (edited)="answerEdited($event)" (selected)="answerSelected($event)" *ngFor="let r of respuestas"></epsi-answer-edit-item>
+  </ul>
+  
+  <button type="submit" [disabled]="!editForm.valid">Editar Pregunta</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

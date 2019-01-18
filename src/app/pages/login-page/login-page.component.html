@@ -1,0 +1,34 @@
+<div class="columns login-container">
+
+  <div class="column is-half-desktop login-auth-container">
+    <div class="flex flex-col flex-center h-100">
+
+      <div class="auth-controls flex flex-col w-100 p-4">
+
+        <form class="auth-login-container w-100" *ngIf="mode == 'login'" [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+          <div class="field auth-input mt-2">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="email" type="text" placeholder="Ingresa tu correo electrónico" formControlName="email">
+            </div>
+          </div>
+
+          <div class="field auth-input mt-2">
+            <label class="label">Contraseña</label>
+            <div class="control">
+              <input class="password" type="password" placeholder="Tu contraseña" formControlName="password">
+            </div>
+          </div>
+
+          <button class="button is-primary epsi-button mt-2" [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+          <button type="button" (click)="loginGoogle()">Login Google</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

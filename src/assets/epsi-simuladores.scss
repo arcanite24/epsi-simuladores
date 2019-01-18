@@ -1,0 +1,22 @@
+// Epsi Simulaodres Style
+
+// Forms
+.epsi-input {
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+
+  label {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    font-weight: bolder;
+  }
+
+}
+
+// Modal
+.modal-width-100 {
+   max-width: 100%;
+}

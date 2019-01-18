@@ -1,0 +1,13 @@
+<div class="epsi-answer-edit-item flex flex-row flex-start">
+  <input type="radio" [id]="answer.id" (click)="selectAnswer()" [checked]="correcta == answer.id">
+  <label [for]="answer.id">{{answer.text}}</label>
+  <div class="answer-edit-actions ml-auto">
+    <button type="button" (click)="editAnswer()">Editar</button>
+    <button type="button" (click)="removeAnswer(answer.id)">Borrar</button>
+  </div>
+</div>
+
+<form class="epsi-answer-edit-form flex flex-row flex-start" *ngIf="editing">
+  <input type="text" [(ngModel)]="tempText" [ngModelOptions]="{standalone: true}" (blur)="updateAnswer()">
+  <button type="button" (click)="updateAnswer()">Guardar</button>
+</form>

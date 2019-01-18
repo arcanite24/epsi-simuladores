@@ -1,0 +1,82 @@
+<ngx-smart-modal identifier="fullEditModal" #fullEditModal>
+  <app-crud-table-full-edit *ngIf="cacheEdit" [edit]="true" [row]="cacheEdit" [newRow]="cacheEdit" [config]="fullEditConfig"></app-crud-table-full-edit>
+</ngx-smart-modal>
+
+<!-- CRUD actions container -->
+<div class="crud-actions-container">
+
+</div>
+
+<table class="table table-default">
+
+  <thead>
+    <tr>
+      <th *ngFor="let header of config.headers | removeHiddenElements">{{header.label ? header.label : header.field}}</th>
+      <th [hidden]="config.showControls == false" class="flex flex-row justify-center align-center vertical-bottom">
+        <span>{{config.controlsText ? config.controlsText : 'Acciones'}}</span>
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="addRow()" *ngIf="!config.disableAdd">
+          <i class="fa fa-plus"></i>
+        </button>
+      </th>
+    </tr>
+  </thead>
+
+  <tbody *ngIf="data$ | async as collectionData else noData">
+    <tr *ngFor="let row of collectionData; let i = index">
+
+      <!-- TODO: Agregar otros tipos de render en cada cell como CustomHTML -->
+      <td *ngFor="let field of config.headers | removeHiddenElements">
+
+        <!-- Normal render state -->
+        <div class="cell-render" *ngIf="!row.edit || row.edit && field.noEdit == true">
+          <span *ngIf="!field.customRender && !field.customHTML">{{row[field.field]}}</span>
+          <span *ngIf="field.customRender && !field.customHTML">{{ field.customRender(row, i) }}</span>
+          <span *ngIf="!field.customRender && field.customHTML" [innerHTML]="sanitizer.bypassSecurityTrustHtml(field.customHTML(row, i))"></span>
+        </div>
+
+        <!-- TODO: Encontrar otra manera de handelear los diferentes tipos de field_type que no sean ngIf's -->
+        <!-- Editing state -->
+        <div class="editing-field" *ngIf="row.edit && !field.noEdit">
+          <input *ngIf="customEdits.indexOf(field.type) < 0"  [type]="field.type" [placeholder]="field.editPlaceholder ?  field.editPlaceholder : field.label" [(ngModel)]="cacheEdit[field.field]">
+          <input *ngIf="field.type == 'checkbox'"  type="checkbox" [checked]="cacheEdit[field.field]" (change)="cacheEdit[field.field] = !cacheEdit[field.field]">
+          <app-storage-uploader *ngIf="field.type == 'image'"  (onFinish)="cacheEdit[field.field] = $event"></app-storage-uploader>
+
+          <select class="form-control w-100" [(ngModel)]="cacheEdit[field.field]" *ngIf="(field.type == 'select' || field.type == 'select_alt') && field.selectData | async as options">
+            <option 
+              *ngFor="let option of options; let i = index"
+              [selected]="cacheEdit[field.field] == field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
+              [ngValue]="field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
+            >{{option[field.selectLabel]}}</option>
+          </select>
+        </div>
+        
+      </td>
+      
+      <!-- Controls cell -->
+      <td [hidden]="config.showControls == false" class="flex flex-row justify-end align-center">
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" *ngIf="!row.edit && !config.disableEdit" (click)="editRow(row)">
+          <i class="fa fa-edit"></i>
+        </button>
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" *ngIf="row.edit" (click)="saveChanges(row)">
+          <i class="fa fa-check-circle c-success"></i>
+        </button>
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="deleteRow(row[config.pk ? config.pk : 'id'])" >
+          <i class="fa fa-trash"></i>
+        </button>
+
+        <!-- Custom actions -->
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="button.handler(row, i, actionIndex)" *ngFor="let button of config.customActions; let actionIndex = index">
+          <i [class]="button.iconClasses"></i>
+        </button>
+
+      </td>
+
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- TODO: Fix el puto centrado del loadaer -->
+<ng-template #noData>
+  <epsi-loader></epsi-loader>
+</ng-template>

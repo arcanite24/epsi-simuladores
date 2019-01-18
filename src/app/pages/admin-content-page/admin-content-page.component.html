@@ -1,0 +1,54 @@
+<ngx-smart-modal identifier="addContentModal">
+  <epsi-content-add></epsi-content-add>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="editContentModal">
+  <epsi-content-edit [content]="tempContent"></epsi-content-edit>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="treeContentModal">
+  <epsi-content-tree></epsi-content-tree>
+</ngx-smart-modal>
+
+<div class="epsi-admin-content-page">
+  <epsi-panel title="Administrar Contenido">
+
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+
+    <div class="admin-content-actions">
+      <button (click)="addContent()">Agregar</button>
+      <button (click)="openTree()">Vista Jerárquica</button>
+    </div>
+
+    <div class="admin-content-table" *ngIf="content$ | async as content else loader">
+      <table>
+        <thead>
+          <tr>
+            <th>Imágen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of content">
+            <td>
+              <img [src]="c.cover" [alt]="c.name" style="width:32px">
+            </td>
+            <td>{{c.name}}</td>
+            <td>{{c.type}}</td>
+            <td>{{c.description}}</td>
+            <td>
+              <button (click)="openEdit(c)">Editar</button>
+              <button (click)="removeContent(c.id)">Borrar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </epsi-panel>
+</div>

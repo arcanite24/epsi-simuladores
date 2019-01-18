@@ -1,0 +1,4 @@
+<p>
+  <strong>isLogged: </strong> {{auth.loggedIn}}
+</p>
+<pre *ngIf="auth.loggedIn">{{auth.user | json}}</pre>

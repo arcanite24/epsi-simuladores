@@ -1,0 +1,26 @@
+<epsi-panel title="Profile Info">
+  
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="profile-info-header flex-loader" *ngIf="auth.loggedIn">
+    <img [src]="auth.user.photoURL">
+    <span>{{auth.user.displayName}}</span>
+  </div>
+
+  <div class="profile-info-edit" *ngIf="user else loader">
+
+    <div class="epsi-input">
+      <label>Nombre Completo</label>
+      <input type="text" [(ngModel)]="user.displayName">
+    </div>
+
+    <button (click)="saveChanges()" [disabled]="loading">Guardar cambios</button>
+
+    <!-- TODO: Agregar panel para cambiar foto de perfil -->
+    <!-- TODO: Agregar panel para cambiar datos custom -->
+
+  </div>
+
+</epsi-panel>

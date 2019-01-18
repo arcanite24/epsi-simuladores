@@ -1,0 +1,28 @@
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h1>Editar Descargable</h1>
+
+  <div class="epsi-input">
+    <label for="">Nombre</label>
+    <input type="text" formControlName="name">
+  </div>
+
+  <div class="epsi-input">
+    <label for="">Descripción</label>
+    <textarea formControlName="desc"></textarea>
+  </div>
+
+  <app-storage-uploader (onFinish)="fileUploaded($event)"></app-storage-uploader>
+
+  <div class="epsi-input" *ngIf="cats$ | async as cats">
+    <label for="">Categoría</label>
+    <select (change)="catSelected(tempCat)" [(ngModel)]="tempCat" [ngModelOptions]="{standalone: true}">
+      <option [ngValue]="cat" *ngFor="let cat of cats" [selected]="editForm.value.categoria && cat.id == editForm.value.categoria.id">{{cat.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!editForm.valid">Editar Galería</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

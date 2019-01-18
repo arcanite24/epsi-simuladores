@@ -1,0 +1,15 @@
+<ngx-smart-modal identifier="galleryEditModal">
+  <epsi-gallery-edit [gallery]="tempGallery"></epsi-gallery-edit>
+</ngx-smart-modal>
+
+<div class="epsi-admin-users-page">
+
+  <epsi-panel title="Administrar Galerías">
+    <adonalsium-crud-table [config]="configGallery"></adonalsium-crud-table>
+  </epsi-panel>
+
+  <epsi-panel title="Administrar Categorías">
+    <adonalsium-crud-table [config]="configCategory"></adonalsium-crud-table>
+  </epsi-panel>
+
+</div>

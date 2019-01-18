@@ -1,0 +1,11 @@
+<div class="epsi-search">
+
+  <input type="text" (keyup)="handleSearch(searchInput.value)" [placeholder]="placeholder" #searchInput>
+
+  <ul *ngIf="showResults">
+    <li *ngFor="let hit of hits" class="search-result" (click)="hitSelected(hit)">
+      <span>{{hit.text}}</span>
+    </li>
+  </ul>
+
+</div>

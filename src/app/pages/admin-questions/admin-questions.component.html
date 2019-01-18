@@ -1,0 +1,11 @@
+<ngx-smart-modal identifier="questionEditModal" customClass="modal-width-100">
+  <epsi-question-edit [question]="tempQuestion"></epsi-question-edit>
+</ngx-smart-modal>
+
+<div class="epsi-admin-users-page">
+  <epsi-panel title="Administrar Preguntas">
+    <adonalsium-crud-table [config]="config"></adonalsium-crud-table>
+  </epsi-panel>
+</div>
+
+<epsi-search></epsi-search>

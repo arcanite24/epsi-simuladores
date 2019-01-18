@@ -1,0 +1,10 @@
+// Epsi Simuladores
+
+// Structure
+
+  | Naming Conventions
+    - Pages pages/{name}-page.componenent.ts
+      - Admin pages should be named like admin-{plural-entity-name}-page.componenent.ts under pages/
+    - Resuable Component shared/{name}.componenent.ts
+      - Panels shared/{name}-panel.componenent.ts
+      - Forms shared/{name}-{add|edit}.componenent.ts

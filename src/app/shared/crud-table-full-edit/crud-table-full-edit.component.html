@@ -1,0 +1,83 @@
+<div class="container" *ngIf="config && config.modelConfig">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4 class="w-100 text-center" *ngIf="config.title">{{config.title}}</h4>
+    </div>
+
+    <div class="col-md-12" *ngIf="cacheEdit">
+      <pre>{{cacheEdit | json}}</pre>
+    </div>
+
+    <div class="col-md-12" *ngFor="let field of config.modelConfig.headers; let ii = index">
+
+      <div class="cell-render" *ngIf="!edit || edit && field.noEdit == true">
+        <span *ngIf="!field.customRender && !field.customHTML">{{row[field.field]}}</span>
+        <span *ngIf="field.customRender && !field.customHTML">{{ field.customRender(row, i) }}</span>
+        <span *ngIf="!field.customRender && field.customHTML" [innerHTML]="sanitizer.bypassSecurityTrustHtml(field.customHTML(row, i))"></span>
+      </div>
+
+      <div class="editing-field mb-3" *ngIf="edit && !field.noEdit">
+
+        <!-- Normal input type -->
+        <div class="form-group" *ngIf="customEdits.indexOf(field.type) < 0">
+          <label>{{field.label ? field.label : field.field}}</label>
+          <input [type]="field.type" [placeholder]="field.editPlaceholder ?  field.editPlaceholder : field.label"
+            [(ngModel)]="cacheEdit[field.field]" class="form-control">
+        </div>
+
+
+        <!-- Single Checbox (boolean) -->
+        <div class="form-group" *ngIf="field.type == 'checkbox'">
+          <label>{{field.label ? field.label : field.field}}</label>
+          <input type="checkbox" [checked]="cacheEdit[field.field]" (change)="cacheEdit[field.field] = !cacheEdit[field.field]">
+        </div>
+
+        <!-- Image/File uploader -->
+        <div class="form-group" *ngIf="field.type == 'image'">
+          <label>{{field.label ? field.label : field.field}}</label>
+          <app-storage-uploader (onFinish)="cacheEdit[field.field] = $event"></app-storage-uploader>
+        </div>
+
+        <!-- Single item select (Works like shit m8) -->
+        <select class="form-control w-100" [(ngModel)]="cacheEdit[field.field]" *ngIf="field.type == 'select' && field.selectData | async as options">
+          <option *ngFor="let option of options; let i = index" [selected]="cacheEdit[field.field] == field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
+            [ngValue]="field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]">{{option[field.selectLabel]}}</option>
+        </select>
+
+        <!-- Workaround para el tipo select, esta vez con radio -->
+        <div class="form-group" *ngIf="field.type == 'select_alt'">
+          <label style="text-transform: capitalize">{{field.label ? field.label : field.field}}</label>
+          <div class="select-alt form-group" *ngIf="field.selectData | async as options">
+            <div class="custom-control custom-radio" *ngFor="let option of options; let iii = index">
+              <!-- TODO: Implementar otro pk que no sea 'id' -->
+              <input type="radio" [id]="field.field + ii + iii" class="custom-control-input" [checked]="isCheckedRadio(option, cacheEdit[field.field])" [value]="iii" (change)="cacheEdit[field.field] = options[iii]"
+                [name]="field.field" [(ngModel)]="radioCache[field.field]">
+              <label class="custom-control-label" [for]="field.field + ii + iii">{{option[field.selectLabel]}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="field.type == 'select_multiple'" >
+          <label style="text-transform: capitalize">{{field.label ? field.label : field.field}}</label>
+          <div class="custom-control custom-checkbox" *ngFor="let option of field.selectData | async as options; let iii = index">
+            <input type="checkbox" class="custom-control-input" [id]="'multi' + ii + iii" [checked]="isChecked(option, cacheEdit[field.field])" [(ngModel)]="option.selected" (change)="onChangeCheckbox(field, options)">
+            <label class="custom-control-label" [for]="'multi' + ii + iii">{{option[field.selectLabel]}}</label>
+          </div>
+        </div>
+
+        <div class="form-group" *ngIf="field.type == 'textarea'">
+          <label style="text-transform: capitalize">{{field.label ? field.label : field.field}}</label>
+          <textarea class="form-control" [(ngModel)]="cacheEdit[field.field]"></textarea>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-md-12 d-flex justify-content-center align-items-center">
+      <button class="btn btn-primary" (click)="saveChanges()" >Guardar</button>
+    </div>
+
+  </div>
+</div>

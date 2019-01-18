@@ -1,0 +1,15 @@
+<ngx-smart-modal identifier="mediaEditModal">
+  <epsi-media-edit [media]="tempMedia"></epsi-media-edit>
+</ngx-smart-modal>
+
+<div class="epsi-admin-users-page">
+
+  <epsi-panel title="Administrar Descargables">
+    <adonalsium-crud-table [config]="configMedia"></adonalsium-crud-table>
+  </epsi-panel>
+
+  <epsi-panel title="Administrar Categorías">
+    <adonalsium-crud-table [config]="configCategory"></adonalsium-crud-table>
+  </epsi-panel>
+
+</div>
