@@ -1,7 +1,7 @@
 <div class="epsi-feed-post-comments">
 
-  <form class="post-comments-form flex flex-row flex-start" *ngIf="auth.user && addForm" [formGroup]="addForm" (ngSubmit)="submitForm(addForm.value)">
-    <img [src]="auth.user.photoURL" style="width: 32px">
+  <form class="post-comments-form flex flex-row flex-start align-center" *ngIf="auth.user && addForm" [formGroup]="addForm" (ngSubmit)="submitForm(addForm.value)">
+    <img [src]="auth.user.photoURL">
     <input type="text" formControlName="text" placeholder="Escribe un comentario">
   </form>
 

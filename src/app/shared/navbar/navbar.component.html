@@ -7,10 +7,12 @@
 
     <div class="navbar-actions flex flex-row flex-center">
       <a *ngIf="auth.loggedIn" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
-      <button *ngIf="auth.loggedIn && auth.user.isAdmin" (click)="router.navigate(['/admin'])" class="mr-2">
+
+      <a [routerLink]="[ '/admin' ]" class="mr-2 navbar-action flex-loader" *ngIf="auth.isAdmin">
         <i class="fa fa-unlock"></i>
-      </button>
-      <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="mr-2">
+      </a>
+      
+      <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="mr-2" class="navbar-action">
         <i class="fa fa-sign-out"></i>
       </button>
     </div>

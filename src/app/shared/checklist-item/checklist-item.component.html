@@ -1,4 +1,6 @@
-<div class="epsi-checklist-item flex flex-row flex-start w-100" (click)="toggleCompleted(todo.id)">
-  <input type="checkbox" [checked]="completed">
+<div class="epsi-checklist-item flex flex-row flex-start align-center w-100" (click)="toggleCompleted(todo.id)">
+  <div class="epsi-checkbox flex-loader" [ngClass]="{'epsi-checked': completed}">
+    <i class="fa fa-check" *ngIf="completed"></i>
+  </div>
   <span>{{todo.text}}</span>
 </div>

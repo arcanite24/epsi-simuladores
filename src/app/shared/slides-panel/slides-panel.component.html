@@ -3,10 +3,12 @@
 </ng-template>
 
 <epsi-panel title="Presentaciones" img="https://zamnademy.com/site/images/clients/presentacione.png">
-  <ul *ngIf="slides$ | async as slides else loader">
-    <li *ngFor="let slide of slides">
+  <ul *ngIf="slides$ | async as slides else loader" class="m-3 list-group">
+    <li *ngFor="let slide of slides" class="list-group-item">
       <a [routerLink]="[ '/slide', slide.id ]">{{slide.name}}</a>
     </li>
-    <a [routerLink]="[ '/slide/list' ]">Ver Todas</a>
+    <div class="flex-loader">
+      <a [routerLink]="[ '/slide/list' ]" class="btn btn-secondary mt-2">Ver Todas</a>
+    </div>
   </ul>
 </epsi-panel>

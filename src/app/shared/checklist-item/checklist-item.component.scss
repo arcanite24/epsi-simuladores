@@ -1,3 +1,31 @@
+@import '../../../variables.scss';
+
 .epsi-checklist-item {
+
   cursor: pointer;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.5rem;
+
+  &:hover {
+    .epsi-checkbox { background-color: #ccc; }
+  }
+
+}
+
+.epsi-checkbox {
+
+  background-color: #e6e6e6;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  
+  i {
+    color: $epsi-text-color-primary;
+    font-size: 0.8rem;
+  }
+
 }

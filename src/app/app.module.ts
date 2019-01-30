@@ -16,6 +16,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { TagInputModule } from 'ngx-chips'
 import { NgxChartsModule } from '@swimlane/ngx-charts'
+import { MomentModule } from 'ngx-moment'
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs)
@@ -276,6 +277,7 @@ import { registerLocaleData } from '@angular/common';
       exam: examReducer
     }),
     NgxChartsModule,
+    MomentModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

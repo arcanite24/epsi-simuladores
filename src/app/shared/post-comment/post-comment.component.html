@@ -5,14 +5,16 @@
     <p>{{comment.text}}</p>
   </div>
 
-  <div class="comment-actions flex flex-row flex-start" *ngIf="auth.user as user">
-    <span *ngIf="comment.likes && comment.likes.length > 0">
-      <i class="fa fa-thumbs-up"></i>
-      <strong>{{comment.likes.length}}</strong>
-    </span>
+  <div class="comment-actions flex flex-row flex-start align-center" *ngIf="auth.user as user">
+    <div *ngIf="comment.likes && comment.likes.length > 0" class="like-badge flex flex-row flex-center">
+      <div class="like-indicator flex-loader">
+        <i class="fa fa-thumbs-up"></i>
+      </div>
+      <small>{{comment.likes.length}}</small>
+    </div>
     <button type="button" [ngClass]="{'is-liked': isLiked}" (click)="toggleLike(comment.likes, user.uid)">Me Gusta</button>
     <button type="button" *ngIf="auth.isAdmin" (click)="removeComment(comment.id)">Borrar</button>
-    <small>{{comment.date}}</small>
+    <small> · {{comment.date | amCalendar}}</small>
   </div>
 
 </div>

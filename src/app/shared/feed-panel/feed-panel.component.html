@@ -2,14 +2,16 @@
 
   <div class="feed-body">
 
-    <form class="feed-create" [formGroup]="postForm" (ngSubmit)="submitForm(postForm.value)">
+    <form class="feed-create flex flex-col flex-start" [formGroup]="postForm" (ngSubmit)="submitForm(postForm.value)">
       <textarea formControlName="text" placeholder="¿Quieres compartir o preguntar algo con tus compañeros Zamná? :)"></textarea>
-      <button type="submit" [disabled]="!postForm.valid">Compartir</button>
-      <app-storage-uploader (onFinish)="imageUploaded($event)"></app-storage-uploader>
+      <div class="feed-create-controls flex flex-row flex-center">
+        <button type="submit" class="btn btn-secondary" [disabled]="!postForm.valid">Compartir</button>
+        <app-storage-uploader (onFinish)="imageUploaded($event)"></app-storage-uploader>
+      </div>
       <img [src]="postForm.value.image" *ngIf="postForm.value.image">
     </form>
   
-    <div class="feed-posts" *ngIf="posts$ | async as posts else loader">
+    <div class="feed-posts p-3" *ngIf="posts$ | async as posts else loader">
       <epsi-feed-post-item *ngFor="let post of posts" [post]="post"></epsi-feed-post-item>
     </div>
 

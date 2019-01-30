@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng build --prod && firebase deploy --only hosting"
   },
   "private": true,
   "dependencies": {
@@ -36,6 +37,7 @@
     "moment": "^2.23.0",
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-gallery": "^5.9.1",
+    "ngx-moment": "^3.3.0",
     "ngx-smart-modal": "^7.1.1",
     "ngx-toastr": "^9.1.1",
     "normalize.css": "^8.0.1",

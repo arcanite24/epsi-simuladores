@@ -4,8 +4,8 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <ul *ngIf="cats$ | async as cats else loader">
-    <li *ngFor="let cat of cats">
+  <ul *ngIf="cats$ | async as cats else loader" class="m-3 list-group">
+    <li *ngFor="let cat of cats" class="list-group-item">
       <a [routerLink]="[ '/thread/category', cat.id ]">{{cat.name}}</a>
     </li>
   </ul>

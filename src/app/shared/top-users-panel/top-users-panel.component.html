@@ -1,17 +1,21 @@
-<epsi-panel title="Cuadro de Honor" [showContent]="true" img="assets/zamnademy/team.svg">
+<epsi-panel title="Cuadro de Honor" [showContent]="true" img="assets/zamnademy/team.svg" class="p-2">
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <ul *ngIf="users$ | async as users else loader">
-    <li *ngFor="let user of users">
-      <img [src]="user.photoURL" style="width: 32px">
-      <span>{{user.displayName}}</span>
-      <strong class="ml-2">{{user.promedio}}</strong>
-    </li>
-  </ul>
-  
-  <button *ngIf="auth.isAdmin" (click)="reloadUsers()">Recargar Información</button>
+  <div class="p-2">
+    <ul *ngIf="users$ | async as users else loader" class="top-users-list">
+      <li *ngFor="let user of users">
+        <img [src]="user.photoURL">
+        <strong class="ml-2">{{user.promedio}}</strong>
+        <span>{{user.displayName}}</span>
+      </li>
+    </ul>
+    
+    <div class="flex-loader">
+      <button type="button" class="btn btn-primary mt-2" *ngIf="auth.isAdmin" (click)="reloadUsers()">Recargar Información</button>
+    </div>
+  </div>
 
 </epsi-panel>

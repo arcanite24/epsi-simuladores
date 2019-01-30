@@ -1,7 +1,7 @@
 <epsi-panel title="Asesorías en Vivo" img="assets/zamnademy/ase.svg">
 
-  <ul *ngIf="lives$ | async as lives else loader">
-    <li *ngFor="let live of lives">
+  <ul *ngIf="lives$ | async as lives else loader" class="m-3 list-group">
+    <li *ngFor="let live of lives" class="list-group-item">
       <a [routerLink]="[ '/livestream', live.id ]">{{live.name}}</a>
     </li>
   </ul>
