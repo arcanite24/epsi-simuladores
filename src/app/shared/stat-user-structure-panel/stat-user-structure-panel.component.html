@@ -1,0 +1,11 @@
+<epsi-panel title="Promedios" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="structure-list" *ngIf="views$ | async as views else loader">
+    <epsi-stat-structure-item *ngFor="let view of views" [view]="view"></epsi-stat-structure-item>
+  </div>
+
+</epsi-panel>

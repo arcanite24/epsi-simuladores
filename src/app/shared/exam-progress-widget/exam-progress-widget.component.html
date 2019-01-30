@@ -1,0 +1,20 @@
+<epsi-panel title="Progreso" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="questions else loader">
+    <li *ngFor="let question of questions; let i = index">
+      <i class="fa fa-check" style="color:green" *ngIf="completed.indexOf(question.id) >= 0"></i>
+      <a (click)="gotoQuestion(i, question)" [ngClass]="{'active-question': i == activeIndex}">{{question.text.substr(0, 100)}} {{question.text.length > 100 ? '...' : ''}}</a>
+    </li>
+  </ul>
+
+</epsi-panel>
+
+<style>
+  .active-question {
+    font-weight: bolder;
+  }
+</style>

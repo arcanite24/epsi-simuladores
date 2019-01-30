@@ -1,0 +1,18 @@
+<div class="epsi-post-comment">
+
+  <div class="comment-body flex flex-row flex-start" *ngIf="auth.user">
+    <img [src]="auth.user.photoURL" style="width: 32px">
+    <p>{{comment.text}}</p>
+  </div>
+
+  <div class="comment-actions flex flex-row flex-start" *ngIf="auth.user as user">
+    <span *ngIf="comment.likes && comment.likes.length > 0">
+      <i class="fa fa-thumbs-up"></i>
+      <strong>{{comment.likes.length}}</strong>
+    </span>
+    <button type="button" [ngClass]="{'is-liked': isLiked}" (click)="toggleLike(comment.likes, user.uid)">Me Gusta</button>
+    <button type="button" *ngIf="auth.isAdmin" (click)="removeComment(comment.id)">Borrar</button>
+    <small>{{comment.date}}</small>
+  </div>
+
+</div>

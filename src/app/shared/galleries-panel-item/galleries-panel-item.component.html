@@ -1,0 +1,15 @@
+<div class="epsi-galleries-panel-item" *ngIf="category && (galleries$ | async) as galleries else loader">
+
+  <img [src]="galleries[0].fotos[0]" *ngIf="galleries[0] && galleries[0].fotos && galleries[0].fotos" class="w-100">
+
+  <ul *ngFor="let gallery of galleries">
+    <li>
+      <a [routerLink]="[ '/gallery', gallery.id ]">{{gallery.name}}</a>
+    </li>
+  </ul>
+
+</div>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

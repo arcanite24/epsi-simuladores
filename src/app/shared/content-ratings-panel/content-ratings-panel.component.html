@@ -1,0 +1,16 @@
+<epsi-panel title="Calificar">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="ratings-panel" *ngIf="rating$ | async as userRating else loader">
+
+    <div class="content-rating" *ngFor="let rating of contentRatings">
+      <h4>{{rating.label}} <span *ngIf="content && content.ratings && content.ratings[rating.key]">{{content.ratings[rating.key].toFixed(2)}}/{{rating.max}}</span></h4>
+      <ngb-rating [(rate)]="ratingsModel[rating.key]" (rateChange)="updateRating(rating.key, ratingsModel[rating.key])" [max]="rating.max"></ngb-rating>
+    </div>
+
+  </div>
+
+</epsi-panel>

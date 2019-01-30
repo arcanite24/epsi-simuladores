@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
-import { Media } from 'src/app/app.models';
+import { Media, Collections } from 'src/app/app.models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
@@ -13,7 +13,7 @@ export class AdminMediaComponent implements OnInit {
   public tempMedia: Media
 
   public configMedia: CrudTableConfig = {
-    collection: 'media',
+    collection: Collections.MEDIA,
     documentDefaults: {
       name: 'Nuevo Descargable',
       desc: '.',

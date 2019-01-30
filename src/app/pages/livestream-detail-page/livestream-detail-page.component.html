@@ -1,0 +1,35 @@
+<div class="epsi-livestream-detail-page container">
+
+  <div class="row" *ngIf="live$ | async as live else loader">
+    
+    <!-- Live Video -->
+    <div class="col-xs-12 col-md-8">
+      <epsi-panel [title]="live.name" [showContent]="true" *ngIf="live_url">
+        <div class="video-wrapper">
+          <iframe [src]="live_url" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </epsi-panel>
+    </div>
+
+    <!-- Live Side Panel -->
+    <div class="col-xs-12 col-md-4">
+      
+      <!-- Live Chat Panel -->
+      <epsi-panel title="Chat" [showContent]="true">
+        <iframe [src]="chat_url" *ngIf="chat_url" frameborder="0" class="chat-frame"></iframe>
+      </epsi-panel>
+
+      <!-- Live Notas Panel -->
+      <epsi-content-notes-panel
+        parent_type="livestream"
+        [parent_id]="live_id"></epsi-content-notes-panel>
+    
+    </div>
+
+  </div>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

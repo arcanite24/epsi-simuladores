@@ -2,7 +2,7 @@
   <epsi-content-add></epsi-content-add>
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="editContentModal">
+<ngx-smart-modal identifier="editContentModal" customClass="max-w-50">
   <epsi-content-edit [content]="tempContent"></epsi-content-edit>
 </ngx-smart-modal>
 
@@ -36,7 +36,8 @@
         <tbody>
           <tr *ngFor="let c of content">
             <td>
-              <img [src]="c.cover" [alt]="c.name" style="width:32px">
+              <img [src]="c.cover" [alt]="c.name" style="width:32px" *ngIf="c.cover">
+              <span *ngIf="!c.cover">-</span>
             </td>
             <td>{{c.name}}</td>
             <td>{{c.type}}</td>

@@ -22,7 +22,8 @@ export class AdminQuestionsComponent implements OnInit {
     documentDefaults: {
       text: 'Nueva Pregunta',
       respuestas: [],
-      correcta: null
+      correcta: null,
+      tags: []
     },
     customActions: [
       {iconClasses: 'fa fa-edit', handler: row => this.openEditQuestion(row)}

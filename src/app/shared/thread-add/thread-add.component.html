@@ -1,0 +1,19 @@
+<form [formGroup]="addForm" (ngSubmit)="submitForm()">
+
+  <h1>Agregar Hilo</h1>
+
+  <div class="epsi-input">
+    <label for="">Titulo</label>
+    <input type="text" formControlName="title">
+  </div>
+  
+  <div class="epsi-input">
+    <label for="">Texto</label>
+    <textarea formControlName="text"></textarea>
+  </div>
+
+  <button type="submit">Agregar Hilo</button>
+
+  <pre>{{addForm.value | json}}</pre>
+
+</form>

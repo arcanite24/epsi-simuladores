@@ -1,0 +1,10 @@
+<epsi-panel [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <h1>Promedio del Mes: <strong *ngIf="promedio">{{promedio | number}}</strong></h1>
+  <button type="button" *ngIf="auth.user" (click)="calculateAverage(auth.user.uid)" [disabled]="!canReload">Recargar</button>
+
+</epsi-panel>

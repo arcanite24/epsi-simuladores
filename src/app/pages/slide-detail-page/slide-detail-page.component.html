@@ -1,0 +1,23 @@
+<epsi-panel [showContent]="true" *ngIf="slide$ | async as slide else loader" [title]="slide.name">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-8" *ngIf="images">
+        <ngx-gallery
+        [images]="images"
+        [options]="galleryOptions"></ngx-gallery>
+      </div>
+
+      <div class="col-xs-12 col-md-4">
+        <epsi-content-notes-panel
+          parent_type="slide"
+          [parent_id]="id"></epsi-content-notes-panel>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

@@ -6,6 +6,11 @@
       <label for="">Nombre</label>
       <input type="text" formControlName="name">
     </div>
+
+    <div class="epsi-input">
+      <label for="">Video</label>
+      <input type="text" formControlName="video">
+    </div>
   
     <div class="epsi-input">
       <label for="">Descripción</label>
@@ -29,7 +34,23 @@
   
     <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>
   
-    <!-- TODO: Add nesting forms -->
+    <hr>
+
+    <div class="content-edit-markers">
+
+      <div class="markers-edit-header flex flex-row flex-start">
+        <h4>Marcadores</h4>
+        <button type="button" (click)="addMarker(editForm.value.markers)">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+
+      <div class="market-input flex flex-row flex-start" *ngFor="let marker of editForm.value.markers">
+        <input type="text" [(ngModel)]="marker.tag" [ngModelOptions]="{standalone: true}" placeholder="Texto del Marcador">
+        <ngb-timepicker [(ngModel)]="marker.time" [seconds]="true" (change)="markerChanged(marker)" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
+      </div>
+
+    </div>
   
     <button type="submit">Editar Contenido</button>
   

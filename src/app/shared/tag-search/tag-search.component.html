@@ -1,0 +1,4 @@
+<div class="question-tags" *ngIf="tags">
+  <span>Tags</span>
+  <input type="text" [ngbTypeahead]="searchTag" (selectItem)="tagSelect.next($event.item)">
+</div>

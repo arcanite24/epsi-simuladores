@@ -1,4 +1,4 @@
-<epsi-panel title="Profile Info">
+<epsi-panel title="Profile Info" [showContent]="true">
   
   <ng-template #loader>
     <epsi-loader></epsi-loader>
@@ -16,7 +16,37 @@
       <input type="text" [(ngModel)]="user.displayName">
     </div>
 
-    <button (click)="saveChanges()" [disabled]="loading">Guardar cambios</button>
+    <div class="epsi-input">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="user.new_email">
+    </div>
+
+    <div class="epsi-input">
+      <label>Universidad</label>
+      <input type="text" [(ngModel)]="user.universidad">
+    </div>
+
+    <div class="epsi-input">
+      <label>Celular</label>
+      <input type="text" [(ngModel)]="user.celular">
+    </div>
+
+    <div class="epsi-input">
+      <label>Especialidad</label>
+      <input type="text" [(ngModel)]="user.especialidad">
+    </div>
+
+    <div class="epsi-input">
+      <label>Cuéntanos sobre ti</label>
+      <textarea [(ngModel)]="user.about"></textarea>
+    </div>
+
+    <div class="epsi-input">
+      <label>Lugar de Origen</label>
+      <input type="text" [(ngModel)]="user.lugar_origen">
+    </div>
+
+    <button (click)="saveChanges(user)" [disabled]="loading">Guardar cambios</button>
 
     <!-- TODO: Agregar panel para cambiar foto de perfil -->
     <!-- TODO: Agregar panel para cambiar datos custom -->

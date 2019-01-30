@@ -1,8 +1,7 @@
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { clone } from 'lodash/clone';
 import { DomSanitizer } from '@angular/platform-browser';
-import { CrudTableFullEditConfig, CrudTableConfig, CrudTableHeader } from './../crud-table/crud-table-models';
+import { CrudTableFullEditConfig, CrudTableHeader } from './../crud-table/crud-table-models';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

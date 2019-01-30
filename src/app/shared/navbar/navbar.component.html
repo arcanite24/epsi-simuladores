@@ -4,6 +4,7 @@
 
   <button *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</button>
   <button *ngIf="auth.loggedIn && auth.user.isAdmin" (click)="router.navigate(['/admin'])">Administrador</button>
+  <a *ngIf="auth.loggedIn" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
 
   <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn" (click)="router.navigate(['/profile'])">
     <img [src]="auth.user.photoURL">

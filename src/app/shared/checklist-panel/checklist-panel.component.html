@@ -1,0 +1,13 @@
+<epsi-panel title="Comienza Aquí:" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader type="checklist"></epsi-loader>
+  </ng-template>
+
+  <div class="todo-list" *ngIf="checklist$ | async as checklist else loader">
+    <epsi-checklist-item *ngFor="let task of checklist" [todo]="task" [completed]="completedTasks.indexOf(task.id) >= 0"></epsi-checklist-item>
+  </div>
+
+  <pre>{{ completedTasks | json }}</pre>
+
+</epsi-panel>

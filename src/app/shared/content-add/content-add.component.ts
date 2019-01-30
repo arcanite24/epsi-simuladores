@@ -37,9 +37,13 @@ export class ContentAddComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       type: ['', Validators.required],
-      cover: ['', Validators.required],
+      cover: null,
       parent_id: [null],
-      parent_type: [null]
+      parent_type: [null],
+      totalRatings: 0,
+      ratings: {},
+      video: null,
+      markers: [[]]
     })
 
   }

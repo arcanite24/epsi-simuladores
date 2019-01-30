@@ -1,0 +1,13 @@
+<epsi-panel title="Asesorías en Vivo">
+
+  <ul *ngIf="lives$ | async as lives else loader">
+    <li *ngFor="let live of lives">
+      <a [routerLink]="[ '/livestream', live.id ]">{{live.name}}</a>
+    </li>
+  </ul>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</epsi-panel>

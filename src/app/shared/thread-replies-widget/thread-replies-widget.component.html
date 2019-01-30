@@ -1,0 +1,15 @@
+<div class="epsi-thread-replies-widget" *ngIf="replies$ | async as replies else loader">
+  <ul>
+    <li *ngFor="let reply of replies">
+      <img [src]="reply.user.photoURL" style="width:32px">
+      <span>{{reply.user.displayName}}</span>
+      <p>{{reply.text}}</p>
+      <small>{{reply.date}}</small>
+      <button type="button" *ngIf="auth.isAdmin" (click)="removeReply(reply.id)">Borrar</button>
+    </li>
+  </ul>
+</div>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

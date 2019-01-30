@@ -42,8 +42,9 @@ export class AuthService {
     return this.loggedIn && this.user['isAdmin']
   }
 
-  setUser(user) {
-    if (user) this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})
+  setUser(user: any) {
+    console.log(user)
+    if (user) return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})
   }
 
   logout() {

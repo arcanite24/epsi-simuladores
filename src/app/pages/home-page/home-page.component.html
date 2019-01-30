@@ -1,4 +1,76 @@
-<p>
-  <strong>isLogged: </strong> {{auth.loggedIn}}
-</p>
-<pre *ngIf="auth.loggedIn">{{auth.user | json}}</pre>
+<div class="container">
+
+  <div class="row">
+
+    <!-- Home Left Column -->
+    <div class="col-xs-12 col-md-4">
+
+        <!-- Todo Panel  -->
+      <epsi-checklist-panel></epsi-checklist-panel>
+
+      <!-- Top Users Panel -->
+      <epsi-top-users-panel></epsi-top-users-panel>
+
+    </div>
+
+    <!-- Home Main Column -->
+    <div class="col-xs-12 col-md-8">
+
+      <!-- Calendar Panel -->
+      <epsi-calendar-panel></epsi-calendar-panel>
+
+      <!-- Content Panel -->
+      <epsi-content-panel></epsi-content-panel>
+
+    </div>
+
+    <!-- Home Secondary Grid -->
+    <div class="col-xs-12">
+      <div class="row">
+
+        <!-- Galleries Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-galleries-panel></epsi-galleries-panel>
+        </div>
+
+        <!-- Simuladores Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-simuladores-panel></epsi-simuladores-panel>
+        </div>
+
+        <!-- Foro Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-forum-panel></epsi-forum-panel>
+        </div>
+
+        <!-- Asesorias Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-livestreams-panel></epsi-livestreams-panel>
+        </div>
+
+        <!-- Descagables/Media Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-media-panel></epsi-media-panel>
+        </div>
+
+        <!-- Slides Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-slides-panel></epsi-slides-panel>
+        </div>
+
+        <!-- Simulacros Panel -->
+        <div class="col-xs-12 col-md-4">
+          <epsi-simulacros-panel></epsi-simulacros-panel>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Feed Column -->
+    <div class="col-xs-12">
+      <epsi-feed-panel></epsi-feed-panel>
+    </div>
+
+  </div>  
+  
+</div>

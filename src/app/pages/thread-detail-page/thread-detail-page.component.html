@@ -1,0 +1,20 @@
+<epsi-panel *ngIf="thread$ | async as thread else loader" [title]="thread.cat_name + ' - ' + thread.title" [showContent]="true">
+
+  <div class="thread-content">
+    <h2 class="text-center">{{thread.text}}</h2>
+  </div>
+
+  <div class="thread-reply-box">
+    <textarea placeholder="Ingresa una respuesta para la pregunta" [(ngModel)]="tempReply" [ngModelOptions]="{standalone: true}"></textarea>
+    <button type="button" (click)="postReply(tempReply, thread)">Publicar</button>
+  </div>
+
+  <div class="thread-replies">
+    <epsi-thread-replies-widget [thread]="thread"></epsi-thread-replies-widget>
+  </div>
+
+</epsi-panel>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

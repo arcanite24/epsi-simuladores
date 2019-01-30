@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Gallery, GalleryCategory } from 'src/app/app.models';
+import { Gallery, GalleryCategory, Collections } from 'src/app/app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -21,7 +21,7 @@ export class GalleryEditComponent implements OnInit {
 
   public editForm: FormGroup
   public tempCat: GalleryCategory
-  public cats$: Observable<GalleryCategory[]> = this.afs.collection<GalleryCategory>('gallery-cat').valueChanges()
+  public cats$: Observable<GalleryCategory[]> = this.afs.collection<GalleryCategory>(Collections.GALLERY_CATEGORY).valueChanges()
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +35,8 @@ export class GalleryEditComponent implements OnInit {
       desc: ['', Validators.required],
       fotos: [[]],
       categoria: [null],
-      cat_name: [null]
+      cat_name: [null],
+      cat_id: null
     })
   }
 
@@ -54,7 +55,8 @@ export class GalleryEditComponent implements OnInit {
   catSelected(cat: GalleryCategory) {
     this.editForm.patchValue({
       cat_name: cat.name,
-      categoria: cat
+      categoria: cat,
+      cat_id: cat.id
     })
   }
   
@@ -63,7 +65,7 @@ export class GalleryEditComponent implements OnInit {
     if (this.editForm.valid) {
 
       try {
-        await this.afs.doc(`gallery/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
+        await this.afs.doc(`${Collections.GALLERY}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
         this.toastr.success('Galería editada correctamente.')
         this.modal.getModal('galleryEditModal').close()
         this.editForm.reset()
@@ -82,7 +84,7 @@ export class GalleryEditComponent implements OnInit {
     const fotos = [...this.editForm.value.fotos]
     fotos.splice(i, 1)
     this.editForm.patchValue({fotos})
-    await this.afs.doc(`gallery/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
+    await this.afs.doc(`${Collections.GALLERY}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
     this.toastr.success('Foto removida correctamente.')
     // TODO: Add error handler for removing a picture from gallery
   }  

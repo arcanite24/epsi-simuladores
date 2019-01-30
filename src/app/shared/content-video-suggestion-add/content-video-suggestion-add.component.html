@@ -1,0 +1,6 @@
+<div class="epsi-content-video-suggestion-add">
+  <form [formGroup]="addForm" *ngIf="addForm" (ngSubmit)="addSuggestion()">
+    <textarea placeholder="Envía tus sugerencias al profesor" formControlName="text"></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</div>

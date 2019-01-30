@@ -1,0 +1,7 @@
+<epsi-panel title="Marcadores">
+  <ul *ngIf="content && content.markers">
+    <li *ngFor="let marker of content.markers">
+      <a (click)="markerClicked(marker)">{{marker.time.hour}}:{{marker.time.minute}}:{{marker.time.second}} {{marker.tag}}</a>
+    </li>
+  </ul>
+</epsi-panel>

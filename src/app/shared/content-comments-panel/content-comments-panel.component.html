@@ -1,0 +1,18 @@
+<epsi-panel title="Comentarios">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="content-comments-body" *ngIf="comments$ | async as comments else loader">
+    <ul>
+      <li *ngFor="let comment of comments">{{comment.text}}</li>
+    </ul>
+  </div>
+
+  <form class="content-comments-add" [formGroup]="commentForm" (ngSubmit)="addComment()" *ngIf="commentForm">
+    <textarea placeholder="Escribe aquí tu comentario" formControlName="text"></textarea>
+    <button type="submit" [disabled]="!commentForm.valid">Enviar</button>
+  </form>
+
+</epsi-panel>

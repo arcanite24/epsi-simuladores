@@ -1,0 +1,15 @@
+<div class="epsi-media-panel">
+  <epsi-panel title="Material Extra">
+    
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+
+    <ul *ngIf="medias$ | async as medias else loader">
+      <li *ngFor="let media of medias">
+        <a [routerLink]="[ '/media', media.id ]">{{media.name}}</a>
+      </li>
+    </ul>
+
+  </epsi-panel>
+</div>

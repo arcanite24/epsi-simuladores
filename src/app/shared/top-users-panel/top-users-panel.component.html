@@ -1,0 +1,17 @@
+<epsi-panel title="Cuadro de Honor" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="users$ | async as users else loader">
+    <li *ngFor="let user of users">
+      <img [src]="user.photoURL" style="width: 32px">
+      <span>{{user.displayName}}</span>
+      <strong class="ml-2">{{user.promedio}}</strong>
+    </li>
+  </ul>
+  
+  <button *ngIf="auth.isAdmin" (click)="reloadUsers()">Recargar Información</button>
+
+</epsi-panel>

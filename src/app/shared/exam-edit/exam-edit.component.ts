@@ -64,9 +64,9 @@ export class ExamEditComponent implements OnInit {
 
   }
 
-  questionSelected({ id, text }) {
+  questionSelected({ id, text, tags }) {
     if (!this.haveQuestion(id)) {
-      this.editForm.patchValue({ questions: [...this.editForm.value.questions, {id, text}] })
+      this.editForm.patchValue({ questions: [...this.editForm.value.questions, {id, text, tags}] })
       this.saveExam()
     } else {
       this.toastr.error('La pregunta ya ha sido agregada al exámen...')

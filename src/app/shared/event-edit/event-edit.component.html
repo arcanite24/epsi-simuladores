@@ -1,0 +1,44 @@
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h1>Editar Evento</h1>
+
+  <div class="epsi-input">
+    <label for="">Titulo</label>
+    <input type="text" formControlName="title">
+  </div>
+
+  <div class="epsi-input">
+    <label for="">Descripción</label>
+    <textarea formControlName="desc"></textarea>
+  </div>
+
+  <div class="epsi-input">
+    <label for="">Fecha</label>
+    <input type="date" formControlName="date">
+  </div>
+
+  <hr>
+
+  <div class="event-edit-tasks">
+
+    <div class="event-tasks-header flex flex-row flex-start">
+      <span>Tareas</span>
+      <button (click)="addTask(editForm.value.tasks)" type="button">Agregar</button>
+    </div>
+
+    <ul *ngIf="editForm.value.tasks as tasks">
+      <li *ngFor="let task of tasks">
+        <input type="text" [(ngModel)]="task.label" [ngModelOptions]="{standalone: true}">
+        <button type="button" (click)="removeTask(tasks, task)">
+          <i class="fa fa-remove"></i>
+        </button>
+      </li>
+    </ul>
+
+  </div>
+
+  <button type="submit" [disabled]="!editForm.valid">Editar Galería</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

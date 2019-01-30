@@ -1,0 +1,15 @@
+<ngx-smart-modal identifier="viewDetailModal" customClass="max-w-75">
+  <epsi-stat-view-detail [view]="tempView"></epsi-stat-view-detail>
+</ngx-smart-modal>
+
+<epsi-panel [showContent]="true" title="Timeline">
+  
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="views$ | async as views else loader">
+    <li *ngFor="let view of views" (click)="openViewDetail(view)">{{view.name}}</li>
+  </ul>
+
+</epsi-panel>

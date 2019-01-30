@@ -1,0 +1,30 @@
+<epsi-panel title="Resultados de Exámen" [showContent]="true">
+
+  <div class="container" *ngIf="result$ | async as result else loader">
+    <div class="row">
+      
+      <div class="result-header">
+        <h5>Resultados:</h5>
+        <h6>Promedio: {{promedio.toFixed(2)}}/100.00</h6>
+        <p>Correctas {{correctas}} de {{questions.length}}</p>
+      </div>
+
+      <div class="result-questions col-xs-12" *ngFor="let q of questions; let i = index">
+        <small>Pregunta {{i + 1}} de {{questions.length}}</small>
+        <div class="flex flex-row flex-start">
+          <i class="fa fa-remove" style="color:red" *ngIf="!q.correcta"></i>
+          <i class="fa fa-check" style="color:green" *ngIf="q.correcta"></i>
+          <span>{{q.raw.text}}</span>
+        </div>
+        <p>La respuesta correcta era: {{getCorrectaText(q.raw.correcta, q.raw.respuestas)}}</p>
+        <p *ngIf="q.raw.feedback">{{q.raw.feedback}}</p>
+      </div>
+
+    </div>
+  </div>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</epsi-panel>

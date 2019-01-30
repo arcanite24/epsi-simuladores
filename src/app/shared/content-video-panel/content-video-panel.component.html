@@ -1,0 +1,45 @@
+<epsi-panel [title]="content.name" *ngIf="content">
+
+  <div class="video-panel-player" *ngIf="content.video">
+    <vg-player (onPlayerReady)="onPlayerReady($event)">
+
+      <vg-overlay-play></vg-overlay-play>
+      <vg-buffering></vg-buffering>
+
+      <vg-scrub-bar>
+        <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+        <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+      </vg-scrub-bar>
+
+      <vg-controls>
+        <vg-play-pause></vg-play-pause>
+        <vg-playback-button></vg-playback-button>
+
+        <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-scrub-bar [vgSlider]="true">
+          <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+          <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        </vg-scrub-bar>
+
+        <vg-time-display vgProperty="left" vgFormat="mm:ss"></vg-time-display>
+        <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+
+        <vg-mute></vg-mute>
+        <vg-volume></vg-volume>
+
+        <vg-fullscreen></vg-fullscreen>
+      </vg-controls>
+
+      <video [vgMedia]="media" #media preload="auto">
+        <source [src]="content.video">
+      </video>
+
+    </vg-player>
+  </div>
+
+  <div class="video-panel-comments">
+    <epsi-content-video-suggestion-add [content]="content"></epsi-content-video-suggestion-add>
+  </div>
+
+</epsi-panel>

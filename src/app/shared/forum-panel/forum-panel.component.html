@@ -1,0 +1,13 @@
+<epsi-panel title="Mi Asesor Personal">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="cats$ | async as cats else loader">
+    <li *ngFor="let cat of cats">
+      <a [routerLink]="[ '/thread/category', cat.id ]">{{cat.name}}</a>
+    </li>
+  </ul>
+
+</epsi-panel>

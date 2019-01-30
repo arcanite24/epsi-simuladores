@@ -1,0 +1,16 @@
+<div class="epsi-feed-post-comments">
+
+  <form class="post-comments-form flex flex-row flex-start" *ngIf="auth.user && addForm" [formGroup]="addForm" (ngSubmit)="submitForm(addForm.value)">
+    <img [src]="auth.user.photoURL" style="width: 32px">
+    <input type="text" formControlName="text" placeholder="Escribe un comentario">
+  </form>
+
+  <div class="comments-list" *ngIf="comments$ | async as comments else loader">
+    <epsi-post-comment *ngFor="let comment of comments" [comment]="comment"></epsi-post-comment>
+  </div>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

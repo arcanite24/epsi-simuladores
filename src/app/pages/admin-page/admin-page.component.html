@@ -1,6 +1,6 @@
 <div class="epsi-admin-page">
   
-  <epsi-panel title="Panel de Administración">
+  <epsi-panel title="Panel de Administración" [showContent]="true">
     <div class="container-fluid">
       <div class="row">
 
@@ -26,6 +26,46 @@
 
         <div class="col-xs-12 col-md-2">
           <epsi-admin-tile title="Exámenes" icon="list-alt" page="/admin/exams"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Asesorías" icon="video-camera" page="/admin/asesorias"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Presentaciones" icon="file-image-o" page="/admin/slides"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Checklist" icon="list" page="/admin/checklist"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Notas" icon="sticky-note" page="/admin/notes"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Comentarios" icon="comment" page="/admin/comments"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Sugerencias" icon="info" page="/admin/suggestions"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Eventos" icon="calendar" page="/admin/events"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Foro" icon="question" page="/admin/forum"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Tags" icon="tags" page="/admin/tags"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Estadísticas" icon="bar-chart" page="/admin/stats"></epsi-admin-tile>
         </div>
   
       </div>

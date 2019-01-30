@@ -1,0 +1,9 @@
+<ul *ngIf="slides$ | async as slides else loader">
+  <li *ngFor="let slide of slides">
+    <a [routerLink]="[ '/slide', slide.id ]">{{slide.name}}</a>
+  </li>
+</ul>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

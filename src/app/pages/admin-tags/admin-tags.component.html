@@ -1,0 +1,13 @@
+<ngx-smart-modal identifier="tagAddModal" #tagAddModal>
+  <h1>Agregar Tag</h1>
+  <input type="text" [(ngModel)]="tempTag" [ngModelOptions]="{standalone: true}">
+  <button type="button" (click)="addTag(tempTag)">Agregar Tag</button>
+</ngx-smart-modal>
+
+<div class="epsi-admin-tags">
+  <epsi-panel title="Adminstrar Tags" [showContent]="true">
+    <h4>Nota: Los Tags tiene 2 propiedades: Value y Display. "Value" es para uso interno, no modificar y "Display" es la etiqueta que mostrará al usuario, ésta si puede ser modificada.</h4>
+    <button type="button" (click)="tagAddModal.open()">Agregar Tag</button>
+    <adonalsium-crud-table [config]="config"></adonalsium-crud-table>
+  </epsi-panel>
+</div>

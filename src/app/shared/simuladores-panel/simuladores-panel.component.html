@@ -1,0 +1,13 @@
+<epsi-panel title="Mi Simulador Diario ENARM">
+
+  <ul *ngIf="exams$ | async as exams else loader">
+    <li *ngFor="let exam of exams">
+      <a [routerLink]="[ '/exam', exam.type, exam.id ]">{{exam.name}}}</a>
+    </li>
+  </ul>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</epsi-panel>

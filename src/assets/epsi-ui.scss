@@ -73,6 +73,10 @@
 // Random
 .manita { cursor: pointer; }
 
+// Display handlers
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
 // Flex
 .flex { display: flex; }
 .flex-inline { display: inline-flex; }
@@ -113,6 +117,9 @@
   align-items: center;
   flex-direction: column;
 }
+
+// Text Transforms
+.text-center { text-align: center; }
 
 // Shadows
 .md-shadow-5 { box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); }

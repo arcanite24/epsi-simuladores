@@ -1,0 +1,42 @@
+<div class="epsi-content-detail-page container" *ngIf="content$ | async as content">
+  <div class="row">
+
+    <!-- Notas Panel -->
+    <div class="col-xs-12 col-md-3">
+
+      <epsi-content-notes-panel
+        parent_type="content"
+        [content_type]="content_type"
+        [parent_id]="parent_id"></epsi-content-notes-panel>
+
+      <epsi-content-markers-panel
+        [content]="content"
+        (seek)="seekTime = $event"></epsi-content-markers-panel>
+
+    </div>
+
+    <!-- Video Panel -->
+    <div class="col-xs-12 col-md-6">
+      <epsi-content-video-panel [content]="content" [seekTime]="seekTime"></epsi-content-video-panel>
+    </div>
+
+    <!-- Comments Panel -->
+    <div class="col-xs-12 col-md-3">
+
+      <epsi-content-comments-panel
+        parent_type="content"
+        [content_type]="content_type"
+        [parent_id]="parent_id"></epsi-content-comments-panel>
+
+      <epsi-content-ratings-panel
+        parent_type="content"
+        [content_type]="content_type"
+        [parent_id]="parent_id"
+        [content]="content"></epsi-content-ratings-panel>
+
+    </div>
+
+
+    
+  </div>
+</div>

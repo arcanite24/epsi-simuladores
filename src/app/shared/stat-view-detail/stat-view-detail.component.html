@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row" *ngIf="_view as v">
+
+    <div class="col-md-12">
+      <h4>{{v.name}}</h4>
+    </div>
+
+    <div class="col-md-12">
+      <ul *ngIf="v.cache as c">
+        <li *ngIf="c.total">{{c.total | number}} resultados</li>
+        <li *ngIf="c.promedio">
+          <strong>Promedio: </strong> {{c.promedio | number}}/100
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-12" *ngIf="chartData">
+      <div class="w-100 epsi-chart-container">
+        <ngx-charts-line-chart
+        [view]="undefined"
+        [yScaleMin]="0"
+        [yScaleMax]="100"
+        [legend]="true"
+        [legendTitle]="'Materias'"
+        [legendPosition]="'below'"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Mes'"
+        [yAxisLabel]="'Promedio'"
+        [xAxis]="true"
+        [yAxis]="true"
+        [results]="chartData"></ngx-charts-line-chart>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <button type="button" (click)="reloadData()">Recargar Información</button>
+    </div>
+    
+  </div>
+</div>

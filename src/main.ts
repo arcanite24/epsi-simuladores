@@ -3,6 +3,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import 'hammerjs';
+import moment from 'moment'
+moment.locale('es')
 
 if (environment.production) {
   enableProdMode();

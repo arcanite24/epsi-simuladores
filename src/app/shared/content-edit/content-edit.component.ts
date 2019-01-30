@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Content, ContentTypes } from 'src/app/app.models';
+import { Content, ContentTypes, Marker } from 'src/app/app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -43,9 +43,11 @@ export class ContentEditComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       type: ['', Validators.required],
-      cover: ['', Validators.required],
+      cover: null,
       parent_id: [null],
-      parent_type: [null]
+      parent_type: [null],
+      video: null,
+      markers: [[]]
     })
 
   }
@@ -84,6 +86,17 @@ export class ContentEditComponent implements OnInit {
   
   parentSelected(parent: Content) {
     if (parent) this.editForm.patchValue({parent_id: parent.id, parent_type: parent.type})
+  }
+
+  markerChanged(marker: Marker) {
+    console.log(marker)
+  }
+
+  addMarker(currentMarkers: Marker[]) {
+    if (!currentMarkers) currentMarkers = []
+    this.editForm.patchValue({
+      markers: [ ...currentMarkers, {time: {hour: 0, minute: 0, second: 0}, tag: 'Nuevo Marcador'} ]
+    })
   }
 
 }

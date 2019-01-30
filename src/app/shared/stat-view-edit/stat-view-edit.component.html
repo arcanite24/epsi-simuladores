@@ -1,0 +1,50 @@
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h1>Editar Vista</h1>
+
+  <div class="epsi-input">
+    <label for="">Nombre</label>
+    <input type="text" formControlName="name">
+  </div>
+
+  <div class="epsi-input" *ngIf="tags$ | async as tags">
+    <label for="">Tags Incluidos</label>
+    <epsi-tag-search [tags]="tags" (tagSelect)="tagSelect('includeTags', editForm.value.includeTags, $event)"></epsi-tag-search>
+    <ul *ngIf="editForm.value.includeTags as inTags">
+      <li *ngFor="let tag of inTags">
+        <span>{{tag}}</span>
+        <button type="button" (click)="removeTag(inTags, tag, 'includeTags')">
+          <i class="fa fa-remove"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="epsi-input" *ngIf="tags$ | async as tags">
+    <label for="">Tags Excluidos</label>
+    <epsi-tag-search [tags]="tags" (tagSelect)="tagSelect('excludeTags', editForm.value.excludeTags, $event)"></epsi-tag-search>
+    <ul *ngIf="editForm.value.excludeTags as exTags">
+      <li *ngFor="let tag of exTags">
+        <span>{{tag}}</span>
+        <button type="button" (click)="removeTag(exTags, tag, 'excludeTags')">
+          <i class="fa fa-remove"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="epsi-input" *ngIf="!isTimeline">
+    <label for="">Padre</label>
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+    <select *ngIf="views$ | async as views else loader" [(ngModel)]="tempView" (change)="parentChanged(tempView)" [ngModelOptions]="{standalone: true}">
+      <option [ngValue]="view" *ngFor="let view of views" [selected]="view.id == editForm.value.parent">{{view.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!editForm.valid">Editar Galería</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

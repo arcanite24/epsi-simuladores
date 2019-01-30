@@ -1,0 +1,29 @@
+<ng-template #loader>
+  <epsi-loader *ngIf="isMaster"></epsi-loader>
+  <img src="assets/spinner.svg" *ngIf="!isMaster">
+</ng-template>
+
+<ul class="epsi-content-child-list" *ngIf="children$ | async as children else loader">
+  <li *ngFor="let child of children">
+
+    <!-- Child Actions -->
+    <div class="child-actions">
+      <button *ngIf="!showChildren" (click)="showChildren = true">
+        <i class="fa fa-plus"></i>
+      </button>
+      <button *ngIf="showChildren" (click)="showChildren = false">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+
+    <!-- Child Content -->
+    <div class="child-content">
+      <!-- TODO: Check if content can enter detail page -->
+      <a [routerLink]="[ '/content', child.type, child.id ]">{{child.name}}</a>
+    </div>
+
+    <!-- Children Nested List -->
+    <epsi-content-child-list *ngIf="showChildren" [master]="child"></epsi-content-child-list>
+
+  </li>
+</ul>

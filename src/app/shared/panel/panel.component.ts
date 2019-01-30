@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PanelComponent implements OnInit {
 
-  @Input('title') public title: string
+  @Input() public title: string
+  @Input() public showContent: boolean = false
 
   constructor() { }
 

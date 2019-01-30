@@ -27,25 +27,37 @@ export class ProfileInfoPanelComponent implements OnInit {
 
   }
 
-  async saveChanges() {
+  async saveChanges({ displayName, new_email, universidad, celular, especialidad, about, lugar_origen, uid }: User) {
 
-    // TODO: Find a better way to validate data without reactive forms
-    if (!this.user.displayName) return this.toastr.error('El nombre es obligatorio...')
-    
-    this.loading = true
+    try {
+      // TODO: Find a better way to validate data without reactive forms
+      if (!this.user.displayName) return this.toastr.error('El nombre es obligatorio...')
+      
+      this.loading = true
 
-    await this.auth.setUser({
-      displayName: this.user.displayName
-    })
+      await this.auth.setUser({
+        displayName,
+        uid,
+        new_email,
+        universidad,
+        celular,
+        especialidad,
+        about,
+        lugar_origen
+      })
 
-    const user = await this.afAuth.user.pipe(take(1)).toPromise()
-    await user.updateProfile({
-      displayName: this.user.displayName,
-      photoURL: this.user.photoURL
-    })
+      const user = await this.afAuth.user.pipe(take(1)).toPromise()
+      await user.updateProfile({
+        displayName: this.user.displayName,
+        photoURL: this.user.photoURL
+      })
 
-    this.toastr.success('Información actualizada correctamente.')
-    this.loading = false
+      this.toastr.success('Información actualizada correctamente.')
+      this.loading = false
+    } catch (error) {
+      this.toastr.error('Por favor llena toda la información...')
+      this.loading = false
+    }
 
   }
 

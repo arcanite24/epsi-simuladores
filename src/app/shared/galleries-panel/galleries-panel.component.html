@@ -1,0 +1,17 @@
+<epsi-panel title="Mi colección de Infografías">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="galleries-content" *ngIf="cats$ | async as cats else loader">
+    <ngb-carousel
+      [showNavigationArrows]="true"
+      [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let cat of cats">
+        <epsi-galleries-panel-item [category]="cat"></epsi-galleries-panel-item>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+
+</epsi-panel>

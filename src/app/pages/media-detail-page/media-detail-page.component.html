@@ -1,0 +1,12 @@
+<div class="epsi-media-detail-page">
+
+  <epsi-panel [title]="media.name" *ngIf="media$ | async as media else loader" [showContent]="true">
+    <p>{{media.desc}}</p>
+    <a [href]="media.url">Descargar</a>
+  </epsi-panel>
+  
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

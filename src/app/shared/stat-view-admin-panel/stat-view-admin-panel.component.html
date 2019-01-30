@@ -1,0 +1,26 @@
+<ngx-smart-modal identifier="viewEditModal" #viewEditModal>
+  <epsi-stat-view-edit [view]="tempView"></epsi-stat-view-edit>
+</ngx-smart-modal>
+
+<epsi-panel title="Timeline" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="views$ | async as views else loader">
+    <li>
+      <button type="button" (click)="addView()">Agregar Vista</button>
+    </li>
+    <li *ngFor="let view of views">
+      <span>{{view.name}}</span>
+      <button type="button" (click)="openEditView(view)">
+        <i class="fa fa-edit"></i>
+      </button>
+      <button type="button" (click)="removeView(view.id)">
+        <i class="fa fa-remove"></i>
+      </button>
+    </li>
+  </ul>
+
+</epsi-panel>

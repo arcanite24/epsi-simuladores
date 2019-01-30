@@ -1,0 +1,51 @@
+<div class="epsi-feed-post-item" *ngIf="post else loader">
+
+  <div class="post-item-header flex flex-row flex-start">
+    <img [src]="post.user.photoURL" style="width: 32px">
+    <p>
+      <strong>{{post.user.displayName}} · {{post.date}}</strong>
+    </p> <br>
+    <p>{{post.user.email}}</p>
+    <hr>
+  </div>
+
+  <div class="post-item-body">
+    <p>{{post.text}}</p>
+    <img [src]="post.image" *ngIf="post.image">
+  </div>
+
+  <div class="post-item-info">
+    <p *ngIf="post.likes && post.likes.length > 0">
+      <i class="fa fa-thumbs-up"></i>
+      A {{post.likes.length}} persona{{post.likes.length > 1 ? 's' : ''}} le{{post.likes.length > 1 ? 's' : ''}} gusta ésta publicación
+    </p>
+  </div>
+
+  <div class="post-item-actions flex flex-row flex-center">
+
+    <button type="button" [ngClass]="{'is-liked': isLiked}" *ngIf="auth.user" (click)="toggleLike(post.id, post.likes)">
+      <i class="fa fa-thumbs-up"></i>
+      <span>Me Gusta</span>
+    </button>
+
+    <button type="button">
+      <i class="fa fa-comments"></i>
+      <span>Comentarios {{commentCount | number}}</span>
+    </button>
+
+    <button type="button" *ngIf="auth.isAdmin">
+      <i class="fa fa-trash"></i>
+      <span>Borrar</span>
+    </button>
+
+  </div>
+  
+  <div class="post-item-comments">
+    <epsi-feed-post-comments [post]="post" (loaded)="commentCount = $event"></epsi-feed-post-comments>
+  </div>
+
+</div>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

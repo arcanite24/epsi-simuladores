@@ -1,0 +1,33 @@
+<div class="epsi-gallery-detail-page container">
+  <div class="row">
+
+    <!-- Gallery Widget -->
+    <div class="col-xs-12 col-md-8">
+
+      <ngx-gallery
+        *ngIf="gallery$ | async as gallery else loader"
+        [images]="images"
+        [options]="galleryOptions"></ngx-gallery>
+
+      <ng-template #loader>
+        <epsi-loader></epsi-loader>
+      </ng-template>
+
+    </div>
+
+    <!-- Gallery Notes Panel -->
+    <div class="col-xs-12 col-md-4">
+
+      <ng-template #notesLoader>
+        <epsi-loader></epsi-loader>
+      </ng-template>
+      
+      <epsi-content-notes-panel
+        parent_type="gallery"
+        [parent_id]="gallery_id"
+        *ngIf="gallery_id else notesLoader"></epsi-content-notes-panel>
+
+    </div>
+
+  </div>
+</div>

@@ -7,7 +7,11 @@
 
 </div>
 
-<table class="table table-default">
+<table class="table table-default w-100">
+
+  <ng-template #noData>
+    <epsi-loader class="w-100"></epsi-loader>
+  </ng-template>
 
   <thead>
     <tr>
@@ -77,6 +81,3 @@
 </table>
 
 <!-- TODO: Fix el puto centrado del loadaer -->
-<ng-template #noData>
-  <epsi-loader></epsi-loader>
-</ng-template>

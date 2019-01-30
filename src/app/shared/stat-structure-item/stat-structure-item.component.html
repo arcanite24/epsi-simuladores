@@ -1,0 +1,23 @@
+<div class="epsi-stat-structure-item" *ngIf="view else loader">
+
+  <button type="button" (click)="showChildren = true" *ngIf="haveChildren && !showChildren">
+    <i class="fa fa-plus"></i>
+  </button>
+  <button type="button" (click)="showChildren = false" *ngIf="haveChildren && showChildren">
+    <i class="fa fa-minus"></i>
+  </button>
+
+  <span>{{view.name}}</span>
+  <strong *ngIf="promedio" class="ml-2">{{promedio | number}}</strong>
+
+  <ul *ngIf="showChildren">
+    <li *ngFor="let v of children">
+      <epsi-stat-structure-item [view]="v"></epsi-stat-structure-item>
+    </li>
+  </ul>
+
+</div>
+
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>

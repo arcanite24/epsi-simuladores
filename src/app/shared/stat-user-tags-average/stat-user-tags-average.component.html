@@ -1,0 +1,14 @@
+<epsi-panel title="Materias que debes estudiar" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="user else loader">
+    <li *ngFor="let item of user.average_list">
+      <strong>{{item.tag}}</strong>
+      <span class="ml-2">{{item.promedio}}/100</span>
+    </li>
+  </ul>
+
+</epsi-panel>

@@ -1,0 +1,38 @@
+<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h1>Editar Presentación</h1>
+
+  <div class="epsi-input">
+    <label for="">Nombre</label>
+    <input type="text" formControlName="name">
+  </div>
+
+  <div class="epsi-input">
+    <label for="">Descripción</label>
+    <textarea formControlName="desc"></textarea>
+  </div>
+
+  <hr>
+
+  <h4>Imágenes <small>Haz click en alguna para quitarla</small></h4>
+  <app-storage-uploader (onFinish)="fileUploaded($event, editForm.value.images)"></app-storage-uploader>
+  <hr>
+
+  <div class="slide-images row">
+    <div class="col-xs-12 col-md-1" *ngFor="let img of editForm.value.images; let i = index">
+      <img [src]="img" (click)="removeImage(i, editForm.value.images)" class="w-100">
+    </div>
+  </div>
+
+  <div class="epsi-input" *ngIf="cats$ | async as cats">
+    <label for="">Categoría</label>
+    <select (change)="catSelected(tempCat)" [(ngModel)]="tempCat" [ngModelOptions]="{standalone: true}">
+      <option [ngValue]="cat" *ngFor="let cat of cats" [selected]="editForm.value.cat_id && cat.id == editForm.value.cat_id">{{cat.name}}</option>
+    </select>
+  </div>
+
+  <button type="submit" [disabled]="!editForm.valid">Editar Presentación</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

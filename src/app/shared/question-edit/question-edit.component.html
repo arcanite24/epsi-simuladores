@@ -21,6 +21,21 @@
   <ul *ngIf="editForm.value.respuestas as respuestas">
     <epsi-answer-edit-item [answer]="r" [correcta]="editForm.value.correcta" (removed)="answerRemoved($event)" (edited)="answerEdited($event)" (selected)="answerSelected($event)" *ngFor="let r of respuestas"></epsi-answer-edit-item>
   </ul>
+
+  <hr>
+
+  <div class="question-tags" *ngIf="tags && editForm.value.tags as currTags">
+    <span>Tags</span>
+    <input type="text" [ngbTypeahead]="searchTag" [(ngModel)]="tempTags" [ngModelOptions]="{standalone: true}" (selectItem)="tagInputChanged($event.item, currTags)">
+    <button type="button" (click)="addNewTag(tempTags)">Agregar Nuevo Tag</button>
+  </div>
+
+  <ul *ngIf="editForm.value.tags as currTags">
+    <li *ngFor="let tag of currTags">
+      <span>{{tag}}</span>
+      <button type="button" (click)="removeTag(tag, currTags)">Quitar</button>
+    </li>
+  </ul>
   
   <button type="submit" [disabled]="!editForm.valid">Editar Pregunta</button>
 

@@ -30,9 +30,10 @@
               "node_modules/normalize.css/normalize.css",
               "node_modules/angular-instantsearch/bundles/instantsearch.min.css",
               "node_modules/angular-instantsearch/bundles/instantsearch-theme-algolia.min.css",
+              "node_modules/videogular2/fonts/videogular.css",
               "src/styles.scss",
               "node_modules/ngx-toastr/toastr.css",
-              "node_modules/flexboxgrid/dist/flexboxgrid.min.css"
+              "src/assets/css/bootstrap.css"
             ],
             "scripts": []
           },

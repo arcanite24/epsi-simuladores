@@ -1,0 +1,13 @@
+<epsi-panel title="Mis Resultados" [showContent]="true">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <ul *ngIf="results$ | async as results else loader">
+    <li *ngFor="let r of results">
+      <a [routerLink]="[ '/result', r.id ]">Resultados de {{r.date}}</a>
+    </li>
+  </ul>
+
+</epsi-panel>

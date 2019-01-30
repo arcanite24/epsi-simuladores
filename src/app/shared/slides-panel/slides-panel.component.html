@@ -1,0 +1,12 @@
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>
+
+<epsi-panel title="Presentaciones">
+  <ul *ngIf="slides$ | async as slides else loader">
+    <li *ngFor="let slide of slides">
+      <a [routerLink]="[ '/slide', slide.id ]">{{slide.name}}</a>
+    </li>
+    <a [routerLink]="[ '/slide/list' ]">Ver Todas</a>
+  </ul>
+</epsi-panel>

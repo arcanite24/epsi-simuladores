@@ -10,6 +10,28 @@ import { AdminGalleriesComponent } from './pages/admin-galleries/admin-galleries
 import { AdminMediaComponent } from './pages/admin-media/admin-media.component';
 import { AdminQuestionsComponent } from './pages/admin-questions/admin-questions.component';
 import { AdminExamsComponent } from './pages/admin-exams/admin-exams.component';
+import { AdminAsesoriasComponent } from './pages/admin-asesorias/admin-asesorias.component';
+import { AdminSlidesComponent } from './pages/admin-slides/admin-slides.component';
+import { AdminTodoComponent } from './pages/admin-todo/admin-todo.component';
+import { ContentPageComponent } from './pages/content-page/content-page.component';
+import { ContentDetailPageComponent } from './pages/content-detail-page/content-detail-page.component';
+import { AdminNotesComponent } from './pages/admin-notes/admin-notes.component';
+import { AdminCommentsComponent } from './pages/admin-comments/admin-comments.component';
+import { AdminSuggestionsComponent } from './pages/admin-suggestions/admin-suggestions.component';
+import { AdminEventsComponent } from './pages/admin-events/admin-events.component';
+import { GalleryDetailPageComponent } from './pages/gallery-detail-page/gallery-detail-page.component';
+import { AdminForumComponent } from './pages/admin-forum/admin-forum.component';
+import { ThreadCategoryDetailPageComponent } from './pages/thread-category-detail-page/thread-category-detail-page.component';
+import { ThreadDetailPageComponent } from './pages/thread-detail-page/thread-detail-page.component';
+import { AdminLivestreamsComponent } from './pages/admin-livestreams/admin-livestreams.component';
+import { LivestreamDetailPageComponent } from './pages/livestream-detail-page/livestream-detail-page.component';
+import { MediaDetailPageComponent } from './pages/media-detail-page/media-detail-page.component';
+import { SlidesListPageComponent } from './pages/slides-list-page/slides-list-page.component';
+import { SlideDetailPageComponent } from './pages/slide-detail-page/slide-detail-page.component';
+import { ExamDetailPageComponent } from './pages/exam-detail-page/exam-detail-page.component';
+import { ExamResultsPageComponent } from './pages/exam-results-page/exam-results-page.component';
+import { AdminTagsComponent } from './pages/admin-tags/admin-tags.component';
+import { AdminStatsComponent } from './pages/admin-stats/admin-stats.component';
 
 const routes: Routes = [
 
@@ -20,6 +42,19 @@ const routes: Routes = [
   {path: '', component: LoginPageComponent},
   {path: 'home', component: HomePageComponent},
   {path: 'profile', component: ProfilePageComponent},
+  {path: 'gallery/:id', component: GalleryDetailPageComponent},
+  {path: 'thread/category/:id', component: ThreadCategoryDetailPageComponent},
+  {path: 'thread/:id', component: ThreadDetailPageComponent},
+  {path: 'livestream/:id', component: LivestreamDetailPageComponent},
+  {path: 'media/:id', component: MediaDetailPageComponent},
+  {path: 'slide/list', component: SlidesListPageComponent},
+  {path: 'slide/:id', component: SlideDetailPageComponent},
+  {path: 'exam/:type/:id', component: ExamDetailPageComponent},
+  {path: 'result/:id', component: ExamResultsPageComponent},
+
+  // Content
+  {path: 'content/:id', component: ContentPageComponent},
+  {path: 'content/:type/:id', component: ContentDetailPageComponent},
 
   // Admin
   {path: 'admin', component: AdminPageComponent},
@@ -29,6 +64,17 @@ const routes: Routes = [
   {path: 'admin/media', component: AdminMediaComponent},
   {path: 'admin/questions', component: AdminQuestionsComponent},
   {path: 'admin/exams', component: AdminExamsComponent},
+  {path: 'admin/asesorias', component: AdminAsesoriasComponent},
+  {path: 'admin/slides', component: AdminSlidesComponent},
+  {path: 'admin/checklist', component: AdminTodoComponent},
+  {path: 'admin/notes', component: AdminNotesComponent},
+  {path: 'admin/comments', component: AdminCommentsComponent},
+  {path: 'admin/suggestions', component: AdminSuggestionsComponent},
+  {path: 'admin/events', component: AdminEventsComponent},
+  {path: 'admin/forum', component: AdminForumComponent},
+  {path: 'admin/livestreams', component: AdminLivestreamsComponent},
+  {path: 'admin/tags', component: AdminTagsComponent},
+  {path: 'admin/stats', component: AdminStatsComponent},
 
 ];
 
