@@ -16,6 +16,9 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
 import { TagInputModule } from 'ngx-chips'
 import { NgxChartsModule } from '@swimlane/ngx-charts'
+import localeEs from '@angular/common/locales/es';
+
+registerLocaleData(localeEs)
 
 // Store
 import { StoreModule } from '@ngrx/store';
@@ -130,6 +133,7 @@ import { StatStructureAdminPanelComponent } from './stat-structure-admin-panel/s
 import { StatUserStructurePanelComponent } from './shared/stat-user-structure-panel/stat-user-structure-panel.component';
 import { StatStructureItemComponent } from './shared/stat-structure-item/stat-structure-item.component';
 import { TopUsersPanelComponent } from './shared/top-users-panel/top-users-panel.component';
+import { registerLocaleData } from '@angular/common';
 
 @NgModule({
   declarations: [

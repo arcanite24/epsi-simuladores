@@ -1,14 +1,23 @@
 <div class="epsi-navbar flex flex-row flex-start align-center">
 
-  <span (click)="router.navigate(['/home'])">Epsi Simuladores</span>
-
-  <button *ngIf="auth.loggedIn" (click)="auth.logout()">Logout</button>
-  <button *ngIf="auth.loggedIn && auth.user.isAdmin" (click)="router.navigate(['/admin'])">Administrador</button>
-  <a *ngIf="auth.loggedIn" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
+  <img src="assets/zamnademy/logo.png" alt="Zamnademy">
+  <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
 
   <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn" (click)="router.navigate(['/profile'])">
+
+    <div class="navbar-actions flex flex-row flex-center">
+      <a *ngIf="auth.loggedIn" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
+      <button *ngIf="auth.loggedIn && auth.user.isAdmin" (click)="router.navigate(['/admin'])" class="mr-2">
+        <i class="fa fa-unlock"></i>
+      </button>
+      <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="mr-2">
+        <i class="fa fa-sign-out"></i>
+      </button>
+    </div>
+
     <img [src]="auth.user.photoURL">
     <span>{{auth.user.displayName}}</span>
+
   </div>
   
 </div>

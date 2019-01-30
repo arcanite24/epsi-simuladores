@@ -9,6 +9,7 @@ export class PanelComponent implements OnInit {
 
   @Input() public title: string
   @Input() public showContent: boolean = false
+  @Input() public img: string
 
   constructor() { }
 

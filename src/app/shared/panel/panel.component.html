@@ -1,6 +1,7 @@
 <div class="epsi-panel">
 
-  <div class="epsi-panel-title manita" *ngIf="title" (click)="showContent = !showContent">
+  <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title" (click)="showContent = !showContent">
+    <img [src]="img" *ngIf="img">
     {{title}}
   </div>
 

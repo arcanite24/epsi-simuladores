@@ -1,12 +1,28 @@
+@import '../../../variables.scss';
+
 .epsi-panel {
 
   width: 100%;
-  border: 1px solid red;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #eee;
+  margin-bottom: 1rem;
 
   .epsi-panel-title {
-    border-bottom: 1px solid red;
-    font-size: 1.25rem;
+
+    padding: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bolder;
+    text-transform: uppercase;
+    color: $epsi-text-color-primary;
+    align-items: center;
+
+    img {
+      width: 64px;
+      height: 64px;
+      margin-right: 1rem;
+    }
+
   }
 
 }

@@ -2,7 +2,7 @@
   <epsi-loader></epsi-loader>
 </ng-template>
 
-<epsi-panel title="Presentaciones">
+<epsi-panel title="Presentaciones" img="https://zamnademy.com/site/images/clients/presentacione.png">
   <ul *ngIf="slides$ | async as slides else loader">
     <li *ngFor="let slide of slides">
       <a [routerLink]="[ '/slide', slide.id ]">{{slide.name}}</a>

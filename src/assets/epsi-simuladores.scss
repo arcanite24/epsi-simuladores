@@ -1,4 +1,5 @@
 // Epsi Simulaodres Style
+// TODO: Find a better way to style the EpsiSims components
 
 // Forms
 .epsi-input {
@@ -41,5 +42,48 @@
 
 // Navbar
 .epsi-navbar {
+
+  padding: 1.5rem;
   background: linear-gradient(90deg,#5e4b8b,#7d64ba);
+
+  img {
+    height: 60px;
+    margin-right: 1rem;
+  }
+
+  span {
+    color: white;
+    font-size: 1.75rem;
+    font-weight: lighter;
+  }
+
+  .navbar-user-info {
+
+    margin-left: auto;
+
+    img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+    }
+
+    span {
+      font-size: 1rem;
+    }
+
+  }
+  
+  .navbar-actions {
+
+    button {
+      border: none;
+      background-color: white;
+      color: rgb(95, 95, 95);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+    }
+
+  }
+
 }
