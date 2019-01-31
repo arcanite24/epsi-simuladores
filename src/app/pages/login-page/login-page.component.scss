@@ -1,0 +1,51 @@
+@import '../../../variables.scss';
+
+.login-container {
+  height: 100vh;
+  background: url('/assets/zamnademy/bg1.jpg');
+  background-size: cover;
+}
+
+.main-login-title {
+  color: white;
+}
+
+.btn-social {
+  border: none;
+  padding: 1rem;
+  font-size: 1.25rem;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  cursor: pointer;
+
+  i { margin-right: 0.5rem; }
+
+  &:active, &:focus {
+    outline: none;
+  }
+
+}
+
+.btn-facebook {
+  background-color: #395aa1;
+}
+
+.btn-google {
+  background-color: #e04b37;
+}
+
+.register-button {
+  font-size: 1.25rem;
+}
+
+.register-social-buttons {
+  padding-right: 1rem;
+  margin-right: 1rem;
+  border-right: 1px solid white;
+}

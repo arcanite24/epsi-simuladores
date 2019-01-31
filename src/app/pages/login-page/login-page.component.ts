@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginPageComponent implements OnInit {
 
   public loading: boolean = false
-  public mode: 'login' | 'register' = 'login'
+  public mode: 'login' | 'register' | 'admin' = 'login'
   public loginForm: FormGroup
   public registerForm: FormGroup
 
@@ -126,6 +126,17 @@ export class LoginPageComponent implements OnInit {
       this.router.navigate(['/home'])
     } catch (error) {
       this.toastr.error('Algo ocurrió al iniciar sesión con tu cuenta de Google. Contacta con un administrador.')
+    }
+  }
+
+  async loginFacebook() {
+    try {
+      const user = await this.auth.loginFacebook()
+      this.toastr.success(`Bienvenido de nuevo ${user.displayName}`)
+      this.router.navigate(['/home'])
+    } catch (error) {
+      console.log(error)
+      this.toastr.error('Algo ocurrió al iniciar sesión con tu cuenta de Facebook. Contacta con un administrador.')
     }
   }
 

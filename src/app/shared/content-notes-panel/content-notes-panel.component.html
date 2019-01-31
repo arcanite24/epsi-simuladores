@@ -5,16 +5,22 @@
   </ng-template>
 
   <div class="notes-content" *ngIf="notes$ | async as notes else loader">
-    <div class="note-item" *ngFor="let note of notes">
-      <h4>{{note.title}}</h4>
-      <p>{{note.text}}</p>
-    </div>
+    <ngb-carousel
+      [showNavigationArrows]="true"
+      [showNavigationIndicators]="false">
+      <ng-template ngbSlide *ngFor="let note of notes">
+        <div class="note-item p-3">
+          <h4 class="m-0">{{note.title}}</h4>
+          <p class="m-0">{{note.text}}</p>
+        </div>
+      </ng-template>
+    </ngb-carousel>
   </div>
 
-  <form class="notes-add-form" *ngIf="noteForm" [formGroup]="noteForm" (ngSubmit)="addNote()">
+  <form class="notes-add-form flex flex-col flex-start" *ngIf="noteForm" [formGroup]="noteForm" (ngSubmit)="addNote()">
     <input type="text" formControlName="title" placeholder="Titulo">
-    <textarea formControlName="text" rows="10" placeholder="Contenido"></textarea>
-    <button type="submit" [disabled]="!noteForm.valid">Agregar Nota</button>
+    <textarea formControlName="text" rows="3" placeholder="Contenido"></textarea>
+    <button class="btn btn-secondary" type="submit" [disabled]="!noteForm.valid">Agregar Nota</button>
   </form>
 
 </epsi-panel>

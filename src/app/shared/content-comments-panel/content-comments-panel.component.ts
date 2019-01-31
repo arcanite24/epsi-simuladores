@@ -58,7 +58,7 @@ export class ContentCommentsPanelComponent implements OnInit {
     private afs: AngularFirestore,
     private toastr: ToastrService,
     private fb: FormBuilder,
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -93,6 +93,11 @@ export class ContentCommentsPanelComponent implements OnInit {
       this.toastr.error('Por favor ingresa datos válidos para agregar un comentario...')
     }
 
+  }
+
+  async removeComment(id: string) {
+    await this.afs.doc(`${Collections.COMMENT}/${id}`).delete()
+    this.toastr.success('Comentario eliminado')
   }
 
 }

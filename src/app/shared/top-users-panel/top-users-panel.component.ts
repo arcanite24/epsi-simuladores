@@ -37,7 +37,7 @@ export class TopUsersPanelComponent implements OnInit {
 
     for (const user of users) {
       const promedio = await this.stats.computeUserAverage(user.uid)
-      console.log(user.displayName, promedio)
+      await this.afs.doc(`${Collections.USER}/${user.uid}`).update({promedio: promedio})
     }
 
   }

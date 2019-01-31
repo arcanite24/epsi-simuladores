@@ -1,4 +1,4 @@
-<epsi-panel title="Profile Info" [showContent]="true">
+<epsi-panel [showContent]="true">
   
   <ng-template #loader>
     <epsi-loader></epsi-loader>
@@ -6,47 +6,49 @@
 
   <div class="profile-info-header flex-loader" *ngIf="auth.loggedIn">
     <img [src]="auth.user.photoURL">
-    <span>{{auth.user.displayName}}</span>
+    <span class="c-epsi-primary">{{auth.user.displayName}}</span>
   </div>
 
-  <div class="profile-info-edit" *ngIf="user else loader">
+  <div class="profile-info-edit p-2" *ngIf="user else loader">
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Nombre Completo</label>
-      <input type="text" [(ngModel)]="user.displayName">
+      <input type="text" class="form-control" [(ngModel)]="user.displayName">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Email</label>
-      <input type="email" [(ngModel)]="user.new_email">
+      <input type="email" class="form-control" [(ngModel)]="user.new_email">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Universidad</label>
-      <input type="text" [(ngModel)]="user.universidad">
+      <input type="text" class="form-control" [(ngModel)]="user.universidad">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Celular</label>
-      <input type="text" [(ngModel)]="user.celular">
+      <input type="text" class="form-control" [(ngModel)]="user.celular">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Especialidad</label>
-      <input type="text" [(ngModel)]="user.especialidad">
+      <input type="text" class="form-control" [(ngModel)]="user.especialidad">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Cuéntanos sobre ti</label>
-      <textarea [(ngModel)]="user.about"></textarea>
+      <textarea class="form-control" [(ngModel)]="user.about"></textarea>
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label>Lugar de Origen</label>
-      <input type="text" [(ngModel)]="user.lugar_origen">
+      <input type="text" class="form-control" [(ngModel)]="user.lugar_origen">
     </div>
 
-    <button (click)="saveChanges(user)" [disabled]="loading">Guardar cambios</button>
+    <div class="flex-loader">
+      <button class="btn btn-secondary" (click)="saveChanges(user)" [disabled]="loading">Guardar cambios</button>
+    </div>
 
     <!-- TODO: Agregar panel para cambiar foto de perfil -->
     <!-- TODO: Agregar panel para cambiar datos custom -->

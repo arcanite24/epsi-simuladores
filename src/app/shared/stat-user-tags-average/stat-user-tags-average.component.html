@@ -4,8 +4,8 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <ul *ngIf="user else loader">
-    <li *ngFor="let item of user.average_list">
+  <ul *ngIf="user else loader" class="list-group m-3">
+    <li *ngFor="let item of user.average_list" class="list-group-item">
       <strong>{{item.tag}}</strong>
       <span class="ml-2">{{item.promedio}}/100</span>
     </li>

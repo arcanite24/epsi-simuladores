@@ -1,8 +1,10 @@
-<div class="epsi-media-detail-page">
+<div class="epsi-media-detail-page container mt-retro">
 
   <epsi-panel [title]="media.name" *ngIf="media$ | async as media else loader" [showContent]="true">
-    <p>{{media.desc}}</p>
-    <a [href]="media.url">Descargar</a>
+    <div class="p-4">
+      <h4 class="c-epsi-primary">{{media.desc}}</h4>
+      <a class="btn btn-primary" [href]="media.url">Descargar</a>
+    </div>
   </epsi-panel>
   
   <ng-template #loader>

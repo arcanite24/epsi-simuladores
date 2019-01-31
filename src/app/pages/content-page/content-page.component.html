@@ -1,17 +1,12 @@
-<div class="epsi-content-page container">
+<div class="epsi-content-page container mt-retro" *ngIf="master">
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
 
   <!-- Master Content Panel -->
-  <epsi-panel [title]="master.name" *ngIf="masterContent$ | async as master else loader">
-    <epsi-content-child-list [master]="master" [isMaster]="true"></epsi-content-child-list>
-  </epsi-panel>
-
-  <!-- Content Admin Panel -->
-  <epsi-panel title="Administrar Contenido">
-
+  <epsi-panel [title]="master.name" *ngIf="(children$ | async) as children else loader" [showContent]="true">
+    <epsi-content-list-item *ngFor="let child of children" [content]="child"></epsi-content-list-item>
   </epsi-panel>
 
 </div>

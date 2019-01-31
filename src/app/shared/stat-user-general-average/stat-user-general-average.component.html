@@ -4,7 +4,9 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <h1>Promedio General: <strong *ngIf="promedio">{{promedio | number}}</strong></h1>
-  <button type="button" *ngIf="auth.user" (click)="calculateAverage(auth.user.uid)" [disabled]="!canReload">Recargar</button>
+  <div class="p-3 flex flex-col flex-center">
+    <h2 style="align-self: flex-start" class="c-epsi-primary">Promedio General: <strong *ngIf="promedio">{{promedio | number}}</strong></h2>
+    <button class="btn btn-secondary" type="button" *ngIf="auth.user" (click)="calculateAverage(auth.user.uid)" [disabled]="!canReload">Recargar</button>
+  </div>
 
 </epsi-panel>

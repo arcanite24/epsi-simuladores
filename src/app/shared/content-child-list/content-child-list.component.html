@@ -3,15 +3,15 @@
   <img src="assets/spinner.svg" *ngIf="!isMaster">
 </ng-template>
 
-<ul class="epsi-content-child-list" *ngIf="children$ | async as children else loader">
-  <li *ngFor="let child of children">
+<ul class="epsi-content-child-list w-100" *ngIf="children$ | async as children else loader">
+  <li *ngFor="let child of children" class="flex flex-row flex-start flex-wrap align-center">
 
     <!-- Child Actions -->
-    <div class="child-actions">
-      <button *ngIf="!showChildren" (click)="showChildren = true">
+    <div class="child-actions" *ngIf="haveChildren">
+      <button *ngIf="!child.showChildren" (click)="child.showChildren = true">
         <i class="fa fa-plus"></i>
       </button>
-      <button *ngIf="showChildren" (click)="showChildren = false">
+      <button *ngIf="child.showChildren" (click)="child.showChildren = false">
         <i class="fa fa-minus"></i>
       </button>
     </div>
@@ -23,7 +23,7 @@
     </div>
 
     <!-- Children Nested List -->
-    <epsi-content-child-list *ngIf="showChildren" [master]="child"></epsi-content-child-list>
+    <epsi-content-child-list *ngIf="child.showChildren" [master]="child"></epsi-content-child-list>
 
   </li>
 </ul>

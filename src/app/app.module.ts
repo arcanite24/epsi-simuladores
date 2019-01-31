@@ -135,6 +135,8 @@ import { StatUserStructurePanelComponent } from './shared/stat-user-structure-pa
 import { StatStructureItemComponent } from './shared/stat-structure-item/stat-structure-item.component';
 import { TopUsersPanelComponent } from './shared/top-users-panel/top-users-panel.component';
 import { registerLocaleData } from '@angular/common';
+import { TerminosModalComponent } from './shared/terminos-modal/terminos-modal.component';
+import { ContentListItemComponent } from './shared/content-list-item/content-list-item.component';
 
 @NgModule({
   declarations: [
@@ -242,18 +244,16 @@ import { registerLocaleData } from '@angular/common';
     StatUserStructurePanelComponent,
     StatStructureItemComponent,
     TopUsersPanelComponent,
+    TerminosModalComponent,
+    ContentListItemComponent,
   ],
   imports: [
-    TagInputModule,
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    BrowserAnimationsModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      autoDismiss: true
-    }),
+    TagInputModule,
     NgxSmartModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
@@ -278,6 +278,10 @@ import { registerLocaleData } from '@angular/common';
     }),
     NgxChartsModule,
     MomentModule,
+    ToastrModule.forRoot({
+      autoDismiss: true,
+      timeOut: 3000
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

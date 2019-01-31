@@ -5,14 +5,25 @@
   </ng-template>
 
   <div class="content-comments-body" *ngIf="comments$ | async as comments else loader">
-    <ul>
-      <li *ngFor="let comment of comments">{{comment.text}}</li>
-    </ul>
+    <div class="content-comment" *ngFor="let comment of comments">
+
+      <div class="comment-header flex flex-row flex-center">
+        <img [src]="comment.user_photo">
+        <div class="flex flex-col flex-start">
+          <span>{{comment.user_name}}</span>
+          <small>{{comment.date | amCalendar}}</small>
+          <p class="m-0">{{comment.text}} <small *ngIf="auth.isAdmin" (click)="removeComment(comment.id)" style="color:red">Borrar</small></p>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <form class="content-comments-add" [formGroup]="commentForm" (ngSubmit)="addComment()" *ngIf="commentForm">
-    <textarea placeholder="Escribe aquí tu comentario" formControlName="text"></textarea>
-    <button type="submit" [disabled]="!commentForm.valid">Enviar</button>
+  <form class="content-comments-add flex flex-row flex-center" [formGroup]="commentForm" (ngSubmit)="addComment()" *ngIf="commentForm">
+    <input type="text" placeholder="Escribe aquí tu comentario" formControlName="text">
+    <button type="submit" [disabled]="!commentForm.valid">
+      <i class="fa fa-paper-plane"></i>
+    </button>
   </form>
 
 </epsi-panel>

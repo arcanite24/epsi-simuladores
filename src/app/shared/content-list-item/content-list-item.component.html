@@ -1,0 +1,26 @@
+<div class="epsi-content-list-item" *ngIf="children$ | async as children">
+
+  <div class="content-item-body flex flex-row flex-start align-center">
+
+    <div class="content-item-actions" *ngIf="haveChildren">
+
+      <button type="button" (click)="showChildren = false" *ngIf="showChildren">
+        <i class="fa fa-minus"></i>
+      </button>
+
+      <button type="button" (click)="showChildren = true" *ngIf="!showChildren">
+        <i class="fa fa-plus"></i>
+      </button>
+
+    </div>
+
+    <span *ngIf="!content.video">{{content.name}}</span>
+    <a *ngIf="content.video" [routerLink]="[ '/content', content.type, content.id ]">{{content.name}}</a>
+
+  </div>
+
+  <ul *ngIf="haveChildren && showChildren" [@animateItem]="showChildren">
+    <epsi-content-list-item [content]="child" *ngFor="let child of children"></epsi-content-list-item>
+  </ul>
+
+</div>

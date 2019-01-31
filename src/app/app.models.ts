@@ -75,6 +75,8 @@ export interface Content {
   totalRatings?: number
   video?: string
   markers?: Marker[]
+  showChildren?: boolean
+  haveChildren?: boolean
 }
 
 export interface Marker {

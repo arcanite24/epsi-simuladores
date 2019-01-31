@@ -1,13 +1,15 @@
-<div class="epsi-thread-replies-widget" *ngIf="replies$ | async as replies else loader">
-  <ul>
-    <li *ngFor="let reply of replies">
-      <img [src]="reply.user.photoURL" style="width:32px">
-      <span>{{reply.user.displayName}}</span>
-      <p>{{reply.text}}</p>
-      <small>{{reply.date}}</small>
-      <button type="button" *ngIf="auth.isAdmin" (click)="removeReply(reply.id)">Borrar</button>
-    </li>
-  </ul>
+<div class="epsi-thread-replies-widget p-4" *ngIf="replies$ | async as replies else loader">
+  <div *ngFor="let reply of replies" class="thread-reply">
+    <div class="flex flex-row flex-start align-center">
+      <img [src]="reply.user.photoURL" style="width:32px" class="mr-2">
+      <div class="flex flex-col flex-start">
+        <span class="c-epsi-primary">{{reply.user.displayName}}</span>
+        <small>{{reply.date | amCalendar}}</small>
+      </div>
+    </div>
+    <p style="margin-bottom: 0">{{reply.text}}</p>
+    <button type="button" class="btn btn-danger mt-4" *ngIf="auth.isAdmin" (click)="removeReply(reply.id)">Borrar</button>
+  </div>
 </div>
 
 <ng-template #loader>

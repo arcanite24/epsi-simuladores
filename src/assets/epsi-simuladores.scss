@@ -1,6 +1,9 @@
-// Epsi Simulaodres Style
+// Epsi Simulaodres Style2
 // TODO: Find a better way to style the EpsiSims components
+@import '../variables.scss';
+
 .mt-retro { margin-top: -1.25rem; }
+.c-epsi-primary { color: $epsi-text-color-primary; }
 
 // Forms
 .epsi-input {
@@ -44,7 +47,8 @@
 // Navbar
 .epsi-navbar {
 
-  padding: 1.5rem;
+  padding: 0.5rem 2rem 0.5rem;
+  height: $epsi-navbar-height;
   background: linear-gradient(90deg,#5e4b8b,#7d64ba);
 
   img {

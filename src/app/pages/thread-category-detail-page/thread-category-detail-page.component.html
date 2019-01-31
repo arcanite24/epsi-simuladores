@@ -1,26 +1,28 @@
-<epsi-panel [title]="cat.name" *ngIf="cat$ | async as cat else loader" [showContent]="true">
+<div class="epsi-thread-category-detail-page mt-retro container">
+  <epsi-panel [title]="cat.name" *ngIf="cat$ | async as cat else loader" [showContent]="true">
 
-  <ngx-smart-modal identifier="threadAddModal" #threadAddModal>
-    <epsi-thread-add [category]="cat"></epsi-thread-add>
-  </ngx-smart-modal>
-
-  <ng-template #threadsLoader>
+    <ngx-smart-modal identifier="threadAddModal" #threadAddModal>
+      <epsi-thread-add [category]="cat"></epsi-thread-add>
+    </ngx-smart-modal>
+  
+    <ng-template #threadsLoader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+  
+    <div class="thread-actions p-3" *ngIf="auth.isAdmin">
+      <button type="button" class="btn btn-secondary" (click)="threadAddModal.open()">Crear Hilo</button>
+    </div>
+  
+    <ul *ngIf="threads$ | async as threads else threadsLoader">
+      <li *ngFor="let thread of threads">
+        <a [routerLink]="[ '/thread', thread.id ]">{{thread.title}}</a>
+        <button type="button" (click)="removeThread(thread.id)" class="btn btn-secondary ml-1" *ngIf="auth.isAdmin">Borrar</button>
+      </li>
+    </ul>
+  
+  </epsi-panel>
+  
+  <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
-
-  <div class="thread-actions" *ngIf="auth.isAdmin">
-    <button type="button" (click)="threadAddModal.open()">Crear Hilo</button>
-  </div>
-
-  <ul *ngIf="threads$ | async as threads else threadsLoader">
-    <li *ngFor="let thread of threads">
-      <a [routerLink]="[ '/thread', thread.id ]">{{thread.title}}</a>
-      <button type="button" (click)="removeThread(thread.id)" *ngIf="auth.isAdmin">Borrar</button>
-    </li>
-  </ul>
-
-</epsi-panel>
-
-<ng-template #loader>
-  <epsi-loader></epsi-loader>
-</ng-template>
+</div>

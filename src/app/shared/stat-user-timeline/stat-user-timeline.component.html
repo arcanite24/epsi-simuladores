@@ -8,8 +8,8 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <ul *ngIf="views$ | async as views else loader">
-    <li *ngFor="let view of views" (click)="openViewDetail(view)">{{view.name}}</li>
+  <ul *ngIf="views$ | async as views else loader" class="list-group m-3">
+    <li class="list-group-item" *ngFor="let view of views" (click)="openViewDetail(view)">{{view.name}}</li>
   </ul>
 
 </epsi-panel>

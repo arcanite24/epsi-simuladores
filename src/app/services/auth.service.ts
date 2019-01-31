@@ -5,6 +5,7 @@ import { User } from '../app.models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app'
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
+    private router: Router
   ) {
 
     this.afAuth.authState.pipe(
@@ -47,14 +49,33 @@ export class AuthService {
     if (user) return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})
   }
 
-  logout() {
-    this.afAuth.auth.signOut()
+  async logout() {
+    await this.afAuth.auth.signOut()
+    this.router.navigate(['/'])
   }
 
   loginGoogle() {
     return new Promise<firebase.UserInfo>(async (resolve, reject) => {
       try {
         const credentials = await this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        const u = credentials.user
+        this.setUser({
+          email: u.email,
+          displayName: u.displayName,
+          photoURL: u.photoURL,
+          uid: u.uid,
+        })
+        return resolve(credentials.user)
+      } catch (error) {
+        return reject(error)
+      }
+    })
+  }
+
+  loginFacebook() {
+    return new Promise<firebase.UserInfo>(async (resolve, reject) => {
+      try {
+        const credentials = await this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
         const u = credentials.user
         this.setUser({
           email: u.email,

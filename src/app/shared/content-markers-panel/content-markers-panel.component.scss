@@ -1,0 +1,11 @@
+@import '../../../variables.scss';
+
+li {
+
+  cursor: pointer;
+
+  &:hover {
+    color: $epsi-text-color-primary;
+  }
+
+}

@@ -1,0 +1,39 @@
+@import '../../../variables.scss';
+
+.content-comment {
+  margin-bottom: 1rem;
+}
+
+.comment-header {
+  
+  img {
+    width: 32px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+
+  span {
+    color: $epsi-text-color-primary;
+  }
+  
+}
+
+.content-comments-add {
+
+  padding: 0.5rem;
+  align-items: stretch;
+
+  input {
+    flex: 1;
+    border: none;
+    border: 1px solid #eee;
+    padding: 0.5rem;
+  }
+
+  button {
+    background-color: $epsi-text-color-primary;
+    color: white;
+    border: none;
+  }
+
+}

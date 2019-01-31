@@ -1,7 +1,15 @@
+@import '../../../variables.scss';
+
 .epsi-admin-tile {
 
   width: 100%;
   cursor: pointer;
-  border: 1px solid green;
+  padding: 2rem;
+  color: white;
+  background-color: $epsi-text-color-primary;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+
+  i { font-size: 3rem; }
 
 }
