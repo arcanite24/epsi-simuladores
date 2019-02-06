@@ -1,0 +1,80 @@
+<epsi-panel title="Características">
+  <ul class="list-group m-3">
+
+    <li class="list-group-item" *ngIf="auth.isAdmin">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Administrador</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isEsencial">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Esencial</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isPremium">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Premium</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isContent">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Contenido</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isChecklist">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Checklist</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isCalendar">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Calendario</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isTopUsers">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Cuadro de Honor</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isGalleries">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Galerías</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isSimuladores">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Simuladores</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isForum">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Foro</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isStreaming">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Streaming</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isMedia">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Descargables</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isSlides">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Presentaciones</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isSimulacros">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Simulacros</span>
+    </li>
+
+    <li class="list-group-item" *ngIf="auth.isFeed">
+      <i class="fa fa-check c-success"></i>
+      <span class="ml-1">Feed</span>
+    </li>
+
+  </ul>
+</epsi-panel>

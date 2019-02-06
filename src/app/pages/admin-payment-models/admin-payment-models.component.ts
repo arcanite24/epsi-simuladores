@@ -16,6 +16,7 @@ export class AdminPaymentModelsComponent implements OnInit {
       {field: 'name', type: 'text', label: 'Nombre'},
       {field: 'desc', type: 'textarea', label: 'Descripción'},
       {field: 'amount', type: 'number', label: 'Cantidad'},
+      {field: 'discountPrice', type: 'number', label: 'Precio Anterior'},
       {field: 'slug', type: 'text', label: 'Slug', hideOnTable: true, editPlaceholder: 'El Slug debe ser único, es usado para ingresar por medio de la URL a la pantalla de pago'},
       {field: 'canCard', type: 'checkbox', label: 'Pago con Tarjeta', hideOnTable: true},
       {field: 'canPaypal', type: 'checkbox', label: 'PayPal', hideOnTable: true},

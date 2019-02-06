@@ -2,14 +2,29 @@
 
   <div class="row">
 
+    <!-- Payment Panel Clean Account -->
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isEsencial && !auth.isPremium">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-6" *ngIf="modelEsencial$ | async as modelEsencial">
+          <epsi-payment-model-panel [model]="modelEsencial"></epsi-payment-model-panel>
+        </div>
+
+        <div class="col-xs-12 col-md-6" *ngIf="modelPremium$ | async as modelPremium">
+          <epsi-payment-model-panel [model]="modelPremium"></epsi-payment-model-panel>
+        </div>
+
+      </div>
+    </div>
+
     <!-- Home Left Column -->
     <div class="col-xs-12 col-md-4">
 
         <!-- Todo Panel  -->
-      <epsi-checklist-panel></epsi-checklist-panel>
+      <epsi-checklist-panel *ngIf="auth.isChecklist"></epsi-checklist-panel>
 
       <!-- Top Users Panel -->
-      <epsi-top-users-panel></epsi-top-users-panel>
+      <epsi-top-users-panel *ngIf="auth.isTopUsers"></epsi-top-users-panel>
 
     </div>
 
@@ -17,10 +32,10 @@
     <div class="col-xs-12 col-md-8">
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel></epsi-calendar-panel>
+      <epsi-calendar-panel *ngIf="auth.isCalendar"></epsi-calendar-panel>
 
       <!-- Content Panel -->
-      <epsi-content-panel></epsi-content-panel>
+      <epsi-content-panel *ngIf="auth.isContent"></epsi-content-panel>
 
     </div>
 
@@ -30,44 +45,44 @@
 
         <!-- Galleries Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-galleries-panel></epsi-galleries-panel>
+          <epsi-galleries-panel *ngIf="auth.isGalleries"></epsi-galleries-panel>
         </div>
 
         <!-- Simuladores Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-simuladores-panel></epsi-simuladores-panel>
+          <epsi-simuladores-panel *ngIf="auth.isSimuladores"></epsi-simuladores-panel>
         </div>
 
         <!-- Foro Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-forum-panel></epsi-forum-panel>
+          <epsi-forum-panel *ngIf="auth.isForum"></epsi-forum-panel>
         </div>
 
         <!-- Asesorias Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-livestreams-panel></epsi-livestreams-panel>
+          <epsi-livestreams-panel *ngIf="auth.isStreaming"></epsi-livestreams-panel>
         </div>
 
         <!-- Descagables/Media Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-media-panel></epsi-media-panel>
+          <epsi-media-panel *ngIf="auth.isMedia"></epsi-media-panel>
         </div>
 
         <!-- Slides Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-slides-panel></epsi-slides-panel>
+          <epsi-slides-panel *ngIf="auth.isSlides"></epsi-slides-panel>
         </div>
 
         <!-- Simulacros Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-simulacros-panel></epsi-simulacros-panel>
+          <epsi-simulacros-panel *ngIf="auth.isSimulacros"></epsi-simulacros-panel>
         </div>
 
       </div>
     </div>
 
     <!-- Feed Column -->
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-12" *ngIf="auth.isFeed">
       <epsi-feed-panel></epsi-feed-panel>
     </div>
 

@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Collections, PaymentRequest } from 'src/app/app.models';
+import { Collections, PaymentRequest, PaymentStatus, User } from 'src/app/app.models';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-payment-request-detail-page',
@@ -25,7 +26,10 @@ export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this._request = this.request$.subscribe(r => this.onRequestChange(r))
+    this._request = this.request$.subscribe(r => {
+      console.log('new status', r.status)
+      this.onRequestChange(r)
+    })
   }
 
   ngOnDestroy(): void {
@@ -33,15 +37,30 @@ export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
   }
 
   async onRequestChange(r: PaymentRequest) {
+
+    console.log(r.status)
     
     // Check if roles are delivered
-    if (!r.delivered) {
+    if (!r.delivered && r.status == PaymentStatus.Approved) {
+
+      let role_payload = {}
 
       for (const role of r.model.unlocks) {
-        await this.afs.doc(`${Collections.USER}/${r.user}`).update({[role]: true})
+        role_payload[role] = true
       }
 
+      console.log('Updating role_payload', role_payload)
+      console.log('PaymentRequest', r)
+
+      const user = await this.afs.doc<User>(`${Collections.USER}/${r.user}`)
+        .valueChanges()
+        .pipe(
+          take(1)
+        ).toPromise()
+
+      await this.afs.doc(`${Collections.USER}/${r.user}`).update(role_payload)
       await this.afs.doc(`${Collections.PAYMENT_REQUEST}/${r.id}`).update({delivered: true})
+      if(r.coupon) await this.afs.doc(`${Collections.COUPON}/${r.coupon}`).update({used: true, date: new Date().toISOString(), user})
       this.toastr.success('Tu pago ha sido verificado con éxito. Ya puedes acceder al contenido de la plataforma.')
       this.router.navigate(['/home'])
       

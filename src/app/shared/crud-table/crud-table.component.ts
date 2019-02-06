@@ -87,6 +87,8 @@ export class CrudTableComponent implements OnInit {
     const pk = this.afs.createId()
     const pkKey = this.config.pk ? this.config.pk : 'id'
     let dummyItem = {[pkKey]: pk, ...this.config.documentDefaults}
+    // TODO: Add support for Promises/Observables in Lifecycle functions
+    if (this.config.preCreate) dummyItem = this.config.preCreate(dummyItem)
     this.afs.collection(this.config.collection).doc(pk).set(dummyItem)
   }
 

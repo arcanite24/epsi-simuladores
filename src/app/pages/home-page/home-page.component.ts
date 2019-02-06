@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Collections } from 'src/app/app.models';
+import { Collections, PaymentModel } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'epsi-home-page',
@@ -9,6 +10,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
+
+  public modelEsencial$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).valueChanges()
+  public modelPremium$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).valueChanges()
 
   constructor(
     public auth: AuthService,
@@ -18,7 +22,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
 
     this.afs.doc(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).update({
-      roles: [
+      unlocks: [
         "isEsencial",
         "isContent",
         "isChecklist",
@@ -36,7 +40,7 @@ export class HomePageComponent implements OnInit {
     })
 
     this.afs.doc(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).update({
-      roles: [
+      unlocks: [
         "isPremium",
         "isContent",
         "isChecklist",

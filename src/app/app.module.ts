@@ -143,6 +143,10 @@ import { PaymentPageComponent } from './pages/payment-page/payment-page.componen
 import { PaymentRequestDetailPageComponent } from './pages/payment-request-detail-page/payment-request-detail-page.component';
 import { AdminNotificationsComponent } from './pages/admin-notifications/admin-notifications.component';
 import { NotificationsModalComponent } from './shared/notifications-modal/notifications-modal.component';
+import { PaymentModelPanelComponent } from './shared/payment-model-panel/payment-model-panel.component';
+import { UserRolesPanelComponent } from './shared/user-roles-panel/user-roles-panel.component';
+import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
+import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 
 @NgModule({
   declarations: [
@@ -257,6 +261,10 @@ import { NotificationsModalComponent } from './shared/notifications-modal/notifi
     PaymentRequestDetailPageComponent,
     AdminNotificationsComponent,
     NotificationsModalComponent,
+    PaymentModelPanelComponent,
+    UserRolesPanelComponent,
+    AdminCouponsComponent,
+    AdminIpnComponent,
   ],
   imports: [
     BrowserAnimationsModule,

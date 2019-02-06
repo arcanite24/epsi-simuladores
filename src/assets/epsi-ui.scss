@@ -63,6 +63,12 @@
 .p-3 { padding: 3rem; }
 .p-4 { padding: 4rem; }
 
+.pt-0 { padding-top: 0 !important; }
+.pt-1 { padding-top: 1rem; }
+.pt-2 { padding-top: 2rem; }
+.pt-3 { padding-top: 3rem; }
+.pt-4 { padding-top: 4rem; }
+
 // Buttons
 .btn-icon {
   font-size: 1.5rem;
@@ -122,6 +128,7 @@
 
 // Text Transforms
 .text-center { text-align: center; }
+.text-bolder { font-weight: bolder; }
 
 // Shadows
 .md-shadow-5 { box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); }

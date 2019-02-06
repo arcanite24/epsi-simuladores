@@ -40,15 +40,18 @@ export enum Collections {
   PAYMENT_REQUEST = 'payment-request',
   NOTIFICATION = 'notification',
   NOTIFICATION_COMMENT = 'notification-comment',
+  COUPON = 'coupon',
+  MERCADOPAGO_IPN = 'mercadopago-ipn',
 }
 
 export enum PaymentStatus {
   Approved = 'approved',
-  Failed = 'failed',
+  Failed = 'rejected',
   Pending = 'pending',
 }
 
 export enum Roles {
+  Admin = 'isAdmin',
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Content = 'isContent',
@@ -347,6 +350,7 @@ export interface PaymentModel {
   name: string
   desc: string
   amount: number
+  discountPrice?: number
   slug: string
   unlocks: string[]
   canCard: boolean
@@ -364,7 +368,8 @@ export interface PaymentRequest {
   model: PaymentModel
   status: PaymentStatus
   delivered: boolean,
-  ipn: string
+  ipn: string,
+  coupon?: string
 }
 
 export interface Notification {
@@ -382,4 +387,13 @@ export interface NotificationComment {
   user: string
   user_name: string
   user_photo: string
+}
+
+export interface Coupon {
+  id: string
+  code: string
+  date: string
+  user?: User
+  used: boolean,
+  value: number
 }

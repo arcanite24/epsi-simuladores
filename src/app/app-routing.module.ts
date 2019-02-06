@@ -36,6 +36,8 @@ import { AdminPaymentModelsComponent } from './pages/admin-payment-models/admin-
 import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
 import { PaymentRequestDetailPageComponent } from './pages/payment-request-detail-page/payment-request-detail-page.component';
 import { AdminNotificationsComponent } from './pages/admin-notifications/admin-notifications.component';
+import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
+import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 
 const routes: Routes = [
 
@@ -85,6 +87,8 @@ const routes: Routes = [
   {path: 'admin/stats', component: AdminStatsComponent},
   {path: 'admin/payment-models', component: AdminPaymentModelsComponent},
   {path: 'admin/notifications', component: AdminNotificationsComponent},
+  {path: 'admin/coupons', component: AdminCouponsComponent},
+  {path: 'admin/ipn', component: AdminIpnComponent},
 
 ];
 

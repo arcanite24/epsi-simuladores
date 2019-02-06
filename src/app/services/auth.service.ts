@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators'
-import { User } from '../app.models';
+import { User, Roles } from '../app.models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app'
@@ -40,9 +40,22 @@ export class AuthService {
     return this.userSubject.asObservable()
   }
 
-  get isAdmin() {
-    return this.loggedIn && this.user['isAdmin']
-  }
+  // Role Shorthands
+  get isAdmin() { return this.loggedIn && this.user[Roles.Admin] }
+  get isEsencial() { return this.loggedIn && this.user[Roles.Esencial] }
+  get isPremium() { return this.loggedIn && this.user[Roles.Premium] }
+  get isContent() { return this.loggedIn && this.user[Roles.Content] }
+  get isChecklist() { return this.loggedIn && this.user[Roles.Checklist] }
+  get isCalendar() { return this.loggedIn && this.user[Roles.Calendar] }
+  get isTopUsers() { return this.loggedIn && this.user[Roles.TopUsers] }
+  get isGalleries() { return this.loggedIn && this.user[Roles.Galleries] }
+  get isSimuladores() { return this.loggedIn && this.user[Roles.Simuladores] }
+  get isForum() { return this.loggedIn && this.user[Roles.Forum] }
+  get isStreaming() { return this.loggedIn && this.user[Roles.Streaming] }
+  get isMedia() { return this.loggedIn && this.user[Roles.Media] }
+  get isSlides() { return this.loggedIn && this.user[Roles.Slides] }
+  get isSimulacros() { return this.loggedIn && this.user[Roles.Simulacros] }
+  get isFeed() { return this.loggedIn && this.user[Roles.Feed] }
 
   setUser(user: any) {
     console.log(user)

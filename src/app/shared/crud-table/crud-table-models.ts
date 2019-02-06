@@ -9,7 +9,8 @@ export interface CrudTableConfig {
   documentDefaults?: any
   disableAdd?: boolean
   disableEdit?: boolean,
-  fullEdit?: boolean
+  fullEdit?: boolean,
+  preCreate?: (row: any) => any
 }
 
 export interface CrudTableHeader {

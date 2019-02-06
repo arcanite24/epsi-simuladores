@@ -26,8 +26,8 @@
 
     </div>
 
-    <img [src]="auth.user.photoURL">
-    <span>{{auth.user.displayName}}</span>
+    <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita">
+    <span (click)="router.navigate(['/profile'])" class="manita">{{auth.user.displayName}}</span>
 
   </div>
   

@@ -11,13 +11,14 @@ export class PaymentService {
     private http: HttpClient
   ) { }
 
-  generatePaymentUrl(model_id: string, request_id: string, title: string, amount: number, email: string) {
+  generatePaymentUrl(model_id: string, request_id: string, title: string, amount: number, email: string, isProd: boolean = false) {
     return this.http.post<any>(`${functionsEndpoint}/pay/generate_payment`, {
       model_id,
       request_id,
       title,
       amount,
-      email
+      email,
+      isProd
     }).toPromise()
   }
 

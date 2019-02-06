@@ -1,0 +1,41 @@
+<div class="epsi-payment-model-panel">
+
+  <epsi-panel *ngIf="model else loader" [title]="model.name">
+    <div class="container-fluid p-4 pt-0">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-12 p-2" [innerHTML]="modelBody"></div>
+
+        <div class="col-md-12" *ngIf="model.discountPrice">
+          <h3 class="text-danger">
+            <del>$ {{model.discountPrice | number}}</del>
+          </h3>
+        </div>
+
+        <div class="col-md-12">
+          <h2 class="text-bolder">$ {{model.amount | number}}</h2>
+        </div>
+
+        <div class="col-md-12 form-group" *ngIf="model.canDiscount">
+          <label for="">Cupón</label>
+          <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
+        </div>
+
+        <div class="col-md-12">
+          <button class="btn btn-primary w-100" (click)="generatePayment(model)" [disabled]="loading">Pagar</button>
+        </div>
+
+        <div class="col-md-12 p-2" *ngIf="loading">
+          <p class="text-center w-100">Generando pago</p>
+          <epsi-loader type="svg"></epsi-loader>
+        </div>
+  
+      </div>
+    </div>
+  </epsi-panel>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>
