@@ -21,6 +21,14 @@
           <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
         </div>
 
+        <div class="col-md-12 form-group" *ngIf="model.packs">
+          <label for="">Plan Familiar</label>
+          <select [(ngModel)]="pack" class="form-control">
+            <option [ngValue]="null">-</option>
+            <option *ngFor="let pack of model.packs" [ngValue]="pack">{{pack.label}} ${{pack.price | number}}</option>
+          </select>
+        </div>
+
         <div class="col-md-12">
           <button class="btn btn-primary w-100" (click)="generatePayment(model)" [disabled]="loading">Pagar</button>
         </div>

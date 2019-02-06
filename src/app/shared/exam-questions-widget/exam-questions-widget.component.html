@@ -1,6 +1,6 @@
 <epsi-panel *ngIf="exam && (questions$ | async) as questions else loader" [title]="exam.name" [showContent]="true">
   
-  <div class="exam-questions" *ngIf="exam.questions && (examState$ | async) as state">
+  <div class="exam-questions p-4" *ngIf="exam.questions && (examState$ | async) as state">
 
     <h5>Pregunta {{state.index + 1}} de {{exam.questions.length}}</h5>
 

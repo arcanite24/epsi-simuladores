@@ -1,4 +1,4 @@
-<div class="epsi-exam-detail-page container">
+<div class="epsi-exam-detail-page container mt-retro">
   <div class="row" *ngIf="exam$ | async as exam else loader">
 
     <!-- Main Exam Panel -->
@@ -14,9 +14,9 @@
       <epsi-exam-results-widget [id]="exam.id"></epsi-exam-results-widget>
     </div>
 
-    <div class="col-xs-12">
+    <!-- <div class="col-xs-12">
       <pre>{{ examState$ | async | json }}</pre>
-    </div>
+    </div> -->
     
   </div>
 </div>

@@ -170,7 +170,8 @@ export interface Exam {
   name: string
   desc: string
   type: ExamTypes
-  questions: Question[]
+  questions: Question[],
+  isPool?: boolean
 }
 
 export enum ExamTypes {
@@ -178,6 +179,7 @@ export enum ExamTypes {
   SIMULACRO = 'simulacro',
   PRECLASE = 'preclase',
   CONTENIDO = 'contenido',
+  POOL = 'pool'
 }
 
 export interface Livestream {
@@ -357,7 +359,8 @@ export interface PaymentModel {
   canPaypal: boolean
   canStore: boolean
   canMeses: boolean
-  canDiscount: boolean
+  canDiscount: boolean,
+  packs?: {quantity: number, label: string, price: number}[]
 }
 
 export interface PaymentRequest {

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Exam, Question, Answer, Collections, ExamResults } from 'src/app/app.models';
+import { Exam, Question, Answer, Collections, ExamResults, ExamTypes } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
@@ -9,6 +9,7 @@ import { AppState } from 'src/app/app.state';
 import { SetAnswer, IExamReducer, SetIndex, SetQuestion, SetResults, FinishExam, ResetExam } from 'src/app/reducers/exam.reducer';
 import { ToastrService } from 'ngx-toastr';
 import _ from 'lodash'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-exam-questions-widget',
@@ -33,7 +34,8 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     private afs: AngularFirestore,
     private auth: AuthService,
     private store: Store<AppState>,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {
     this.examState$ = this.store.select('exam')
   }
@@ -79,8 +81,7 @@ export class ExamQuestionsWidgetComponent implements OnInit {
 
     // Save all question tags in one place
     this.results.tags = _.uniq(_.flattenDeep(questions.map(q => q.raw.tags)))
-    console.log(this.results.tags, questions.map(q => q.raw.tags));
-    
+    console.log(this.results.tags, questions.map(q => q.raw.tags))
 
     // Create result doc
     await this.afs.doc(`${Collections.EXAM_RESULT}/${state.results.id}`).set(this.results)
@@ -90,6 +91,13 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     this.selectedAnswer = null
     this.lastIndex = 0
     this.question = this.exam.questions[this.lastIndex]
+
+    // If exam is pool delete the exam and show results
+    if (this.exam.type == ExamTypes.POOL) {
+      // Decide if we keep the exam pool, maybe that inefficient and redundant
+      await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
+      this.router.navigate(['/result', state.results.id])
+    }
 
   }
 

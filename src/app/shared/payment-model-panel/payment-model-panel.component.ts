@@ -20,7 +20,9 @@ export class PaymentModelPanelComponent implements OnInit {
   
   public payment_url: string
   public loading: boolean = false
+
   public coupon: string
+  public pack: any
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -56,6 +58,7 @@ export class PaymentModelPanelComponent implements OnInit {
       }
 
       let isFullCoupon = false
+      let amount = 0
 
       // Coupon validation
       if (this.coupon && this.coupon.length > 5) {
@@ -95,6 +98,7 @@ export class PaymentModelPanelComponent implements OnInit {
         status: isFullCoupon ? PaymentStatus.Approved : PaymentStatus.Pending,
         delivered: false,
         wasFullCoupon: isFullCoupon,
+        pack: this.pack
       })
 
       if (isFullCoupon) {
@@ -113,12 +117,16 @@ export class PaymentModelPanelComponent implements OnInit {
           used: true
         })
 
+        // If pack is selected generate coupons
+        // TODO: Actually implement this, soooo boring and probably none will gonna use EVER
+
         // Ignore Payment Gateway and redirect to Payment Request Detail
         return this.router.navigate(['/pago/status', request_id])
 
       }
 
-      const amount = request_payload.coupon ? model.amount - (model.amount * request_payload.coupon_value) : model.amount
+      amount = this.pack ? this.pack.price : model.amount
+      if (request_payload.coupon) amount -= amount * request_payload.coupon_value
 
       const paymentInfo = await this.payment.generatePaymentUrl(model.id, request_id, model.name, amount, email, environment.production === true)
       this.payment_url = paymentInfo.init_point

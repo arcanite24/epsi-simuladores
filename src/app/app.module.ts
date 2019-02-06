@@ -147,6 +147,7 @@ import { PaymentModelPanelComponent } from './shared/payment-model-panel/payment
 import { UserRolesPanelComponent } from './shared/user-roles-panel/user-roles-panel.component';
 import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
 import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
+import { QuestionPoolPanelComponent } from './shared/question-pool-panel/question-pool-panel.component';
 
 @NgModule({
   declarations: [
@@ -265,6 +266,7 @@ import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
     UserRolesPanelComponent,
     AdminCouponsComponent,
     AdminIpnComponent,
+    QuestionPoolPanelComponent,
   ],
   imports: [
     BrowserAnimationsModule,

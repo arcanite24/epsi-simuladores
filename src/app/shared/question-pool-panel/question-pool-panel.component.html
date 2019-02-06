@@ -1,0 +1,14 @@
+<epsi-panel title="Pool de Preguntas">
+  <div class="row p-4">
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Cuántas preguntas quieres responder?</label>
+      <input type="number" class="form-control" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}">
+    </div>
+
+    <div class="col-md-12">
+      <button (click)="generatePool()" [disabled]="loader" class="w-100 btn btn-primary">Ver Preguntas</button>
+    </div>
+
+  </div>
+</epsi-panel>

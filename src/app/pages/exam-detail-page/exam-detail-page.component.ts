@@ -14,8 +14,6 @@ import { AppState } from 'src/app/app.state';
 })
 export class ExamDetailPageComponent implements OnInit {
 
-  // TODO: Change all the communication between components to a more scalable way (NgRx Store)
-
   public id: string = this.route.snapshot.paramMap.get('id')
   public type: string = this.route.snapshot.paramMap.get('type')
 
