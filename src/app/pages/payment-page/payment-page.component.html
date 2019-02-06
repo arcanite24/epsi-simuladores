@@ -1,0 +1,26 @@
+<div class="epsi-payment-page container mt-retro">
+
+  <epsi-panel *ngIf="model$ | async as model else loader" [title]="model.name">
+    
+    <div class="row">
+
+      <div class="col-md-12">
+        <p>{{model.desc}}</p>
+      </div>
+
+      <div class="col-md-12">
+        <div class="flex-loader">
+          <a class="btn btn-primary w-100" [href]="payment_url" *ngIf="payment_url">Pagar</a>
+        </div>
+      </div>
+
+    </div>
+
+    <epsi-loader *ngIf="!payment_url"></epsi-loader>
+  </epsi-panel>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

@@ -32,6 +32,10 @@ import { ExamDetailPageComponent } from './pages/exam-detail-page/exam-detail-pa
 import { ExamResultsPageComponent } from './pages/exam-results-page/exam-results-page.component';
 import { AdminTagsComponent } from './pages/admin-tags/admin-tags.component';
 import { AdminStatsComponent } from './pages/admin-stats/admin-stats.component';
+import { AdminPaymentModelsComponent } from './pages/admin-payment-models/admin-payment-models.component';
+import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
+import { PaymentRequestDetailPageComponent } from './pages/payment-request-detail-page/payment-request-detail-page.component';
+import { AdminNotificationsComponent } from './pages/admin-notifications/admin-notifications.component';
 
 const routes: Routes = [
 
@@ -56,6 +60,10 @@ const routes: Routes = [
   {path: 'content/:id', component: ContentPageComponent},
   {path: 'content/:type/:id', component: ContentDetailPageComponent},
 
+  // Payment
+  {path: 'pagar/:slug', component: PaymentPageComponent},
+  {path: 'pago/status/:id', component: PaymentRequestDetailPageComponent},
+
   // Admin
   {path: 'admin', component: AdminPageComponent},
   {path: 'admin/users', component: AdminUsersPageComponent},
@@ -75,6 +83,8 @@ const routes: Routes = [
   {path: 'admin/livestreams', component: AdminLivestreamsComponent},
   {path: 'admin/tags', component: AdminTagsComponent},
   {path: 'admin/stats', component: AdminStatsComponent},
+  {path: 'admin/payment-models', component: AdminPaymentModelsComponent},
+  {path: 'admin/notifications', component: AdminNotificationsComponent},
 
 ];
 

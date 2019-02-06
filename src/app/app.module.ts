@@ -8,6 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgAisModule } from 'angular-instantsearch';
 import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
@@ -137,6 +138,11 @@ import { TopUsersPanelComponent } from './shared/top-users-panel/top-users-panel
 import { registerLocaleData } from '@angular/common';
 import { TerminosModalComponent } from './shared/terminos-modal/terminos-modal.component';
 import { ContentListItemComponent } from './shared/content-list-item/content-list-item.component';
+import { AdminPaymentModelsComponent } from './pages/admin-payment-models/admin-payment-models.component';
+import { PaymentPageComponent } from './pages/payment-page/payment-page.component';
+import { PaymentRequestDetailPageComponent } from './pages/payment-request-detail-page/payment-request-detail-page.component';
+import { AdminNotificationsComponent } from './pages/admin-notifications/admin-notifications.component';
+import { NotificationsModalComponent } from './shared/notifications-modal/notifications-modal.component';
 
 @NgModule({
   declarations: [
@@ -246,6 +252,11 @@ import { ContentListItemComponent } from './shared/content-list-item/content-lis
     TopUsersPanelComponent,
     TerminosModalComponent,
     ContentListItemComponent,
+    AdminPaymentModelsComponent,
+    PaymentPageComponent,
+    PaymentRequestDetailPageComponent,
+    AdminNotificationsComponent,
+    NotificationsModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -259,6 +270,7 @@ import { ContentListItemComponent } from './shared/content-list-item/content-lis
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
+    HttpClientModule,
     NgAisModule.forRoot(),
     NgbRatingModule,
     NgbTimepickerModule,

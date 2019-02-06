@@ -1,4 +1,5 @@
 // TODO: Find a better way to enumerate globally the content types
+
 // Singletons
 export const ContentTypes: string[] = [
   'materia',
@@ -35,6 +36,33 @@ export enum Collections {
   POST_COMMENT = 'post-comment',
   TAG = 'tag',
   STAT_VIEW = 'stat-view',
+  PAYMENT_MODEL = 'payment-model',
+  PAYMENT_REQUEST = 'payment-request',
+  NOTIFICATION = 'notification',
+  NOTIFICATION_COMMENT = 'notification-comment',
+}
+
+export enum PaymentStatus {
+  Approved = 'approved',
+  Failed = 'failed',
+  Pending = 'pending',
+}
+
+export enum Roles {
+  Esencial = 'isEsencial',
+  Premium = 'isPremium',
+  Content = 'isContent',
+  Checklist = 'isChecklist',
+  Calendar = 'isCalendar',
+  TopUsers = 'isTopUsers',
+  Galleries = 'isGalleries',
+  Simuladores = 'isSimuladores',
+  Forum = 'isForum',
+  Streaming = 'isStreaming',
+  Media = 'isMedia',
+  Slides = 'isSlides',
+  Simulacros = 'isSimulacros',
+  Feed = 'isFeed',
 }
 
 export class User {
@@ -312,4 +340,46 @@ export interface StatView {
   parent?: string
   parent_name?: string
   isTimeline?: boolean
+}
+
+export interface PaymentModel {
+  id: string
+  name: string
+  desc: string
+  amount: number
+  slug: string
+  unlocks: string[]
+  canCard: boolean
+  canPaypal: boolean
+  canStore: boolean
+  canMeses: boolean
+  canDiscount: boolean
+}
+
+export interface PaymentRequest {
+  id: string
+  user: string
+  user_name: string
+  email: string
+  model: PaymentModel
+  status: PaymentStatus
+  delivered: boolean,
+  ipn: string
+}
+
+export interface Notification {
+  id: string
+  title: string
+  text: string
+  date: Date
+  isGlobal: boolean
+}
+
+export interface NotificationComment {
+  id: string
+  text: string
+  date: Date
+  user: string
+  user_name: string
+  user_photo: string
 }

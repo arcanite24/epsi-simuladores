@@ -1,23 +1,32 @@
+<ngx-smart-modal identifier="notisModal" #notisModal customClass="max-w-50">
+  <epsi-notifications-modal></epsi-notifications-modal>
+</ngx-smart-modal>
+
 <div class="epsi-navbar flex flex-row flex-start align-center" [hidden]="hideNavbar">
 
   <img src="assets/zamnademy/logo.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
 
-  <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn" (click)="router.navigate(['/profile'])">
+  <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn">
 
     <div class="navbar-actions flex flex-row flex-center">
       <a *ngIf="auth.loggedIn" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
 
-      <a [routerLink]="[ '/admin' ]" class="mr-2 navbar-action flex-loader" *ngIf="auth.isAdmin">
+      <button (click)="router.navigate(['/admin'])" class="navbar-action flex-loader" *ngIf="auth.isAdmin">
         <i class="fa fa-unlock"></i>
-      </a>
+      </button>
+
+      <button *ngIf="auth.loggedIn" (click)="notisModal.open()" class="navbar-action">
+        <i class="fa fa-bell"></i>
+      </button>
       
-      <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="mr-2" class="navbar-action">
+      <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="navbar-action">
         <i class="fa fa-sign-out"></i>
       </button>
+
     </div>
 
-    <img [src]="auth.user.photoURL" class="ml-2">
+    <img [src]="auth.user.photoURL">
     <span>{{auth.user.displayName}}</span>
 
   </div>

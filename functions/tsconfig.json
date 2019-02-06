@@ -8,6 +8,7 @@
     "target": "es6"
   },
   "compileOnSave": true,
+  "skipLibCheck": true,
   "include": [
     "src"
   ]

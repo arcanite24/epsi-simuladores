@@ -7,6 +7,7 @@
 */
 
 // Core
+export const functionsEndpoint: string = 'https://us-central1-epsi-simuladores.cloudfunctions.net'
 
 // Content
 export const contentHierarchy: string[] = [

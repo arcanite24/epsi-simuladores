@@ -8,3 +8,43 @@
     - Resuable Component shared/{name}.componenent.ts
       - Panels shared/{name}-panel.componenent.ts
       - Forms shared/{name}-{add|edit}.componenent.ts
+
+firebase functions:config:set mercadopago.id="6468884827378087" mercadopago.secret="4dQzrUEg4fSvpQRz6XFmkJbV6x6tVcNW"
+
+vendedor
+  test_user_40747382@testuser.com qatest8613
+comprador
+  test_user_41665327@testuser.com qatest4907
+
+4235647728025682
+
+// Planes
+esencial - 1,279
+  "isEsencial",
+  "isContent",
+  "isChecklist",
+  "isCalendar",
+  "isTopUsers",
+  "isGalleries",
+  "isSimuladores",
+  "isForum",
+  "isStreaming",
+  "isMedia",
+  "isSlides",
+  "isSimulacros",
+  "isFeed"
+
+premium - 7,669
+  "isPremium",
+  "isContent",
+  "isChecklist",
+  "isCalendar",
+  "isTopUsers",
+  "isGalleries",
+  "isSimuladores",
+  "isForum",
+  "isStreaming",
+  "isMedia",
+  "isSlides",
+  "isSimulacros",
+  "isFeed"
