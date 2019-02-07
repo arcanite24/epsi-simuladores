@@ -156,7 +156,8 @@ export interface Question {
   correcta: string
   respuestas: Answer[]
   raw?: any,
-  tags?: string[]
+  tags?: string[],
+  img?: string
 }
 
 export interface Answer {
@@ -172,6 +173,7 @@ export interface Exam {
   type: ExamTypes
   questions: Question[],
   isPool?: boolean
+  isTags?: boolean
 }
 
 export enum ExamTypes {
@@ -179,7 +181,8 @@ export enum ExamTypes {
   SIMULACRO = 'simulacro',
   PRECLASE = 'preclase',
   CONTENIDO = 'contenido',
-  POOL = 'pool'
+  POOL = 'pool',
+  TAGS = 'tags',
 }
 
 export interface Livestream {
@@ -334,6 +337,7 @@ export interface Tag {
   id: string
   value: string
   display: string
+  selected?: boolean
 }
 
 export interface StatView {

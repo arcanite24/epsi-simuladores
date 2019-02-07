@@ -1,13 +1,20 @@
 <ngx-smart-modal identifier="tagAddModal" #tagAddModal>
-  <h1>Agregar Tag</h1>
-  <input type="text" [(ngModel)]="tempTag" [ngModelOptions]="{standalone: true}">
-  <button type="button" (click)="addTag(tempTag)">Agregar Tag</button>
+  <div class="row p-4 m-2">
+    <h4 class="c-epsi-primary">Agregar Tag</h4>
+    <input type="text" [(ngModel)]="tempTag" [ngModelOptions]="{standalone: true}" class="form-control mb-2" placeholder="Ingresa el tag">
+    <button class="w-100 btn btn-primary" type="button" (click)="addTag(tempTag)">Agregar Tag</button>
+  </div>
 </ngx-smart-modal>
 
-<div class="epsi-admin-tags">
+<div class="epsi-admin-tags container mt-retro">
   <epsi-panel title="Adminstrar Tags" [showContent]="true">
-    <h4>Nota: Los Tags tiene 2 propiedades: Value y Display. "Value" es para uso interno, no modificar y "Display" es la etiqueta que mostrará al usuario, ésta si puede ser modificada.</h4>
-    <button type="button" (click)="tagAddModal.open()">Agregar Tag</button>
+    
+    <div class="flex flex-row flex-start align-ceter p-4">
+      <h5>Nota: Los Tags tiene 2 propiedades: Value y Display. "Value" es para uso interno, no modificar y "Display" es la etiqueta que mostrará al usuario, ésta si puede ser modificada.</h5>
+      <button type="button" class="btn btn-secondary" (click)="tagAddModal.open()">Agregar Tag</button>
+    </div>
+
     <adonalsium-crud-table [config]="config"></adonalsium-crud-table>
+
   </epsi-panel>
 </div>

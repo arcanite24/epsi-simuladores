@@ -1,0 +1,13 @@
+<ngx-smart-modal identifier="tagsPoolModal" customClass="max-w-50" #tagsPoolModal>
+  <epsi-tags-pool-modal></epsi-tags-pool-modal>
+</ngx-smart-modal>
+
+<epsi-panel title="Resolver preguntas por tema">
+  <div class="row p-4">
+
+    <div class="col-md-12">
+      <button class="btn btn-primary w-100" (click)="tagsPoolModal.open()">Seleccionar Temas</button>
+    </div>
+
+  </div>
+</epsi-panel>

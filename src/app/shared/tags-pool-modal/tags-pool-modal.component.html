@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div class="row p-4">
+
+    <div class="col-md-12">
+      <ng-template #loader>
+        <epsi-loader></epsi-loader>
+      </ng-template>
+    </div>
+
+    <div class="col-md-12">
+      <h4>Seleccionar Temas</h4>
+    </div>
+
+    <div class="col-md-12" *ngIf="tags$ | async as tags else loader">
+
+      <ul>
+        <li *ngFor="let tag of tags">
+          <input type="checkbox" [(ngModel)]="tag.selected" [ngModelOptions]="{standalone: true}" [id]="tag.id">
+          <label class="ml-2" [for]="tag.id">{{tag.display}}</label>
+        </li>
+      </ul>
+
+      <button class="btn btn-primary w-100 mt-2" [disabled]="loading" (click)="generateExam(tags)">Iniciar</button>
+
+    </div>
+
+    <div class="col-md-12" *ngIf="loading">
+      <epsi-loader type="svg"></epsi-loader>
+    </div>
+
+  </div>
+</div>

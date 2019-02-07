@@ -148,6 +148,9 @@ import { UserRolesPanelComponent } from './shared/user-roles-panel/user-roles-pa
 import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
 import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 import { QuestionPoolPanelComponent } from './shared/question-pool-panel/question-pool-panel.component';
+import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
+import { TagsPoolPanelComponent } from './shared/tags-pool-panel/tags-pool-panel.component';
+import { TagsPoolModalComponent } from './shared/tags-pool-modal/tags-pool-modal.component';
 
 @NgModule({
   declarations: [
@@ -267,6 +270,9 @@ import { QuestionPoolPanelComponent } from './shared/question-pool-panel/questio
     AdminCouponsComponent,
     AdminIpnComponent,
     QuestionPoolPanelComponent,
+    ToolUploaderComponent,
+    TagsPoolPanelComponent,
+    TagsPoolModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,

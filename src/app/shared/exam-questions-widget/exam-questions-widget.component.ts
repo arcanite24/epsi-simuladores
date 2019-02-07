@@ -93,7 +93,7 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     this.question = this.exam.questions[this.lastIndex]
 
     // If exam is pool delete the exam and show results
-    if (this.exam.type == ExamTypes.POOL) {
+    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS) {
       // Decide if we keep the exam pool, maybe that inefficient and redundant
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
       this.router.navigate(['/result', state.results.id])

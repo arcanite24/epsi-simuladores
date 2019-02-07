@@ -21,9 +21,9 @@
       </ul>
 
       <div class="question-actions flex flex-row flex-start">
-        <button *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>
-        <button *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
-        <button *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
+        <button class="btn btn-secondary" type="button" *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>
+        <button class="btn btn-secondary" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
+        <button class="btn btn-primary" type="button" *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
       </div>
 
       <ng-template #loaderQuestions>

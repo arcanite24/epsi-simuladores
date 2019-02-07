@@ -1,4 +1,4 @@
-<div class="epsi-admin-tile flex flex-col flex-center" (click)="router.navigate([page])">
+<div class="epsi-admin-tile flex flex-col flex-center manita" (click)="page ? router.navigate([page]) : null">
   <i [class]="'fa fa-' + icon"></i>
-  <span>{{title}}</span>
+  <span class="text-center">{{title}}</span>
 </div>

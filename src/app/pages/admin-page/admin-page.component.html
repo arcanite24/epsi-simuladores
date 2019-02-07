@@ -1,3 +1,7 @@
+<ngx-smart-modal identifier="toolUploaderModal" #toolUploaderModal>
+  <epsi-tool-uploader></epsi-tool-uploader>
+</ngx-smart-modal>
+
 <div class="epsi-admin-page container mt-retro">
   
   <epsi-panel title="Panel de Administración" [showContent]="true">
@@ -81,7 +85,19 @@
         </div>
 
         <div class="col-xs-12 col-md-2">
-          <epsi-admin-tile title="MercadoPago IPN" icon="flag" page="/admin/ipn"></epsi-admin-tile>
+          <epsi-admin-tile title="IPN" icon="flag" page="/admin/ipn"></epsi-admin-tile>
+        </div>
+  
+      </div>
+    </div>
+  </epsi-panel>
+
+  <epsi-panel title="Herramientas de Administración">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-2" (click)="toolUploaderModal.open()">
+          <epsi-admin-tile title="Subir Archivos" icon="upload"></epsi-admin-tile>
         </div>
   
       </div>
