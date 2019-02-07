@@ -1,0 +1,50 @@
+@import '../../../variables.scss';
+
+.epsi-programa-item {
+
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  
+}
+
+.check-container {
+
+  cursor: pointer;
+  background-color: #e6e6e6;
+  padding: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+  
+  i {
+    color: $epsi-text-color-primary;
+    font-size: 0.8rem;
+  }
+
+}
+
+.check-container:hover {
+  background-color: #cecece;
+}
+
+.children-button {
+
+  border: none;
+  background: none;
+  color: $epsi-text-color-primary;
+  cursor: pointer;
+
+}
+
+.children-button:active, .children-button:focus {
+  outline: none;
+}
+
+.programa-info {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #eee;
+}

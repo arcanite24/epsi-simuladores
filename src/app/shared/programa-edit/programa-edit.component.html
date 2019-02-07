@@ -1,0 +1,57 @@
+<form class="m-2" [formGroup]="editForm" (ngSubmit)="submitForm()">
+
+  <h4 class="text-bolder">Editar Programa</h4>
+
+  <div class="form-group">
+    <label for="">Nombre</label>
+    <input class="form-control" type="text" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="">Contenido</label>
+    <textarea class="form-control" formControlName="text"></textarea>
+  </div>
+
+  <div class="form-group" *ngIf="programas$ | async as programas">
+    <label for="">Padre</label>
+    <select class="form-control" (change)="parentSelected(tempParent)" [(ngModel)]="tempParent" [ngModelOptions]="{standalone: true}">
+      <option [ngValue]="p" *ngFor="let p of programas" [selected]="editForm.value.parent && p.id == editForm.value.parent.id">{{p.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="">Desbloqueado por</label>
+    <input class="form-control" type="text" formControlName="unlockedBy" placeholder="Identificador dentro del usuario que desbloquea el programa (Contenido Modular)">
+  </div>
+
+  <hr>
+
+  <ul class="list-group" *ngIf="editForm.value.links as links">
+    <li class="flex flex-row flex-start align-center">
+      <strong>Links</strong>
+      <button type="button" class="btn btn-primary ml-2" (click)="addLink(links)">Agregar Link</button>
+    </li>
+    <li *ngFor="let link of links; let i = index">
+
+      <div class="form-group">
+        <label for="">Etiqueta</label>
+        <input class="form-control" type="text" [(ngModel)]="link.label" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <div class="form-group">
+        <label for="">Referencia</label>
+        <input class="form-control" type="text" [(ngModel)]="link.url" [ngModelOptions]="{standalone: true}" placeholder="Todo lo que va despues del 'https://zamnademy.com' empezando con un /">
+      </div>
+
+      <button type="button" class="btn btn-danger" (click)="removeLink(links, i)">Quitar</button>
+
+    </li>
+  </ul>
+
+  <hr>
+
+  <button class="btn btn-primary mt-2 w-100" type="submit" [disabled]="!editForm.valid">Editar</button>
+
+  <pre>{{editForm.value | json}}</pre>
+
+</form>

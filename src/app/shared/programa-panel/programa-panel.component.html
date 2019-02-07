@@ -1,0 +1,15 @@
+<epsi-panel title="Programa">
+  <div class="container-fluid">
+    <div class="row">
+
+      <ng-template #loader>
+        <epsi-loader></epsi-loader>
+      </ng-template>
+
+      <div class="col-md-12 programa-master-container" *ngIf="programas$ | async as programas else loader">
+        <epsi-programa-item [programa]="p" (childrenLoad)="onChildrenLoaded($event, p.id)" *ngFor="let p of programas"></epsi-programa-item>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>

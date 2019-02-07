@@ -38,6 +38,7 @@ import { PaymentRequestDetailPageComponent } from './pages/payment-request-detai
 import { AdminNotificationsComponent } from './pages/admin-notifications/admin-notifications.component';
 import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
 import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
+import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.component';
 
 const routes: Routes = [
 
@@ -89,6 +90,7 @@ const routes: Routes = [
   {path: 'admin/notifications', component: AdminNotificationsComponent},
   {path: 'admin/coupons', component: AdminCouponsComponent},
   {path: 'admin/ipn', component: AdminIpnComponent},
+  {path: 'admin/programa', component: AdminProgramaComponent},
 
 ];
 

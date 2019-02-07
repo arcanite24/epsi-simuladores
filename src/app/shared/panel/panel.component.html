@@ -2,7 +2,7 @@
 
   <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title" (click)="showContent = !showContent">
     <img [src]="img" *ngIf="img">
-    {{title}}
+    <span>{{title}}</span>
   </div>
 
   <div class="epsi-panel-content" *ngIf="showContent">

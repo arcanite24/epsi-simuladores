@@ -151,6 +151,10 @@ import { QuestionPoolPanelComponent } from './shared/question-pool-panel/questio
 import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
 import { TagsPoolPanelComponent } from './shared/tags-pool-panel/tags-pool-panel.component';
 import { TagsPoolModalComponent } from './shared/tags-pool-modal/tags-pool-modal.component';
+import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.component';
+import { ProgramaEditComponent } from './shared/programa-edit/programa-edit.component';
+import { ProgramaPanelComponent } from './shared/programa-panel/programa-panel.component';
+import { ProgramaItemComponent } from './shared/programa-item/programa-item.component';
 
 @NgModule({
   declarations: [
@@ -273,6 +277,10 @@ import { TagsPoolModalComponent } from './shared/tags-pool-modal/tags-pool-modal
     ToolUploaderComponent,
     TagsPoolPanelComponent,
     TagsPoolModalComponent,
+    AdminProgramaComponent,
+    ProgramaEditComponent,
+    ProgramaPanelComponent,
+    ProgramaItemComponent,
   ],
   imports: [
     BrowserAnimationsModule,

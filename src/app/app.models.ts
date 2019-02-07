@@ -42,6 +42,7 @@ export enum Collections {
   NOTIFICATION_COMMENT = 'notification-comment',
   COUPON = 'coupon',
   MERCADOPAGO_IPN = 'mercadopago-ipn',
+  PROGRAMA = 'programa',
 }
 
 export enum PaymentStatus {
@@ -403,4 +404,13 @@ export interface Coupon {
   user?: User
   used: boolean,
   value: number
+}
+
+export interface Programa {
+  id: string
+  name: string
+  text: string
+  links: {label: string, url: string}[]
+  parent: Programa
+  unlockedBy: string
 }

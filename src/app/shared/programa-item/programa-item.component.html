@@ -1,0 +1,38 @@
+<div class="epsi-programa-item w-100 flex flex-row flex-start align-center">
+
+  <div class="programa-parent-container p-2">
+
+    <div class="programa-check flex flex-row flex-start align-center" *ngIf="user$ | async as user">
+      
+      <div class="check-container flex-loader" (click)="toggleCheck(user, programa.id)">
+        <i class="fa fa-check" *ngIf="user.completedTasks.indexOf(programa.id) >= 0"></i>
+      </div>
+
+      <div class="flex flex-col flex-start">
+
+        <strong>{{programa.name}}</strong>
+        <small class="m-0 c54 programa-info" *ngIf="programa.text && programa.text.length > 5">{{programa.text}}</small>
+
+        <ul class="mt-1" *ngIf="programa.links && programa.links.length > 0">
+          <li *ngFor="let link of programa.links">
+            <a [routerLink]="[ link.url ]">{{link.label}}</a>
+          </li>
+        </ul>
+        
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="programa-actios">
+    <button type="button" (click)="loadChildren(programa)" class="children-button">
+      <i class="fa fa-arrow-right"></i>
+    </button>
+  </div>
+
+  <div class="programa-chidren-container ml-2" *ngIf="children" style="min-width: 200px">
+    <epsi-programa-item [programa]="child" *ngFor="let child of children"></epsi-programa-item>
+  </div>
+
+</div>
