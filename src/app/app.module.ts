@@ -155,6 +155,8 @@ import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.co
 import { ProgramaEditComponent } from './shared/programa-edit/programa-edit.component';
 import { ProgramaPanelComponent } from './shared/programa-panel/programa-panel.component';
 import { ProgramaItemComponent } from './shared/programa-item/programa-item.component';
+import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
+import { ContentItemComponent } from './shared/content-item/content-item.component';
 
 @NgModule({
   declarations: [
@@ -281,6 +283,8 @@ import { ProgramaItemComponent } from './shared/programa-item/programa-item.comp
     ProgramaEditComponent,
     ProgramaPanelComponent,
     ProgramaItemComponent,
+    AdminStatCountersComponent,
+    ContentItemComponent,
   ],
   imports: [
     BrowserAnimationsModule,

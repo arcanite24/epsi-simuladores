@@ -32,7 +32,8 @@ export class CrudTableComponent implements OnInit {
     'image',
     'select',
     'select_alt',
-    'textarea'
+    'textarea',
+    'array'
   ]
 
   constructor(

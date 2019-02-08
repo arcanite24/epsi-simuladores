@@ -23,12 +23,15 @@ export class AdminPaymentModelsComponent implements OnInit {
       {field: 'canStore', type: 'checkbox', label: 'Pago en Tienda', hideOnTable: true},
       {field: 'canMeses', type: 'checkbox', label: 'Meses sin Interéses', hideOnTable: true},
       {field: 'canDiscount', type: 'checkbox', label: 'Código de Descuento', hideOnTable: true},
+      {field: 'unlocks', type: 'array', label: 'Roles que Desbloquea', hideOnTable: true, arrayDefault: 'ROLE_TEST', arrayType: 'text'},
+      {field: 'tags', type: 'array', label: 'Tags que Desbloquea', hideOnTable: true, arrayDefault: 'tag-test', arrayType: 'text'}
     ],
     documentDefaults: {
       name: 'Nuevo Modelo de Pago',
       desc: '.',
       amount: 0,
       unlocks: [],
+      tags: [],
       canCard: false,
       canPaypal: false,
       canStore: false,

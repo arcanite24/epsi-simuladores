@@ -43,6 +43,7 @@ export enum Collections {
   COUPON = 'coupon',
   MERCADOPAGO_IPN = 'mercadopago-ipn',
   PROGRAMA = 'programa',
+  STAT_COUNTER = 'stat-counter'
 }
 
 export enum PaymentStatus {
@@ -107,6 +108,8 @@ export interface Content {
   totalRatings?: number
   video?: string
   markers?: Marker[]
+  roles?: string[]
+  model_slug?: string
   showChildren?: boolean
   haveChildren?: boolean
 }
@@ -175,6 +178,7 @@ export interface Exam {
   questions: Question[],
   isPool?: boolean
   isTags?: boolean
+  isPrueba?: boolean
 }
 
 export enum ExamTypes {
@@ -184,6 +188,7 @@ export enum ExamTypes {
   CONTENIDO = 'contenido',
   POOL = 'pool',
   TAGS = 'tags',
+  PRUEBA = 'demo'
 }
 
 export interface Livestream {
@@ -359,13 +364,15 @@ export interface PaymentModel {
   amount: number
   discountPrice?: number
   slug: string
-  unlocks: string[]
+  unlocks: string[],
+  tags: string[],
   canCard: boolean
   canPaypal: boolean
   canStore: boolean
   canMeses: boolean
   canDiscount: boolean,
-  packs?: {quantity: number, label: string, price: number}[]
+  packs?: {quantity: number, label: string, price: number}[],
+  roles?: string[],
 }
 
 export interface PaymentRequest {
@@ -413,4 +420,12 @@ export interface Programa {
   links: {label: string, url: string}[]
   parent: Programa
   unlockedBy: string
+}
+
+export interface StatCounter {
+  id: string
+  key: string
+  label: string
+  value: string
+  lastModified: string
 }

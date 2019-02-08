@@ -15,6 +15,7 @@ export class ExamEditComponent implements OnInit {
   private _exam: Exam
   public editForm: FormGroup
   public examTypes: string[] = Object.values(ExamTypes)
+  public host: string = window.location.host
 
   @Input()
   public set exam(e: Exam) { this.examChanged(e) }
@@ -34,7 +35,8 @@ export class ExamEditComponent implements OnInit {
       name: ['', Validators.required],
       desc: ['', Validators.required],
       type: ['', Validators.required],
-      questions: [[]]
+      questions: [[]],
+      isPrueba: false
     })
 
   }

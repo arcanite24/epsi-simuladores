@@ -98,7 +98,7 @@ export class PaymentModelPanelComponent implements OnInit {
         status: isFullCoupon ? PaymentStatus.Approved : PaymentStatus.Pending,
         delivered: false,
         wasFullCoupon: isFullCoupon,
-        pack: this.pack
+        pack: this.pack ? this.pack : null
       })
 
       if (isFullCoupon) {

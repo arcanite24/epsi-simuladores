@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ExamResults, Collections, StatView, User, Tag } from '../app.models';
+import { ExamResults, Collections, StatView, User, Tag, StatCounter } from '../app.models';
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
@@ -31,6 +31,24 @@ export class StatsService {
   constructor(
     private afs: AngularFirestore
   ) { }
+
+  // Stat Counter
+  async modifyCounter(key: string, delta: number) {
+
+    const counter = await this.afs.collection<StatCounter>(Collections.STAT_COUNTER, ref => ref
+      .where('key', '==', key))
+      .valueChanges()
+      .pipe(
+        take(1),
+        map(counters => counters[0])
+      )
+      .toPromise()
+
+    counter.value += delta
+
+    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).update({value: counter.value, lastModified: new Date().toISOString()})
+
+  }
 
   // Timeline
   async computeTimeline(tag: string) {

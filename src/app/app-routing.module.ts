@@ -39,6 +39,7 @@ import { AdminNotificationsComponent } from './pages/admin-notifications/admin-n
 import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.component';
 import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.component';
+import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
 
 const routes: Routes = [
 
@@ -91,6 +92,7 @@ const routes: Routes = [
   {path: 'admin/coupons', component: AdminCouponsComponent},
   {path: 'admin/ipn', component: AdminIpnComponent},
   {path: 'admin/programa', component: AdminProgramaComponent},
+  {path: 'admin/stats/counters', component: AdminStatCountersComponent},
 
 ];
 

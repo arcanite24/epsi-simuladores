@@ -74,7 +74,7 @@
         </div>
 
         <!-- Slides Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium">
           <epsi-slides-panel *ngIf="auth.isSlides"></epsi-slides-panel>
         </div>
 

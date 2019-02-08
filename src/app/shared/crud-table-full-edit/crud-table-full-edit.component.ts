@@ -34,7 +34,8 @@ export class CrudTableFullEditComponent implements OnInit {
     'select',
     'select_alt',
     'select_multiple',
-    'textarea'
+    'textarea',
+    'array'
   ]
 
   constructor(

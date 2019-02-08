@@ -41,7 +41,7 @@ export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
     console.log(r.status)
     
     // Check if roles are delivered
-    if (!r.delivered && r.status == PaymentStatus.Approved) {
+    if (r.status == PaymentStatus.Approved) {
 
       let role_payload = {}
 

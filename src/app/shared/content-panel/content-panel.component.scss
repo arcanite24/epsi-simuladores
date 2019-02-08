@@ -4,29 +4,7 @@
   overflow-x: auto;
 
   .content-carousel-item {
-
     width: 192px;
-
-    img {
-      width: 100%;
-      height: 192px;
-    }
-
-    h4 {
-      margin: 0 !important;
-      width: 100%;
-      font-size: 1.25rem;
-      color: rgba($color: #000000, $alpha: 0.87);
-    }
-
-    small {
-      width: 100%;
-    }
-
-    h4, small {
-      text-align: left;
-    }
-
   }
   
 }

@@ -27,7 +27,9 @@ export interface CrudTableHeader {
   selectCustomValue?: (row: any, i: number, selectedValue: any) => any
   selectMultiple?: boolean,
   hideOnTable?: boolean,
-  preEdit?: Function
+  preEdit?: Function,
+  arrayDefault?: any,
+  arrayType?: string
 }
 
 export interface CrudTableAction {

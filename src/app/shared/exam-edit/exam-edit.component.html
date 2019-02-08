@@ -7,6 +7,11 @@
     <input type="text" formControlName="name">
   </div>
 
+  <div class="epsi-input" *ngIf="editForm.value.type == 'demo'">
+    <label for="">URL de Prueba</label>
+    <input type="text" [value]="host + '/exam/demo/' + editForm.value.id">
+  </div>
+
   <div class="epsi-input">
     <label for="">Descripción</label>
     <textarea formControlName="desc"></textarea>

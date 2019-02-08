@@ -51,6 +51,31 @@
       </div>
 
     </div>
+
+    <hr>
+
+    <div class="form-group" *ngIf="editForm.value.roles as roles">
+
+      <div class="flex flex-row flex-start align-center mb-2">
+        <label style="text-transform: capitalize">Roles requeridos para desbloquear</label>
+        <button class="btn btn-secondary ml-2" type="button" (click)="addRole(roles)">Agregar</button>
+      </div>
+
+      <ul>
+        <li *ngFor="let item of roles; let iRole = index" class="flex flex-row flex-start align-center p-1">
+          <input type="text" class="form-control" [(ngModel)]="roles[iRole]" [ngModelOptions]="{updateOn: 'blur', standalone: true}">
+          <button type="button" class="btn btn-danger ml-1" (click)="roles.splice(iRole, 1)">
+            <i class="fa fa-close"></i>
+          </button>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="epsi-input">
+      <label for="">Slug de Modelo de Pago</label>
+      <input type="text" formControlName="model_slug">
+    </div>
   
     <button type="submit">Editar Contenido</button>
   

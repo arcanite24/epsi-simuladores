@@ -6,13 +6,8 @@
   
   <div class="epsi-content-carousel p-2 flex flex-row flex-start" *ngIf="content$ | async as content else loader">
     
-    <div class="content-carousel-item flex flex-col flex-center" *ngFor="let item of content">
-      <img [src]="item.cover" [alt]="item.name">
-      <h4>{{item.name}}</h4>
-      <small>{{item.description}}</small>
-      <div class="content-carousel-item-actions flex flex-row flex-center w-100 mt-1">
-        <button class="btn btn-secondary" type="button" (click)="router.navigate(['/content', item.id])">Entrar</button>
-      </div>
+    <div class="content-carousel-item" *ngFor="let item of content">
+      <epsi-content-item [item]="item"></epsi-content-item>
     </div>
 
   </div>

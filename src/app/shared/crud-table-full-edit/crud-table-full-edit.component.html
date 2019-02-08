@@ -71,6 +71,24 @@
           <textarea class="form-control" [(ngModel)]="cacheEdit[field.field]"></textarea>
         </div>
 
+        <div class="form-group" *ngIf="field.type == 'array'">
+
+          <div class="flex flex-row flex-start align-center mb-2">
+            <label style="text-transform: capitalize">{{field.label ? field.label : field.field}}</label>
+            <button class="btn btn-secondary ml-2" type="button" (click)="cacheEdit[field.field].push(field.arrayDefault)">Agregar</button>
+          </div>
+
+          <ul *ngIf="cacheEdit[field.field] as list">
+            <li *ngFor="let item of cacheEdit[field.field]; let iList = index" class="flex flex-row flex-start align-center p-1">
+              <input type="text" class="form-control" [(ngModel)]="list[iList]" [ngModelOptions]="{updateOn: 'blur'}">
+              <button type="button" class="btn btn-danger ml-1" (click)="list.splice(iList, 1)">
+                <i class="fa fa-close"></i>
+              </button>
+            </li>
+          </ul>
+
+        </div>
+
       </div>
 
     </div>

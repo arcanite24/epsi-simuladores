@@ -1,0 +1,12 @@
+<div class="content-item w-100">
+
+  <img [src]="item.cover" [alt]="item.name">
+  <h4>{{item.name}}</h4>
+  <small>{{item.description}}</small>
+
+  <div class="content-carousel-item-actions flex flex-row flex-center w-100 mt-1" *ngIf="auth.loggedIn">
+    <button class="btn btn-secondary" type="button" (click)="router.navigate(['/content', item.id])" *ngIf="unlocked">Entrar</button>
+    <button class="btn btn-success" type="button" (click)="router.navigate(['/pagar', item.model_slug])" *ngIf="!unlocked">Comprar</button>
+  </div>
+
+</div>

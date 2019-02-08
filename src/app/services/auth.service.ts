@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators'
-import { User, Roles } from '../app.models';
+import { BehaviorSubject, of, Observable } from 'rxjs';
+import { switchMap, take } from 'rxjs/operators'
+import { User, Roles, Collections } from '../app.models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app'
@@ -60,6 +60,15 @@ export class AuthService {
   setUser(user: any) {
     console.log(user)
     if (user) return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})
+  }
+
+  async getUser(): Promise<User> {
+    return this.afs.doc<User>(`${Collections.USER}/${this.user.uid}`)
+      .valueChanges()
+      .pipe(
+        take(1),
+      )
+      .toPromise()
   }
 
   async logout() {

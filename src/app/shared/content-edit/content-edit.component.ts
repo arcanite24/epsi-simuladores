@@ -47,7 +47,9 @@ export class ContentEditComponent implements OnInit {
       parent_id: [null],
       parent_type: [null],
       video: null,
-      markers: [[]]
+      markers: [[]],
+      roles: [[]],
+      model_slug: null,
     })
 
   }
@@ -96,6 +98,13 @@ export class ContentEditComponent implements OnInit {
     if (!currentMarkers) currentMarkers = []
     this.editForm.patchValue({
       markers: [ ...currentMarkers, {time: {hour: 0, minute: 0, second: 0}, tag: 'Nuevo Marcador'} ]
+    })
+  }
+
+  addRole(currentRoles: string[]) {
+    if (!currentRoles) currentRoles = []
+    this.editForm.patchValue({
+      roles: [ ...currentRoles, 'isDebug' ]
     })
   }
 

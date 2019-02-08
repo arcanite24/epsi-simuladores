@@ -10,6 +10,7 @@ import { SetAnswer, IExamReducer, SetIndex, SetQuestion, SetResults, FinishExam,
 import { ToastrService } from 'ngx-toastr';
 import _ from 'lodash'
 import { Router } from '@angular/router';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'epsi-exam-questions-widget',
@@ -35,7 +36,8 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     private auth: AuthService,
     private store: Store<AppState>,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private stats: StatsService
   ) {
     this.examState$ = this.store.select('exam')
   }
@@ -93,8 +95,9 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     this.question = this.exam.questions[this.lastIndex]
 
     // If exam is pool delete the exam and show results
-    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS) {
+    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS || this.exam.type == ExamTypes.PRUEBA) {
       // Decide if we keep the exam pool, maybe that inefficient and redundant
+      if (this.exam.type == ExamTypes.PRUEBA) this.stats.modifyCounter('exam_demo_resueltos', 1)
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
       this.router.navigate(['/result', state.results.id])
     }
@@ -128,19 +131,24 @@ export class ExamQuestionsWidgetComponent implements OnInit {
   }
 
   setInitialResults() {
+
+    const isDemo = this.exam.type != ExamTypes.PRUEBA
+    const id = this.afs.createId()
+
+    this.results = {
+      id,
+      questions: {},
+      lastIndex: 0,
+      user: null,
+      exam: this.exam.id,
+      date: new Date().toISOString(),
+      promedio: 0,
+      tags: []
+    }
+
     this.auth.user$.subscribe(user => {
       if (!user) return
-      const id = this.afs.createId()
-      this.results = {
-        id,
-        questions: {},
-        lastIndex: 0,
-        user: user.uid,
-        exam: this.exam.id,
-        date: new Date().toISOString(),
-        promedio: 0,
-        tags: []
-      }
+      this.results.user = user.uid
     })
   }
 
