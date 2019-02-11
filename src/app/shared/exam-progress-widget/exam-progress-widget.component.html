@@ -1,13 +1,18 @@
 <epsi-panel title="Progreso" [showContent]="true">
 
-  <ng-template #loader>
-    <epsi-loader></epsi-loader>
-  </ng-template>
+  <!-- <pre>{{ qList | json }}</pre> -->
 
-  <ul *ngIf="questions else loader">
-    <li *ngFor="let question of questions; let i = index">
+  <ul *ngIf="!isGroup && qList">
+    <li *ngFor="let question of qList; let i = index">
       <i class="fa fa-check" style="color:green" *ngIf="completed.indexOf(question.id) >= 0"></i>
       <a (click)="gotoQuestion(i, question)" [ngClass]="{'active-question': i == activeIndex}">{{question.text.substr(0, 100)}} {{question.text.length > 100 ? '...' : ''}}</a>
+    </li>
+  </ul>
+
+  <ul *ngIf="isGroup && qList">
+    <li *ngFor="let question of qList; let i = index">
+      <i class="fa fa-check" style="color:green" *ngIf="completed.indexOf(question[0].id) >= 0"></i>
+      <a (click)="gotoQuestion(i, question[0])" [ngClass]="{'active-question': i == activeIndex}">{{question[0].text.substr(0, 100)}} {{question[0].text.length > 100 ? '...' : ''}}</a>
     </li>
   </ul>
 

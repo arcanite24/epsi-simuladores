@@ -1,13 +1,20 @@
-<div class="epsi-answer-edit-item flex flex-row flex-start">
+<div class="epsi-answer-edit-item flex flex-row flex-start align-center mb-2">
+
   <input type="radio" [id]="answer.id" (click)="selectAnswer()" [checked]="correcta == answer.id">
-  <label [for]="answer.id">{{answer.text}}</label>
+  <label class="ml-2 mb-0" [for]="answer.id">{{answer.text}}</label>
+
   <div class="answer-edit-actions ml-auto">
-    <button type="button" (click)="editAnswer()">Editar</button>
-    <button type="button" (click)="removeAnswer(answer.id)">Borrar</button>
+    <button class="btn btn-secondary mr-1" type="button" (click)="editAnswer()">
+      <i class="fa fa-edit"></i>
+    </button>
+    <button class="btn btn-danger" type="button" (click)="removeAnswer(answer.id)">
+      <i class="fa fa-remove"></i>
+    </button>
   </div>
+
 </div>
 
-<form class="epsi-answer-edit-form flex flex-row flex-start" *ngIf="editing">
-  <input type="text" [(ngModel)]="tempText" [ngModelOptions]="{standalone: true}" (blur)="updateAnswer()">
-  <button type="button" (click)="updateAnswer()">Guardar</button>
+<form class="epsi-answer-edit-form flex flex-row flex-start align-center" *ngIf="editing">
+  <input class="form-control" type="text" [(ngModel)]="tempText" [ngModelOptions]="{standalone: true}" (blur)="updateAnswer()">
+  <button class="btn btn-success ml-2" type="button" (click)="updateAnswer()">Guardar</button>
 </form>

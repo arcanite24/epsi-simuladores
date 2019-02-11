@@ -6,7 +6,7 @@
 
   <ul *ngIf="results$ | async as results else loader">
     <li *ngFor="let r of results">
-      <a [routerLink]="[ '/result', r.id ]">Resultados de {{r.date}}</a>
+      <a [routerLink]="[ '/result', r.id ]">Resultados de {{r.date | amTimeAgo}}</a>
     </li>
   </ul>
 

@@ -31,6 +31,7 @@ export enum Collections {
   LIVESTREAM = 'livestream',
   MEDIA = 'media',
   QUESTION = 'question',
+  ANSWER = 'answer',
   EXAM_RESULT = 'exam-result',
   POST = 'post',
   POST_COMMENT = 'post-comment',
@@ -159,9 +160,12 @@ export interface Question {
   text: string
   correcta: string
   respuestas: Answer[]
-  raw?: any,
-  tags?: string[],
+  feedback?: string
+  raw?: any
+  tags?: string[]
   img?: string
+  group?: string
+  selectedAnswer?: string
 }
 
 export interface Answer {
@@ -176,6 +180,7 @@ export interface Exam {
   desc: string
   type: ExamTypes
   questions: Question[],
+  formattedQuestions?: Question[][],
   isPool?: boolean
   isTags?: boolean
   isPrueba?: boolean

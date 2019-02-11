@@ -25,7 +25,11 @@ export class ExamResultsPageComponent implements OnInit {
     this.result$ = this.afs.doc<ExamResults>(`${Collections.EXAM_RESULT}/${this.id}`)
       .valueChanges()
       .pipe(
-        tap(result => this._result = result)
+        tap(result => {
+          this._result = result
+          console.log(result);
+          
+        })
       )
   }
 

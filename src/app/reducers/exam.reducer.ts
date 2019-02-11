@@ -12,7 +12,7 @@ export enum ExamActionTypes {
 
 export class SetQuestion implements Action {
   readonly type: string = ExamActionTypes.SetQuestion
-  constructor(public payload: Question) {}
+  constructor(public payload: Question | Question[]) {}
 }
 
 export class SetIndex implements Action {
@@ -49,7 +49,7 @@ export type ExamActions =
   ResetExam
 
 export interface IExamReducer {
-  question: Question,
+  question: Question | Question[],
   index: number,
   selectedAnswer: Answer,
   results: ExamResults,

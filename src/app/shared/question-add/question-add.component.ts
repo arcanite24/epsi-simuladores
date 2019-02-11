@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question, Answer, Tag, Collections } from 'src/app/app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -8,23 +8,19 @@ import { Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map, tap } from 'rxjs/operators';
 
 @Component({
-  selector: 'epsi-question-edit',
-  templateUrl: './question-edit.component.html',
-  styleUrls: ['./question-edit.component.scss']
+  selector: 'epsi-question-add',
+  templateUrl: './question-add.component.html',
+  styleUrls: ['./question-add.component.scss']
 })
-export class QuestionEditComponent implements OnInit {
+export class QuestionAddComponent implements OnInit {
 
-  private _question: Question
-
-  @Input()
-  public set question(q: Question) { this.questionChanged(q) }
-  public get question(): Question { return this._question }
-
-  public editForm: FormGroup
+  public addForm: FormGroup
   public respuestas$: Observable<Answer[]>
   public tags$: Observable<Tag[]>
   public tags: string[]
   public tempTags: any
+
+  @Output() public questionAdded: EventEmitter<Question> = new EventEmitter()
 
   public searchTag = (text$: Observable<string>) => {
     if (!this.tags) return of([])
@@ -43,11 +39,11 @@ export class QuestionEditComponent implements OnInit {
     private modal: NgxSmartModalService
   ) {
 
-    this.editForm = this.fb.group({
-      id: ['', Validators.required],
+    this.addForm = this.fb.group({
+      id: [this.afs.createId(), Validators.required],
       text: ['', Validators.required],
       feedback: [''],
-      respuestas: [],
+      respuestas: [[]],
       correcta: null,
       tags: [[]]
     })
@@ -58,30 +54,23 @@ export class QuestionEditComponent implements OnInit {
     this.afs.collection<Tag>(Collections.TAG).valueChanges().subscribe(tags => this.tags = tags.map(t => t.value))
   }
 
-  questionChanged(q: Question) {
-    this._question = q
-    if (this.editForm && q) {
-      this.editForm.patchValue({...this._question, tags: q.tags ? q.tags : []})
-      //this.respuestas$ = this.afs.collection<Answer>('answer', ref => ref.where('parent', '==', this._question.id)).valueChanges()
-    }
-  }
-
   async saveQuestion() {
-    await this.afs.doc(`question/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
+    await this.afs.doc(`${Collections.QUESTION}/${this.addForm.value.id}`).set(this.addForm.value, {merge: true})
   }
 
   async submitForm() {
 
-    if (this.editForm.valid) {
+    if (this.addForm.valid) {
 
       try {
-        await this.afs.doc(`question/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
-        this.toastr.success('Pregunta editado correctamente.')
-        this.modal.getModal('questionEditModal').close()
-        this.editForm.reset()
+        await this.afs.doc(`${Collections.QUESTION}/${this.addForm.value.id}`).set(this.addForm.value, {merge: true})
+        this.toastr.success('Pregunta agregada correctamente.')
+        this.modal.getModal('questionAddModal').close()
+        this.questionAdded.next(this.addForm.value)
+        this.addForm.reset()
       } catch (error) {
         console.log(error)
-        this.toastr.error('Ocurrió un error al editar...')
+        this.toastr.error('Ocurrió un error al agregar la pregunta...')
       }
 
     } else {
@@ -97,16 +86,16 @@ export class QuestionEditComponent implements OnInit {
     const answer: Answer = {
       id,
       text: 'Nueva Respuesta',
-      parent: this._question.id
+      parent: this.addForm.value.id
     }
 
     try {
 
       // Register to Firestore
-      await this.afs.doc(`answer/${id}`).set({...answer})
+      await this.afs.doc(`${Collections.ANSWER}/${id}`).set({...answer})
 
       // Add it to current form
-      this.editForm.patchValue({respuestas: [...this.editForm.value.respuestas, answer]})
+      this.addForm.patchValue({respuestas: [...this.addForm.value.respuestas, answer]})
 
       // TODO: Decide if we save the changes rn or until user press save button
       this.saveQuestion()
@@ -119,18 +108,18 @@ export class QuestionEditComponent implements OnInit {
   }
 
   answerRemoved(id: string) {
-    this.editForm.patchValue({respuestas: this.editForm.value.respuestas.filter(r => r.id != id)})
+    this.addForm.patchValue({respuestas: this.addForm.value.respuestas.filter(r => r.id != id)})
     this.saveQuestion()
   }
 
   answerEdited(a: Answer) {
     // Replace old answer with new one
-    this.editForm.patchValue({respuestas: this.editForm.value.respuestas.map(r => r.id == a.id ? a : r)})
+    this.addForm.patchValue({respuestas: this.addForm.value.respuestas.map(r => r.id == a.id ? a : r)})
     this.saveQuestion()
   }
 
   answerSelected(id: string) {
-    this.editForm.patchValue({correcta: id})
+    this.addForm.patchValue({correcta: id})
     this.saveQuestion()
   }
 
@@ -139,7 +128,7 @@ export class QuestionEditComponent implements OnInit {
     if (this.tags.indexOf(tag) < 0) return this.toastr.error('Primero tienes que registrar el tag en la Base de Datos.')
     if (tags.indexOf(tag) >= 0) return this.toastr.error('Éste tag ya está registrado en la pregunta.')
     tags.push(tag)
-    this.editForm.patchValue({tags})
+    this.addForm.patchValue({tags})
     this.tempTags = null
 
   }
@@ -156,7 +145,7 @@ export class QuestionEditComponent implements OnInit {
   }
 
   removeTag(tag: string, tags: string[]) {
-    this.editForm.patchValue({tags: tags.splice(tags.indexOf(tag), 1)})
+    this.addForm.patchValue({tags: tags.splice(tags.indexOf(tag), 1)})
   }
 
 }

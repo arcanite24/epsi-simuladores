@@ -1,5 +1,7 @@
 .search-result {
-  width: 100%;
-  border: 1px solid red;
   cursor: pointer;
+}
+
+.search-result:hover {
+  background-color: #eee;
 }

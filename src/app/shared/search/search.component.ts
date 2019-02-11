@@ -37,11 +37,16 @@ export class SearchComponent implements OnInit {
   }
 
   handleSearch(query: string) {
+
+    if (!query) return this.showResults = false
+    if (query.length <= 0) return this.showResults = false
+
     this.index.search({query}, (err, res) => {
       if (!err) this.showResults = true
       this.hits = res.hits
       this.cd.detectChanges()
     })
+
   }
 
 }

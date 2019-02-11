@@ -12,7 +12,18 @@ import { IExamReducer, SetIndex } from 'src/app/reducers/exam.reducer';
 })
 export class ExamProgressWidgetComponent implements OnInit {
 
-  @Input() public questions: Question[]
+  public qList: Question[] | Question[][]
+  public isGroup: boolean = false
+
+  @Input()
+  public set questions(q: Question[] | Question[][]) {
+    if (q[0] instanceof Array) this.isGroup = true
+    console.log(q, this.isGroup)
+    this.qList = q
+  }
+  public get questions(): Question[] | Question[][] { return this.qList }
+
+
   public completed: string[] = []
   public activeIndex: number = 0
 

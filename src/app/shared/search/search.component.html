@@ -1,9 +1,9 @@
-<div class="epsi-search">
+<div class="epsi-search form-group w-100">
 
-  <input type="text" (keyup)="handleSearch(searchInput.value)" [placeholder]="placeholder" #searchInput>
+  <input type="text" (keyup)="handleSearch(searchInput.value)" [placeholder]="placeholder" class="form-control" #searchInput>
 
-  <ul *ngIf="showResults">
-    <li *ngFor="let hit of hits" class="search-result" (click)="hitSelected(hit)">
+  <ul *ngIf="showResults" class="list-group">
+    <li *ngFor="let hit of hits" class="list-group-item search-result" (click)="hitSelected(hit)">
       <span>{{hit.text}}</span>
     </li>
   </ul>

@@ -1,42 +1,58 @@
+<ngx-smart-modal identifier="questionAddModal" #questionAddModal>
+  <epsi-question-add (questionAdded)="onQuestionAdded($event)"></epsi-question-add>
+</ngx-smart-modal>
+
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
-  <h1>Editar Exámen</h1>
+  <h2 class="text-boler c-epsi-primary">Editar Exámen</h2>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Nombre</label>
-    <input type="text" formControlName="name">
+    <input type="text" class="form-control" formControlName="name">
   </div>
 
-  <div class="epsi-input" *ngIf="editForm.value.type == 'demo'">
+  <div class="form-group" *ngIf="editForm.value.type == 'demo'">
     <label for="">URL de Prueba</label>
-    <input type="text" [value]="host + '/exam/demo/' + editForm.value.id">
+    <input type="text" class="form-control" [value]="host + '/exam/demo/' + editForm.value.id">
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Descripción</label>
-    <textarea formControlName="desc"></textarea>
+    <textarea class="form-control" formControlName="desc"></textarea>
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Tipo de Exámen</label>
-    <select formControlName="type">
+    <select class="form-control" formControlName="type">
       <option [value]="type" *ngFor="let type of examTypes">{{type}}</option>
     </select>
   </div>
 
   <hr>
 
+  <div class="flex flex-row flex-start align-center mb-2">
+    <h4 class="c-epsi-primary">Preguntas</h4>
+    <button class="btn btn-secondary ml-auto" type="button" (click)="questionAddModal.open()">Nueva Pregunta</button>
+  </div>
   <epsi-search placeholder="Buscar preguntas" (onSelect)="questionSelected($event)"></epsi-search>
-  <h4>Preguntas</h4>
-  <ul *ngIf="editForm.value.questions as questions">
-    <li *ngFor="let q of questions">
-      <span>{{q.text}}</span>
-      <button (click)="removePregunta(q)" type="button">Quitar Pregunta</button>
+
+  <ul *ngIf="editForm.value.questions as questions" class="list-group">
+    <li *ngFor="let q of questions" class="list-group-item flex flex-row flex-start align-center">
+
+      <button class="btn btn-danger mr-2" (click)="removePregunta(q)" type="button">
+        <i class="fa fa-remove"></i>
+      </button>
+      
+      <div class="form-group">
+        <label for="">{{q.text}}</label>
+        <input type="text" class="form-control" [(ngModel)]="q.group" [ngModelOptions]="{standalone: true}" placeholder="Agrupador">
+      </div>
+
     </li>
   </ul>
 
-  <button type="submit" [disabled]="!editForm.valid">Editar Exámen</button>
+  <button class="btn btn-success w-100 mt-3" type="submit" [disabled]="!editForm.valid">Editar Exámen</button>
 
-  <pre>{{editForm.value | json}}</pre>
+  <pre class="mt-4">{{editForm.value | json}}</pre>
 
 </form>

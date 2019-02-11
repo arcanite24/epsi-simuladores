@@ -157,6 +157,8 @@ import { ProgramaPanelComponent } from './shared/programa-panel/programa-panel.c
 import { ProgramaItemComponent } from './shared/programa-item/programa-item.component';
 import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
 import { ContentItemComponent } from './shared/content-item/content-item.component';
+import { QuestionAddComponent } from './shared/question-add/question-add.component';
+import { ExamQuestionsByGroupWidgetComponent } from './shared/exam-questions-by-group-widget/exam-questions-by-group-widget.component';
 
 @NgModule({
   declarations: [
@@ -285,6 +287,8 @@ import { ContentItemComponent } from './shared/content-item/content-item.compone
     ProgramaItemComponent,
     AdminStatCountersComponent,
     ContentItemComponent,
+    QuestionAddComponent,
+    ExamQuestionsByGroupWidgetComponent,
   ],
   imports: [
     BrowserAnimationsModule,

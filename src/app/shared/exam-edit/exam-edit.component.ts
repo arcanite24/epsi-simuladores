@@ -66,9 +66,9 @@ export class ExamEditComponent implements OnInit {
 
   }
 
-  questionSelected({ id, text, tags }) {
-    if (!this.haveQuestion(id)) {
-      this.editForm.patchValue({ questions: [...this.editForm.value.questions, {id, text, tags}] })
+  questionSelected(q: Question) {
+    if (!this.haveQuestion(q.id)) {
+      this.editForm.patchValue({ questions: [...this.editForm.value.questions, q] })
       this.saveExam()
     } else {
       this.toastr.error('La pregunta ya ha sido agregada al exámen...')
@@ -90,6 +90,10 @@ export class ExamEditComponent implements OnInit {
     if (!this.editForm.value.questions) return this.toastr.error('No hay preguntas ')
     this.editForm.patchValue({questions: this.editForm.value.questions.filter(q => q.id != id)})
     this.saveExam()
+  }
+
+  onQuestionAdded(q: Question) {
+    this.questionSelected(q)
   }
 
 }
