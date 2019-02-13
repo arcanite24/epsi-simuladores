@@ -159,6 +159,7 @@ import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-st
 import { ContentItemComponent } from './shared/content-item/content-item.component';
 import { QuestionAddComponent } from './shared/question-add/question-add.component';
 import { ExamQuestionsByGroupWidgetComponent } from './shared/exam-questions-by-group-widget/exam-questions-by-group-widget.component';
+import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
 
 @NgModule({
   declarations: [
@@ -289,6 +290,7 @@ import { ExamQuestionsByGroupWidgetComponent } from './shared/exam-questions-by-
     ContentItemComponent,
     QuestionAddComponent,
     ExamQuestionsByGroupWidgetComponent,
+    AdminMigrationComponent,
   ],
   imports: [
     BrowserAnimationsModule,

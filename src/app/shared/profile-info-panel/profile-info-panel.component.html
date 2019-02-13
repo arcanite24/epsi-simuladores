@@ -46,6 +46,10 @@
       <input type="text" class="form-control" [(ngModel)]="user.lugar_origen">
     </div>
 
+    <div class="w-100 flex-loader">
+      <app-storage-uploader (onFinish)="changePhoto($event, user.uid, user.displayName)"></app-storage-uploader>
+    </div>
+
     <div class="flex-loader">
       <button class="btn btn-secondary" (click)="saveChanges(user)" [disabled]="loading">Guardar cambios</button>
     </div>

@@ -8,6 +8,11 @@ export const ContentTypes: string[] = [
   'submtema'
 ]
 
+export enum HomeLists {
+  SimuladoresList = 'simuladores-list',
+  SimulacrosList = 'simulacros-list',
+}
+
 export enum Collections {
   // TODO: Add remaining collections
   USER = 'user',
@@ -44,7 +49,8 @@ export enum Collections {
   COUPON = 'coupon',
   MERCADOPAGO_IPN = 'mercadopago-ipn',
   PROGRAMA = 'programa',
-  STAT_COUNTER = 'stat-counter'
+  STAT_COUNTER = 'stat-counter',
+  LIST = 'list'
 }
 
 export enum PaymentStatus {
@@ -179,8 +185,11 @@ export interface Exam {
   name: string
   desc: string
   type: ExamTypes
-  questions: Question[],
-  formattedQuestions?: Question[][],
+  questions: Question[]
+  duration?: number
+  colors?: {}
+  liberado?: boolean
+  formattedQuestions?: Question[][]
   isPool?: boolean
   isTags?: boolean
   isPrueba?: boolean
@@ -433,4 +442,11 @@ export interface StatCounter {
   label: string
   value: string
   lastModified: string
+}
+
+export interface List {
+  id: string
+  key: string
+  name: string
+  list: any[]
 }

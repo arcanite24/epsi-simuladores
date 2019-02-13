@@ -5,7 +5,7 @@
     <div class="programa-check flex flex-row flex-start align-center" *ngIf="user$ | async as user">
       
       <div class="check-container flex-loader" (click)="toggleCheck(user, programa.id)">
-        <i class="fa fa-check" *ngIf="user.completedTasks.indexOf(programa.id) >= 0"></i>
+        <i class="fa fa-check" *ngIf="user.completedTasks && user.completedTasks.indexOf(programa.id) >= 0"></i>
       </div>
 
       <div class="flex flex-col flex-start">

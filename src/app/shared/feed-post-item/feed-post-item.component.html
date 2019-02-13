@@ -36,7 +36,7 @@
       <span>Comentarios ({{commentCount | number}})</span>
     </button>
 
-    <button type="button" *ngIf="auth.isAdmin">
+    <button type="button" *ngIf="auth.isAdmin" (click)="removePost(post.id)">
       <i class="fa fa-trash"></i>
       <span>Borrar</span>
     </button>

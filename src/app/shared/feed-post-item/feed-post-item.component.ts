@@ -34,4 +34,8 @@ export class FeedPostItemComponent implements OnInit {
     this.afs.doc(`${Collections.POST}/${id}`).update({likes})
   }
 
+  removePost(id: string) {
+    this.afs.doc(`${Collections.POST}/${id}`).delete()
+  }
+
 }

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/app.models';
+import { User, Collections } from 'src/app/app.models';
 import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { take } from 'rxjs/operators';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'epsi-profile-info-panel',
@@ -18,7 +19,8 @@ export class ProfileInfoPanelComponent implements OnInit {
   constructor(
     public auth: AuthService,
     private toastr: ToastrService,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -59,6 +61,14 @@ export class ProfileInfoPanelComponent implements OnInit {
       this.loading = false
     }
 
+  }
+
+  async changePhoto(url: string, uid: string, name: string) {
+    await this.afs.doc(`${Collections.USER}/${uid}`).update({photoURL: url})
+    await this.afAuth.auth.currentUser.updateProfile({
+      displayName: name,
+      photoURL: url
+    })
   }
 
 }

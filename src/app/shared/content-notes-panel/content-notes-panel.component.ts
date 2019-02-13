@@ -56,7 +56,15 @@ export class ContentNotesPanelComponent implements OnInit {
     if (this.noteForm.valid) {
       await this.afs.doc(`${Collections.NOTE}/${this.noteForm.value.id}`).set(this.noteForm.value)
       this.toastr.success('Nota agregada correctamente.')
-      this.noteForm.reset()
+      this.noteForm.reset({
+        id: this.afs.createId(),
+        title: '',
+        text: '',
+        user: this.noteForm.value.user,
+        parent_type: this.parent_type,
+        parent_id: this.parent_id,
+        content_type: this.content_type,
+      })
     } else {
       this.toastr.error('Por favor ingresa datos válidos para crear una nota...')
     }

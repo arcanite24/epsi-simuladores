@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Exam, Collections, ExamTypes } from 'src/app/app.models';
+import { List, Collections, HomeLists } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-simuladores-panel',
@@ -10,14 +11,19 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class SimuladoresPanelComponent implements OnInit {
 
-  public exams$: Observable<Exam[]>
+  public exams$: Observable<any[]>
 
   constructor(
     private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
-    this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref.where('type', '==', ExamTypes.SIMULADOR)).valueChanges()
+    //this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref.where('type', '==', ExamTypes.SIMULADOR)).valueChanges()
+    this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)
+      .valueChanges()
+      .pipe(
+        map(list => list.list)
+      )
   }
 
 }

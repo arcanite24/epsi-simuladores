@@ -1,0 +1,52 @@
+<div class="container mt-retro">
+  <epsi-panel title="Migration Tool">
+    <div class="container pb-2">
+      <div class="row">
+      
+        <div class="col-md-12 form-group">
+          <label for="">Url</label>
+          <input type="text" class="form-control" [(ngModel)]="url">
+        </div>
+
+        <div class="col-md-12 form-group">
+          <label for="">Collection</label>
+          <input type="text" class="form-control" [(ngModel)]="collection">
+        </div>
+
+        <div class="col-md-12 form-group">
+          <label for="">Limit</label>
+          <input type="number" class="form-control" [(ngModel)]="limit">
+        </div>
+
+        <div class="col-md-12 form-group">
+          <label for="">Offset</label>
+          <input type="number" class="form-control" [(ngModel)]="offset">
+        </div>
+
+        <div class="col-md-12 form-group">
+          <label for="">Append to All Items</label>
+          <textarea rows="4" class="form-control" [(ngModel)]="appendToAll" placeholder="JSON string"></textarea>
+        </div>
+
+        <div class="col-md-12 form-group">
+          <label for="">Fields</label>
+          <textarea rows="4" class="form-control" [(ngModel)]="fields" placeholder="Fields equivalents following: old_key#new_key key#foo"></textarea>
+        </div>
+  
+        <div class="col-md-12 flex flex-row flex-start">
+          <button class="btn btn-secondary mr-2" [disabled]="l" (click)="fetchData(url)">Fetch Data</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateToFirestore()" *ngIf="data">Migrate to Firestore</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateContent()" *ngIf="data">Migrate Custom</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateExam()" *ngIf="data">Migrate Exam</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateSlide()" *ngIf="data">Migrate Slide</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateBatch()" *ngIf="limit && offset">Migrate Slide Batch</button>
+        </div>
+  
+        <div class="col-md-12 flex-loader" *ngIf="l">
+          <epsi-loader type="svg"></epsi-loader>
+        </div>
+  
+      </div>
+    </div>
+  </epsi-panel>
+</div>

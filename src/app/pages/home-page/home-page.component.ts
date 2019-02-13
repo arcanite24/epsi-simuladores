@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Collections, PaymentModel } from 'src/app/app.models';
+import { Collections, PaymentModel, HomeLists, ExamTypes, Exam } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-home-page',
@@ -20,6 +21,50 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.buildLists()
+  }
+
+  async buildLists() {
+
+    /* const simuladores = await this.afs.collection(Collections.EXAM, ref => ref
+      .where('type', '==', ExamTypes.SIMULADOR))
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise()
+
+    await this.afs.doc(`${Collections.LIST}/${HomeLists.SimuladoresList}`).set({
+      id: HomeLists.SimuladoresList,
+      key: HomeLists.SimuladoresList,
+      name: 'Simuladores List',
+      list: simuladores.map((s: Exam) => ({
+        name: s.name,
+        id: s.id,
+        type: s.type
+      }))
+    }) */
+
+    const simulacros = await this.afs.collection(Collections.EXAM, ref => ref
+      .where('type', '==', ExamTypes.SIMULACRO))
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise()
+
+    await this.afs.doc(`${Collections.LIST}/${HomeLists.SimulacrosList}`).set({
+      id: HomeLists.SimulacrosList,
+      key: HomeLists.SimulacrosList,
+      name: 'Simulacros List',
+      list: simulacros.map((s: Exam) => ({
+        name: s.name,
+        id: s.id,
+        type: s.type
+      }))
+    })
+
+  }
+
+  buildModels() {
 
     this.afs.doc(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).update({
       packs: [

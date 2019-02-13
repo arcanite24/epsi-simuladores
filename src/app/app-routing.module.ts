@@ -40,6 +40,7 @@ import { AdminCouponsComponent } from './page/admin-coupons/admin-coupons.compon
 import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.component';
 import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
+import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
 
 const routes: Routes = [
 
@@ -93,6 +94,7 @@ const routes: Routes = [
   {path: 'admin/ipn', component: AdminIpnComponent},
   {path: 'admin/programa', component: AdminProgramaComponent},
   {path: 'admin/stats/counters', component: AdminStatCountersComponent},
+  {path: 'admin/migration', component: AdminMigrationComponent},
 
 ];
 

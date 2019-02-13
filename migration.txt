@@ -1,0 +1,376 @@
+# Materia
+https://api.zamnademy.com/api/v1/materia
+content
+
+{
+  "type": "materia",
+  "totalRatings": 0,
+  "ratings": {},
+  "video": null,
+  "markers": []
+}
+
+name#name
+desc#description
+file#cover
+
+[  
+  {  
+    "id":"5acbb3499269a4d73c7cd645",
+    "name":"Programa Inicio Temprano"
+    qMDpvNJiFLQDjVkXTYhH DONE
+  },
+  {  
+    "id":"5acbb3939269a4d73c7cd646",
+    "name":"Medicina Interna"
+    qriZGzgoFIjshewzxpVJ DONE
+  },
+  {  
+    "id":"5acbb48d9269a4d73c7cd64b",
+    "name":"Cirugía"
+    c33FFfFmUW4QafnjAxyY DONE
+  },
+  {  
+    "id":"5acbb4ad9269a4d73c7cd64c",
+    "name":"Pediatría"
+    bVa2ThecouyLpG4VFJ28 DONE
+  },
+  {  
+    "id":"5acbb4c59269a4d73c7cd64d",
+    "name":"Urgencias"
+    IfhAhgs0bA1WkrGXATEr DONE
+  },
+  {  
+    "id":"5acbb4d49269a4d73c7cd64e",
+    "name":"Ginecología"
+    zs11k5UOYFDxiViq2fLG
+  }
+]
+
+------------------------------------
+
+# Bloque
+https://api.zamnademy.com/api/v1/bloque?materia=ID_MATERIA
+content
+
+{
+  "parent_id": "ID_FIRESTORE_MATERIA",
+  "type": "bloque",
+  "totalRatings": 0,
+  "ratings": {},
+  "video": null,
+  "markers": [],
+  "parent_type": "materia"
+}
+
+name#name
+desc#description
+sortIndex#sortIndex
+
+Programa Inicio Temprano
+[  
+  {  
+    "id":"5acbbabb9269a4d73c7cd653",
+    "name":"Medicina Interna"
+  },
+  {  
+    "id":"5acbcdb39269a4d73c7cd680",
+    "name":"Cirugía"
+  },
+  {  
+    "id":"5acbd9e79269a4d73c7cd6a3",
+    "name":"Pediatría"
+  },
+  {  
+    "id":"5acbdf329269a4d73c7cd6b9",
+    "name":"Urgencias"
+  },
+  {  
+    "id":"5bb54040e9a45cbf3f5b1315",
+    "name":"Ginecología y Obstetricia"
+  }
+]
+
+Medicina Interna
+[  
+  {  
+    "id":"5ad600c0b857fe9f57aca77d",
+    "name":"Dermatología"
+  },
+  {  
+    "id":"5ad9ad7db857fe9f57aca836",
+    "name":"Endocrinología"
+  },
+  {  
+    "id":"5adcdb48b857fe9f57acaa50",
+    "name":"Gastroenterología"
+  },
+  {  
+    "id":"5ae6a26e0eea8ae11d7ae0dc",
+    "name":"Hematología"
+  },
+  {  
+    "id":"5ae6a27b0eea8ae11d7ae0dd",
+    "name":"Geriatría"
+  },
+  {  
+    "id":"5af23247cfdf885642b0884e",
+    "name":"Infectología"
+  },
+  {  
+    "id":"5af233e7cfdf885642b08857",
+    "name":"Inmunología y Alergia"
+  },
+  {  
+    "id":"5af89c4cf009cd8a1a967442",
+    "name":"Medicina Crítica"
+  },
+  {  
+    "id":"5af8a131f009cd8a1a967448",
+    "name":"Nefrología"
+  },
+  {  
+    "id":"5afe97cadb0eed3b499a8e14",
+    "name":"Angiología"
+  },
+  {  
+    "id":"5b028603cc259d444f796810",
+    "name":"Neumología"
+  },
+  {  
+    "id":"5b08f1329770b85851eea4c1",
+    "name":"Neurología"
+  },
+  {  
+    "id":"5b0a3ca69770b85851eea4d1",
+    "name":"Oftalmología"
+  },
+  {  
+    "id":"5b11e5dd1727542a40cd6b25",
+    "name":"Oncología "
+  },
+  {  
+    "id":"5b17700ac0292f781ca27f77",
+    "name":"OTL"
+  },
+  {  
+    "id":"5b1de043432d281506344d85",
+    "name":"Psiquiatría"
+  },
+  {  
+    "id":"5b249923ed93f7b87b3dcff9",
+    "name":"Cardiología"
+  },
+  {  
+    "id":"5b26e138ed93f7b87b3dd016",
+    "name":"* Epidemiología"
+  },
+  {  
+    "id":"5b2d65775113b238598f5b08",
+    "name":"Reumatología"
+  }
+]
+
+Cirugía
+[  
+  {  
+    "id":"5b3bef8644cb1cc5551179c0",
+    "name":"Cirugía General"
+  },
+  {  
+    "id":"5b7fc6320b7433cb38c806de",
+    "name":"Trauma y Ortopedia"
+  },
+  {  
+    "id":"5b843c1987e8f2130ac439aa",
+    "name":"Urología"
+  }
+]
+
+Pediatría
+[{"id":"5b57a215d099e98d148e801d","name":"Pediatría"}]
+
+Urgencias
+[{"id":"5b32ebe044cb1cc555117639","name":"Urgencias"}]
+
+Ginecología
+[{"id":"5b3ff2cb44cb1cc555117ac9","name":"Obstetricia"},{"id":"5b4ef98bb494e94f76338e87","name":"Ginecología"}]
+
+---------------------------------------
+
+# Tema
+https://api.zamnademy.com/api/v1/tema
+content
+
+{
+  "type": "tema",
+  "totalRatings": 0,
+  "ratings": {},
+  "parent_type": "bloque"
+}
+
+name#name
+desc#description
+video#video
+sortIndex#sortIndex
+
+---------------------------------------
+
+# Subtema
+https://api.zamnademy.com/api/v1/subtema
+content
+
+{
+  "type": "subtema",
+  "totalRatings": 0,
+  "ratings": {},
+  "parent_type": "tema"
+}
+
+name#name
+desc#description
+video#video
+sortIndex#sortIndex
+
+---------------------------------------
+
+# CatGaleria Categoría Galería CatGalleryº
+https://api.zamnademy.com/api/v1/CatGaleria
+gallery-cat
+
+{}
+
+name#name
+desc#desc
+
+---------------------------------------
+
+# Gallería Gallery
+https://api.zamnademy.com/api/v1/Galeria
+gallery
+
+{}
+
+name#name
+desc#desc
+fotos#fotos
+
+---------------------------------------
+
+# CatMedia Media Category
+https://api.zamnademy.com/api/v1/CatMedia
+media-cat
+
+{}
+
+name#name
+desc#desc
+
+---------------------------------------
+
+# Media
+https://api.zamnademy.com/api/v1/media
+media
+
+{}
+
+name#name
+desc#desc
+
+---------------------------------------
+
+# Simulacros
+https://api.zamnademy.com/api/v1/ExamenSimulacro/getSimulacrosHome
+exam
+
+{
+  "type": "simulacro"
+}
+
+name#name
+desc#desc
+duration#duration
+colors#colors
+liberado#liberado
+
+---------------------------------------
+
+# Simulador
+https://api.zamnademy.com/api/v1/simulador/list?limit=5&skip=0
+exam
+
+{
+  "type": "simulador"
+}
+
+name#name
+desc#desc
+duration#duration
+colors#colors
+liberado#liberado
+isPrueba#isPrueba
+
+---------------------------------------
+
+# Slide
+https://api.zamnademy.com/api/v1/slide?limit=1&skip=0
+exam
+240/253
+
+{}
+
+name#name
+desc#desc
+
+---------------------------------------
+
+# Post
+https://api.zamnademy.com/api/v1/post
+post
+
+{}
+
+text#text
+img#image
+likes#likes
+createdAt#date
+
+---------------------------------------
+
+# Post Comment
+https://api.zamnademy.com/api/v1/postComment
+post-comment
+
+{}
+
+text#text
+img#image
+likes#likes
+createdAt#date
+
+---------------------------------------
+
+# Evento
+https://api.zamnademy.com/api/v1/evento
+event
+
+{
+  "fullDay": true
+}
+
+title#title
+desc#desc
+date#date
+start#start
+
+---------------------------------------
+
+# Todo
+https://api.zamnademy.com/api/v1/todo
+todo
+
+{
+  "completed": 0
+}
+
+text#text

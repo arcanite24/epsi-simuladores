@@ -30,22 +30,31 @@
 
     <form class="auth-login-container w-100" [formGroup]="loginForm" (ngSubmit)="onLogin()" *ngIf="mode == 'admin'">
 
-      <div class="field auth-input mt-2">
-        <label class="label">Email</label>
-        <div class="control">
-          <input class="email" type="text" placeholder="Ingresa tu correo electrónico" formControlName="email">
-        </div>
-      </div>
+      <epsi-panel class="p-4">
+        <div class="container-fluid">
+          <div class="row p-4">
 
-      <div class="field auth-input mt-2">
-        <label class="label">Contraseña</label>
-        <div class="control">
-          <input class="password" type="password" placeholder="Tu contraseña" formControlName="password">
-        </div>
-      </div>
+            <div class="form-group mt-2 col-md-12">
+              <label class="label">Email</label>
+              <div class="control">
+                <input class="form-control" type="email" placeholder="Ingresa tu correo electrónico" formControlName="email">
+              </div>
+            </div>
+      
+            <div class="form-group mt-2 col-md-12">
+              <label class="label">Contraseña</label>
+              <div class="control">
+                <input class="form-control" type="password" placeholder="Tu contraseña" formControlName="password">
+              </div>
+            </div>
+      
+            <div class="col-md-12">
+              <button class="button is-primary epsi-button mt-2 btn btn-primary w-100" [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+            </div>
 
-      <button class="button is-primary epsi-button mt-2" [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
-      <button type="button" (click)="loginGoogle()">Login Google</button>
+          </div>
+        </div>
+      </epsi-panel>
 
     </form>
 

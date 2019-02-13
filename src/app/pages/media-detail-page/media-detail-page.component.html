@@ -3,7 +3,7 @@
   <epsi-panel [title]="media.name" *ngIf="media$ | async as media else loader" [showContent]="true">
     <div class="p-4">
       <h4 class="c-epsi-primary">{{media.desc}}</h4>
-      <a class="btn btn-primary" [href]="media.url">Descargar</a>
+      <a class="btn btn-primary" [href]="media.url.replace('file?', 'fileNew?')">Descargar</a>
     </div>
   </epsi-panel>
   

@@ -17,6 +17,8 @@ comprador
   test_user_41665327@testuser.com qatest4907
 
 4235647728025682
+ZAMNA-ce171070
+df780444-ZAMNADEMY
 
 // Planes
 esencial - 1,279
