@@ -1,8 +1,8 @@
-<epsi-panel title="Mi Simulador Diario ENARM" img="https://zamnademy.com/site/images/clients/simuladordiario.png">
+<epsi-panel title="Mi Simulador Diario ENARM" img="https://zamnademy.com/site/images/clients/simuladordiario.png" height="300px">
 
   <ul *ngIf="exams$ | async as exams else loader" class="m-3 list-group">
     <li *ngFor="let exam of exams" class="list-group-item">
-      <a [routerLink]="[ '/exam', exam.type, exam.id ]">{{exam.name}}}</a>
+      <a [routerLink]="[ '/exam', exam.type, exam.id ]">{{exam.name}}</a>
     </li>
   </ul>
 

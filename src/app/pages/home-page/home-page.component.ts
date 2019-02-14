@@ -4,11 +4,26 @@ import { Collections, PaymentModel, HomeLists, ExamTypes, Exam } from 'src/app/a
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { trigger, transition, style, animate, state, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'epsi-home-page',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
+  animations: [
+    trigger('animateItem', [      
+      transition(':enter', [
+        style({ opacity: 1 })
+      ]),
+      transition(':leave', [
+        animate(1500, style({ opacity: 0 }))
+        /* animate('3s', keyframes([
+          style({ opacity: 0, offset: 1 })
+        ])) */
+      ]),
+      state('*', style({ opacity: 1 })),
+    ])
+  ]
 })
 export class HomePageComponent implements OnInit {
 
@@ -21,12 +36,12 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.buildLists()
+    /* this.buildLists() */
   }
 
   async buildLists() {
 
-    /* const simuladores = await this.afs.collection(Collections.EXAM, ref => ref
+    const simuladores = await this.afs.collection(Collections.EXAM, ref => ref
       .where('type', '==', ExamTypes.SIMULADOR))
       .valueChanges()
       .pipe(
@@ -40,9 +55,10 @@ export class HomePageComponent implements OnInit {
       list: simuladores.map((s: Exam) => ({
         name: s.name,
         id: s.id,
-        type: s.type
+        type: s.type,
+        date: s.date,
       }))
-    }) */
+    })
 
     const simulacros = await this.afs.collection(Collections.EXAM, ref => ref
       .where('type', '==', ExamTypes.SIMULACRO))

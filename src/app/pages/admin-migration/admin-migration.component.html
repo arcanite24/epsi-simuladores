@@ -40,6 +40,7 @@
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateExam()" *ngIf="data">Migrate Exam</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateSlide()" *ngIf="data">Migrate Slide</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateBatch()" *ngIf="limit && offset">Migrate Slide Batch</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateExamDate()" *ngIf="data">Migrate Exams Date</button>
         </div>
   
         <div class="col-md-12 flex-loader" *ngIf="l">

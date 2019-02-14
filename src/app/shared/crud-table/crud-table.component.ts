@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import clone from 'lodash/clone'
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'adonalsium-crud-table',
@@ -72,25 +73,51 @@ export class CrudTableComponent implements OnInit {
 
   }
 
-  saveChanges(row: any) {
+  async saveChanges(row: any) {
     const pk = this.config.pk ? this.config.pk : 'id'
     console.log(this.cacheEdit);
     
     this.afs.collection(this.config.collection).doc(row[pk]).set(this.cacheEdit, {merge: true}).then(() => this.cacheEdit = {})
     row.edit = false
+    
+    // Callbacks
+    if (this.config.postEdit) this.config.postEdit(this.cacheEdit)
+
   }
 
-  deleteRow(pk: string) {
-    this.afs.collection(this.config.collection).doc(pk).delete()
+  async deleteRow(pk: string) {
+
+    if (this.config.preDelete) this.config.preDelete(pk)
+
+    await this.afs.collection(this.config.collection).doc(pk).delete()
+
+    if (this.config.postDelete) {
+      const row = await this.afs.doc(`${this.config.collection}/${pk}`)
+        .valueChanges()
+        .pipe(
+          take(1)
+        ).toPromise()
+      this.config.postDelete(row)
+    }
+
   }
 
-  addRow() {
+  async addRow() {
+
+    // Build initial object
     const pk = this.afs.createId()
     const pkKey = this.config.pk ? this.config.pk : 'id'
     let dummyItem = {[pkKey]: pk, ...this.config.documentDefaults}
+
     // TODO: Add support for Promises/Observables in Lifecycle functions
     if (this.config.preCreate) dummyItem = this.config.preCreate(dummyItem)
-    this.afs.collection(this.config.collection).doc(pk).set(dummyItem)
+
+    // Register to Firestore
+    await this.afs.collection(this.config.collection).doc(pk).set(dummyItem)
+    
+    // Callbacks
+    if (this.config.postCreate) this.config.postCreate(dummyItem)
+
   }
 
   onFinishUpload(url, row, field) {

@@ -58,8 +58,16 @@ export class CrudTableFullEditComponent implements OnInit {
     })
 
     this.afs.collection(this.config.modelConfig.collection).doc(this.row[pk]).set(this.cacheEdit, {merge: true}).then(() => {
+
+      // Callback
+      if (this.config.modelConfig.postEdit) this.config.modelConfig.postEdit(this.cacheEdit)
+
+      // Clean cache
       this.cacheEdit = {}
+
+      // Close modal
       this.modal.getModal('fullEditModal').close()
+
     })
   }
 

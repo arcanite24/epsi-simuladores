@@ -17,7 +17,7 @@ export class MediaPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.medias$ = this.afs.collection<Media>(Collections.MEDIA).valueChanges()
+    this.medias$ = this.afs.collection<Media>(Collections.MEDIA, ref => ref.limit(5)).valueChanges()
   }
 
 }

@@ -160,6 +160,8 @@ import { ContentItemComponent } from './shared/content-item/content-item.compone
 import { QuestionAddComponent } from './shared/question-add/question-add.component';
 import { ExamQuestionsByGroupWidgetComponent } from './shared/exam-questions-by-group-widget/exam-questions-by-group-widget.component';
 import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
+import { MediaListPageComponent } from './pages/media-list-page/media-list-page.component';
+import { MediaListItemComponent } from './shared/media-list-item/media-list-item.component';
 
 @NgModule({
   declarations: [
@@ -291,6 +293,8 @@ import { AdminMigrationComponent } from './pages/admin-migration/admin-migration
     QuestionAddComponent,
     ExamQuestionsByGroupWidgetComponent,
     AdminMigrationComponent,
+    MediaListPageComponent,
+    MediaListItemComponent,
   ],
   imports: [
     BrowserAnimationsModule,

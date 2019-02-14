@@ -41,6 +41,7 @@ import { AdminIpnComponent } from './pages/admin-ipn/admin-ipn.component';
 import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.component';
 import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
 import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
+import { MediaListPageComponent } from './pages/media-list-page/media-list-page.component';
 
 const routes: Routes = [
 
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path: 'thread/category/:id', component: ThreadCategoryDetailPageComponent},
   {path: 'thread/:id', component: ThreadDetailPageComponent},
   {path: 'livestream/:id', component: LivestreamDetailPageComponent},
+  {path: 'media/list', component: MediaListPageComponent},
   {path: 'media/:id', component: MediaDetailPageComponent},
   {path: 'slide/list', component: SlidesListPageComponent},
   {path: 'slide/:id', component: SlideDetailPageComponent},

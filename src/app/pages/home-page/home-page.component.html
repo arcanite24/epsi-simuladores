@@ -1,3 +1,17 @@
+<div class="global-loader" *ngIf="!auth.loggedIn" [@animateItem]="!auth.loggedIn">
+  <img src="assets/zamnademy/logo.png" class="mb-4">
+  <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
+    <circle cx="50%" cy="50%" r="3.8414" fill="none" stroke="#fff" stroke-width="2">
+      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+    </circle>
+    <circle cx="50%" cy="50%" r="14.669" fill="none" stroke="#fff" stroke-width="2">
+      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+    </circle>
+  </svg>
+</div>
+
 <div class="container" style="margin-top: -1.25rem">
 
   <div class="row">

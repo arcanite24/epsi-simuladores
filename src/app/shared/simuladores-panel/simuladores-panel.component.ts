@@ -3,6 +3,8 @@ import { Observable } from 'rxjs';
 import { List, Collections, HomeLists } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { sortBy } from 'lodash'
+import moment from 'moment'
 
 @Component({
   selector: 'epsi-simuladores-panel',
@@ -22,7 +24,8 @@ export class SimuladoresPanelComponent implements OnInit {
     this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)
       .valueChanges()
       .pipe(
-        map(list => list.list)
+        map(list => sortBy(list.list, item => moment(item.date.substr(0, 10)).format('YYYYMMDD'))),
+        map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()),
       )
   }
 

@@ -1,7 +1,12 @@
 <div class="epsi-post-comment">
 
-  <div class="comment-body flex flex-row flex-start" *ngIf="auth.user">
+  <!-- <div class="comment-body flex flex-row flex-start" *ngIf="auth.user">
     <img [src]="auth.user.photoURL" style="width: 32px">
+    <p>{{comment.text}}</p>
+  </div> -->
+
+  <div class="comment-body flex flex-row flex-start">
+    <img [src]="comment.user && comment.user.photoURL ? comment.user.photoURL : 'https://via.placeholder.com/128'" style="width: 32px">
     <p>{{comment.text}}</p>
   </div>
 

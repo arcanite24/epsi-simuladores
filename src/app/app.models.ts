@@ -35,6 +35,7 @@ export enum Collections {
   THREAD_RESPONSE = 'thread-response',
   LIVESTREAM = 'livestream',
   MEDIA = 'media',
+  MEDIA_CATEGORY = 'media-cat',
   QUESTION = 'question',
   ANSWER = 'answer',
   EXAM_RESULT = 'exam-result',
@@ -193,6 +194,7 @@ export interface Exam {
   isPool?: boolean
   isTags?: boolean
   isPrueba?: boolean
+  date?: string
 }
 
 export enum ExamTypes {

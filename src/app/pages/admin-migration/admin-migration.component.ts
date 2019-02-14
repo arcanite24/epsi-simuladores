@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Collections, Content, GalleryCategory, MediaCategory, Slide, SlideCategory } from 'src/app/app.models';
+import { Collections, SlideCategory, Exam } from 'src/app/app.models';
 import { map, take, finalize } from 'rxjs/operators';
 import async from 'async'
 import { AngularFireStorage } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'epsi-admin-migration',
@@ -390,6 +389,33 @@ export class AdminMigrationComponent implements OnInit {
       console.log(error)
       this.l = false
     }
+
+  }
+
+  async migrateExamDate() {
+
+    this.l = true
+
+    async.each(this.data, async (item, next) => {
+
+      const exam = await this.afs.collection<Exam>(Collections.EXAM, ref => ref
+        .where('name', '==', item.name))
+        .valueChanges()
+        .pipe(
+          take(1),
+          map(exams => exams[0])
+        ).toPromise()
+
+      console.log('updating exam', exam.name, item)
+
+      await this.afs.doc(`${Collections.EXAM}/${exam.id}`).update({date: item.date})
+
+      next()
+
+    }, () => {
+      this.l = false
+      console.log(`updated ${this.data.length} exams date`)
+    })
 
   }
 

@@ -1,0 +1,25 @@
+<div class="epsi-slides-list-page container mt-retro">
+
+  <epsi-panel title="Material Extra">
+    <ul *ngIf="slides$ | async as medias else loader">
+      <li *ngFor="let slide of medias" class="mb-2">
+        <div class="slide-header flex flex-row flex-start align-center">
+          <button type="button" (click)="slide.show = !slide.show" class="btn" [ngClass]="{'btn-success': !slide.show, 'btn-danger': slide.show}">
+            <i class="fa fa-plus" *ngIf="!slide.show"></i>
+            <i class="fa fa-minus" *ngIf="slide.show"></i>
+          </button>
+          <span class="ml-2">
+            <strong>{{slide.name}}</strong>
+          </span>
+          <br>
+        </div>
+        <epsi-media-list-item class="mt-2" [category]="slide" *ngIf="slide.show"></epsi-media-list-item>
+      </li>
+    </ul>
+  </epsi-panel>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

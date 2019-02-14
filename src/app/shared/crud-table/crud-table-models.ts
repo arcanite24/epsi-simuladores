@@ -11,6 +11,10 @@ export interface CrudTableConfig {
   disableEdit?: boolean,
   fullEdit?: boolean,
   preCreate?: (row: any) => any
+  postCreate?: <I>(row: I) => void
+  postEdit?: <I>(row: I) => void
+  preDelete?: (id: string) => void
+  postDelete?: <I>(row: I) => void
 }
 
 export interface CrudTableHeader {

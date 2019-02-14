@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ExamResults, Collections, StatView, User, Tag, StatCounter } from '../app.models';
+import { ExamResults, Collections, StatView, User, Tag, StatCounter, List } from '../app.models';
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
@@ -140,6 +140,55 @@ export class StatsService {
       map(tags => tags.map(t => t.value) as string[]),
       take(1)
     ).toPromise()
+  }
+
+  // Optimization Helpers
+  async addToList<I>(list_id: string, item: I) {
+    
+    const key = `${Collections.LIST}/${list_id}`
+    const list = await this.afs.doc<List>(key)
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise()
+
+    list.list.push(item)
+
+    await this.afs.doc(key).update(list)
+
+  }
+
+  async updateListEntry(list_id: string, item: any) {
+
+    const key = `${Collections.LIST}/${list_id}`
+    const list = await this.afs.doc<List>(key)
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise()
+
+    list.list = list.list.map(i => {
+      if (item.id == i.id) return item
+      return i
+    })
+
+    await this.afs.doc(key).update(list)
+
+  }
+
+  async removeFromList(list_id: string, item: any) {
+
+    const key = `${Collections.LIST}/${list_id}`
+    const list = await this.afs.doc<List>(key)
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise()
+
+    list.list = list.list.filter(i => i.id != item.id)
+
+    await this.afs.doc(key).update(list)
+
   }
 
 }

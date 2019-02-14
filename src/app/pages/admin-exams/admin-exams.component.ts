@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
-import { Collections, ExamTypes, Exam } from 'src/app/app.models';
+import { Collections, ExamTypes, Exam, HomeLists } from 'src/app/app.models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'epsi-admin-exams',
@@ -27,13 +28,27 @@ export class AdminExamsComponent implements OnInit {
     },
     customActions: [
       {iconClasses: 'fa fa-edit', handler: row => this.openEdit(row)}
-    ]
+    ],
+    postCreate: <Exam>(exam) => {
+      // Register entity to HomeList
+      if (exam.type == ExamTypes.SIMULADOR) this.stats.addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
+      if (exam.type == ExamTypes.SIMULACRO) this.stats.addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+    },
+    postEdit: (exam: any) => {
+      if (exam.type == ExamTypes.SIMULADOR) this.stats.updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
+      if (exam.type == ExamTypes.SIMULACRO) this.stats.updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+    },
+    postDelete: (exam: any) => {
+      if (exam.type == ExamTypes.SIMULADOR) this.stats.removeFromList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
+      if (exam.type == ExamTypes.SIMULACRO) this.stats.removeFromList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+    },
   }
 
   public tempExam: Exam
 
   constructor(
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private stats: StatsService
   ) { }
 
   ngOnInit() {
