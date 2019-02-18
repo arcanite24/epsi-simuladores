@@ -42,6 +42,8 @@ import { AdminProgramaComponent } from './pages/admin-programa/admin-programa.co
 import { AdminStatCountersComponent } from './pages/admin-stat-counters/admin-stat-counters.component';
 import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
 import { MediaListPageComponent } from './pages/media-list-page/media-list-page.component';
+import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 
 const routes: Routes = [
 
@@ -50,53 +52,53 @@ const routes: Routes = [
 
   // Core
   {path: '', component: LoginPageComponent},
-  {path: 'home', component: HomePageComponent},
-  {path: 'profile', component: ProfilePageComponent},
-  {path: 'gallery/:id', component: GalleryDetailPageComponent},
-  {path: 'thread/category/:id', component: ThreadCategoryDetailPageComponent},
-  {path: 'thread/:id', component: ThreadDetailPageComponent},
-  {path: 'livestream/:id', component: LivestreamDetailPageComponent},
-  {path: 'media/list', component: MediaListPageComponent},
-  {path: 'media/:id', component: MediaDetailPageComponent},
-  {path: 'slide/list', component: SlidesListPageComponent},
-  {path: 'slide/:id', component: SlideDetailPageComponent},
+  {path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+  {path: 'gallery/:id', component: GalleryDetailPageComponent, canActivate: [AuthGuard]},
+  {path: 'thread/category/:id', component: ThreadCategoryDetailPageComponent, canActivate: [AuthGuard]},
+  {path: 'thread/:id', component: ThreadDetailPageComponent, canActivate: [AuthGuard]},
+  {path: 'livestream/:id', component: LivestreamDetailPageComponent, canActivate: [AuthGuard]},
+  {path: 'media/list', component: MediaListPageComponent, canActivate: [AuthGuard]},
+  {path: 'media/:id', component: MediaDetailPageComponent, canActivate: [AuthGuard]},
+  {path: 'slide/list', component: SlidesListPageComponent, canActivate: [AuthGuard]},
+  {path: 'slide/:id', component: SlideDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'exam/:type/:id', component: ExamDetailPageComponent},
   {path: 'result/:id', component: ExamResultsPageComponent},
 
   // Content
-  {path: 'content/:id', component: ContentPageComponent},
-  {path: 'content/:type/:id', component: ContentDetailPageComponent},
+  {path: 'content/:id', component: ContentPageComponent, canActivate: [AuthGuard]},
+  {path: 'content/:type/:id', component: ContentDetailPageComponent, canActivate: [AuthGuard]},
 
   // Payment
   {path: 'pagar/:slug', component: PaymentPageComponent},
   {path: 'pago/status/:id', component: PaymentRequestDetailPageComponent},
 
   // Admin
-  {path: 'admin', component: AdminPageComponent},
-  {path: 'admin/users', component: AdminUsersPageComponent},
-  {path: 'admin/content', component: AdminContentPageComponent},
-  {path: 'admin/galleries', component: AdminGalleriesComponent},
-  {path: 'admin/media', component: AdminMediaComponent},
-  {path: 'admin/questions', component: AdminQuestionsComponent},
-  {path: 'admin/exams', component: AdminExamsComponent},
-  {path: 'admin/asesorias', component: AdminAsesoriasComponent},
-  {path: 'admin/slides', component: AdminSlidesComponent},
-  {path: 'admin/checklist', component: AdminTodoComponent},
-  {path: 'admin/notes', component: AdminNotesComponent},
-  {path: 'admin/comments', component: AdminCommentsComponent},
-  {path: 'admin/suggestions', component: AdminSuggestionsComponent},
-  {path: 'admin/events', component: AdminEventsComponent},
-  {path: 'admin/forum', component: AdminForumComponent},
-  {path: 'admin/livestreams', component: AdminLivestreamsComponent},
-  {path: 'admin/tags', component: AdminTagsComponent},
-  {path: 'admin/stats', component: AdminStatsComponent},
-  {path: 'admin/payment-models', component: AdminPaymentModelsComponent},
-  {path: 'admin/notifications', component: AdminNotificationsComponent},
-  {path: 'admin/coupons', component: AdminCouponsComponent},
-  {path: 'admin/ipn', component: AdminIpnComponent},
-  {path: 'admin/programa', component: AdminProgramaComponent},
-  {path: 'admin/stats/counters', component: AdminStatCountersComponent},
-  {path: 'admin/migration', component: AdminMigrationComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin', component: AdminPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/content', component: AdminContentPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/galleries', component: AdminGalleriesComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/media', component: AdminMediaComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/questions', component: AdminQuestionsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/exams', component: AdminExamsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/asesorias', component: AdminAsesoriasComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/slides', component: AdminSlidesComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/checklist', component: AdminTodoComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/notes', component: AdminNotesComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/comments', component: AdminCommentsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/suggestions', component: AdminSuggestionsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/events', component: AdminEventsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/forum', component: AdminForumComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/livestreams', component: AdminLivestreamsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags', component: AdminTagsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats', component: AdminStatsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/payment-models', component: AdminPaymentModelsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/notifications', component: AdminNotificationsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/coupons', component: AdminCouponsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/ipn', component: AdminIpnComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/programa', component: AdminProgramaComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats/counters', component: AdminStatCountersComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration', component: AdminMigrationComponent},
 
 ];
 

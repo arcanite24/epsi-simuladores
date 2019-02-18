@@ -76,7 +76,7 @@ export class AdminMigrationComponent implements OnInit {
 
         // Build object with new keys
         for (const field of fields) {
-          _item[field.new_key] = item[field.old_key]
+          _item[field.new_key] = item[field.old_key] ? item[field.old_key] : null
         }
 
         // Append data

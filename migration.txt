@@ -374,3 +374,19 @@ todo
 }
 
 text#text
+
+---------------------------------------
+
+# Users
+user/userList
+user-old
+
+avatar#avatar
+createdAt#createdAt
+email#email
+name#name
+lastName#lastName
+roles#roles
+cellphone#cellphone
+new_email#new_email
+provider#provider

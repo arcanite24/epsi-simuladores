@@ -116,7 +116,10 @@ export class LoginPageComponent implements OnInit {
   }
 
   checkForAuth() {
-    if (this.auth.loggedIn) return this.router.navigate(['/home'])
+    //if (this.auth.loggedIn) return this.router.navigate(['/home'])
+    this.auth.user$.subscribe(user => {
+      if (user) this.router.navigate(['/home'])
+    })
   }
 
   async loginGoogle() {
