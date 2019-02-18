@@ -12,7 +12,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class ChecklistPanelComponent implements OnInit {
 
-  public checklist$: Observable<Todo[]> = this.afs.collection<Todo>(Collections.TODO).valueChanges()
+  public checklist$: Observable<Todo[]> = this.afs.collection<Todo>(Collections.TODO, ref => ref.orderBy('sortIndex')).valueChanges()
   public completedTasks: string[] = []
 
   constructor(

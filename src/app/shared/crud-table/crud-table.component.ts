@@ -85,6 +85,19 @@ export class CrudTableComponent implements OnInit {
 
   }
 
+  openDeleteModal(pk: string) {
+    this.modal.setModalData({pk}, 'deleteModal', true)
+    this.modal.getModal('deleteModal').open()
+  }
+
+  closeDeleteModal() {
+    const pk = this.modal.getModalData('deleteModal').pk
+    console.log(this.modal.getModalData('deleteModal'));
+    
+    this.deleteRow(pk)
+    this.modal.getModal('deleteModal').close()
+  }
+
   async deleteRow(pk: string) {
 
     if (this.config.preDelete) this.config.preDelete(pk)

@@ -234,6 +234,7 @@ export interface Todo {
   id: string
   text: string,
   completed: number
+  sortIndex: number
 }
 
 export interface Note {
@@ -285,8 +286,7 @@ export interface Event {
   end?: string
   fullDay?: boolean
   tasks: EventTask[]
-  // TODO: Add Event tasks
-  // TODO: Add Event links
+  links: EventLink[]
 }
 
 export interface EventTask {
@@ -294,6 +294,12 @@ export interface EventTask {
   label: string
   users: string[]
   completed: number
+}
+
+export interface EventLink {
+  id: string
+  label: string
+  url: string
 }
 
 export interface ThreadCategory {

@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { Collections, EventTask } from 'src/app/app.models';
+import { Collections, EventTask, EventLink } from 'src/app/app.models';
 import uuid from 'uuid'
 
 @Component({
@@ -74,6 +74,17 @@ export class EventEditComponent implements OnInit {
 
   removeTask(tasks: EventTask[], task: EventTask) {
     this.editForm.patchValue({ tasks: tasks.filter(e => e.id != task.id) })
+  }
+
+  addLink(links: EventLink[] = []) {
+    if (!links) links = []
+    const id = uuid.v4()
+    links.push({id, label: 'Nueva Link', url: '/home'})
+    this.editForm.patchValue({links})
+  }
+
+  removeLink(links: EventLink[], link: EventLink) {
+    this.editForm.patchValue({ links: links.filter(e => e.id != link.id) })
   }
 
 }

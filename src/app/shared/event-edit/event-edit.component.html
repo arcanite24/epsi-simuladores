@@ -2,34 +2,36 @@
 
   <h1>Editar Evento</h1>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Titulo</label>
-    <input type="text" formControlName="title">
+    <input type="text" class="form-control" formControlName="title">
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Descripción</label>
-    <textarea formControlName="desc"></textarea>
+    <textarea class="form-control" formControlName="desc"></textarea>
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Fecha</label>
-    <input type="date" formControlName="date">
+    <input type="date" class="form-control" formControlName="date">
   </div>
 
   <hr>
 
   <div class="event-edit-tasks">
 
-    <div class="event-tasks-header flex flex-row flex-start">
-      <span>Tareas</span>
-      <button (click)="addTask(editForm.value.tasks)" type="button">Agregar</button>
+    <div class="event-tasks-header flex flex-row flex-start align-center">
+      <strong>Tareas</strong>
+      <button class="btn btn-secondary ml-2" (click)="addTask(editForm.value.tasks)" type="button">
+        <i class="fa fa-plus"></i>
+      </button>
     </div>
 
-    <ul *ngIf="editForm.value.tasks as tasks">
-      <li *ngFor="let task of tasks">
-        <input type="text" [(ngModel)]="task.label" [ngModelOptions]="{standalone: true}">
-        <button type="button" (click)="removeTask(tasks, task)">
+    <ul *ngIf="editForm.value.tasks as tasks" class="mt-2">
+      <li *ngFor="let task of tasks" class="mt-1 flex flex-row flex-start align-center">
+        <input type="text" [(ngModel)]="task.label" [ngModelOptions]="{standalone: true}" class="form-control">
+        <button type="button" (click)="removeTask(tasks, task)" class="btn btn-danger ml-1">
           <i class="fa fa-remove"></i>
         </button>
       </li>
@@ -37,7 +39,32 @@
 
   </div>
 
-  <button type="submit" [disabled]="!editForm.valid">Editar Galería</button>
+  <hr>
+
+  <div class="event-edit-links">
+
+    <div class="event-tasks-header flex flex-row flex-start align-center">
+      <strong>Links</strong>
+      <button class="btn btn-secondary ml-2" (click)="addLink(editForm.value.links)" type="button">
+        <i class="fa fa-plus"></i>
+      </button>
+    </div>
+
+    <ul *ngIf="editForm.value.links as links" class="mt-2 p-0 pl-1">
+      <li *ngFor="let link of links" class="mt-1 flex flex-row flex-start align-center">
+        <input type="text" [(ngModel)]="link.label" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Etiqueta">
+        <input type="text" [(ngModel)]="link.url" [ngModelOptions]="{standalone: true}" class="form-control" placeholder="Fragmento de URL">
+        <button type="button" (click)="removeLink(links, link)" class="btn btn-danger ml-1">
+          <i class="fa fa-remove"></i>
+        </button>
+      </li>
+    </ul>
+
+  </div>
+
+  <hr>
+
+  <button type="submit" class="btn btn-success" [disabled]="!editForm.valid">Editar Galería</button>
 
   <pre>{{editForm.value | json}}</pre>
 

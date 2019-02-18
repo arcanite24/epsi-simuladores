@@ -2,6 +2,23 @@
   <app-crud-table-full-edit *ngIf="cacheEdit" [edit]="true" [row]="cacheEdit" [newRow]="cacheEdit" [config]="fullEditConfig"></app-crud-table-full-edit>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="deleteModal" #deleteModal>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4 class="epsi-c-primary">¿Estás seguro de elimianr éste elemento?</h4>
+      </div>
+
+      <div class="col-md-12">
+        <button type="button" class="btn btn-danger mr-2" (click)="closeDeleteModal()">Eliminar</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteModal.close()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <!-- CRUD actions container -->
 <div class="crud-actions-container">
 
@@ -64,7 +81,8 @@
         <button class="crud-table-button crud-table-button-clear crud-table-button-icon" *ngIf="row.edit" (click)="saveChanges(row)">
           <i class="fa fa-check-circle c-success"></i>
         </button>
-        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="deleteRow(row[config.pk ? config.pk : 'id'])" >
+        <!-- <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="deleteRow(row[config.pk ? config.pk : 'id'])" > -->
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="openDeleteModal(row[config.pk ? config.pk : 'id'])" >
           <i class="fa fa-trash"></i>
         </button>
 

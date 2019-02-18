@@ -18,6 +18,14 @@
         <span>{{task.label}}</span>
       </li>
     </ul>
+
+    <hr>
+    <h4>Links</h4>
+    <ul *ngIf="event.links as links">
+      <li *ngFor="let link of links">
+        <a [routerLink]="[ link.url ]">{{link.label}}</a>
+      </li>
+    </ul>
     
   </div>
 

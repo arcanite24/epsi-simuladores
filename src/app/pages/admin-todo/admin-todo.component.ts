@@ -14,11 +14,13 @@ export class AdminTodoComponent implements OnInit {
     fullEdit: true,
     headers: [
       {field: 'text', type: 'textarea', label: 'Tarea'},
-      {field: 'completed', type: 'number', label: 'Veces Completada', noEdit: true}
+      {field: 'completed', type: 'number', label: 'Veces Completada', noEdit: true},
+      {field: 'sortIndex', type: 'number', label: 'Ordenador'},
     ],
     documentDefaults: {
       text: 'Nueva Tarea',
       completed: 0,
+      sortIndex: 9999
     }
   }
 
