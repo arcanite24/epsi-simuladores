@@ -5,6 +5,7 @@ import { Slide, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap } from 'rxjs/operators';
 import { NgxGalleryOptions, NgxGalleryAnimation } from 'ngx-gallery';
+import { sortBy } from 'lodash'
 
 @Component({
   selector: 'epsi-slide-detail-page',
@@ -32,7 +33,10 @@ export class SlideDetailPageComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(slide => {
-          this.images = slide.images.map(f => ({small: f, medium: f, big: f}))
+          this.images = sortBy(slide.images.map(f => ({small: f, medium: f, big: f})), 'small')
+          //this.images = slide.images.map(url => unescape(url.substring(113).split('?')[0])).sort().map(f => ({small: f, medium: f, big: f}))
+          //console.log(slide.images.map(url => unescape(url.substring(113).split('?')[0])).sort())
+          console.log(this.images.map(img => unescape(img.small.substring(113).split('?')[0])))
         })
       )
   }

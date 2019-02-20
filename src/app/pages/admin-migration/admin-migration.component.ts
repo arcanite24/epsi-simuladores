@@ -249,6 +249,9 @@ export class AdminMigrationComponent implements OnInit {
 
         let _item = {}
 
+        // Keep original id
+        _item['id'] = item.id
+
         // Build object with new keys
         for (const field of fields) {
           _item[field.new_key] = item[field.old_key] ? item[field.old_key] : null
@@ -261,7 +264,7 @@ export class AdminMigrationComponent implements OnInit {
 
         // Register Questions
         for (const q of item.preguntas) {
-          const questionId = this.afs.createId()
+          const questionId = q.id
           const questionRef = this.afs.doc(`${Collections.QUESTION}/${questionId}`).ref
           const questionItem = {
             id: questionId,
@@ -287,9 +290,9 @@ export class AdminMigrationComponent implements OnInit {
 
         // Register data to Firestore
         for (const item of data) {
-          const id = this.afs.createId()
-          const ref = this.afs.doc(`${this.collection}/${id}`).ref
-          batch.set(ref, {...item, id})
+          //const id = this.afs.createId()
+          const ref = this.afs.doc(`${this.collection}/${item.id}`).ref
+          batch.set(ref, item)
         }
 
         await batch.commit()
