@@ -1,4 +1,4 @@
-<epsi-panel title="Asesorías en Vivo" img="assets/zamnademy/ase.svg">
+<epsi-panel title="Asesorías en Vivo" img="assets/zamnademy/ase.svg" [showContent]="false">
 
   <ul *ngIf="lives$ | async as lives else loader" class="m-3 list-group">
     <li *ngFor="let live of lives" class="list-group-item">

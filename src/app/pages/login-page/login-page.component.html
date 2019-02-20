@@ -2,7 +2,7 @@
   <epsi-terminos-modal></epsi-terminos-modal>
 </ngx-smart-modal>
 
-<div class="global-loader" *ngIf="!auth.loggedIn">
+<div class="global-loader" *ngIf="!auth.loggedIn && !hideLoader">
   <img src="assets/zamnademy/logo.png" class="mb-4">
   <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
     <circle cx="50%" cy="50%" r="3.8414" fill="none" stroke="#fff" stroke-width="2">

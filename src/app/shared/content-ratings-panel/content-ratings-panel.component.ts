@@ -35,14 +35,17 @@ export class ContentRatingsPanelComponent implements OnInit {
 
     this.auth.user$.subscribe(user => {
 
-      if (!user) return
+      if (!user && !this.rating$) return
+      //console.log(this.parent_type, this.parent_id, this.content_type, this.content)
 
       // Generates the key for the userRating
       this.ratingKey = `${this.parent_id}-${user.uid}`
       this.rating$ = this.afs.doc<Rating>(`${Collections.RATING}/${this.ratingKey}`).valueChanges()
 
       // This loads the current user rating for the specific content
-      this.rating$.subscribe(ratings => this.ratingsModel = ratings)
+      this.rating$.subscribe(ratings => {
+        this.ratingsModel = ratings ? ratings : {id: this.ratingKey}
+      })
 
     })
 

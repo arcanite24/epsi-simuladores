@@ -4,7 +4,7 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <div class="ratings-panel p-3" *ngIf="rating$ | async as userRating else loader">
+  <div class="ratings-panel p-3" *ngIf="ratingsModel else loader">
 
     <div class="content-rating" *ngFor="let rating of contentRatings">
       <h4>{{rating.label}} <span *ngIf="content && content.ratings && content.ratings[rating.key]">{{content.ratings[rating.key].toFixed(2)}}/{{rating.max}}</span></h4>

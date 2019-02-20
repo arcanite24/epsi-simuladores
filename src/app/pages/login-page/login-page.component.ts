@@ -19,6 +19,8 @@ export class LoginPageComponent implements OnInit {
   public loginForm: FormGroup
   public registerForm: FormGroup
 
+  public hideLoader: boolean = false
+
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
@@ -118,6 +120,7 @@ export class LoginPageComponent implements OnInit {
   checkForAuth() {
     //if (this.auth.loggedIn) return this.router.navigate(['/home'])
     this.auth.user$.subscribe(user => {
+      this.hideLoader = true
       if (user) this.router.navigate(['/home'])
     })
   }
