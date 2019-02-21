@@ -5,6 +5,7 @@ import { Collections, SlideCategory, Exam } from 'src/app/app.models';
 import { map, take, finalize } from 'rxjs/operators';
 import async from 'async'
 import { AngularFireStorage } from '@angular/fire/storage';
+import _ from 'lodash'
 
 @Component({
   selector: 'epsi-admin-migration',
@@ -248,6 +249,7 @@ export class AdminMigrationComponent implements OnInit {
       async.each(this.data, async (item, next) => {
 
         let _item = {}
+        let _tags = []
 
         // Keep original id
         _item['id'] = item.id
@@ -264,6 +266,7 @@ export class AdminMigrationComponent implements OnInit {
 
         // Register Questions
         for (const q of item.preguntas) {
+
           const questionId = q.id
           const questionRef = this.afs.doc(`${Collections.QUESTION}/${questionId}`).ref
           const questionItem = {
@@ -275,11 +278,15 @@ export class AdminMigrationComponent implements OnInit {
             tags: q.tags ? q.tags : null,
             respuestas: q.respuestas.map(r => ({id: r.id, text: r.text, parent: questionId}))
           }
+
+          _tags = [ ..._tags, ...(q.tags ? q.tags : []) ]
           batch.set(questionRef, questionItem)
           questions.push(questionItem)
+
         }
 
         _item['questions'] = questions
+        _item['tags'] = _.uniq(_tags)
 
         data.push(_item)
         next()
@@ -290,7 +297,6 @@ export class AdminMigrationComponent implements OnInit {
 
         // Register data to Firestore
         for (const item of data) {
-          //const id = this.afs.createId()
           const ref = this.afs.doc(`${this.collection}/${item.id}`).ref
           batch.set(ref, item)
         }

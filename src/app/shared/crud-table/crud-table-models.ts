@@ -1,7 +1,8 @@
 import { Observable } from 'rxjs';
-export interface CrudTableConfig {
+export interface CrudTableConfig<T = any> {
   pk?: string
   collection: string
+  dataSource?: Observable<T[]>
   showControls?: boolean
   controlsText?: string
   headers: CrudTableHeader[]
@@ -14,7 +15,7 @@ export interface CrudTableConfig {
   postCreate?: <I>(row: I) => void
   postEdit?: <I>(row: I) => void
   preDelete?: (id: string) => void
-  postDelete?: <I>(row: I) => void
+  postDelete?: (id: string) => void
 }
 
 export interface CrudTableHeader {

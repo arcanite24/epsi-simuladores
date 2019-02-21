@@ -78,6 +78,27 @@ export enum Roles {
   Feed = 'isFeed',
 }
 
+export const EsencialModel: string[] = [
+  Roles.Esencial,
+  Roles.Checklist,
+  Roles.Calendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Simuladores,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Simulacros,
+  Roles.Feed
+]
+
+export const PremiumModel: string[] = [
+  ...EsencialModel,
+  Roles.Premium,
+  Roles.Content
+]
+
 export class User {
   displayName: string | null;
   email: string | null;
@@ -85,7 +106,6 @@ export class User {
   photoURL: string | null;
   providerId: string;
   uid: string;
-  isAdmin: boolean;
   completedTasks?: string[]
 
   // Zamnademy Fields
@@ -100,6 +120,11 @@ export class User {
   average_list?: {tag: string, promedio: number}[]
   structure?: {}
   promedio?: number
+
+  // Roles
+  isAdmin: boolean
+  isPremium: boolean
+  isEsencial: boolean
 
 }
 

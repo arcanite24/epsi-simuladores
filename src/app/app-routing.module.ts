@@ -44,6 +44,7 @@ import { AdminMigrationComponent } from './pages/admin-migration/admin-migration
 import { MediaListPageComponent } from './pages/media-list-page/media-list-page.component';
 import { AuthGuard } from './auth.guard';
 import { AdminGuard } from './admin.guard';
+import { NotesPageComponent } from './pages/notes-page/notes-page.component';
 
 const routes: Routes = [
 
@@ -54,6 +55,7 @@ const routes: Routes = [
   {path: '', component: LoginPageComponent},
   {path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
+  {path: 'notes', component: NotesPageComponent, canActivate: [AuthGuard]},
   {path: 'gallery/:id', component: GalleryDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'thread/category/:id', component: ThreadCategoryDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'thread/:id', component: ThreadDetailPageComponent, canActivate: [AuthGuard]},

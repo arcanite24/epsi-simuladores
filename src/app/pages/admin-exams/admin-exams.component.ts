@@ -38,9 +38,9 @@ export class AdminExamsComponent implements OnInit {
       if (exam.type == ExamTypes.SIMULADOR) this.stats.updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
       if (exam.type == ExamTypes.SIMULACRO) this.stats.updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
     },
-    postDelete: (exam: any) => {
-      if (exam.type == ExamTypes.SIMULADOR) this.stats.removeFromList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
-      if (exam.type == ExamTypes.SIMULACRO) this.stats.removeFromList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+    postDelete: (id: string) => {
+      this.stats.removeFromList(HomeLists.SimuladoresList, {id})
+      this.stats.removeFromList(HomeLists.SimulacrosList, {id})
     },
   }
 

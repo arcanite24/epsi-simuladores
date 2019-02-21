@@ -162,6 +162,8 @@ import { ExamQuestionsByGroupWidgetComponent } from './shared/exam-questions-by-
 import { AdminMigrationComponent } from './pages/admin-migration/admin-migration.component';
 import { MediaListPageComponent } from './pages/media-list-page/media-list-page.component';
 import { MediaListItemComponent } from './shared/media-list-item/media-list-item.component';
+import { UserRolesComponent } from './shared/user-roles/user-roles.component';
+import { NotesPageComponent } from './pages/notes-page/notes-page.component';
 
 @NgModule({
   declarations: [
@@ -295,6 +297,8 @@ import { MediaListItemComponent } from './shared/media-list-item/media-list-item
     AdminMigrationComponent,
     MediaListPageComponent,
     MediaListItemComponent,
+    UserRolesComponent,
+    NotesPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

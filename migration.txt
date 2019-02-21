@@ -296,7 +296,7 @@ liberado#liberado
 ---------------------------------------
 
 # Simulador
-https://api.zamnademy.com/api/v1/simulador/list?limit=5&skip=0
+simulador/list?limit=5&skip=0
 exam
 
 {
@@ -309,6 +309,7 @@ duration#duration
 colors#colors
 liberado#liberado
 isPrueba#isPrueba
+date#date
 
 ---------------------------------------
 

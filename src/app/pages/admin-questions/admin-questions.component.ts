@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
-import { Question } from 'src/app/app.models';
+import { Question, Collections } from 'src/app/app.models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'epsi-admin-questions',
@@ -12,8 +13,9 @@ export class AdminQuestionsComponent implements OnInit {
 
   public tempQuestion: Question
 
-  public config: CrudTableConfig = {
+  public config: CrudTableConfig<Question> = {
     collection: 'question',
+    dataSource: this.afs.collection<Question>(Collections.QUESTION, ref => ref.limit(3)).valueChanges(),
     disableEdit: true,
     headers: [
       {field: 'text', type: 'textarea', label: 'Texto', customRender: row => row.text.substr(0, 100)},
@@ -31,7 +33,8 @@ export class AdminQuestionsComponent implements OnInit {
   }
 
   constructor(
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {

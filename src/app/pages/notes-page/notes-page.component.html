@@ -1,0 +1,31 @@
+<ngx-smart-modal identifier="noteDetailModal">
+  <div class="container" *ngIf="tempNote as note">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4 class="m-0">{{note.title}}</h4>
+        <p class="m-0">{{note.text}}</p>
+        <hr>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<div class="container mt-retro">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <div class="row" *ngIf="notes$ | async as notes else loader">
+    <div class="col-xs-12 col-md-4" *ngFor="let type of notes">
+      <epsi-panel [title]="type[0].content_type" height="300px">
+        <ul class="list-group m-4">
+          <li *ngFor="let note of type" class="list-group-item manita-list-item" (click)="openNote(note)">{{note.title}}</li>
+        </ul>
+      </epsi-panel>
+    </div>
+  </div>
+
+</div>

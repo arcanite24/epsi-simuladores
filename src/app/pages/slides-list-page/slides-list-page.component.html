@@ -1,14 +1,14 @@
 <div class="epsi-slides-list-page container mt-retro">
 
   <epsi-panel title="Presentaciones" [showContent]="true">
-    <ul *ngIf="slides$ | async as slides else loader">
-      <li *ngFor="let slide of slides">
-        <div class="slide-header flex flex-row flex-start">
-          <button type="button" (click)="slide.show = !slide.show">
+    <ul *ngIf="slides$ | async as slides else loader" class="list-group m-4">
+      <li *ngFor="let slide of slides" class="list-group-item">
+        <div class="slide-header flex flex-row flex-start align-center manita-list-item">
+          <button type="button" (click)="slide.show = !slide.show" class="btn btn-primary">
             <i class="fa fa-plus" *ngIf="!slide.show"></i>
             <i class="fa fa-minus" *ngIf="slide.show"></i>
           </button>
-          <span>{{slide.name}}</span><br>
+          <span class="ml-2">{{slide.name}}</span><br>
         </div>
         <epsi-slides-list-item [category]="slide" *ngIf="slide.show"></epsi-slides-list-item>
       </li>

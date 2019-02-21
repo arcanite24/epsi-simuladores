@@ -46,7 +46,7 @@ export class CrudTableComponent implements OnInit {
   ngOnInit() {
 
     // Load the collection data
-    this.data$ = this.afs.collection(this.config.collection).valueChanges()
+    this.data$ = this.config.dataSource ? this.config.dataSource : this.afs.collection(this.config.collection).valueChanges()
     
     // Load fullEditConfig
     this.fullEditConfig.modelConfig = this.config
@@ -85,33 +85,30 @@ export class CrudTableComponent implements OnInit {
 
   }
 
-  openDeleteModal(pk: string) {
-    this.modal.setModalData({pk}, 'deleteModal', true)
+  openDeleteModal(pk: string, collection: string) {
+    this.modal.setModalData({pk, collection}, 'deleteModal', true)
     this.modal.getModal('deleteModal').open()
   }
 
-  closeDeleteModal() {
-    const pk = this.modal.getModalData('deleteModal').pk
-    console.log(this.modal.getModalData('deleteModal'));
+  async closeDeleteModal() {
+    const { pk, collection } = this.modal.getModalData('deleteModal')
+    /* console.log(this.modal.getModalData('deleteModal')); */
     
-    this.deleteRow(pk)
+    await this.deleteRow(pk, collection)
     this.modal.getModal('deleteModal').close()
   }
 
-  async deleteRow(pk: string) {
+  async deleteRow(pk: string, collection?: string): Promise<boolean> {
 
     if (this.config.preDelete) this.config.preDelete(pk)
 
-    await this.afs.collection(this.config.collection).doc(pk).delete()
+    await this.afs.collection(collection ? collection : this.config.collection).doc(pk).delete()
 
     if (this.config.postDelete) {
-      const row = await this.afs.doc(`${this.config.collection}/${pk}`)
-        .valueChanges()
-        .pipe(
-          take(1)
-        ).toPromise()
-      this.config.postDelete(row)
+      this.config.postDelete(pk)
     }
+
+    return true
 
   }
 

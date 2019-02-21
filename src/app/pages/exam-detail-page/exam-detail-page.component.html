@@ -5,14 +5,14 @@
     <div class="col-xs-12" [ngClass]="{ 'col-md-12': exam.type == 'demo', 'col-md-8': exam.type != 'demo' }">
       <!-- <epsi-exam-questions-widget
         [exam]="exam"></epsi-exam-questions-widget> -->
-        <epsi-exam-questions-by-group-widget [exam]="exam"></epsi-exam-questions-by-group-widget>
+      <epsi-exam-questions-by-group-widget [exam]="exam"></epsi-exam-questions-by-group-widget>
     </div>
 
     <!-- Sidepanel Exam -->
     <div class="col-xs-12 col-md-4" *ngIf="exam.type != 'demo'">
       <!-- <epsi-exam-progress-widget
         [questions]="exam.questions"></epsi-exam-progress-widget> -->
-        <epsi-exam-progress-widget [questions]="exam.formattedQuestions"></epsi-exam-progress-widget>
+      <epsi-exam-progress-widget [questions]="exam.formattedQuestions"></epsi-exam-progress-widget>
       <epsi-exam-results-widget [id]="exam.id"></epsi-exam-results-widget>
     </div>
 

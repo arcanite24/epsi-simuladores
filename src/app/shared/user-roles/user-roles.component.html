@@ -1,0 +1,30 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4 class="c-epsi-primary">Editar Roles de Usuario</h4>
+    </div>
+
+    <div class="col-md-12">
+      <h5 class="m-0 mb-1">¿Es Premium?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, true)" class="btn btn-success" type="button" *ngIf="!user.isPremium">Dar Premium</button>
+      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, false)" class="btn btn-danger" type="button" *ngIf="user.isPremium">Quitar Premium</button>
+      <hr>
+    </div>
+    
+    <div class="col-md-12">
+      <h5 class="m-0 mb-1">¿Es Esencial?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, true)" class="btn btn-success" type="button" *ngIf="!user.isEsencial">Dar Esencial</button>
+      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, false)" class="btn btn-danger" type="button" *ngIf="user.isEsencial">Quitar Esencial</button>
+      <hr>
+    </div>
+
+    <div class="col-md-12">
+      <h5 class="m-0 mb-1">¿Es Admin?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(adminModel, true)" class="btn btn-success" type="button" *ngIf="!user.isAdmin">Dar Admin</button>
+      <button [disabled]="l" (click)="modifyUserRoles(adminModel, false)" class="btn btn-danger" type="button" *ngIf="user.isAdmin">Quitar Admin</button>
+      <hr>
+    </div>
+
+  </div>
+</div>

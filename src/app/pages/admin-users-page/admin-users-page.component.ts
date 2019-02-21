@@ -4,6 +4,7 @@ import json2csv from 'json2csv'
 import { AngularFirestore } from '@angular/fire/firestore'
 import { Collections, User } from 'src/app/app.models'
 import { take } from 'rxjs/operators'
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-admin-users-page',
@@ -11,6 +12,8 @@ import { take } from 'rxjs/operators'
   styleUrls: ['./admin-users-page.component.scss']
 })
 export class AdminUsersPageComponent implements OnInit {
+
+  public tempUser: User
 
   private fields: string[] = [
     'uid',
@@ -23,20 +26,23 @@ export class AdminUsersPageComponent implements OnInit {
     'photoURL'
   ]
 
-  public config: CrudTableConfig = {
-    collection: 'user',
+  public config: CrudTableConfig<User> = {
+    collection: Collections.USER,
     disableAdd: true,
     disableEdit: true,
-    showControls: false,
     headers: [
       {field: 'displayName', type: 'text', label: 'Nombre'},
       {field: 'email', type: 'email', label: 'Email'},
       {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => `<img src="${row.photoURL}" style="width:32px">`}
+    ],
+    customActions: [
+      {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)}
     ]
   }
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private modal: NgxSmartModalService
   ) { }
 
   ngOnInit() {
@@ -78,6 +84,11 @@ export class AdminUsersPageComponent implements OnInit {
     link.setAttribute("download", "zamnademy-users.csv")
     link.click() */
 
+  }
+
+  openEditRoles(user: User) {
+    this.tempUser = user
+    this.modal.getModal('userRolesModal').open()
   }
 
 }
