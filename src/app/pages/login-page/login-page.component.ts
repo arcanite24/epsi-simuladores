@@ -120,7 +120,7 @@ export class LoginPageComponent implements OnInit {
   checkForAuth() {
     //if (this.auth.loggedIn) return this.router.navigate(['/home'])
     this.auth.user$.subscribe(user => {
-      this.hideLoader = true
+      setTimeout(() => this.hideLoader = true, 3000)
       if (user) this.router.navigate(['/home'])
     })
   }

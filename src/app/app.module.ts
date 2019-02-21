@@ -18,6 +18,7 @@ import { NgxGalleryModule } from 'ngx-gallery';
 import { TagInputModule } from 'ngx-chips'
 import { NgxChartsModule } from '@swimlane/ngx-charts'
 import { MomentModule } from 'ngx-moment'
+import { SelectDropDownModule } from 'ngx-select-dropdown'
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs)
@@ -336,6 +337,7 @@ import { NotesPageComponent } from './pages/notes-page/notes-page.component';
       autoDismiss: true,
       timeOut: 3000
     }),
+    SelectDropDownModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

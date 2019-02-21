@@ -32,7 +32,8 @@
               "node_modules/angular-instantsearch/bundles/instantsearch-theme-algolia.min.css",
               "node_modules/videogular2/fonts/videogular.css",
               "src/styles.scss",
-              "src/assets/css/bootstrap.css"
+              "src/assets/css/bootstrap.css",
+              "node_modules/ngx-select-dropdown/dist/assets/style.css"
             ],
             "scripts": []
           },

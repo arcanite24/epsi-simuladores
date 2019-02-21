@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Exam, ExamTypes, Collections, Question } from 'src/app/app.models';
+import { Exam, ExamTypes, Collections, Question, ContentTypes, Content } from 'src/app/app.models';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-exam-edit',
@@ -15,7 +17,14 @@ export class ExamEditComponent implements OnInit {
   private _exam: Exam
   public editForm: FormGroup
   public examTypes: string[] = Object.values(ExamTypes)
+  public contentTypes: string[] = ContentTypes
   public host: string = window.location.host
+
+  public content$: Observable<Content[]> = this.afs.collection<Content>(Collections.CONTENT)
+    .valueChanges()
+    .pipe(
+      map(content => content.map(c => ({...c, name: `${c.name} | ${c.type}`})))
+    )
 
   @Input()
   public set exam(e: Exam) { this.examChanged(e) }
@@ -35,8 +44,13 @@ export class ExamEditComponent implements OnInit {
       name: ['', Validators.required],
       desc: ['', Validators.required],
       type: ['', Validators.required],
+      content_type: '',
+      content: null,
+      time: null,
       questions: [[]],
-      isPrueba: false
+      isPrueba: false,
+      liberado: null,
+      date: null
     })
 
   }

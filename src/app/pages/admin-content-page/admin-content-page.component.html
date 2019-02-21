@@ -17,9 +17,9 @@
       <epsi-loader></epsi-loader>
     </ng-template>
 
-    <div class="admin-content-actions">
-      <button (click)="addContent()">Agregar</button>
-      <button (click)="openTree()">Vista Jerárquica</button>
+    <div class="admin-content-actions p-4">
+      <button class="btn btn-primary" (click)="addContent()">Agregar</button>
+      <button class="btn btn-secondary ml-2" (click)="openTree()">Vista Jerárquica</button>
     </div>
 
     <div class="admin-content-table" *ngIf="content$ | async as content else loader">
@@ -29,7 +29,7 @@
             <th>Imágen</th>
             <th>Nombre</th>
             <th>Tipo</th>
-            <th>Descripción</th>
+            <!-- <th>Descripción</th> -->
             <th>Acciones</th>
           </tr>
         </thead>
@@ -41,10 +41,14 @@
             </td>
             <td>{{c.name}}</td>
             <td>{{c.type}}</td>
-            <td>{{c.description}}</td>
-            <td>
-              <button (click)="openEdit(c)">Editar</button>
-              <button (click)="removeContent(c.id)">Borrar</button>
+            <!-- <td>{{c.description}}</td> -->
+            <td class="flex flex-row flex-start align-center">
+              <button class="btn btn-secondary" (click)="openEdit(c)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger ml-1" (click)="removeContent(c.id)">
+                <i class="fa fa-trash"></i>
+              </button>
             </td>
           </tr>
         </tbody>

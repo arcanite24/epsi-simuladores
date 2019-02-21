@@ -211,6 +211,8 @@ export interface Exam {
   name: string
   desc: string
   type: ExamTypes
+  content_type?: string
+  content?: Content
   questions: Question[]
   duration?: number
   colors?: {}
@@ -220,6 +222,7 @@ export interface Exam {
   isTags?: boolean
   isPrueba?: boolean
   date?: string
+  time?: number
 }
 
 export enum ExamTypes {

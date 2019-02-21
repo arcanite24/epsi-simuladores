@@ -49,7 +49,8 @@ export class QuestionEditComponent implements OnInit {
       feedback: [''],
       respuestas: [],
       correcta: null,
-      tags: [[]]
+      tags: [[]],
+      img: null,
     })
 
   }
