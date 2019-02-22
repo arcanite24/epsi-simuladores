@@ -51,7 +51,8 @@ export enum Collections {
   MERCADOPAGO_IPN = 'mercadopago-ipn',
   PROGRAMA = 'programa',
   STAT_COUNTER = 'stat-counter',
-  LIST = 'list'
+  LIST = 'list',
+  QUESTION_STAT = 'question-stat',
 }
 
 export enum PaymentStatus {
@@ -76,6 +77,9 @@ export enum Roles {
   Slides = 'isSlides',
   Simulacros = 'isSimulacros',
   Feed = 'isFeed',
+  Programa = 'isPrograma',
+  Pool = 'isPool',
+  TagPool = 'isTagPool',
 }
 
 export const EsencialModel: string[] = [
@@ -90,7 +94,10 @@ export const EsencialModel: string[] = [
   Roles.Media,
   Roles.Slides,
   Roles.Simulacros,
-  Roles.Feed
+  Roles.Feed,
+  Roles.Programa,
+  Roles.Pool,
+  Roles.TagPool,
 ]
 
 export const PremiumModel: string[] = [
@@ -485,4 +492,11 @@ export interface List {
   key: string
   name: string
   list: any[]
+}
+
+export interface QuestionStat {
+  id: string
+  question: Question
+  stat: {} | []
+  total: number
 }

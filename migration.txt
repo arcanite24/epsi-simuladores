@@ -280,7 +280,7 @@ desc#desc
 ---------------------------------------
 
 # Simulacros
-https://api.zamnademy.com/api/v1/ExamenSimulacro/getSimulacrosHome
+ExamenSimulacro/getSimulacrosHome
 exam
 
 {
@@ -296,8 +296,10 @@ liberado#liberado
 ---------------------------------------
 
 # Simulador
-simulador/list?limit=5&skip=0
+simulador/listMigration?limit=5&skip=0
 exam
+
+165/165
 
 {
   "type": "simulador"
@@ -391,3 +393,5 @@ roles#roles
 cellphone#cellphone
 new_email#new_email
 provider#provider
+
+www.2ris1.blogspot.com

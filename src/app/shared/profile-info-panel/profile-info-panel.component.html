@@ -46,7 +46,8 @@
       <input type="text" class="form-control" [(ngModel)]="user.lugar_origen">
     </div>
 
-    <div class="w-100 flex-loader">
+    <div class="w-100 flex-loader form-group">
+      <label for="">Cambiar foto de perfil</label>
       <app-storage-uploader (onFinish)="changePhoto($event, user.uid, user.displayName)"></app-storage-uploader>
     </div>
 

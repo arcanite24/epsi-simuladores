@@ -2,10 +2,8 @@ import { Observable } from 'rxjs';
 import { Component, OnInit, Input, Pipe, Injectable, PipeTransform } from '@angular/core';
 import { CrudTableConfig, CrudTableFullEditConfig } from './crud-table-models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import clone from 'lodash/clone'
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'adonalsium-crud-table',
@@ -27,6 +25,7 @@ export class CrudTableComponent implements OnInit {
 
   public cacheEdit: any = {}
   public selectCache: any = {}
+  public oldItem: any
 
   public customEdits: string[] = [
     'checkbox',
@@ -46,7 +45,7 @@ export class CrudTableComponent implements OnInit {
   ngOnInit() {
 
     // Load the collection data
-    this.data$ = this.config.dataSource ? this.config.dataSource : this.afs.collection(this.config.collection).valueChanges()
+    this.data$ = this.config.dataSource ? this.config.dataSource : this.afs.collection(this.config.collection, ref => ref.orderBy('createdAt', 'desc')).valueChanges()
     
     // Load fullEditConfig
     this.fullEditConfig.modelConfig = this.config
@@ -71,6 +70,9 @@ export class CrudTableComponent implements OnInit {
       row.edit = true
     }
 
+    // Cahce old item
+    this.oldItem = {...row}
+
   }
 
   async saveChanges(row: any) {
@@ -81,7 +83,7 @@ export class CrudTableComponent implements OnInit {
     row.edit = false
     
     // Callbacks
-    if (this.config.postEdit) this.config.postEdit(this.cacheEdit)
+    if (this.config.postEdit) this.config.postEdit(this.cacheEdit, this.oldItem)
 
   }
 
@@ -118,6 +120,9 @@ export class CrudTableComponent implements OnInit {
     const pk = this.afs.createId()
     const pkKey = this.config.pk ? this.config.pk : 'id'
     let dummyItem = {[pkKey]: pk, ...this.config.documentDefaults}
+
+    // Inject timestamp
+    if (this.config.disableTimestamp !== false) dummyItem.createdAt = new Date().toISOString()
 
     // TODO: Add support for Promises/Observables in Lifecycle functions
     if (this.config.preCreate) dummyItem = this.config.preCreate(dummyItem)

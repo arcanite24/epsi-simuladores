@@ -48,7 +48,7 @@
       <!-- TODO: Switch between Programa and Calendar -->
 
       <!-- Programa Panel --> 
-      <epsi-programa-panel></epsi-programa-panel>
+      <epsi-programa-panel *ngIf="auth.isPrograma"></epsi-programa-panel>
 
       <!-- Calendar Panel -->
       <epsi-calendar-panel *ngIf="auth.isCalendar"></epsi-calendar-panel>
@@ -99,12 +99,12 @@
 
         <!-- Question Pool Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-question-pool-panel></epsi-question-pool-panel>
+          <epsi-question-pool-panel *ngIf="auth.isPool"></epsi-question-pool-panel>
         </div>
 
         <!-- Tags Pool Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-tags-pool-panel></epsi-tags-pool-panel>
+          <epsi-tags-pool-panel *ngIf="auth.isTagPool"></epsi-tags-pool-panel>
         </div>
 
       </div>

@@ -3,6 +3,7 @@ import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
 import { Collections, ExamTypes, Exam, HomeLists } from 'src/app/app.models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { StatsService } from 'src/app/services/stats.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'epsi-admin-exams',
@@ -11,8 +12,9 @@ import { StatsService } from 'src/app/services/stats.service';
 })
 export class AdminExamsComponent implements OnInit {
 
-  public config: CrudTableConfig = {
+  public config: CrudTableConfig<Exam> = {
     collection: Collections.EXAM,
+    dataSource: this.afs.collection<Exam>(Collections.EXAM).valueChanges(),
     disableEdit: true,
     headers: [
       {field: 'name', type: 'text', label: 'Nombre'},
@@ -23,20 +25,27 @@ export class AdminExamsComponent implements OnInit {
     documentDefaults: {
       name: 'Nuevo Exámen',
       desc: '.',
-      type: ExamTypes.SIMULACRO,
-      questions: []
+      type: ExamTypes.SIMULADOR,
+      questions: [],
+      date: new Date().toISOString()
     },
     customActions: [
       {iconClasses: 'fa fa-edit', handler: row => this.openEdit(row)}
     ],
     postCreate: <Exam>(exam) => {
       // Register entity to HomeList
+      console.log('adding new exam', exam.name, exam.type)
       if (exam.type == ExamTypes.SIMULADOR) this.stats.addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
       if (exam.type == ExamTypes.SIMULACRO) this.stats.addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
     },
-    postEdit: (exam: any) => {
-      if (exam.type == ExamTypes.SIMULADOR) this.stats.updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
-      if (exam.type == ExamTypes.SIMULACRO) this.stats.updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+    postEdit: (exam: Exam, oldItem: Exam) => {
+
+      let old_list_id = HomeLists.SimuladoresList
+      if (oldItem.type == ExamTypes.SIMULADOR) old_list_id = HomeLists.SimuladoresList
+      if (oldItem.type == ExamTypes.SIMULACRO) old_list_id = HomeLists.SimulacrosList
+
+      if (exam.type == ExamTypes.SIMULADOR) this.stats.updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem)
+      if (exam.type == ExamTypes.SIMULACRO) this.stats.updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem)
     },
     postDelete: (id: string) => {
       this.stats.removeFromList(HomeLists.SimuladoresList, {id})
@@ -48,7 +57,8 @@ export class AdminExamsComponent implements OnInit {
 
   constructor(
     private modal: NgxSmartModalService,
-    private stats: StatsService
+    private stats: StatsService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {

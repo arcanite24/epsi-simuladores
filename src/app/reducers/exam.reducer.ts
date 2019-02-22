@@ -8,6 +8,8 @@ export enum ExamActionTypes {
   SetResults = '[Exam] SetResults',
   FinishExam = '[Exam] FinishExam',
   ResetExam = '[Exam] ResetExam',
+  SetFeedback = '[Exam] SetFeedback',
+  SetTimer = '[Exam] SetTimer',
 }
 
 export class SetQuestion implements Action {
@@ -17,6 +19,16 @@ export class SetQuestion implements Action {
 
 export class SetIndex implements Action {
   readonly type: string = ExamActionTypes.SetIndex
+  constructor(public payload: number) {}
+}
+
+export class SetFeedback implements Action {
+  readonly type: string = ExamActionTypes.SetFeedback
+  constructor(public payload: string) {}
+}
+
+export class SetTimer implements Action {
+  readonly type: string = ExamActionTypes.SetTimer
   constructor(public payload: number) {}
 }
 
@@ -53,7 +65,9 @@ export interface IExamReducer {
   index: number,
   selectedAnswer: Answer,
   results: ExamResults,
-  finished: boolean
+  finished: boolean,
+  feedback: string,
+  timer: number,
 }
 
 export const initialState: IExamReducer = {
@@ -61,7 +75,9 @@ export const initialState: IExamReducer = {
   index: 0,
   selectedAnswer: null,
   results: null,
-  finished: false
+  finished: false,
+  feedback: null,
+  timer: 0,
 }
 
 export function examReducer(state: IExamReducer = initialState, action: ExamActions) {
@@ -69,6 +85,12 @@ export function examReducer(state: IExamReducer = initialState, action: ExamActi
 
     case ExamActionTypes.SetIndex:
       return { ...state, index: action.payload }
+
+    case ExamActionTypes.SetFeedback:
+      return { ...state, feedback: action.payload }
+
+    case ExamActionTypes.SetTimer:
+      return { ...state, timer: action.payload }
 
     case ExamActionTypes.SetQuestion:
       return { ...state, question: action.payload }

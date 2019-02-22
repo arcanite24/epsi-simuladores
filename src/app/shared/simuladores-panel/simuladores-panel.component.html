@@ -1,12 +1,12 @@
 <epsi-panel title="Mi Simulador Diario ENARM" img="https://zamnademy.com/site/images/clients/simuladordiario.png" height="300px" [showContent]="false">
 
-  <ul *ngIf="exams$ | async as exams else loader" class="m-3 list-group">
+  <ul *ngIf="exams$ | async as exams else loaderSimuladores" class="m-3 list-group">
     <li *ngFor="let exam of exams" class="list-group-item">
       <a [routerLink]="[ '/exam', exam.type, exam.id ]">{{exam.name}}</a>
     </li>
   </ul>
 
-  <ng-template #loader>
+  <ng-template #loaderSimuladores>
     <epsi-loader></epsi-loader>
   </ng-template>
 

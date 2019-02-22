@@ -19,7 +19,8 @@ export class CrudTableFullEditComponent implements OnInit {
   @Input()
   public set newRow(row) { 
     this.cacheEdit = { ...row }; 
-    this.row = { ...row } 
+    this.row = { ...row }
+    this.oldItem = {...row}
     console.log(row);
     
   }
@@ -27,6 +28,7 @@ export class CrudTableFullEditComponent implements OnInit {
 
   public cacheEdit: any = {}
   public radioCache: any = {}
+  public oldItem: any
 
   public customEdits: string[] = [
     'checkbox',
@@ -60,7 +62,7 @@ export class CrudTableFullEditComponent implements OnInit {
     this.afs.collection(this.config.modelConfig.collection).doc(this.row[pk]).set(this.cacheEdit, {merge: true}).then(() => {
 
       // Callback
-      if (this.config.modelConfig.postEdit) this.config.modelConfig.postEdit(this.cacheEdit)
+      if (this.config.modelConfig.postEdit) this.config.modelConfig.postEdit(this.cacheEdit, this.oldItem)
 
       // Clean cache
       this.cacheEdit = {}

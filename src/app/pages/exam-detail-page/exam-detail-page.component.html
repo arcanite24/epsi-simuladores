@@ -1,3 +1,20 @@
+<ngx-smart-modal identifier="examTimerModal" #examTimerModal>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-md-12">
+        <h3>¿Quieres iniciar el exámen con tiempo?</h3>
+      </div>
+      
+      <div class="col-md-12">
+        <button class="btn btn-success" type="button" (click)="startTimer()">Sí</button>
+        <button class="btn btn-secondary ml-2" type="button" (click)="examTimerModal.close()">No</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="epsi-exam-detail-page container mt-retro">
   <div class="row" *ngIf="exam$ | async as exam else loader">
 

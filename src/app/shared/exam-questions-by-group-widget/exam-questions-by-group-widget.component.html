@@ -1,8 +1,13 @@
+<ngx-smart-modal identifier="examFeedbackModal" customClass="max-w-75">
+  <epsi-exam-feedback-modal *ngIf="lastQuestion" [lastQuestion]="lastQuestion" [lastSelected]="lastSelected"></epsi-exam-feedback-modal>
+</ngx-smart-modal>
+
 <epsi-panel *ngIf="exam else loader" [title]="exam.name" [showContent]="true">
   
   <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
 
-    <h5>Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
+    <h5 class="m-0">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
+    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
 
     <div class="question-group" *ngIf="question as group">
 
@@ -26,7 +31,7 @@
 
       <div class="question-actions flex flex-row flex-start">
         <button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>
-        <button class="btn btn-secondary" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
+        <button class="btn btn-secondary" [disabled]="!state.selectedAnswer" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
         <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
       </div>
 

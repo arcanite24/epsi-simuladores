@@ -243,13 +243,13 @@ export class AdminMigrationComponent implements OnInit {
       })
 
       let data = []
-      let questions = []
       const batch = this.afs.firestore.batch()
 
       async.each(this.data, async (item, next) => {
 
         let _item = {}
         let _tags = []
+        let questions = []
 
         // Keep original id
         _item['id'] = item.id

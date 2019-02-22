@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ExamResults, Collections, StatView, User, Tag, StatCounter, List } from '../app.models';
+import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Question, Answer, QuestionStat } from '../app.models';
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
@@ -158,7 +158,9 @@ export class StatsService {
 
   }
 
-  async updateListEntry(list_id: string, item: any) {
+  async updateListEntry(list_id: string, item: any, old_list_id: string, old_item: any) {
+
+    this.removeFromList(old_list_id, old_item)
 
     const key = `${Collections.LIST}/${list_id}`
     const list = await this.afs.doc<List>(key)
@@ -188,6 +190,43 @@ export class StatsService {
     list.list = list.list.filter(i => i.id != item.id)
 
     await this.afs.doc(key).update(list)
+
+  }
+
+  async updateQuestionStat(question: Question, answer: Answer) {
+
+    const key = `${Collections.QUESTION_STAT}/${question.id}`
+    const stat = await this.afs.doc<QuestionStat>(key)
+    .valueChanges()
+    .pipe(
+      take(1)
+    ).toPromise()
+
+    if (!stat) {
+      await this.afs.doc<QuestionStat>(key).set({
+        id: key,
+        question,
+        stat: { [answer.text]: 1 },
+        total: 1
+      })
+    } else {
+
+      let _stat = {...stat.stat}
+
+      if (!_stat[answer.text]) {
+        _stat[answer.text] = 1
+      } else {
+        _stat[answer.text] += 1
+      }
+
+      await this.afs.doc<QuestionStat>(key).update({
+        stat: _stat,
+        total: stat.total + 1
+      })
+
+    }
+
+    return true
 
   }
 

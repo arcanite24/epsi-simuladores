@@ -1,0 +1,45 @@
+<div class="container m-2">
+  <div class="row" *ngIf="q">
+
+    <div class="col-md-12 mb-2">
+      <h4>{{q.text}}</h4>
+    </div>
+
+    <div class="col-md-12" *ngIf="q.respuestas as rList">
+      <ul class="list-group">
+        <li class="list-group-item flex flex-row flex-start align-center" *ngFor="let r of rList">
+          <i class="fa fa-check text-success" *ngIf="q.correcta == r.id"></i>
+          <i class="fa fa-close text-danger" *ngIf="q.correcta != r.id"></i>
+          <span class="ml-2" [ngClass]="{'c-epsi-primary text-bolder': lastSelected == r.id}">{{r.text}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <div class="col-md-12 mt-4" *ngIf="q.feedback">
+      <h5 class="m-0">Feedback</h5>
+      <p class="m-0 m-t1">{{q.feedback}}</p>
+    </div>
+
+    <hr>
+
+    <div class="col-md-12 mt-4" *ngIf="stat$ | async as stat">
+      <h5 class="m-0">Estadísticas</h5>
+      <ul class="list-group" *ngIf="stat.stat">
+        <li class="list-group-item flex flex-col flex-start" *ngFor="let s of stat.stat">
+          <strong> <span class="c-epsi-primary">{{(s[1] / stat.total) * 100 | number}}%</span> {{s[0]}}</strong>
+          <!-- <pre>{{ s | json }}</pre> -->
+          <div class="barra-container" [style.width.%]="(s[1] / stat.total) * 100">
+            <div class="barra"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="col-md-12">
+      <pre>{{ q | json }}</pre>
+    </div> -->
+    
+  </div>
+</div>

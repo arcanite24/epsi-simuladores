@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { Exam, Collections, ExamResults, Question } from 'src/app/app.models';
-import { IExamReducer } from 'src/app/reducers/exam.reducer';
+import { IExamReducer, SetTimer } from 'src/app/reducers/exam.reducer';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { groupBy } from 'lodash'
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-exam-detail-page',
@@ -26,13 +27,17 @@ export class ExamDetailPageComponent implements OnInit {
   public results: ExamResults
   public activeQuestion: Question
 
+  private duration: number
+
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private modal: NgxSmartModalService
   ) { }
 
   ngOnInit() {
+
     this.exam$ = this.afs.doc<Exam>(`${Collections.EXAM}/${this.id}`)
       .valueChanges()
       .pipe(
@@ -47,15 +52,30 @@ export class ExamDetailPageComponent implements OnInit {
 
           return _exam
 
+        }),
+        tap(exam => {
+          if (exam.duration) this.openTimerModal(exam.duration)
         })
       )
+
     this.examState$ = this.store.select('exam')
+    
   }
 
   public get completedQuestions(): string[] {
     if (!this.results) return []
     if (!this.results.questions) return []
     return Object.keys(this.results.questions)
+  }
+
+  openTimerModal(duration: number) {
+    this.duration = duration
+    this.modal.getModal('examTimerModal').open()
+  }
+
+  startTimer() {
+    this.store.dispatch(new SetTimer(this.duration))
+    this.modal.getModal('examTimerModal').close()
   }
  
 }

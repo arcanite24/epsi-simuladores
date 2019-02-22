@@ -31,6 +31,8 @@ export class ExamQuestionsWidgetComponent implements OnInit {
 
   public results: ExamResults
 
+  public duration: number
+
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
@@ -61,6 +63,7 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     this.examState$.subscribe(examState => {
       if (examState.index && this.lastIndex != examState.index) this.handleIndexChange(examState)
       if (examState.finished) this.handleExamFinish(examState)
+      if (examState.timer && !this.duration) this.handleSetTimer(examState.timer)
       this.lastIndex = examState.index
     })
 
@@ -69,6 +72,11 @@ export class ExamQuestionsWidgetComponent implements OnInit {
   private handleIndexChange(state: IExamReducer) {
     console.log('New Exam Index: ' + state.index)
     this.setQuestion(state.index)
+  }
+
+  private handleSetTimer(duration: number) {
+    this.duration = duration
+    setTimeout(() => this.finishExam(), duration)
   }
 
   private async handleExamFinish(state: IExamReducer) {

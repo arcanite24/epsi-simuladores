@@ -56,6 +56,9 @@ export class AuthService {
   get isSlides() { return this.loggedIn && this.user[Roles.Slides] }
   get isSimulacros() { return this.loggedIn && this.user[Roles.Simulacros] }
   get isFeed() { return this.loggedIn && this.user[Roles.Feed] }
+  get isPrograma() { return this.loggedIn && this.user[Roles.Programa] }
+  get isPool() { return this.loggedIn && this.user[Roles.Pool] }
+  get isTagPool() { return this.loggedIn && this.user[Roles.TagPool] }
 
   setUser(user: any) {
     console.log(user)

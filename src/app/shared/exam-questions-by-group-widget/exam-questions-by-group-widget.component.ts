@@ -6,11 +6,13 @@ import { map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
-import { SetAnswer, IExamReducer, SetIndex, SetQuestion, SetResults, FinishExam, ResetExam } from 'src/app/reducers/exam.reducer';
+import { SetAnswer, IExamReducer, SetIndex, SetQuestion, SetResults, FinishExam, ResetExam, SetFeedback } from 'src/app/reducers/exam.reducer';
 import { ToastrService } from 'ngx-toastr';
 import _ from 'lodash'
 import { Router } from '@angular/router';
 import { StatsService } from 'src/app/services/stats.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import moment from 'moment'
 
 @Component({
   selector: 'epsi-exam-questions-by-group-widget',
@@ -29,7 +31,12 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   public question: Question[]
   public selectedAnswer: Answer
 
+  public lastQuestion: Question
+  public lastSelected: string
+
   public results: ExamResults
+  public duration: number
+  public duration_label: string
 
   constructor(
     private afs: AngularFirestore,
@@ -37,7 +44,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     private store: Store<AppState>,
     private toastr: ToastrService,
     private router: Router,
-    private stats: StatsService
+    private stats: StatsService,
+    private modal: NgxSmartModalService,
+    private stat: StatsService
   ) {
     this.examState$ = this.store.select('exam')
   }
@@ -48,8 +57,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.setInitialResults()
 
     this.examState$.subscribe(examState => {
-      if (examState.index && this.lastIndex != examState.index) this.handleIndexChange(examState)
+      /* if (examState.index && this.lastIndex != examState.index) this.handleIndexChange(examState) */
+      if (examState.index != null && this.lastIndex != examState.index) this.handleIndexChange(examState)
       if (examState.finished) this.handleExamFinish(examState)
+      if (examState.timer && !this.duration) this.handleSetTimer(examState.timer * 60 * 1000)
       this.lastIndex = examState.index
     })
 
@@ -91,6 +102,27 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       this.router.navigate(['/result', state.results.id])
     }
 
+  }
+
+  private handleSetTimer(duration: number) {
+
+    this.duration = duration
+    console.log('duration', duration);
+    
+
+    let timer = setInterval(() => {
+      if (this.duration > 0) this.duration--
+      this.duration_label = moment()
+        .startOf('day')
+        .seconds(this.duration)
+        .format('H:mm:ss')
+    }, 1000)
+
+    setTimeout(() => {
+      this.finishExam()
+      clearInterval(timer)
+    }, duration)
+    
   }
 
   public get questionsLeft(): boolean {
@@ -140,17 +172,26 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   }
 
   setQuestion(index: number) {
+
     if (!this.exam) return
     if (!this.exam.questions) return
     if (!this.exam.questions[index]) return
+
+    this.lastQuestion = this.question[0]
+
     this.question = this.exam.formattedQuestions[index]
     this.results.lastIndex = index
+
     this.store.dispatch(new SetQuestion(this.question))
+
   }
 
   nextQuestion(currentIndex: number, selectedAnswer: Answer) {
+    this.lastSelected = selectedAnswer.id
     this.saveCache(this.question, currentIndex, selectedAnswer)
     this.store.dispatch(new SetIndex(currentIndex + 1))
+    this.modal.getModal('examFeedbackModal').open()
+    this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
   }
 
   prevQuestion(currentIndex: number, selectedAnswer: Answer) {

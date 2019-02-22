@@ -11,9 +11,10 @@ export interface CrudTableConfig<T = any> {
   disableAdd?: boolean
   disableEdit?: boolean,
   fullEdit?: boolean,
+  disableTimestamp?: boolean
   preCreate?: (row: any) => any
   postCreate?: <I>(row: I) => void
-  postEdit?: <I>(row: I) => void
+  postEdit?: (row: T, old_item: T) => void
   preDelete?: (id: string) => void
   postDelete?: (id: string) => void
 }

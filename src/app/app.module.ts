@@ -165,6 +165,7 @@ import { MediaListPageComponent } from './pages/media-list-page/media-list-page.
 import { MediaListItemComponent } from './shared/media-list-item/media-list-item.component';
 import { UserRolesComponent } from './shared/user-roles/user-roles.component';
 import { NotesPageComponent } from './pages/notes-page/notes-page.component';
+import { ExamFeedbackModalComponent } from './shared/exam-feedback-modal/exam-feedback-modal.component';
 
 @NgModule({
   declarations: [
@@ -300,6 +301,7 @@ import { NotesPageComponent } from './pages/notes-page/notes-page.component';
     MediaListItemComponent,
     UserRolesComponent,
     NotesPageComponent,
+    ExamFeedbackModalComponent,
   ],
   imports: [
     BrowserAnimationsModule,
