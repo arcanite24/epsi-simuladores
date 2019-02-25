@@ -53,6 +53,7 @@ export enum Collections {
   STAT_COUNTER = 'stat-counter',
   LIST = 'list',
   QUESTION_STAT = 'question-stat',
+  CONTENT_ERROR = 'content-error',
 }
 
 export enum PaymentStatus {
@@ -152,6 +153,7 @@ export interface Content {
   model_slug?: string
   showChildren?: boolean
   haveChildren?: boolean
+  forum?: string
 }
 
 export interface Marker {
@@ -499,4 +501,11 @@ export interface QuestionStat {
   question: Question
   stat: {} | []
   total: number
+}
+
+export interface ContentError {
+  id: string
+  content: Content
+  user: User
+  text: string
 }

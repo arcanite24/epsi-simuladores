@@ -17,6 +17,7 @@ export interface CrudTableConfig<T = any> {
   postEdit?: (row: T, old_item: T) => void
   preDelete?: (id: string) => void
   postDelete?: (id: string) => void
+  instructions?: string
 }
 
 export interface CrudTableHeader {

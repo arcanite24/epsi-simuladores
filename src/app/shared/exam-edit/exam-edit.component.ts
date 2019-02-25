@@ -20,6 +20,8 @@ export class ExamEditComponent implements OnInit {
   public contentTypes: string[] = ContentTypes
   public host: string = window.location.host
 
+  public tempQuestion: Question
+
   public content$: Observable<Content[]> = this.afs.collection<Content>(Collections.CONTENT)
     .valueChanges()
     .pipe(
@@ -108,6 +110,18 @@ export class ExamEditComponent implements OnInit {
 
   onQuestionAdded(q: Question) {
     this.questionSelected(q)
+  }
+
+  openEditQuestion(q: Question) {
+    this.tempQuestion = q
+    this.modal.getModal('questionEditModal').open()
+  }
+
+  postEditQuestion(q: Question) {
+    console.log('post edit question', q)
+    this.editForm.patchValue({
+      questions: this.editForm.value.questions.map(qq => q.id == qq.id ? q : qq)
+    })
   }
 
 }

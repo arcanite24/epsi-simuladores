@@ -14,7 +14,7 @@ export class AdminExamsComponent implements OnInit {
 
   public config: CrudTableConfig<Exam> = {
     collection: Collections.EXAM,
-    dataSource: this.afs.collection<Exam>(Collections.EXAM).valueChanges(),
+    dataSource: this.afs.collection<Exam>(Collections.EXAM, ref => ref.where('type', '==', ExamTypes.PRECLASE)).valueChanges(),
     disableEdit: true,
     headers: [
       {field: 'name', type: 'text', label: 'Nombre'},

@@ -81,8 +81,8 @@
         <button class="crud-table-button crud-table-button-clear crud-table-button-icon" *ngIf="row.edit" (click)="saveChanges(row)">
           <i class="fa fa-check-circle c-success"></i>
         </button>
-        <!-- <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="deleteRow(row[config.pk ? config.pk : 'id'])" > -->
-        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="openDeleteModal(row[config.pk ? config.pk : 'id'], config.collection)" >
+        <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="deleteRow(row[config.pk ? config.pk : 'id'])" >
+        <!-- <button class="crud-table-button crud-table-button-clear crud-table-button-icon" (click)="openDeleteModal(row[config.pk ? config.pk : 'id'], config.collection)" > -->
           <i class="fa fa-trash"></i>
         </button>
 

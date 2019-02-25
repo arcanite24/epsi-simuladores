@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Question, Answer, Tag, Collections } from 'src/app/app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -19,6 +19,8 @@ export class QuestionEditComponent implements OnInit {
   @Input()
   public set question(q: Question) { this.questionChanged(q) }
   public get question(): Question { return this._question }
+
+  @Output() postEdit: EventEmitter<Question> = new EventEmitter()
 
   public editForm: FormGroup
   public respuestas$: Observable<Answer[]>
@@ -69,6 +71,7 @@ export class QuestionEditComponent implements OnInit {
 
   async saveQuestion() {
     await this.afs.doc(`question/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
+    this.postEdit.next(this.editForm.value)
   }
 
   async submitForm() {
@@ -77,7 +80,8 @@ export class QuestionEditComponent implements OnInit {
 
       try {
         await this.afs.doc(`question/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
-        this.toastr.success('Pregunta editado correctamente.')
+        this.postEdit.next(this.editForm.value)
+        this.toastr.success('Pregunta editada correctamente.')
         this.modal.getModal('questionEditModal').close()
         this.editForm.reset()
       } catch (error) {

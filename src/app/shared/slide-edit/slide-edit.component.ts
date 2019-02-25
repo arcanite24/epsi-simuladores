@@ -5,6 +5,10 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { finalize } from 'rxjs/operators';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { sortBy } from 'lodash'
 
 @Component({
   selector: 'epsi-slide-edit',
@@ -13,6 +17,8 @@ import { Observable } from 'rxjs';
 })
 export class SlideEditComponent implements OnInit {
 
+  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=vK4JtRBmoCG8AA7Z'
+  
   private _slide: Slide
 
   @Input()
@@ -22,12 +28,15 @@ export class SlideEditComponent implements OnInit {
   public editForm: FormGroup
   public tempCat: SlideCategory
   public cats$: Observable<SlideCategory[]> = this.afs.collection<SlideCategory>(Collections.SLIDE_CATEGORY).valueChanges()
+  public l: boolean = false
 
   constructor(
     private afs: AngularFirestore,
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private http: HttpClient,
+    private storage: AngularFireStorage
   ) { }
 
   ngOnInit() {
@@ -90,6 +99,76 @@ export class SlideEditComponent implements OnInit {
       this.toastr.error('La información que ingresaste no es válida.')
     }
 
+  }
+
+  async pptxSelected(files: FileList) {
+  
+    if (!files) return
+    if (files.length <= 0) return
+
+    const file = files.item(0)
+    if (!file.name.includes('.pptx')) return this.toastr.error('El archivo debe ser de tipo .pptx')
+    this.l = true
+    
+    try {
+
+      const result = await this.convertSlide(file)
+      const urls = await this.uploadSlides(result.Files)
+      this.editForm.patchValue({images: [...this.editForm.value.images, ...urls]})
+      this.l = false
+      
+    } catch (error) {
+      this.toastr.error('Ocurrió un error al convertir la presentación')
+      console.log(error)
+      this.l = false
+    }
+
+  }
+
+  convertSlide(file: File) {
+    const data = new FormData()
+    data.append('File', file)
+    return this.http.post<any>(this.SLIDE_API, data).toPromise()
+  }
+
+  async uploadSlides(slides: {FileData: string, FileName: string, FileSize: number}[]) {
+    const queue = slides.map(slide => this.uploadFile(slide.FileName, slide.FileData))
+    return Promise.all(queue)
+  }
+
+  uploadFile(filename: string, data: string): Promise<string | null> {
+    return new Promise((resolve, _) => {
+      const ref = this.storage.ref(`slides/${filename}`)
+      const task = ref.putString(data, 'base64')
+      task.snapshotChanges().pipe(
+        finalize(() => {
+          ref.getDownloadURL().subscribe(url => resolve(url))
+        })
+      ).subscribe()
+    })
+  }
+
+  array_move(arr: any[], old_index: number, new_index: number) {
+    if (new_index >= arr.length) {
+      let k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined)
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0])
+    return arr
+  }
+
+  movePicture(images: string[], old_index: number, new_index: number) {
+    this.editForm.patchValue({
+      images: this.array_move(images, old_index, new_index)
+    })
+  }
+
+  orderImages(images: string[] = []) {
+    this.editForm.patchValue({
+      images: sortBy(images.map(f => ({small: f, medium: f, big: f})), 'small')
+    })
   }
 
 }

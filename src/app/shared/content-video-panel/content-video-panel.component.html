@@ -1,3 +1,11 @@
+<ngx-smart-modal identifier="contentErrorModal" #contentErrorModal>
+  <epsi-content-error-add [content]="content" *ngIf="content"></epsi-content-error-add>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="contentExamModal" #contentExamModal>
+  <epsi-loader></epsi-loader>
+</ngx-smart-modal>
+
 <epsi-panel [title]="content.name" *ngIf="content">
 
   <div class="video-panel-player" *ngIf="content.video">
@@ -40,6 +48,12 @@
 
   <div class="video-panel-comments">
     <epsi-content-video-suggestion-add [content]="content"></epsi-content-video-suggestion-add>
+  </div>
+
+  <div class="video-panel-errors m-1">
+    <small class="ml-2" (click)="contentErrorModal.open()">¿Encontraste algún error en la clase?</small>
+    <button class="btn btn-secondary ml-2 mb-1" type="button" (click)="contentExamModal.open()">Evaluación</button>
+    <button *ngIf="content.forum" class="btn btn-secondary ml-2 mb-1" type="button" (click)="router.navigate(['/thread/category', content.forum])">Pregunta a tu asesor si te quedaron dudas sobre el tema. Aquí</button>
   </div>
 
 </epsi-panel>

@@ -43,11 +43,18 @@ export class CrudTableFullEditComponent implements OnInit {
   constructor(
     public sanitizer: DomSanitizer,
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
   ) { }
 
   ngOnInit() {
     //this.cacheEdit = {...this.row}
+  }
+
+  public get instructions() {
+    if (!this.config) return ''
+    if (!this.config.modelConfig) return ''
+    if (!this.config.modelConfig.instructions) return ''
+    return this.sanitizer.bypassSecurityTrustHtml(this.config.modelConfig.instructions)
   }
 
   saveChanges() {

@@ -99,8 +99,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       // Decide if we keep the exam pool, maybe that inefficient and redundant
       if (this.exam.type == ExamTypes.PRUEBA) this.stats.modifyCounter('exam_demo_resueltos', 1)
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
-      this.router.navigate(['/result', state.results.id])
     }
+
+    // Redirect to exam results in all exam types
+    this.router.navigate(['/result', state.results.id])
 
   }
 

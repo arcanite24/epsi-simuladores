@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Content } from 'src/app/app.models';
 import { VgAPI } from 'videogular2/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-content-video-panel',
@@ -17,7 +18,9 @@ export class ContentVideoPanelComponent implements OnInit {
 
   private videoApi: VgAPI
 
-  constructor() { }
+  constructor(
+    public router: Router
+  ) { }
 
   ngOnInit() {
   }

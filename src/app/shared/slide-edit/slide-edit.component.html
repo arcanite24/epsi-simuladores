@@ -1,37 +1,62 @@
-<form [formGroup]="editForm" (ngSubmit)="submitForm()">
+<form [formGroup]="editForm" (ngSubmit)="submitForm()" class="row">
 
-  <h1>Editar Presentación</h1>
+  <div class="col-md-12">
+    <h2>Editar Presentación</h2>
+  </div>
 
-  <div class="epsi-input">
+  <div class="form-group col-md-12">
     <label for="">Nombre</label>
-    <input type="text" formControlName="name">
+    <input class="form-control" type="text" formControlName="name">
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group col-md-12">
     <label for="">Descripción</label>
-    <textarea formControlName="desc"></textarea>
-  </div>
+    <textarea class="form-control" formControlName="desc"></textarea>
+  </div>  
 
   <hr>
 
-  <h4>Imágenes <small>Haz click en alguna para quitarla</small></h4>
-  <app-storage-uploader (onFinish)="fileUploaded($event, editForm.value.images)"></app-storage-uploader>
-  <hr>
-
-  <div class="slide-images row">
-    <div class="col-xs-12 col-md-1" *ngFor="let img of editForm.value.images; let i = index">
-      <img [src]="img" (click)="removeImage(i, editForm.value.images)" class="w-100">
+  <div class="col-md-12">
+    <h4>Imágenes <small>Haz click en alguna para quitarla</small></h4>
+    <div class="flex flex-row flex-start align-center">
+      <app-storage-uploader (onFinish)="fileUploaded($event, editForm.value.images)"></app-storage-uploader>
+      <button class="btn btn-primary ml-2" type="button" (click)="pptx.click()" [disabled]="l">Importar .pptx</button>
+      <input type="file" #pptx hidden (change)="pptxSelected(pptx.files)">
     </div>
   </div>
 
-  <div class="epsi-input" *ngIf="cats$ | async as cats">
+  <div class="col-md-12 flex-loader" *ngIf="l">
+    <h5 class="w-100 text-center">Convirtiendo presentación</h5>
+    <epsi-loader type="svg"></epsi-loader>
+  </div>
+
+  <hr>
+
+  <div class="col-md-12 slide-images row">
+    <div class="col-xs-12 col-md-2 flex flex-col flex-center" *ngFor="let img of editForm.value.images; let i = index">
+      <img [src]="img" (click)="removeImage(i, editForm.value.images)" class="w-100 slide-image">
+      <div class="flex flex-row flex-start align-center">
+        <button class="btn" type="button" (click)="movePicture(editForm.value.images, i, i - 1)" [disabled]="i <= 0">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="btn" type="button" (click)="movePicture(editForm.value.images, i, i + 1)" [disabled]="i >= editForm.value.images.length">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group col-md-12" *ngIf="cats$ | async as cats">
     <label for="">Categoría</label>
-    <select (change)="catSelected(tempCat)" [(ngModel)]="tempCat" [ngModelOptions]="{standalone: true}">
+    <select class="form-control" (change)="catSelected(tempCat)" [(ngModel)]="tempCat" [ngModelOptions]="{standalone: true}">
       <option [ngValue]="cat" *ngFor="let cat of cats" [selected]="editForm.value.cat_id && cat.id == editForm.value.cat_id">{{cat.name}}</option>
     </select>
   </div>
 
-  <button type="submit" [disabled]="!editForm.valid">Editar Presentación</button>
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-success" [disabled]="!editForm.valid">Editar Presentación</button>
+    <button type="button" class="btn btn-secondary ml-2" (click)="orderImages(editForm.value.images)">Ordernar Imágenes</button>
+  </div>
 
   <pre>{{editForm.value | json}}</pre>
 

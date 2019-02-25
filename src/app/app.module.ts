@@ -166,6 +166,10 @@ import { MediaListItemComponent } from './shared/media-list-item/media-list-item
 import { UserRolesComponent } from './shared/user-roles/user-roles.component';
 import { NotesPageComponent } from './pages/notes-page/notes-page.component';
 import { ExamFeedbackModalComponent } from './shared/exam-feedback-modal/exam-feedback-modal.component';
+import { ResultsPageComponent } from './pages/results-page/results-page.component';
+import { ContentErrorModalComponent } from './shared/content-error-modal/content-error-modal.component';
+import { ContentErrorAddComponent } from './shared/content-error-add/content-error-add.component';
+import { AdminContentErrorComponent } from './pages/admin-content-error/admin-content-error.component';
 
 @NgModule({
   declarations: [
@@ -302,6 +306,10 @@ import { ExamFeedbackModalComponent } from './shared/exam-feedback-modal/exam-fe
     UserRolesComponent,
     NotesPageComponent,
     ExamFeedbackModalComponent,
+    ResultsPageComponent,
+    ContentErrorModalComponent,
+    ContentErrorAddComponent,
+    AdminContentErrorComponent,
   ],
   imports: [
     BrowserAnimationsModule,

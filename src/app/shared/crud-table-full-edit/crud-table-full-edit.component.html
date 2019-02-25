@@ -93,6 +93,8 @@
 
     </div>
 
+    <div class="col-md-12" *ngIf="config.modelConfig.instructions" [innerHTML]="instructions"></div>
+
     <div class="col-md-12 d-flex justify-content-center align-items-center">
       <button class="btn btn-primary" (click)="saveChanges()" >Guardar</button>
     </div>

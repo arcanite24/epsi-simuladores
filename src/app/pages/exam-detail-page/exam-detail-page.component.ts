@@ -9,6 +9,7 @@ import { AppState } from 'src/app/app.state';
 import { map, tap } from 'rxjs/operators';
 import { groupBy } from 'lodash'
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-exam-detail-page',
@@ -21,6 +22,7 @@ export class ExamDetailPageComponent implements OnInit {
   public type: string = this.route.snapshot.paramMap.get('type')
 
   public exam$: Observable<Exam>
+  public result$: Observable<ExamResults>
   public examState$: Observable<IExamReducer>
 
   public currentIndex: number = 0
@@ -33,7 +35,8 @@ export class ExamDetailPageComponent implements OnInit {
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private store: Store<AppState>,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -59,6 +62,15 @@ export class ExamDetailPageComponent implements OnInit {
       )
 
     this.examState$ = this.store.select('exam')
+
+    this.result$ = this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('user', '==', this.auth.user.uid)
+      .where('exam', '==', this.id)
+      .limit(1))
+      .valueChanges()
+      .pipe(
+        map(results => results[0])
+      )
     
   }
 

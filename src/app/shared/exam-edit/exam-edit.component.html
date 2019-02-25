@@ -2,6 +2,10 @@
   <epsi-question-add (questionAdded)="onQuestionAdded($event)"></epsi-question-add>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="questionEditModal">
+  <epsi-question-edit [question]="tempQuestion" (postEdit)="postEditQuestion($event)"></epsi-question-edit>
+</ngx-smart-modal>
+
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
   <h2 class="text-boler c-epsi-primary">Editar Exámen</h2>
@@ -65,13 +69,22 @@
   <epsi-search placeholder="Buscar preguntas" (onSelect)="questionSelected($event)"></epsi-search>
 
   <ul *ngIf="editForm.value.questions as questions" class="list-group">
-    <li *ngFor="let q of questions" class="list-group-item flex flex-row flex-start align-center">
+    <li *ngFor="let q of questions" class="list-group-item flex flex-col flex-start">
 
-      <button class="btn btn-danger mr-2" (click)="removePregunta(q)" type="button">
-        <i class="fa fa-remove"></i>
-      </button>
+      <div class="question-actions w-100 flex flex-row flex-start align-center mb-2">
+
+        <button class="btn btn-danger" (click)="removePregunta(q)" type="button">
+          <i class="fa fa-remove"></i>
+        </button>
+
+        <button class="btn btn-secondary ml-2" type="button" (click)="openEditQuestion(q)">
+          <i class="fa fa-edit"></i>
+          <span class="ml-2">Editar</span>
+        </button>
+
+      </div>
       
-      <div class="form-group">
+      <div class="form-group w-100">
         <label for="">{{q.text}}</label>
         <input type="text" class="form-control" [(ngModel)]="q.group" [ngModelOptions]="{standalone: true}" placeholder="Agrupador">
       </div>

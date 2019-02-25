@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Slide, Collections } from 'src/app/app.models';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'epsi-admin-slides',
@@ -14,6 +15,7 @@ export class AdminSlidesComponent implements OnInit {
 
   public configSlide: CrudTableConfig = {
     collection: Collections.SLIDE,
+    dataSource: this.afs.collection<Slide>(Collections.SLIDE).valueChanges(),
     documentDefaults: {
       name: 'Nueva Presentación',
       desc: '.',
@@ -45,7 +47,8 @@ export class AdminSlidesComponent implements OnInit {
   }
 
   constructor(
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {

@@ -10,6 +10,9 @@
   <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn">
 
     <div class="navbar-actions flex flex-row flex-center">
+
+      <a *ngIf="auth.loggedIn" class="btn btn-secondary mr-2" [routerLink]="[ '/results' ]">Mis Resultados</a>
+
       <a *ngIf="auth.loggedIn" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
 
       <button (click)="router.navigate(['/admin'])" class="navbar-action flex-loader" *ngIf="auth.isAdmin">

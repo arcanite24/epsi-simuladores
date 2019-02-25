@@ -50,6 +50,7 @@ export class ContentEditComponent implements OnInit {
       markers: [[]],
       roles: [[]],
       model_slug: null,
+      forum: null,
     })
 
   }
