@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { DayView } from 'calendar-utils';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import moment from 'moment'
 
 @Component({
   selector: 'epsi-calendar-panel',
@@ -20,7 +21,7 @@ export class CalendarPanelComponent implements OnInit {
     .valueChanges()
     .pipe(
       map(events => {
-        return events.map(e => ({ ...e, start: new Date(e.date), fullDay: true }) as Event) as Event[]
+        return events.map(e => ({ ...e, start: moment(e.date).startOf('day').toDate(), fullDay: true }) as Event) as Event[]
       })
     )
 
