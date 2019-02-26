@@ -23,7 +23,7 @@ export class AdminContentPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.content$ = this.afs.collection<Content>('content').valueChanges()
+    this.content$ = this.afs.collection<Content>('content', ref => ref.where('type', '==', 'subtema')).valueChanges()
 
   }
 
@@ -33,7 +33,7 @@ export class AdminContentPageComponent implements OnInit {
 
   async removeContent(id: string) {
     await this.afs.doc(`content/${id}`).delete()
-    this.toastr.success('Contenido borrado correctamente.')
+    //this.toastr.success('Contenido borrado correctamente.')
   }
 
   openEdit(c: Content) {

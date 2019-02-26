@@ -22,6 +22,8 @@ export class AdminMigrationComponent implements OnInit {
   public fields: string
   public limit: number
   public offset: number
+  public child_type: string
+  public children_key: string
   
   private batchLimit = 20
 
@@ -145,15 +147,42 @@ export class AdminMigrationComponent implements OnInit {
           _item[key] = value
         }
 
+        // Assign father
+        _item['parent_id'] = item.bloque.id
+
+        // Register children
+        if (item[this.children_key] && item[this.children_key].length > 0) {
+          for (const child of item[this.children_key]) {
+
+            child.description = child.desc
+            child.type = this.child_type
+            child.parent_id = item.id
+            child.totalRatings = 0
+            child.ratings = {}
+            child.parent_type = 'tema'
+            child.markers = child.marks ? child.marks.map(m => ({
+              tag: m.text,
+              time: {
+                hour: m.time.HH,
+                minute: m.time.mm,
+                second: m.time.ss
+              }
+            })) : []
+
+            data.push(child)
+
+          }
+        }
+
         // Format Event Tasks
-        if (item.tareas) {
+        /* if (item.tareas) {
           _item['tasks'] = item.tareas.map(t => ({
             id: t.id,
             label: t.text,
             users: [],
             completed: 0
           }))
-        }
+        } */
 
         // Format user
         /* if (item.user) {
@@ -187,14 +216,14 @@ export class AdminMigrationComponent implements OnInit {
         } */
 
         // Formart Markers
-        /* _item['markers'] = item.marks ? item.marks.map(m => ({
+        _item['markers'] = item.marks ? item.marks.map(m => ({
           tag: m.text,
           time: {
             hour: m.time.HH,
             minute: m.time.mm,
             second: m.time.ss
           }
-        })) : [] */
+        })) : []
 
         data.push(_item)
         next()
