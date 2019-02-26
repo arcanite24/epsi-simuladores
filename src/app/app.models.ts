@@ -158,9 +158,9 @@ export interface Content {
 
 export interface Marker {
   time: {
-    hour: number,
-    minute: number,
-    second: number,
+    hour: number | string,
+    minute: number | string,
+    second: number | string,
   }
   tag: string,
 }

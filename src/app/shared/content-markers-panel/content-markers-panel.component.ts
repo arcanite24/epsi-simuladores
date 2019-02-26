@@ -17,10 +17,11 @@ export class ContentMarkersPanelComponent implements OnInit {
   }
 
   markerClicked(marker: Marker) {
+    console.log(marker)
     this.seek.next(
-      (marker.time.hour * 60 * 60) +
-      (marker.time.minute * 60) +
-      marker.time.second
+      (parseInt(marker.time.hour.toString()) * 60 * 60) +
+      (parseInt(marker.time.minute.toString()) * 60) +
+      parseInt(marker.time.second.toString())
     )
   }
 

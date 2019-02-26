@@ -32,6 +32,7 @@ export class ContentVideoPanelComponent implements OnInit {
   seekChanged(time: number) {
     if (!time) return
     this._seek = time
+    this.videoApi.play()
     this.videoApi.seekTime(time)
     this._seek = null
   }

@@ -12,6 +12,7 @@
     <div class="question-group" *ngIf="question as group">
 
       <div class="question-body" *ngFor="let question of group">
+        <img [src]="question.img" *ngIf="question.img">
         <h2>{{question.text}}</h2>
 
         <ul *ngIf="question.respuestas as respuestas else loaderQuestions">

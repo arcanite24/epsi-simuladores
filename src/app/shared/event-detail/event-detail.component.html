@@ -2,10 +2,10 @@
   <epsi-loader></epsi-loader>
 </ng-template>
 
-<div class="epsi-event-detail" *ngIf="event else loader">
+<div class="epsi-event-detail p-4" *ngIf="event else loader">
 
   <h2 class="text-center">{{event.title}}</h2>
-  <p>{{event.desc}}</p>
+  <p class="text-center">{{event.desc}}</p>
 
   <div class="event-tasks" *ngIf="event.tasks as tasks">
 
@@ -13,7 +13,7 @@
     <h4>Tareas</h4>
 
     <ul>
-      <li *ngFor="let task of tasks" (click)="toggleCompleted(task.id)" class="manita">
+      <li *ngFor="let task of tasks" (click)="toggleCompleted(task.id)" class="manita flex flex-row flex-start align-center event-task">
         <input type="checkbox" [checked]="completedTasks.indexOf(task.id) >= 0" *ngIf="completedTasks">
         <span>{{task.label}}</span>
       </li>
