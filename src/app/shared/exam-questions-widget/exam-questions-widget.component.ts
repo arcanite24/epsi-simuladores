@@ -168,6 +168,7 @@ export class ExamQuestionsWidgetComponent implements OnInit {
     this.questionChanged.next({question: this.question, index, results: this.results})
     this.results.lastIndex = index
     this.store.dispatch(new SetQuestion(this.question))
+    this.store.dispatch(new SetAnswer(null))
   }
 
   nextQuestion(currentIndex: number, selectedAnswer: Answer) {
