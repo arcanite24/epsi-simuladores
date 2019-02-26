@@ -55,7 +55,7 @@
     </select>
   </div>
 
-  <div class="form-group" *ngIf="editForm.value.type == 'contenido' && content$ | async as content">
+  <div class="form-group" *ngIf="(editForm.value.type == 'contenido' || editForm.value.type == 'preclase') && content$ | async as content">
     <label for="">Contenido</label>
     <ngx-select-dropdown formControlName="content" [options]="content" [config]="{displayKey: 'name', search: true, placeholder: 'Seleccionar contenido', searchPlaceholder: 'Buscar:'}"></ngx-select-dropdown>
   </div>

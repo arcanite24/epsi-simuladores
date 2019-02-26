@@ -33,7 +33,7 @@ export class SimuladoresPanelComponent implements OnInit {
     this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)
       .valueChanges()
       .pipe(
-        map(list => sortBy(list.list, item => moment(item.date.substr(0, 10)).format('YYYYMMDD'))),
+        map(list => sortBy(list.list, item => item.date ? moment(item.date.substr(0, 10)).format('YYYYMMDD') : moment())),
         map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()),
       )
 

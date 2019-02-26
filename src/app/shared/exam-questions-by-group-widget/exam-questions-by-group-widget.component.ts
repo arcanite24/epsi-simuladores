@@ -194,6 +194,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.store.dispatch(new SetIndex(currentIndex + 1))
     this.modal.getModal('examFeedbackModal').open()
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
+    this.store.dispatch(new SetAnswer(null))
   }
 
   prevQuestion(currentIndex: number, selectedAnswer: Answer) {
