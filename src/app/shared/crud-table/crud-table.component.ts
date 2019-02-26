@@ -4,6 +4,8 @@ import { CrudTableConfig, CrudTableFullEditConfig } from './crud-table-models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { map } from 'rxjs/operators';
+import { sortBy } from 'lodash'
 
 @Component({
   selector: 'adonalsium-crud-table',
@@ -45,7 +47,13 @@ export class CrudTableComponent implements OnInit {
   ngOnInit() {
 
     // Load the collection data
-    this.data$ = this.config.dataSource ? this.config.dataSource : this.afs.collection(this.config.collection, ref => ref.orderBy('createdAt', 'desc')).valueChanges()
+    this.data$ = this.config.dataSource ? 
+      this.config.dataSource : 
+      this.afs.collection(this.config.collection)
+        .valueChanges()
+        .pipe(
+          map(data => sortBy(data, 'createdAt'))
+        )
     
     // Load fullEditConfig
     this.fullEditConfig.modelConfig = this.config

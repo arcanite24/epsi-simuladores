@@ -15,7 +15,7 @@ export class AdminQuestionsComponent implements OnInit {
 
   public config: CrudTableConfig<Question> = {
     collection: 'question',
-    dataSource: this.afs.collection<Question>(Collections.QUESTION, ref => ref.limit(3)).valueChanges(),
+    dataSource: this.afs.collection<Question>(Collections.QUESTION).valueChanges(),
     disableEdit: true,
     headers: [
       {field: 'text', type: 'textarea', label: 'Texto', customRender: row => row.text.substr(0, 100)},

@@ -298,6 +298,7 @@ export interface Comment {
 
 export interface Rating {
   id: string
+  parent: string
   // TODO: Add remaining attribues to Rating Interface
 }
 

@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Event, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import { DayView } from 'calendar-utils';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import moment from 'moment'
 

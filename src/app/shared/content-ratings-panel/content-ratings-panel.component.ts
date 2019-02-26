@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Rating, Collections, Content } from 'src/app/app.models';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-content-ratings-panel',
@@ -62,14 +62,23 @@ export class ContentRatingsPanelComponent implements OnInit {
     if (!content.ratings[key]) content.ratings[key] = 0
 
     content.totalRatings++
-    content.ratings[key] = (content.ratings[key] + value) / content.totalRatings
+    // content.ratings[key] = (content.ratings[key] + value) / content.totalRatings
 
-    await this.afs.doc(`${Collections.RATING}/${this.ratingKey}`).set({id: this.ratingKey, [key]: value}, {merge: true})
-    await this.afs.doc(`${Collections.CONTENT}/${this.parent_id}`).set({ratings: content.ratings, totalRatings: content.totalRatings}, {merge: true})
-
-    // TODO: Something is wrong with the rating mean
-
+    await this.afs.doc(`${Collections.RATING}/${this.ratingKey}`).set({id: this.ratingKey, [key]: value, parent: this.parent_id}, {merge: true})
     this.toastr.success('Gracias por tu calificación.')
+
+    // Calculate rating every update (might not be the best idea until we find another thing)
+    const rating = await this.afs.collection<Rating>(Collections.RATING, ref => ref
+      .where('parent', '==', this.parent_id))
+      .valueChanges()
+      .pipe(
+        take(1),
+        map(ratings => ratings.map(r => r[key]).reduce((a, b) => a + b, 0))
+      ).toPromise()
+
+    content.ratings[key] = rating
+    console.log(content.ratings)
+    await this.afs.doc(`${Collections.CONTENT}/${this.parent_id}`).update({ratings: content.ratings, totalRatings: content.totalRatings})
 
   }
 
