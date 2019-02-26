@@ -5,6 +5,7 @@ import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import 'hammerjs';
 import moment from 'moment'
+import 'moment-countdown'
 moment.locale('es')
 
 if (environment.production) {

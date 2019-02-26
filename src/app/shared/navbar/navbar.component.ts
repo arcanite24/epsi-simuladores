@@ -1,6 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router } from '@angular/router';
+const moment = require('moment')
+const countdown = require('countdown')
+countdown.setLabels(
+	' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio',
+	' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios',
+	' y ',
+	', ',
+	'ahora');
+moment.locale('es')
+require('moment-countdown')
 
 @Component({
   selector: 'epsi-navbar',
@@ -10,6 +20,9 @@ import { Router, NavigationEnd } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
   public currentUrl: string
+
+  public timerDate: string = '2019-04-15T12:30'
+  public timerLabel: string = ''
 
   private hiddenOn: string[] = [
     '/'
@@ -25,6 +38,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    setInterval(() => this.timerLabel = `En ${moment(this.timerDate).countdown().toString()}`, 1000)
   }
 
   public get hideNavbar(): boolean {

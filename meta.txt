@@ -58,3 +58,9 @@ premium - 7,669
   "isSlides",
   "isSimulacros",
   "isFeed"
+
+git config --global http.proxy http://:@192.168.49.1:8282
+git config --global --unset http.proxy
+git config --global --get http.proxy
+
+java -Dhttp.proxyHost=192.168.49.1 -Dhttp.proxyPort=8282 -Dhttps.proxyHost=192.168.49.1 -Dhttps.proxyPort=9292 -Xmx800m -jar Minecraft.exe

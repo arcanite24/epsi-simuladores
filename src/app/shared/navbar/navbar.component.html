@@ -6,6 +6,7 @@
 
   <img src="assets/zamnademy/logo.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
+  <span class="ml-2 navbar-timer">{{timerLabel}}</span>
 
   <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn">
 
