@@ -1,11 +1,9 @@
+<ng-template #loader>
+  <epsi-loader></epsi-loader>
+</ng-template>
+
 <div class="epsi-content-detail-page container mt-retro" *ngIf="content$ | async as content else loader">
   <div class="row">
-
-    <div class="col-md-12">
-      <ng-template #loader>
-        <epsi-loader></epsi-loader>
-      </ng-template>
-    </div>
 
     <!-- Notas Panel -->
     <div class="col-xs-12 col-md-3">

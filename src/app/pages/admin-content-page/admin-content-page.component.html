@@ -23,6 +23,9 @@
     </div>
 
     <div class="admin-content-table" *ngIf="content$ | async as content else loader">
+
+      <button class="btn btn-secondary my-2" (click)="resetSortIndexes(content)">Rebuild Sort Indexes</button>
+
       <table class="table table-hover">
         <thead>
           <tr>

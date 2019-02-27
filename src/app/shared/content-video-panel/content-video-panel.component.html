@@ -9,6 +9,9 @@
 <epsi-panel [title]="content.name" *ngIf="content">
 
   <div class="video-panel-player" *ngIf="content.video">
+
+    <img src="assets/zamnademy/logo-azul.png" class="video-logo-zamna">
+
     <vg-player (onPlayerReady)="onPlayerReady($event)">
 
       <vg-overlay-play></vg-overlay-play>

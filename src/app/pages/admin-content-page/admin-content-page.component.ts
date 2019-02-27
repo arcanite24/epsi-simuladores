@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Content } from 'src/app/app.models';
+import { Content, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +23,7 @@ export class AdminContentPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.content$ = this.afs.collection<Content>('content', ref => ref.where('type', '==', 'subtema')).valueChanges()
+    this.content$ = this.afs.collection<Content>('content').valueChanges()
 
   }
 
@@ -43,6 +43,24 @@ export class AdminContentPageComponent implements OnInit {
 
   openTree() {
     this.modal.getModal('treeContentModal').open()
+  }
+
+  async resetSortIndexes(content: Content[] = []) {
+
+    const batch = this.afs.firestore.batch()
+    console.log('reseting', content.length, 'indexes')
+
+    for (const c of content) {
+      if (!c.sortIndex) {
+        const ref = this.afs.collection(Collections.CONTENT).doc(c.id).ref
+        batch.update(ref, {sortIndex: 0})
+      }
+    }
+
+    await batch.commit()
+    this.toastr.success('Sort indexes reseted to 0')
+    console.log('finished reseting', content.length, 'indexes')
+
   }
 
 }

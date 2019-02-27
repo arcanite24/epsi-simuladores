@@ -154,6 +154,7 @@ export interface Content {
   showChildren?: boolean
   haveChildren?: boolean
   forum?: string
+  sortIndex?: number
 }
 
 export interface Marker {

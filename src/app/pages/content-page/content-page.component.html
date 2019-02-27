@@ -6,7 +6,13 @@
 
   <!-- Master Content Panel -->
   <epsi-panel [title]="master.name" *ngIf="(children$ | async) as children else loader" [showContent]="true">
-    <epsi-content-list-item *ngFor="let child of children" [content]="child"></epsi-content-list-item>
+    <epsi-content-list-item 
+      *ngFor="let child of children; let i = index; trackBy:trackByFn" 
+      [content]="child" 
+      (moveUp)="moveContent(children, i, i - 1)"
+      (moveDown)="moveContent(children, i, i + 1)"
+      [index]="i" 
+      [length]="children.length"></epsi-content-list-item>
   </epsi-panel>
 
 </div>
