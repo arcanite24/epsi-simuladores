@@ -230,4 +230,15 @@ export class StatsService {
 
   }
 
+  async registerRanking(exam: Exam, user: User, promedio: number = 0) {
+    const id = this.afs.createId()
+    await this.afs.collection(Collections.EXAM_RANKING).doc(id).set({
+      id,
+      exam,
+      user,
+      promedio,
+      date: new Date().toISOString()
+    })
+  }
+
 }

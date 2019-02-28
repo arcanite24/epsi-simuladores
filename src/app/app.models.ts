@@ -54,6 +54,7 @@ export enum Collections {
   LIST = 'list',
   QUESTION_STAT = 'question-stat',
   CONTENT_ERROR = 'content-error',
+  EXAM_RANKING = 'exam-ranking',
 }
 
 export enum PaymentStatus {
@@ -511,4 +512,12 @@ export interface ContentError {
   content: Content
   user: User
   text: string
+}
+
+export interface ExamRanking {
+  id: string
+  user: User
+  exam: Partial<Exam>
+  date: string
+  promedio: number
 }

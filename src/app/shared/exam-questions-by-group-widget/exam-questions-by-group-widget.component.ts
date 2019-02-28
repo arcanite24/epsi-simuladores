@@ -94,6 +94,11 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.lastIndex = 0
     this.question = this.exam.formattedQuestions[this.lastIndex]
 
+    // Register ranking in DEMO type
+    if (this.exam.type == ExamTypes.PRUEBA) {
+      
+    }
+
     // If exam is pool delete the exam and show results
     if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS || this.exam.type == ExamTypes.PRUEBA) {
       // Decide if we keep the exam pool, maybe that inefficient and redundant
