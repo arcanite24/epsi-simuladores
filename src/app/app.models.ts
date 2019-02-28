@@ -67,6 +67,7 @@ export enum Roles {
   Admin = 'isAdmin',
   Esencial = 'isEsencial',
   Premium = 'isPremium',
+  Temprano = 'isTemprano',
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
@@ -90,13 +91,14 @@ export const EsencialModel: string[] = [
   Roles.Calendar,
   Roles.TopUsers,
   Roles.Galleries,
+  Roles.Feed,
+
   Roles.Simuladores,
   Roles.Forum,
   Roles.Streaming,
   Roles.Media,
   Roles.Slides,
   Roles.Simulacros,
-  Roles.Feed,
   Roles.Programa,
   Roles.Pool,
   Roles.TagPool,
@@ -106,6 +108,11 @@ export const PremiumModel: string[] = [
   ...EsencialModel,
   Roles.Premium,
   Roles.Content
+]
+
+export const TempranoModel: string[] = [
+  ...PremiumModel,
+  Roles.Temprano
 ]
 
 export class User {
@@ -131,9 +138,10 @@ export class User {
   promedio?: number
 
   // Roles
-  isAdmin: boolean
-  isPremium: boolean
-  isEsencial: boolean
+  isAdmin?: boolean
+  isPremium?: boolean
+  isEsencial?: boolean
+  isTemprano?: boolean
 
 }
 

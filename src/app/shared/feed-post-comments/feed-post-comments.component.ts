@@ -49,7 +49,7 @@ export class FeedPostCommentsComponent implements OnInit {
     this.addForm.patchValue({date: new Date().toISOString(), user: this.auth.user})
 
     if (this.addForm.valid) {
-      await this.afs.doc(`${Collections.POST_COMMENT}/${comment.id}`).set({...comment})
+      await this.afs.doc(`${Collections.POST_COMMENT}/${comment.id}`).set({...this.addForm.value})
       this.addForm.reset({...comment, text: '', id: this.afs.createId()})
     }
 

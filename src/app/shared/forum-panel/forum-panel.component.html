@@ -1,4 +1,9 @@
-<epsi-panel title="Mi Asesor Personal" img="https://zamnademy.com/site/images/clients/asesorpersonal.png" height="300px" [showContent]="false">
+<epsi-panel 
+  title="Mi Asesor Personal" 
+  img="https://zamnademy.com/site/images/clients/asesorpersonal.png" 
+  height="300px" 
+  [showContent]="false"
+  [blur]="!auth.isTemprano">
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>

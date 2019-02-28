@@ -44,6 +44,8 @@ export class AuthService {
   get isAdmin() { return this.loggedIn && this.user[Roles.Admin] }
   get isEsencial() { return this.loggedIn && this.user[Roles.Esencial] }
   get isPremium() { return this.loggedIn && this.user[Roles.Premium] }
+  get isTemprano() { return this.loggedIn && this.user[Roles.Temprano] }
+
   get isContent() { return this.loggedIn && this.user[Roles.Content] }
   get isChecklist() { return this.loggedIn && this.user[Roles.Checklist] }
   get isCalendar() { return this.loggedIn && this.user[Roles.Calendar] }

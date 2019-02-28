@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Livestream, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-livestreams-panel',
@@ -14,6 +15,7 @@ export class LivestreamsPanelComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

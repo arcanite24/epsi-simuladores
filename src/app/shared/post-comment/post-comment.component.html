@@ -8,6 +8,7 @@
   <div class="comment-body flex flex-row flex-start">
     <img [src]="comment.user && comment.user.photoURL ? comment.user.photoURL : 'https://via.placeholder.com/128'" style="width: 32px">
     <p>{{comment.text}}</p>
+    <!-- <pre>{{ comment | json }}</pre> -->
   </div>
 
   <div class="comment-actions flex flex-row flex-start align-center" *ngIf="auth.user as user">

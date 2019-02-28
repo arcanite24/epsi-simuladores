@@ -26,5 +26,12 @@
       <hr>
     </div>
 
+    <div class="col-md-12">
+      <h5 class="m-0 mb-1">¿Es PIT?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, true)" class="btn btn-success" type="button" *ngIf="!user.isTemprano">Dar PIT</button>
+      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, false)" class="btn btn-danger" type="button" *ngIf="user.isTemprano">Quitar PIT</button>
+      <hr>
+    </div>
+
   </div>
 </div>

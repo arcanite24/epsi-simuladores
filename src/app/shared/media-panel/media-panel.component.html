@@ -1,5 +1,9 @@
 <div class="epsi-media-panel">
-  <epsi-panel title="Material Extra" img="assets/zamnademy/media.svg" [showContent]="false">
+  <epsi-panel 
+    title="Material Extra" 
+    img="assets/zamnademy/media.svg" 
+    [showContent]="false"
+    [blur]="!auth.isTemprano">
     
     <ng-template #loader>
       <epsi-loader></epsi-loader>

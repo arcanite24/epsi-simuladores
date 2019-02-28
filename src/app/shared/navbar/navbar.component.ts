@@ -39,7 +39,16 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     /* this.timerLabel = `<div class="navbar-timer-label">${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}</div>` */
-    setInterval(() => this.timerLabel = `<div class="navbar-timer-label">${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}</div>`, 1000)
+    this.timerLabel = this.timerLabel = `
+    <div class="navbar-timer-label">
+      <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Inicio Oficial del Curso</small></div>
+      ${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}
+    </div>`
+    /* setInterval(() => this.timerLabel = `
+      <div class="navbar-timer-label">
+        <div class="flex-center"><small class="m-0 p-0>Inicio Oficial del Curso</small></div>
+        ${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}
+      </div>`, 1000) */
   }
 
   public get hideNavbar(): boolean {

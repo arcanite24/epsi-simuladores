@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Media, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-media-panel',
@@ -13,7 +14,8 @@ export class MediaPanelComponent implements OnInit {
   public medias$: Observable<Media[]>
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

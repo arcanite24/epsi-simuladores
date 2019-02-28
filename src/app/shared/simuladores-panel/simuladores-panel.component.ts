@@ -4,6 +4,7 @@ import { Collections, Exam, ExamTypes } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import moment from 'moment'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-simuladores-panel',
@@ -15,7 +16,8 @@ export class SimuladoresPanelComponent implements OnInit {
   public exams$: Observable<any[]>
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

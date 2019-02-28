@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, PremiumModel, EsencialModel, Collections, Roles } from 'src/app/app.models';
+import { User, PremiumModel, EsencialModel, Collections, Roles, TempranoModel } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
@@ -16,6 +16,7 @@ export class UserRolesComponent implements OnInit {
   public premiumModel: string[] = PremiumModel
   public esencialModel: string[] = EsencialModel
   public adminModel: string[] = [ Roles.Admin ]
+  public tempranoModel: string[] = TempranoModel
 
   public l: boolean = false
 

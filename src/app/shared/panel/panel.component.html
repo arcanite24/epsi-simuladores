@@ -5,7 +5,11 @@
     <span>{{title}}</span>
   </div>
 
-  <div class="epsi-panel-content" *ngIf="showContent" [ngStyle]="{overflowY: height ? 'auto' : null, height: height}">
+  <div 
+    class="epsi-panel-content" 
+    *ngIf="showContent" 
+    [ngStyle]="{overflowY: height ? 'auto' : null, height: height}"
+    [ngClass]="{'blur-panel': blur}">
     <ng-content></ng-content>
   </div>
 

@@ -26,7 +26,7 @@ export class CalendarPanelComponent implements OnInit {
           ...e, 
           start: moment(e.date).startOf('day').toDate(), 
           fullDay: true,
-          color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#ddd', secondary: '#ddd'}
+          color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#ddd', secondary: '#ddd'} : {primary: '#5e4b8b', secondary: '#5e4b8b'}
         }) as Event) as Event[]
       })
     )
