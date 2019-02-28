@@ -489,7 +489,7 @@ export interface StatCounter {
   id: string
   key: string
   label: string
-  value: string
+  value: number
   lastModified: string
 }
 

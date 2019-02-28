@@ -96,13 +96,12 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     // Register ranking in DEMO type
     if (this.exam.type == ExamTypes.PRUEBA) {
-      
+      this.stats.registerRanking(this.exam, this.auth.user, this.results.promedio)
+      this.stats.modifyCounter(this.exam.id, 1, this.exam)
     }
 
-    // If exam is pool delete the exam and show results
-    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS || this.exam.type == ExamTypes.PRUEBA) {
-      // Decide if we keep the exam pool, maybe that inefficient and redundant
-      if (this.exam.type == ExamTypes.PRUEBA) this.stats.modifyCounter(this.exam.id, 1, this.exam)
+    // If exam is pool delete the exam
+    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS) {
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
     }
 

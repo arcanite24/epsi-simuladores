@@ -35,7 +35,7 @@ export class StatsService {
   // Stat Counter
   async modifyCounter(key: string, delta: number, exam?: Exam) {
 
-    const counter = await this.afs.collection<StatCounter>(Collections.STAT_COUNTER, ref => ref
+    let counter = await this.afs.collection<StatCounter>(Collections.STAT_COUNTER, ref => ref
       .where('key', '==', key))
       .valueChanges()
       .pipe(
@@ -44,7 +44,8 @@ export class StatsService {
       )
       .toPromise()
 
-    counter.value += delta
+    if (!counter) counter = {id: key, key, label: exam.name, value: 0, lastModified: new Date().toISOString()}
+    if (counter.value) counter.value += delta
 
     await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).update({value: counter.value, lastModified: new Date().toISOString(), exam: exam ? exam.name : null})
 
@@ -231,14 +232,23 @@ export class StatsService {
   }
 
   async registerRanking(exam: Exam, user: User, promedio: number = 0) {
+
     const id = this.afs.createId()
-    await this.afs.collection(Collections.EXAM_RANKING).doc(id).set({
+
+    this.afs.collection(Collections.EXAM_RANKING).doc(id).set({
       id,
-      exam,
-      user,
+      exam: {
+        id: exam.id,
+        name: exam.name,
+      },
+      user: {
+        displayName: user.displayName,
+        uid: user.uid,
+      },
       promedio,
       date: new Date().toISOString()
     })
+
   }
 
 }
