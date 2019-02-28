@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Question, Answer, QuestionStat } from '../app.models';
+import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Question, Answer, QuestionStat, Exam } from '../app.models';
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
@@ -33,7 +33,7 @@ export class StatsService {
   ) { }
 
   // Stat Counter
-  async modifyCounter(key: string, delta: number) {
+  async modifyCounter(key: string, delta: number, exam?: Exam) {
 
     const counter = await this.afs.collection<StatCounter>(Collections.STAT_COUNTER, ref => ref
       .where('key', '==', key))
@@ -46,7 +46,7 @@ export class StatsService {
 
     counter.value += delta
 
-    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).update({value: counter.value, lastModified: new Date().toISOString()})
+    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).update({value: counter.value, lastModified: new Date().toISOString(), exam: exam ? exam.name : null})
 
   }
 

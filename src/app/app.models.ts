@@ -324,6 +324,7 @@ export interface Event {
   start?: Date
   end?: string
   fullDay?: boolean
+  color?: {primary: string, secondary: string}
   tasks: EventTask[]
   links: EventLink[]
 }

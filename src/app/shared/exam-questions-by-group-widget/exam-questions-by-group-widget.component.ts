@@ -97,7 +97,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     // If exam is pool delete the exam and show results
     if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS || this.exam.type == ExamTypes.PRUEBA) {
       // Decide if we keep the exam pool, maybe that inefficient and redundant
-      if (this.exam.type == ExamTypes.PRUEBA) this.stats.modifyCounter('exam_demo_resueltos', 1)
+      if (this.exam.type == ExamTypes.PRUEBA) this.stats.modifyCounter(this.exam.id, 1, this.exam)
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
     }
 

@@ -17,6 +17,10 @@
         <input type="checkbox" [checked]="completedTasks.indexOf(task.id) >= 0" *ngIf="completedTasks">
         <span>{{task.label}}</span>
       </li>
+      <li (click)="toggleCompleted(event.id)" class="manita flex flex-row flex-start align-center event-task">
+        <input type="checkbox" [checked]="completedTasks.indexOf(event.id) >= 0" *ngIf="completedTasks">
+        <span>Terminé de estudiar éste tema</span>
+      </li>
     </ul>
 
     <hr>

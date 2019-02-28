@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Event, Collections } from 'src/app/app.models';
+import { Event, Collections, User } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import moment from 'moment'
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-calendar-panel',
@@ -15,21 +16,33 @@ export class CalendarPanelComponent implements OnInit {
 
   public viewDate: Date = new Date()
   public dayEvents: Event[]
+  public completedTasks: string[] = []
 
   public events$: Observable<Event[]> = this.afs.collection<Event>(Collections.EVENT)
     .valueChanges()
     .pipe(
       map(events => {
-        return events.map(e => ({ ...e, start: moment(e.date).startOf('day').toDate(), fullDay: true }) as Event) as Event[]
+        return events.map(e => ({
+          ...e, 
+          start: moment(e.date).startOf('day').toDate(), 
+          fullDay: true,
+          color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#ddd', secondary: '#ddd'}
+        }) as Event) as Event[]
       })
     )
 
   constructor(
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
+    this.auth.user$.subscribe(user => {
+      if (user) {
+        this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks)
+      }
+    })
   }
 
   dayClicked(day: any) {

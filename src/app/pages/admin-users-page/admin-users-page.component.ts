@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models'
 import json2csv from 'json2csv'
 import { AngularFirestore } from '@angular/fire/firestore'
-import { Collections, User } from 'src/app/app.models'
+import { Collections, User, Roles } from 'src/app/app.models'
 import { take } from 'rxjs/operators'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
@@ -19,11 +19,14 @@ export class AdminUsersPageComponent implements OnInit {
     'uid',
     'displayName',
     'email',
-    'cellphone',
-    'college',
+    'celular',
+    'universidad',
     'especialidad',
     'new_email',
-    'photoURL'
+    'photoURL',
+    Roles.Admin,
+    Roles.Esencial,
+    Roles.Premium,
   ]
 
   public config: CrudTableConfig<User> = {
@@ -59,7 +62,12 @@ export class AdminUsersPageComponent implements OnInit {
         take(1)
       ).toPromise()
 
-    const csv = parser.parse(users)
+    const csv = parser.parse(users.map(user => {
+      return {
+        ...user,
+
+      }
+    }))
     const exportedFilenmae = `zamnademy-users-${Date.now()}.csv`
 
     var blob = new Blob([csv], { type: 'text/csvcharset=utf-8' })

@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 const moment = require('moment')
 const countdown = require('countdown')
 countdown.setLabels(
-	' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio',
-	' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios',
-	' y ',
-	', ',
+	' <small>milissegundo</small>| <small>segundo</small>| <small>minuto</small>| <small>hora</small>| <small>día</small>| <small>semana</small>| <small>mes</small>| <small>año</small>| <small>decada</small>| <small>siglo</small>| <small>milenio</small>',
+	' <small>milisegundos</small>| <small>segundos</small>| <small>minutos</small>| <small>horas</small>| <small>días</small>| <small>semanas</small>| <small>meses</small>| <small>años</small>| <small>décadas</small>| <small>siglos</small>| <small>milenios</small>',
+	' ',
+	' ',
 	'ahora');
 moment.locale('es')
 require('moment-countdown')
@@ -38,7 +38,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => this.timerLabel = `En ${moment(this.timerDate).countdown().toString()}`, 1000)
+    /* this.timerLabel = `<div class="navbar-timer-label">${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}</div>` */
+    setInterval(() => this.timerLabel = `<div class="navbar-timer-label">${countdown(moment(this.timerDate).toDate(), null, ~countdown.MONTHS & ~countdown.MILLISECONDS).toHTML('strong')}</div>`, 1000)
   }
 
   public get hideNavbar(): boolean {
