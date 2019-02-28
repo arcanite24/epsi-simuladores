@@ -170,6 +170,8 @@ import { ResultsPageComponent } from './pages/results-page/results-page.componen
 import { ContentErrorModalComponent } from './shared/content-error-modal/content-error-modal.component';
 import { ContentErrorAddComponent } from './shared/content-error-add/content-error-add.component';
 import { AdminContentErrorComponent } from './pages/admin-content-error/admin-content-error.component';
+import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-exam-rankings.component';
+import { ExamRankingAddComponent } from './shared/exam-ranking-add/exam-ranking-add.component';
 
 @NgModule({
   declarations: [
@@ -310,6 +312,8 @@ import { AdminContentErrorComponent } from './pages/admin-content-error/admin-co
     ContentErrorModalComponent,
     ContentErrorAddComponent,
     AdminContentErrorComponent,
+    AdminExamRankingsComponent,
+    ExamRankingAddComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -2,17 +2,21 @@
   <epsi-exam-feedback-modal *ngIf="lastQuestion" [lastQuestion]="lastQuestion" [lastSelected]="lastSelected"></epsi-exam-feedback-modal>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="examRankingAdd">
+  <epsi-exam-ranking-add [exam]="exam" *ngIf="exam"></epsi-exam-ranking-add>
+</ngx-smart-modal>
+
 <epsi-panel *ngIf="exam else loader" [title]="exam.name" [showContent]="true">
   
   <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
 
     <h5 class="m-0">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
-    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
+    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}} {{exam.duration}}</strong></p>
 
     <div class="question-group" *ngIf="question as group">
 
       <div class="question-body" *ngFor="let question of group">
-        <img [src]="question.img" *ngIf="question.img">
+        <img [src]="question.img" *ngIf="question.img" class="w-100">
         <h2>{{question.text}}</h2>
 
         <ul *ngIf="question.respuestas as respuestas else loaderQuestions">

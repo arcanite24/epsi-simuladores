@@ -26,7 +26,7 @@
 
     </div>
 
-    <span *ngIf="!content.video">{{content.name}}</span>
+    <span class="manita" (click)="showChildren = !showChildren" *ngIf="!content.video">{{content.name}}</span>
     <a *ngIf="content.video" [routerLink]="[ '/content', content.type, content.id ]">{{content.name}}</a>
 
   </div>

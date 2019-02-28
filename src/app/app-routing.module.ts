@@ -47,6 +47,8 @@ import { AdminGuard } from './admin.guard';
 import { NotesPageComponent } from './pages/notes-page/notes-page.component';
 import { ResultsPageComponent } from './pages/results-page/results-page.component';
 import { AdminContentErrorComponent } from './pages/admin-content-error/admin-content-error.component';
+import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-exam-rankings.component';
+import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
 
 const routes: Routes = [
 
@@ -69,6 +71,9 @@ const routes: Routes = [
   {path: 'exam/:type/:id', component: ExamDetailPageComponent},
   {path: 'results', component: ResultsPageComponent},
   {path: 'result/:id', component: ExamResultsPageComponent},
+
+  // Debug
+  {path: 'subir-archivos', component: ToolUploaderComponent},
 
   // Content
   {path: 'content/:id', component: ContentPageComponent, canActivate: [AuthGuard]},
@@ -105,6 +110,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats/counters', component: AdminStatCountersComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration', component: AdminMigrationComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content-error', component: AdminContentErrorComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
 
 ];
 

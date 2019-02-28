@@ -373,8 +373,9 @@ export interface ExamResults {
   user: string
   exam: string
   date: string
-  promedio: number,
+  promedio: number
   tags: string[]
+  exam_type?: string
 }
 
 export interface Post {

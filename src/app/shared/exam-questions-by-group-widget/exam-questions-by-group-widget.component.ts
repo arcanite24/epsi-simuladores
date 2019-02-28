@@ -81,6 +81,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     const questions: Question[] = Object.values(this.results.questions)
     this.results.promedio = questions.filter(q => q.correcta).length / questions.length
 
+    // Re-set exam type
+    this.results.exam_type = this.exam.type
+
     // Save all question tags in one place
     this.results.tags = _.uniq(_.flattenDeep(questions.map(q => q.raw.tags)))
     console.log(this.results.tags, questions.map(q => q.raw.tags))
@@ -96,7 +99,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     // Register ranking in DEMO type
     if (this.exam.type == ExamTypes.PRUEBA) {
-      this.stats.registerRanking(this.exam, this.auth.user, this.results.promedio)
+      console.log('abriendo modal ranking');
+      this.modal.getModal('examRankingAdd').open()
       this.stats.modifyCounter(this.exam.id, 1, this.exam)
     }
 
@@ -120,14 +124,14 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       if (this.duration > 0) this.duration--
       this.duration_label = moment()
         .startOf('day')
-        .seconds(this.duration)
+        .seconds(this.duration * 60)
         .format('H:mm:ss')
     }, 1000)
 
     setTimeout(() => {
       this.finishExam()
       clearInterval(timer)
-    }, duration)
+    }, duration * 60 * 1000)
     
   }
 
@@ -168,7 +172,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       exam: this.exam.id,
       date: new Date().toISOString(),
       promedio: 0,
-      tags: []
+      tags: [],
+      exam_type: this.exam.type
     }
 
     this.auth.user$.subscribe(user => {

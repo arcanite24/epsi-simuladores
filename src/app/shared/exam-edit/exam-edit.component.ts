@@ -48,7 +48,7 @@ export class ExamEditComponent implements OnInit {
       type: ['', Validators.required],
       content_type: '',
       content: null,
-      time: null,
+      duration: null,
       questions: [[]],
       isPrueba: false,
       liberado: null,

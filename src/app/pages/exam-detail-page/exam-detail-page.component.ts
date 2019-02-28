@@ -63,14 +63,16 @@ export class ExamDetailPageComponent implements OnInit {
 
     this.examState$ = this.store.select('exam')
 
-    this.result$ = this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
-      .where('user', '==', this.auth.user.uid)
-      .where('exam', '==', this.id)
-      .limit(1))
-      .valueChanges()
-      .pipe(
-        map(results => results[0])
-      )
+    this.auth.user$.subscribe(user => {
+      if (user && !this.result$) this.result$ = this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+        .where('user', '==', user.uid)
+        .where('exam', '==', this.id)
+        .limit(1))
+        .valueChanges()
+        .pipe(
+          map(results => results[0])
+        )
+    })
     
   }
 

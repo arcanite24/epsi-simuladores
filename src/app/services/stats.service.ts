@@ -47,7 +47,7 @@ export class StatsService {
     if (!counter) counter = {id: key, key, label: exam.name, value: 0, lastModified: new Date().toISOString()}
     if (counter.value) counter.value += delta
 
-    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).update({value: counter.value, lastModified: new Date().toISOString(), exam: exam ? exam.name : null})
+    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({value: counter.value, lastModified: new Date().toISOString(), exam: exam ? exam.name : null}, {merge: true})
 
   }
 
@@ -231,7 +231,7 @@ export class StatsService {
 
   }
 
-  async registerRanking(exam: Exam, user: User, promedio: number = 0) {
+  async registerRanking(exam: Exam, user: Partial<User>, promedio: number = 0) {
 
     const id = this.afs.createId()
 
