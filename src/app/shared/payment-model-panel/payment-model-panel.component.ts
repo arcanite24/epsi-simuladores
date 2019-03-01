@@ -8,6 +8,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { take, map } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-payment-model-panel',
@@ -24,14 +25,16 @@ export class PaymentModelPanelComponent implements OnInit {
   public coupon: string
   public pack: any
 
+  public showPaypal: boolean = false
+
   constructor(
     private sanitizer: DomSanitizer,
-    private route: ActivatedRoute,
     private afs: AngularFirestore,
     private payment: PaymentService,
     private toastr: ToastrService,
     private afAuth: AngularFireAuth,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -140,6 +143,32 @@ export class PaymentModelPanelComponent implements OnInit {
       this.loading = false
     }
     
+  }
+
+  async loadPaypalButton(model: PaymentModel) {
+
+    this.payment.generatePaypalButton(`paypal-container-${model.id}`, model.amount, async payment => {
+      console.log(model)
+      if (payment.state == 'approved') {
+
+        console.log('pago de paypal aprobado')
+        const uid = this.auth.user.uid
+        let payload = {}
+
+        for (const role of model.unlocks) {
+          payload[role] = true
+        }
+
+        await this.afs.collection(Collections.USER).doc(uid).update(payload)
+        this.router.navigate(['/home'])
+
+      } else {
+        this.toastr.error('Algo salio mal con tu pago de PayPal')
+      }
+    })
+
+    this.showPaypal = true
+
   }
 
 }

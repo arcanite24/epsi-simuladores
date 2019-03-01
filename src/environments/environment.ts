@@ -18,7 +18,8 @@ export const environment = {
   algolia: {
     appId: 'M30SUGBQKI',
     apiKey: 'f042b2ddd7c5ecfc8c93f1367e6d9625'
-  }
+  },
+  paypal: 'AXD_aOCopqUyduDmDGWXJ0HbBhquAANCu37LEt3yXn40T3gU0ns-12nDt-zdvB4tIUSYBembxZ84UcSC',
 };
 
 /*
