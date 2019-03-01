@@ -1,19 +1,19 @@
 <form [formGroup]="addForm" (ngSubmit)="submitForm()">
 
-  <h1>Agregar Hilo</h1>
+  <h4 class="c-epsi-primary">Crear una pregunta</h4>
 
-  <div class="epsi-input">
-    <label for="">Titulo</label>
-    <input type="text" formControlName="title">
+  <div class="form-group">
+    <label for="">Tema</label>
+    <input class="form-control" type="text" formControlName="title" placeholder="Tema de la publicación">
   </div>
   
-  <div class="epsi-input">
-    <label for="">Texto</label>
-    <textarea formControlName="text"></textarea>
+  <div class="form-group">
+    <label for="">Mi pregunta</label>
+    <textarea class="form-control" formControlName="text" placeholder="Pregunta de la publicación"></textarea>
   </div>
 
-  <button type="submit">Agregar Hilo</button>
+  <button type="submit" class="btn btn-primary">Agregar Pregunta</button>
 
-  <pre>{{addForm.value | json}}</pre>
+  <!-- <pre>{{addForm.value | json}}</pre> -->
 
 </form>

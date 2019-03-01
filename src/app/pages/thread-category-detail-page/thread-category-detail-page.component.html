@@ -9,8 +9,8 @@
       <epsi-loader></epsi-loader>
     </ng-template>
   
-    <div class="thread-actions p-3" *ngIf="auth.isAdmin">
-      <button type="button" class="btn btn-secondary" (click)="threadAddModal.open()">Crear Hilo</button>
+    <div class="thread-actions p-3">
+      <button type="button" class="btn btn-secondary" (click)="threadAddModal.open()">Hacer una pregunta</button>
     </div>
   
     <ul *ngIf="threads$ | async as threads else threadsLoader">
