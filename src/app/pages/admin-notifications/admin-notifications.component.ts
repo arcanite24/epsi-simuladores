@@ -16,7 +16,7 @@ export class AdminNotificationsComponent implements OnInit {
       {field: 'title', type: 'text', label: 'Título'},
       {field: 'text', type: 'textarea', label: 'Contenido'},
       {field: 'isGlobal', type: 'checkbox', label: '¿Global?', hideOnTable: true},
-      {field: 'date', type: 'date', label: 'Fecha', customRender: row => moment(row.date).format('LL')},
+      /* {field: 'date', type: 'date', label: 'Fecha', customRender: row => moment(row.date).format('LL')}, */
     ],
     fullEdit: true,
     documentDefaults: {

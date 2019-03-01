@@ -43,4 +43,45 @@ export class NotesPageComponent implements OnInit {
     this.modal.getModal('noteDetailModal').open()
   }
 
+  exportNotes(notes: Note[][] = []) {
+
+    let text = ''
+
+    for (const cat of notes) {
+      text += `**${cat[0].content_type}**\n`
+      for (const note of cat) {
+        text += `${note.title}\n${note.text}\n\n`
+      }
+    }
+
+    const uri = this.makeTextFile(text)
+    this.downloadURI(uri, `notas-zamandemy-${new Date().toDateString()}.txt`)
+
+  }
+
+  private makeTextFile(text) {
+    var textFile = null
+    var data = new Blob([text], {type: 'text/plain'});
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+
+    // returns a URL you can use as a href
+    return textFile;
+  }
+
+  private downloadURI(uri, name) {
+    var link = document.createElement("a");
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
 }

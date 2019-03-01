@@ -19,6 +19,7 @@
   </ng-template>
 
   <div class="row" *ngIf="notes$ | async as notes else loader">
+
     <div class="col-xs-12 col-md-4" *ngFor="let type of notes">
       <epsi-panel [title]="type[0].content_type" height="300px">
         <ul class="list-group m-4">
@@ -26,6 +27,11 @@
         </ul>
       </epsi-panel>
     </div>
+
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="exportNotes(notes)">Exportar Notas</button>
+    </div>
+
   </div>
 
 </div>

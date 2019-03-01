@@ -22,6 +22,7 @@
 
       <button *ngIf="auth.loggedIn" (click)="notisModal.open()" class="navbar-action">
         <i class="fa fa-bell"></i>
+        <span class="badge badge-danger" *ngIf="notReadCount > 0">{{notReadCount | number}}</span>
       </button>
 
       <button *ngIf="auth.loggedIn" (click)="router.navigate(['/notes'])" class="navbar-action">

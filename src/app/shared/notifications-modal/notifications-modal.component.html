@@ -2,15 +2,15 @@
 
   <div class="row" *ngIf="notis$ | async as notis else loader">
 
-    <div class="col-md-12" *ngFor="let noti of notis">
+    <div class="col-md-12 manita" *ngFor="let noti of notis" (click)="readNoti(noti)">
       <div class="w-100 flex flex-row flex-start align-stretch noti-container">
         <div class="noti-icon flex-loader">
           <i class="fa fa-bell"></i>
         </div>
-        <div class="noti-body flex-loader">
+        <div class="noti-body flex-loader" [ngClass]="{'bg-eee': readNotis.indexOf(noti.id) >= 0}">
           <h4>{{noti.title}}</h4>
           <p>{{noti.text}}</p>
-          <small>{{noti.date | amCalendar}}</small>
+          <!-- <small>{{noti.date | amCalendar}}</small> -->
         </div>
       </div>
     </div>
