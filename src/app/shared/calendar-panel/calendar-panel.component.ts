@@ -40,7 +40,7 @@ export class CalendarPanelComponent implements OnInit {
   ngOnInit() {
     this.auth.user$.subscribe(user => {
       if (user) {
-        this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks)
+        this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks ? u.completedTasks : [])
       }
     })
   }
