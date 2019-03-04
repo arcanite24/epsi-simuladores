@@ -110,6 +110,16 @@
       </div>
     </div>
 
+    <!-- Pit buy panel -->
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isTemprano">
+      <epsi-ad-pit-panel></epsi-ad-pit-panel>
+    </div>
+
+    <!-- Premium upgrade panel -->
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isPremium">
+      <epsi-ad-premium-upgrade-panel></epsi-ad-premium-upgrade-panel>
+    </div>
+
     <!-- Feed Column -->
     <div class="col-xs-12 col-md-12" *ngIf="auth.isFeed">
       <epsi-feed-panel></epsi-feed-panel>

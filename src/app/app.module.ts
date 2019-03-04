@@ -172,6 +172,8 @@ import { ContentErrorAddComponent } from './shared/content-error-add/content-err
 import { AdminContentErrorComponent } from './pages/admin-content-error/admin-content-error.component';
 import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-exam-rankings.component';
 import { ExamRankingAddComponent } from './shared/exam-ranking-add/exam-ranking-add.component';
+import { AdPitPanelComponent } from './shared/ad-pit-panel/ad-pit-panel.component';
+import { AdPremiumUpgradePanelComponent } from './shared/ad-premium-upgrade-panel/ad-premium-upgrade-panel.component';
 
 @NgModule({
   declarations: [
@@ -314,6 +316,8 @@ import { ExamRankingAddComponent } from './shared/exam-ranking-add/exam-ranking-
     AdminContentErrorComponent,
     AdminExamRankingsComponent,
     ExamRankingAddComponent,
+    AdPitPanelComponent,
+    AdPremiumUpgradePanelComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -13,6 +13,12 @@ export enum HomeLists {
   SimulacrosList = 'simulacros-list',
 }
 
+export enum UnlockTags {
+  TagPit = 'tag-pit',
+  TagPremium = 'tag-premium',
+  TagEsencial = 'tag-esencial'
+}
+
 export enum Collections {
   // TODO: Add remaining collections
   USER = 'user',
@@ -99,15 +105,15 @@ export const EsencialModel: string[] = [
   Roles.Media,
   Roles.Slides,
   Roles.Simulacros,
-  Roles.Programa,
-  Roles.Pool,
-  Roles.TagPool,
 ]
 
 export const PremiumModel: string[] = [
   ...EsencialModel,
   Roles.Premium,
-  Roles.Content
+  Roles.Content,
+  Roles.Programa,
+  Roles.Pool,
+  Roles.TagPool
 ]
 
 export const TempranoModel: string[] = [

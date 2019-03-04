@@ -36,7 +36,7 @@ export class NotificationsModalComponent implements OnInit {
     this.auth.user$.subscribe(_user => {
       if (_user) {
         this.afs.collection(Collections.USER).doc<User>(_user.uid).valueChanges().subscribe(user => {
-          this.readNotis = user.completedTasks
+          this.readNotis = user.completedTasks ? user.completedTasks : []
         })
       }
     })
