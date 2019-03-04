@@ -129,6 +129,7 @@ export class User {
   providerId: string;
   uid: string;
   completedTasks?: string[]
+  migrated?: boolean
 
   // Zamnademy Fields
   new_email?: string

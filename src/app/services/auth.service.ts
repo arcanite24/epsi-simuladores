@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, of, Observable } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators'
-import { User, Roles, Collections } from '../app.models';
+import { switchMap, take, map } from 'rxjs/operators'
+import { User, Roles, Collections, PremiumModel, EsencialModel } from '../app.models';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app'
@@ -115,6 +115,71 @@ export class AuthService {
         return reject(error)
       }
     })
+  }
+
+  async migrateOldUser(email: string, uid: string): Promise<boolean> {
+
+    // Get old-user searching by email
+    const oldUser: any | null = await this.afs.collection<User>(Collections.USER, ref => ref
+      .where('email', '==', email))
+      .valueChanges()
+      .pipe(
+        take(1),
+        map(users => users.length > 0 ? users[0] : null)
+      ).toPromise()
+
+    // Get current user
+    const user = await this.afs.collection(Collections.USER).doc<User>(uid)
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise()
+
+    // if not oldUser return false
+    if (!oldUser) return false
+    
+    // if the user is already migrated abort
+    if (user && user.migrated) return true
+
+    // build initial userPayload forming correctly the name
+    let userPayload = {
+      ...oldUser,
+      id: uid,
+      displayName: oldUser.displayName + ' ' + oldUser.lastName,
+      migrated: true,
+    }
+
+    // Give userPayload the corresponding roles
+    if (oldUser.roles.indexOf('ROLE_PREMIUM')) {
+      for (const role of PremiumModel) {
+        userPayload[role] = true
+      }
+    }
+
+    if (oldUser.roles.indexOf('ROLE_ENARM')) {
+      for (const role of EsencialModel) {
+        userPayload[role] = true
+      }
+    }
+
+    if (oldUser.roles.indexOf('ROLE_ADMIN')) {
+      userPayload[Roles.Admin] = true
+    }
+
+    if (oldUser.roles.indexOf('ROLE_TEMPRANO')) {
+      userPayload[Roles.Temprano] = true
+    }
+
+    // delete old roles array
+    delete userPayload.roles
+
+    if (!user) {
+      await this.afs.collection(Collections.USER).doc(uid).set(userPayload)
+    } else {
+      await this.afs.collection(Collections.USER).doc(uid).update(userPayload)
+    }
+
+    return true
+
   }
 
 }

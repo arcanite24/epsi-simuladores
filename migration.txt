@@ -394,4 +394,24 @@ cellphone#cellphone
 new_email#new_email
 provider#provider
 
+id#id
+name#displayName
+lastName#lastName
+new_email#new_email
+college#universidad
+phone#celular
+especialidad#especialidad
+bio#about
+lugar_de_origen#lugar_origen
+avatar#photoURL
+avatar#avatar
+roles#roles
+email#email
+deuda#deuda
+deudaTotal#deudaTotal
+address#address
+
 www.2ris1.blogspot.com
+
+
+------------------
