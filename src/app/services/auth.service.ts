@@ -63,7 +63,7 @@ export class AuthService {
   get isTagPool() { return this.loggedIn && this.user[Roles.TagPool] }
 
   setUser(user: any) {
-    console.log(user)
+    /* console.log(user) */
     if (user) return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})
   }
 
@@ -120,7 +120,7 @@ export class AuthService {
   async migrateOldUser(email: string, uid: string): Promise<boolean> {
 
     // Get old-user searching by email
-    const oldUser: any | null = await this.afs.collection<User>(Collections.USER, ref => ref
+    const oldUser: any | null = await this.afs.collection<User>('user-old', ref => ref
       .where('email', '==', email))
       .valueChanges()
       .pipe(
@@ -147,6 +147,8 @@ export class AuthService {
       displayName: oldUser.displayName + ' ' + oldUser.lastName,
       migrated: true,
     }
+
+    console.log('old user', oldUser)
 
     // Give userPayload the corresponding roles
     if (oldUser.roles.indexOf('ROLE_PREMIUM')) {

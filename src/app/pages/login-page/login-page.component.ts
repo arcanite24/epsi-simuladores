@@ -132,6 +132,7 @@ export class LoginPageComponent implements OnInit {
       this.toastr.success(`Bienvenido de nuevo ${user.displayName}`)
       this.router.navigate(['/home'])
     } catch (error) {
+      console.log(error)
       this.toastr.error('Algo ocurrió al iniciar sesión con tu cuenta de Google. Contacta con un administrador.')
     }
   }
