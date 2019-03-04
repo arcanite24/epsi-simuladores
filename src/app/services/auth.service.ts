@@ -134,11 +134,15 @@ export class AuthService {
       .pipe(take(1))
       .toPromise()
 
+    console.log('user', user)
+    console.log('old-user', oldUser)
+
     // if not oldUser return false
     if (!oldUser) return false
     
     // if the user is already migrated abort
-    if (user && user.migrated) return true
+    /* if (user && user.migrated) return true */
+    if (user && user.migrated) console.log('user already migrated but ignoring')
 
     // build initial userPayload forming correctly the name
     let userPayload = {
@@ -148,7 +152,7 @@ export class AuthService {
       migrated: true,
     }
 
-    console.log('old user', oldUser)
+    console.log('payload', userPayload)
 
     // Give userPayload the corresponding roles
     if (oldUser.roles.indexOf('ROLE_PREMIUM')) {
