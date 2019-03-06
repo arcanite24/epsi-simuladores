@@ -136,7 +136,6 @@ export const PremiumModel: string[] = [
 ]
 
 export const TempranoModel: string[] = [
-  ...PremiumModel,
   Roles.Temprano
 ]
 
