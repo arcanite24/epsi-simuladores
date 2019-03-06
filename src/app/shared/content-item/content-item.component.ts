@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ContentItemComponent implements OnInit {
 
   @Input() public item: Content
+  @Input() public blur: boolean = false
 
   constructor(
     public router: Router,

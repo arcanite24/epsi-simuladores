@@ -51,4 +51,8 @@ export class EventDetailComponent implements OnInit {
 
   }
 
+  trackByFn(i: number, item: any) {
+    return item.id
+  }
+
 }

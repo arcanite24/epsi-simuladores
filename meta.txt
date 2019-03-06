@@ -13,7 +13,7 @@
 firebase functions:config:set mercadopago.id="6468884827378087" mercadopago.secret="4dQzrUEg4fSvpQRz6XFmkJbV6x6tVcNW"
 
 // mercadopago production
-firebase functions:config:set mercadopago.id="2742451063905515" mercadopago.secret="MqvbfDmHwq2Z4SLW4u1uuJHvnTEoKai1"
+firebase functions:config:set mercadopago.id="5488935858280855" mercadopago.secret="tM9FCbMjSMEp8W334ZgoyeHKoKtsolc3"
 
 // mercado pago gmail
 zamnademy.mercadopago@gmail.com

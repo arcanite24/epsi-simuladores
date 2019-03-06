@@ -12,3 +12,8 @@ ul {
   padding: 0;
   padding-left: 0.5rem;
 }
+
+.completed-task * {
+  color: rgba($color: #000000, $alpha: 0.3) !important;
+  text-decoration: line-through;
+}

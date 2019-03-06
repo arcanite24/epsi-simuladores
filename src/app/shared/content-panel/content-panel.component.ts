@@ -20,11 +20,20 @@ export class ContentPanelComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     public auth: AuthService,
-    public router: Router
+    public router: Router,
   ) { }
 
   ngOnInit() {
     this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('type', '==', this.mainContent)).valueChanges()
+  }
+
+  public isBlur(name: string): boolean {
+    if (!this.auth.user) return true
+    if (!name) return true
+    if (name.toLowerCase().includes('temprano')) {
+      return !this.auth.isTemprano
+    }
+    return true
   }
 
 }

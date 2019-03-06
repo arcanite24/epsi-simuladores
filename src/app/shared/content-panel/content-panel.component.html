@@ -7,7 +7,7 @@
   <div class="epsi-content-carousel p-2 flex flex-row flex-start" *ngIf="content$ | async as content else loader">
     
     <div class="content-carousel-item" *ngFor="let item of content">
-      <epsi-content-item [item]="item"></epsi-content-item>
+      <epsi-content-item [item]="item" [blur]="isBlur(item.name)"></epsi-content-item>
     </div>
 
   </div>

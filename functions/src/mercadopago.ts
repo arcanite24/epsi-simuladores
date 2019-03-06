@@ -7,7 +7,7 @@ import * as admin from 'firebase-admin'
 const app = express()
 const firestore = admin.firestore()
 
-const RETURN_URL_PROD = 'https://epsi-simuladores.firebaseapp.com/pago/status'
+const RETURN_URL_PROD = 'https://zamnademy.com/pago/status'
 const RETURN_URL_DEV = 'http://localhost:4200/pago/status'
 
 app.use(cors({ origin: true }))
@@ -34,7 +34,7 @@ app.post('/generate_payment', async (req, res) => {
     external_reference: request_id,
     back_urls: {
       success: return_url,
-      failure: return_url.replace('/pago/status', ''),
+      failure: return_url,
       pending: return_url,
     },
     auto_return: 'approved',
@@ -89,7 +89,7 @@ app.post('/webhook', async (req, res) => {
         ipn: data.id
       })
 
-      if (data.status == 'approved') {
+      if (data.status === 'approved') {
 
         // Give user permissions
         const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
@@ -98,7 +98,7 @@ app.post('/webhook', async (req, res) => {
         const user$ = await firestore.doc(`user/${r.user}`).get()
         const user = user$.data()
 
-        let role_payload = {}
+        const role_payload = {}
 
         for (const role of r.model.unlocks) {
           role_payload[role] = true
