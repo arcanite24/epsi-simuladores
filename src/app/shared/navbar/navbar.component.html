@@ -2,16 +2,16 @@
   <epsi-notifications-modal></epsi-notifications-modal>
 </ngx-smart-modal>
 
-<div class="epsi-navbar flex flex-row flex-start align-center" [hidden]="hideNavbar">
+<div class="epsi-navbar flex flex-row flex-start align-center flex-wrap" [hidden]="hideNavbar">
 
   <img src="assets/zamnademy/logo.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
   <div class="ml-2 navbar-timer" [innerHTML]="timerLabel"></div>
 
-  <div class="navbar-user-info flex flex-row flex-center" *ngIf="auth.loggedIn">
+  <div class="navbar-user-info flex flex-row flex-center flex-wrap" *ngIf="auth.loggedIn">
 
-    <div class="navbar-actions flex flex-row flex-center">
-
+    <div class="navbar-actions flex flex-row flex-center flex-wrap">
+    
       <a *ngIf="auth.isEsencial || auth.isPremium" class="btn btn-secondary mr-2" [routerLink]="[ '/results' ]">Mis Resultados</a>
 
       <a *ngIf="auth.isEsencial || auth.isPremium" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
@@ -35,8 +35,8 @@
 
     </div>
 
-    <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita">
-    <span (click)="router.navigate(['/profile'])" class="manita">{{auth.user.displayName}}</span>
+    <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita mt-sm-3">
+    <span (click)="router.navigate(['/profile'])" class="manita mt-sm-3">{{auth.user.displayName}}</span>
 
   </div>
   

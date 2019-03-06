@@ -70,10 +70,17 @@ export enum PaymentStatus {
 }
 
 export enum Roles {
+
   Admin = 'isAdmin',
+  
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
+
+  Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
+  Premium360 = 'isPremium360', // CURSO_PREMIUM_360
+  Presencial = 'isPresencial', // CURSO_PRESENCIAL
+
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
@@ -108,7 +115,18 @@ export const EsencialModel: string[] = [
 ]
 
 export const PremiumModel: string[] = [
-  ...EsencialModel,
+  Roles.Checklist,
+  Roles.Calendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+
+  Roles.Simuladores,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Simulacros,
   Roles.Premium,
   Roles.Content,
   Roles.Programa,

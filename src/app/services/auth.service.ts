@@ -148,32 +148,36 @@ export class AuthService {
     let userPayload = {
       ...oldUser,
       id: uid,
-      displayName: oldUser.displayName + ' ' + oldUser.lastName,
+      displayName: oldUser.name + ' ' + oldUser.lastName,
       migrated: true,
     }
 
-    console.log('payload', userPayload)
-
     // Give userPayload the corresponding roles
-    if (oldUser.roles.indexOf('ROLE_PREMIUM')) {
+    if (oldUser.roles.indexOf('ROLE_PREMIUM') >= 0) {
       for (const role of PremiumModel) {
         userPayload[role] = true
       }
     }
 
-    if (oldUser.roles.indexOf('ROLE_ENARM')) {
+    if (oldUser.roles.indexOf('ROLE_ENARM') >= 0) {
       for (const role of EsencialModel) {
         userPayload[role] = true
       }
     }
 
-    if (oldUser.roles.indexOf('ROLE_ADMIN')) {
+    if (oldUser.roles.indexOf('ROLE_ADMIN') >= 0) {
       userPayload[Roles.Admin] = true
     }
 
-    if (oldUser.roles.indexOf('ROLE_TEMPRANO')) {
+    if (oldUser.roles.indexOf('ROLE_TEMPRANO') >= 0) {
       userPayload[Roles.Temprano] = true
     }
+
+    if (oldUser.roles.indexOf('CURSO_PRESENCIAL') >= 0) userPayload[Roles.Presencial] = true
+    if (oldUser.roles.indexOf('CURSO_ESENCIAL_360') >= 0) userPayload[Roles.Esencial360] = true
+    if (oldUser.roles.indexOf('CURSO_PREMIUM_360') >= 0) userPayload[Roles.Premium360] = true
+
+    console.log('payload', userPayload)
 
     // delete old roles array
     delete userPayload.roles
