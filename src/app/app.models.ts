@@ -61,6 +61,7 @@ export enum Collections {
   QUESTION_STAT = 'question-stat',
   CONTENT_ERROR = 'content-error',
   EXAM_RANKING = 'exam-ranking',
+  LANDING_FIELD = 'landing-field',
 }
 
 export enum PaymentStatus {
@@ -554,4 +555,10 @@ export interface ExamRanking {
   exam: Partial<Exam>
   date: string
   promedio: number
+}
+
+export interface LandingField {
+  id: string
+  key: string
+  value: string
 }

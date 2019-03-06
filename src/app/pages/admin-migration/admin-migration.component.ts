@@ -28,6 +28,7 @@ export class AdminMigrationComponent implements OnInit {
   private batchLimit = 20
 
   public data: any
+  public text: string
 
   constructor(
     private http: HttpClient,
@@ -56,6 +57,39 @@ export class AdminMigrationComponent implements OnInit {
     } catch (error) {
       this.l = false
     }
+
+  }
+
+  parseData(text: string) {
+    try {
+      this.l = true
+      const data = JSON.parse(text)
+      this.data = data
+      console.log(this.data)
+      this.l = false
+    } catch (error) {
+      this.l = false
+    }
+  }
+
+  async migrateLandingFields() {
+
+    this.l = true
+    const batch = this.afs.firestore.batch()
+
+    for (const [key, value] of Object.entries(this.data)) {
+      const id = this.afs.createId()
+      const ref = this.afs.collection(Collections.LANDING_FIELD).doc(id).ref
+      batch.set(ref, {
+        id,
+        key,
+        value,
+        createdAt: new Date().toISOString()
+      })
+    }
+
+    await batch.commit()
+    this.l = false
 
   }
 

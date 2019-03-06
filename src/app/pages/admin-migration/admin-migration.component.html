@@ -9,6 +9,11 @@
         </div>
 
         <div class="col-md-12 form-group">
+          <label for="">Text Data</label>
+          <textarea type="text" class="form-control" [(ngModel)]="text"></textarea>
+        </div>
+
+        <div class="col-md-12 form-group">
           <label for="">Collection</label>
           <input type="text" class="form-control" [(ngModel)]="collection">
         </div>
@@ -45,7 +50,9 @@
   
         <div class="col-md-12 flex flex-row flex-start">
           <button class="btn btn-secondary mr-2" [disabled]="l" (click)="fetchData(url)">Fetch Data</button>
+          <button class="btn btn-secondary mr-2" [disabled]="l" (click)="parseData(text)">Parse Data</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateToFirestore()" *ngIf="data">Migrate to Firestore</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateLandingFields()" *ngIf="data">Migrate Landing Fields</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateContent()" *ngIf="data">Migrate Custom</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateExam()" *ngIf="data">Migrate Exam</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateSlide()" *ngIf="data">Migrate Slide</button>
