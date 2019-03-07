@@ -12,6 +12,15 @@
     <textarea class="form-control" formControlName="feedback" rows="2"></textarea>
   </div>
 
+  <div class="form-group">
+    <label for="">Imágen</label>
+    <app-storage-uploader (onFinish)="addForm.patchValue({img: $event})"></app-storage-uploader>
+  </div>
+
+  <div class="form-group" *ngIf="addForm.value.img">
+    <img src="addForm.value.img" class="w-100">
+  </div>
+
   <hr>
 
   <div class="respuestas-header flex flex-row flex-start align-center">

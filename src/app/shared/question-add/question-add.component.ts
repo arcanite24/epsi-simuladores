@@ -45,7 +45,8 @@ export class QuestionAddComponent implements OnInit {
       feedback: [''],
       respuestas: [[]],
       correcta: null,
-      tags: [[]]
+      tags: [[]],
+      img: null,
     })
 
   }
@@ -67,7 +68,7 @@ export class QuestionAddComponent implements OnInit {
         this.toastr.success('Pregunta agregada correctamente.')
         this.modal.getModal('questionAddModal').close()
         this.questionAdded.next(this.addForm.value)
-        this.addForm.reset()
+        this.addForm.reset({id: this.afs.createId()})
       } catch (error) {
         console.log(error)
         this.toastr.error('Ocurrió un error al agregar la pregunta...')

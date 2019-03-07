@@ -10,6 +10,9 @@ const firestore = admin.firestore()
 const RETURN_URL_PROD = 'https://zamnademy.com/pago/status'
 const RETURN_URL_DEV = 'http://localhost:4200/pago/status'
 
+const RETURN_URL_PROD_PAGOS = 'https://zamnademy.com/pagos'
+const RETURN_URL_DEV_PAGOS = 'http://localhost:8100'
+
 app.use(cors({ origin: true }))
 
 app.post('/generate_payment', async (req, res) => {
@@ -57,6 +60,51 @@ app.post('/generate_payment', async (req, res) => {
 
 })
 
+app.post('/generate_payment_zamna_pagos', async (req, res) => {
+
+  res.set('Access-Control-Allow-Origin', "*")
+  res.set('Access-Control-Allow-Methods', 'GET, POST')
+
+  const {
+    control_id,
+    pago_id,
+    title,
+    amount,
+    email,
+    isProd
+  } = req.body
+
+  console.log('GENERATE PAYMENT', req.body, new Date().toISOString())
+  const return_url = `${isProd ? RETURN_URL_PROD_PAGOS : RETURN_URL_DEV_PAGOS}/`
+
+  const preference = {
+    //binary_mode: true,
+    external_reference: `ZAMNA_PAGOS#${control_id}#${pago_id}`,
+    back_urls: {
+      success: return_url,
+      failure: return_url,
+      pending: return_url,
+    },
+    auto_return: 'approved',
+    items: [
+      {
+        id: control_id,
+        title: title,
+        quantity: 1,
+        currency_id: 'MXN',
+        unit_price: parseFloat(amount)
+      }
+    ],
+    payer: {
+      email,
+    }
+  }
+
+  const ref = await mercadopago.preferences.create(preference)
+  return res.json(ref.body)
+
+})
+
 app.post('/webhook', async (req, res) => {
 
   try {
@@ -84,29 +132,68 @@ app.post('/webhook', async (req, res) => {
     // Update Payment Request
     if (data.external_reference) {
 
-      await firestore.doc(`payment-request/${data.external_reference}`).update({
-        status: data.status,
-        ipn: data.id
-      })
+      if (data.external_reference.includes('ZAMNA_PAGOS')) {
 
-      if (data.status === 'approved') {
+        // Handle Zamna Pagos Callback
+        const info = data.external_reference.split('#')
+        const control_id = info[1]
+        const pago_id = info[2]
 
-        // Give user permissions
-        const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
-        const r = request$.data()
+        console.log('zamna pagos info', info)
 
-        const user$ = await firestore.doc(`user/${r.user}`).get()
-        const user = user$.data()
+        await firestore.doc(`control-pago/${control_id}`).update({
+          last_status: data.status,
+          ipn: data.id
+        })
 
-        const role_payload = {}
+        if (data.status === 'approved') {
 
-        for (const role of r.model.unlocks) {
-          role_payload[role] = true
+          // Restar user amount
+          const _control = await firestore.doc(`control-pago/${control_id}`).get()
+          const control = _control.data()
+
+          const _user = await firestore.doc(`user/${control.user.uid}`).get()
+          const user = _user.data()
+
+          await firestore.doc(`user/${user.uid}`).update({deuda: user.deuda - data.transaction_amount})
+          await firestore.doc(`control-pago/${control.id}`).update({amountLeft: control.amountLeft - data.transaction_amount})
+
+          // Update PagoZamna doc
+          await firestore.collection(`zamna-pago`).doc(pago_id).update({
+            status: data.status,
+            restado: true
+          })
+
         }
 
-        await firestore.doc(`user/${r.user}`).update(role_payload)
-        await firestore.doc(`payment-request/${data.external_reference}`).update({delivered: true})
-        if(r.coupon) await firestore.doc(`coupon/${r.coupon}`).update({used: true, date: new Date().toISOString(), user})
+      } else {
+
+        // Handle Zamnademy Callbck
+        await firestore.doc(`payment-request/${data.external_reference}`).update({
+          status: data.status,
+          ipn: data.id
+        })
+
+        if (data.status === 'approved') {
+
+          // Give user permissions
+          const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
+          const r = request$.data()
+
+          const user$ = await firestore.doc(`user/${r.user}`).get()
+          const user = user$.data()
+
+          const role_payload = {}
+
+          for (const role of r.model.unlocks) {
+            role_payload[role] = true
+          }
+
+          await firestore.doc(`user/${r.user}`).update(role_payload)
+          await firestore.doc(`payment-request/${data.external_reference}`).update({delivered: true})
+          if(r.coupon) await firestore.doc(`coupon/${r.coupon}`).update({used: true, date: new Date().toISOString(), user})
+
+        }
 
       }
 
