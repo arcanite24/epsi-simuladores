@@ -6,6 +6,23 @@
   <epsi-content-edit [content]="tempContent"></epsi-content-edit>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="deleteContentModal" #deleteContentModal>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4>¿Estás seguro de eliminar el contenido?</h4>
+      </div>
+
+      <div class="col-md-12">
+        <button type="button" class="btn btn-danger" (click)="removeContent(tempId)">Eliminar</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteContentModal.close()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <ngx-smart-modal identifier="treeContentModal">
   <epsi-content-tree></epsi-content-tree>
 </ngx-smart-modal>

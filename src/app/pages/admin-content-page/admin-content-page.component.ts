@@ -15,6 +15,8 @@ export class AdminContentPageComponent implements OnInit {
   public content$: Observable<Content[]>
   public tempContent: Content
 
+  public tempId: string
+
   constructor(
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
@@ -33,7 +35,12 @@ export class AdminContentPageComponent implements OnInit {
 
   async removeContent(id: string) {
     await this.afs.doc(`content/${id}`).delete()
-    //this.toastr.success('Contenido borrado correctamente.')
+    this.toastr.success('Contenido borrado correctamente.')
+  }
+
+  openRemoveModal(id: string) {
+    this.tempId = id
+    this.modal.getModal('deleteContentModal').open()
   }
 
   openEdit(c: Content) {
