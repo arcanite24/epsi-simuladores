@@ -72,6 +72,21 @@ export class AdminMigrationComponent implements OnInit {
     }
   }
 
+  async migrateFullObject() {
+
+    this.l = true
+    const batch = this.afs.firestore.batch()
+
+    for (const object of this.data) {
+      const ref = this.afs.collection(this.collection).doc(object.id).ref
+      batch.set(ref, object)
+    }
+
+    await batch.commit()
+    this.l = false
+
+  }
+
   async migrateLandingFields() {
 
     this.l = true
