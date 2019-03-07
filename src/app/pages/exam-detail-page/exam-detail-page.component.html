@@ -19,18 +19,18 @@
   <div class="row" *ngIf="exam$ | async as exam else loader">
 
     <!-- Main Exam Panel -->
-    <div class="col-xs-12" [ngClass]="{ 'col-md-12': exam.type == 'demo', 'col-md-8': exam.type != 'demo' }">
+    <div class="col-xs-12 col-md-12">
       <!-- <epsi-exam-questions-widget
         [exam]="exam"></epsi-exam-questions-widget> -->
       <epsi-exam-questions-by-group-widget [exam]="exam"></epsi-exam-questions-by-group-widget>
     </div>
 
     <!-- Sidepanel Exam -->
-    <div class="col-xs-12 col-md-4" *ngIf="exam.type != 'demo'">
+    <div class="col-xs-12 col-md-4">
       <!-- <epsi-exam-progress-widget
         [questions]="exam.questions"></epsi-exam-progress-widget> -->
       <epsi-exam-progress-widget [questions]="exam.formattedQuestions"></epsi-exam-progress-widget>
-      <epsi-exam-results-widget [id]="exam.id"></epsi-exam-results-widget>
+      <epsi-exam-results-widget *ngIf="exam.type != 'demo'" [id]="exam.id"></epsi-exam-results-widget>
     </div>
 
     <!-- <div class="col-xs-12">
