@@ -83,7 +83,7 @@ export class QuestionEditComponent implements OnInit {
         this.postEdit.next(this.editForm.value)
         this.toastr.success('Pregunta editada correctamente.')
         this.modal.getModal('questionEditModal').close()
-        this.editForm.reset()
+        this.editForm.reset({respuestas: [], tags: []})
       } catch (error) {
         console.log(error)
         this.toastr.error('Ocurrió un error al editar...')
