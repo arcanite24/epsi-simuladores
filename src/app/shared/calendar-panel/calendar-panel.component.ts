@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import moment from 'moment'
 import { AuthService } from 'src/app/services/auth.service';
+import { CalendarView } from 'angular-calendar';
 
 @Component({
   selector: 'epsi-calendar-panel',
@@ -15,6 +16,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CalendarPanelComponent implements OnInit {
 
   public viewDate: Date = new Date()
+  public view: CalendarView = CalendarView.Month
+
   public dayEvents: Event[]
   public completedTasks: string[] = []
 
@@ -36,6 +39,8 @@ export class CalendarPanelComponent implements OnInit {
     private modal: NgxSmartModalService,
     private auth: AuthService
   ) { }
+
+  get mesLabel(): string { return moment(this.viewDate).format('MMMM - YYYY') }
 
   ngOnInit() {
     this.auth.user$.subscribe(user => {
