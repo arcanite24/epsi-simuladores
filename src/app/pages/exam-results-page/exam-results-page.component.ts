@@ -60,11 +60,11 @@ export class ExamResultsPageComponent implements OnInit {
     return this.questions.filter(q => q.correcta).length
   }
 
-  getCorrectaText(id: string, respuestas: Answer[]): string {
+  getCorrectaText(id: string, respuestas: Answer[] = []): string {
     if (!respuestas) return '-'
     const r = respuestas.filter(r => r.id == id)[0]
     if (!r) return 'No se selecciono una respuesta correcta en el exámen, contacta con el administrador'
-    return r[0] ? r[0].text : '-'
+    return r && r.text ? r.text : '-'
   }
 
 }
