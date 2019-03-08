@@ -161,7 +161,11 @@ app.post('/webhook', async (req, res) => {
           // Update PagoZamna doc
           await firestore.collection(`zamna-pago`).doc(pago_id).update({
             status: data.status,
-            restado: true
+            restado: true,
+            pago: {
+              status: data.status,
+              restado: true
+            }
           })
 
         }
