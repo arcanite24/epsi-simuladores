@@ -19,7 +19,7 @@
   <div class="row" *ngIf="exam$ | async as exam else loader">
 
     <!-- Main Exam Panel -->
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-8">
       <!-- <epsi-exam-questions-widget
         [exam]="exam"></epsi-exam-questions-widget> -->
       <epsi-exam-questions-by-group-widget [exam]="exam"></epsi-exam-questions-by-group-widget>
