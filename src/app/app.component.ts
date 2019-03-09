@@ -15,6 +15,7 @@ export class AppComponent {
   constructor(
     public router: Router,
   ) {
+    if (window.location.hash) window.location.href = `https://zamnademy.com/exam/demo/${window.location.hash.replace('#/simulador/prueba/', '')}`
   }
 
 }

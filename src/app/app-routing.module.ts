@@ -69,6 +69,7 @@ const routes: Routes = [
   {path: 'slide/list', component: SlidesListPageComponent, canActivate: [AuthGuard]},
   {path: 'slide/:id', component: SlideDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'exam/:type/:id', component: ExamDetailPageComponent},
+  /* {path: 'exam/:type/:id', component: ExamDetailPageComponent}, */
   {path: 'results', component: ResultsPageComponent},
   {path: 'result/:id', component: ExamResultsPageComponent},
 
