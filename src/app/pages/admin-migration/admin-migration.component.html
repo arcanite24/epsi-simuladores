@@ -60,6 +60,8 @@
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateSlide()" *ngIf="data">Migrate Slide</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateBatch()" *ngIf="limit && offset">Migrate Slide Batch</button>
           <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateExamDate()" *ngIf="data">Migrate Exams Date</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="migrateContentExams()" *ngIf="data">Migrate Content Exams</button>
+          <button class="btn btn-success mr-2" [disabled]="l" (click)="deleteContentExams()" *ngIf="data">Delete Content Exams</button>
           <button class="btn btn-danger mr-2" [disabled]="!l" (click)="l = false" *ngIf="data">Disable Loader</button>
         </div>
   

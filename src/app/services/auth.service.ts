@@ -148,7 +148,7 @@ export class AuthService {
     let userPayload = {
       ...oldUser,
       id: uid,
-      displayName: oldUser.name + ' ' + oldUser.lastName,
+      displayName: oldUser.displayName,
       migrated: true,
     }
 

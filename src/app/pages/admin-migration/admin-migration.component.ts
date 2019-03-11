@@ -16,7 +16,7 @@ export class AdminMigrationComponent implements OnInit {
 
   public l: boolean = false
 
-  public url: string = 'https://api.zamnademy.com/api/v1/'
+  public url: string = 'http://167.99.12.186:1337/api/v1/'
   public collection: string
   public appendToAll: string
   public fields: string
@@ -48,7 +48,7 @@ export class AdminMigrationComponent implements OnInit {
 
       const data = await this.http.get<any>(url).toPromise()
       console.log(data);
-      console.log(JSON.stringify(data.map(d => ({id: d.id, name: d.name}))))
+      /* console.log(JSON.stringify(data.map(d => ({id: d.id, name: d.name})))) */
       this.data = data
 
       this.l = false
@@ -520,6 +520,39 @@ export class AdminMigrationComponent implements OnInit {
       this.l = false
       console.log(`updated ${this.data.length} exams date`)
     })
+
+  }
+
+  async deleteContentExams() {
+    const batch = this.afs.firestore.batch()
+    const ids = this.data.filter(c => c.preguntas).map(c => c.id)
+    for (const id of ids) {
+      const ref = this.afs.collection(Collections.EXAM).doc(id).ref
+      batch.delete(ref)
+    }
+    await batch.commit()
+  }
+
+  async migrateContentExams() {
+    
+    try {
+      
+      this.data = this.data.filter(c => c.preguntas).map(c => ({
+        id: c.id,
+        parent_id: c.id,
+        parent_type: 'subtema',
+        preguntas: c.preguntas,
+        tags: [],
+        name: c.name,
+        desc: c.desc,
+      }))
+
+      console.log(this.data)
+      await this.migrateExam()
+
+    } catch (error) {
+      
+    }
 
   }
 
