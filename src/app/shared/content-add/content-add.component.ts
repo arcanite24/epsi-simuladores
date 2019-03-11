@@ -43,7 +43,8 @@ export class ContentAddComponent implements OnInit {
       totalRatings: 0,
       ratings: {},
       video: null,
-      markers: [[]]
+      markers: [[]],
+      sortIndex: 0,
     })
 
   }

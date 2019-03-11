@@ -51,6 +51,7 @@ export class ContentEditComponent implements OnInit {
       roles: [[]],
       model_slug: null,
       forum: null,
+      sortIndex: null,
     })
 
   }
