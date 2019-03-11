@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-content-video-panel',
@@ -21,14 +22,21 @@ export class ContentVideoPanelComponent implements OnInit {
 
   private videoApi: VgAPI
   public preclase$: Observable<Exam>
+  public examId: string
 
   constructor(
     public router: Router,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private modal: NgxSmartModalService
   ) { }
 
   ngOnInit() {
-    this.getExamByContentName(this.content.name).subscribe(exam => exam ? this.router.navigate(['/exam/preclase', exam.id]) : null)
+    this.getExamByContentName(this.content.name).subscribe(exam => {
+      if (exam) {
+        this.examId = exam.id
+        this.modal.getModal('preclaseExamModal').open()
+      }
+    })
   }
 
   onPlayerReady(api: VgAPI) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -17,6 +17,9 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./exam-detail-page.component.scss']
 })
 export class ExamDetailPageComponent implements OnInit {
+
+  @Input() public isPreclase: boolean = false
+  @Input() public examId: string
 
   public id: string = this.route.snapshot.paramMap.get('id')
   public type: string = this.route.snapshot.paramMap.get('type')
@@ -41,7 +44,9 @@ export class ExamDetailPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.exam$ = this.afs.doc<Exam>(`${Collections.EXAM}/${this.id}`)
+    const id = this.isPreclase ? this.examId : this.id
+
+    this.exam$ = this.afs.doc<Exam>(`${Collections.EXAM}/${id}`)
       .valueChanges()
       .pipe(
         map(exam => {

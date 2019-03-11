@@ -6,6 +6,10 @@
   <epsi-loader></epsi-loader>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="preclaseExamModal">
+  <epsi-exam-detail-page [isPreclase]="true" [examId]="examId" *ngIf="examId"></epsi-exam-detail-page>
+</ngx-smart-modal>
+
 <epsi-panel [title]="content.name" *ngIf="content">
 
   <div class="video-panel-player" *ngIf="content.video">

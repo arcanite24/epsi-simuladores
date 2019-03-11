@@ -109,8 +109,12 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
     }
 
-    // Redirect to exam results in all exam types
-    this.router.navigate(['/result', state.results.id])
+    // Redirect to exam results in all exam types except Preclase
+    if (this.exam.type != ExamTypes.PRECLASE) {
+      this.router.navigate(['/result', state.results.id])
+    } else {
+      this.modal.getModal('preclaseExamModal').close()
+    }
 
   }
 
