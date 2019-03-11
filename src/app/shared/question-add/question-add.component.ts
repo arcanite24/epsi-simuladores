@@ -146,7 +146,8 @@ export class QuestionAddComponent implements OnInit {
   }
 
   removeTag(tag: string, tags: string[]) {
-    this.addForm.patchValue({tags: tags.splice(tags.indexOf(tag), 1)})
+    tags.splice(tags.indexOf(tag), 1)
+    this.addForm.patchValue({tags})
   }
 
 }

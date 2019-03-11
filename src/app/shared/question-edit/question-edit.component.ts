@@ -161,7 +161,8 @@ export class QuestionEditComponent implements OnInit {
   }
 
   removeTag(tag: string, tags: string[]) {
-    this.editForm.patchValue({tags: tags.splice(tags.indexOf(tag), 1)})
+    tags.splice(tags.indexOf(tag), 1)
+    this.editForm.patchValue({tags})
   }
 
 }

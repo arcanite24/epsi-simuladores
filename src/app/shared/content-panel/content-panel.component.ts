@@ -30,6 +30,7 @@ export class ContentPanelComponent implements OnInit {
   public isBlur(name: string): boolean {
     if (!this.auth.user) return true
     if (!name) return true
+    if (this.auth.isAdmin) return false
     if (name.toLowerCase().includes('temprano')) {
       return !this.auth.isTemprano
     }
