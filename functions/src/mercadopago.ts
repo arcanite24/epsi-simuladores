@@ -13,6 +13,71 @@ const RETURN_URL_DEV = 'http://localhost:4200/pago/status'
 const RETURN_URL_PROD_PAGOS = 'https://zamnademy.com/pagos'
 const RETURN_URL_DEV_PAGOS = 'http://localhost:8100'
 
+export enum Roles {
+
+  Admin = 'isAdmin',
+  
+  Esencial = 'isEsencial',
+  Premium = 'isPremium',
+  Temprano = 'isTemprano',
+
+  Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
+  Premium360 = 'isPremium360', // CURSO_PREMIUM_360
+  Presencial = 'isPresencial', // CURSO_PRESENCIAL
+
+  Content = 'isContent',
+  Checklist = 'isChecklist',
+  Calendar = 'isCalendar',
+  TopUsers = 'isTopUsers',
+  Galleries = 'isGalleries',
+  Simuladores = 'isSimuladores',
+  Forum = 'isForum',
+  Streaming = 'isStreaming',
+  Media = 'isMedia',
+  Slides = 'isSlides',
+  Simulacros = 'isSimulacros',
+  Feed = 'isFeed',
+  Programa = 'isPrograma',
+  Pool = 'isPool',
+  TagPool = 'isTagPool',
+}
+
+export const EsencialModel: string[] = [
+  Roles.Esencial,
+  Roles.Checklist,
+  Roles.Calendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+
+  Roles.Simuladores,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Simulacros,
+]
+
+export const PremiumModel: string[] = [
+  Roles.Checklist,
+  Roles.Calendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+
+  Roles.Simuladores,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Simulacros,
+  Roles.Premium,
+  Roles.Content,
+  Roles.Programa,
+  Roles.Pool,
+  Roles.TagPool
+]
+
 app.use(cors({ origin: true }))
 
 app.post('/generate_payment', async (req, res) => {
@@ -152,20 +217,23 @@ app.post('/webhook', async (req, res) => {
           const _control = await firestore.doc(`control-pago/${control_id}`).get()
           const control = _control.data()
 
-          const _user = await firestore.doc(`user/${control.user.uid}`).get()
-          const user = _user.data()
+          const _user = await firestore.collection(`user`).where('email', '==', control.user.email).get()
+          const user = _user.docs[0].data()
 
           await firestore.doc(`user/${user.uid}`).update({deuda: user.deuda - data.transaction_amount})
           await firestore.doc(`control-pago/${control.id}`).update({amountLeft: control.amountLeft - data.transaction_amount})
+
+          await grantUserRoles(user.uid, control.price, control.amountLeft - data.transaction_amount, control.tag)
 
           // Update PagoZamna doc
           await firestore.collection(`zamna-pago`).doc(pago_id).update({
             status: data.status,
             restado: true,
+            createdAt: data.date_created,
             pago: {
               status: data.status,
               restado: true
-            }
+            },
           })
 
         }
@@ -211,5 +279,42 @@ app.post('/webhook', async (req, res) => {
   }
 
 })
+
+async function grantUserRoles(uid: string, price: number, amountLeft: number, tag: string) {
+
+  const per30 = Math.ceil(price * 0.3)
+  const pagado = price - amountLeft
+
+  if (pagado >= per30) {
+
+    const payload = {}
+
+    if (tag === 'CURSO_PREMIUM_360') {
+      for (const role of PremiumModel) {
+        payload[role] = true
+      } 
+    }
+
+    if (tag === 'CURSO_ESENCIAL_360') {
+      for (const role of EsencialModel) {
+        payload[role] = true
+      }
+    }
+
+    try {
+      await firestore.doc(`user/${uid}`).update(payload)
+      console.log('granted roles to', uid, payload, tag, price, amountLeft, per30, pagado)
+      return true
+    } catch (error) {
+      console.log('error granting roles', uid, payload, tag, price, amountLeft, per30, pagado)
+      console.log(error)
+      return false
+    }
+    
+  } else {
+    return false
+  }
+  
+}
 
 export default app
