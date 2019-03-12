@@ -165,10 +165,6 @@ export class AuthService {
       }
     }
 
-    if (oldUser.roles.indexOf('ROLE_ADMIN') >= 0) {
-      userPayload[Roles.Admin] = true
-    }
-
     if (oldUser.roles.indexOf('ROLE_TEMPRANO') >= 0) {
       userPayload[Roles.Temprano] = true
     }
