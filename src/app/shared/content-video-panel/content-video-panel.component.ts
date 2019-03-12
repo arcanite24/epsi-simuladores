@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Content, Exam, Collections } from 'src/app/app.models';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Content, Exam, Collections, ExamTypes } from 'src/app/app.models';
 import { VgAPI } from 'videogular2/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { map, combineAll, take } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
@@ -20,6 +20,8 @@ export class ContentVideoPanelComponent implements OnInit {
   @Input() public set seekTime(time: number) { this.seekChanged(time) }
   public get seekTime() { return this._seek }
 
+  @Output() public openContentExam: EventEmitter<any> = new EventEmitter()
+
   private videoApi: VgAPI
   public preclase$: Observable<Exam>
   public examId: string
@@ -31,12 +33,15 @@ export class ContentVideoPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getExamByContentName(this.content.name).subscribe(exam => {
-      if (exam) {
-        this.examId = exam.id
-        this.modal.getModal('preclaseExamModal').open()
-      }
-    })
+    this.loadPreclase()
+  }
+
+  async loadPreclase() {
+    const exam = await this.getExamByContentName(this.content.name)
+    if (exam) {
+      this.examId = exam.id
+      this.modal.getModal('preclaseExamModal').open()
+    }
   }
 
   onPlayerReady(api: VgAPI) {
@@ -51,11 +56,25 @@ export class ContentVideoPanelComponent implements OnInit {
     this._seek = null
   }
 
-  getExamByContentName(name: string): Observable<Exam> {
-    return this.afs.collection<Exam>(Collections.EXAM, ref => ref
+  async getExamByContentName(name: string): Promise<Exam> {
+
+    const nameExam = await this.afs.collection<Exam>(Collections.EXAM, ref => ref
       .where('name', '==', name))
       .valueChanges()
-      .pipe(map(exams => exams ? exams[0] : null))
+      .pipe(take(1), map(exams => exams ? exams[0] : null))
+      .toPromise()
+
+    if (nameExam) return nameExam
+
+    const contentExam = await this.afs.collection<Exam>(Collections.EXAM, ref => ref
+      .where('type', '==', ExamTypes.PRECLASE)
+      .where('content.id', '==', this.content.id))
+      .valueChanges()
+      .pipe(take(1), map(exams => exams ? exams[0] : null))
+      .toPromise()
+
+    return contentExam
+
   }
 
 }

@@ -2,6 +2,10 @@
   <epsi-loader></epsi-loader>
 </ng-template>
 
+<ngx-smart-modal identifier="contentExamModal" customClass="max-w-75" #contentExamModal>
+  <epsi-exam-detail-page [examId]="contentExam.id" *ngIf="contentExam"></epsi-exam-detail-page>
+</ngx-smart-modal>
+
 <div class="epsi-content-detail-page container mt-retro" *ngIf="content$ | async as content else loader">
   <div class="row">
 
@@ -21,7 +25,7 @@
 
     <!-- Video Panel -->
     <div class="col-xs-12 col-md-6">
-      <epsi-content-video-panel [content]="content" [seekTime]="seekTime"></epsi-content-video-panel>
+      <epsi-content-video-panel [content]="content" [seekTime]="seekTime" (openContentExam)="contentExamModal.open()"></epsi-content-video-panel>
     </div>
 
     <!-- Comments Panel -->
