@@ -32,11 +32,11 @@ export class AdminUsersPageComponent implements OnInit {
   public config: CrudTableConfig<User> = {
     collection: Collections.USER,
     disableAdd: true,
-    disableEdit: true,
     headers: [
-      {field: 'displayName', type: 'text', label: 'Nombre'},
-      {field: 'email', type: 'email', label: 'Email'},
-      {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => `<img src="${row.photoURL}" style="width:32px">`}
+      {field: 'displayName', type: 'text', label: 'Nombre', noEdit: true},
+      {field: 'email', type: 'email', label: 'Email', noEdit: true},
+      {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => `<img src="${row.photoURL}" style="width:32px">`, noEdit: true},
+      {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
     ],
     customActions: [
       {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)}
