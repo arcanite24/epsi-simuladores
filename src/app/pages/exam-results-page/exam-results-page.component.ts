@@ -30,6 +30,7 @@ export class ExamResultsPageComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(result => {
+          console.log(result)
           this._result = result
           if (result.exam_type == ExamTypes.PRUEBA) {
             this.modal.getModal('examRankingAdd').open()

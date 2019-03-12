@@ -4,6 +4,7 @@ import { Collections, ExamTypes, Exam, HomeLists } from 'src/app/app.models';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { StatsService } from 'src/app/services/stats.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-admin-exams',
@@ -30,7 +31,8 @@ export class AdminExamsComponent implements OnInit {
       date: new Date().toISOString()
     },
     customActions: [
-      {iconClasses: 'fa fa-edit', handler: row => this.openEdit(row)}
+      {iconClasses: 'fa fa-edit', handler: row => this.openEdit(row)},
+      {iconClasses: 'fa fa-bar-chart', handler: row => this.openStats(row)},
     ],
     postCreate: <Exam>(exam) => {
       // Register entity to HomeList
@@ -58,7 +60,8 @@ export class AdminExamsComponent implements OnInit {
   constructor(
     private modal: NgxSmartModalService,
     private stats: StatsService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -67,6 +70,10 @@ export class AdminExamsComponent implements OnInit {
   openEdit(exam: Exam) {
     this.tempExam = exam
     this.modal.getModal('examEditModal').open()
+  }
+
+  openStats(exam: Exam) {
+    this.router.navigate(['/admin/exam/stats', exam.id])
   }
 
 }

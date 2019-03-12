@@ -174,6 +174,7 @@ import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-ex
 import { ExamRankingAddComponent } from './shared/exam-ranking-add/exam-ranking-add.component';
 import { AdPitPanelComponent } from './shared/ad-pit-panel/ad-pit-panel.component';
 import { AdPremiumUpgradePanelComponent } from './shared/ad-premium-upgrade-panel/ad-premium-upgrade-panel.component';
+import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
 
 @NgModule({
   declarations: [
@@ -318,6 +319,7 @@ import { AdPremiumUpgradePanelComponent } from './shared/ad-premium-upgrade-pane
     ExamRankingAddComponent,
     AdPitPanelComponent,
     AdPremiumUpgradePanelComponent,
+    AdminExamStatsPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

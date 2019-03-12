@@ -49,6 +49,7 @@ import { ResultsPageComponent } from './pages/results-page/results-page.componen
 import { AdminContentErrorComponent } from './pages/admin-content-error/admin-content-error.component';
 import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-exam-rankings.component';
 import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
+import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
 
 const routes: Routes = [
 
@@ -92,6 +93,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/media', component: AdminMediaComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/questions', component: AdminQuestionsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exams', component: AdminExamsComponent},
+  {canActivate: [AuthGuard], path: 'admin/exam/stats/:id', component: AdminExamStatsPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/asesorias', component: AdminAsesoriasComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/slides', component: AdminSlidesComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/checklist', component: AdminTodoComponent},
