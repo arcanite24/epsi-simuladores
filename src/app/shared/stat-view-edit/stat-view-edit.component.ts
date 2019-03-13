@@ -22,6 +22,7 @@ export class StatViewEditComponent implements OnInit {
   public get view(): StatView { return this._view }
 
   @Input() public isTimeline: boolean = true
+  @Input() public hideParent: boolean = true
 
   public editForm: FormGroup = this.fb.group({
     id: [this.afs.createId(), Validators.required],

@@ -22,7 +22,7 @@ export class StatUserTagsAverageComponent implements OnInit {
   ngOnInit() {
     this.auth.user$.subscribe(user => {
       if (!user) return
-      if (!user.average_list) this.updateAverageList(user)
+      /* if (!user.average_list) */ this.updateAverageList(user)
       this.user = user
     })
   }

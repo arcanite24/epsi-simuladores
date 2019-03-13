@@ -97,7 +97,7 @@ export class StatsService {
       list.push({tag, promedio: tempAverage})
     }
 
-    return list
+    return list.filter(tag => !isNaN(tag.promedio) && tag.promedio <= 7)
 
   }
 
@@ -107,8 +107,9 @@ export class StatsService {
         .where('tags', 'array-contains', tag))
       .valueChanges()
       .pipe(
+        tap(console.log),
         map(results => results.map(r => r.promedio).reduce((a, b) => a + b, 0) / results.length * averageMultiplier),
-        take(1)
+        take(1),
       ).toPromise()
   }
 
