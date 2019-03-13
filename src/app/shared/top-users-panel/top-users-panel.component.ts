@@ -29,6 +29,8 @@ export class TopUsersPanelComponent implements OnInit {
       .limit(5))
       .valueChanges()
 
+      this.reloadUsers()
+
   }
 
   async reloadUsers() {
