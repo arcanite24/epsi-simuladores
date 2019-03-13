@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Question, Collections, Exam, ExamTypes } from 'src/app/app.models';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-question-pool-panel',
@@ -18,7 +19,8 @@ export class QuestionPoolPanelComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {
