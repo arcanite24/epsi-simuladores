@@ -59,7 +59,7 @@
 
   <div class="video-panel-errors m-1">
     <small class="ml-2" (click)="contentErrorModal.open()">¿Encontraste algún error en la clase?</small>
-    <a class="btn btn-secondary ml-2 mb-1" [routerLink]="[ '/exam/content', content.id ]">Evaluación</a>
+    <!-- <a class="btn btn-secondary ml-2 mb-1" [routerLink]="[ '/exam/content', content.id ]">Evaluación</a> -->
     <button class="btn btn-secondary ml-2m mb-1" type="button" (click)="openContentExam.next('lawea')">Evaluación</button>
     <button *ngIf="content.forum" class="btn btn-secondary ml-2 mb-1" type="button" (click)="router.navigate(['/thread/category', content.forum])">Pregunta a tu asesor si te quedaron dudas sobre el tema. Aquí</button>
   </div>

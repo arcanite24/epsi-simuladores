@@ -175,6 +175,7 @@ import { ExamRankingAddComponent } from './shared/exam-ranking-add/exam-ranking-
 import { AdPitPanelComponent } from './shared/ad-pit-panel/ad-pit-panel.component';
 import { AdPremiumUpgradePanelComponent } from './shared/ad-premium-upgrade-panel/ad-premium-upgrade-panel.component';
 import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
+import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-landing-fields.component';
 
 @NgModule({
   declarations: [
@@ -320,6 +321,7 @@ import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin
     AdPitPanelComponent,
     AdPremiumUpgradePanelComponent,
     AdminExamStatsPageComponent,
+    AdminLandingFieldsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

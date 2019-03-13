@@ -1,4 +1,4 @@
-<ngx-smart-modal identifier="examFeedbackModal" customClass="max-w-75">
+<ngx-smart-modal identifier="examFeedbackModal" customClass="max-w-75" [closable]="false">
   <epsi-exam-feedback-modal *ngIf="lastQuestion" [lastQuestion]="lastQuestion" [lastSelected]="lastSelected"></epsi-exam-feedback-modal>
 </ngx-smart-modal>
 
@@ -11,7 +11,7 @@
   <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
 
     <h5 class="m-0">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
-    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}} {{exam.duration}}</strong></p>
+    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
 
     <div class="question-group" *ngIf="question as group">
 
@@ -29,7 +29,7 @@
               [value]="respuesta" 
               [id]="respuesta.id"
               (change)="answerChanged(question.selectedAnswer, question)">
-            <label [for]="respuesta.id">{{respuesta.text}}</label>
+            <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>
           </li>
         </ul>
       </div>

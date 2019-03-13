@@ -1,8 +1,8 @@
 <div class="epsi-feed-post-item" *ngIf="post else loader">
 
   <div class="post-item-header flex flex-row flex-start">
-    <img [src]="post.user.photoURL" style="width: 48px">
-    <div class="header-user-info flex flex-col flex-start">
+    <img [src]="post.user.photoURL" *ngIf="post.user" style="width: 48px">
+    <div class="header-user-info flex flex-col flex-start" *ngIf="post.user">
       <p>
         <strong>{{post.user.displayName}} · </strong> <small>{{post.date | amCalendar}}</small>
       </p>

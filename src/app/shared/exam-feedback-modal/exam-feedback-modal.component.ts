@@ -3,6 +3,7 @@ import { Question, QuestionStat, Collections } from 'src/app/app.models';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-exam-feedback-modal',
@@ -28,10 +29,15 @@ export class ExamFeedbackModalComponent implements OnInit {
   @Input() lastSelected: string
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private modal: NgxSmartModalService
   ) { }
 
   ngOnInit() {
+  }
+
+  closeModal() {
+    this.modal.getModal('examFeedbackModal').close()
   }
 
 }

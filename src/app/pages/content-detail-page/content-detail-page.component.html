@@ -3,7 +3,7 @@
 </ng-template>
 
 <ngx-smart-modal identifier="contentExamModal" customClass="max-w-75" #contentExamModal>
-  <epsi-exam-detail-page [examId]="contentExam.id" *ngIf="contentExam"></epsi-exam-detail-page>
+  <epsi-exam-detail-page [examId]="contentExam.id" [isContent]="true" *ngIf="contentExam"></epsi-exam-detail-page>
 </ngx-smart-modal>
 
 <div class="epsi-content-detail-page container mt-retro" *ngIf="content$ | async as content else loader">

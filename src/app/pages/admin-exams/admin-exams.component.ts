@@ -15,7 +15,7 @@ export class AdminExamsComponent implements OnInit {
 
   public config: CrudTableConfig<Exam> = {
     collection: Collections.EXAM,
-    dataSource: this.afs.collection<Exam>(Collections.EXAM).valueChanges(),
+    /* dataSource: this.afs.collection<Exam>(Collections.EXAM).valueChanges(), */
     disableEdit: true,
     headers: [
       {field: 'name', type: 'text', label: 'Nombre'},
@@ -39,6 +39,7 @@ export class AdminExamsComponent implements OnInit {
       console.log('adding new exam', exam.name, exam.type)
       if (exam.type == ExamTypes.SIMULADOR) this.stats.addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
       if (exam.type == ExamTypes.SIMULACRO) this.stats.addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
+      this.openEdit(exam)
     },
     postEdit: (exam: Exam, oldItem: Exam) => {
 

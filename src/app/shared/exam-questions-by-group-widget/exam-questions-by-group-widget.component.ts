@@ -14,6 +14,14 @@ import { StatsService } from 'src/app/services/stats.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import moment from 'moment'
 
+const countdown = require('countdown')
+countdown.setLabels(
+	' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio',
+	' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios',
+	' ',
+	' ',
+	'ahora');
+
 @Component({
   selector: 'epsi-exam-questions-by-group-widget',
   templateUrl: './exam-questions-by-group-widget.component.html',
@@ -126,10 +134,11 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration--
-      this.duration_label = moment()
+      this.duration_label = countdown(moment().add('milliseconds', duration).toDate(), null, countdown.MINUTES | countdown.SECONDS).toString()
+      /* this.duration_label = moment()
         .startOf('day')
         .seconds(this.duration * 60)
-        .format('H:mm:ss')
+        .format('H:mm:ss') */
     }, 1000)
 
     setTimeout(() => {

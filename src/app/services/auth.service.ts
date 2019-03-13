@@ -148,7 +148,7 @@ export class AuthService {
     let userPayload = {
       ...oldUser,
       id: uid,
-      displayName: oldUser.displayName,
+      displayName: oldUser.displayName ? oldUser.displayName : 'Cargando nombre...',
       migrated: true,
     }
 

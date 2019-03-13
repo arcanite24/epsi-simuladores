@@ -49,6 +49,7 @@ export class ContentDetailPageComponent implements OnInit {
       .toPromise()
 
     if (contentExam) {
+      console.log(contentExam)
       this.contentExam = contentExam
     } else {
       console.log('content exam not found')

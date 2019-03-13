@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, combineAll, take } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-content-video-panel',
@@ -29,7 +30,8 @@ export class ContentVideoPanelComponent implements OnInit {
   constructor(
     public router: Router,
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -37,11 +39,15 @@ export class ContentVideoPanelComponent implements OnInit {
   }
 
   async loadPreclase() {
+
     const exam = await this.getExamByContentName(this.content.name)
+
     if (exam) {
+      const resuelto = await this.preclaseResuelto(this.auth.user.uid, exam.id)
       this.examId = exam.id
-      this.modal.getModal('preclaseExamModal').open()
+      if (!resuelto) this.modal.getModal('preclaseExamModal').open()
     }
+
   }
 
   onPlayerReady(api: VgAPI) {
@@ -54,6 +60,16 @@ export class ContentVideoPanelComponent implements OnInit {
     this.videoApi.play()
     this.videoApi.seekTime(time)
     this._seek = null
+  }
+
+  async preclaseResuelto(uid: string, exam: string) {
+    return this.afs.collection(Collections.EXAM_RESULT, ref => ref
+      .where('exam', '==', exam))
+      .valueChanges()
+      .pipe(
+        take(1),
+        map(results => results && results.length > 0)
+      ).toPromise()
   }
 
   async getExamByContentName(name: string): Promise<Exam> {

@@ -50,6 +50,7 @@ import { AdminContentErrorComponent } from './pages/admin-content-error/admin-co
 import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-exam-rankings.component';
 import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
 import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
+import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-landing-fields.component';
 
 const routes: Routes = [
 
@@ -114,6 +115,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration', component: AdminMigrationComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content-error', component: AdminContentErrorComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},
 
 ];
 

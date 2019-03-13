@@ -64,7 +64,7 @@ export class QuestionEditComponent implements OnInit {
   questionChanged(q: Question) {
     this._question = q
     if (this.editForm && q) {
-      this.editForm.patchValue({...this._question, tags: q.tags ? q.tags : []})
+      this.editForm.patchValue({...this._question, tags: q.tags ? q.tags.map((tag: any) => typeof tag == 'string' ? tag : tag.text) : []})
       //this.respuestas$ = this.afs.collection<Answer>('answer', ref => ref.where('parent', '==', this._question.id)).valueChanges()
     }
   }

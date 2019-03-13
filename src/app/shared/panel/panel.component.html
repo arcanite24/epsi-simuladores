@@ -1,5 +1,7 @@
 <div class="epsi-panel">
 
+  <small class="ml-2" *ngIf="!showContent">Dar click para ver sección</small>
+
   <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title" (click)="showContent = !showContent">
     <img [src]="img" *ngIf="img">
     <span>{{title}}</span>

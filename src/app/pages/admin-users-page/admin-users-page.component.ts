@@ -35,8 +35,14 @@ export class AdminUsersPageComponent implements OnInit {
     headers: [
       {field: 'displayName', type: 'text', label: 'Nombre', noEdit: true},
       {field: 'email', type: 'email', label: 'Email', noEdit: true},
+      {field: 'universidad', type: 'text', label: 'Universidad'},
       {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => `<img src="${row.photoURL}" style="width:32px">`, noEdit: true},
       {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
+      {field: 'roles', type: 'text', noEdit: true, customRender: row => `
+      ${row.isAdmin ? 'isAdmin ' : ''}
+      ${row.isEsencial ? 'isEsencial ' : ''}
+      ${row.isTemprano ? 'isTemprano ' : ''}
+      `}
     ],
     customActions: [
       {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)}

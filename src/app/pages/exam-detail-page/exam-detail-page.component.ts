@@ -19,6 +19,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ExamDetailPageComponent implements OnInit {
 
   @Input() public isPreclase: boolean = false
+  @Input() public isContent: boolean = false
   @Input() public examId: string
 
   public id: string = this.route.snapshot.paramMap.get('id')
@@ -44,7 +45,7 @@ export class ExamDetailPageComponent implements OnInit {
 
   ngOnInit() {
 
-    const id = this.isPreclase ? this.examId : this.id
+    const id = this.isPreclase || this.isContent ? this.examId : this.id
 
     this.exam$ = this.afs.doc<Exam>(`${Collections.EXAM}/${id}`)
       .valueChanges()
