@@ -17,12 +17,17 @@ export class StatViewEditComponent implements OnInit {
   private _view: StatView
   public tempView: StatView
 
+  public _hideParent: boolean
+
   @Input()
   public set view(view: StatView) { this.viewChanged(view) }
   public get view(): StatView { return this._view }
 
   @Input() public isTimeline: boolean = true
-  @Input() public hideParent: boolean = true
+  @Input() public set hideParent(h: boolean) { 
+    this._hideParent = h
+    console.log(this._hideParent)
+  }
 
   public editForm: FormGroup = this.fb.group({
     id: [this.afs.createId(), Validators.required],

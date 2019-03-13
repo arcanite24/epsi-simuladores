@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { Collections, UserStat, ExamResults } from 'src/app/app.models';
@@ -13,6 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StatUserGeneralAverageComponent implements OnInit {
 
+  @Input() public uid: string 
+
   public promedio: number
   private canReload: boolean = true
 
@@ -23,30 +25,34 @@ export class StatUserGeneralAverageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadInfo()
+    
+    if (this.uid) {
+      this.loadInfo(this.uid)
+    } else {
+      this.auth.user$.subscribe(async user => {
+        if (!user) return
+        this.loadInfo(user.uid)
+      })
+    }
+
   }
 
-  loadInfo() {
+  async loadInfo(uid: string) {
 
-    this.auth.user$.subscribe(async user => {
+    const key = `${Collections.USER_STAT}/stat-${uid}`
+    const stat = await this.afs.doc<UserStat>(key).get().toPromise()
 
-      if (!user) return
-      const key = `${Collections.USER_STAT}/stat-${user.uid}`
-      const stat = await this.afs.doc<UserStat>(key).get().toPromise()
-
-      // TODO: Move this userstat initialization to a Service
-      if (!stat.exists) {
-        await this.afs.doc<UserStat>(key).set({
-          id: key,
-          user: user.uid,
-          generalAverage: 0
-        }, {merge: true})
-        this.calculateAverage(user.uid)
-      } else {
-        this.promedio = stat.data()['generalAverage']
-      }
-
-    })
+    // TODO: Move this userstat initialization to a Service
+    if (!stat.exists) {
+      await this.afs.doc<UserStat>(key).set({
+        id: key,
+        user: uid,
+        generalAverage: 0
+      }, {merge: true})
+      this.calculateAverage(uid)
+    } else {
+      this.promedio = stat.data()['generalAverage']
+    }
 
   }
 

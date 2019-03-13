@@ -62,6 +62,7 @@ export enum Collections {
   CONTENT_ERROR = 'content-error',
   EXAM_RANKING = 'exam-ranking',
   LANDING_FIELD = 'landing-field',
+  TAG_POOL = 'tag-pool'
 }
 
 export enum PaymentStatus {
@@ -560,4 +561,12 @@ export interface LandingField {
   id: string
   key: string
   value: string
+}
+
+export interface TagPool {
+  id: string
+  name: string
+  questions: string[],
+  tags: string[]
+  exam: string
 }

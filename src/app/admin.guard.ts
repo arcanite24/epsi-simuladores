@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { take, map, tap } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,7 @@ export class AdminGuard implements CanActivate {
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
 
+    if (!environment.production) return true
     if (this.auth.loggedIn) return true
 
     return this.auth.user$

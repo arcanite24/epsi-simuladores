@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Tag, Collections, Question, Exam, ExamTypes } from 'src/app/app.models';
+import { Tag, Collections, Question, Exam, ExamTypes, TagPool } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class TagsPoolModalComponent implements OnInit {
 
   public loading: boolean = false
   public tags$: Observable<Tag[]>
+  public pools$: Observable<TagPool[]> = this.afs.collection<TagPool>(Collections.TAG_POOL).valueChanges()
 
   constructor(
     private afs: AngularFirestore,
@@ -36,6 +37,8 @@ export class TagsPoolModalComponent implements OnInit {
         take(1),
         map(questions => {
           return questions.filter(q => {
+
+            if (!q.tags) return false
 
             for (const tag of q.tags) {
               if (tags.indexOf(tag) >= 0) return true

@@ -1,6 +1,6 @@
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
-  <h1>Editar Vista</h1>
+  <h1>Editar Vista hideParent:{{_hideParent}}</h1>
 
   <div class="epsi-input">
     <label for="">Nombre</label>
@@ -33,7 +33,7 @@
     </ul>
   </div>
 
-  <div class="epsi-input" *ngIf="!isTimeline && !hideParent">
+  <div class="epsi-input" *ngIf="!_hideParent">
     <label for="">Padre</label>
     <ng-template #loader>
       <epsi-loader></epsi-loader>

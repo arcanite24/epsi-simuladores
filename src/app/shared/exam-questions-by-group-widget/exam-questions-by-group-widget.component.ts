@@ -113,7 +113,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     }
 
     // If exam is pool delete the exam
-    if (this.exam.type == ExamTypes.POOL || this.exam.type == ExamTypes.TAGS) {
+    if (this.exam.type == ExamTypes.POOL) {
       await this.afs.doc(`${Collections.EXAM}/${this.exam.id}`).delete()
     }
 

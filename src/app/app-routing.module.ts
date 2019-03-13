@@ -51,6 +51,8 @@ import { AdminExamRankingsComponent } from './pages/admin-exam-rankings/admin-ex
 import { ToolUploaderComponent } from './shared/tool-uploader/tool-uploader.component';
 import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
 import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-landing-fields.component';
+import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.component';
+import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 
 const routes: Routes = [
 
@@ -89,6 +91,7 @@ const routes: Routes = [
   // Admin
   {canActivate: [AuthGuard, AdminGuard], path: 'admin', component: AdminPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/user/stats/:id', component: AdminUserStatsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content', component: AdminContentPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/galleries', component: AdminGalleriesComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/media', component: AdminMediaComponent},
@@ -105,8 +108,9 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/forum', component: AdminForumComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/livestreams', component: AdminLivestreamsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags', component: AdminTagsComponent},
-  {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats', component: AdminStatsComponent},
+  {canActivate: [AuthGuard], path: 'admin/stats', component: AdminStatsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/payment-models', component: AdminPaymentModelsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags-pool', component: AdminTagsPoolComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/notifications', component: AdminNotificationsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/coupons', component: AdminCouponsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/ipn', component: AdminIpnComponent},

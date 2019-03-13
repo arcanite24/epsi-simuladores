@@ -44,7 +44,7 @@ export class StatStructureAdminPanelComponent implements OnInit {
 
   openEditView(view: StatView) {
     this.tempView = view
-    this.modal.getModal('viewEditModal').open()
+    this.modal.getModal('viewEditModal2').open()
   }
 
 }

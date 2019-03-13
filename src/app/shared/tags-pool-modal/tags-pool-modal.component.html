@@ -11,7 +11,15 @@
       <h4>Seleccionar Temas</h4>
     </div>
 
-    <div class="col-md-12" *ngIf="tags$ | async as tags else loader">
+    <div class="col-md-12">
+      <ul class="list-group" *ngIf="pools$ | async as pools else loader">
+        <li class="list-group-item" *ngFor="let pool of pools">
+          <a [routerLink]="[ '/exam/tags', pool.exam ]">{{pool.name}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- <div class="col-md-12" *ngIf="tags$ | async as tags else loader">
 
       <ul>
         <li *ngFor="let tag of tags">
@@ -22,7 +30,7 @@
 
       <button class="btn btn-primary w-100 mt-2" [disabled]="loading" (click)="generateExam(tags)">Iniciar</button>
 
-    </div>
+    </div> -->
 
     <div class="col-md-12" *ngIf="loading">
       <epsi-loader type="svg"></epsi-loader>

@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore'
 import { Collections, User, Roles } from 'src/app/app.models'
 import { take } from 'rxjs/operators'
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-admin-users-page',
@@ -32,11 +33,16 @@ export class AdminUsersPageComponent implements OnInit {
   public config: CrudTableConfig<User> = {
     collection: Collections.USER,
     disableAdd: true,
+    pk: 'uid',
     headers: [
       {field: 'displayName', type: 'text', label: 'Nombre', noEdit: true},
       {field: 'email', type: 'email', label: 'Email', noEdit: true},
       {field: 'universidad', type: 'text', label: 'Universidad'},
-      {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => `<img src="${row.photoURL}" style="width:32px">`, noEdit: true},
+      {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => {
+        if (!row.photoURL) return '-'
+        if (row.photoURL.includes('api.zamna')) return '-'
+        return `<img src="${row.photoURL}" style="width:32px">`
+      }, noEdit: true},
       {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
       {field: 'roles', type: 'text', noEdit: true, customRender: row => `
       ${row.isAdmin ? 'isAdmin ' : ''}
@@ -45,13 +51,15 @@ export class AdminUsersPageComponent implements OnInit {
       `}
     ],
     customActions: [
-      {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)}
+      {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)},
+      {iconClasses: 'fa fa-bar-chart', handler: user => this.openUserStat(user)}
     ]
   }
 
   constructor(
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -103,6 +111,10 @@ export class AdminUsersPageComponent implements OnInit {
   openEditRoles(user: User) {
     this.tempUser = user
     this.modal.getModal('userRolesModal').open()
+  }
+
+  openUserStat(user: User) {
+    this.router.navigate(['/admin/user/stats', user.uid])
   }
 
 }

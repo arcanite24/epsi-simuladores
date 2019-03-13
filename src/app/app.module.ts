@@ -176,6 +176,8 @@ import { AdPitPanelComponent } from './shared/ad-pit-panel/ad-pit-panel.componen
 import { AdPremiumUpgradePanelComponent } from './shared/ad-premium-upgrade-panel/ad-premium-upgrade-panel.component';
 import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin-exam-stats-page.component';
 import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-landing-fields.component';
+import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.component';
+import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 
 @NgModule({
   declarations: [
@@ -322,6 +324,8 @@ import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-
     AdPremiumUpgradePanelComponent,
     AdminExamStatsPageComponent,
     AdminLandingFieldsComponent,
+    AdminTagsPoolComponent,
+    AdminUserStatsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
