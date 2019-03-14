@@ -107,10 +107,22 @@ export class StatsService {
         .where('tags', 'array-contains', tag))
       .valueChanges()
       .pipe(
-        tap(console.log),
         map(results => results.map(r => r.promedio).reduce((a, b) => a + b, 0) / results.length * averageMultiplier),
         take(1),
       ).toPromise()
+  }
+
+  async computeUserTagListAverage(tags: string[], uid: string): Promise<number> {
+
+    let promedios: number[] = []
+
+    for (const tag of tags) {
+      const average = await this.computeUserTagAverage(tag, uid)
+      promedios.push(average)
+    }
+
+    return promedios.reduce((a, b) => a + b, 0) / promedios.length
+
   }
 
   computeUserAverage(uid: string): Promise<number> {

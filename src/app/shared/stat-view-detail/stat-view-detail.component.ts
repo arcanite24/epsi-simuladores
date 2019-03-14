@@ -24,6 +24,7 @@ export class StatViewDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    
   }
 
   async viewChanged(v: StatView) {
@@ -41,6 +42,8 @@ export class StatViewDetailComponent implements OnInit {
       v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
       await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache})
     }
+
+    this.reloadData(v)
 
     this.chartData = [
       {

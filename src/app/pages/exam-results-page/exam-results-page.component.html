@@ -12,8 +12,7 @@
           <div class="row">
             
             <div class="result-header col-md-12">
-              <h5>Resultados:</h5>
-              <h6>Promedio: {{promedio.toFixed(2)}}/100.00</h6>
+              <h4 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h4>
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
       
@@ -27,6 +26,16 @@
               <p>La respuesta correcta era: {{getCorrectaText(q.raw.correcta, q.raw.respuestas)}}</p>
               <p *ngIf="q.raw.feedback">{{q.raw.feedback}}</p>
               <!-- <pre>{{ q.raw | json }}</pre> -->
+            </div>
+
+            <div class="col-md-12">
+              <ul class="list-group">
+                <li class="list-group-item">Tags</li>
+                <li *ngFor="let tag of tags" class="list-group-item">
+                  <strong>{{tag.value | number}}</strong>
+                  <span>{{tag.name}}</span>
+                </li>
+              </ul>
             </div>
       
           </div>

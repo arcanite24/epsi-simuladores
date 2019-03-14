@@ -44,26 +44,19 @@ export class StatStructureItemComponent implements OnInit {
     this.children$.subscribe() 
 
     this.auth.user$.subscribe(async _user => {
-
       if (!_user) return
-      const user = await this.afs.doc<User>(`${Collections.USER}/${_user.uid}`).valueChanges().pipe(take(1)).toPromise()
-      if (!user.structure) user.structure = {}
-
+      if (this.promedio) return
       const tag = this.view.includeTags[0]
-      if (!user.structure[tag]) {
-        this.loadTagPromedio(tag, user.uid)
-      } else {
-        this.promedio = user.structure[tag]
-      }
-
+      await this.loadTagPromedio(tag, _user.uid)
     })
 
   }
 
   async loadTagPromedio(tag: string, uid: string) {
     const promedio = await this.stats.computeUserTagAverage(tag, uid)
-    await this.afs.doc(`${Collections.USER}/${uid}`).set({promedio: {[tag]: promedio}}, {merge: true})
-    this.promedio = promedio
+    await this.afs.doc(`${Collections.USER}/${uid}`).set({structure: {[tag]: promedio}}, {merge: true})
+    this.promedio = isNaN(promedio) ? 0 : promedio
+    console.log(promedio)
   }
 
 }

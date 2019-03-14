@@ -5,6 +5,8 @@ import { ExamResults, Collections, Question, Answer, ExamTypes, ExamRanking } fr
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { flattenDeep } from 'lodash'
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'epsi-exam-results-page',
@@ -18,10 +20,13 @@ export class ExamResultsPageComponent implements OnInit {
   public rankings$: Observable<ExamRanking[]>
   private _result: ExamResults
 
+  public tags: {name: string, value: number}[] = []
+
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private stats: StatsService
   ) { }
 
   ngOnInit() {
@@ -30,8 +35,8 @@ export class ExamResultsPageComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(result => {
-          console.log(result)
           this._result = result
+          this.getTagsAvg(result)
           if (result.exam_type == ExamTypes.PRUEBA) {
             this.modal.getModal('examRankingAdd').open()
             this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
@@ -43,8 +48,6 @@ export class ExamResultsPageComponent implements OnInit {
           
         })
       )
-
-    
 
   }
 
@@ -66,6 +69,17 @@ export class ExamResultsPageComponent implements OnInit {
     const r = respuestas.filter(r => r.id == id)[0]
     if (!r) return 'No se selecciono una respuesta correcta en el exámen, contacta con el administrador'
     return r && r.text ? r.text : '-'
+  }
+
+  async getTagsAvg(result: ExamResults) {
+
+    const tags = flattenDeep(Object.values(result.questions).map((q: any) => q.raw.tags))
+
+    for (const tag of tags) {
+      const avg = await this.stats.computeUserTagAverage(tag, result.user)
+      this.tags.push({name: tag, value: isNaN(avg) ? 0 : avg})
+    }
+
   }
 
 }

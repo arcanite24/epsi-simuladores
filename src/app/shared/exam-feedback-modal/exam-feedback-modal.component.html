@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-md-12">
-      <h5>¿Elegiste la correcta?</h5>
+      <h5 class="c-epsi-primary">¿Elegiste la correcta?</h5>
     </div>
 
     <div class="col-md-12" *ngIf="q.respuestas as rList">
@@ -31,7 +31,7 @@
     <hr>
 
     <div class="col-md-12 mt-4" *ngIf="stat$ | async as stat">
-      <h5 class="m-0">Y los demás... ¿Qué eligieron?</h5>
+      <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>
       <ul class="list-group" *ngIf="stat.stat">
         <li class="list-group-item flex flex-col flex-start" *ngFor="let s of stat.stat">
           <strong> <span class="c-epsi-primary">{{(s[1] / stat.total) * 100 | number}}%</span> {{s[0]}}</strong>

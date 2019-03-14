@@ -1,10 +1,13 @@
 <epsi-panel title="Rendimiento" [showContent]="true">
   <div class="w-100 epsi-chart-container">
+
     <ngx-charts-pie-chart 
+    *ngIf="results"
     [labels]="true"
     [legend]="true"
     [legendTitle]="'Materias'"
     [legendPosition]="'below'"
-    [results]="[{name: 'wea', value: 10}, {name: 'otro', value: 20}]"></ngx-charts-pie-chart>
+    [results]="results"></ngx-charts-pie-chart>
+    
   </div>
 </epsi-panel>

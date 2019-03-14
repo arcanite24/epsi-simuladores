@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StatView, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { tap, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-stat-user-structure-panel',
@@ -16,7 +16,6 @@ export class StatUserStructurePanelComponent implements OnInit {
     .valueChanges()
     .pipe(
       map(views => views.filter(v => !v.parent)),
-      tap(console.log)
     )
 
   constructor(

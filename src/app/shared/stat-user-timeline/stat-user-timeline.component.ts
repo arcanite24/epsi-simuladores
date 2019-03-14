@@ -20,7 +20,7 @@ export class StatUserTimelineComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.views$ = this.afs.collection<StatView>(Collections.STAT_VIEW).valueChanges()
+    this.views$ = this.afs.collection<StatView>(Collections.STAT_VIEW, ref => ref.where('isTimeline', '==', true)).valueChanges()
   }
 
   openViewDetail(view: StatView) {

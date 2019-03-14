@@ -36,7 +36,7 @@ export class SlideDetailPageComponent implements OnInit {
           this.images = sortBy(slide.images.map(f => ({small: f, medium: f, big: f})), 'small')
           //this.images = slide.images.map(url => unescape(url.substring(113).split('?')[0])).sort().map(f => ({small: f, medium: f, big: f}))
           //console.log(slide.images.map(url => unescape(url.substring(113).split('?')[0])).sort())
-          console.log(this.images.map(img => unescape(img.small.substring(113).split('?')[0])))
+          /* console.log(this.images.map(img => unescape(img.small.substring(113).split('?')[0]))) */
         })
       )
   }
