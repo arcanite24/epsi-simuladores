@@ -18,6 +18,8 @@ export class ExamFeedbackModalComponent implements OnInit {
   @Input()
   public set lastQuestion(qs: Question[]) {
 
+    this.stats = []
+
     for (const q of qs) {
       
       let payload = {
