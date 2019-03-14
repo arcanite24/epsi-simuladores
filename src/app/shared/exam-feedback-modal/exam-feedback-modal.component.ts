@@ -13,18 +13,28 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 export class ExamFeedbackModalComponent implements OnInit {
 
   public q: Question
-  public stat$: Observable<QuestionStat>
+  public stats: {q: Question, stat$: Observable<QuestionStat>}[] = []
 
   @Input()
-  public set lastQuestion(q: Question) {
-    this.q = q
-    this.stat$ = this.afs.collection(Collections.QUESTION_STAT).doc<QuestionStat>(q.id)
-      .valueChanges()
-      .pipe(
-        map(stat => stat ? ({...stat, stat: Object.entries(stat.stat)}) : ({id: `${Collections.QUESTION_STAT}/${q.id}`, question: q, stat: [], total: 0}))
-      )
+  public set lastQuestion(qs: Question[]) {
+
+    for (const q of qs) {
+      
+      let payload = {
+        q,
+        stat$: this.afs.collection(Collections.QUESTION_STAT).doc<QuestionStat>(q.id)
+          .valueChanges()
+          .pipe(
+            map(stat => stat ? ({...stat, stat: Object.entries(stat.stat)}) : ({id: `${Collections.QUESTION_STAT}/${q.id}`, question: q, stat: [], total: 0}))
+          )
+      }
+
+      this.stats.push(payload)
+
+    }
+
   }
-  public get lastQuestion(): Question { return this.q }
+  public get lastQuestion(): Question[] { return [] }
 
   @Input() lastSelected: string
 

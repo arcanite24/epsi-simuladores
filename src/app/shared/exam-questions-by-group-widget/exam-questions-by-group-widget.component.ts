@@ -39,7 +39,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   public question: Question[]
   public selectedAnswer: Answer
 
-  public lastQuestion: Question
+  public lastQuestion: Question[]
   public lastSelected: string
 
   public results: ExamResults
@@ -201,7 +201,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     if (!this.exam.questions) return
     if (!this.exam.questions[index]) return
 
-    this.lastQuestion = this.question[0]
+    this.lastQuestion = this.question
 
     this.question = this.exam.formattedQuestions[index]
     this.results.lastIndex = index
