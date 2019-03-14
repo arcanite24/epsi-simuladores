@@ -5,7 +5,7 @@ import { ExamResults, Collections, Question, Answer, ExamTypes, ExamRanking } fr
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { flattenDeep } from 'lodash'
+import { flattenDeep, uniq, uniqBy } from 'lodash'
 import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class ExamResultsPageComponent implements OnInit {
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
-    private stats: StatsService
+    private stats: StatsService,
   ) { }
 
   ngOnInit() {
@@ -37,6 +37,7 @@ export class ExamResultsPageComponent implements OnInit {
         tap(result => {
           this._result = result
           this.getTagsAvg(result)
+          this.modal.getModal('adModal').open()
           if (result.exam_type == ExamTypes.PRUEBA) {
             this.modal.getModal('examRankingAdd').open()
             this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
@@ -52,6 +53,7 @@ export class ExamResultsPageComponent implements OnInit {
   }
 
   get promedio(): number {
+    if (!this._result) return 0
     const questions = Object.values(this._result.questions) as Question[]
     return questions.filter(q => q.correcta).length / questions.length * 100
   }
@@ -73,12 +75,15 @@ export class ExamResultsPageComponent implements OnInit {
 
   async getTagsAvg(result: ExamResults) {
 
-    const tags = flattenDeep(Object.values(result.questions).map((q: any) => q.raw.tags))
+    const tags = uniq(flattenDeep(Object.values(result.questions).map((q: any) => q.raw.tags)))
 
     for (const tag of tags) {
       const avg = await this.stats.computeUserTagAverage(tag, result.user)
       this.tags.push({name: tag, value: isNaN(avg) ? 0 : avg})
+      console.log(tag, avg)
     }
+
+    this.tags = uniqBy(this.tags, t => t.name)
 
   }
 
