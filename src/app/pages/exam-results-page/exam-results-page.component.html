@@ -7,17 +7,24 @@
     <div class="row">
 
       <div class="col-md-12" *ngIf="promedio < 75">
-        <p>Ya que el rendimiento que se mostró deja ver muchas lagunas con temas importantes, es necesario que se tome en serio una preparación con una dinámica con clases completas en video</p>
-        <a href="https://zamnademy.com/site" class="mt-2 btn btn-primary">VER CURSO PREMIUM</a>
+        <div *ngIf="adPremium$ | async as ad">
+          <p>{{ad.value}}</p>
+          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+        </div>
       </div>
 
       <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
-        <p>Por tu buen desempeño solo te sugerimos que practiques con el sistema de preguntas</p>
-        <a href="https://zamnademy.com/site" class="mt-2 btn btn-primary">VER CURSO ESENCIAL</a>
+        <div *ngIf="adEsencial$ | async as ad">
+          <p>{{ad.value}}</p>
+          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+        </div>
       </div>
 
       <div class="col-md-12" *ngIf="promedio >= 85">
-        <p>Felicitaciones ! No tenemos duda de que estás listo para el ENARM y ser residente</p>
+        <div *ngIf="adResidente$ | async as ad">
+          <p>{{ad.value}}</p>
+          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+        </div>
       </div>
 
     </div>
@@ -40,7 +47,7 @@
 
             <div class="col-md-12">
               <p>Acompáñanos presencialmente si te es posible , ya que solo abrimos 1 grupo en la CDMX para seguir siempre cuidando la calidad de nuestra atención en su preparación</p>
-              <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO ESENCIAL</a>
+              <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO PRESENCIAL</a>
             </div>
       
             <div class="result-questions col-md-12" *ngFor="let q of questions; let i = index">

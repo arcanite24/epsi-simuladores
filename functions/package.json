@@ -17,7 +17,8 @@
     "express": "^4.16.4",
     "firebase-admin": "~6.0.0",
     "firebase-functions": "^2.1.0",
-    "mercadopago": "^1.0.22"
+    "mercadopago": "^1.0.22",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "tslint": "~5.8.0",

@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Custom Modules
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -178,6 +179,8 @@ import { AdminExamStatsPageComponent } from './pages/admin-exam-stats-page/admin
 import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-landing-fields.component';
 import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.component';
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
+import { UserCouponsPanelComponent } from './shared/user-coupons-panel/user-coupons-panel.component';
+import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
 
 @NgModule({
   declarations: [
@@ -326,6 +329,8 @@ import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-sta
     AdminLandingFieldsComponent,
     AdminTagsPoolComponent,
     AdminUserStatsComponent,
+    UserCouponsPanelComponent,
+    AdminAdTextsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -364,6 +369,7 @@ import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-sta
       timeOut: 3000
     }),
     SelectDropDownModule,
+    ScrollingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -134,7 +134,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration--
-      this.duration_label = countdown(moment().add(duration, 'milliseconds').toDate(), null, countdown.MINUTES | countdown.SECONDS).toString()
+      this.duration_label = countdown(moment().add(duration, 'milliseconds').toDate(), null, countdown.MINUTES | countdown.SECONDS)
+        .toString()
+        .replace(/<small>|<\/small>/g, '')
       /* this.duration_label = moment()
         .startOf('day')
         .seconds(this.duration * 60)
@@ -214,7 +216,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.lastSelected = selectedAnswer.id
     this.saveCache(this.question, currentIndex, selectedAnswer)
     this.store.dispatch(new SetIndex(currentIndex + 1))
-    this.modal.getModal('examFeedbackModal').open()
+    if (this.exam.type != ExamTypes.PRECLASE) this.modal.getModal('examFeedbackModal').open()
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
     this.store.dispatch(new SetAnswer(null))
   }

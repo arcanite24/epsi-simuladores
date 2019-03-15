@@ -148,6 +148,10 @@ export class CrudTableComponent implements OnInit {
     
   }
 
+  trackByFn(index: number, val: any) {
+    return val.id
+  }
+
 }
 
 @Pipe({

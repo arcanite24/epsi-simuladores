@@ -20,6 +20,10 @@ export class ExamResultsPageComponent implements OnInit {
   public rankings$: Observable<ExamRanking[]>
   private _result: ExamResults
 
+  public adEsencial$: Observable<any> = this.afs.collection(Collections.AD_TEXT).doc('AD_ESENCIAL').valueChanges()
+  public adPremium$: Observable<any> = this.afs.collection(Collections.AD_TEXT).doc('AD_PREMIUM').valueChanges()
+  public adResidente$: Observable<any> = this.afs.collection(Collections.AD_TEXT).doc('AD_RESIDENTE').valueChanges()
+
   public tags: {name: string, value: number}[] = []
 
   constructor(
@@ -35,16 +39,21 @@ export class ExamResultsPageComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(result => {
+          
           this._result = result
           this.getTagsAvg(result)
-          this.modal.getModal('adModal').open()
+
           if (result.exam_type == ExamTypes.PRUEBA) {
+
+            this.modal.getModal('adModal').open()
             this.modal.getModal('examRankingAdd').open()
-            this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
+
+            if (result && result.exam) this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
               .where('exam.id', '==', result.exam)
               .orderBy('promedio', 'desc')
               .limit(10))
               .valueChanges()
+
           }
           
         })

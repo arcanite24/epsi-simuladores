@@ -19,7 +19,7 @@ export class AdminQuestionsComponent implements OnInit {
     disableEdit: true,
     headers: [
       {field: 'text', type: 'textarea', label: 'Texto', customRender: row => row.text.substr(0, 100)},
-      {field: 'respuestas', type: 'number', label: 'Respuestas', customRender: row => row.respuestas.length}
+      /* {field: 'respuestas', type: 'number', label: 'Respuestas', customRender: row => row.respuestas.length} */
     ],
     documentDefaults: {
       text: 'Nueva Pregunta',

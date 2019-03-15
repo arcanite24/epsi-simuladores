@@ -45,9 +45,16 @@ export class StatsService {
       .toPromise()
 
     if (!counter) counter = {id: key, key, label: exam.name, value: 0, lastModified: new Date().toISOString()}
-    if (counter.value) counter.value += delta
+    if (counter.value != null) counter.value += delta
 
-    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({value: counter.value, lastModified: new Date().toISOString(), exam: exam ? exam.name : null}, {merge: true})
+    await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({
+      value: counter.value, 
+      lastModified: new Date().toISOString(), 
+      exam: exam ? exam.name : null,
+      id: counter.id,
+      label: counter.label,
+      key: counter.key
+    }, {merge: true})
 
   }
 
@@ -102,6 +109,10 @@ export class StatsService {
   }
 
   async computeUserTagAverage(tag: string, uid: string): Promise<number> {
+
+    if (!tag) return 0
+    if (!uid) return 0
+
     return this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
         .where('user', '==', uid)
         .where('tags', 'array-contains', tag))
@@ -110,6 +121,7 @@ export class StatsService {
         map(results => results.map(r => r.promedio).reduce((a, b) => a + b, 0) / results.length * averageMultiplier),
         take(1),
       ).toPromise()
+
   }
 
   async computeUserTagListAverage(tags: string[], uid: string): Promise<number> {

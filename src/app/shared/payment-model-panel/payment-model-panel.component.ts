@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaymentModel, Collections, PaymentStatus, Coupon } from 'src/app/app.models';
+import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack } from 'src/app/app.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -23,7 +23,7 @@ export class PaymentModelPanelComponent implements OnInit {
   public loading: boolean = false
 
   public coupon: string
-  public pack: any
+  public pack: PaymentPack
 
   public showPaypal: boolean = false
 

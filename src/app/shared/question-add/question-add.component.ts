@@ -64,7 +64,8 @@ export class QuestionAddComponent implements OnInit {
     if (this.addForm.valid) {
 
       try {
-        await this.afs.doc(`${Collections.QUESTION}/${this.addForm.value.id}`).set(this.addForm.value, {merge: true})
+        console.log('question-add', this.addForm.value)
+        await this.afs.doc(`${Collections.QUESTION}/${this.addForm.value.id}`).set(this.addForm.value)
         this.toastr.success('Pregunta agregada correctamente.')
         this.modal.getModal('questionAddModal').close()
         this.questionAdded.next(this.addForm.value)

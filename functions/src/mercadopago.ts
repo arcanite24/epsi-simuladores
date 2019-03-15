@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+const uuid = require('uuid')
 
 import * as mercadopago from 'mercadopago'
 import * as admin from 'firebase-admin'
@@ -259,6 +260,22 @@ app.post('/webhook', async (req, res) => {
 
           for (const role of r.model.unlocks) {
             role_payload[role] = true
+          }
+
+          if (r.pack) {
+            for (let index = 0; index < r.pack.quantity.length; index++) {
+
+              const coupon_payload = {
+                code: `ZAMNA-${uuid.v4()}`,
+                date: new Date().toISOString(),
+                used: false,
+                value: 100,
+                owner: r.user
+              }
+
+              await firestore.collection(`coupon`).add(coupon_payload)
+
+            }
           }
 
           await firestore.doc(`user/${r.user}`).update(role_payload)

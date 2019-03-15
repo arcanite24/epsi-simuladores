@@ -62,7 +62,8 @@ export enum Collections {
   CONTENT_ERROR = 'content-error',
   EXAM_RANKING = 'exam-ranking',
   LANDING_FIELD = 'landing-field',
-  TAG_POOL = 'tag-pool'
+  TAG_POOL = 'tag-pool',
+  AD_TEXT = 'ad-text'
 }
 
 export enum PaymentStatus {
@@ -480,9 +481,16 @@ export interface PaymentRequest {
   email: string
   model: PaymentModel
   status: PaymentStatus
-  delivered: boolean,
-  ipn: string,
+  delivered: boolean
+  ipn: string
   coupon?: string
+  pack?: PaymentPack
+}
+
+export interface PaymentPack {
+  label: string
+  price: number
+  quantity: number
 }
 
 export interface Notification {
@@ -509,6 +517,7 @@ export interface Coupon {
   user?: User
   used: boolean,
   value: number
+  owner?: string
 }
 
 export interface Programa {

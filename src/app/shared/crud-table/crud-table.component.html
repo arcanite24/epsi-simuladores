@@ -43,7 +43,7 @@
   </thead>
 
   <tbody *ngIf="data$ | async as collectionData else noData">
-    <tr *ngFor="let row of collectionData; let i = index">
+    <tr *ngFor="let row of collectionData; let i = index; trackBy:trackByFn">
 
       <!-- TODO: Agregar otros tipos de render en cada cell como CustomHTML -->
       <td *ngFor="let field of config.headers | removeHiddenElements">
