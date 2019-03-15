@@ -243,7 +243,7 @@ export interface Question {
   tags?: string[]
   img?: string
   group?: string
-  selectedAnswer?: string
+  selectedAnswer?: Answer
 }
 
 export interface Answer {

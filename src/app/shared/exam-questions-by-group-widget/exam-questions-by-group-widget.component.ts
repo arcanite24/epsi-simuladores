@@ -213,12 +213,18 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   }
 
   nextQuestion(currentIndex: number, selectedAnswer: Answer) {
+
     this.lastSelected = selectedAnswer.id
+
     this.saveCache(this.question, currentIndex, selectedAnswer)
+
     this.store.dispatch(new SetIndex(currentIndex + 1))
+
     if (this.exam.type != ExamTypes.PRECLASE) this.modal.getModal('examFeedbackModal').open()
+
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
     this.store.dispatch(new SetAnswer(null))
+
   }
 
   prevQuestion(currentIndex: number, selectedAnswer: Answer) {
@@ -235,9 +241,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     if (q instanceof Array) {
 
       for (const qq of q) {
+        console.log(qq.selectedAnswer)
         this.results.questions[qq.id] = {
           raw: qq,
-          correcta: answer.id == qq.correcta,
+          correcta: qq.selectedAnswer.id == qq.correcta,
           lastModified: new Date().toISOString(),
           selected: qq.selectedAnswer
         }

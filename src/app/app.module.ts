@@ -341,7 +341,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     TagInputModule,
     NgxSmartModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     AngularFireAuthModule,
     AngularFireStorageModule,
     HttpClientModule,
