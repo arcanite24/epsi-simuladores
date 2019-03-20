@@ -306,13 +306,13 @@ async function grantUserRoles(uid: string, price: number, amountLeft: number, ta
 
     const payload = {}
 
-    if (tag === 'CURSO_PREMIUM_360') {
+    if (tag === 'isPremium360') {
       for (const role of PremiumModel) {
         payload[role] = true
       } 
     }
 
-    if (tag === 'CURSO_ESENCIAL_360') {
+    if (tag === 'isEsencial360') {
       for (const role of EsencialModel) {
         payload[role] = true
       }
