@@ -33,13 +33,16 @@ export class StatUserPerformanceComponent implements OnInit {
     const views = await this.data.getCollectionQuery<StatView>(Collections.STAT_VIEW, ref => ref.where('isTimeline', '==', false))
     const user = this.auth.auth.currentUser
 
-    views
-      .filter(v => !v.parent)
-      .forEach(async v => {
-        const avg = await this.stats.computeUserTagListAverage(v.includeTags, user.uid)
-        this.results.push({name: v.name, value: isNaN(avg) ? 0 : avg})
-        console.log(user.uid, v.name, avg, this.results)
-      })
+    let results = []
+
+    for (const v of views.filter(v => !v.parent)) {
+      const tag = v.includeTags[0]
+      const avg = await this.stats.computeUserTagAverage(tag, user.uid)
+      results.push({name: v.name, value: isNaN(avg) ? 0 : avg * 100})
+    }
+
+    console.log(results)
+    this.results = results
 
   }
 

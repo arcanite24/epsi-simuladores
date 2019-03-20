@@ -62,7 +62,7 @@ export class StatsService {
   }
 
   // Timeline
-  async computeTimeline(tag: string) {
+  async computeTimeline(tag: string, uid: string) {
 
     const year = moment().year()
     let cache = {
@@ -70,7 +70,9 @@ export class StatsService {
       total: 0,
     }
 
-    const results: ExamResults[] = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref.where('tags', 'array-contains', tag))
+    const results: ExamResults[] = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('tags', 'array-contains', tag)
+      .where('user', '==', uid))
       .valueChanges()
       .pipe(take(1))
       .toPromise()
@@ -83,7 +85,7 @@ export class StatsService {
 
       cache.timeline[m.label] = {
         mes: m,
-        promedio: grouped[key] ? this.calculateAverage(grouped[key]) : 0
+        promedio: grouped[key] ? this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
       }
       
     })
@@ -132,6 +134,28 @@ export class StatsService {
     /* console.log(this.results.map(r => r.tags)) */
 
     const total = flattenDeep(this.results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
+    })).filter((q: any) => q.tags.includes(tag))
+
+    /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
+
+    return total.filter((q: any) => q.correcta).length / total.length
+
+  }
+
+  async computeUserTagAverageWithData(tag: string, uid: string, results: ExamResults[]): Promise<number> {
+   
+    if (!tag) return 0
+    if (!uid) return 0
+
+    results = results.map(r => ({
+      ...r, 
+      tags: r.tags ? r.tags.map((tag: any) => {
+        return tag ? typeof tag === 'object' ? tag.text : tag : null
+      }).filter(t => t) : []
+    }))
+
+    const total = flattenDeep(results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
       return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
     })).filter((q: any) => q.tags.includes(tag))
 

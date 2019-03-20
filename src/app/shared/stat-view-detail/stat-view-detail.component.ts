@@ -3,6 +3,7 @@ import { StatView, Collections } from 'src/app/app.models';
 import { StatsService } from 'src/app/services/stats.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { averageMultiplier } from 'src/app/app.config';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-stat-view-detail',
@@ -20,7 +21,8 @@ export class StatViewDetailComponent implements OnInit {
 
   constructor(
     private stats: StatsService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
@@ -33,7 +35,7 @@ export class StatViewDetailComponent implements OnInit {
     if (!v) return
 
     if (!v.cache) {
-      const cache = await this.stats.computeTimeline(v.includeTags[0])
+      const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
       await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache})
       v.cache = cache
     }
@@ -57,7 +59,7 @@ export class StatViewDetailComponent implements OnInit {
   }
 
   async reloadData(v: StatView) {
-    const cache = await this.stats.computeTimeline(v.includeTags[0])
+    const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
     v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
     v.cache = cache
     await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache})
