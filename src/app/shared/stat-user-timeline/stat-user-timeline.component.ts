@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { StatView, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'epsi-stat-user-timeline',
@@ -16,7 +17,8 @@ export class StatUserTimelineComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    public auth: AuthService
   ) { }
 
   ngOnInit() {

@@ -2,7 +2,7 @@
   <epsi-stat-view-detail [view]="tempView"></epsi-stat-view-detail>
 </ngx-smart-modal>
 
-<epsi-panel [showContent]="true" title="Timeline">
+<epsi-panel [showContent]="true" title="Timeline" *ngIf="auth.loggedIn">
   
   <ng-template #loader>
     <epsi-loader></epsi-loader>

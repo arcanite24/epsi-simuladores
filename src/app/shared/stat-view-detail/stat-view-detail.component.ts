@@ -36,13 +36,13 @@ export class StatViewDetailComponent implements OnInit {
 
     if (!v.cache) {
       const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
-      await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache})
+      /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache}) */
       v.cache = cache
     }
 
     if (!v.cache.promedio) {
       v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
-      await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache})
+      /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
     }
 
     this.reloadData(v)
@@ -62,7 +62,7 @@ export class StatViewDetailComponent implements OnInit {
     const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
     v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
     v.cache = cache
-    await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache})
+    /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
   }
 
 }
