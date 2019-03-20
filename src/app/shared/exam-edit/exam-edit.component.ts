@@ -52,7 +52,8 @@ export class ExamEditComponent implements OnInit {
       questions: [[]],
       isPrueba: false,
       liberado: null,
-      date: null
+      date: null,
+      showAd: false
     })
 
   }

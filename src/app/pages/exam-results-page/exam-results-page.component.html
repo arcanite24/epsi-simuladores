@@ -45,7 +45,7 @@
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="result.exam_type == 'demo'">
               <p>Acompáñanos presencialmente si te es posible , ya que solo abrimos 1 grupo en la CDMX para seguir siempre cuidando la calidad de nuestra atención en su preparación</p>
               <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO PRESENCIAL</a>
             </div>

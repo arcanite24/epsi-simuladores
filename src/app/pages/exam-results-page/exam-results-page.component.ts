@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ExamResults, Collections, Question, Answer, ExamTypes, ExamRanking } from 'src/app/app.models';
+import { ExamResults, Collections, Question, Answer, ExamTypes, ExamRanking, Exam } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { flattenDeep, uniq, uniqBy } from 'lodash'
 import { StatsService } from 'src/app/services/stats.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'epsi-exam-results-page',
@@ -31,6 +32,7 @@ export class ExamResultsPageComponent implements OnInit {
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
     private stats: StatsService,
+    private data: DataService
   ) { }
 
   ngOnInit() {
@@ -38,14 +40,16 @@ export class ExamResultsPageComponent implements OnInit {
     this.result$ = this.afs.doc<ExamResults>(`${Collections.EXAM_RESULT}/${this.id}`)
       .valueChanges()
       .pipe(
-        tap(result => {
+        tap(async result => {
           
           this._result = result
           this.getTagsAvg(result)
 
           if (result.exam_type == ExamTypes.PRUEBA) {
 
-            this.modal.getModal('adModal').open()
+            const exam = await this.data.getDoc<Exam>(Collections.EXAM, result.exam)
+
+            if (exam.showAd) this.modal.getModal('adModal').open()
             this.modal.getModal('examRankingAdd').open()
 
             if (result && result.exam) this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref

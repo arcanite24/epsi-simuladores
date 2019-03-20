@@ -270,6 +270,7 @@ export interface Exam {
   isPrueba?: boolean
   date?: string
   time?: number
+  showAd?: boolean
 }
 
 export enum ExamTypes {
