@@ -146,7 +146,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     setTimeout(() => {
       this.finishExam()
       clearInterval(timer)
-    }, duration * 60 * 1000)
+    }, duration)
     
   }
 
