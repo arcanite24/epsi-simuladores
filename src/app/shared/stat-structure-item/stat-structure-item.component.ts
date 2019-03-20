@@ -56,7 +56,7 @@ export class StatStructureItemComponent implements OnInit {
     const promedio = await this.stats.computeUserTagAverage(tag, uid)
     await this.afs.doc(`${Collections.USER}/${uid}`).set({structure: {[tag]: promedio}}, {merge: true})
     this.promedio = isNaN(promedio) ? 0 : promedio
-    console.log(promedio)
+    console.log(tag, promedio)
   }
 
 }

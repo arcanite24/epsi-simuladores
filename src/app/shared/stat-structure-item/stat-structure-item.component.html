@@ -8,7 +8,7 @@
   </button>
 
   <span>{{view.name}}</span>
-  <strong class="ml-2">{{promedio | number}}</strong>
+  <strong class="ml-2">{{promedio * 100 | number}}%</strong>
 
   <ul *ngIf="showChildren">
     <li *ngFor="let v of children">

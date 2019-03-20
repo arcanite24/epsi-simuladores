@@ -4,6 +4,7 @@ import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Quest
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
+import { flattenDeep } from 'lodash'
 import moment from 'moment'
 import { averageMultiplier } from '../app.config';
 import { Observable } from 'rxjs';
@@ -28,6 +29,8 @@ export class StatsService {
     {key: '12', label: 'Diciembre'},
   ]
 
+  private results: ExamResults[]
+
   constructor(
     private afs: AngularFirestore
   ) { }
@@ -44,7 +47,7 @@ export class StatsService {
       )
       .toPromise()
 
-    if (!counter) counter = {id: key, key, label: exam.name, value: 0, lastModified: new Date().toISOString()}
+    if (!counter) counter = {id: key, key, label: exam ? exam.name : key, value: 0, lastModified: new Date().toISOString()}
     if (counter.value != null) counter.value += delta
 
     await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({
@@ -113,15 +116,33 @@ export class StatsService {
     if (!tag) return 0
     if (!uid) return 0
 
-    return this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
-        .where('user', '==', uid)
-        .where('tags', 'array-contains', tag))
-      .valueChanges()
-      .pipe(
-        map(results => results.map(r => r.promedio).reduce((a, b) => a + b, 0) / results.length * averageMultiplier),
-        take(1),
-      ).toPromise()
+    if (!this.results) this.results = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('user', '==', uid))
+    .valueChanges()
+    .pipe(
+      map(results => results.map(r => ({
+        ...r, 
+        tags: r.tags ? r.tags.map((tag: any) => {
+          return tag ? typeof tag === 'object' ? tag.text : tag : null
+        }).filter(t => t) : []
+      }))),
+      take(1),
+    ).toPromise()
 
+    /* console.log(this.results.map(r => r.tags)) */
+
+    const total = flattenDeep(this.results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
+    })).filter((q: any) => q.tags.includes(tag))
+
+    /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
+
+    return total.filter((q: any) => q.correcta).length / total.length
+
+  }
+
+  formatTags(tags: any): string[] {
+    return tags ? tags.map(tag => tag ? (typeof tag === 'object' ? tag.text : tag) : null).filter(t => t) : []
   }
 
   async computeUserTagListAverage(tags: string[], uid: string): Promise<number> {
