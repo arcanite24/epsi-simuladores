@@ -87,12 +87,24 @@ export class ExamResultsPageComponent implements OnInit {
     const tags = uniq(flattenDeep(Object.values(result.questions).map((q: any) => q.raw.tags)))
 
     for (const tag of tags) {
-      const avg = await this.stats.computeUserTagAverage(tag, result.user)
+      let avg = this.getPromedioByTag(tag, result)
       this.tags.push({name: tag, value: isNaN(avg) ? 0 : avg})
       console.log(tag, avg)
     }
 
     this.tags = uniqBy(this.tags, t => t.name)
+
+  }
+
+  private getPromedioByTag(tag: string, result: ExamResults) {
+
+    const total = Object.values(result.questions)
+      .map((q: any) => ({correcta: q.correcta, tags: q.raw.tags}))
+      .filter((q: any) => q.tags.includes(tag))
+
+    const correctas = total.filter((q: any) => q.correcta).length
+
+    return correctas / total.length
 
   }
 
