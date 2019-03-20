@@ -136,4 +136,24 @@
     </div>
   </epsi-panel>
 
+  <epsi-panel title="Información">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="rates">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Estádistica general de mood de usuarios</strong>
+            </li>
+            <li class="list-group-item" *ngFor="let m of rates">
+              <strong>{{m.mood}}: </strong>
+              <span>{{m.total}}</span>
+            </li>
+          </ul>
+        </div>
+  
+      </div>
+    </div>
+  </epsi-panel>
+
 </div>

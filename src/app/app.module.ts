@@ -181,6 +181,7 @@ import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 import { UserCouponsPanelComponent } from './shared/user-coupons-panel/user-coupons-panel.component';
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
+import { UserMoodOverviewComponent } from './shared/user-mood-overview/user-mood-overview.component';
 
 @NgModule({
   declarations: [
@@ -331,6 +332,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     AdminUserStatsComponent,
     UserCouponsPanelComponent,
     AdminAdTextsComponent,
+    UserMoodOverviewComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -341,7 +343,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     TagInputModule,
     NgxSmartModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     HttpClientModule,

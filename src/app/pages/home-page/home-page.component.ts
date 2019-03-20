@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Collections, PaymentModel, HomeLists, ExamTypes, Exam } from 'src/app/app.models';
+import { Collections, PaymentModel, HomeLists, ExamTypes, Exam, MoodRate } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { trigger, transition, style, animate, state, keyframes } from '@angular/animations';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+import { DataService } from 'src/app/services/data.service';
+import moment from 'moment'
 
 @Component({
   selector: 'epsi-home-page',
@@ -30,13 +33,51 @@ export class HomePageComponent implements OnInit {
   public modelEsencial$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).valueChanges()
   public modelPremium$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).valueChanges()
 
+  public mood = {
+    mood: 1,
+    text: ''
+  }
+
   constructor(
     public auth: AuthService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private modal: NgxSmartModalService,
+    private data: DataService
   ) { }
 
   ngOnInit() {
     /* this.buildLists() */
+
+    this.auth.user$.subscribe(user => {
+      if (user) {
+        this.loadMoodRates(user.uid)
+      }
+    })
+
+  }
+
+  async loadMoodRates(uid: string) {
+
+    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', uid))
+    const today = moment().format('DD-MM-YYYY')
+    const canOpen = rates.filter(r => r.date == today).length <= 0
+
+    console.log(rates, today)
+
+    if (canOpen) this.modal.getModal('moodAddModal').open()
+
+  }
+
+  sendMood() {
+
+    this.modal.getModal('moodAddModal').close()
+
+    this.afs.collection(Collections.MOOD_RATE).add({
+      ...this.mood,
+      user: this.auth.user.uid,
+      date: moment().format('DD-MM-YYYY'),
+    })
+
   }
 
   async buildLists() {

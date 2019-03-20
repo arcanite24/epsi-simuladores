@@ -41,6 +41,9 @@
         <a class="btn btn-secondary" [routerLink]="[ link.url ]">{{link.label}}</a>
       </li>
     </ul>
+
+    <hr>
+    <epsi-content-notes-panel [content_type]="'event'" [parent_id]="event.id" *ngIf="event"></epsi-content-notes-panel>
     
   </div>
 

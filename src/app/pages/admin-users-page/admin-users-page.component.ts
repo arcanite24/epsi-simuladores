@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core'
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models'
 import json2csv from 'json2csv'
 import { AngularFirestore } from '@angular/fire/firestore'
-import { Collections, User, Roles } from 'src/app/app.models'
+import { Collections, User, Roles, MoodRate } from 'src/app/app.models'
 import { take } from 'rxjs/operators'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'epsi-admin-users-page',
@@ -15,6 +16,7 @@ import { Router } from '@angular/router';
 export class AdminUsersPageComponent implements OnInit {
 
   public tempUser: User
+  public tempRates: MoodRate[]
 
   private fields: string[] = [
     'uid',
@@ -52,14 +54,16 @@ export class AdminUsersPageComponent implements OnInit {
     ],
     customActions: [
       {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)},
-      {iconClasses: 'fa fa-bar-chart', handler: user => this.openUserStat(user)}
+      {iconClasses: 'fa fa-bar-chart', handler: user => this.openUserStat(user)},
+      {iconClasses: 'fa fa-smile-o', handler: user => this.openMoodModal(user)}
     ]
   }
 
   constructor(
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
-    private router: Router
+    private router: Router,
+    private data: DataService
   ) { }
 
   ngOnInit() {
@@ -115,6 +119,12 @@ export class AdminUsersPageComponent implements OnInit {
 
   openUserStat(user: User) {
     this.router.navigate(['/admin/user/stats', user.uid])
+  }
+
+  async openMoodModal(user: User) {
+    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', user.uid))
+    this.tempRates = rates
+    this.modal.getModal('userMoodModal').open()
   }
 
 }

@@ -18,8 +18,8 @@ export class DataService {
       .toPromise()
   }
 
-  getCollection<T>(collection: string, query?: (ref) => any): Promise<T[]> {
-    return this.afs.collection<T>(collection, query ? ref => query(ref) : ref => null)
+  getCollection<T>(collection: string): Promise<T[]> {
+    return this.afs.collection<T>(collection)
       .valueChanges()
       .pipe(take(1))
       .toPromise()

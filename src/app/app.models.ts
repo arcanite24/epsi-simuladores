@@ -63,7 +63,8 @@ export enum Collections {
   EXAM_RANKING = 'exam-ranking',
   LANDING_FIELD = 'landing-field',
   TAG_POOL = 'tag-pool',
-  AD_TEXT = 'ad-text'
+  AD_TEXT = 'ad-text',
+  MOOD_RATE = 'mood-rate'
 }
 
 export enum PaymentStatus {
@@ -578,4 +579,12 @@ export interface TagPool {
   questions: string[],
   tags: string[]
   exam: string
+}
+
+export interface MoodRate {
+  id: string
+  user: string
+  mood: 1 | 2 | 3 | 4 | 5 | 6
+  date: string
+  text: string
 }

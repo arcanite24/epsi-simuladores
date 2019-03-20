@@ -12,6 +12,56 @@
   </svg>
 </div>
 
+<ngx-smart-modal identifier="moodAddModal">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4>¿Cómo te sientes hoy?</h4>
+      </div>
+
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <input type="radio" [value]="1" id="mood-1" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-1">Muy Mal</label>
+          </li>
+          <li class="list-group-item">
+            <input type="radio" [value]="2" id="mood-2" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-2">Mal</label>
+          </li>
+          <li class="list-group-item">
+            <input type="radio" [value]="3" id="mood-3" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-3">Regular</label>
+          </li>
+          <li class="list-group-item">
+            <input type="radio" [value]="4" id="mood-4" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-4">Bien</label>
+          </li>
+          <li class="list-group-item">
+            <input type="radio" [value]="5" id="mood-5" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-5">Muy Bien</label>
+          </li>
+          <li class="list-group-item">
+            <input type="radio" [value]="6" id="mood-6" [(ngModel)]="mood.mood">
+            <label class="ml-2" for="mood-6">Excelente</label>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-12 form-group mt-3">
+        <label for="">¿Por qué te sientes así?</label>
+        <textarea [(ngModel)]="mood.text" class="form-control"></textarea>
+      </div>
+
+      <div class="col-md-12">
+        <button class="btn btn-success" [disabled]="!mood.mood && !mood.text" (click)="sendMood()">Enviar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="container" style="margin-top: -1.25rem">
 
   <div class="row">
