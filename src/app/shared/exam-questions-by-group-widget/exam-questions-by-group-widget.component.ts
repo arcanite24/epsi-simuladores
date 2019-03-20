@@ -134,7 +134,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration--
-      this.duration_label = countdown(moment().add(duration, 'milliseconds').toDate(), null, countdown.MINUTES | countdown.SECONDS)
+      this.duration_label = countdown(moment().add(this.duration, 'milliseconds').toDate(), null, countdown.MINUTES | countdown.SECONDS)
         .toString()
         .replace(/<small>|<\/small>/g, '')
       /* this.duration_label = moment()
