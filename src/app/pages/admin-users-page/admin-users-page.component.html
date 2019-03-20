@@ -6,6 +6,10 @@
   <epsi-user-mood-overview [rates]="tempRates" *ngIf="tempRates"></epsi-user-mood-overview>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="userNotiAdd">
+  <epsi-user-noti-add *ngIf="tempUser" [uid]="tempUser.uid"></epsi-user-noti-add>
+</ngx-smart-modal>
+
 <div class="epsi-admin-users-page container mt-retro">
 
   <epsi-panel title="Administrar Usuarios">

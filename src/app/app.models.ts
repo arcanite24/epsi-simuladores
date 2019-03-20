@@ -52,6 +52,7 @@ export enum Collections {
   PAYMENT_MODEL = 'payment-model',
   PAYMENT_REQUEST = 'payment-request',
   NOTIFICATION = 'notification',
+  NOTIFICATION_RESPONSE = 'notification-response',
   NOTIFICATION_COMMENT = 'notification-comment',
   COUPON = 'coupon',
   MERCADOPAGO_IPN = 'mercadopago-ipn',
@@ -501,6 +502,16 @@ export interface Notification {
   text: string
   date: Date
   isGlobal: boolean
+  user?: string
+}
+
+export interface NotificationResponse {
+  id: string
+  user: string
+  noti: string
+  text: string
+  date: string
+  username: string
 }
 
 export interface NotificationComment {

@@ -55,7 +55,8 @@ export class AdminUsersPageComponent implements OnInit {
     customActions: [
       {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)},
       {iconClasses: 'fa fa-bar-chart', handler: user => this.openUserStat(user)},
-      {iconClasses: 'fa fa-smile-o', handler: user => this.openMoodModal(user)}
+      {iconClasses: 'fa fa-smile-o', handler: user => this.openMoodModal(user)},
+      {iconClasses: 'fa fa-bell', handler: user => this.openNotiAddModal(user)},
     ]
   }
 
@@ -125,6 +126,11 @@ export class AdminUsersPageComponent implements OnInit {
     const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', user.uid))
     this.tempRates = rates
     this.modal.getModal('userMoodModal').open()
+  }
+
+  openNotiAddModal(user: User) {
+    this.tempUser = user
+    this.modal.getModal('userNotiAdd').open()
   }
 
 }

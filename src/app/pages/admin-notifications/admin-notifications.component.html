@@ -1,3 +1,18 @@
+<ngx-smart-modal identifier="notiResponsesModal">
+  <div class="container" *ngIf="tempResponses">
+    <div class="row">
+
+      <div class="col-md-12 mb-2 p-3" *ngFor="let r of tempResponses" style="border: 1px solid #eee; border-radius: 10px;">
+        <p>{{r.text}}</p>
+        <p class="m-0">
+          <strong>{{r.username || 'Usuario no asignado'}}</strong> | <span>{{r.date | amTimeAgo}}</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="container mt-retro">
   <epsi-panel title="Administrar Notificaciones">
     <adonalsium-crud-table [config]="config"></adonalsium-crud-table>
