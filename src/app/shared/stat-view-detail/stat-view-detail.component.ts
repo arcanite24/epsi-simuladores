@@ -41,7 +41,7 @@ export class StatViewDetailComponent implements OnInit {
     }
 
     if (!v.cache.promedio) {
-      v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
+      v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
       /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
     }
 
@@ -60,7 +60,7 @@ export class StatViewDetailComponent implements OnInit {
 
   async reloadData(v: StatView) {
     const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
-    v.cache.promedio = (v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)).toFixed(2)
+    v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
     v.cache = cache
     /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
   }

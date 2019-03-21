@@ -182,15 +182,25 @@ export class StatsService {
 
   }
 
-  computeUserAverage(uid: string): Promise<number> {
+  computeUserAverage(uid: string, month: boolean = false): Promise<number> {
 
     return this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref.where('user', '==', uid))
       .valueChanges()
       .pipe(
         take(1),
         map(results => {
+
           const total = results.length
-          return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+
+          if (month) {
+            return results
+              .filter(r => moment(r.date).isSameOrAfter(moment().startOf('month')) && moment(r.date).isSameOrBefore(moment().endOf('month')))
+              .map((r: ExamResults) => r.promedio)
+              .reduce((a, b) => a + b, 0) / total * averageMultiplier
+          } else {
+            return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+          }
+
         }),
         tap(async (average: number) => {
           this.afs.doc(`${Collections.USER}/${uid}`).update({promedio: average})
