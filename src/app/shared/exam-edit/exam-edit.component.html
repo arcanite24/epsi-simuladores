@@ -47,6 +47,21 @@
   </div>
 
   <div class="form-group">
+    <label for="">Recomendación - Descripción</label>
+    <input type="text" class="form-control" formControlName="adDesc">
+  </div>
+
+  <div class="form-group">
+    <label for="">Recomendación - Link</label>
+    <input type="text" class="form-control" formControlName="adHref">
+  </div>
+
+  <div class="form-group">
+    <label for="">Recomendación - Texto del Botón</label>
+    <input type="text" class="form-control" formControlName="adButton">
+  </div>
+
+  <div class="form-group">
     <label for="">Tipo de Exámen</label>
     <select class="form-control" formControlName="type">
       <option [value]="type" *ngFor="let type of examTypes">{{type}}</option>

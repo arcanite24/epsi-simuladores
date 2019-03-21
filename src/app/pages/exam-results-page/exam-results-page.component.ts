@@ -8,6 +8,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { flattenDeep, uniq, uniqBy } from 'lodash'
 import { StatsService } from 'src/app/services/stats.service';
 import { DataService } from 'src/app/services/data.service';
+import { findIndex } from 'lodash'
 
 @Component({
   selector: 'epsi-exam-results-page',
@@ -28,6 +29,7 @@ export class ExamResultsPageComponent implements OnInit {
   public tags: {name: string, value: number}[] = []
 
   public myRanking: any
+  public exam: Exam
 
   constructor(
     private route: ActivatedRoute,
@@ -50,6 +52,7 @@ export class ExamResultsPageComponent implements OnInit {
           if (result.exam_type == ExamTypes.PRUEBA) {
 
             const exam = await this.data.getDoc<Exam>(Collections.EXAM, result.exam)
+            this.exam = exam
 
             if (exam.showAd) this.modal.getModal('adModal').open()
             this.modal.getModal('examRankingAdd').open()
@@ -106,12 +109,18 @@ export class ExamResultsPageComponent implements OnInit {
 
     const total = Object.values(result.questions)
       .map((q: any) => ({correcta: q.correcta, tags: q.raw.tags}))
-      .filter((q: any) => q.tags.includes(tag))
+      .filter((q: any) => q.tags && q.tags.includes(tag))
 
     const correctas = total.filter((q: any) => q.correcta).length
 
     return correctas / total.length
 
+  }
+
+  getMyPosition(rankings: ExamRanking[], myRanking: any): number {
+    if (!rankings) return 1
+    if (!myRanking) return 1
+    return findIndex(rankings, r => r.user.displayName == myRanking.displayName) + 1
   }
 
 }

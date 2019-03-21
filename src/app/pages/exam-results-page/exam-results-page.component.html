@@ -27,6 +27,11 @@
         </div>
       </div>
 
+      <div class="col-md-12" *ngIf="exam && exam.adDesc">
+        <p>{{exam.adDesc}}</p>
+        <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
+      </div>
+
     </div>
   </div>
 </ngx-smart-modal>
@@ -81,10 +86,10 @@
     <div class="col-xs-12 col-md-4" *ngIf="result.exam_type == 'demo'">
       <epsi-panel title="Ranking">
         <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
-          <li class="list-group-item" *ngIf="myRanking">
-            <strong>Mi promedio: </strong> {{myRanking.promedio * 10 | number}}
+          <li class="list-group-item mb-2" *ngIf="myRanking">
+            <strong>{{getMyPosition(rankings, myRanking)}}.- Mi promedio: </strong> {{myRanking.promedio * 10 | number}}
           </li>
-          <li class="list-group-item" *ngFor="let r of rankings; let i = index">
+          <li class="list-group-item" *ngFor="let r of rankings.slice(0, 10); let i = index">
             {{i + 1}}.-<strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>
           </li>
         </ul>

@@ -31,7 +31,7 @@ export class StatUserTagsAverageComponent implements OnInit {
   async updateAverageList(user: User) {
     const list = await this.stats.computeUserAverageList(user)
     await this.afs.doc(`${Collections.USER}/${user.uid}`).update({average_list: list})
-    this.user.average_list = sortBy(list.filter(t => t.promedio <= 0.6), 'promedio')
+    this.user.average_list = sortBy(list.filter(t => t.promedio <= 0.6 && t.promedio > 0), 'promedio')
   }
 
 }

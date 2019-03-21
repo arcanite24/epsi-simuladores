@@ -272,6 +272,9 @@ export interface Exam {
   date?: string
   time?: number
   showAd?: boolean
+  adDesc?: string
+  adHref?: string
+  adButton?: string
 }
 
 export enum ExamTypes {

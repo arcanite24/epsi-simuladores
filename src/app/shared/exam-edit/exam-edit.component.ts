@@ -53,7 +53,10 @@ export class ExamEditComponent implements OnInit {
       isPrueba: false,
       liberado: null,
       date: null,
-      showAd: false
+      showAd: false,
+      adDesc: '',
+      adHref: '',
+      adButton: '',
     })
 
   }
