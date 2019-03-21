@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import uuid from 'uuid'
 import { Exam, Collections } from 'src/app/app.models';
 import { StatsService } from 'src/app/services/stats.service';
@@ -17,6 +17,8 @@ export class ExamRankingAddComponent implements OnInit {
   public name: string
   @Input() public exam: string
   @Input() public promedio: number = 0
+
+  @Output() public rankingAdded: EventEmitter<any> = new EventEmitter()
 
   constructor(
     private stats: StatsService,
@@ -37,6 +39,11 @@ export class ExamRankingAddComponent implements OnInit {
       uid: uuid.v4()
     }, this.promedio)
 
+    this.rankingAdded.next({
+      displayName: name,
+      promedio: this.promedio
+    })
+    
     this.toastr.success('Gracias por enviar tu información')
     this.modal.getModal('examRankingAdd').close()
 

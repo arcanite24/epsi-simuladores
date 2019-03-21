@@ -1,5 +1,5 @@
 <ngx-smart-modal identifier="examRankingAdd">
-  <epsi-exam-ranking-add [exam]="result.exam" [promedio]="result.promedio " *ngIf="result$ | async as result"></epsi-exam-ranking-add>
+  <epsi-exam-ranking-add (rankingAdded)="myRanking = $event" [exam]="result.exam" [promedio]="result.promedio " *ngIf="result$ | async as result"></epsi-exam-ranking-add>
 </ngx-smart-modal>
 
 <ngx-smart-modal identifier="adModal">
@@ -81,6 +81,9 @@
     <div class="col-xs-12 col-md-4" *ngIf="result.exam_type == 'demo'">
       <epsi-panel title="Ranking">
         <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
+          <li class="list-group-item" *ngIf="myRanking">
+            <strong>Mi promedio: </strong> {{myRanking.promedio * 10 | number}}
+          </li>
           <li class="list-group-item" *ngFor="let r of rankings; let i = index">
             {{i + 1}}.-<strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>
           </li>

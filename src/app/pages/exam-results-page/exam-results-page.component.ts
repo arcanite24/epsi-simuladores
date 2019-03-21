@@ -27,6 +27,8 @@ export class ExamResultsPageComponent implements OnInit {
 
   public tags: {name: string, value: number}[] = []
 
+  public myRanking: any
+
   constructor(
     private route: ActivatedRoute,
     private afs: AngularFirestore,
