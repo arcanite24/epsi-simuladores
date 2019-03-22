@@ -65,7 +65,8 @@ export enum Collections {
   LANDING_FIELD = 'landing-field',
   TAG_POOL = 'tag-pool',
   AD_TEXT = 'ad-text',
-  MOOD_RATE = 'mood-rate'
+  MOOD_RATE = 'mood-rate',
+  TUTORIAL = 'tutorial'
 }
 
 export enum PaymentStatus {
@@ -174,7 +175,6 @@ export class User {
 
 }
 
-// TODO: Verify if using Interfaces instead of classes works as expected
 export interface Content {
   id: string
   name: string
@@ -601,5 +601,11 @@ export interface MoodRate {
   user: string
   mood: 1 | 2 | 3 | 4 | 5 | 6
   date: string
+  text: string
+}
+
+export interface Tutorial {
+  key: string
+  label: string
   text: string
 }

@@ -183,6 +183,7 @@ import { UserCouponsPanelComponent } from './shared/user-coupons-panel/user-coup
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
 import { UserMoodOverviewComponent } from './shared/user-mood-overview/user-mood-overview.component';
 import { UserNotiAddComponent } from './shared/user-noti-add/user-noti-add.component';
+import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
 
 @NgModule({
   declarations: [
@@ -335,6 +336,7 @@ import { UserNotiAddComponent } from './shared/user-noti-add/user-noti-add.compo
     AdminAdTextsComponent,
     UserMoodOverviewComponent,
     UserNotiAddComponent,
+    AdminTutorialsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,10 +1,23 @@
+<ngx-smart-modal *ngIf="tutorial" [identifier]="tutorial" #tutorialModal>
+  <div class="container" *ngIf="tutorial$ | async as tut">
+    <div class="row">
+      <div class="col-md-12">
+        <p>{{tut.text}}</p>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="epsi-panel">
 
   <small class="ml-2" *ngIf="!showContent">Dar click para ver sección</small>
 
-  <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title" (click)="showContent = !showContent">
-    <img [src]="img" *ngIf="img">
-    <span>{{title}}</span>
+  <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title">
+    <img [src]="img" *ngIf="img" (click)="showContent = !showContent">
+    <span (click)="showContent = !showContent">{{title}}</span>
+    <button class="btn ml-2" (click)="modal.getModal(tutorial).open()" *ngIf="tutorial">
+      <i class="fa fa-info-circle" style="color:#ddd; font-size: 1.5rem"></i>
+    </button>
   </div>
 
   <div 

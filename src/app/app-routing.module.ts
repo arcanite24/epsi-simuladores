@@ -54,6 +54,7 @@ import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-
 import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.component';
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
+import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
 
 const routes: Routes = [
 
@@ -122,6 +123,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/ad-texts', component: AdminAdTextsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/tutorials', component: AdminTutorialsComponent},
 
 ];
 
