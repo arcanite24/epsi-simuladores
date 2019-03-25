@@ -4,10 +4,16 @@
   height: 100vh;
   background: url('/assets/login-bg.png');
   background-size: cover;
+  overflow-y: auto;
 }
 
 .main-login-title {
   color: white;
+}
+
+.auth-controls {
+  margin-top: 5rem;
+  padding-right: 4rem !important;
 }
 
 .btn-social {
@@ -63,4 +69,21 @@
   padding-right: 1rem;
   margin-right: 1rem;
   border-right: 1px solid white;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .btn-social {
+    font-size: 0.75rem !important;
+  }
+
+  .register-button {
+    padding: 0.5rem !important;
+  }
+
+  .auth-controls {
+    margin-top: 0 !important;
+    padding-right: 0 !important;
+  }
+
 }
