@@ -7,20 +7,18 @@
     <div class="row">
 
       <div class="col-md-12">
-        <h4>Tu promedio fue de: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h4>
-      </div>
-
-      <div class="col-md-12">
+        <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
+          <img src="assets/whats.png" style="width: 48px; height: 48px;">
+        </a>
         <p *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</p>
-        <div class="w-100 flex-loader">
-          <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
-            <img src="assets/whats.png" style="width: 48px; height: 48px;">
-          </a>
-        </div>
       </div>
 
       <div class="col-md-12">
-        <h5>Quedaste en el lugar <strong>0</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
+        <h5>Quedaste en el lugar <strong *ngIf="tempPosition">{{tempPosition}}</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
+      </div>
+
+      <div class="col-md-12">
+        <h2 class="c-epsi-primary">Promedio: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h2>
       </div>
 
       <div class="col-md-12">
@@ -37,7 +35,7 @@
       </div>
 
       <div class="col-md-12 mt-2">
-        <button type="button" class="btn btn-secondary w-100" (click)="adModal.close()">Resumen de mis respuestas</button>
+        <button type="button" class="btn btn-secondary w-100" (click)="adModal.close()">VER RESUMEN DE MIS RESPUESTAS</button>
       </div>
 
     </div>
@@ -54,16 +52,11 @@
           <div class="row">
             
             <div class="result-header col-md-12">
-              <h4 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h4>
+              <h2 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h2>
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
-            <div class="col-md-12" *ngIf="result.exam_type == 'demo'">
-              <p>Acompáñanos presencialmente si te es posible , ya que solo abrimos 1 grupo en la CDMX para seguir siempre cuidando la calidad de nuestra atención en su preparación</p>
-              <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO PRESENCIAL</a>
-            </div>
-
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="exam && exam.showAd">
               <div class="row">
 
                 <div class="col-md-12" *ngIf="promedio < 75">
@@ -90,6 +83,7 @@
                 <div class="col-md-12" *ngIf="exam && exam.adDesc">
                   <p>{{exam.adDesc}}</p>
                   <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
+                  <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">Conocer grupo presencial (CDMX)</a>
                 </div>
           
               </div>

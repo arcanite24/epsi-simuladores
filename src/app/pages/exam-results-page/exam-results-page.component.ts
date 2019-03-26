@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { ExamResults, Collections, Question, Answer, ExamTypes, ExamRanking, Exam } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { tap } from 'rxjs/operators';
+import { tap, take } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { flattenDeep, uniq, uniqBy } from 'lodash'
 import { StatsService } from 'src/app/services/stats.service';
 import { DataService } from 'src/app/services/data.service';
 import { findIndex } from 'lodash'
+import uuid from 'uuid'
 
 @Component({
   selector: 'epsi-exam-results-page',
@@ -30,6 +31,8 @@ export class ExamResultsPageComponent implements OnInit {
 
   public myRanking: any
   public exam: Exam
+
+  public tempPosition: number = 0
 
   constructor(
     private route: ActivatedRoute,
@@ -62,6 +65,7 @@ export class ExamResultsPageComponent implements OnInit {
               .orderBy('promedio', 'desc')
               .limit(10))
               .valueChanges()
+              .pipe(tap(rankings => this.computePosition(exam.id, rankings)))
 
           }
           
@@ -121,6 +125,21 @@ export class ExamResultsPageComponent implements OnInit {
     if (!rankings) return 1
     if (!myRanking) return 1
     return findIndex(rankings, r => r.user.displayName == myRanking.displayName) + 1
+  }
+
+  async computePosition(exam_id: string, rankings: ExamRanking[]) {
+
+    const exam = await this.afs.collection(Collections.EXAM).doc<Exam>(exam_id).valueChanges().pipe(take(1)).toPromise()
+
+    const temp_id = await this.stats.registerRanking(exam, {
+      displayName: 'Zamnademy',
+      uid: uuid.v4()
+    }, this.promedio)
+
+    this.tempPosition = findIndex(rankings, r => r.id == temp_id) + 1
+
+    this.afs.collection(Collections.EXAM_RANKING).doc(temp_id).delete()
+
   }
 
 }

@@ -331,6 +331,8 @@ export class StatsService {
       date: new Date().toISOString()
     })
 
+    return id
+
   }
 
 }
