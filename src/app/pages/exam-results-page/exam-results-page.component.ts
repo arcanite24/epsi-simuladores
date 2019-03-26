@@ -54,8 +54,8 @@ export class ExamResultsPageComponent implements OnInit {
             const exam = await this.data.getDoc<Exam>(Collections.EXAM, result.exam)
             this.exam = exam
 
-            if (exam.showAd) this.modal.getModal('adModal').open()
             this.modal.getModal('examRankingAdd').open()
+            if (exam.showAd || exam.adDesc) this.modal.getModal('adModal').open()
 
             if (result && result.exam) this.rankings$ = this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
               .where('exam.id', '==', result.exam)

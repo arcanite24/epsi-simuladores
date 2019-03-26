@@ -25,6 +25,7 @@
     "@angular/router": "~7.1.0",
     "@ng-bootstrap/ng-bootstrap": "^4.0.1",
     "@ngrx/store": "^7.1.0",
+    "@nicky-lenaers/ngx-scroll-to": "^2.0.0",
     "@swimlane/ngx-charts": "^10.0.0",
     "@types/lodash": "^4.14.120",
     "algoliasearch": "^3.32.0",

@@ -275,6 +275,7 @@ export interface Exam {
   adDesc?: string
   adHref?: string
   adButton?: string
+  modalAdText?: string
 }
 
 export enum ExamTypes {

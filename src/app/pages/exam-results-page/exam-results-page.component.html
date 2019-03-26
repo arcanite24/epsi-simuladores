@@ -1,35 +1,43 @@
-<ngx-smart-modal identifier="examRankingAdd">
+<ngx-smart-modal identifier="examRankingAdd" #examRankingAdd>
   <epsi-exam-ranking-add (rankingAdded)="myRanking = $event" [exam]="result.exam" [promedio]="result.promedio " *ngIf="result$ | async as result"></epsi-exam-ranking-add>
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="adModal">
+<ngx-smart-modal identifier="adModal" #adModal>
   <div class="container">
     <div class="row">
 
-      <div class="col-md-12" *ngIf="promedio < 75">
-        <div *ngIf="adPremium$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+      <div class="col-md-12">
+        <h4>Tu promedio fue de: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h4>
+      </div>
+
+      <div class="col-md-12">
+        <p *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</p>
+        <div class="w-100 flex-loader">
+          <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
+            <img src="assets/whats.png" style="width: 48px; height: 48px;">
+          </a>
         </div>
       </div>
 
-      <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
-        <div *ngIf="adEsencial$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
-        </div>
+      <div class="col-md-12">
+        <h5>Quedaste en el lugar <strong>0</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
       </div>
 
-      <div class="col-md-12" *ngIf="promedio >= 85">
-        <div *ngIf="adResidente$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
-        </div>
+      <div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item">Promedio por tema</li>
+          <li *ngFor="let tag of tags" class="list-group-item">
+            <strong>{{tag.value * 100 | number}}%</strong>
+            <span class="ml-2">{{tag.name}}</span>
+            <div class="bar-container">
+              <div class="bar" [style.width.%]="tag.value * 100"></div>
+            </div>
+          </li>
+        </ul>
       </div>
 
-      <div class="col-md-12" *ngIf="exam && exam.adDesc">
-        <p>{{exam.adDesc}}</p>
-        <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
+      <div class="col-md-12 mt-2">
+        <button type="button" class="btn btn-secondary w-100" (click)="adModal.close()">Resumen de mis respuestas</button>
       </div>
 
     </div>
@@ -54,6 +62,40 @@
               <p>Acompáñanos presencialmente si te es posible , ya que solo abrimos 1 grupo en la CDMX para seguir siempre cuidando la calidad de nuestra atención en su preparación</p>
               <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO PRESENCIAL</a>
             </div>
+
+            <div class="col-md-12">
+              <div class="row">
+
+                <div class="col-md-12" *ngIf="promedio < 75">
+                  <div *ngIf="adPremium$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+                  </div>
+                </div>
+          
+                <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
+                  <div *ngIf="adEsencial$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+                  </div>
+                </div>
+          
+                <div class="col-md-12" *ngIf="promedio >= 85">
+                  <div *ngIf="adResidente$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
+                  </div>
+                </div>
+          
+                <div class="col-md-12" *ngIf="exam && exam.adDesc">
+                  <p>{{exam.adDesc}}</p>
+                  <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
+                </div>
+          
+              </div>
+            </div>
+            
+            <hr>
       
             <div class="result-questions col-md-12" *ngFor="let q of questions; let i = index">
               <small>Pregunta {{i + 1}} de {{questions.length}}</small>
@@ -73,6 +115,9 @@
                 <li *ngFor="let tag of tags" class="list-group-item">
                   <strong>{{tag.value * 100 | number}}%</strong>
                   <span class="ml-2">{{tag.name}}</span>
+                  <div class="bar-container">
+                    <div class="bar" [style.width.%]="tag.value * 100"></div>
+                  </div>
                 </li>
               </ul>
             </div>

@@ -20,6 +20,7 @@ import { TagInputModule } from 'ngx-chips'
 import { NgxChartsModule } from '@swimlane/ngx-charts'
 import { MomentModule } from 'ngx-moment'
 import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs)
@@ -376,6 +377,7 @@ import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials
     }),
     SelectDropDownModule,
     ScrollingModule,
+    ScrollToModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
 
 @Component({
   selector: 'epsi-exam-edit',
@@ -37,6 +38,7 @@ export class ExamEditComponent implements OnInit {
     private afs: AngularFirestore,
     private toastr: ToastrService,
     private modal: NgxSmartModalService,
+    private scroll: ScrollToService
   ) { }
 
   ngOnInit() {
@@ -57,6 +59,7 @@ export class ExamEditComponent implements OnInit {
       adDesc: '',
       adHref: '',
       adButton: '',
+      modalAdText: '',
     })
 
   }
@@ -116,9 +119,10 @@ export class ExamEditComponent implements OnInit {
     this.questionSelected(q)
   }
 
-  openEditQuestion(q: Question) {
+  openEditQuestion(q: Question, e?: HTMLElement) {
     this.tempQuestion = q
     this.modal.getModal('questionEditModal').open()
+    if (e) setTimeout(() => this.scroll.scrollTo({target: 'questionEditModal'}), 300)
   }
 
   postEditQuestion(q: Question) {
@@ -126,6 +130,10 @@ export class ExamEditComponent implements OnInit {
     this.editForm.patchValue({
       questions: this.editForm.value.questions.map(qq => q.id == qq.id ? q : qq)
     })
+  }
+
+  scrollTo(e: HTMLElement) {
+    e.scrollIntoView({behavior: 'smooth'})
   }
 
 }
