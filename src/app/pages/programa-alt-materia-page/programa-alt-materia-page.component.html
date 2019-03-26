@@ -1,0 +1,19 @@
+<div class="container mt-retro">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <epsi-panel *ngIf="materia$ | async as materia else loader" [title]="materia.name">
+    <div class="container-fluid">
+      <div class="bloques-container flex flex-row flex-wrap flex-center" *ngIf="bloques$ | async as bloques">
+        <div class="bloque-tile manita" *ngFor="let bloque of bloques" (click)="router.navigate(['/programa/bloque', bloque.id])">
+          <img [src]="bloque.cover ? bloque.cover : 'https://via.placeholder.com/150?text=Bloque'">
+          <h5 class="text-center mt-1">{{bloque.name}}</h5>
+          <span>0/0</span>
+        </div>
+      </div>
+    </div>
+  </epsi-panel>
+
+</div>

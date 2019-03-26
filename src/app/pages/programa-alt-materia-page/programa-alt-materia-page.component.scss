@@ -1,0 +1,12 @@
+.bloque-tile {
+
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
+}
+
+.bloque-tile:not(:first-child) {
+  margin-left: 1rem;
+}

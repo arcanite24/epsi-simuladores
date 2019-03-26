@@ -1,0 +1,38 @@
+<ngx-smart-modal identifier="eventModal">
+  <epsi-event-detail [event]="tempEvent"></epsi-event-detail>
+</ngx-smart-modal>
+
+<div class="container mt-retro">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+  <epsi-panel *ngIf="bloque$ | async as bloque else loader">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-xs-12 col-md-4">
+          <img [src]="bloque.cover ? bloque.cover : 'https://via.placeholder.com/150?text=Bloque'" class="w-100 mt-4">
+          <h4 class="text-center mt-1 mb-1">{{bloque.name}}</h4>
+          <p class="w-100 text-center">{{completedContent | number}}/{{total_temas | number}}</p>
+          <!-- <strong>{{completed.length}}</strong>
+          <pre>{{ completed | json }}</pre> -->
+        </div>
+        
+        <div class="col-xs-12 col-md-8 mt-4" *ngIf="temas$ | async as temas">
+          <div class="row">
+            
+            <div class="col-md-12 p-1" *ngFor="let tema of temas" (click)="openContent(tema)">
+              <i class="fa fa-check text-success mr-2" *ngIf="isCompleted(completed, tema.event)"></i>
+              <span>{{tema.name}}</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </epsi-panel>
+
+</div>

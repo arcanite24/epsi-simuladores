@@ -193,6 +193,7 @@ export interface Content {
   haveChildren?: boolean
   forum?: string
   sortIndex?: number
+  event?: string
 }
 
 export interface Marker {

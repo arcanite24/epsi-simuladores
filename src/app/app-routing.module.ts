@@ -55,6 +55,8 @@ import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
 import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
+import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
+import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
 
 const routes: Routes = [
 
@@ -89,6 +91,10 @@ const routes: Routes = [
   // Payment
   {path: 'pagar/:slug', component: PaymentPageComponent},
   {path: 'pago/status/:id', component: PaymentRequestDetailPageComponent},
+
+  // Programa Alt
+  {path: 'programa/materia/:id', component: ProgramaAltMateriaPageComponent},
+  {path: 'programa/bloque/:id', component: ProgramaAltBloquePageComponent},
 
   // Admin
   {canActivate: [AuthGuard, AdminGuard], path: 'admin', component: AdminPageComponent},

@@ -52,6 +52,7 @@ export class ContentEditComponent implements OnInit {
       model_slug: null,
       forum: null,
       sortIndex: null,
+      event: null
     })
 
   }

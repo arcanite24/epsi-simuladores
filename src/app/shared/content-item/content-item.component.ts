@@ -12,6 +12,7 @@ export class ContentItemComponent implements OnInit {
 
   @Input() public item: Content
   @Input() public blur: boolean = false
+  @Input() public isPrograma: boolean = false
 
   constructor(
     public router: Router,

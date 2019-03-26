@@ -185,6 +185,9 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
 import { UserMoodOverviewComponent } from './shared/user-mood-overview/user-mood-overview.component';
 import { UserNotiAddComponent } from './shared/user-noti-add/user-noti-add.component';
 import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
+import { ProgramaPanelAltComponent } from './shared/programa-panel-alt/programa-panel-alt.component';
+import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
+import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
 
 @NgModule({
   declarations: [
@@ -338,6 +341,9 @@ import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials
     UserMoodOverviewComponent,
     UserNotiAddComponent,
     AdminTutorialsComponent,
+    ProgramaPanelAltComponent,
+    ProgramaAltMateriaPageComponent,
+    ProgramaAltBloquePageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

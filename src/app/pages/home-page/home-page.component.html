@@ -104,8 +104,10 @@
       <epsi-calendar-panel *ngIf="auth.isCalendar"></epsi-calendar-panel>
 
       <!-- Content Panel -->
-      <!-- TODO: Cambiar por auth.isContent -->
       <epsi-content-panel></epsi-content-panel>
+
+      <!-- Programa Panel Alt -->
+      <epsi-programa-panel-alt *ngIf="auth.isAdmin"></epsi-programa-panel-alt>
 
     </div>
 

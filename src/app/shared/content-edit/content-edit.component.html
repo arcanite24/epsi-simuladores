@@ -36,6 +36,11 @@
         <option *ngFor="let content of contents" [selected]="content.id == editForm.value.parent_id" [ngValue]="content">{{content.name}}</option>
       </select>
     </div>
+
+    <div class="epsi-input">
+      <label for="">Evento</label>
+      <input type="text" formControlName="event" placeholder="Solo el Id del Evento para el Programa">
+    </div>
   
     <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>
   
