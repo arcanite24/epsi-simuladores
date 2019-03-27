@@ -10,11 +10,11 @@
         <h2 class="c-epsi-primary">Promedio: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h2>
       </div>
 
-      <div class="col-md-12" *ngIf="exam && exam.modalAdText">
+      <div class="col-md-12 flex flex-row flex-start align-center" *ngIf="exam && exam.modalAdText">
         <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
           <img src="assets/whats.png" style="width: 48px; height: 48px;">
         </a>
-        <p *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</p>
+        <span *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</span>
       </div>
 
       <div class="col-md-12">
