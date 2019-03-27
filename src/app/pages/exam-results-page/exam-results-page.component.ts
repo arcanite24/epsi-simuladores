@@ -32,7 +32,7 @@ export class ExamResultsPageComponent implements OnInit {
   public myRanking: any
   public exam: Exam
 
-  public tempPosition: number = 0
+  public tempPosition: number
 
   constructor(
     private route: ActivatedRoute,
@@ -66,7 +66,7 @@ export class ExamResultsPageComponent implements OnInit {
               .limit(10))
               .valueChanges()
               .pipe(tap(rankings => {
-                if (!this.tempPosition) this.computePosition(exam.id, rankings)
+                if (!this.tempPosition) this.computePosition(exam.id)
               }))
 
           }
@@ -129,7 +129,7 @@ export class ExamResultsPageComponent implements OnInit {
     return findIndex(rankings, r => r.user.displayName == myRanking.displayName) + 1
   }
 
-  async computePosition(exam_id: string, rankings: ExamRanking[]) {
+  async computePosition(exam_id: string) {
 
     const exam = await this.afs.collection(Collections.EXAM).doc<Exam>(exam_id).valueChanges().pipe(take(1)).toPromise()
 
@@ -138,7 +138,16 @@ export class ExamResultsPageComponent implements OnInit {
       uid: uuid.v4()
     }, this.promedio)
 
+    const rankings = await this.afs.collection<ExamRanking>(Collections.EXAM_RANKING, ref => ref
+      .where('exam.id', '==', exam_id)
+      .orderBy('promedio', 'desc')
+      .limit(10))
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise()
+
     this.tempPosition = findIndex(rankings, r => r.id == temp_id) + 1
+    console.log('computePosition',temp_id, this.tempPosition, this.promedio)
 
     this.afs.collection(Collections.EXAM_RANKING).doc(temp_id).delete()
 
