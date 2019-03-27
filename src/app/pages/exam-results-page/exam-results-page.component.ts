@@ -65,7 +65,9 @@ export class ExamResultsPageComponent implements OnInit {
               .orderBy('promedio', 'desc')
               .limit(10))
               .valueChanges()
-              .pipe(tap(rankings => this.computePosition(exam.id, rankings)))
+              .pipe(tap(rankings => {
+                if (!this.tempPosition) this.computePosition(exam.id, rankings)
+              }))
 
           }
           

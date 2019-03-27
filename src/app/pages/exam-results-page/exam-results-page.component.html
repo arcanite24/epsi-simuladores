@@ -7,6 +7,10 @@
     <div class="row">
 
       <div class="col-md-12">
+        <h2 class="c-epsi-primary">Promedio: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h2>
+      </div>
+
+      <div class="col-md-12" *ngIf="exam && exam.modalAdText">
         <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
           <img src="assets/whats.png" style="width: 48px; height: 48px;">
         </a>
@@ -15,10 +19,6 @@
 
       <div class="col-md-12">
         <h5>Quedaste en el lugar <strong *ngIf="tempPosition">{{tempPosition}}</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
-      </div>
-
-      <div class="col-md-12">
-        <h2 class="c-epsi-primary">Promedio: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h2>
       </div>
 
       <div class="col-md-12">
