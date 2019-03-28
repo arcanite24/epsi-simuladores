@@ -12,7 +12,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgAisModule } from 'angular-instantsearch';
-import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
@@ -21,6 +21,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts'
 import { MomentModule } from 'ngx-moment'
 import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 import localeEs from '@angular/common/locales/es';
 
 registerLocaleData(localeEs)
@@ -365,6 +366,7 @@ import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-se
     NgbTimepickerModule,
     NgbCarouselModule,
     NgbTypeaheadModule,
+    NgbDatepickerModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
@@ -386,6 +388,7 @@ import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-se
     SelectDropDownModule,
     ScrollingModule,
     ScrollToModule.forRoot(),
+    LoadingBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

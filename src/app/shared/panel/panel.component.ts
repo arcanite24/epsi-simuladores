@@ -31,7 +31,7 @@ export class PanelComponent implements OnInit {
       .collection(Collections.TUTORIAL)
       .doc<Tutorial>(this.tutorial)
       .valueChanges()
-      .pipe(tap(console.log))
+      .pipe(tap(null))
   }
 
 }

@@ -153,6 +153,7 @@ export class User {
   uid: string;
   completedTasks?: string[]
   migrated?: boolean
+  customCalendar: any
 
   // Zamnademy Fields
   new_email?: string

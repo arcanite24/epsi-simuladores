@@ -7,6 +7,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import moment from 'moment'
 import { AuthService } from 'src/app/services/auth.service';
 import { CalendarView } from 'angular-calendar';
+import { flattenDeep } from 'lodash'
 
 @Component({
   selector: 'epsi-calendar-panel',
@@ -21,7 +22,9 @@ export class CalendarPanelComponent implements OnInit {
   public dayEvents: Event[]
   public completedTasks: string[] = []
 
-  public events$: Observable<Event[]> = this.afs.collection<Event>(Collections.EVENT)
+  public events$: Observable<Event[]>
+
+  /* public events$: Observable<Event[]> = this.afs.collection<Event>(Collections.EVENT)
     .valueChanges()
     .pipe(
       map(events => {
@@ -32,7 +35,7 @@ export class CalendarPanelComponent implements OnInit {
           color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
         }) as Event) as Event[]
       })
-    )
+    ) */
 
   constructor(
     private afs: AngularFirestore,
@@ -46,6 +49,7 @@ export class CalendarPanelComponent implements OnInit {
     this.auth.user$.subscribe(user => {
       if (user) {
         this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks ? u.completedTasks : [])
+        if (!this.events$) this.loadEvents(user.uid)
       }
     })
   }
@@ -53,6 +57,28 @@ export class CalendarPanelComponent implements OnInit {
   dayClicked(day: any) {
     this.dayEvents = day.events as Event[]
     if (day.events && day.events.length > 0) this.modal.getModal('eventsModal').open()
+  }
+
+  loadEvents(uid: string) {
+    this.events$ = this.afs.collection(Collections.USER).doc<User>(uid)
+      .valueChanges()
+      .pipe(
+        map(user => {
+          if (!user.customCalendar) return []
+          const events = flattenDeep(Object.values(user.customCalendar))
+          return events.map((e: any) => ({
+            id: 'TESSSST',
+            ...e,
+            start: new Date(e.start),
+            title: 'Evento Test',
+            desc: 'TEST',
+            date: new Date().toISOString(),
+            tasks: [],
+            links: [],
+            color: user.completedTasks.indexOf('TESSSST') >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
+          })) as Event[]
+        })
+      )
   }
 
 }

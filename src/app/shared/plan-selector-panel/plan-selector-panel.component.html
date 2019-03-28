@@ -1,3 +1,45 @@
-<p>
-  plan-selector-panel works!
-</p>
+<epsi-panel title="Crea tu calendario personalizado">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-12" *ngIf="step == 'mode_selector' && !mode">
+        <div class="row">
+          <div class="col-md-4" (click)="mode = 'only_date'">
+            <img src="https://via.placeholder.com/128?text=Only%20Date" alt="">
+            <p>Only Date</p>
+          </div>
+          <div class="col-md-4" (click)="mode = 'date_order'">
+            <img src="https://via.placeholder.com/128?text=Only%20Date" alt="">
+            <p>Date and Order</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12" *ngIf="mode">
+        <div class="row">
+          
+          <div class="col-md-12 form-group">
+            <label for="">Seleccionar fecha para finalizar</label>
+            <ngb-datepicker (select)="finishDate = $event" #d></ngb-datepicker>
+            <pre>{{ finishDate | json }}</pre>
+            <button class="btn btn-secondary" *ngIf="finishDate" (click)="generateCalendar(finishDate)">Generar Calendario</button>
+          </div>
+
+          <div class="col-md-12 form-group" *ngIf="mode == 'date_order'">
+            <label for="">Modifcar Orden de las Materias</label>
+            <ul>
+              <li>Tema</li>
+            </ul>
+          </div>
+
+          <div class="col-md-12" *ngIf="loading">
+            <ngx-loading-bar [color]="'black'" [fixed]="false"></ngx-loading-bar>
+            <p>{{loadingText}}</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>
