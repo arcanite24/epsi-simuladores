@@ -22,9 +22,9 @@ export class CalendarPanelComponent implements OnInit {
   public dayEvents: Event[]
   public completedTasks: string[] = []
 
-  public events$: Observable<Event[]>
+  /* public events$: Observable<Event[]> */
 
-  /* public events$: Observable<Event[]> = this.afs.collection<Event>(Collections.EVENT)
+  public events$: Observable<Event[]> = this.afs.collection<Event>(Collections.EVENT)
     .valueChanges()
     .pipe(
       map(events => {
@@ -35,7 +35,7 @@ export class CalendarPanelComponent implements OnInit {
           color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
         }) as Event) as Event[]
       })
-    ) */
+    )
 
   constructor(
     private afs: AngularFirestore,
@@ -49,7 +49,7 @@ export class CalendarPanelComponent implements OnInit {
     this.auth.user$.subscribe(user => {
       if (user) {
         this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks ? u.completedTasks : [])
-        if (!this.events$) this.loadEvents(user.uid)
+        /* if (!this.events$) this.loadEvents(user.uid) */
       }
     })
   }
