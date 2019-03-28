@@ -147,7 +147,7 @@ export class ExamResultsPageComponent implements OnInit {
       .toPromise()
 
     this.tempPosition = findIndex(rankings, r => r.id == temp_id) + 1
-    console.log('computePosition',temp_id, this.tempPosition, this.promedio)
+    console.log('computePosition',temp_id, this.tempPosition, this.promedio / 10)
 
     this.afs.collection(Collections.EXAM_RANKING).doc(temp_id).delete()
 

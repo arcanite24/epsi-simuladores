@@ -12,7 +12,7 @@
 
       <div class="col-md-12 flex flex-row flex-start align-center" *ngIf="exam && exam.modalAdText">
         <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
-          <img src="assets/whats.png" style="width: 48px; height: 48px;">
+          <img src="assets/whats.png" style="width: 32px; height: 32px;">
         </a>
         <span *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</span>
       </div>
@@ -83,12 +83,12 @@
                   </div>
                 </div>
           
-                <div class="col-md-12" *ngIf="exam && exam.adDesc">
-                  <p>{{exam.adDesc}}</p>
-                  <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
-                </div>
-          
               </div>
+            </div>
+
+            <div class="col-md-12" *ngIf="exam && exam.adDesc">
+              <p>{{exam.adDesc}}</p>
+              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
             </div>
             
             <hr>

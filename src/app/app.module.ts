@@ -188,6 +188,7 @@ import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials
 import { ProgramaPanelAltComponent } from './shared/programa-panel-alt/programa-panel-alt.component';
 import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
 import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
+import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-selector-panel.component';
 
 @NgModule({
   declarations: [
@@ -344,6 +345,7 @@ import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page
     ProgramaPanelAltComponent,
     ProgramaAltMateriaPageComponent,
     ProgramaAltBloquePageComponent,
+    PlanSelectorPanelComponent,
   ],
   imports: [
     BrowserAnimationsModule,
