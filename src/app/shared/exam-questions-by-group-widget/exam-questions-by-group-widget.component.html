@@ -10,8 +10,8 @@
   
   <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
 
+    <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
     <h5 class="m-0">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
-    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
 
     <div class="question-group" *ngIf="question as group">
 
