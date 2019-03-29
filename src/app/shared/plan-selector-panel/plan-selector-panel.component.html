@@ -1,3 +1,20 @@
+<ngx-smart-modal identifier="contentFilterModal">
+  <div class="container-fluid" *ngIf="content">
+    <div class="row">
+
+      <div class="col-md-12" *ngFor="let c of content">
+        <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected">
+        <label [for]="c.id" class="ml-2">{{c.name}}</label>
+      </div>
+
+      <div class="col-md-12">
+        <button class="btn btn-success" (click)="contentFilterCallback(content, dias, range)">Generar Calendario</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <epsi-panel title="Crea tu calendario personalizado">
   <div class="container-fluid">
     <div class="row">

@@ -125,6 +125,11 @@ export class ExamEditComponent implements OnInit {
     if (e) setTimeout(() => this.scroll.scrollTo({target: 'questionEditModal'}), 300)
   }
 
+  openAddQuestion() {
+    this.modal.getModal('questionAddModal').open()
+    setTimeout(() => this.scroll.scrollTo({target: 'questionAddModal'}), 300)
+  }
+
   postEditQuestion(q: Question) {
     console.log('post edit question', q)
     this.editForm.patchValue({

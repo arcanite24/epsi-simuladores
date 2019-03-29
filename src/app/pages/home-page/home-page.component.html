@@ -101,7 +101,8 @@
       <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel>
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel *ngIf="auth.isCalendar"></epsi-calendar-panel>
+      <epsi-calendar-panel *ngIf="auth.isCalendar && !auth.isAdmin"></epsi-calendar-panel>
+      <epsi-smart-calendar-panel *ngIf="auth.isAdmin"></epsi-smart-calendar-panel>
 
       <!-- Content Panel -->
       <epsi-content-panel></epsi-content-panel>

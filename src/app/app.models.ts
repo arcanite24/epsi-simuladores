@@ -195,6 +195,7 @@ export interface Content {
   forum?: string
   sortIndex?: number
   event?: string
+  selected?: boolean
 }
 
 export interface Marker {

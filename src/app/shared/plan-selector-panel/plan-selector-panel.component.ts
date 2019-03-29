@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDate, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import moment from 'moment'
 import { ToastrService } from 'ngx-toastr';
 import { Content, Collections } from 'src/app/app.models';
@@ -8,6 +8,7 @@ import { sortBy } from 'lodash'
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 let twix = require('twix');
 
 @Component({
@@ -27,12 +28,17 @@ export class PlanSelectorPanelComponent implements OnInit {
   public maxDate: NgbDate = new NgbDate(2018, 8, 30)
   public minDate: NgbDate = new NgbDate(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDay())
 
+  public content: Content[]
+  public dias: number
+  public range: any
+
   constructor(
     private data: DataService,
     private toastr: ToastrService,
     private loadingBar: LoadingBarService,
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private modal: NgxSmartModalService
   ) { }
 
   ngOnInit() {
@@ -54,7 +60,31 @@ export class PlanSelectorPanelComponent implements OnInit {
     this.loadingBar.start()
     this.loadingText = 'Cargando contenido...'
 
-    let content = await this.getFormattedContent()
+    this.content = await this.getFormattedContent()
+    
+    if (this.mode == 'only_date') {
+      this.setCalendarToUser(this.content, dias, range)
+    } else if (this.mode == 'date_order') {
+      this.loadingText = 'Seleccionando contenido'
+      this.loadingBar.complete()
+      this.modal.getModal('contentFilterModal').open()
+      this.range = range
+      this.dias = dias
+    }
+
+  }
+
+  async contentFilterCallback(content: Content[], dias: number, range: any) {
+
+    const _content = content.filter(c => c.selected)
+    console.log(dias, _content)
+
+    await this.setCalendarToUser(_content, dias, range)
+
+  }
+
+  async setCalendarToUser(content: Content[], dias: number, range: any) {
+
     let calendar = []
 
     const perDay = Math.ceil(content.length / dias)
@@ -87,9 +117,8 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     console.log(customCalendar)
 
-    await this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({
-      customCalendar
-    })
+    await this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({customCalendar: null})
+    await this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({customCalendar})
 
     this.loadingText = 'Calendario completado'
     this.loadingBar.complete()
@@ -125,7 +154,7 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     }
 
-    return content
+    return content.map(c => ({...c, selected: true}))
 
   }
 

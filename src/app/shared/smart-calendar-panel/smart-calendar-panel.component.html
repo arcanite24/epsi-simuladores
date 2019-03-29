@@ -1,0 +1,39 @@
+<ngx-smart-modal identifier="eventsModal" customClass="max-w-50">
+  <epsi-calendar-events-modal [events]="dayEvents"></epsi-calendar-events-modal>
+</ngx-smart-modal>
+
+<epsi-panel title="Smar Calendar" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="true" tutorial="Mwe2Sv0rSsAmytfy3CoV">
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+  
+  <div class="calendar-panel-actions flex flex-row flex-start align-center">
+
+    <button 
+      type="button"
+      class="btn btn-secondary mr-4"
+      mwlCalendarPreviousView
+      [(viewDate)]="viewDate"
+      [view]="view">Mes Anterior</button>
+
+    <h4 style="text-transform: capitalize">{{mesLabel}}</h4>
+
+    <button 
+      type="button"
+      class="btn btn-secondary ml-4"
+      mwlCalendarNextView
+      [(viewDate)]="viewDate"
+      [view]="view">Mes Siguiente</button>
+
+  </div>
+
+  <div class="calendar-panel-body mt-2" *ngIf="events$ | async as events else loader">
+    <mwl-calendar-month-view
+      locale="es"
+      [viewDate]="viewDate"
+      [events]="events"
+      (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
+  </div>
+
+</epsi-panel>
