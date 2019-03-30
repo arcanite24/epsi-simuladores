@@ -62,7 +62,7 @@
                 <div class="col-md-12" *ngIf="promedio < 75">
                   <div *ngIf="adPremium$ | async as ad">
                     <p>{{ad.value}}</p>
-                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a *ngIf="ad.button_text" target="_blank" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                 <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
                   <div *ngIf="adEsencial$ | async as ad">
                     <p>{{ad.value}}</p>
-                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a *ngIf="ad.button_text" target="_blank" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
@@ -78,7 +78,7 @@
                 <div class="col-md-12" *ngIf="promedio >= 85">
                   <div *ngIf="adResidente$ | async as ad">
                     <p>{{ad.value}}</p>
-                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a *ngIf="ad.button_text" target="_blank" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
