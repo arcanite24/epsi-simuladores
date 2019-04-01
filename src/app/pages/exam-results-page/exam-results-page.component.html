@@ -86,6 +86,11 @@
               </div>
             </div>
 
+            <div class="col-md-12" *ngIf="exam && exam.adDesc">
+              <p>{{exam.adDesc}}</p>
+              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-success">{{exam.adButton}}</a>
+            </div>
+
             <div class="col-xs-12 d-lg-none" *ngIf="result.exam_type == 'demo'">
               <epsi-panel title="Ranking">
                 <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
@@ -97,11 +102,6 @@
                   </li>
                 </ul>
               </epsi-panel>
-            </div>
-
-            <div class="col-md-12" *ngIf="exam && exam.adDesc">
-              <p>{{exam.adDesc}}</p>
-              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-secondary">{{exam.adButton}}</a>
             </div>
             
             <hr>
