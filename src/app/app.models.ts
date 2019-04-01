@@ -184,6 +184,7 @@ export interface Content {
   cover?: string
   parent_id?: string
   parent_type?: string
+  parent_name?: string
   ratings?: {}
   totalRatings?: number
   video?: string

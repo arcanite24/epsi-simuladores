@@ -140,7 +140,9 @@ export class PlanSelectorPanelComponent implements OnInit {
         .where('type', '==', 'bloque')
         .where('parent_id', '==', materia.id))
 
-      for (const bloque of bloques) {
+      const _bloques = sortBy(bloques, 'sortIndex')
+
+      for (const bloque of _bloques) {
 
         this.loadingText = bloque.name
         
@@ -148,7 +150,7 @@ export class PlanSelectorPanelComponent implements OnInit {
           .where('type', '==', 'tema')
           .where('parent_id', '==', bloque.id))
 
-        content = [...content, ...sortBy(temas, 'sortIndex')]
+        content = [...content, ...sortBy(temas, 'sortIndex').map(t => ({...t, parent_name: bloque.name}))]
 
       }
 

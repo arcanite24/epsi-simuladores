@@ -4,7 +4,7 @@
 
       <div class="col-md-12" *ngFor="let c of content">
         <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected">
-        <label [for]="c.id" class="ml-2">{{c.name}}</label>
+        <label [for]="c.id" class="ml-2"> <small>{{c.sortIndex}}</small> {{c.parent_name}} -> <strong>{{c.name}}</strong></label>
       </div>
 
       <div class="col-md-12">
