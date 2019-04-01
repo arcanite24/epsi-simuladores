@@ -57,7 +57,7 @@ export class SmartCalendarPanelComponent implements OnInit {
             id: 'TESSSST',
             ...e,
             start: new Date(e.start),
-            title: 'Evento Test',
+            title: e.content_name,
             desc: 'TEST',
             date: new Date().toISOString(),
             tasks: [],
