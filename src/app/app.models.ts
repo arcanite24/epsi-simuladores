@@ -280,6 +280,7 @@ export interface Exam {
   adHref?: string
   adButton?: string
   modalAdText?: string
+  isLight?: boolean
 }
 
 export enum ExamTypes {

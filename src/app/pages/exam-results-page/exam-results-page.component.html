@@ -56,7 +56,7 @@
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
-            <div class="col-md-12" *ngIf="exam && exam.showAd">
+            <div class="col-md-12 mt-4" *ngIf="exam && exam.showAd">
               <div class="row">
 
                 <div class="col-md-12" *ngIf="promedio < 75">
@@ -86,9 +86,9 @@
               </div>
             </div>
 
-            <div class="col-md-12" *ngIf="exam && exam.adDesc">
+            <div class="col-md-12 mt-4" *ngIf="exam && exam.adDesc">
               <p>{{exam.adDesc}}</p>
-              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-success">{{exam.adButton}}</a>
+              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-success" style="background-color: #5cc05f">{{exam.adButton}}</a>
             </div>
 
             <div class="col-xs-12 d-lg-none" *ngIf="result.exam_type == 'demo'">

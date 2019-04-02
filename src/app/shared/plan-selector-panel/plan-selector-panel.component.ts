@@ -46,6 +46,7 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   setMode(mode: string) {
     this.mode = mode
+    if (mode == 'ignore') return this.modal.getModal('ignoreModal').open()
     this.modal.getModal('dateSelector').open()
   }
 

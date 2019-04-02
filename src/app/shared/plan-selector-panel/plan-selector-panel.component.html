@@ -57,6 +57,8 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="ignoreModal"></ngx-smart-modal>
+
 <epsi-panel title="Crea tu calendario personalizado">
   <div class="container-fluid">
     <div class="row">
@@ -68,6 +70,9 @@
           </div>
           <div class="col-md-4">
             <button class="btn btn-secondary" (click)="setMode('date_order')">Date Order</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-secondary" (click)="setMode('ignore')">Estudiar sin calendario, solo con el programa</button>
           </div>
         </div>
       </div>
