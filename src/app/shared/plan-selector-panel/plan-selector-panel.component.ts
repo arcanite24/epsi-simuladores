@@ -44,8 +44,14 @@ export class PlanSelectorPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  setMode(mode: string) {
+    this.mode = mode
+    this.modal.getModal('dateSelector').open()
+  }
+
   async generateCalendar(date: NgbDate) {
   
+    this.modal.getModal('dateSelector').close()
     this.loading = true
     
     const finish = new Date(date.year, date.month - 1, date.day).toISOString()
