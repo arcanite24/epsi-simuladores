@@ -7,6 +7,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'epsi-exam-edit',
@@ -33,12 +34,15 @@ export class ExamEditComponent implements OnInit {
   public set exam(e: Exam) { this.examChanged(e) }
   public get exam(): Exam { return this._exam }
 
+  public importExamId: string
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private toastr: ToastrService,
     private modal: NgxSmartModalService,
-    private scroll: ScrollToService
+    private scroll: ScrollToService,
+    private data: DataService
   ) { }
 
   ngOnInit() {
@@ -139,6 +143,20 @@ export class ExamEditComponent implements OnInit {
 
   scrollTo(e: HTMLElement) {
     e.scrollIntoView({behavior: 'smooth'})
+  }
+
+  openImportExam() {
+    this.modal.getModal('importExamModal').open()
+    setTimeout(() => this.scroll.scrollTo({target: 'importExamModal'}), 300)
+  }
+
+  async importExam(id: string) {
+    console.log('importing exam', id)
+    const exam = await this.data.getDoc<Exam>(Collections.EXAM, id)
+    this.editForm.patchValue({
+      questions: [...this.editForm.value.questions, ...exam.questions]
+    })
+    this.modal.getModal('importExamModal').close()
   }
 
 }

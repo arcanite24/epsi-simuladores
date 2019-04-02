@@ -6,6 +6,27 @@
   <epsi-question-edit [question]="tempQuestion" (postEdit)="postEditQuestion($event)"></epsi-question-edit>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="importExamModal" #importExamModal id="importExamModal">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-12">
+        <h4>Importar Exámen</h4>
+      </div>
+
+      <div class="col-md-12 form-group">
+        <label for="">ID del Exámen</label>
+        <input type="text" [(ngModel)]="importExamId">
+      </div>
+
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="button" (click)="importExam(importExamId)">Importar Exámen</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
   <h2 class="text-boler c-epsi-primary">Editar Exámen</h2>
@@ -89,6 +110,7 @@
 
   <div class="flex flex-row flex-start align-center mb-2">
     <h4 class="c-epsi-primary">Preguntas</h4>
+    <button class="btn btn-secondary ml-auto" type="button" (click)="importExamModal.open()">Importar Exámen</button>
     <button class="btn btn-secondary ml-auto" type="button" (click)="openAddQuestion()">Nueva Pregunta</button>
   </div>
   <epsi-search placeholder="Buscar preguntas" (onSelect)="questionSelected($event)"></epsi-search>

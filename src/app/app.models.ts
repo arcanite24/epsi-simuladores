@@ -289,7 +289,8 @@ export enum ExamTypes {
   CONTENIDO = 'contenido',
   POOL = 'pool',
   TAGS = 'tags',
-  PRUEBA = 'demo'
+  PRUEBA = 'demo',
+  MULTI = 'multi'
 }
 
 export interface Livestream {
