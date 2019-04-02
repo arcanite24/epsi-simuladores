@@ -1,15 +1,19 @@
 <ngx-smart-modal identifier="contentFilterModal">
+
+  <div class="col-md-12" *ngIf="loading">
+    <ngx-loading-bar [color]="'black'" [fixed]="false"></ngx-loading-bar>
+    <p>{{loadingText}}</p>
+  </div>
+
   <div class="container-fluid" *ngIf="content">
     <div class="row">
 
-      <div class="col-md-12" *ngIf="loading">
-        <ngx-loading-bar [color]="'black'" [fixed]="false"></ngx-loading-bar>
-        <p>{{loadingText}}</p>
-      </div>
-
       <div class="col-md-12" *ngFor="let c of content">
-        <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected">
-        <label [for]="c.id" class="ml-2"> <small>{{c.sortIndex}}</small> {{c.parent_name}} -> <strong>{{c.name}}</strong></label>
+        <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected" (change)="radioChange(c)">
+        <label [for]="c.id" class="ml-2">
+          <span class="ml-2" *ngIf="c.type != 'bloque'">{{c.name}}</span>
+          <strong class="mt-2" *ngIf="c.type == 'bloque'">{{c.name}}</strong>
+        </label>
       </div>
 
       <div class="col-md-12">
@@ -67,12 +71,15 @@
         <div class="row">
           <div class="col-md-4" >
             <button class="btn btn-secondary" (click)="setMode('only_date')">Only Date</button>
+            <epsi-tutorial-button tutorial="ziy7dfUsToM9abmdddtw"></epsi-tutorial-button>
           </div>
           <div class="col-md-4">
             <button class="btn btn-secondary" (click)="setMode('date_order')">Date Order</button>
+            <epsi-tutorial-button tutorial="fu023qUMVy0zocQcxbE2"></epsi-tutorial-button>
           </div>
           <div class="col-md-4">
             <button class="btn btn-secondary" (click)="setMode('ignore')">Estudiar sin calendario, solo con el programa</button>
+            <epsi-tutorial-button tutorial="fgXe81GogsnaUUu87lP8"></epsi-tutorial-button>
           </div>
         </div>
       </div>

@@ -191,6 +191,7 @@ import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-pa
 import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
 import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-selector-panel.component';
 import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart-calendar-panel.component';
+import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-button.component';
 
 @NgModule({
   declarations: [
@@ -349,6 +350,7 @@ import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart
     ProgramaAltBloquePageComponent,
     PlanSelectorPanelComponent,
     SmartCalendarPanelComponent,
+    TutorialButtonComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -66,6 +66,7 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     this.loadingBar.start()
     this.loadingText = 'Cargando contenido...'
+    this.modal.getModal('contentFilterModal').open()
 
     this.content = await this.getFormattedContent()
     
@@ -74,7 +75,6 @@ export class PlanSelectorPanelComponent implements OnInit {
     } else if (this.mode == 'date_order') {
       this.loadingText = 'Seleccionando contenido'
       this.loadingBar.complete()
-      this.modal.getModal('contentFilterModal').open()
       this.range = range
       this.dias = dias
     }
@@ -92,6 +92,7 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async setCalendarToUser(content: Content[], dias: number, range: any) {
 
+    content = content.filter(c => c.type == 'tema')
     let calendar = []
 
     const perDay = Math.ceil(content.length / dias)
@@ -152,6 +153,8 @@ export class PlanSelectorPanelComponent implements OnInit {
       for (const bloque of _bloques) {
 
         this.loadingText = bloque.name
+
+        content = [...content, bloque]
         
         const temas = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref
           .where('type', '==', 'tema')
@@ -165,6 +168,16 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     return content.map(c => ({...c, selected: true}))
 
+  }
+
+  radioChange(c: Content) {
+    if (c.type == 'bloque') {
+      c.selected ? this.content = this.content.map(cc => {
+        return cc.parent_id == c.id ? ({...cc, selected: true}) : cc
+      }) : this.content = this.content.map(cc => {
+        return cc.parent_id == c.id ? ({...cc, selected: false}) : cc
+      })
+    }
   }
 
 }
