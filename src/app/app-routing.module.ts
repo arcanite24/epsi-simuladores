@@ -57,6 +57,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
 import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
 import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
 import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
+import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 
 const routes: Routes = [
 
@@ -130,6 +131,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/ad-texts', component: AdminAdTextsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tutorials', component: AdminTutorialsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/daily', component: AdminDailyComponent},
 
 ];
 

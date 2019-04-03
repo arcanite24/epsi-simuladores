@@ -66,7 +66,9 @@ export enum Collections {
   TAG_POOL = 'tag-pool',
   AD_TEXT = 'ad-text',
   MOOD_RATE = 'mood-rate',
-  TUTORIAL = 'tutorial'
+  TUTORIAL = 'tutorial',
+  DAILY = 'daily-noti',
+  DAILY_REGISTER = 'daily-register',
 }
 
 export enum PaymentStatus {
@@ -615,4 +617,17 @@ export interface Tutorial {
   key: string
   label: string
   text: string
+}
+
+export interface Daily {
+  id: string
+  title: string
+  text: string
+}
+
+export interface DailyRegister {
+  id: string
+  user: string
+  daily: Daily
+  date: string
 }

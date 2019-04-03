@@ -193,6 +193,7 @@ import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-se
 import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart-calendar-panel.component';
 import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-button.component';
 import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-panel.component';
+import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 
 @NgModule({
   declarations: [
@@ -353,6 +354,7 @@ import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-pa
     SmartCalendarPanelComponent,
     TutorialButtonComponent,
     ZonaEnarmPanelComponent,
+    AdminDailyComponent,
   ],
   imports: [
     BrowserAnimationsModule,

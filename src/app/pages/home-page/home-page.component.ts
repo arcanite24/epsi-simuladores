@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Collections, PaymentModel, HomeLists, ExamTypes, Exam, MoodRate } from 'src/app/app.models';
+import { Collections, PaymentModel, HomeLists, ExamTypes, Exam, MoodRate, Daily } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -38,6 +38,8 @@ export class HomePageComponent implements OnInit {
     text: ''
   }
 
+  public daily: Daily
+
   constructor(
     public auth: AuthService,
     private afs: AngularFirestore,
@@ -59,13 +61,39 @@ export class HomePageComponent implements OnInit {
   async loadMoodRates(uid: string) {
 
     const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', uid))
+    const dailyRegisters = await this.data.getCollectionQuery<MoodRate>(Collections.DAILY_REGISTER, ref => ref.where('user', '==', uid))
     const today = moment().format('DD-MM-YYYY')
     const canOpen = rates.filter(r => r.date == today).length <= 0
+    const canOpenDaily = rates.filter(r => r.date == today).length <= 0
 
     console.log(rates, today)
 
     if (canOpen) this.modal.getModal('moodAddModal').open()
+    if (canOpenDaily) this.openDaily(uid, today)
 
+  }
+
+  async openDaily(uid: string, date: string) {
+    const dailys = await this.data.getCollection<Daily>(Collections.DAILY)
+    this.daily = dailys[Math.floor(Math.random() * dailys.length)]
+    
+    const noti_id = this.afs.createId()
+    await this.afs.collection(Collections.NOTIFICATION).doc(noti_id).set({
+      id: noti_id,
+      title: this.daily.title,
+      text: this.daily.text,
+      date: new Date().toISOString(),
+      isGlobal: false,
+      user: uid
+    })
+
+    const id = this.afs.createId()
+    await this.afs.collection(Collections.DAILY_REGISTER).doc(id).set({
+      id,
+      user: uid,
+      date,
+      daily: {...this.daily}
+    })
   }
 
   sendMood() {
