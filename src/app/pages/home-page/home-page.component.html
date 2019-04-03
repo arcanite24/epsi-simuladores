@@ -107,6 +107,9 @@
       <!-- Content Panel -->
       <epsi-content-panel></epsi-content-panel>
 
+      <!-- Zona ENARM Panel -->
+      <epsi-zona-enarm-panel *ngIf="auth.isAdmin"></epsi-zona-enarm-panel>
+
       <!-- Programa Panel Alt -->
       <epsi-programa-panel-alt *ngIf="auth.isAdmin"></epsi-programa-panel-alt>
 

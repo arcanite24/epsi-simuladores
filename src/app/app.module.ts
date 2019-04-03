@@ -192,6 +192,7 @@ import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page
 import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-selector-panel.component';
 import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart-calendar-panel.component';
 import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-button.component';
+import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-panel.component';
 
 @NgModule({
   declarations: [
@@ -351,6 +352,7 @@ import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-butto
     PlanSelectorPanelComponent,
     SmartCalendarPanelComponent,
     TutorialButtonComponent,
+    ZonaEnarmPanelComponent,
   ],
   imports: [
     BrowserAnimationsModule,

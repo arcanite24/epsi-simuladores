@@ -1,0 +1,43 @@
+<ngx-smart-modal identifier="simuladoresModal" #simuladoresModal>
+  <epsi-simuladores-panel></epsi-simuladores-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="poolModal" #poolModal>
+  <epsi-question-pool-panel></epsi-question-pool-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="porTemaModal" #porTemaModal>
+  <epsi-question-pool-panel></epsi-question-pool-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="simulacrosModal" #simulacrosModal>
+  <epsi-simulacros-panel></epsi-simulacros-panel>
+</ngx-smart-modal>
+
+<epsi-panel title="Zona ENARM">
+  <div class="container-fludi">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="https://zamnademy.com/site/images/clients/simuladordiario.png" class="w-100 mb-2">
+        <button class="btn btn-secondary" (click)="simuladoresModal.open()">Entrar</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="https://via.placeholder.com/256?text=Pool" class="w-100 mb-2">
+        <button class="btn btn-secondary" (click)="poolModal.open()">Entrar</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="https://via.placeholder.com/256?text=Por Tema" class="w-100 mb-2">
+        <button class="btn btn-secondary" (click)="porTemaModal.open()">Entrar</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="https://zamnademy.com/assets/zamnademy/simulacro.png" class="w-100 mb-2">
+        <button class="btn btn-secondary" (click)="simulacrosModal.open()">Entrar</button>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>
