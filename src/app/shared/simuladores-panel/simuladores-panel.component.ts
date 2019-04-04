@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Collections, Exam, ExamTypes } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SimuladoresPanelComponent implements OnInit {
 
+  @Input() public showContent: boolean = false
   public exams$: Observable<any[]>
 
   constructor(

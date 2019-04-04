@@ -3,7 +3,7 @@
   img="https://zamnademy.com/site/images/clients/simuladordiario.png" 
   height="300px" 
   tutorial="tWP3Mu1pDg4BzpULhr3C"
-  [showContent]="false"
+  [showContent]="showContent"
   [blur]="!auth.isTemprano">
 
   <ul *ngIf="exams$ | async as exams else loaderSimuladores" class="m-3 list-group">

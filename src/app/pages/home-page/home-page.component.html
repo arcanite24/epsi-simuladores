@@ -111,10 +111,8 @@
     <!-- Home Main Column -->
     <div class="col-xs-12 col-md-8">
 
-      <!-- TODO: Switch between Programa and Calendar -->
-
       <!-- Programa Panel --> 
-      <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel>
+      <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
 
       <!-- Calendar Panel -->
       <epsi-calendar-panel *ngIf="auth.isCalendar && !auth.isAdmin"></epsi-calendar-panel>

@@ -1,4 +1,4 @@
-<epsi-panel title="Simulacro del Exámen Real" img="assets/zamnademy/simulacro.png" [showContent]="false" tutorial="IgLa0hGZ7P94i2yukakb">
+<epsi-panel title="Simulacro del Exámen Real" img="assets/zamnademy/simulacro.png" [showContent]="showContent" tutorial="IgLa0hGZ7P94i2yukakb">
 
   <ul *ngIf="exams$ | async as exams else loader" class="mt-3 list-group">
     <li *ngFor="let exam of exams" class="list-group-item">

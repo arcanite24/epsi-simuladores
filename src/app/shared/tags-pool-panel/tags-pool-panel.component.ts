@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./tags-pool-panel.component.scss']
 })
 export class TagsPoolPanelComponent implements OnInit {
+
+  @Input() public showContent: boolean = false
 
   constructor(
     public auth: AuthService
