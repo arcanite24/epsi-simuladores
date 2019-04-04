@@ -99,6 +99,9 @@ export class ExamResultsPageComponent implements OnInit {
 
   async getTagsAvg(result: ExamResults) {
 
+    const rawTags = Object.values(result.questions).map((q: any) => q.raw.tags)
+    console.log('raw tags', rawTags)
+
     const tags = uniq(flattenDeep(Object.values(result.questions).map((q: any) => q.raw.tags)))
 
     for (const tag of tags) {

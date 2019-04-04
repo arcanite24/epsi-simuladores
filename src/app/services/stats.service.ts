@@ -8,6 +8,7 @@ import { flattenDeep } from 'lodash'
 import moment from 'moment'
 import { averageMultiplier } from '../app.config';
 import { Observable } from 'rxjs';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,8 +33,34 @@ export class StatsService {
   private results: ExamResults[]
 
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private data: DataService
   ) { }
+
+  async modifyCustomCounter(key: string, label: string, delta: number) {
+
+    const counter = await this.data.getDoc<StatCounter>(Collections.STAT_COUNTER, key)
+
+    if (!counter) {
+
+      await this.afs.collection(Collections.STAT_COUNTER).doc(key).set({
+        id: key,
+        key,
+        label,
+        value: 1,
+        lastModified: new Date().toISOString(),
+      })
+
+    } else {
+
+      await this.afs.collection(Collections.STAT_COUNTER).doc(key).update({
+        value: counter.value += delta,
+        lastModified: new Date().toISOString(),
+      })
+
+    }
+
+  }
 
   // Stat Counter
   async modifyCounter(key: string, delta: number, exam?: Exam) {

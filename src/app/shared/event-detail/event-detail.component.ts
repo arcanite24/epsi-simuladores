@@ -3,6 +3,7 @@ import { Event, Collections, User, EventTask } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'epsi-event-detail',
@@ -17,7 +18,8 @@ export class EventDetailComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private stats: StatsService
   ) { }
 
   ngOnInit() {
@@ -48,6 +50,8 @@ export class EventDetailComponent implements OnInit {
       if (completedTasks.length > 0) completedTasks.splice(completedTasks.indexOf(id), 1)
       await this.afs.doc(userKey).update({completedTasks})
     }
+
+    this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
 
   }
 
