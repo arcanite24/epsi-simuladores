@@ -17,7 +17,7 @@
 
       <div class="question-body" *ngFor="let question of group">
         <img [src]="question.img" *ngIf="question.img" class="w-100">
-        <h2 style="white-space: pre-wrap;">{{question.text}}</h2>
+        <h4 style="white-space: pre-wrap;">{{question.text}}</h4>
 
         <ul *ngIf="question.respuestas as respuestas else loaderQuestions">
           <li *ngFor="let respuesta of respuestas">
