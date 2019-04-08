@@ -75,6 +75,7 @@ export class HomePageComponent implements OnInit {
 
   async openDaily(uid: string, date: string) {
     const dailys = await this.data.getCollection<Daily>(Collections.DAILY)
+    if (!dailys || dailys.length <= 0) return
     this.daily = dailys[Math.floor(Math.random() * dailys.length)]
     
     const noti_id = this.afs.createId()

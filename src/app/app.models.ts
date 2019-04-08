@@ -426,6 +426,7 @@ export interface ExamResults {
   promedio: number
   tags: string[]
   exam_type?: string
+  completedIn?: number
 }
 
 export interface Post {

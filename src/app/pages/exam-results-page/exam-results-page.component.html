@@ -141,7 +141,7 @@
       <epsi-panel title="Ranking">
         <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
           <li class="list-group-item mb-2" *ngIf="myRanking">
-            <strong>{{getMyPosition(rankings, myRanking)}}.- Mi promedio: </strong> {{myRanking.promedio * 10 | number}}
+            <strong>{{getMyPosition(rankings, myRanking)}}.- Mi promedio: </strong> {{myRanking.promedio * 10 | number}} <span *ngIf="result && result.completedIn">, resuelto en {{(result.completedIn / 60).toFixed(2)}} minutos</span>
           </li>
           <li class="list-group-item" *ngFor="let r of rankings.slice(0, 10); let i = index">
             {{i + 1}}.-<strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>

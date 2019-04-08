@@ -46,6 +46,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   public duration: number
   public duration_label: string
 
+  public startTime: number = 0
+
   constructor(
     private afs: AngularFirestore,
     private auth: AuthService,
@@ -81,6 +83,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
   private async handleExamFinish(state: IExamReducer) {
     console.log('Handling Exam Finish')
+
+    // Set final time
+    this.results.completedIn = (Date.now() - this.startTime) / 1000;
 
     // Save last question
     this.saveCache(this.question, state.index, state.selectedAnswer, true)
@@ -130,7 +135,6 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     this.duration = duration
     console.log('duration', duration);
-    
 
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration -= 1000
@@ -190,6 +194,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       tags: [],
       exam_type: this.exam.type
     }
+
+    // Set startTime
+    this.startTime = Date.now();
 
     this.auth.user$.subscribe(user => {
       if (!user) return
