@@ -93,8 +93,8 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async setCalendarToUser(content: Content[], dias: number, range: any) {
 
-    content = content.filter(c => c.type == 'tema')
-    let calendar = []
+    content = content.filter(c => c.type == 'tema').filter(c => !c.ignoreOnSmartCalendar);
+    let calendar = [];
 
     const perDay = Math.ceil(content.length / dias)
     console.log(`repartiendo ${content.length} temas en ${dias} dias, ${perDay} temas por día`)

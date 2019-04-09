@@ -203,6 +203,7 @@ export interface Content {
   event?: string
   selected?: boolean
   is360?: boolean
+  ignoreOnSmartCalendar?: boolean
 }
 
 export interface Marker {

@@ -54,6 +54,7 @@ export class ContentEditComponent implements OnInit {
       sortIndex: null,
       event: null,
       is360: false,
+      ignoreOnSmartCalendar: false,
     })
 
   }
