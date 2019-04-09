@@ -25,7 +25,8 @@ export class AdminEventsComponent implements OnInit {
     documentDefaults: {
       title: 'Nuevo Evento',
       desc: '.',
-      date: new Date().toISOString(),
+      // date: new Date().toISOString(),
+      date: null,
       tasks: [],
       links: []
     },
