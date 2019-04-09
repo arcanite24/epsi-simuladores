@@ -119,7 +119,7 @@
       <epsi-smart-calendar-panel *ngIf="auth.isAdmin"></epsi-smart-calendar-panel>
 
       <!-- Content Panel -->
-      <epsi-content-panel></epsi-content-panel>
+      <epsi-content-panel *ngIf="!auth.isPresencial"></epsi-content-panel>
 
       <!-- Zona ENARM Panel -->
       <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isPresencial"></epsi-zona-enarm-panel>
