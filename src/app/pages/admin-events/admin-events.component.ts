@@ -20,7 +20,7 @@ export class AdminEventsComponent implements OnInit {
     headers: [
       {field: 'title', type: 'text', label: 'Titulo'},
       {field: 'desc', type: 'textarea', label: 'Descripción'},
-      {field: 'date', type: 'date', label: 'Fecha', customRender: row => moment(row.date).format('LL')},
+      {field: 'date', type: 'date', label: 'Fecha', customRender: row => row.date ? moment(row.date).format('LL') : '-'},
     ],
     documentDefaults: {
       title: 'Nuevo Evento',
