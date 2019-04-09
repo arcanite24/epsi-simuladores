@@ -4,6 +4,8 @@
 
 <epsi-panel title="Mi calendario personalizado" desc="DESCRIPCION TEST" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="true" tutorial="Mwe2Sv0rSsAmytfy3CoV">
 
+  <epsi-plan-selector-panel *ngIf="auth.user && !auth.user.customCalendar"></epsi-plan-selector-panel>
+
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>

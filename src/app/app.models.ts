@@ -164,6 +164,7 @@ export class User {
   especialidad?: string
   about?: string
   lugar_origen?: string
+  smartCalendarCreated?: boolean
 
   // Stats
   average_list?: {tag: string, promedio: number}[]

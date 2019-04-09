@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-md-12">
-        <button class="btn btn-success" (click)="contentFilterCallback(content, dias, range)">Generar Calendario</button>
+        <button class="btn primary" (click)="contentFilterCallback(content, dias, range)">Generar Calendario</button>
       </div>
 
     </div>
@@ -35,16 +35,16 @@
             <div class="row">
 
               <div class="col-md-12">
-                <h4>Dinos cuál es el último día que quieres programar estudiar un tema. <br>
-                  Recuerda que debes descansar antes del ENARM</h4>
+                <p class="w-100 text-center">Dinos cuál es el último día que quieres programar estudiar un tema.</p>
+                <p class="w-100 text-center">Recuerda que debes descansar antes del ENARM</p>
               </div>
 
-              <div class="col-md-12">
+              <div class="col-md-12 flex-loader">
                 <ngb-datepicker (select)="finishDate = $event" #d></ngb-datepicker>
               </div>
 
               <div class="col-md-12 flex-loader">
-                <button class="btn btn-secondary" *ngIf="finishDate" (click)="generateCalendar(finishDate)">Generar Calendario</button>
+                <button class="btn btn-primary" *ngIf="finishDate" (click)="generateCalendar(finishDate)">Generar Calendario</button>
               </div>
 
             </div>
@@ -70,16 +70,16 @@
 
       <div class="col-md-12" *ngIf="step == 'mode_selector' && !mode">
         <div class="row">
-          <div class="col-md-4" >
-            <button class="btn btn-secondary" (click)="setMode('only_date')">Only Date</button>
+          <div class="col-md-12" >
+            <button class="btn btn-primary" (click)="setMode('only_date')">Only Date</button>
             <epsi-tutorial-button tutorial="ziy7dfUsToM9abmdddtw"></epsi-tutorial-button>
           </div>
-          <div class="col-md-4">
-            <button class="btn btn-secondary" (click)="setMode('date_order')">Date Order</button>
+          <div class="col-md-12">
+            <button class="btn btn-primary" (click)="setMode('date_order')">Date Order</button>
             <epsi-tutorial-button tutorial="fu023qUMVy0zocQcxbE2"></epsi-tutorial-button>
           </div>
-          <div class="col-md-4">
-            <button class="btn btn-secondary" (click)="setMode('ignore')">Estudiar sin calendario, solo con el programa</button>
+          <div class="col-md-12">
+            <button class="btn btn-primary" (click)="setMode('ignore')">Estudiar sin calendario, solo con el programa</button>
             <epsi-tutorial-button tutorial="fgXe81GogsnaUUu87lP8"></epsi-tutorial-button>
           </div>
         </div>
