@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { Collections, MoodRate } from 'src/app/app.models';
+import {Collections, EsencialModel, MoodRate, Roles, User} from 'src/app/app.models';
 import { groupBy } from 'lodash'
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'epsi-admin-page',
@@ -11,9 +12,11 @@ import { groupBy } from 'lodash'
 export class AdminPageComponent implements OnInit {
 
   public rates: any[]
+  public loading: boolean = false
 
   constructor(
-    private data: DataService
+    private data: DataService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -36,6 +39,37 @@ export class AdminPageComponent implements OnInit {
     }
 
     this.rates = Object.values(payload)
+
+  }
+
+  async setEsencialToPresenciales() {
+
+    let payload = {}
+
+    for (let role of EsencialModel) {
+      payload[role] = true;
+    }
+
+    console.log(payload)
+
+    const sub = this.afs.collection<User>(Collections.USER, ref => ref.where(Roles.Presencial, '==', true)).valueChanges().subscribe(async users => {
+      if (users.length > 3 && !this.loading) {
+
+        this.loading = true
+
+        for (let user of users) {
+          console.log(`updating user: ${user.email} ${user.uid}`);
+          await this.afs.collection(Collections.USER).doc(user.uid).update(payload);
+        }
+
+        this.loading = false;
+        sub.unsubscribe();
+        console.log('setting roles finished');
+
+      }
+    })
+
+
 
   }
 

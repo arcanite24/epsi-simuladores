@@ -43,7 +43,6 @@ export class UserRolesComponent implements OnInit {
 
     await this.afs.collection(Collections.USER).doc(this.user.uid).update(payload)
     this.toastr.success('Roles cambios correctamente')
-    this.modal.getModal('userRolesModal').close()
     this.l = false
 
   }

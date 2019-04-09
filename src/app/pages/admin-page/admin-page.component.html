@@ -139,6 +139,10 @@
         <div class="col-md-2">
           <epsi-admin-tile page="/admin/landing-fields" title="Landing Fields" icon="commenting-o"></epsi-admin-tile>
         </div>
+
+        <div class="col-md-12">
+          <button type="button" [disabled]="loading" (click)="setEsencialToPresenciales()">Dar Esencial a Presenciales</button>
+        </div>
   
       </div>
     </div>

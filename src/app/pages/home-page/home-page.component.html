@@ -83,7 +83,7 @@
   <div class="row">
 
     <!-- Payment Panel Clean Account -->
-    <div class="col-xs-12 col-md-12" *ngIf="!auth.isEsencial && !auth.isPremium">
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isEsencial && !auth.isPremium && !auth.isPresencial && !auth.isPremium360 && !auth.isEsencial360">
       <div class="row">
 
         <div class="col-xs-12 col-md-6" *ngIf="modelEsencial$ | async as modelEsencial">
@@ -122,7 +122,7 @@
       <epsi-content-panel></epsi-content-panel>
 
       <!-- Zona ENARM Panel -->
-      <epsi-zona-enarm-panel *ngIf="auth.isAdmin"></epsi-zona-enarm-panel>
+      <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isPresencial"></epsi-zona-enarm-panel>
 
       <!-- Programa Panel Alt -->
       <epsi-programa-panel-alt *ngIf="auth.isAdmin && !auth.isPresencial && !(auth.isEsencial360 || auth.isPremium360)"></epsi-programa-panel-alt>
@@ -140,7 +140,7 @@
 
         <!-- Simuladores Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-simuladores-panel *ngIf="auth.isSimuladores"></epsi-simuladores-panel>
+          <epsi-simuladores-panel *ngIf="auth.isSimuladores && !auth.isPresencial"></epsi-simuladores-panel>
         </div>
 
         <!-- Foro Panel -->
@@ -165,7 +165,7 @@
 
         <!-- Simulacros Panel -->
         <div class="col-xs-12 col-md-4">
-          <epsi-simulacros-panel *ngIf="auth.isSimulacros"></epsi-simulacros-panel>
+          <epsi-simulacros-panel *ngIf="auth.isSimulacros && !auth.isPresencial"></epsi-simulacros-panel>
         </div>
 
         <!-- Question Pool Panel -->
@@ -182,12 +182,12 @@
     </div>
 
     <!-- Pit buy panel -->
-    <div class="col-xs-12 col-md-12" *ngIf="!auth.isTemprano">
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isTemprano && !auth.isPresencial">
       <epsi-ad-pit-panel></epsi-ad-pit-panel>
     </div>
 
     <!-- Premium upgrade panel -->
-    <div class="col-xs-12 col-md-12" *ngIf="!auth.isPremium">
+    <div class="col-xs-12 col-md-12" *ngIf="!auth.isPremium && !auth.isPresencial">
       <epsi-ad-premium-upgrade-panel></epsi-ad-premium-upgrade-panel>
     </div>
 

@@ -25,6 +25,19 @@ export class DataService {
       .toPromise()
   }
 
+  getCollectionAlt<T>(collection: string): Promise<T[]> {
+    return new Promise<T[]>((resolve, reject) => {
+      const sub = this.afs.collection<T>(collection)
+        .snapshotChanges()
+        .subscribe(data => {
+          sub.unsubscribe();
+          resolve(data.map(d => d.payload.doc.data()));
+        }, err => {
+          reject(err);
+        })
+    })
+  }
+
   getCollectionQuery<T>(collection: string, query: (ref: firebase.firestore.CollectionReference) => any): Promise<T[]> {
     return this.afs.collection<T>(collection, ref => query(ref))
       .valueChanges()
