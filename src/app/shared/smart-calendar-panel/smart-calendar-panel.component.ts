@@ -27,7 +27,7 @@ export class SmartCalendarPanelComponent implements OnInit {
   constructor(
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   get mesLabel(): string { return moment(this.viewDate).format('MMMM - YYYY') }
