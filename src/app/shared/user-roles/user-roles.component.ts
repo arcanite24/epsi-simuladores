@@ -17,6 +17,7 @@ export class UserRolesComponent implements OnInit {
   public esencialModel: string[] = EsencialModel
   public adminModel: string[] = [ Roles.Admin ]
   public tempranoModel: string[] = TempranoModel
+  public presencialModel: string[] = [ Roles.Presencial ]
 
   public l: boolean = false
 

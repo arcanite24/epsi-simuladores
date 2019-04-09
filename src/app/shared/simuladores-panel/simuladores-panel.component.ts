@@ -23,14 +23,9 @@ export class SimuladoresPanelComponent implements OnInit {
 
   ngOnInit() {
 
-    this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
-      .where('type', '==', ExamTypes.SIMULADOR)
-      .where('date', '<=', moment().endOf('day').toISOString()))
-      .valueChanges()
-      .pipe(
-        /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-        map(list => list.reverse()),
-      )
+    this.auth.user$.subscribe(user => {
+      if (user && !this.exams$) this.loadExams(user.isPresencial)
+    })
 
     /* this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)
       .valueChanges()
@@ -38,6 +33,31 @@ export class SimuladoresPanelComponent implements OnInit {
         map(list => sortBy(list.list, item => item.date ? moment(item.date.substr(0, 10)).format('YYYYMMDD') : moment())),
         map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()),
       ) */
+
+  }
+
+  loadExams(isPresencial: boolean = false) {
+
+    if (isPresencial) {
+      this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+        .where('isPresencial', '==', true)
+        .where('type', '==', ExamTypes.SIMULADOR)
+        .where('date', '<=', moment().endOf('day').toISOString()))
+        .valueChanges()
+        .pipe(
+          /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
+          map(list => list.reverse()),
+        )
+    } else {
+      this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+        .where('type', '==', ExamTypes.SIMULADOR)
+        .where('date', '<=', moment().endOf('day').toISOString()))
+        .valueChanges()
+        .pipe(
+          /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
+          map(list => list.reverse()),
+        )
+    }
 
   }
 

@@ -23,12 +23,12 @@
         <button class="btn btn-secondary" (click)="simuladoresModal.open()">Entrar</button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
         <img src="https://via.placeholder.com/256?text=Pool" class="w-100 mb-2">
         <button class="btn btn-secondary" (click)="poolModal.open()">Entrar</button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
         <img src="https://via.placeholder.com/256?text=Por Tema" class="w-100 mb-2">
         <button class="btn btn-secondary" (click)="porTemaModal.open()">Entrar</button>
       </div>

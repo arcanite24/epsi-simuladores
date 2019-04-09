@@ -7,29 +7,56 @@
 
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es Premium?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, true)" class="btn btn-success" type="button" *ngIf="!user.isPremium">Dar Premium</button>
-      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, false)" class="btn btn-danger" type="button" *ngIf="user.isPremium">Quitar Premium</button>
+      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isPremium">Dar Premium
+      </button>
+      <button [disabled]="l" (click)="modifyUserRoles(premiumModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isPremium">Quitar Premium
+      </button>
       <hr>
     </div>
-    
+
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es Esencial?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, true)" class="btn btn-success" type="button" *ngIf="!user.isEsencial">Dar Esencial</button>
-      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, false)" class="btn btn-danger" type="button" *ngIf="user.isEsencial">Quitar Esencial</button>
+      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isEsencial">Dar Esencial
+      </button>
+      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isEsencial">Quitar Esencial
+      </button>
       <hr>
     </div>
 
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es Admin?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(adminModel, true)" class="btn btn-success" type="button" *ngIf="!user.isAdmin">Dar Admin</button>
-      <button [disabled]="l" (click)="modifyUserRoles(adminModel, false)" class="btn btn-danger" type="button" *ngIf="user.isAdmin">Quitar Admin</button>
+      <button [disabled]="l" (click)="modifyUserRoles(adminModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isAdmin">Dar Admin
+      </button>
+      <button [disabled]="l" (click)="modifyUserRoles(adminModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isAdmin">Quitar Admin
+      </button>
+      <hr>
+    </div>
+
+    <div class="col-md-12">
+      <h5 class="m-0 mb-1">¿Es Presencial?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(presencialModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isPresencial">Dar Presencial
+      </button>
+      <button [disabled]="l" (click)="modifyUserRoles(presencialModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isPresencial">Quitar Presencial
+      </button>
       <hr>
     </div>
 
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es PIT?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, true)" class="btn btn-success" type="button" *ngIf="!user.isTemprano">Dar PIT</button>
-      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, false)" class="btn btn-danger" type="button" *ngIf="user.isTemprano">Quitar PIT</button>
+      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isTemprano">Dar PIT
+      </button>
+      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isTemprano">Quitar PIT
+      </button>
       <hr>
     </div>
 

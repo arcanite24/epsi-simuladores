@@ -50,6 +50,9 @@ export class AdminUsersPageComponent implements OnInit {
       ${row.isAdmin ? 'isAdmin ' : ''}
       ${row.isEsencial ? 'isEsencial ' : ''}
       ${row.isTemprano ? 'isTemprano ' : ''}
+      ${row.isPresencial? 'isPresencial ' : ''}
+      ${row.isEsencial360? 'isEsencial360 ' : ''}
+      ${row.isPremium360? 'isPremium360 ' : ''}
       `}
     ],
     customActions: [

@@ -62,6 +62,10 @@ export class AuthService {
   get isPool() { return this.loggedIn && this.user[Roles.Pool] }
   get isTagPool() { return this.loggedIn && this.user[Roles.TagPool] }
 
+  get isPresencial() { return this.loggedIn && this.user[Roles.Presencial] }
+  get isEsencial360() { return this.loggedIn && this.user[Roles.Esencial360] }
+  get isPremium360() { return this.loggedIn && this.user[Roles.Premium360] }
+
   setUser(user: any) {
     /* console.log(user) */
     if (user) return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true})

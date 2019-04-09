@@ -115,7 +115,7 @@
       <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel *ngIf="auth.isCalendar && !auth.isAdmin"></epsi-calendar-panel>
+      <epsi-calendar-panel *ngIf="(auth.isCalendar || auth.isPresencial || auth.isEsencial360 || auth.isPremium360) && !auth.isAdmin"></epsi-calendar-panel>
       <epsi-smart-calendar-panel *ngIf="auth.isAdmin"></epsi-smart-calendar-panel>
 
       <!-- Content Panel -->
@@ -125,9 +125,9 @@
       <epsi-zona-enarm-panel *ngIf="auth.isAdmin"></epsi-zona-enarm-panel>
 
       <!-- Programa Panel Alt -->
-      <epsi-programa-panel-alt *ngIf="auth.isAdmin"></epsi-programa-panel-alt>
+      <epsi-programa-panel-alt *ngIf="auth.isAdmin && !auth.isPresencial && !(auth.isEsencial360 || auth.isPremium360)"></epsi-programa-panel-alt>
 
-      <epsi-plan-selector-panel *ngIf="auth.isAdmin"></epsi-plan-selector-panel>
+      <epsi-plan-selector-panel *ngIf="auth.isAdmin && !auth.isPresencial && !(auth.isEsencial360 || auth.isPremium360)"></epsi-plan-selector-panel>
 
     </div>
 

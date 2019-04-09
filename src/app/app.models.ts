@@ -175,6 +175,9 @@ export class User {
   isPremium?: boolean
   isEsencial?: boolean
   isTemprano?: boolean
+  isPresencial?: boolean
+  isEsencial360?: boolean
+  isPremium360?: boolean
 
 }
 
@@ -199,6 +202,7 @@ export interface Content {
   sortIndex?: number
   event?: string
   selected?: boolean
+  is360?: boolean
 }
 
 export interface Marker {
@@ -283,6 +287,7 @@ export interface Exam {
   adButton?: string
   modalAdText?: string
   isLight?: boolean
+  isPresencial?: boolean
 }
 
 export enum ExamTypes {
