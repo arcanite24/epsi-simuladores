@@ -84,6 +84,8 @@ export enum Roles {
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
+  Premium2019 = 'isPremium2019',
+  Zamna360_2019 = 'is3602019',
 
   Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
   Premium360 = 'isPremium360', // CURSO_PREMIUM_360
@@ -92,6 +94,7 @@ export enum Roles {
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
+  SmartCalendar = 'isSmartCalendar',
   TopUsers = 'isTopUsers',
   Galleries = 'isGalleries',
   Simuladores = 'isSimuladores',
@@ -104,6 +107,7 @@ export enum Roles {
   Programa = 'isPrograma',
   Pool = 'isPool',
   TagPool = 'isTagPool',
+  ZonaEnarm = 'isZonaEnarm',
 }
 
 export const EsencialModel: string[] = [
@@ -140,6 +144,35 @@ export const PremiumModel: string[] = [
   Roles.Programa,
   Roles.Pool,
   Roles.TagPool
+]
+
+export const Premium2019Model: string[] = [
+  Roles.Checklist,
+  Roles.SmartCalendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Premium,
+  Roles.Programa,
+  Roles.ZonaEnarm,
+]
+
+export const Zamna360_2019Model: string[] = [
+  Roles.Zamna360_2019,
+  Roles.Calendar,
+  Roles.Checklist,
+  Roles.TopUsers,
+  Roles.ZonaEnarm,
+  Roles.Programa,
+  Roles.Galleries,
+  Roles.Forum,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Feed
 ]
 
 export const TempranoModel: string[] = [
@@ -179,6 +212,8 @@ export class User {
   isPresencial?: boolean
   isEsencial360?: boolean
   isPremium360?: boolean
+  isPremium2019?: boolean
+  is3602019?: boolean
 
 }
 

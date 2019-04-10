@@ -61,10 +61,14 @@ export class AuthService {
   get isPrograma() { return this.loggedIn && this.user[Roles.Programa] }
   get isPool() { return this.loggedIn && this.user[Roles.Pool] }
   get isTagPool() { return this.loggedIn && this.user[Roles.TagPool] }
+  get isZonaEnarm() { return this.loggedIn && this.user[Roles.ZonaEnarm] }
+  get isSmartCalendar() { return this.loggedIn && this.user[Roles.SmartCalendar] }
 
   get isPresencial() { return this.loggedIn && this.user[Roles.Presencial] }
   get isEsencial360() { return this.loggedIn && this.user[Roles.Esencial360] }
   get isPremium360() { return this.loggedIn && this.user[Roles.Premium360] }
+  get isPremium2019() { return this.loggedIn && this.user[Roles.Premium2019] }
+  get isZamna360_2019() { return this.loggedIn && this.user[Roles.Zamna360_2019] }
 
   setUser(user: any) {
     /* console.log(user) */

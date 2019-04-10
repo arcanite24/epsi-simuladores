@@ -48,7 +48,7 @@ export class PlanSelectorPanelComponent implements OnInit {
     this.mode = mode
     if (mode == 'ignore') return this.modal.getModal('ignoreModal').open()
     if (mode == 'date_order') this.modal.getModal('dateSelector').open()
-    if (mode == 'only_date') this.setCalendarToUser(this.content, this.dias, this.range)
+    if (mode == 'only_date') this.modal.getModal('dateSelector').open()
   }
 
   async generateCalendar(date: NgbDate) {
