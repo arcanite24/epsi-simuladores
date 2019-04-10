@@ -68,4 +68,8 @@ export class SmartCalendarPanelComponent implements OnInit {
       )
   }
 
+  removeCalendar() {
+    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({ customCalendar: null })
+  }
+
 }

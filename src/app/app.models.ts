@@ -205,6 +205,7 @@ export interface Content {
   selected?: boolean
   is360?: boolean
   ignoreOnSmartCalendar?: boolean
+  order?: number
 }
 
 export interface Marker {

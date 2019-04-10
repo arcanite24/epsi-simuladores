@@ -12,6 +12,8 @@
   
   <div *ngIf="auth.user && auth.user.customCalendar" class="calendar-panel-actions flex flex-row flex-start align-center">
 
+    <button class="btn btn-danger" type="button" (click)="removeCalendar()" *ngIf="auth.isAdmin">Quitar Calendario</button>
+
     <button 
       type="button"
       class="btn btn-secondary mr-4"
