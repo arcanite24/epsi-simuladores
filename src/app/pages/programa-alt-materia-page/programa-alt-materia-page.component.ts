@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Content, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { tap } from 'rxjs/operators';
+import { sortBy } from 'lodash'
 
 @Component({
   selector: 'epsi-programa-alt-materia-page',
@@ -25,7 +26,11 @@ export class ProgramaAltMateriaPageComponent implements OnInit {
   ngOnInit() {
     this.materia$ = this.afs.collection(Collections.CONTENT).doc<Content>(this.id)
       .valueChanges()
-      .pipe(tap(materia => this.bloques$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('parent_id', '==', materia.id)).valueChanges()))
+      .pipe(tap(materia => this.bloques$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
+        .where('parent_id', '==', materia.id))
+        .valueChanges()
+        .pipe(tap(bloques => sortBy(bloques, 'sortIndex')))
+      ))
   }
 
 }

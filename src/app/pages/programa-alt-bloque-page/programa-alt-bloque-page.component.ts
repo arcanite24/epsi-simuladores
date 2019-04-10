@@ -8,6 +8,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { environment } from 'src/environments/environment';
 import { DataService } from 'src/app/services/data.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { sortBy } from 'lodash';
 
 @Component({
   selector: 'epsi-programa-alt-bloque-page',
@@ -57,7 +58,7 @@ export class ProgramaAltBloquePageComponent implements OnInit {
             .valueChanges()
             .pipe(tap(temas => {
               this.total_temas = temas.length
-              this.contentIds = temas.map(t => t.event || 'NULL')
+              this.contentIds = sortBy(temas, 'sortIndex').map(t => t.event || 'NULL')
             }))
         })
       )
