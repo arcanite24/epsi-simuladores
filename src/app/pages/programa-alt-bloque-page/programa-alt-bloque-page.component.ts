@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Content, Collections, Event, User } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { tap } from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { environment } from 'src/environments/environment';
 import { DataService } from 'src/app/services/data.service';
@@ -59,7 +59,7 @@ export class ProgramaAltBloquePageComponent implements OnInit {
             .pipe(tap(temas => {
               this.total_temas = temas.length
               this.contentIds = sortBy(temas, 'sortIndex').map(t => t.event || 'NULL')
-            }))
+            }), map(temas => sortBy(temas, 'sortIndex')))
         })
       )
 
