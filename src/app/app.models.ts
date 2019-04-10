@@ -1,6 +1,8 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
+import {Observable} from "rxjs";
+
 export const ContentTypes: string[] = [
   'materia',
   'bloque',
@@ -241,6 +243,7 @@ export interface Content {
   is360?: boolean
   ignoreOnSmartCalendar?: boolean
   order?: number
+  temas$?: Observable<Content[]>
 }
 
 export interface Marker {

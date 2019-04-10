@@ -93,7 +93,10 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async setCalendarToUser(content: Content[], dias: number, range: any) {
 
-    content = content.filter(c => c.type == 'tema').filter(c => !c.ignoreOnSmartCalendar);
+    content = content
+      .filter(c => c.type == 'tema')
+      .filter(c => !c.ignoreOnSmartCalendar)
+      .filter(c => c.video);
     let calendar = [];
 
     const perDay = Math.ceil(content.length / dias)

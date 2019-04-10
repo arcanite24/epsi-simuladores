@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { Collections } from 'src/app/app.models';
+import {Collections, Content} from 'src/app/app.models';
 import { Observable } from 'rxjs';
 import { contentHierarchy } from 'src/app/app.config';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'epsi-programa-panel-alt',
@@ -24,7 +24,10 @@ export class ProgramaPanelAltComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('type', '==', this.mainContent)).valueChanges()
+    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
+      .where('type', '==', this.mainContent))
+      .valueChanges()
+      .pipe(map(content => content.filter(c => !c.name.includes('Temprano'))))
   }
 
   public isBlur(name: string): boolean {
