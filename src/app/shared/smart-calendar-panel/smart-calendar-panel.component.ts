@@ -53,6 +53,7 @@ export class SmartCalendarPanelComponent implements OnInit {
         map(user => {
           if (!user.customCalendar) return []
           const events = flattenDeep(Object.values(user.customCalendar))
+          if (!user.completedTasks) user.completedTasks = []
           return events.map((e: any) => ({
             id: 'TESSSST',
             ...e,
