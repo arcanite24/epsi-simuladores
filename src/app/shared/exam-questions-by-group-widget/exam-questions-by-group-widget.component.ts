@@ -1,17 +1,24 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Exam, Question, Answer, Collections, ExamResults, ExamTypes } from 'src/app/app.models';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { AuthService } from 'src/app/services/auth.service';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.state';
-import { SetAnswer, IExamReducer, SetIndex, SetQuestion, SetResults, FinishExam, ResetExam, SetFeedback } from 'src/app/reducers/exam.reducer';
-import { ToastrService } from 'ngx-toastr';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Answer, Collections, Exam, ExamResults, ExamTypes, Question} from 'src/app/app.models';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Observable} from 'rxjs';
+import {AuthService} from 'src/app/services/auth.service';
+import {Store} from '@ngrx/store';
+import {AppState} from 'src/app/app.state';
+import {
+  FinishExam,
+  IExamReducer,
+  ResetExam,
+  SetAnswer,
+  SetIndex,
+  SetQuestion,
+  SetResults
+} from 'src/app/reducers/exam.reducer';
+import {ToastrService} from 'ngx-toastr';
 import _ from 'lodash'
-import { Router } from '@angular/router';
-import { StatsService } from 'src/app/services/stats.service';
-import { NgxSmartModalService } from 'ngx-smart-modal';
+import {Router} from '@angular/router';
+import {StatsService} from 'src/app/services/stats.service';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 import moment from 'moment'
 
 const countdown = require('countdown')
@@ -227,7 +234,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     this.store.dispatch(new SetIndex(currentIndex + 1))
 
-    if (this.exam.type != ExamTypes.PRECLASE) this.modal.getModal('examFeedbackModal').open()
+    if (this.exam.type != ExamTypes.PRECLASE && this.exam.type != ExamTypes.SIMULACRO) this.modal.getModal('examFeedbackModal').open()
 
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
     this.store.dispatch(new SetAnswer(null))

@@ -10,7 +10,7 @@
     <epsi-loader></epsi-loader>
   </ng-template>
   
-  <div class="calendar-panel-actions flex flex-row flex-start align-center">
+  <div *ngIf="auth.user && auth.user.customCalendar" class="calendar-panel-actions flex flex-row flex-start align-center">
 
     <button 
       type="button"
@@ -30,12 +30,14 @@
 
   </div>
 
-  <div class="calendar-panel-body mt-2" *ngIf="events$ | async as events else loader">
-    <mwl-calendar-month-view
-      locale="es"
-      [viewDate]="viewDate"
-      [events]="events"
-      (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
+  <div class="calendar-container" *ngIf="auth.user && auth.user.customCalendar">
+    <div class="calendar-panel-body mt-2" *ngIf="events$ | async as events else loader">
+      <mwl-calendar-month-view
+        locale="es"
+        [viewDate]="viewDate"
+        [events]="events"
+        (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
+    </div>
   </div>
 
 </epsi-panel>

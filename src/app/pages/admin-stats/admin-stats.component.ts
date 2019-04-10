@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {NgxSmartModalService} from "ngx-smart-modal";
+import {ToastrService} from "ngx-toastr";
+import {AngularFirestore} from "@angular/fire/firestore";
+import {Collections} from "../../app.models";
 
 @Component({
   selector: 'epsi-admin-stats',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminStatsComponent implements OnInit {
 
-  constructor() { }
+  public tempId: string
+
+  constructor(
+    private modal: NgxSmartModalService,
+    private toastr: ToastrService,
+    private afs: AngularFirestore
+  ) { }
 
   ngOnInit() {
+  }
+
+  openRemove(id: string) {
+    this.tempId = id;
+    this.modal.getModal('removeModal').open();
+  }
+
+  async removeStat(id: string) {
+    this.afs.collection(Collections.STAT_VIEW).doc(id).delete();
+    this.toastr.success('Elemento eliminado correctamente.');
+    this.modal.getModal('removeModal').close();
   }
 
 }

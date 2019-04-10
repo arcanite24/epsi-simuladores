@@ -290,6 +290,7 @@ export interface Exam {
   modalAdText?: string
   isLight?: boolean
   isPresencial?: boolean
+  extraTags?: string
 }
 
 export enum ExamTypes {

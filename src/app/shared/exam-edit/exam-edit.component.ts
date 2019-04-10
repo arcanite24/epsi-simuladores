@@ -66,6 +66,7 @@ export class ExamEditComponent implements OnInit {
       modalAdText: '',
       isLight: false,
       isPresencial: false,
+      extraTags: null,
     })
 
   }
