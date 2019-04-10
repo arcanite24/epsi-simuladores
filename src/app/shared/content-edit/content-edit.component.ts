@@ -59,6 +59,12 @@ export class ContentEditComponent implements OnInit {
 
   }
 
+  public get content_url(): string {
+    if (!this.editForm) return ''
+    if (!this.editForm.value) return ''
+    return `/content/${this.editForm.value.type}/${this.editForm.value.id}`
+  }
+
   contentChanged(c: Content) {
     this._content = c
     if (this.editForm) this.editForm.patchValue(this._content)

@@ -1,6 +1,11 @@
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
     <h1>Editar Contenido</h1>
+
+    <div class="epsi-input">
+      <label for="">Link</label>
+      <input type="text" [value]="content_url" readonly>
+    </div>
   
     <div class="epsi-input">
       <label for="">Nombre</label>
