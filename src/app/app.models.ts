@@ -331,7 +331,7 @@ export interface Exam {
   isLight?: boolean
   isPresencial?: boolean
   extraTags?: string
-  tags_structure: any[]
+  tags_structure?: any[]
 }
 
 export enum ExamTypes {

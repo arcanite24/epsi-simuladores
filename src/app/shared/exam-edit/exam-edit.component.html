@@ -137,7 +137,7 @@
         <input type="text" [(ngModel)]="tag.text" ngModelOptions="{standalone: true}">
         <button (click)="addStructChild(struct, i)" type="button" ><i class="fa fa-plus"></i></button>
 
-        <div class="row" *ngIf="tag.children as children">
+        <div class="ml-4 row" *ngIf="tag.children as children">
           <div class="col-md-12" *ngFor="let child of children">
             <input type="text" [(ngModel)]="child.text" ngModelOptions="{standalone: true}">
           </div>
