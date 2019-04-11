@@ -40,4 +40,11 @@ export class ProgramaPanelAltComponent implements OnInit {
     return true
   }
 
+  public isLiberado(content: Content): boolean {
+    if (!this.auth.user) return false
+    if (this.auth.user.isAdmin) return true
+    if (this.auth.user.isPremium2019) return true
+    return content.liberadoInPrograma
+  }
+
 }

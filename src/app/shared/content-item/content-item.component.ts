@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Content } from 'src/app/app.models';
+import {Collections, Content} from 'src/app/app.models';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'epsi-content-item',
@@ -16,7 +17,8 @@ export class ContentItemComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public auth: AuthService
+    public auth: AuthService,
+    private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,10 @@ export class ContentItemComponent implements OnInit {
 
     return true
 
+  }
+
+  updateItem(payload: Partial<Content>) {
+    this.afs.collection(Collections.CONTENT).doc(this.item.id).update(payload)
   }
 
 }
