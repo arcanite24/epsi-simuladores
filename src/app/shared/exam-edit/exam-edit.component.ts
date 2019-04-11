@@ -67,6 +67,7 @@ export class ExamEditComponent implements OnInit {
       isLight: false,
       isPresencial: false,
       extraTags: null,
+      tags_structure: [],
     })
 
   }
@@ -160,6 +161,16 @@ export class ExamEditComponent implements OnInit {
       questions: [...this.editForm.value.questions, ...exam.questions]
     })
     this.modal.getModal('importExamModal').close()
+  }
+
+  addStructTag(struct: any[] = []) {
+    struct.push({text: '', children: []})
+    this.editForm.patchValue({tags_structure: struct})
+  }
+
+  addStructChild(struct: any[] = [], i: number) {
+    struct[i].children.push({text: '', children: []})
+    this.editForm.patchValue({tags_structure: struct})
   }
 
 }
