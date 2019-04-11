@@ -91,4 +91,8 @@ export class ProgramaAltBloquePageComponent implements OnInit {
     return completed.includes(id)
   }
 
+  updateContent(payload: Partial<Content>) {
+    this.afs.collection(Collections.CONTENT).doc(payload.id).update(payload)
+  }
+
 }

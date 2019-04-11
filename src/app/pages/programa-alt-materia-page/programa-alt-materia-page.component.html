@@ -8,10 +8,14 @@
     <div class="container-fluid">
 
       <div class="row" *ngIf="bloques$ | async as bloques">
-        <div class="bloque-tile manita col-xs-12 col-md-3 flex-loader" *ngFor="let bloque of bloques" (click)="router.navigate(['/programa/bloque', bloque.id])">
-          <img [src]="bloque.cover ? bloque.cover : 'https://via.placeholder.com/150?text=Bloque'">
+        <div class="bloque-tile manita col-xs-12 col-md-3 flex-loader" *ngFor="let bloque of bloques">
+          <img [src]="bloque.cover ? bloque.cover : 'https://via.placeholder.com/150?text=Bloque'" (click)="router.navigate(['/programa/bloque', bloque.id])">
           <h5 class="text-center mt-1">{{bloque.name}}</h5>
           <h4 *ngIf="bloque.temas$ | async as temas" class="c-epsi-primary">{{getCompletedTemas(temas, completedTasks)}}/{{temas.length}}</h4>
+
+          <button class="btn btn-success" type="button" (click)="updateContent({ id: bloque.id, liberadoInPrograma: true })" *ngIf="auth.isAdmin && !bloque.liberadoInPrograma">Liberar</button>
+          <button class="btn btn-danger" type="button" (click)="updateContent({ id: bloque.id, liberadoInPrograma: false })" *ngIf="auth.isAdmin && bloque.liberadoInPrograma">Bloquear</button>
+
         </div>
       </div>
 

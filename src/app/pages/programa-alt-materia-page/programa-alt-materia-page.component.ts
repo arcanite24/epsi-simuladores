@@ -66,4 +66,15 @@ export class ProgramaAltMateriaPageComponent implements OnInit, OnDestroy {
 
   }
 
+  updateContent(payload: Partial<Content>) {
+    this.afs.collection(Collections.CONTENT).doc(payload.id).update(payload)
+  }
+
+  isLiberado(content: Content) {
+    if (!this.auth.user) return false
+    if (this.auth.user.isAdmin) return true
+    if (this.auth.user.isPremium2019) return true
+    return content.liberadoInPrograma
+  }
+
 }

@@ -10,7 +10,7 @@
 
 <div class="epsi-panel">
 
-  <small class="ml-2" *ngIf="!showContent">Dar click para ver sección</small>
+  <small class="ml-2" *ngIf="!showContent && !toggleText">Dar click para ver sección</small>
 
   <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title">
     <img [src]="img" *ngIf="img" (click)="showContent = !showContent">
@@ -22,6 +22,8 @@
       <i class="fa fa-info-circle" style="color:#ddd; font-size: 1.5rem"></i>
     </button>
   </div>
+
+  <small class="ml-2 text-danger" *ngIf="!showContent && toggleText">{{toggleText}}</small>
 
   <div 
     class="epsi-panel-content" 

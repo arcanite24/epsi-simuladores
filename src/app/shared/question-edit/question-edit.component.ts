@@ -101,7 +101,7 @@ export class QuestionEditComponent implements OnInit {
     const id = this.afs.createId()
     const answer: Answer = {
       id,
-      text: 'Nueva Respuesta',
+      text: '',
       parent: this._question.id
     }
 

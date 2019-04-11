@@ -14,8 +14,8 @@
   <epsi-simulacros-panel [showContent]="true"></epsi-simulacros-panel>
 </ngx-smart-modal>
 
-<epsi-panel title="Zona ENARM">
-  <div class="container-fludi">
+<epsi-panel title="Zona ENARM" img="assets/zamnademy/simulacro.png">
+  <div class="container-fluid">
     <div class="row">
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">
@@ -24,17 +24,17 @@
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
-        <img src="https://via.placeholder.com/256?text=Pool" class="w-100 mb-2">
+        <img src="assets/zamnademy/zona-pool.svg" class="w-100 mb-2">
         <button class="btn btn-secondary" (click)="poolModal.open()">Entrar</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
-        <img src="https://via.placeholder.com/256?text=Por Tema" class="w-100 mb-2">
+        <img src="assets/zamnademy/zona-portema.svg" class="w-100 mb-2">
         <button class="btn btn-secondary" (click)="porTemaModal.open()">Entrar</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">
-        <img src="https://zamnademy.com/assets/zamnademy/simulacro.png" class="w-100 mb-2">
+        <img src="assets/zamnademy/zona-simulacro.png" class="w-100 mb-2">
         <button class="btn btn-secondary" (click)="simulacrosModal.open()">Entrar</button>
       </div>
 

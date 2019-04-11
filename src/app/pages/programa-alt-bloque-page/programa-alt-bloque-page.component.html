@@ -23,9 +23,11 @@
         <div class="col-xs-12 col-md-8 mt-4" *ngIf="temas$ | async as temas">
           <div class="row">
             
-            <div class="col-md-12 p-1" *ngFor="let tema of temas" (click)="openContent(tema)">
+            <div class="col-md-12 p-1" *ngFor="let tema of temas">
+              <button class="btn btn-success" type="button" (click)="updateContent({ id: tema.id, liberadoInPrograma: true })" *ngIf="auth.isAdmin && !tema.liberadoInPrograma">Liberar</button>
+              <button class="btn btn-danger" type="button" (click)="updateContent({ id: tema.id, liberadoInPrograma: false })" *ngIf="auth.isAdmin && tema.liberadoInPrograma">Bloquear</button>
               <i class="fa fa-check text-success mr-2" *ngIf="isCompleted(completed, tema.event)"></i>
-              <span>{{tema.name}}</span>
+              <span (click)="openContent(tema)" class="manita">{{tema.name}}</span>
             </div>
 
           </div>

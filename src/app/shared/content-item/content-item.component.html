@@ -9,7 +9,7 @@
     <button class="btn btn-success" type="button" (click)="router.navigate(['/pagar', item.model_slug])" *ngIf="!unlocked">Comprar</button>
 
     <button class="btn btn-success" type="button" (click)="updateItem({ liberadoInPrograma: true })" *ngIf="auth.isAdmin && !item.liberadoInPrograma">Liberar</button>
-    <button class="btn danger" type="button" (click)="updateItem({ liberadoInPrograma: false })" *ngIf="auth.isAdmin && item.liberadoInPrograma">Bloquear</button>
+    <button class="btn btn-danger" type="button" (click)="updateItem({ liberadoInPrograma: false })" *ngIf="auth.isAdmin && item.liberadoInPrograma">Bloquear</button>
   </div>
 
 </div>

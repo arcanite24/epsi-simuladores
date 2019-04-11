@@ -19,6 +19,7 @@ export class PanelComponent implements OnInit {
   @Input() public img: string
   @Input() public height: string
   @Input() public tutorial: string
+  @Input() public toggleText: string
 
   public tutorial$: Observable<Tutorial>
 
