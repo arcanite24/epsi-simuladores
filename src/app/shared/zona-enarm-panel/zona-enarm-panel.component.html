@@ -20,22 +20,26 @@
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <img src="https://zamnademy.com/site/images/clients/simuladordiario.png" class="w-100 mb-2">
-        <button class="btn btn-secondary" (click)="simuladoresModal.open()">Entrar</button>
+        <epsi-tutorial-button tutorial="aAJhqc44b26QNbICJwCT"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="simuladoresModal.open()">MODO PRESENCIAL</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
         <img src="assets/zamnademy/zona-pool.svg" class="w-100 mb-2">
-        <button class="btn btn-secondary" (click)="poolModal.open()">Entrar</button>
+        <epsi-tutorial-button tutorial="BQ5uDzkeJhdnq9E35LPX"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="poolModal.open()">RANDOM</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
         <img src="assets/zamnademy/zona-portema.svg" class="w-100 mb-2">
-        <button class="btn btn-secondary" (click)="porTemaModal.open()">Entrar</button>
+        <epsi-tutorial-button tutorial="i4yxcWHMSmKtwJLol4aI"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="porTemaModal.open()">CUSTOM</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <img src="assets/zamnademy/zona-simulacro.png" class="w-100 mb-2">
-        <button class="btn btn-secondary" (click)="simulacrosModal.open()">Entrar</button>
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="simulacrosModal.open()">SIMULACRO REAL</button>
       </div>
 
     </div>

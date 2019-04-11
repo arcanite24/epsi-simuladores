@@ -141,7 +141,8 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     let content = []
 
-    const materias = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref.where('type', '==', 'materia'))
+    const _materias = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref.where('type', '==', 'materia'))
+    const materias = _materias.filter(m => !m.name.includes('Temprano'))
 
     for (const materia of materias) {
 
