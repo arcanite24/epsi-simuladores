@@ -38,7 +38,8 @@ export class SimuladoresPanelComponent implements OnInit {
 
   loadExams(isPresencial: boolean = false) {
 
-    if (isPresencial) {
+    /*if (isPresencial) {*/
+    if (true) {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('isPresencial', '==', true)
         .where('type', '==', ExamTypes.SIMULADOR)

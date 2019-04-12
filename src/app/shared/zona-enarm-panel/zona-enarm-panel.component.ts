@@ -17,7 +17,7 @@ export class ZonaEnarmPanelComponent implements OnInit {
 
   isBlur() {
     if (this.auth.isAdmin) return false
-    if (this.auth.isZamna360_2019) return false
+    if (this.auth.isZamna360_2019) return true
     return true
   }
 

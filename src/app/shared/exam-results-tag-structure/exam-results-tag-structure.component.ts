@@ -24,7 +24,7 @@ export class ExamResultsTagStructureComponent implements OnInit {
     let struct = {}
 
     const allTags = Object.values(r.questions).map((q: Question) => q.raw.tags).filter(t => t)
-    console.log(allTags)
+    /*console.log(allTags)*/
 
     // Get extra tags
     const withExtra = allTags.filter(t => t.length > 3).map(t => t[3])
@@ -33,9 +33,11 @@ export class ExamResultsTagStructureComponent implements OnInit {
     // Remove ignored tags
     const removedIgnored = allTags.map(t => t.filter(tt => !this.ignored_tags.includes(tt)));
     const removedExtras: string[][] = removedIgnored.map(t => t.filter(tt => !extraTags.includes(tt)));
+    console.log('removedExtras', removedExtras)
 
     // Set struct
-    for (let family of removedExtras) {
+    const _removedExtras = [...removedExtras]
+    for (let family of _removedExtras) {
 
       // Get and set parent
       const parent = family.shift()
@@ -43,8 +45,17 @@ export class ExamResultsTagStructureComponent implements OnInit {
 
       // If have children, now set children
       if (family.length > 0) {
+
         const child = family.shift()
-        struct[parent].children[child] = {tag: child, grandchildren: {}}
+        if (!struct[parent].children[child]) struct[parent].children[child] = {tag: child, grandchildren: []}
+        console.log(struct[parent].children[child], family)
+
+        // If have grandchildren, set those
+        if (family.length > 0) {
+          const grandchildren = family.shift()
+          if (struct[parent].children[child].grandchildren && !struct[parent].children[child].grandchildren.includes(grandchildren)) struct[parent].children[child].grandchildren.push(grandchildren)
+        }
+
       }
 
     }
