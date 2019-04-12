@@ -112,7 +112,7 @@
     <div class="col-xs-12 col-md-8">
 
       <!-- Programa Panel Alt -->
-      <epsi-programa-panel-alt *ngIf="auth.isAdmin && !auth.isPresencial && !(auth.isEsencial360 || auth.isPremium360)"></epsi-programa-panel-alt>
+      <epsi-programa-panel-alt *ngIf="auth.isPrograma"></epsi-programa-panel-alt>
 
       <!-- Programa Panel --> 
       <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
@@ -159,7 +159,8 @@
         </div>
 
         <!-- Slides Panel -->
-        <div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium || auth.isPremium2019">
+        <!--<div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium || auth.isPremium2019">-->
+        <div class="col-xs-12 col-md-4" *ngIf="auth.isSlides">
           <epsi-slides-panel *ngIf="auth.isSlides"></epsi-slides-panel>
         </div>
 

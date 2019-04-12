@@ -1,0 +1,13 @@
+<ul class="list-group">
+
+  <li class="list-group-item">Promedio por tema</li>
+
+  <li *ngFor="let tag of tags" class="list-group-item">
+    <strong>{{tag.value * 100 | number}}%</strong>
+    <span class="ml-2">{{tag.name}}</span>
+    <div class="bar-container">
+      <div class="bar" [style.background-color]="colors[tag.name]" [style.width.%]="tag.value * 100"></div>
+    </div>
+  </li>
+
+</ul>

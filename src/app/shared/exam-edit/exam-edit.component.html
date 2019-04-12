@@ -121,12 +121,12 @@
     <ngx-select-dropdown formControlName="content" [options]="content" [config]="{displayKey: 'name', search: true, placeholder: 'Seleccionar contenido', searchPlaceholder: 'Buscar:'}"></ngx-select-dropdown>
   </div>
 
-  <div class="form-group">
+  <!--<div class="form-group">
     <label for="">Extra Tags</label>
     <input type="text" class="form-control" formControlName="extraTags" placeholder="Tags extra separados por comma">
-  </div>
+  </div>-->
 
-  <div class="form-group flex flex-row flex-start align-center">
+  <!--<div class="form-group flex flex-row flex-start align-center">
 
     <label>Estructura de Tags</label>
     <button class="btn btn-secondary" type="button" (click)="addStructTag(editForm.value.tags_structure)">Agregar Tag</button>
@@ -143,6 +143,27 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+  </div>-->
+
+  <hr>
+
+  <div class="form-group flex flex-row flex-start align-center">
+
+    <label>Colores</label>
+    <button class="btn btn-secondary" type="button" (click)="addColor(editForm.value.colors)">Agregar Color</button>
+
+    <div class="row" *ngIf="editForm.value.colors as colors">
+      <div class="col-md-12" *ngFor="let color of colors; let i = index">
+        <div class="flex flex-row flex-start align-center">
+          <input type="text" [(ngModel)]="color.tag" [ngModelOptions]="{standalone: true}" class="form-control mr-2" placeholder="Tag">
+          <input type="color" [(ngModel)]="color.color" [ngModelOptions]="{standalone: true}" class="form-control mr-2" placeholder="Color">
+          <button class="btn btn-danger" (click)="removeColor(colors, i)" type="button">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
       </div>
     </div>
 

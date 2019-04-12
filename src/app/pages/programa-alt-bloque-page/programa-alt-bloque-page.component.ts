@@ -59,7 +59,7 @@ export class ProgramaAltBloquePageComponent implements OnInit {
             .pipe(tap(temas => {
               this.total_temas = temas.length
               this.contentIds = sortBy(temas, 'sortIndex').map(t => t.event || 'NULL')
-            }), map(temas => sortBy(temas, 'sortIndex')))
+            }), map(temas => sortBy(temas, 'sortIndex').filter(t => !t.ignoreOnSmartCalendar)))
         })
       )
 

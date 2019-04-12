@@ -15,4 +15,10 @@ export class ZonaEnarmPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  isBlur() {
+    if (this.auth.isAdmin) return false
+    if (this.auth.isZamna360_2019) return false
+    return true
+  }
+
 }

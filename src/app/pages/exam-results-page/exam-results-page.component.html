@@ -120,7 +120,7 @@
             <hr>
       
             <div class="result-questions col-md-12" *ngFor="let q of questions; let i = index">
-              <small>Pregunta {{i + 1}} de {{questions.length}}</small>
+              <small>Pregunta {{i + 1}} de {{questions.length}} <!--{{q.index}}--></small>
               <div class="flex flex-row flex-start align-center">
                 <i class="fa fa-remove" style="color:red" *ngIf="!q.correcta"></i>
                 <i class="fa fa-check" style="color:green" *ngIf="q.correcta"></i>
@@ -131,18 +131,20 @@
               <!-- <pre>{{ q | json }}</pre> -->
             </div>
 
-            <div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
+            <epsi-exam-results-tag-structure *ngIf="result.exam_type != 'simulacro'" [result]="result"></epsi-exam-results-tag-structure>
+
+            <!--<div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
               <ul class="list-group">
                 <li class="list-group-item">Promedio por tema</li>
                 <li *ngFor="let tag of tags" class="list-group-item">
                   <strong>{{tag.value * 100 | number}}%</strong>
                   <span class="ml-2">{{tag.name}}</span>
                   <div class="bar-container">
-                    <div class="bar" [style.width.%]="tag.value * 100"></div>
+                    <div class="bar" [style.background-color]="colors[tag.name]" [style.width.%]="tag.value * 100"></div>
                   </div>
                 </li>
               </ul>
-            </div>
+            </div>-->
       
           </div>
         </div>

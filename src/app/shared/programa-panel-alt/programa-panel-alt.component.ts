@@ -27,7 +27,10 @@ export class ProgramaPanelAltComponent implements OnInit {
     this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
       .where('type', '==', this.mainContent))
       .valueChanges()
-      .pipe(map(content => content.filter(c => !c.name.includes('Temprano'))))
+      .pipe(map(content => content
+        .filter(c => !c.name.includes('Temprano'))
+        .filter(c => !c.ignoreOnSmartCalendar)
+      ))
   }
 
   public isBlur(name: string): boolean {

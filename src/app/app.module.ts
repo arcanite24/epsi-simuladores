@@ -195,6 +195,7 @@ import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-butto
 import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-panel.component';
 import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam-results.component';
+import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-structure/exam-results-tag-structure.component';
 
 @NgModule({
   declarations: [
@@ -357,6 +358,7 @@ import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam
     ZonaEnarmPanelComponent,
     AdminDailyComponent,
     AdminExamResultsComponent,
+    ExamResultsTagStructureComponent,
   ],
   imports: [
     BrowserAnimationsModule,

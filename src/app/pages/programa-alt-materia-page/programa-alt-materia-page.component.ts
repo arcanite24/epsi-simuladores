@@ -44,7 +44,9 @@ export class ProgramaAltMateriaPageComponent implements OnInit, OnDestroy {
         .pipe(map(bloques => sortBy(bloques, 'sortIndex')
           .map(b => ({
             ...b, temas$: this.afs.collection(Collections.CONTENT, ref =>ref.where('parent_id', '==', b.id)).valueChanges()
-          } as Content))))
+          } as Content))
+          .filter(b => !b.ignoreOnSmartCalendar)
+        ))
       ))
 
   }

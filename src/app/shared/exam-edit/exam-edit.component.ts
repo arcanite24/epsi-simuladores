@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Exam, ExamTypes, Collections, Question, ContentTypes, Content } from 'src/app/app.models';
+import {Exam, ExamTypes, Collections, Question, ContentTypes, Content, ExamTagColor} from 'src/app/app.models';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
@@ -68,6 +68,7 @@ export class ExamEditComponent implements OnInit {
       isPresencial: false,
       extraTags: null,
       tags_structure: [],
+      colors: []
     })
 
   }
@@ -171,6 +172,17 @@ export class ExamEditComponent implements OnInit {
   addStructChild(struct: any[] = [], i: number) {
     struct[i].children.push({text: '', children: []})
     this.editForm.patchValue({tags_structure: struct})
+  }
+
+  addColor(colors: ExamTagColor[] = []) {
+    if (!colors) colors = []
+    colors.push({tag: '', color: '#fff'});
+    this.editForm.patchValue({colors})
+  }
+
+  removeColor(colors: ExamTagColor[] = [], index: number) {
+    colors.splice(index, 1)
+    this.editForm.patchValue({colors})
   }
 
 }

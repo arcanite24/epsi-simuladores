@@ -315,7 +315,7 @@ export interface Exam {
   content?: Content
   questions: Question[]
   duration?: number
-  colors?: {}
+  colors?: ExamTagColor[]
   liberado?: boolean
   formattedQuestions?: Question[][]
   isPool?: boolean
@@ -332,6 +332,11 @@ export interface Exam {
   isPresencial?: boolean
   extraTags?: string
   tags_structure?: any[]
+}
+
+export interface ExamTagColor {
+  tag: string
+  color: string
 }
 
 export enum ExamTypes {

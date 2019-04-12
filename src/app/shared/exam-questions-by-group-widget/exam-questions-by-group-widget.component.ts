@@ -283,7 +283,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
           raw: qq,
           correcta: qq.selectedAnswer.id == qq.correcta,
           lastModified: new Date().toISOString(),
-          selected: qq.selectedAnswer
+          selected: qq.selectedAnswer,
+          index,
         }
       }
 
