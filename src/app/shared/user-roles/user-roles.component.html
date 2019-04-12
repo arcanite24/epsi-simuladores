@@ -74,10 +74,10 @@
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es Zamna 360 2019?</h5>
       <button [disabled]="l" (click)="modifyUserRoles(zamna360_2019Model, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isPremium2019">Dar Zamná 360 2019
+              *ngIf="!user.is3602019">Dar Zamná 360 2019
       </button>
       <button [disabled]="l" (click)="modifyUserRoles(zamna360_2019Model, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isPremium2019">Quitar Zamná 360 2019
+              *ngIf="user.is3602019">Quitar Zamná 360 2019
       </button>
       <hr>
     </div>

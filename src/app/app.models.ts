@@ -158,7 +158,7 @@ export const Premium2019Model: string[] = [
   Roles.Streaming,
   Roles.Media,
   Roles.Slides,
-  Roles.Premium,
+  Roles.Premium2019,
   Roles.Programa,
   Roles.ZonaEnarm,
 ]
