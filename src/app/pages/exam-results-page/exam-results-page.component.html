@@ -56,6 +56,19 @@
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
+            <div class="col-md-12" *ngIf="result.exam_type == 'simulacro'">
+              <ul class="list-group">
+                <li class="list-group-item">Promedio por tema</li>
+                <li *ngFor="let tag of tags" class="list-group-item">
+                  <strong>{{tag.value * 100 | number}}%</strong>
+                  <span class="ml-2">{{tag.name}}</span>
+                  <div class="bar-container">
+                    <div class="bar" [style.width.%]="tag.value * 100"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
             <div class="col-md-12 mt-4" *ngIf="exam && exam.showAd">
               <div class="row">
 
@@ -118,7 +131,7 @@
               <!-- <pre>{{ q | json }}</pre> -->
             </div>
 
-            <div class="col-md-12">
+            <div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
               <ul class="list-group">
                 <li class="list-group-item">Promedio por tema</li>
                 <li *ngFor="let tag of tags" class="list-group-item">

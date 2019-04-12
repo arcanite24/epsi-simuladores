@@ -25,15 +25,17 @@
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
-        <img src="assets/zamnademy/zona-pool.svg" class="w-100 mb-2">
-        <epsi-tutorial-button tutorial="BQ5uDzkeJhdnq9E35LPX"></epsi-tutorial-button>
-        <button class="btn btn-secondary" (click)="poolModal.open()">RANDOM</button>
+        <h4 class="soon-text c-epsi-primary" *ngIf="!auth.isAdmin">Disponible el...</h4>
+        <img src="assets/zamnademy/zona-pool.svg" class="w-100 mb-2" [ngClass]="{blur: !auth.isAdmin}">
+        <epsi-tutorial-button tutorial="BQ5uDzkeJhdnq9E35LPX" [ngClass]="{blur: !auth.isAdmin}"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="poolModal.open()" [ngClass]="{blur: !auth.isAdmin}">RANDOM</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial">
-        <img src="assets/zamnademy/zona-portema.svg" class="w-100 mb-2">
-        <epsi-tutorial-button tutorial="i4yxcWHMSmKtwJLol4aI"></epsi-tutorial-button>
-        <button class="btn btn-secondary" (click)="porTemaModal.open()">CUSTOM</button>
+        <h4 class="soon-text c-epsi-primary" *ngIf="!auth.isAdmin">Disponible el...</h4>
+        <img src="assets/zamnademy/zona-portema.svg" class="w-100 mb-2" [ngClass]="{blur: !auth.isAdmin}">
+        <epsi-tutorial-button tutorial="i4yxcWHMSmKtwJLol4aI" [ngClass]="{blur: !auth.isAdmin}"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="porTemaModal.open()" [ngClass]="{blur: !auth.isAdmin}">CUSTOM</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">

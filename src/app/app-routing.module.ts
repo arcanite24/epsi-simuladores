@@ -58,6 +58,7 @@ import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials
 import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
 import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
 import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
+import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-results.component";
 
 const routes: Routes = [
 
@@ -132,6 +133,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/ad-texts', component: AdminAdTextsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tutorials', component: AdminTutorialsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/daily', component: AdminDailyComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam/results/:id', component: AdminExamResultsComponent},
 
 ];
 

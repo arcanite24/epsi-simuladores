@@ -1,0 +1,9 @@
+.blur {
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.soon-text {
+  position: absolute;
+  z-index: 99;
+}

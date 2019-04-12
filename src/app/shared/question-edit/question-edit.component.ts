@@ -53,6 +53,7 @@ export class QuestionEditComponent implements OnInit {
       correcta: null,
       tags: [[]],
       img: null,
+      group: null,
     })
 
   }

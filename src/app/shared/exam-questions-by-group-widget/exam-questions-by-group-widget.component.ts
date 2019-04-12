@@ -20,6 +20,7 @@ import {Router} from '@angular/router';
 import {StatsService} from 'src/app/services/stats.service';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import moment from 'moment'
+import {DataService} from "../../services/data.service";
 
 const countdown = require('countdown')
 countdown.setLabels(
@@ -63,7 +64,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     private router: Router,
     private stats: StatsService,
     private modal: NgxSmartModalService,
-    private stat: StatsService
+    private stat: StatsService,
+    private data: DataService
   ) {
     this.examState$ = this.store.select('exam')
   }
@@ -73,6 +75,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.question = this.exam.formattedQuestions[0]
     this.setInitialResults()
 
+    // Si ya lo resolvio
+
     this.examState$.subscribe(examState => {
       /* if (examState.index && this.lastIndex != examState.index) this.handleIndexChange(examState) */
       if (examState.index != null && this.lastIndex != examState.index) this.handleIndexChange(examState)
@@ -80,6 +84,21 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       if (examState.timer && !this.duration) this.handleSetTimer(examState.timer * 60 * 1000)
       this.lastIndex = examState.index
     })
+
+    if (this.exam.type == ExamTypes.SIMULACRO) setTimeout(() => this.checkIfResuelto(this.exam.id), 1000);
+
+  }
+
+  private async checkIfResuelto(examId: string) {
+
+    const results = await this.data.getCollectionQuery<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('exam', '==', examId)
+      .where('user', '==', this.auth.user.uid))
+
+    if (results && results.length > 0) {
+      this.toastr.error('No puedes volver a resolver éste Exámen Simulacro')
+      this.router.navigate(['/'])
+    }
 
   }
 
@@ -145,9 +164,13 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration -= 1000
-      this.duration_label = countdown(moment().add(this.duration, 'milliseconds').toDate(), null, countdown.MINUTES | countdown.SECONDS)
+
+      const time_format = this.exam.type == ExamTypes.SIMULACRO ? countdown.HOURS | countdown.MINUTES | countdown.SECONDS : countdown.MINUTES | countdown.SECONDS
+
+      this.duration_label = countdown(moment().add(this.duration, 'milliseconds').toDate(), null, time_format)
         .toString()
         .replace(/<small>|<\/small>/g, '')
+
       /* this.duration_label = moment()
         .startOf('day')
         .seconds(this.duration * 60)

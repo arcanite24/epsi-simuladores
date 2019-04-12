@@ -194,6 +194,7 @@ import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart
 import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-button.component';
 import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-panel.component';
 import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
+import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam-results.component';
 
 @NgModule({
   declarations: [
@@ -355,6 +356,7 @@ import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
     TutorialButtonComponent,
     ZonaEnarmPanelComponent,
     AdminDailyComponent,
+    AdminExamResultsComponent,
   ],
   imports: [
     BrowserAnimationsModule,
