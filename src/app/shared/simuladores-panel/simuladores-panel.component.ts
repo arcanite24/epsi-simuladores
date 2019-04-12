@@ -61,4 +61,9 @@ export class SimuladoresPanelComponent implements OnInit {
 
   }
 
+  isBlur(): boolean {
+    if (this.auth.isPremium2019) return true
+    return !this.auth.isTemprano && !this.auth.isPresencial
+  }
+
 }

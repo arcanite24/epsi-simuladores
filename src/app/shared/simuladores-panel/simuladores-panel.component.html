@@ -4,7 +4,7 @@
   height="300px" 
   tutorial="tWP3Mu1pDg4BzpULhr3C"
   [showContent]="showContent"
-  [blur]="!auth.isTemprano && !auth.isPresencial">
+  [blur]="isBlur()">
 
   <ul *ngIf="exams$ | async as exams else loaderSimuladores" class="m-3 list-group">
     <li *ngFor="let exam of exams" class="list-group-item">

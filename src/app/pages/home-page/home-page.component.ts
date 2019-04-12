@@ -189,4 +189,12 @@ export class HomePageComponent implements OnInit {
 
   }
 
+  unlockedPremiumUpgrade(): boolean {
+    if (this.auth.isPremium2019) return false
+    if (this.auth.isPremium) return false
+    if (this.auth.isZamna360_2019) return false
+    if (this.auth.isPresencial) return false
+    return true
+  }
+
 }
