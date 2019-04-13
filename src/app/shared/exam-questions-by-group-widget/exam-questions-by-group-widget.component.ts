@@ -165,7 +165,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     let timer = setInterval(() => {
       if (this.duration > 0) this.duration -= 1000
 
-      const time_format = this.exam.type == ExamTypes.SIMULACRO ? countdown.HOURS | countdown.MINUTES | countdown.SECONDS : countdown.MINUTES | countdown.SECONDS
+      /*const time_format = this.exam.type == ExamTypes.SIMULACRO ? countdown.HOURS | countdown.MINUTES | countdown.SECONDS : countdown.MINUTES | countdown.SECONDS*/
+      const time_format = countdown.HOURS | countdown.MINUTES | countdown.SECONDS;
 
       this.duration_label = countdown(moment().add(this.duration, 'milliseconds').toDate(), null, time_format)
         .toString()

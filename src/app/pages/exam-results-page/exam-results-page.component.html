@@ -56,7 +56,7 @@
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
-            <div class="col-md-12" *ngIf="result.exam_type == 'simulacro'">
+            <!--<div class="col-md-12" *ngIf="result.exam_type == 'simulacro'">
               <ul class="list-group">
                 <li class="list-group-item">Promedio por tema</li>
                 <li *ngFor="let tag of tags" class="list-group-item">
@@ -67,6 +67,13 @@
                   </div>
                 </li>
               </ul>
+            </div>-->
+
+            <div class="col-md-12" *ngIf="exam && (result.exam_type == 'simulacro' || result.exam_type == 'simulador')">
+              <epsi-exam-results-tag-structure
+                class="w-100"
+                [colors]="exam.colors"
+                [result]="result"></epsi-exam-results-tag-structure>
             </div>
 
             <div class="col-md-12 mt-4" *ngIf="exam && exam.showAd">
@@ -131,7 +138,11 @@
               <!-- <pre>{{ q | json }}</pre> -->
             </div>
 
-            <epsi-exam-results-tag-structure *ngIf="result.exam_type != 'simulacro'" [result]="result"></epsi-exam-results-tag-structure>
+            <epsi-exam-results-tag-structure
+              class="w-100"
+              [colors]="exam.colors"
+              *ngIf="exam && (result.exam_type != 'simulacro' || result.exam_type != 'simulador')"
+              [result]="result"></epsi-exam-results-tag-structure>
 
             <!--<div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
               <ul class="list-group">

@@ -53,15 +53,15 @@ export class ExamResultsPageComponent implements OnInit {
           this._result = result
           this.getTagsAvg(result)
 
+          const exam = await this.data.getDoc<Exam>(Collections.EXAM, result.exam)
+          this.exam = exam
+
+          // Load colors object
+          if (exam.colors && exam.colors.length > 0) {
+            exam.colors.forEach(color => this.colors[color.tag] = color.color)
+          }
+
           if (result.exam_type == ExamTypes.PRUEBA) {
-
-            const exam = await this.data.getDoc<Exam>(Collections.EXAM, result.exam)
-            this.exam = exam
-
-            // Load colors object
-            if (exam.colors && exam.colors.length > 0) {
-              exam.colors.forEach(color => this.colors[color.tag] = color.color)
-            }
 
             this.modal.getModal('examRankingAdd').open()
             if (exam.showAd || exam.adDesc) this.modal.getModal('adModal').open()
