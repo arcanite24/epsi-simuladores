@@ -2,6 +2,19 @@
   <epsi-calendar-events-modal [events]="dayEvents"></epsi-calendar-events-modal>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="removeModal" customClass="max-w-50" #removeModal>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>¿Estás seguro de re-hacer tu calendario? Se perderá el avance que tengas hasta éste momento</p>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-danger" type="button" (click)="removeCalendar()">Quitar</button>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <epsi-panel title="Mi calendario personalizado" desc="DESCRIPCION TEST" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="true" tutorial="Mwe2Sv0rSsAmytfy3CoV">
 
   <epsi-plan-selector-panel *ngIf="auth.user && !auth.user.customCalendar"></epsi-plan-selector-panel>
@@ -13,6 +26,7 @@
   <div *ngIf="auth.user && auth.user.customCalendar" class="calendar-panel-actions flex flex-row flex-start align-center">
 
     <button class="btn btn-danger" type="button" (click)="removeCalendar()" *ngIf="auth.isAdmin">Quitar Calendario</button>
+    <button class="btn btn-danger" type="button" (click)="removeModal.open()">Volver a hacer mi calendario</button>
 
     <button 
       type="button"

@@ -129,7 +129,7 @@ export class NavbarComponent implements OnInit {
           let counter = 0
 
           for (const noti of info.notis) {
-            if (info.read.includes(noti.id)) counter++
+            if (!info.read.includes(noti.id)) counter++
           }
 
           this.notReadCount = counter
