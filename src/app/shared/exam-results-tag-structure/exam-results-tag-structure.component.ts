@@ -13,6 +13,7 @@ export class ExamResultsTagStructureComponent implements OnInit {
   @Input() public  colors: ExamTagColor[] = []
 
   public tags: any[] = []
+  public tagColors: any = {}
   public extraTags: any[] = []
   private ignored_tags = ['tagbloqueado', 'ignorartag']
 
@@ -20,9 +21,10 @@ export class ExamResultsTagStructureComponent implements OnInit {
 
   ngOnInit() {
     this.loadStruct(this.result)
+    this.initTagColors()
   }
 
-  get tagColors() {
+  initTagColors() {
 
     if (!this.colors) return {}
 
@@ -32,7 +34,7 @@ export class ExamResultsTagStructureComponent implements OnInit {
       payload[color.tag] = color.color;
     }
 
-    return payload
+    this.tagColors = payload
 
   }
 

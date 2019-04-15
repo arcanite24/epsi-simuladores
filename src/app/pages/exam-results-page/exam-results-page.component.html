@@ -141,7 +141,7 @@
             <epsi-exam-results-tag-structure
               class="w-100"
               [colors]="exam.colors"
-              *ngIf="exam && (result.exam_type != 'simulacro' || result.exam_type != 'simulador')"
+              *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
               [result]="result"></epsi-exam-results-tag-structure>
 
             <!--<div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">

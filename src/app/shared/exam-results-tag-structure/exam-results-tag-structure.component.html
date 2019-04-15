@@ -2,12 +2,16 @@
 
   <li class="list-group-item">Promedio por tema</li>
 
+  <!--<li>
+    <pre>{{tagColors | json}}</pre>
+  </li>-->
+
   <li *ngFor="let parent of tags" class="list-group-item">
 
     <strong>{{parent.value * 100 | number}}%</strong>
     <span class="ml-2">{{parent.tag}}</span>
     <div class="bar-container">
-      <div class="bar" [style.background-color]="tagColors[parent.name]" [style.width.%]="parent.value * 100"></div>
+      <div class="bar" [style.background-color]="tagColors[parent.tag]" [style.width.%]="parent.value * 100"></div>
     </div>
 
     <!-- Children -->
@@ -17,7 +21,7 @@
         <strong>{{child.value * 100 | number}}%</strong>
         <span class="ml-2">{{child.tag}}</span>
         <div class="bar-container">
-          <div class="bar" [style.background-color]="tagColors[child.name]" [style.width.%]="child.value * 100"></div>
+          <div class="bar" [style.background-color]="tagColors[child.tag]" [style.width.%]="child.value * 100"></div>
         </div>
 
         <!-- Grandchildren -->
@@ -27,7 +31,7 @@
             <strong>{{grand.value * 100 | number}}%</strong>
             <span class="ml-2">{{grand.tag}}</span>
             <div class="bar-container">
-              <div class="bar" [style.background-color]="tagColors[grand.name]" [style.width.%]="grand.value * 100"></div>
+              <div class="bar" [style.background-color]="tagColors[grand.tag]" [style.width.%]="grand.value * 100"></div>
             </div>
 
           </li>
@@ -43,7 +47,7 @@
     <strong>{{tag.value * 100 | number}}%</strong>
     <span class="ml-2">{{tag.tag}}</span>
     <div class="bar-container">
-      <div class="bar" [style.background-color]="tagColors[tag.name]" [style.width.%]="tag.value * 100"></div>
+      <div class="bar" [style.background-color]="tagColors[tag.tag]" [style.width.%]="tag.value * 100"></div>
     </div>
 
   </li>
