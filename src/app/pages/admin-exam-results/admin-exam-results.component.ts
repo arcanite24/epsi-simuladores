@@ -3,8 +3,9 @@ import {Observable} from "rxjs";
 import {Collections, ExamResults} from "../../app.models";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {AuthService} from "../../services/auth.service";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
+import { orderBy } from 'lodash'
 
 @Component({
   selector: 'epsi-admin-exam-results',
@@ -30,9 +31,10 @@ export class AdminExamResultsComponent implements OnInit {
         .pipe(
           map(results => results.map(r => ({
             ...r,
-            exam$: this.afs.collection(Collections.EXAM).doc(r.exam).valueChanges(),
-            user$: this.afs.collection(Collections.USER).doc(r.user).valueChanges(),
-          })))
+            exam$: r.exam ? this.afs.collection(Collections.EXAM).doc(r.exam).valueChanges() : null,
+            user$: r.user ? this.afs.collection(Collections.USER).doc(r.user).valueChanges() : null,
+          }))),
+          map(results => orderBy(results, 'promedio').reverse())
         )
     })
   }

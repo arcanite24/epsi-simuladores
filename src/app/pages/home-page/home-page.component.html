@@ -119,7 +119,16 @@
 
       <!-- Calendar Panel -->
       <epsi-calendar-panel *ngIf="(auth.isCalendar || auth.isPresencial || auth.isEsencial360 || auth.isPremium360) && !auth.isAdmin"></epsi-calendar-panel>
-      <epsi-smart-calendar-panel *ngIf="auth.isAdmin || auth.isSmartCalendar"></epsi-smart-calendar-panel>
+      <epsi-smart-calendar-panel *ngIf="(auth.isAdmin || auth.isSmartCalendar) && !auth.user.noCalendar"></epsi-smart-calendar-panel>
+      <epsi-panel *ngIf="auth.user && auth.user.noCalendar">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary" type="button" (click)="removeNoCalendar()">Estudiar con Calendario</button>
+            </div>
+          </div>
+        </div>
+      </epsi-panel>
 
       <!-- Content Panel -->
       <epsi-content-panel *ngIf="!auth.isPresencial && (auth.isEsencial || auth.isPremium)"></epsi-content-panel>
@@ -134,17 +143,17 @@
       <div class="row">
 
         <!-- Galleries Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
           <epsi-galleries-panel *ngIf="auth.isGalleries"></epsi-galleries-panel>
         </div>
 
         <!-- Simuladores Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
           <epsi-simuladores-panel *ngIf="auth.isSimuladores && !auth.isPresencial"></epsi-simuladores-panel>
         </div>
 
         <!-- Foro Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
           <epsi-forum-panel *ngIf="auth.isForum"></epsi-forum-panel>
         </div>
 
@@ -154,18 +163,18 @@
         </div> -->
 
         <!-- Descagables/Media Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
           <epsi-media-panel *ngIf="auth.isMedia"></epsi-media-panel>
         </div>
 
         <!-- Slides Panel -->
         <!--<div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium || auth.isPremium2019">-->
-        <div class="col-xs-12 col-md-4" *ngIf="auth.isSlides">
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isSlides">
           <epsi-slides-panel *ngIf="auth.isSlides"></epsi-slides-panel>
         </div>
 
         <!-- Simulacros Panel -->
-        <div class="col-xs-12 col-md-4">
+        <div class="col-xs-12 col-md-3">
           <epsi-simulacros-panel *ngIf="auth.isSimulacros && !auth.isPresencial"></epsi-simulacros-panel>
         </div>
 
@@ -188,9 +197,9 @@
     </div>-->
 
     <!-- Premium upgrade panel -->
-    <div class="col-xs-12 col-md-12" *ngIf="unlockedPremiumUpgrade()">
+    <!--<div class="col-xs-12 col-md-12" *ngIf="unlockedPremiumUpgrade()">
       <epsi-ad-premium-upgrade-panel></epsi-ad-premium-upgrade-panel>
-    </div>
+    </div>-->
 
     <!-- Feed Column -->
     <div class="col-xs-12 col-md-12" *ngIf="auth.isFeed">

@@ -46,9 +46,13 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   setMode(mode: string) {
     this.mode = mode
-    if (mode == 'ignore') return this.modal.getModal('ignoreModal').open()
+    if (mode == 'ignore') return this.setIgnoreMode();
     if (mode == 'date_order') this.modal.getModal('dateSelector').open()
     if (mode == 'only_date') this.modal.getModal('dateSelector').open()
+  }
+
+  async setIgnoreMode() {
+    await this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({noCalendar: true})
   }
 
   async generateCalendar(date: NgbDate) {
@@ -99,7 +103,8 @@ export class PlanSelectorPanelComponent implements OnInit {
       .filter(c => c.video);
     let calendar = [];
 
-    const perDay = Math.ceil(content.length / dias)
+    const cociente = content.length / dias
+    const perDay = cociente - Math.floor(cociente) > 0.5 ? Math.ceil(cociente) : Math.floor(cociente);
     console.log(`repartiendo ${content.length} temas en ${dias} dias, ${perDay} temas por día`)
     this.loadingText = `Repartiendo ${content.length} temas en ${dias} dias, ${perDay} temas por día.`
 

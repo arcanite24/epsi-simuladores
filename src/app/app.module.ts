@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 // Custom Modules
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -27,7 +28,11 @@ import localeEs from '@angular/common/locales/es';
 registerLocaleData(localeEs)
 
 // Store
-import { StoreModule } from '@ngrx/store';
+import {ActionReducer, MetaReducer, StoreModule} from '@ngrx/store';
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['exam'], rehydrate: true})(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 // Videoplayer modules
 import { VgCoreModule } from 'videogular2/core';
@@ -390,6 +395,8 @@ import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-stru
     NgxGalleryModule,
     StoreModule.forRoot({
       exam: examReducer
+    }, {
+      metaReducers
     }),
     NgxChartsModule,
     MomentModule,

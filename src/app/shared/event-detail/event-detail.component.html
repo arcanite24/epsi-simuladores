@@ -45,7 +45,7 @@
     </div>
 
     <hr>
-    <epsi-content-notes-panel [content_type]="'event'" [parent_id]="event.id" *ngIf="event"></epsi-content-notes-panel>
+    <epsi-content-notes-panel title="Mis Notas" [content_type]="'event'" [parent_id]="'event_note-' + event.id" *ngIf="event"></epsi-content-notes-panel>
     
   </div>
 

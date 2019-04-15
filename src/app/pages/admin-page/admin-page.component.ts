@@ -3,6 +3,7 @@ import { DataService } from 'src/app/services/data.service';
 import {Collections, EsencialModel, MoodRate, Roles, User} from 'src/app/app.models';
 import { groupBy } from 'lodash'
 import {AngularFirestore} from "@angular/fire/firestore";
+import {excluded_users} from "../../app.utils";
 
 @Component({
   selector: 'epsi-admin-page',
@@ -70,6 +71,27 @@ export class AdminPageComponent implements OnInit {
     })
 
 
+
+  }
+
+  async removeRolesToExcludedUsers() {
+
+    this.loading = true;
+    const payload = {};
+
+    for (let role of Object.values(Roles)) {
+      payload[role] = false
+    }
+
+    console.log(payload)
+
+    for (let user of excluded_users) {
+      console.log('updating user', user)
+      await this.data.updateUserByEmail(user, payload);
+    }
+
+    this.loading = false
+    console.log('updated', excluded_users.length, 'users')
 
   }
 

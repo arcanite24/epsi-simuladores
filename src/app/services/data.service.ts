@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
+import {Collections, User} from "../app.models";
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +44,17 @@ export class DataService {
       .valueChanges()
       .pipe(take(1))
       .toPromise()
+  }
+
+  async updateUserByEmail(email: string, payload: Partial<User>) {
+
+    const users = await this.getCollectionQuery<User>(Collections.USER, ref => ref.where('email', '==', email))
+    const user = users[0]
+
+    if (!user) return false
+
+    return this.afs.collection(Collections.USER).doc(user.uid).update(payload)
+
   }
 
 }

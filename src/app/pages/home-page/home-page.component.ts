@@ -197,4 +197,8 @@ export class HomePageComponent implements OnInit {
     return true
   }
 
+  removeNoCalendar() {
+    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({noCalendar: false})
+  }
+
 }
