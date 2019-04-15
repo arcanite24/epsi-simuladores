@@ -62,7 +62,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .valueChanges()
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => list.reverse()),
+          map(list => list.filter(e => !e.isPresencial).reverse()),
         )
     }
 
