@@ -38,6 +38,7 @@ export class ProgramaPanelAltComponent implements OnInit {
     if (!name) return true
     if (this.auth.isAdmin) return false
     if (this.auth.isZamna360_2019) return false
+    if (this.auth.isPremium2019) return false
     if (name.toLowerCase().includes('temprano')) {
       return !this.auth.isTemprano
     }

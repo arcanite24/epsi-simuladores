@@ -8,8 +8,11 @@
   <div class="container-fluid" *ngIf="content">
     <div class="row">
 
-      <div class="col-md-12" *ngFor="let c of content">
-        <input type="number" *ngIf="c.type == 'bloque'" style="width: 64px" class="mr-2" [(ngModel)]="c.order" placeholder="Órden">
+      <div class="col-md-12 flex flex-row flex-start align-center" *ngFor="let c of content; let i = index">
+        <div class="flex-loader mr-2" *ngIf="c.type == 'bloque'">
+          <i class="fa fa-chevron-up c-epsi-primary" (click)="orderBloque(content, c, i, -1)"></i>
+          <i class="fa fa-chevron-down c-epsi-primary" (click)="orderBloque(content, c, i, 1)"></i>
+        </div>
         <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected" (change)="radioChange(c)">
         <label [for]="c.id" class="ml-2">
           <span class="ml-2" *ngIf="c.type != 'bloque'">{{c.name}}</span>

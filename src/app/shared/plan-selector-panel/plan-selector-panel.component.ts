@@ -4,7 +4,7 @@ import { NgbDate, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import moment from 'moment'
 import { ToastrService } from 'ngx-toastr';
 import { Content, Collections } from 'src/app/app.models';
-import { sortBy } from 'lodash'
+import { sortBy, findIndex } from 'lodash'
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
@@ -139,6 +139,9 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async getFormattedContent(): Promise<Content[]> {
 
+    const cache = localStorage.getItem('zamna-content-cache')
+    if (cache && this.auth.isAdmin) return JSON.parse(cache);
+
     let content = []
 
     const _materias = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref.where('type', '==', 'materia'))
@@ -171,7 +174,9 @@ export class PlanSelectorPanelComponent implements OnInit {
 
     }
 
-    return content.map(c => ({...c, selected: true}))
+    const final = content.map(c => ({...c, selected: true}))
+    localStorage.setItem('zamna-content-cache', JSON.stringify(final));
+    return final
 
   }
 
@@ -183,6 +188,50 @@ export class PlanSelectorPanelComponent implements OnInit {
         return cc.parent_id == c.id ? ({...cc, selected: false}) : cc
       })
     }
+  }
+
+  orderBloque(content: Content[] = [], current: Content, i: number, delta: number) {
+
+    const trimmed = content.slice(i + 1)
+    const lastChildRelative = findIndex(trimmed, c => c.type == 'bloque') - 1
+    const lastChild = findIndex(content, c => c.id == trimmed[lastChildRelative].id)
+    const target = lastChild + 1
+    const stepsToMove = target - i
+
+    console.log(
+      i,
+      lastChild,
+      /*trimmed.map(c => ({name: c.name, type: c.type})),*/
+      content.map(c => ({name: c.name, type: c.type}))
+    )
+
+    console.log('target', target, 'stepsToMove', stepsToMove)
+
+    let movedArr = content
+
+    for (let ii = i; ii <= lastChild; ii++) {
+      movedArr = this.move(movedArr, ii, ii + stepsToMove)
+    }
+
+    this.content = movedArr
+
+  }
+
+  private move(arr, old_index, new_index) {
+    while (old_index < 0) {
+      old_index += arr.length;
+    }
+    while (new_index < 0) {
+      new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+      let k = new_index - arr.length;
+      while ((k--) + 1) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
   }
 
 }
