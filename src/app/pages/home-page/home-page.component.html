@@ -143,18 +143,18 @@
       <div class="row">
 
         <!-- Galleries Panel -->
-        <div class="col-xs-12 col-md-3">
-          <epsi-galleries-panel *ngIf="auth.isGalleries"></epsi-galleries-panel>
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isGalleries">
+          <epsi-galleries-panel></epsi-galleries-panel>
         </div>
 
         <!-- Simuladores Panel -->
-        <div class="col-xs-12 col-md-3">
-          <epsi-simuladores-panel *ngIf="auth.isSimuladores && !auth.isPresencial"></epsi-simuladores-panel>
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isSimuladores && !auth.isPresencial">
+          <epsi-simuladores-panel></epsi-simuladores-panel>
         </div>
 
         <!-- Foro Panel -->
-        <div class="col-xs-12 col-md-3">
-          <epsi-forum-panel *ngIf="auth.isForum"></epsi-forum-panel>
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isForum">
+          <epsi-forum-panel></epsi-forum-panel>
         </div>
 
         <!-- Asesorias Panel -->
@@ -163,19 +163,19 @@
         </div> -->
 
         <!-- Descagables/Media Panel -->
-        <div class="col-xs-12 col-md-3">
-          <epsi-media-panel *ngIf="auth.isMedia"></epsi-media-panel>
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isMedia">
+          <epsi-media-panel></epsi-media-panel>
         </div>
 
         <!-- Slides Panel -->
         <!--<div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium || auth.isPremium2019">-->
         <div class="col-xs-12 col-md-3" *ngIf="auth.isSlides">
-          <epsi-slides-panel *ngIf="auth.isSlides"></epsi-slides-panel>
+          <epsi-slides-panel></epsi-slides-panel>
         </div>
 
         <!-- Simulacros Panel -->
-        <div class="col-xs-12 col-md-3">
-          <epsi-simulacros-panel *ngIf="auth.isSimulacros && !auth.isPresencial"></epsi-simulacros-panel>
+        <div class="col-xs-12 col-md-3" *ngIf="auth.isSimulacros && !auth.isPresencial">
+          <epsi-simulacros-panel></epsi-simulacros-panel>
         </div>
 
         <!-- Question Pool Panel -->

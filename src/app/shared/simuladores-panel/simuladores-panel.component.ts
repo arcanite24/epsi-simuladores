@@ -24,7 +24,13 @@ export class SimuladoresPanelComponent implements OnInit {
   ngOnInit() {
 
     this.auth.user$.subscribe(user => {
-      if (user && !this.exams$) this.loadExams(user.isPresencial || user.isPremium2019)
+
+      let isPresencial = false
+      if (user.is3602019) isPresencial = true
+      if (user.isPresencial) isPresencial = true
+      if (user.isPremium2019) isPresencial = false
+
+      if (user && !this.exams$) this.loadExams(isPresencial)
     })
 
     /* this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)

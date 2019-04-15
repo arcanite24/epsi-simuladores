@@ -6,6 +6,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase/app'
 import { Router } from '@angular/router';
+import {excluded_users} from "../app.utils";
 
 @Injectable({
   providedIn: 'root'
@@ -151,6 +152,10 @@ export class AuthService {
     // if the user is already migrated abort
     /* if (user && user.migrated) return true */
     if (user && user.migrated) console.log('user already migrated but ignoring')
+    if (excluded_users.includes(email)) {
+      console.log('user on migration ignored list')
+      return false
+    }
 
     // build initial userPayload forming correctly the name
     let userPayload = {

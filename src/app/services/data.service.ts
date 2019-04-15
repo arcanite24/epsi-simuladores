@@ -26,16 +26,13 @@ export class DataService {
       .toPromise()
   }
 
-  getCollectionAlt<T>(collection: string): Promise<T[]> {
-    return new Promise<T[]>((resolve, reject) => {
-      const sub = this.afs.collection<T>(collection)
-        .snapshotChanges()
-        .subscribe(data => {
-          sub.unsubscribe();
-          resolve(data.map(d => d.payload.doc.data()));
-        }, err => {
-          reject(err);
-        })
+  getCollectionAlt<T>(collection: string): Promise<any[]> {
+    return new Promise<any[]>(async (resolve, reject) => {
+      const data = await this.afs.firestore.collection(collection).get()
+      resolve(data.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })))
     })
   }
 

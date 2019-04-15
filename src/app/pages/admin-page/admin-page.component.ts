@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import {Collections, EsencialModel, MoodRate, Roles, User} from 'src/app/app.models';
+import {Collections, EsencialModel, MoodRate, Premium2019Model, Roles, User} from 'src/app/app.models';
 import { groupBy } from 'lodash'
 import {AngularFirestore} from "@angular/fire/firestore";
 import {excluded_users} from "../../app.utils";
@@ -92,6 +92,34 @@ export class AdminPageComponent implements OnInit {
 
     this.loading = false
     console.log('updated', excluded_users.length, 'users')
+
+  }
+
+  async migratePresencialYEsencial() {
+
+    this.loading = true
+
+    const users: User[] = await this.data.getCollectionAlt<User>(Collections.USER)
+    const filteredUsers = users.filter(u => {
+      if (u.isPresencial) return true
+      if (u.isEsencial) return true
+      return false
+    })
+
+    let removePayload = {}
+    let newRolesPayload = {}
+
+    for (let role of Object.values(Roles)) { removePayload[role] = false }
+    for (let role of Premium2019Model) { newRolesPayload[role] = false }
+
+    for (let user of filteredUsers) {
+      console.log('removing all roles for', user.email)
+      await this.afs.collection(Collections.USER).doc(user.uid).update(removePayload)
+      await this.afs.collection(Collections.USER).doc(user.uid).update(newRolesPayload)
+    }
+
+    this.loading = false
+    console.log(JSON.stringify(filteredUsers.map(u => u.email)))
 
   }
 

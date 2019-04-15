@@ -47,12 +47,14 @@ export class AdminUsersPageComponent implements OnInit {
       }, noEdit: true},
       {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
       {field: 'roles', type: 'text', noEdit: true, customRender: row => `
-      ${row.isAdmin ? 'isAdmin ' : ''}
-      ${row.isEsencial ? 'isEsencial ' : ''}
-      ${row.isTemprano ? 'isTemprano ' : ''}
-      ${row.isPresencial? 'isPresencial ' : ''}
-      ${row.isEsencial360? 'isEsencial360 ' : ''}
-      ${row.isPremium360? 'isPremium360 ' : ''}
+        ${row.isAdmin ? 'isAdmin ' : ''}
+        ${row.isEsencial ? 'isEsencial ' : ''}
+        ${row.isTemprano ? 'isTemprano ' : ''}
+        ${row.isPresencial? 'isPresencial ' : ''}
+        ${row.isEsencial360? 'isEsencial360 ' : ''}
+        ${row.isPremium360? 'isPremium360 ' : ''}
+        ${row.isPremium2019? 'isPremium2019 ' : ''}
+        ${row.is3602019? 'is3602019 ' : ''}
       `}
     ],
     customActions: [
