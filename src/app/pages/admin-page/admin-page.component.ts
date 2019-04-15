@@ -101,16 +101,19 @@ export class AdminPageComponent implements OnInit {
 
     const users: User[] = await this.data.getCollectionAlt<User>(Collections.USER)
     const filteredUsers = users.filter(u => {
-      if (u.isPresencial) return true
+      /*if (u.isPresencial) return true
       if (u.isEsencial) return true
-      return false
+      return false*/
+      return true
     })
 
     let removePayload = {}
     let newRolesPayload = {}
 
     for (let role of Object.values(Roles)) { removePayload[role] = false }
-    for (let role of Premium2019Model) { newRolesPayload[role] = false }
+    for (let role of Premium2019Model) { newRolesPayload[role] = true }
+
+    console.log(newRolesPayload)
 
     for (let user of filteredUsers) {
       console.log('removing all roles for', user.email)

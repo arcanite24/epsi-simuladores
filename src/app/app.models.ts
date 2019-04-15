@@ -299,6 +299,7 @@ export interface Question {
   img?: string
   group?: string
   selectedAnswer?: Answer
+  selectedAnswerId?: string
 }
 
 export interface Answer {

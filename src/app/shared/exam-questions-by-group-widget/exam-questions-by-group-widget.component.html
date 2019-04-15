@@ -24,13 +24,14 @@
             <input
               type="radio"
               [name]="question.id"
-              [checked]="question.selectedAnswer && respuesta.id == question.selectedAnswer.id"
-              [(ngModel)]="question.selectedAnswer" 
-              [value]="respuesta" 
+              [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"
+              [(ngModel)]="question.selectedAnswerId"
+              [value]="respuesta.id"
               [id]="respuesta.id"
-              (change)="answerChanged(question.selectedAnswer, question)">
+              (change)="answerChanged(respuesta, question)">
             <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>
           </li>
+          <!--<pre>{{question.selectedAnswer | json}}</pre>-->
         </ul>
       </div>
 

@@ -104,7 +104,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
   private handleIndexChange(state: IExamReducer) {
     console.log('New Exam Index: ' + state.index)
-    this.setQuestion(state.index)
+    this.setQuestion(state.index);
   }
 
   private async handleExamFinish(state: IExamReducer) {
@@ -206,8 +206,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     return this.lastIndex > 0
   }
 
-  answerChanged(answer: Answer) {
+  answerChanged(answer: Answer, question: Question) {
     this.store.dispatch(new SetAnswer(answer))
+    question.selectedAnswer = answer
   }
 
   setInitialResults() {
@@ -248,6 +249,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     this.store.dispatch(new SetQuestion(this.question))
 
+    setTimeout(() => this.loadCachedAnswer(this.question), 500)
+
   }
 
   nextQuestion(currentIndex: number, selectedAnswer: Answer) {
@@ -261,13 +264,51 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     if (this.exam.type != ExamTypes.PRECLASE && this.exam.type != ExamTypes.SIMULACRO) this.modal.getModal('examFeedbackModal').open()
 
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
-    this.store.dispatch(new SetAnswer(null))
+    // this.store.dispatch(new SetAnswer(null)) removed because we load the cached answer
 
   }
 
   prevQuestion(currentIndex: number, selectedAnswer: Answer) {
     this.saveCache(this.question, currentIndex, selectedAnswer)
     this.store.dispatch(new SetIndex(currentIndex - 1))
+  }
+
+  loadCachedAnswer(questions: Question[]) {
+
+    for (let [i, q] of Object.entries(questions)) {
+      const cachedAnswer = localStorage.getItem(q.id)
+      if (cachedAnswer) {
+        console.log(this.question[i])
+        this.question[i].selectedAnswer = JSON.parse(cachedAnswer)
+        this.question[i].selectedAnswerId = JSON.parse(cachedAnswer).id
+      }
+    }
+
+    /*if (q instanceof Array) {
+
+      for (const qq of q) {
+
+        console.log(qq.selectedAnswer)
+
+        // Load cached answer
+        const cachedAnswer = localStorage.getItem(qq.id)
+        console.log(cachedAnswer)
+        if (cachedAnswer) {
+          this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
+        }
+
+      }
+
+    } else {
+
+      // Load cached answer
+      const cachedAnswer = localStorage.getItem(q.id)
+      console.log(cachedAnswer)
+      if (cachedAnswer) {
+        this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
+      }
+
+    }*/
   }
 
   saveCache(q: Question | Question[], index: number, answer: Answer, noDispatch: boolean = false) {
@@ -279,10 +320,16 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     if (q instanceof Array) {
 
       for (const qq of q) {
+
         console.log(qq.selectedAnswer)
+
+        // Load cached answer
+        const cachedAnswer = localStorage.getItem(qq.id)
+        if (cachedAnswer) this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
+
         this.results.questions[qq.id] = {
           raw: qq,
-          correcta: qq.selectedAnswer.id == qq.correcta,
+          correcta: qq.selectedAnswer ? qq.selectedAnswer.id == qq.correcta : false,
           lastModified: new Date().toISOString(),
           selected: qq.selectedAnswer,
           index,
@@ -290,6 +337,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       }
 
     } else {
+
+      // Load cached answer
+      const cachedAnswer = localStorage.getItem(q.id)
+      if (cachedAnswer) this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
 
       this.results.questions[q.id] = {
         raw: q,

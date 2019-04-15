@@ -151,10 +151,15 @@ export class AuthService {
     
     // if the user is already migrated abort
     /* if (user && user.migrated) return true */
-    if (user && user.migrated) console.log('user already migrated but ignoring')
+    return true
+    if (user && user.migrated) {
+      console.log('user already migrated but ignoring')
+      return true
+    }
+
     if (excluded_users.includes(email)) {
       console.log('user on migration ignored list')
-      return false
+      return true
     }
 
     // build initial userPayload forming correctly the name
