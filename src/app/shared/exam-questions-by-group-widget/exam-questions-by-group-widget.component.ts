@@ -249,7 +249,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     this.store.dispatch(new SetQuestion(this.question))
 
-    setTimeout(() => this.loadCachedAnswer(this.question), 500)
+    this.loadCachedAnswer(this.question)
 
   }
 
@@ -323,10 +323,6 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
         console.log(qq.selectedAnswer)
 
-        // Load cached answer
-        const cachedAnswer = localStorage.getItem(qq.id)
-        if (cachedAnswer) this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
-
         this.results.questions[qq.id] = {
           raw: qq,
           correcta: qq.selectedAnswer ? qq.selectedAnswer.id == qq.correcta : false,
@@ -337,10 +333,6 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       }
 
     } else {
-
-      // Load cached answer
-      const cachedAnswer = localStorage.getItem(q.id)
-      if (cachedAnswer) this.store.dispatch(new SetAnswer(JSON.parse(cachedAnswer)))
 
       this.results.questions[q.id] = {
         raw: q,
