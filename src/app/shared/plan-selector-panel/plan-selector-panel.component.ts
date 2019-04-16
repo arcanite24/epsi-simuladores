@@ -106,7 +106,8 @@ export class PlanSelectorPanelComponent implements OnInit {
     let calendar = [];
 
     const cociente = content.length / dias
-    const perDay = cociente - Math.floor(cociente) > 0.5 ? Math.ceil(cociente) : Math.floor(cociente);
+    let perDay = cociente - Math.floor(cociente) > 0.5 ? Math.ceil(cociente) : Math.floor(cociente);
+    perDay = perDay < 1 ? 1 : perDay
     console.log(`repartiendo ${content.length} temas en ${dias} dias, ${perDay} temas por día`)
     this.loadingText = `Repartiendo ${content.length} temas en ${dias} dias, ${perDay} temas por día.`
 
