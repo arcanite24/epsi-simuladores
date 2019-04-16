@@ -106,7 +106,7 @@ export function examReducer(state: IExamReducer = initialState, action: ExamActi
       return { ...state, results: action.payload }
 
     case ExamActionTypes.FinishExam:
-      return { ...state, finished: true }
+      return { ...state, finished: true, index: 0, selectedAnswer: null, question: null, results: null, timer: 0 }
 
     case ExamActionTypes.ResetExam:
       return initialState
