@@ -59,7 +59,14 @@ export class ProgramaAltBloquePageComponent implements OnInit {
             .pipe(tap(temas => {
               this.total_temas = temas.length
               this.contentIds = sortBy(temas, 'sortIndex').map(t => t.event || 'NULL')
-            }), map(temas => sortBy(temas, 'sortIndex').filter(t => !t.ignoreOnSmartCalendar)))
+            }), map(temas => sortBy(temas, 'sortIndex')
+              .filter(t => !t.ignoreOnSmartCalendar)
+              .filter(t => {
+                if (this.auth.isPresencial) return false
+                if (this.auth.isPremium2019) return true
+                return t.liberadoInPrograma
+              })
+            ))
         })
       )
 

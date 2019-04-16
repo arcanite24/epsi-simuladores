@@ -46,6 +46,11 @@ export class ProgramaAltMateriaPageComponent implements OnInit, OnDestroy {
             ...b, temas$: this.afs.collection(Collections.CONTENT, ref =>ref.where('parent_id', '==', b.id)).valueChanges()
           } as Content))
           .filter(b => !b.ignoreOnSmartCalendar)
+          .filter(b => {
+            if (this.auth.isPresencial) return false
+            if (this.auth.isPremium2019) return true
+            return b.liberadoInPrograma
+          })
         ))
       ))
 
