@@ -245,6 +245,7 @@ export interface Content {
   ignoreOnSmartCalendar?: boolean
   order?: number
   temas$?: Observable<Content[]>
+  temas?: Content[],
   liberadoInPrograma?: boolean
 }
 

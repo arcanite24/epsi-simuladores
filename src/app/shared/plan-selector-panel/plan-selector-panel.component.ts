@@ -4,7 +4,7 @@ import { NgbDate, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import moment from 'moment'
 import { ToastrService } from 'ngx-toastr';
 import { Content, Collections } from 'src/app/app.models';
-import { sortBy, findIndex } from 'lodash'
+import { sortBy, findIndex, flattenDeep } from 'lodash'
 import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
@@ -97,6 +97,8 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async setCalendarToUser(content: Content[], dias: number, range: any) {
 
+    content = flattenDeep(content.map(c => c.temas)) as Content[]
+
     content = content
       .filter(c => c.type == 'tema')
       .filter(c => !c.ignoreOnSmartCalendar)
@@ -167,13 +169,15 @@ export class PlanSelectorPanelComponent implements OnInit {
 
         this.loadingText = bloque.name
 
-        content = [...content, bloque]
+        /*content = [...content, bloque]*/
         
         const temas = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref
           .where('type', '==', 'tema')
           .where('parent_id', '==', bloque.id))
 
-        content = [...content, ...sortBy(temas, 'sortIndex').map(t => ({...t, parent_name: bloque.name}))]
+        bloque.temas = sortBy(temas, 'sortIndex').map(t => ({...t, parent_name: bloque.name, selected: true}))
+
+        content = [...content, bloque]
 
       }
 
@@ -187,17 +191,20 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   radioChange(c: Content) {
     if (c.type == 'bloque') {
-      c.selected ? this.content = this.content.map(cc => {
+      c.temas = c.temas.map(t => ({...t, selected: c.selected}))
+      /*c.selected ? this.content = this.content.map(cc => {
         return cc.parent_id == c.id ? ({...cc, selected: true}) : cc
       }) : this.content = this.content.map(cc => {
         return cc.parent_id == c.id ? ({...cc, selected: false}) : cc
-      })
+      })*/
     }
   }
 
   orderBloque(content: Content[] = [], current: Content, i: number, delta: number) {
 
-    const trimmed = content.slice(i + 1)
+    this.content = this.move(content, i, i + delta)
+
+    /*const trimmed = content.slice(i + 1)
     const lastChildRelative = findIndex(trimmed, c => c.type == 'bloque') - 1
     const lastChild = findIndex(content, c => c.id == trimmed[lastChildRelative].id)
     const target = lastChild + 1
@@ -206,7 +213,7 @@ export class PlanSelectorPanelComponent implements OnInit {
     console.log(
       i,
       lastChild,
-      /*trimmed.map(c => ({name: c.name, type: c.type})),*/
+      /!*trimmed.map(c => ({name: c.name, type: c.type})),*!/
       content.map(c => ({name: c.name, type: c.type}))
     )
 
@@ -218,7 +225,7 @@ export class PlanSelectorPanelComponent implements OnInit {
       movedArr = this.move(movedArr, ii, ii + stepsToMove)
     }
 
-    this.content = movedArr
+    this.content = movedArr*/
 
   }
 

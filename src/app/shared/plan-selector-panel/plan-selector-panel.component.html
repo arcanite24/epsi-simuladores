@@ -8,16 +8,30 @@
   <div class="container-fluid" *ngIf="content">
     <div class="row">
 
-      <div class="col-md-12 flex flex-row flex-start align-center" *ngFor="let c of content; let i = index">
-        <div class="flex-loader mr-2" *ngIf="c.type == 'bloque'">
-          <i class="fa fa-chevron-up c-epsi-primary" (click)="orderBloque(content, c, i, -1)"></i>
-          <i class="fa fa-chevron-down c-epsi-primary" (click)="orderBloque(content, c, i, 1)"></i>
+      <div class="col-md-12 flex flex-col flex-start" *ngFor="let c of content; let i = index">
+
+        <div class="flex flex-row flex-start align-center w-100">
+          <div class="flex-loader mr-2" *ngIf="c.type == 'bloque'">
+            <i class="fa fa-chevron-up c-epsi-primary" (click)="orderBloque(content, c, i, -1)"></i>
+            <i class="fa fa-chevron-down c-epsi-primary" (click)="orderBloque(content, c, i, 1)"></i>
+          </div>
+          <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected" (change)="radioChange(c)">
+          <label [for]="c.id" class="ml-2">
+            <strong class="mt-2" *ngIf="c.type == 'bloque'">{{c.name}}</strong>
+          </label>
+          <i class="fa fa-plus manita ml-2" *ngIf="!c.showChildren" (click)="c.showChildren = true"></i>
+          <i class="fa fa-minus manita ml-2" *ngIf="c.showChildren" (click)="c.showChildren = false"></i>
         </div>
-        <input type="checkbox" [id]="c.id" [(ngModel)]="c.selected" (change)="radioChange(c)">
-        <label [for]="c.id" class="ml-2">
-          <span class="ml-2" *ngIf="c.type != 'bloque'">{{c.name}}</span>
-          <strong class="mt-2" *ngIf="c.type == 'bloque'">{{c.name}}</strong>
-        </label>
+
+        <div class="ml-4 pl-2 w-100" *ngIf="c.showChildren">
+          <div class="flex flex-row flex-start align-center " *ngFor="let tema of c.temas">
+            <input type="checkbox" [id]="tema.id" [(ngModel)]="tema.selected">
+            <label [for]="tema.id" class="ml-2">
+              <span class="ml-2">{{tema.name}}</span>
+            </label>
+          </div>
+        </div>
+
       </div>
 
       <div class="col-md-12 flex-loader">
