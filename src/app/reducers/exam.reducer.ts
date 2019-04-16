@@ -98,7 +98,6 @@ export function examReducer(state: IExamReducer = initialState, action: ExamActi
     case ExamActionTypes.SetAnswer:
       if (action.payload) {
         localStorage.setItem(action.payload.parent, JSON.stringify(action.payload));
-        console.log('seting answer cache', action.payload)
       }
       return { ...state, selectedAnswer: action.payload }
 
@@ -106,7 +105,7 @@ export function examReducer(state: IExamReducer = initialState, action: ExamActi
       return { ...state, results: action.payload }
 
     case ExamActionTypes.FinishExam:
-      return { ...state, finished: true, index: 0, selectedAnswer: null, question: null, results: null, timer: 0 }
+      return { ...state, finished: true }
 
     case ExamActionTypes.ResetExam:
       return initialState

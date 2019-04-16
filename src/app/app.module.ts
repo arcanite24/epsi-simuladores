@@ -395,9 +395,9 @@ import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-stru
     NgxGalleryModule,
     StoreModule.forRoot({
       exam: examReducer
-    }, {
+    }/*, {
       metaReducers
-    }),
+    }*/),
     NgxChartsModule,
     MomentModule,
     ToastrModule.forRoot({

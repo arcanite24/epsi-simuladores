@@ -49,6 +49,8 @@ export class ExamResultsPageComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(async result => {
+
+          if (!result) return
           
           this._result = result
           this.getTagsAvg(result)
@@ -105,6 +107,7 @@ export class ExamResultsPageComponent implements OnInit {
 
   async getTagsAvg(result: ExamResults) {
 
+    if (!result) return
     const rawTags = Object.values(result.questions).map((q: any) => q.raw.tags)
     /*console.log('raw tags', rawTags)*/
 

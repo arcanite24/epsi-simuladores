@@ -72,6 +72,12 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
   ngOnInit() {
 
+    /*const lastExam = localStorage.getItem('last-exam')
+    if (lastExam && lastExam != this.exam.id) {
+      this.store.dispatch(new ResetExam())
+      localStorage.setItem('last-exam', this.exam.id)
+    }*/
+
     this.question = this.exam.formattedQuestions[0]
     this.setInitialResults()
 
@@ -108,7 +114,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   }
 
   private async handleExamFinish(state: IExamReducer) {
-    console.log('Handling Exam Finish')
+    console.log('Handling Exam Finish', state.results)
 
     // Set final time
     this.results.completedIn = (Date.now() - this.startTime) / 1000;
@@ -117,7 +123,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     this.saveCache(this.question, state.index, state.selectedAnswer, true)
 
     // Calculate Average
-    const questions: Question[] = Object.values(this.results.questions)
+    const questions: Question[] = Object.values(state.results.questions)
     this.results.promedio = questions.filter(q => q.correcta).length / questions.length
 
     // Re-set exam type
@@ -128,10 +134,11 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     console.log(this.results.tags, questions.map(q => q.raw.tags))
 
     // Create result doc
+    console.log(state.results, this.results)
     await this.afs.doc(`${Collections.EXAM_RESULT}/${state.results.id}`).set(this.results)
     this.toastr.success('Haz completado tu exámen.')
     this.store.dispatch(new ResetExam())
-    this.setInitialResults()
+    /*this.setInitialResults()*/
     this.selectedAnswer = null
     this.lastIndex = 0
     this.question = this.exam.formattedQuestions[this.lastIndex]
@@ -214,6 +221,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
   setInitialResults() {
 
     const id = this.afs.createId()
+    console.log('set initila result', id)
 
     this.results = {
       id,
@@ -315,7 +323,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
 
     if (!answer) return
     if (!q) return
-    if (!this.results) this.setInitialResults()
+    /*if (!this.results) this.setInitialResults()*/
 
     if (q instanceof Array) {
 
