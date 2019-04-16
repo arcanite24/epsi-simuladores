@@ -120,7 +120,7 @@ export class PlanSelectorPanelComponent implements OnInit {
       calendar = [...calendar, newTemas.map(t => ({
         start: dia.toISOString(),
         fullDay: true,
-        event: null,
+        event: t.event,
         content: t.id,
         content_name: t.name,
       }))]
