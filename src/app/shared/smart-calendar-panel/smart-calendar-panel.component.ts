@@ -1,5 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable, of, Subscription} from 'rxjs';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
+import {Observable, of, Subject, Subscription} from 'rxjs';
 import { Event, Collections, User } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
@@ -24,14 +24,18 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
   public completedTasks: string[] = []
 
   public events$: Observable<Event[]>
+  public events: Event[] = []
 
   private userSub: Subscription
+
+  public refresh: Subject<any> = new Subject();
 
   constructor(
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
     public auth: AuthService,
-    private data: DataService
+    private data: DataService,
+    private zone: NgZone
   ) { }
 
   get mesLabel(): string { return moment(this.viewDate).format('MMMM - YYYY') }
@@ -67,29 +71,33 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
 
         if (!user.completedTasks) user.completedTasks = []
 
-        let formatedEvents = []
+        /*let formatedEvents = []*/
 
         for (let e of events) {
           if (e.event) {
 
-            const eventDoc = await this.data.getDoc<Event>(Collections.EVENT, e.event);
+            const eventDoc = await this.data.getDocAlt<Event>(Collections.EVENT, e.event);
+            console.log('loaded event', eventDoc.title);
 
-            formatedEvents.push({
-              id: `smart-calendar-event-${e.content}`,
-              ...e,
-              start: new Date(e.start),
-              title: e.content_name,
-              desc: '',
-              date: new Date().toISOString(),
-              tasks: eventDoc.tasks,
-              links: eventDoc.links,
-              color: user.completedTasks.indexOf(`smart-calendar-event-${e.content}`) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
-            })
+            setTimeout(() => {
+              this.events.push({
+                id: `smart-calendar-event-${e.content}`,
+                ...e,
+                start: new Date(e.start),
+                title: e.content_name,
+                desc: '',
+                date: new Date().toISOString(),
+                tasks: eventDoc.tasks,
+                links: eventDoc.links,
+                color: user.completedTasks.indexOf(`smart-calendar-event-${e.content}`) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
+              })
+              this.refresh.next();
+            }, 100)
 
           }
         }
 
-        this.events$ = of(formatedEvents)
+        /*this.events$ = of(formatedEvents)*/
 
       })
 

@@ -15,7 +15,7 @@
   </div>
 </ngx-smart-modal>
 
-<epsi-panel title="Mi calendario personalizado" desc="Tu calendario puede cargar en 30 a 60 segundos dependiendo la velocidad de tu conexión a internet" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="true" tutorial="Mwe2Sv0rSsAmytfy3CoV">
+<epsi-panel title="Mi calendario personalizado" desc="Tu calendario puede cargar en 30 a 90 segundos dependiendo la velocidad de tu conexión a internet" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="true" tutorial="Mwe2Sv0rSsAmytfy3CoV">
 
   <epsi-plan-selector-panel *ngIf="auth.user && !auth.user.customCalendar"></epsi-plan-selector-panel>
 
@@ -47,11 +47,12 @@
   </div>
 
   <div class="calendar-container" *ngIf="auth.user && auth.user.customCalendar">
-    <div class="calendar-panel-body mt-2" *ngIf="events$ | async as events else loader">
+    <div class="calendar-panel-body mt-2" *ngIf="events else loader">
       <mwl-calendar-month-view
         locale="es"
         [viewDate]="viewDate"
         [events]="events"
+        [refresh]="refresh"
         (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
     </div>
   </div>

@@ -19,6 +19,16 @@ export class DataService {
       .toPromise()
   }
 
+  getDocAlt<T>(collection: string, id: string): Promise<T> {
+    return new Promise<T>(async (resolve, reject) => {
+      const doc = await this.afs.firestore.doc(`${collection}/${id}`).get();
+      resolve({
+        id: doc.id,
+        ...doc.data()
+      } as any);
+    });
+  }
+
   getCollection<T>(collection: string): Promise<T[]> {
     return this.afs.collection<T>(collection)
       .valueChanges()
