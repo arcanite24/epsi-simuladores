@@ -131,7 +131,7 @@
       </epsi-panel>
 
       <!-- Content Panel -->
-      <epsi-content-panel *ngIf="!auth.isPresencial && (auth.isEsencial || auth.isPremium)"></epsi-content-panel>
+      <epsi-content-panel *ngIf="auth.isStreaming"></epsi-content-panel>
 
       <!-- Zona ENARM Panel -->
       <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zona-enarm-panel>
