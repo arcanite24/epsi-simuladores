@@ -21,6 +21,7 @@ import {StatsService} from 'src/app/services/stats.service';
 import {NgxSmartModalService} from 'ngx-smart-modal';
 import moment from 'moment'
 import {DataService} from "../../services/data.service";
+import {ScrollToService} from "@nicky-lenaers/ngx-scroll-to";
 
 const countdown = require('countdown')
 countdown.setLabels(
@@ -66,7 +67,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
     private stats: StatsService,
     private modal: NgxSmartModalService,
     private stat: StatsService,
-    private data: DataService
+    private data: DataService,
+    private scrollTo: ScrollToService
   ) {
     this.examState$ = this.store.select('exam')
   }
@@ -285,6 +287,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer)
     // this.store.dispatch(new SetAnswer(null)) removed because we load the cached answer
+
+    setTimeout(() => this.scrollTo.scrollTo({target: 'scrollAnchor'}), 500)
 
   }
 

@@ -8,7 +8,7 @@
 
 <epsi-panel *ngIf="exam else loader" [title]="exam.name" [showContent]="true">
   
-  <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
+  <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>
 
     <!--<pre>{{state | json}}</pre>-->
 
