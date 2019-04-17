@@ -130,7 +130,7 @@ export class LoginPageComponent implements OnInit {
   async loginGoogle() {
     try {
       const user = await this.auth.loginGoogle()
-      await this.auth.migrateOldUser(user.email, user.uid)
+      //await this.auth.migrateOldUser(user.email, user.uid)
       this.toastr.success(`Bienvenido de nuevo ${user.displayName}`)
       this.router.navigate(['/home'])
     } catch (error) {
@@ -142,7 +142,7 @@ export class LoginPageComponent implements OnInit {
   async loginFacebook() {
     try {
       const user = await this.auth.loginFacebook()
-      await this.auth.migrateOldUser(user.email, user.uid)
+      //await this.auth.migrateOldUser(user.email, user.uid)
       this.toastr.success(`Bienvenido de nuevo ${user.displayName}`)
       this.router.navigate(['/home'])
     } catch (error) {

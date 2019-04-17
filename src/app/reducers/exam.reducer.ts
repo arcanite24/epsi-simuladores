@@ -10,6 +10,7 @@ export enum ExamActionTypes {
   ResetExam = '[Exam] ResetExam',
   SetFeedback = '[Exam] SetFeedback',
   SetTimer = '[Exam] SetTimer',
+  ResetTimer = '[Exam] ResetTimer',
 }
 
 export class SetQuestion implements Action {
@@ -50,6 +51,10 @@ export class FinishExam implements Action {
 export class ResetExam implements Action {
   readonly type: string = ExamActionTypes.ResetExam
   constructor(public payload?) {}
+}
+
+export class ResetTimer implements Action {
+  readonly type: string = ExamActionTypes.ResetTimer
 }
 
 export type ExamActions = 
@@ -109,6 +114,9 @@ export function examReducer(state: IExamReducer = initialState, action: ExamActi
 
     case ExamActionTypes.ResetExam:
       return initialState
+
+    case ExamActionTypes.ResetTimer:
+      return { ...state, timer: null }
 
     default:
       return state

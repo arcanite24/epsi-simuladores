@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {Answer, Collections, Exam, ExamResults, ExamTypes, Question} from 'src/app/app.models';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
@@ -8,7 +8,7 @@ import {AppState} from 'src/app/app.state';
 import {
   FinishExam,
   IExamReducer,
-  ResetExam,
+  ResetExam, ResetTimer,
   SetAnswer,
   SetIndex,
   SetQuestion,
@@ -35,9 +35,10 @@ countdown.setLabels(
   templateUrl: './exam-questions-by-group-widget.component.html',
   styleUrls: ['./exam-questions-by-group-widget.component.scss']
 })
-export class ExamQuestionsByGroupWidgetComponent implements OnInit {
+export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
   @Input() public exam: Exam
+  @Input() public isPreclase: boolean = false
   @Output() public questionChanged: EventEmitter<{question: Question, index: number, results: ExamResults}> = new EventEmitter()
   @Output() public answerSelected: EventEmitter<{question: Question, answer: Answer}> = new EventEmitter()
 
@@ -68,6 +69,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     private data: DataService
   ) {
     this.examState$ = this.store.select('exam')
+  }
+
+  ngOnDestroy(): void {
+    this.store.dispatch(new ResetTimer());
   }
 
   ngOnInit() {
@@ -246,6 +251,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
       if (!user) return
       this.results.user = user.uid
     })
+
+    if (this.isPreclase) this.store.dispatch(new SetResults(this.results))
+
   }
 
   setQuestion(index: number) {

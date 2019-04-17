@@ -36,6 +36,7 @@ export class AdminUsersPageComponent implements OnInit {
     collection: Collections.USER,
     disableAdd: true,
     pk: 'uid',
+    fullEdit: true,
     headers: [
       {field: 'displayName', type: 'text', label: 'Nombre', noEdit: true},
       {field: 'email', type: 'email', label: 'Email', noEdit: true},
@@ -55,7 +56,33 @@ export class AdminUsersPageComponent implements OnInit {
         ${row.isPremium360? 'isPremium360 ' : ''}
         ${row.isPremium2019? 'isPremium2019 ' : ''}
         ${row.is3602019? 'is3602019 ' : ''}
-      `}
+      `},
+      {field: 'isAdmin', type: 'checkbox', hideOnTable: true},
+      {field: 'isEsencial', type: 'checkbox', hideOnTable: true},
+      {field: 'isPremium', type: 'checkbox', hideOnTable: true},
+      {field: 'isTemprano', type: 'checkbox', hideOnTable: true},
+      {field: 'isPremium2019', type: 'checkbox', hideOnTable: true},
+      {field: 'is3602019', type: 'checkbox', hideOnTable: true},
+      {field: 'isEsencial360', type: 'checkbox', hideOnTable: true},
+      {field: 'isPresencial', type: 'checkbox', hideOnTable: true},
+      {field: 'isContent', type: 'checkbox', hideOnTable: true},
+      {field: 'isChecklist', type: 'checkbox', hideOnTable: true},
+      {field: 'isCalendar', type: 'checkbox', hideOnTable: true},
+      {field: 'isSmartCalendar', type: 'checkbox', hideOnTable: true},
+      {field: 'isTopUsers', type: 'checkbox', hideOnTable: true},
+      {field: 'isGalleries', type: 'checkbox', hideOnTable: true},
+      {field: 'isSimuladores', type: 'checkbox', hideOnTable: true},
+      {field: 'isForum', type: 'checkbox', hideOnTable: true},
+      {field: 'isStreaming', type: 'checkbox', hideOnTable: true},
+      {field: 'isMedia', type: 'checkbox', hideOnTable: true},
+      {field: 'isSlides', type: 'checkbox', hideOnTable: true},
+      {field: 'isSimulacros', type: 'checkbox', hideOnTable: true},
+      {field: 'isFeed', type: 'checkbox', hideOnTable: true},
+      {field: 'isPrograma', type: 'checkbox', hideOnTable: true},
+      {field: 'isPool', type: 'checkbox', hideOnTable: true},
+      {field: 'isTagPool', type: 'checkbox', hideOnTable: true},
+      {field: 'isZonaEnarm', type: 'checkbox', hideOnTable: true},
+
     ],
     customActions: [
       {iconClasses: 'fa fa-lock', handler: user => this.openEditRoles(user)},
