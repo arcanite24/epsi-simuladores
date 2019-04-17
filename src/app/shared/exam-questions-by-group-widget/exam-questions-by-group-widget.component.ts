@@ -192,6 +192,10 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit {
     
   }
 
+  public canGoNext(questions: Question[]): boolean {
+    return !_.every(questions, q => q.selectedAnswerId)
+  }
+
   public get questionsLeft(): boolean {
     if (!this.exam) return false
     if (!this.exam.formattedQuestions) return false
