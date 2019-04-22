@@ -18,6 +18,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class PaymentModelPanelComponent implements OnInit {
 
   @Input() model: PaymentModel
+  @Input() disabled: boolean = false
   
   public payment_url: string
   public loading: boolean = false

@@ -34,7 +34,7 @@
         </div>
 
         <div class="col-md-12">
-          <button class="btn btn-primary w-100" type="button" (click)="generatePayment(model)" [disabled]="loading">Pagar</button>
+          <button class="btn btn-primary w-100" type="button" (click)="generatePayment(model)" [disabled]="loading || disabled">{{disabled ? 'No Disponible' : 'Pagar'}}</button>
         </div>
 
         <div class="col-md-12 p-2" *ngIf="loading">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="col-md-12" [id]="'paypal-container-' + model.id" [ngClass]="{'p-4': showPaypal}">
-          <button class="btn btn-secondary mt-2 w-100" type="button" (click)="loadPaypalButton(model)" *ngIf="!showPaypal" [disabled]="loading">Pagar con Paypal</button>
+          <button class="btn btn-secondary mt-2 w-100" type="button" (click)="loadPaypalButton(model)" *ngIf="!showPaypal" [disabled]="loading || disabled">Pagar con Paypal</button>
         </div>
   
       </div>

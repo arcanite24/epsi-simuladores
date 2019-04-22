@@ -15,12 +15,13 @@ const RETURN_URL_PROD_PAGOS = 'https://zamnademy.com/pagos'
 const RETURN_URL_DEV_PAGOS = 'http://localhost:8100'
 
 export enum Roles {
-
   Admin = 'isAdmin',
-  
+
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
+  Premium2019 = 'isPremium2019',
+  Zamna360_2019 = 'is3602019',
 
   Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
   Premium360 = 'isPremium360', // CURSO_PREMIUM_360
@@ -29,6 +30,7 @@ export enum Roles {
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
+  SmartCalendar = 'isSmartCalendar',
   TopUsers = 'isTopUsers',
   Galleries = 'isGalleries',
   Simuladores = 'isSimuladores',
@@ -41,6 +43,7 @@ export enum Roles {
   Programa = 'isPrograma',
   Pool = 'isPool',
   TagPool = 'isTagPool',
+  ZonaEnarm = 'isZonaEnarm',
 }
 
 export const EsencialModel: string[] = [
@@ -77,6 +80,21 @@ export const PremiumModel: string[] = [
   Roles.Programa,
   Roles.Pool,
   Roles.TagPool
+]
+
+export const Premium2019Model: string[] = [
+  Roles.Checklist,
+  Roles.SmartCalendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Premium2019,
+  Roles.Programa,
+  Roles.ZonaEnarm,
 ]
 
 app.use(cors({ origin: true }))
@@ -308,7 +326,7 @@ async function grantUserRoles(uid: string, price: number, amountLeft: number, ta
     const payload = {}
 
     if (tag === 'isPremium360') {
-      for (const role of PremiumModel) {
+      for (const role of Premium2019Model) {
         payload[role] = true
       } 
     }

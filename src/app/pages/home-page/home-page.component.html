@@ -87,7 +87,7 @@
       <div class="row">
 
         <div class="col-xs-12 col-md-6" *ngIf="modelEsencial$ | async as modelEsencial">
-          <epsi-payment-model-panel [model]="modelEsencial"></epsi-payment-model-panel>
+          <epsi-payment-model-panel [disabled]="true" [model]="modelEsencial"></epsi-payment-model-panel>
         </div>
 
         <div class="col-xs-12 col-md-6" *ngIf="modelPremium$ | async as modelPremium">
