@@ -147,7 +147,47 @@ export class PaymentModelPanelComponent implements OnInit {
 
   async loadPaypalButton(model: PaymentModel) {
 
-    this.payment.generatePaypalButton(`paypal-container-${model.id}`, model.amount, async payment => {
+    let request_payload = {
+      coupon: null,
+      coupon_value: null,
+    };
+
+    let isFullCoupon = false;
+
+    // Coupon validation
+    if (this.coupon && this.coupon.length > 5) {
+
+      const discount = await this.afs.collection<Coupon>(Collections.COUPON, ref => ref.where('code', '==', this.coupon))
+        .valueChanges()
+        .pipe(
+          take(1),
+          map(coupons => coupons[0])
+        ).toPromise()
+
+      if (!discount) {
+        this.loading = false
+        return this.toastr.error('El cupón no es válido...')
+      }
+
+      if (discount.used) {
+        this.loading = false
+        return this.toastr.error('El cupón ya ha sido usado...')
+      }
+
+      request_payload.coupon = discount.id
+      request_payload.coupon_value = discount.value / 100
+      isFullCoupon = discount.value >= 100
+
+    }
+
+    if (isFullCoupon) {
+      this.loading = false
+      return this.toastr.error('El cupón es del 100%, no uses PayPal para redimir el cupón.');
+    }
+
+    let amount = request_payload.coupon_value ? model.amount - model.amount * request_payload.coupon_value : model.amount;
+
+    this.payment.generatePaypalButton(`paypal-container-${model.id}`, amount, async payment => {
       console.log(model)
       if (payment.state == 'approved') {
 
