@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { Collections, PaymentModel, HomeLists, ExamTypes, Exam, MoodRate, Daily } from 'src/app/app.models';
+import {
+  Collections,
+  PaymentModel,
+  HomeLists,
+  ExamTypes,
+  Exam,
+  MoodRate,
+  Daily,
+  Premium2019Model
+} from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
@@ -48,6 +57,8 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    /*this.buildModels();*/
     /* this.buildLists() */
 
     this.auth.user$.subscribe(user => {
@@ -152,7 +163,7 @@ export class HomePageComponent implements OnInit {
 
   buildModels() {
 
-    this.afs.doc(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).update({
+    /*this.afs.doc(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).update({
       packs: [
         {quantity: 2, label: '2 Personas', price: 1691},
         {quantity: 3, label: '3 Personas', price: 2136},
@@ -160,24 +171,18 @@ export class HomePageComponent implements OnInit {
         {quantity: 5, label: '5 Personas', price: 3123},
         {quantity: 10, label: '10 Personas', price: 4005},
       ]
-    })
+    })*/
+
+    let premium2019Roles = [];
+
+    for (let role of Premium2019Model) {
+      premium2019Roles.push(role);
+    }
+
+    console.log(premium2019Roles);
 
     this.afs.doc(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).update({
-      /* unlocks: [
-        "isPremium",
-        "isContent",
-        "isChecklist",
-        "isCalendar",
-        "isTopUsers",
-        "isGalleries",
-        "isSimuladores",
-        "isForum",
-        "isStreaming",
-        "isMedia",
-        "isSlides",
-        "isSimulacros",
-        "isFeed"
-      ] */
+      unlocks: premium2019Roles,
       packs: [
         {quantity: 2, label: '2 Personas', price: 10198},
         {quantity: 3, label: '3 Personas', price: 13261},
