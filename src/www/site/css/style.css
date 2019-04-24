@@ -8053,3 +8053,10 @@ svg #airplain {
   font-weight: bolder;
   margin-bottom: 2.5rem;
 }
+
+.flex-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
