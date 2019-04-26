@@ -12,7 +12,7 @@
   </svg>
 </div>
 
-<ngx-smart-modal identifier="moodAddModal">
+<ngx-smart-modal identifier="moodAddModal" #moodAddModal>
   <div class="container">
     <div class="row">
 
@@ -56,6 +56,7 @@
 
       <div class="col-md-12">
         <button class="btn btn-success" [disabled]="!mood.mood && !mood.text" (click)="sendMood()">Enviar</button>
+        <button class="btn btn-danger ml-2" type="button" (click)="moodAddModal.close()">No quiero contestar hoy</button>
       </div>
 
     </div>

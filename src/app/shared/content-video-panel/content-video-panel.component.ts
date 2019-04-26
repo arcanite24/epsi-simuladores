@@ -4,7 +4,7 @@ import { VgAPI } from 'videogular2/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map, combineAll, take } from 'rxjs/operators';
+import {map, combineAll, take, tap} from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -74,10 +74,12 @@ export class ContentVideoPanelComponent implements OnInit {
 
   async preclaseResuelto(uid: string, exam: string) {
     return this.afs.collection(Collections.EXAM_RESULT, ref => ref
-      .where('exam', '==', exam))
+      .where('exam', '==', exam)
+      .where('user', '==', uid))
       .valueChanges()
       .pipe(
         take(1),
+        tap(console.log),
         map(results => results && results.length > 0)
       ).toPromise()
   }

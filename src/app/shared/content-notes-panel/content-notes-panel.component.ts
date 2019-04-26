@@ -17,7 +17,7 @@ export class ContentNotesPanelComponent implements OnInit {
   @Input() public parent_id: string
   @Input() public content_type: string
   @Input() public extra_paylod: any
-  @Input() public title: string = '¿Me dejaré pendiente algo en éste tema?'
+  @Input() public title: string = 'Mis Notas'
 
   public noteForm: FormGroup
   public notes$: Observable<Note[]>
