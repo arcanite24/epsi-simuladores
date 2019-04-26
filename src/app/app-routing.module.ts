@@ -59,6 +59,7 @@ import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-pa
 import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
 import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-results.component";
+import {UserPromediosTableComponent} from "./pages/user-promedios-table/user-promedios-table.component";
 
 const routes: Routes = [
 
@@ -119,6 +120,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/livestreams', component: AdminLivestreamsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags', component: AdminTagsComponent},
   {canActivate: [AuthGuard], path: 'admin/stats', component: AdminStatsComponent},
+  {canActivate: [AuthGuard], path: 'admin/stats/promedios', component: UserPromediosTableComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/payment-models', component: AdminPaymentModelsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags-pool', component: AdminTagsPoolComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/notifications', component: AdminNotificationsComponent},

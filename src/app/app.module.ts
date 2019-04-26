@@ -201,6 +201,7 @@ import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-pa
 import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam-results.component';
 import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-structure/exam-results-tag-structure.component';
+import { UserPromediosTableComponent } from './pages/user-promedios-table/user-promedios-table.component';
 
 @NgModule({
   declarations: [
@@ -364,6 +365,7 @@ import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-stru
     AdminDailyComponent,
     AdminExamResultsComponent,
     ExamResultsTagStructureComponent,
+    UserPromediosTableComponent,
   ],
   imports: [
     BrowserAnimationsModule,
