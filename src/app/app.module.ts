@@ -24,6 +24,7 @@ import { SelectDropDownModule } from 'ngx-select-dropdown'
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import localeEs from '@angular/common/locales/es';
+import { Angular2CsvModule } from 'angular2-csv';
 
 registerLocaleData(localeEs)
 
@@ -410,6 +411,7 @@ import { UserPromediosTableComponent } from './pages/user-promedios-table/user-p
     ScrollingModule,
     ScrollToModule.forRoot(),
     LoadingBarModule,
+    Angular2CsvModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

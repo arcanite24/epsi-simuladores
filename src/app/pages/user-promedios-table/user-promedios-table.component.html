@@ -1,3 +1,16 @@
-<p>
-  user-promedios-table works!
-</p>
+<h4 *ngIf="text">{{text}}</h4>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{header.split('|||')[1]}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of output">
+      <td *ngFor="let cell of getValues(user)">{{cell}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button (click)="exportToCSV()" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>
