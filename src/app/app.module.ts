@@ -203,6 +203,7 @@ import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam-results.component';
 import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-structure/exam-results-tag-structure.component';
 import { UserPromediosTableComponent } from './pages/user-promedios-table/user-promedios-table.component';
+import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questions-average/admin-exams-questions-average.component';
 
 @NgModule({
   declarations: [
@@ -367,6 +368,7 @@ import { UserPromediosTableComponent } from './pages/user-promedios-table/user-p
     AdminExamResultsComponent,
     ExamResultsTagStructureComponent,
     UserPromediosTableComponent,
+    AdminExamsQuestionsAverageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

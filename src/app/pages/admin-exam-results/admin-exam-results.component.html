@@ -7,7 +7,7 @@
           <ul class="list-group m-4">
             <li class="list-group-item" *ngFor="let r of results">
               <a *ngIf="r.exam$ | async as exam else examLoader" [routerLink]="[ '/result', r.id ]">
-                <strong class="mr-2" *ngIf="r.user$ | async as user">{{user.displayName}}</strong>
+                <strong class="mr-2" *ngIf="r.user$ | async as user">{{r.promedio * 100 | number}} | {{user.displayName}}</strong>
                 {{exam.name}} - {{r.date | amCalendar}}
               </a>
               <ng-template #examLoader>

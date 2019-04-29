@@ -7,7 +7,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of output">
+    <tr *ngFor="let user of sortOutput(output)">
       <td *ngFor="let cell of getValues(user)">{{cell}}</td>
     </tr>
   </tbody>

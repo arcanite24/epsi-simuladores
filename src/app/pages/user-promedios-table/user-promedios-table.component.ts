@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from "../../services/data.service";
 import {Collections, Exam, ExamResults, ExamTypes, User} from "../../app.models";
 import {StatsService} from "../../services/stats.service";
+import {sortBy} from 'lodash';
 const { parse } = require('json2csv');
 
 @Component({
@@ -61,9 +62,10 @@ export class UserPromediosTableComponent implements OnInit {
         promedio: '-',
       };
 
-      this.text = 'calculando promedio general: ' + user.displayName
-      const promedio = await this.stats.computeUserAverage(user.uid, false);
-      payload.promedio = promedio.toString();
+      this.text = 'calculando promedio general: ' + user.displayName;
+      let average = 0;
+      /*const promedio = await this.stats.computeUserAverage(user.uid, false);
+      payload.promedio = promedio.toString();*/
 
       for (let exam of exams) {
 
@@ -75,8 +77,10 @@ export class UserPromediosTableComponent implements OnInit {
         const key = `${exam.id}|||${exam.name}`
         if (!this.tempH.includes(key)) this.tempH.push(key)
         payload[key] = result && result.length > 0 ? result[0].promedio * 100 : '-'
+        average += result && result.length > 0 ? result[0].promedio : 0;
       }
 
+      payload.promedio = (average / exams.length * 100).toString();
       this.output.push(payload);
 
     }
@@ -135,6 +139,10 @@ export class UserPromediosTableComponent implements OnInit {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  }
+
+  sortOutput(output: any[]) {
+    return sortBy(output, 'promedio');
   }
 
 }

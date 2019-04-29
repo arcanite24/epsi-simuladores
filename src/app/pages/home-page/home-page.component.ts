@@ -108,12 +108,13 @@ export class HomePageComponent implements OnInit {
     })
   }
 
-  sendMood() {
+  sendMood(mood: number, text: string) {
 
     this.modal.getModal('moodAddModal').close()
 
     this.afs.collection(Collections.MOOD_RATE).add({
-      ...this.mood,
+      text,
+      mood,
       user: this.auth.user.uid,
       date: moment().format('DD-MM-YYYY'),
     })
