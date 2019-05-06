@@ -85,7 +85,7 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
                 ...e,
                 start: new Date(e.start),
                 title: e.content_name,
-                desc: '',
+                desc: eventDoc.desc,
                 date: new Date().toISOString(),
                 tasks: eventDoc.tasks,
                 links: eventDoc.links,
