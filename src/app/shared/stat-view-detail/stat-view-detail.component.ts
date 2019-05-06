@@ -19,6 +19,8 @@ export class StatViewDetailComponent implements OnInit {
   public set view(v: StatView) { this.viewChanged(v) }
   public get view(): StatView { return this._view }
 
+  @Input() public uid: string;
+
   constructor(
     private stats: StatsService,
     private afs: AngularFirestore,
@@ -35,7 +37,7 @@ export class StatViewDetailComponent implements OnInit {
     if (!v) return
 
     if (!v.cache) {
-      const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
+      const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
       /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache}) */
       v.cache = cache
     }
@@ -59,7 +61,7 @@ export class StatViewDetailComponent implements OnInit {
   }
 
   async reloadData(v: StatView) {
-    const cache = await this.stats.computeTimeline(v.includeTags[0], this.auth.user.uid)
+    const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
     v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
     v.cache = cache
     /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */

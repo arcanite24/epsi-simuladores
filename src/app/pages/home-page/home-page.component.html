@@ -16,45 +16,49 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="!selectedMood">
         <h4>¿Cómo te sientes hoy?</h4>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="!selectedMood">
         <ul class="list-group">
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(1, mood.text)">Muy Mal</button>
+            <button class="btn btn-danger" type="button" (click)="sendMood(1, mood.text)">Muy Mal</button>
             <!--<input type="radio" [value]="1" id="mood-1" [(ngModel)]="mood.mood">
             <label class="ml-2" for="mood-1">Muy Mal</label>-->
           </li>
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(2, mood.text)">Mal</button>
+            <button class="btn btn-warning" type="button" (click)="sendMood(2, mood.text)">Mal</button>
             <!--<input type="radio" [value]="2" id="mood-2" [(ngModel)]="mood.mood">
             <label class="ml-2" for="mood-2">Mal</label>-->
           </li>
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(3, mood.text)">Regular</button>
+            <button class="btn btn-secondary btn-orange" type="button" (click)="sendMood(3, mood.text)">Regular</button>
           </li>
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(4, mood.text)">Bien</button>
+            <button class="btn btn-success" type="button" (click)="sendMood(4, mood.text)">Bien</button>
           </li>
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(5, mood.text)">Muy Bien</button>
+            <button class="btn btn-info" type="button" (click)="sendMood(5, mood.text)">Muy Bien</button>
           </li>
           <li class="list-group-item">
-            <button class="btn btn-secondary" type="button" (click)="sendMood(6, mood.text)">Excelente</button>
+            <button class="btn btn-primary" type="button" (click)="sendMood(6, mood.text)">Excelente</button>
           </li>
         </ul>
       </div>
 
-      <div class="col-md-12 form-group mt-3">
+      <div class="col-md-12 form-group mt-3" *ngIf="selectedMood">
         <label for="">¿Por qué te sientes así?</label>
         <textarea [(ngModel)]="mood.text" class="form-control"></textarea>
       </div>
 
       <div class="col-md-12">
+        <button type="button" class="btn btn-primary" (click)="sendFinalMood(selectedMood, mood.text)">Enviar</button>
+      </div>
+
+      <div class="col-md-12" *ngIf="!selectedMood">
         <!--<button class="btn btn-success" [disabled]="!mood.mood && !mood.text" (click)="sendMood()">Enviar</button>-->
-        <button class="btn btn-danger ml-2" type="button" (click)="moodAddModal.close()">No quiero contestar hoy</button>
+        <button class="btn btn-danger ml-2" type="button" (click)="sendMood(-1, mood.text)">No quiero contestar hoy</button>
       </div>
 
     </div>

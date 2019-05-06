@@ -21,7 +21,7 @@
         <h5>Quedaste en el lugar <strong *ngIf="tempPosition">{{tempPosition}}</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
       </div>
 
-      <div class="col-md-12">
+      <!--<div class="col-md-12">
         <ul class="list-group">
           <li class="list-group-item">Promedio por tema</li>
           <li *ngFor="let tag of tags" class="list-group-item">
@@ -32,6 +32,14 @@
             </div>
           </li>
         </ul>
+      </div>-->
+
+      <div class="col-md-12" *ngIf="result$ | async as result">
+        <epsi-exam-results-tag-structure
+          class="w-100"
+          [colors]="exam.colors"
+          *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
+          [result]="result"></epsi-exam-results-tag-structure>
       </div>
 
       <div class="col-md-12 mt-2">
@@ -55,6 +63,12 @@
               <h2 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h2>
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
+
+            <epsi-exam-results-tag-structure
+              class="w-100"
+              [colors]="exam.colors"
+              *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
+              [result]="result"></epsi-exam-results-tag-structure>
 
             <!--<div class="col-md-12" *ngIf="result.exam_type == 'simulacro'">
               <ul class="list-group">
@@ -137,12 +151,6 @@
               <p *ngIf="q.raw.feedback">{{q.raw.feedback}}</p>
               <!-- <pre>{{ q | json }}</pre> -->
             </div>
-
-            <epsi-exam-results-tag-structure
-              class="w-100"
-              [colors]="exam.colors"
-              *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
-              [result]="result"></epsi-exam-results-tag-structure>
 
             <!--<div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
               <ul class="list-group">

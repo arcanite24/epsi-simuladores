@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StatView, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -14,6 +14,8 @@ export class StatUserTimelineComponent implements OnInit {
 
   public views$: Observable<StatView[]>
   public tempView: StatView
+
+  @Input() public uid: string;
 
   constructor(
     private afs: AngularFirestore,

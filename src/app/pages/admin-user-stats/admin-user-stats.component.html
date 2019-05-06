@@ -11,12 +11,12 @@
         <div class="col-xs-12 col-md-6">
           <epsi-stat-user-general-average [uid]="user.uid"></epsi-stat-user-general-average>
           <epsi-stat-user-month-average [uid]="user.uid"></epsi-stat-user-month-average>
-          <epsi-stat-user-timeline></epsi-stat-user-timeline>
-          <epsi-stat-user-tags-average></epsi-stat-user-tags-average>
+          <epsi-stat-user-timeline [uid]="user.uid"></epsi-stat-user-timeline>
+          <epsi-stat-user-tags-average [uid]="user.uid"></epsi-stat-user-tags-average>
         </div>
     
         <div class="col-xs-12 col-md-6">
-          <epsi-stat-user-performance></epsi-stat-user-performance>
+          <epsi-stat-user-performance [user]="user"></epsi-stat-user-performance>
           <epsi-stat-user-structure-panel></epsi-stat-user-structure-panel>
         </div>
 

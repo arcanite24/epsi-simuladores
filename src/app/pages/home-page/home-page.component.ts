@@ -45,7 +45,9 @@ export class HomePageComponent implements OnInit {
   public mood = {
     mood: 1,
     text: ''
-  }
+  };
+
+  public selectedMood: number;
 
   public daily: Daily
 
@@ -110,15 +112,28 @@ export class HomePageComponent implements OnInit {
 
   sendMood(mood: number, text: string) {
 
-    this.modal.getModal('moodAddModal').close()
+    if (mood === -1) {
+      this.afs.collection(Collections.MOOD_RATE).add({
+        text,
+        mood,
+        user: this.auth.user.uid,
+        date: moment().format('DD-MM-YYYY'),
+      })
+      this.modal.getModal('moodAddModal').close()
+    } else {
+      this.selectedMood = mood;
+    }
 
+  }
+
+  async sendFinalMood(mood: number, text: string) {
     this.afs.collection(Collections.MOOD_RATE).add({
       text,
       mood,
       user: this.auth.user.uid,
       date: moment().format('DD-MM-YYYY'),
     })
-
+    this.modal.getModal('moodAddModal').close()
   }
 
   async buildLists() {

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { StatView, Collections } from 'src/app/app.models';
+import {StatView, Collections, User} from 'src/app/app.models';
 import { map } from 'rxjs/operators';
 import { DataService } from 'src/app/services/data.service';
 import { StatsService } from 'src/app/services/stats.service';
@@ -18,6 +18,8 @@ export class StatUserPerformanceComponent implements OnInit {
   public view: any[] = undefined
   public results: {name: string, value: number}[] = []
 
+  @Input() public user: User
+
   constructor(
     private data: DataService,
     private stats: StatsService,
@@ -31,7 +33,7 @@ export class StatUserPerformanceComponent implements OnInit {
   async loadInfo() {
 
     const views = await this.data.getCollectionQuery<StatView>(Collections.STAT_VIEW, ref => ref.where('isTimeline', '==', false))
-    const user = this.auth.auth.currentUser
+    const user = this.user ? this.user : this.auth.auth.currentUser;
 
     let results = []
 

@@ -81,8 +81,9 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
 
             setTimeout(() => {
               this.events.push({
-                id: `smart-calendar-event-${e.content}`,
+                // id: `smart-calendar-event-${e.content}`,
                 ...e,
+                id: eventDoc.id,
                 start: new Date(e.start),
                 title: e.content_name,
                 desc: eventDoc.desc,
