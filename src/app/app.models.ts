@@ -463,6 +463,7 @@ export interface Thread {
   date: string
   cat_id: string
   cat_name: string
+  user?: string;
 }
 
 export interface ThreadResponse {
@@ -572,7 +573,9 @@ export interface Notification {
   text: string
   date: Date
   isGlobal: boolean
-  user?: string
+  user?: string,
+  link_name: string,
+  link_href: string,
 }
 
 export interface NotificationResponse {

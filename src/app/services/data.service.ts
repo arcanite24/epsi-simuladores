@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
-import {Collections, User} from "../app.models";
+import {Collections, Roles, User} from "../app.models";
 
 @Injectable({
   providedIn: 'root'
@@ -61,6 +61,13 @@ export class DataService {
     if (!user) return false
 
     return this.afs.collection(Collections.USER).doc(user.uid).update(payload)
+
+  }
+
+  async getAllAdmins(): Promise<string[]> {
+
+    const users = await this.getCollectionQuery<User>(Collections.USER, ref => ref.where(Roles.Admin, '==', true))
+    return users.map(u => u.uid);
 
   }
 

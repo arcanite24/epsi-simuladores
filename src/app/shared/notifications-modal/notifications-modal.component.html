@@ -11,6 +11,7 @@
           <h4>{{noti.title}}</h4>
           <p>{{noti.text}}</p>
           <!-- <small>{{noti.date | amCalendar}}</small> -->
+          <a [routerLink]="noti.link_href" *ngIf="noti.link_href">{{noti.link_name}}</a>
         </div>
       </div>
 
