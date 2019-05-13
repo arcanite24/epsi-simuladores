@@ -17,7 +17,7 @@ import { sortBy } from 'lodash'
 })
 export class SlideEditComponent implements OnInit {
 
-  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=vK4JtRBmoCG8AA7Z'
+  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=91QuqcR2zZvneuoz'
   
   private _slide: Slide
 

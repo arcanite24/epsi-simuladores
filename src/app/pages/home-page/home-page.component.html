@@ -52,7 +52,7 @@
         <textarea [(ngModel)]="mood.text" class="form-control"></textarea>
       </div>
 
-      <div class="col-md-12">
+      <div class="col-md-12" *ngIf="selectedMood">
         <button type="button" class="btn btn-primary" (click)="sendFinalMood(selectedMood, mood.text)">Enviar</button>
       </div>
 

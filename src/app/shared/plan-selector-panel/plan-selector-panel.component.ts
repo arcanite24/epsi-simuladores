@@ -143,6 +143,9 @@ export class PlanSelectorPanelComponent implements OnInit {
     this.loadingText = 'Calendario completado'
     this.loadingBar.complete()
 
+    // TODO: Temp fix for the calendar event loading bug
+    location.reload();
+
   }
 
   async getFormattedContent(): Promise<Content[]> {
