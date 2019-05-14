@@ -30,6 +30,8 @@ export class SlideEditComponent implements OnInit {
   public cats$: Observable<SlideCategory[]> = this.afs.collection<SlideCategory>(Collections.SLIDE_CATEGORY).valueChanges()
   public l: boolean = false
 
+  public lastIndex: number = -1;
+
   constructor(
     private afs: AngularFirestore,
     private fb: FormBuilder,
@@ -47,7 +49,8 @@ export class SlideEditComponent implements OnInit {
       desc: ['', Validators.required],
       cat_id: [null],
       cat_name: [null],
-      images: []
+      images: [[]],
+      images_order: [[]],
     })
 
   }
@@ -59,7 +62,7 @@ export class SlideEditComponent implements OnInit {
 
   fileUploaded(url: string, images: string[] = []) {
     this.editForm.patchValue({
-      images: [...images, url]
+      images: [...images, url],
     })
   }
 
