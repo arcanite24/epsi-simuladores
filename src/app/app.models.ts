@@ -368,7 +368,6 @@ export interface Slide {
   cat_name: string
   cat_id: string
   images: string[]
-  images: {url: string, order: number}[],
 }
 
 export interface SlideCategory {
