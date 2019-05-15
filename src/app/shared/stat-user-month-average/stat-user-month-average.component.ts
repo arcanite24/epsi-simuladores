@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+  import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { Collections, UserStat, ExamResults } from 'src/app/app.models';
@@ -51,6 +51,7 @@ export class StatUserMonthAverageComponent implements OnInit {
       this.calculateAverage(uid)
     } else {
       this.promedio = stat.data().monthAverage
+      this.calculateAverage(uid);
     }
 
   }

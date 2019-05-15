@@ -40,6 +40,7 @@ export class StatViewDetailComponent implements OnInit {
       const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
       /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache}) */
       v.cache = cache
+      console.log('cache', v.cache)
     }
 
     if (!v.cache.promedio) {

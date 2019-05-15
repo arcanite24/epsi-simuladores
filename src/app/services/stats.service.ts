@@ -106,13 +106,13 @@ export class StatsService {
 
     const grouped = groupBy(results, r => r.date.substr(0, 7))
 
-    this.months.forEach(m => {
+    this.months.forEach(async m => {
 
       const key = `${year}-${m.key}`
 
       cache.timeline[m.label] = {
         mes: m,
-        promedio: grouped[key] ? this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
+        promedio: grouped[key] ? await this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
       }
       
     })
