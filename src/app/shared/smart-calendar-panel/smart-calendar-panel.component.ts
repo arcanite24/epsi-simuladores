@@ -25,6 +25,7 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
 
   public events$: Observable<Event[]>
   public events: Event[] = []
+  public loadedEvents: string[] = [];
 
   private userSub: Subscription
 
@@ -74,7 +75,7 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
         /*let formatedEvents = []*/
 
         for (let e of events) {
-          if (e.event) {
+          if (e.event && !this.loadedEvents.includes(e.event)) {
 
             const eventDoc = await this.data.getDocAlt<Event>(Collections.EVENT, e.event);
             console.log('loaded event', eventDoc.title);
@@ -93,6 +94,7 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
                 color: user.completedTasks.indexOf(`smart-calendar-event-${e.content}`) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
               })
               this.refresh.next();
+              this.loadedEvents.push(e.event);
             }, 100)
 
           }
