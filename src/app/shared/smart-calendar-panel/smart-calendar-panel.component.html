@@ -1,5 +1,5 @@
 <ngx-smart-modal identifier="eventsModal" customClass="max-w-50">
-  <epsi-calendar-events-modal [events]="dayEvents"></epsi-calendar-events-modal>
+  <epsi-calendar-events-modal (checkChanged)="eventCheckChanged($event)" [events]="dayEvents"></epsi-calendar-events-modal>
 </ngx-smart-modal>
 
 <ngx-smart-modal identifier="removeModal" customClass="max-w-50" #removeModal>

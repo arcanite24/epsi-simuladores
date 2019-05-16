@@ -68,17 +68,17 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
         if (!user.customCalendar) return
 
         const events = flattenDeep(Object.values(user.customCalendar)) as any[]
-        console.log(events)
 
-        if (!user.completedTasks) user.completedTasks = []
+        if (!user.completedTasks) user.completedTasks = [];
+        this.completedTasks = user.completedTasks;
 
         /*let formatedEvents = []*/
+        if (this.events.length > 0) return;
 
         for (let e of events) {
           if (e.event && !this.loadedEvents.includes(e.event)) {
 
             const eventDoc = await this.data.getDocAlt<Event>(Collections.EVENT, e.event);
-            console.log('loaded event', eventDoc.title);
 
             setTimeout(() => {
               this.events.push({
@@ -91,7 +91,7 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
                 date: new Date().toISOString(),
                 tasks: eventDoc.tasks,
                 links: eventDoc.links,
-                color: user.completedTasks.indexOf(`smart-calendar-event-${e.content}`) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
+                color: this.completedTasks.indexOf(eventDoc.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
               })
               this.refresh.next();
               this.loadedEvents.push(e.event);
@@ -130,6 +130,13 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
 
   removeCalendar() {
     this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({ customCalendar: null })
+  }
+
+  eventCheckChanged(e: {id: string, added: boolean}) {
+    this.events = this.events.map(event => event.id === e.id ? ({
+      ...event,
+      color: this.completedTasks.indexOf(event.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
+    }) : event);
   }
 
 }
