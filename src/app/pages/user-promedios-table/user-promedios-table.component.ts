@@ -82,7 +82,7 @@ export class UserPromediosTableComponent implements OnInit {
 
         /*const promedio_del_tag = Math.random() * 100;*/
         const promedio_del_tag = await this.stats.computeUserTagAverage(tag.toString(), user.uid);
-        
+
         payload[key] = promedio_del_tag;
         average += promedio_del_tag;
 
