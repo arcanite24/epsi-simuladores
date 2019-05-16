@@ -134,6 +134,7 @@ export class UserPromediosTableComponent implements OnInit {
 
         this.text = 'calculando ' + exam.name + ' para ' + user.displayName
         const result = await this.data.getCollectionQuery<ExamResults>(Collections.EXAM_RESULT, ref => ref
+          .orderBy('date', 'asc')
           .where('exam', '==', exam.id)
           .where('user', '==', user.uid))
 
