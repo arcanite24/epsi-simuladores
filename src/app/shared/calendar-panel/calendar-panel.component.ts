@@ -35,7 +35,9 @@ export class CalendarPanelComponent implements OnInit {
           color: this.completedTasks.indexOf(e.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
         }) as Event) as Event[]
       })
-    )
+    );
+
+  public events: Event[] = [];
 
   constructor(
     private afs: AngularFirestore,
@@ -46,12 +48,18 @@ export class CalendarPanelComponent implements OnInit {
   get mesLabel(): string { return moment(this.viewDate).format('MMMM - YYYY') }
 
   ngOnInit() {
+
     this.auth.user$.subscribe(user => {
       if (user) {
         this.afs.collection(Collections.USER).doc<User>(user.uid).valueChanges().subscribe(u => this.completedTasks = u.completedTasks ? u.completedTasks : [])
         /* if (!this.events$) this.loadEvents(user.uid) */
       }
     })
+
+    this.events$.subscribe(events => {
+      if (this.events.length < 1) this.events = events;
+    });
+
   }
 
   dayClicked(day: any) {
@@ -66,6 +74,7 @@ export class CalendarPanelComponent implements OnInit {
         map(user => {
           if (!user.customCalendar) return []
           const events = flattenDeep(Object.values(user.customCalendar))
+          console.log('events', events);
           return events.map((e: any) => ({
             id: 'TESSSST',
             ...e,
@@ -79,6 +88,14 @@ export class CalendarPanelComponent implements OnInit {
           })) as Event[]
         })
       )
+  }
+
+  eventCheckChanged(e: {id: string, added: boolean}) {
+    console.log(this.completedTasks)
+    this.events = this.events.map(event => event.id === e.id ? ({
+      ...event,
+      color: this.completedTasks.indexOf(event.id) >= 0 ? {primary: '#5e4b8b', secondary: '#5e4b8b'} : {primary: '#CF4747', secondary: '#CF4747'}
+    }) : event);
   }
 
 }
