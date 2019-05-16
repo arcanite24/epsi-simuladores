@@ -110,7 +110,7 @@ export class AdminUsersPageComponent implements OnInit {
   async exportPresenciales() {
 
     const _tags = await this.stats.getAllTagPresenciales();
-    const tags = uniq(flattenDeep(flattenDeep(_tags).map((q: Question) => q.tags)));
+    const tags = uniq(flattenDeep(flattenDeep(_tags).map((q: any) => q.tags)));
     return console.log(tags);
 
     const Json2csvParser = json2csv.Parser;
