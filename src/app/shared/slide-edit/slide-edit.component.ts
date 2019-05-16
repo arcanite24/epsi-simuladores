@@ -112,6 +112,8 @@ export class SlideEditComponent implements OnInit {
     const file = files.item(0)
     if (!file.name.includes('.pptx')) return this.toastr.error('El archivo debe ser de tipo .pptx')
     this.l = true
+
+    console.log(files);
     
     try {
 
