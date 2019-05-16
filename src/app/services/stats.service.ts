@@ -4,7 +4,7 @@ import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Quest
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
-import { flattenDeep } from 'lodash'
+import { flattenDeep, uniq } from 'lodash'
 import moment from 'moment'
 import { averageMultiplier } from '../app.config';
 import { Observable } from 'rxjs';
@@ -248,6 +248,14 @@ export class StatsService {
       map(tags => tags.map(t => t.value) as string[]),
       take(1)
     ).toPromise()
+  }
+
+  async getAllTagPresenciales() {
+
+    const exams = await this.data.getCollectionQuery<Exam>(Collections.EXAM, ref => ref.where('isPresencial', '==', true));
+    const _tags = exams.map(e => e.questions);
+    return uniq(flattenDeep(flattenDeep(_tags).map((q: Question) => q.tags)));
+
   }
 
   // Optimization Helpers

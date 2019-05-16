@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core'
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models'
 import json2csv from 'json2csv'
 import { AngularFirestore } from '@angular/fire/firestore'
-import { Collections, User, Roles, MoodRate } from 'src/app/app.models'
+import {Collections, User, Roles, MoodRate, Question} from 'src/app/app.models'
 import { take } from 'rxjs/operators'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
+import {StatsService} from "../../services/stats.service";
+import { flattenDeep, uniq } from 'lodash';
+import {from, of} from "rxjs";
 
 @Component({
   selector: 'epsi-admin-users-page',
@@ -34,6 +37,7 @@ export class AdminUsersPageComponent implements OnInit {
 
   public config: CrudTableConfig<User> = {
     collection: Collections.USER,
+    dataSource: from(this.data.getCollectionAlt<User>(Collections.USER)),
     disableAdd: true,
     pk: 'uid',
     fullEdit: true,
@@ -96,10 +100,29 @@ export class AdminUsersPageComponent implements OnInit {
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
     private router: Router,
-    private data: DataService
+    private data: DataService,
+    private stats: StatsService,
   ) { }
 
   ngOnInit() {
+  }
+
+  async exportPresenciales() {
+
+    const _tags = await this.stats.getAllTagPresenciales();
+    const tags = uniq(flattenDeep(flattenDeep(_tags).map((q: Question) => q.tags)));
+    return console.log(tags);
+
+    const Json2csvParser = json2csv.Parser;
+    const parser = new Json2csvParser({ fields: this.fields });
+
+    const users = await this.afs.collection<User>(Collections.USER, ref => ref
+      .where(Roles.Presencial, '==', true))
+      .valueChanges()
+      .pipe(
+        take(1)
+      ).toPromise();
+
   }
 
   async exportUsers() {

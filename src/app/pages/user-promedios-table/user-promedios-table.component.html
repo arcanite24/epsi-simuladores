@@ -13,4 +13,5 @@
   </tbody>
 </table>
 
-<button (click)="exportToCSV()" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>
+<button (click)="exportToCSV()" *ngIf="mode === 'default'" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>
+<button (click)="exportToCSV()" *ngIf="mode === 'presenciales'" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>

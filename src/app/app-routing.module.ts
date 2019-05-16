@@ -121,7 +121,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/livestreams', component: AdminLivestreamsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags', component: AdminTagsComponent},
   {canActivate: [AuthGuard], path: 'admin/stats', component: AdminStatsComponent},
-  {canActivate: [AuthGuard], path: 'admin/stats/promedios', component: UserPromediosTableComponent},
+  {canActivate: [AuthGuard], path: 'admin/stats/promedios/:mode', component: UserPromediosTableComponent},
   {canActivate: [AuthGuard], path: 'admin/stats/exam-questions/:id', component: AdminExamsQuestionsAverageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/payment-models', component: AdminPaymentModelsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags-pool', component: AdminTagsPoolComponent},

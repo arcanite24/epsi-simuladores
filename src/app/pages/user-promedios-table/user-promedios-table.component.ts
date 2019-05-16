@@ -3,6 +3,8 @@ import {DataService} from "../../services/data.service";
 import {Collections, Exam, ExamResults, ExamTypes, User} from "../../app.models";
 import {StatsService} from "../../services/stats.service";
 import {sortBy} from 'lodash';
+import {ActivatedRoute} from "@angular/router";
+import {delay} from "rxjs/operators";
 const { parse } = require('json2csv');
 
 @Component({
@@ -11,6 +13,8 @@ const { parse } = require('json2csv');
   styleUrls: ['./user-promedios-table.component.scss']
 })
 export class UserPromediosTableComponent implements OnInit {
+
+  public mode: string = this.route.snapshot.paramMap.get('mode');
 
   public text = '';
   public output = [];
@@ -36,10 +40,69 @@ export class UserPromediosTableComponent implements OnInit {
   constructor(
     private data: DataService,
     private stats: StatsService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.loadTable();
+
+    if (this.mode === 'default') this.loadTable();
+    if (this.mode === 'presenciales') this.loadTablePresenciales();
+
+  }
+
+  async loadTablePresenciales() {
+
+    const start = Date.now();
+
+    const tags = await this.stats.getAllTagPresenciales();
+    const _users = await this.data.getCollectionAlt<User>(Collections.USER)
+    const users = _users.filter((u: User) => u.isPresencial || u.is3602019);
+
+    const generales = []
+
+    for (let user of users) {
+
+      let payload = {
+        id: user.uid,
+        name: user.displayName,
+        promedio: '-',
+      };
+
+      this.text = 'calculando promedio general: ' + user.displayName;
+      let average = 0;
+      /*const promedio = await this.stats.computeUserAverage(user.uid, false);
+      payload.promedio = promedio.toString();*/
+
+      for (let tag of tags) {
+
+        this.text = 'calculando ' + tag + ' para ' + user.displayName
+
+        const key = `---|||${tag}`
+        if (!this.tempH.includes(key)) this.tempH.push(key)
+        const promedio_del_tag = Math.random() * 100;
+        payload[key] = promedio_del_tag;
+        average += promedio_del_tag;
+
+        await this.delay(Math.random() * 1000);
+
+      }
+
+      payload.promedio = (average / tags.length).toString();
+      this.output.push(payload);
+
+    }
+
+    /*console.log(generales)*/
+    this.text = `completado en: ${(Date.now() - start) / 1000 / 60} minutos;`
+
+  }
+
+  private delay(duration: number) {
+    return new Promise(function(resolve, reject){
+      setTimeout(function(){
+        resolve();
+      }, duration)
+    });
   }
 
   async loadTable() {
@@ -112,7 +175,7 @@ export class UserPromediosTableComponent implements OnInit {
 
     console.log(csv);
     const uri = this.makeTextFile(csv);
-    this.downloadURI(uri, 'user-promedios-table.csv');
+    this.downloadURI(uri, this.mode === 'default' ? 'user-promedios-table.csv': 'presenciales-tags-table.csv');
 
   }
 
