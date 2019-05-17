@@ -36,35 +36,37 @@ export class StatViewDetailComponent implements OnInit {
     this._view = v
     if (!v) return
 
-    if (!v.cache) {
-      const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
-      /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache}) */
-      v.cache = cache
-      console.log('cache', v.cache)
-    }
+    /*console.log(v, this.uid);
+    const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
+    /!* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache}) *!/
+    v.cache = cache
+    console.log('cache', v.cache)
 
     if (!v.cache.promedio) {
       v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
-      /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
-    }
+      /!* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) *!/
+    }*/
 
     this.reloadData(v)
+
+  }
+
+  async reloadData(v: StatView) {
+    const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
+    v.cache = cache
+    v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
+    this._view = v;
 
     this.chartData = [
       {
         name: 'Promedio',
         series: v.cache.timeline.map(m => ({
           name: m.mes.label,
-          value: m.promedio
+          value: m.promedio * 100
         }))
       }
     ]
-  }
 
-  async reloadData(v: StatView) {
-    const cache = await this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)
-    v.cache.promedio = v.cache.timeline.map((m: any) => m.promedio).reduce((a, b) => a + b, 0)
-    v.cache = cache
     /* await this.afs.doc(`${Collections.STAT_VIEW}/${v.id}`).update({cache: v.cache}) */
   }
 

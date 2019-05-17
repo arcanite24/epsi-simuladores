@@ -5,7 +5,7 @@ import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 import { flattenDeep, uniq } from 'lodash'
-import moment from 'moment'
+import moment, {months} from 'moment'
 import { averageMultiplier } from '../app.config';
 import { Observable } from 'rxjs';
 import { DataService } from './data.service';
@@ -104,25 +104,34 @@ export class StatsService {
       .pipe(take(1))
       .toPromise()
 
+    console.log('results timeline:', tag, results);
+
     const grouped = groupBy(results, r => r.date.substr(0, 7))
 
-    this.months.forEach(async m => {
+    console.log('grouped timeline:', tag, grouped);
 
+    for (const m of this.months) {
       const key = `${year}-${m.key}`
 
       cache.timeline[m.label] = {
         mes: m,
         promedio: grouped[key] ? await this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
       }
-      
-    })
+
+      console.log('month', m, cache.timeline[m.label])
+    }
+
+    console.log('timeline', cache.timeline)
 
     cache.total = results.length
-
-    return {
+    const final = {
       total: cache.total,
       timeline: sortBy(cache.timeline, (m: any) => m.mes.key)
-    }
+    };
+
+    console.log(final)
+
+    return final;
 
   }
 
