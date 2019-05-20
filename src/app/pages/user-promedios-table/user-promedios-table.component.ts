@@ -37,6 +37,11 @@ export class UserPromediosTableComponent implements OnInit {
     keys: [],
   };
 
+  public filter = {
+    start: null,
+    end: null,
+  };z
+
   constructor(
     private data: DataService,
     private stats: StatsService,
@@ -46,11 +51,11 @@ export class UserPromediosTableComponent implements OnInit {
   ngOnInit() {
 
     if (this.mode === 'default') this.loadTable();
-    if (this.mode === 'presenciales') this.loadTablePresenciales();
+    /*if (this.mode === 'presenciales') this.loadTablePresenciales();*/
 
   }
 
-  async loadTablePresenciales() {
+  async loadTablePresenciales(date_start?: string, date_end?: string) {
 
     const start = Date.now();
 
@@ -81,12 +86,12 @@ export class UserPromediosTableComponent implements OnInit {
         if (!this.tempH.includes(key)) this.tempH.push(key)
 
         /*const promedio_del_tag = Math.random() * 100;*/
-        const promedio_del_tag = await this.stats.computeUserTagAverage(tag.toString(), user.uid);
+        const promedio_del_tag = await this.stats.computeUserTagAverage(tag.toString(), user.uid, date_start, date_end);
 
         payload[key] = promedio_del_tag;
         average += promedio_del_tag;
 
-        await this.delay(Math.random() * 1000);
+        /*await this.delay(Math.random() * 1000);*/
 
       }
 

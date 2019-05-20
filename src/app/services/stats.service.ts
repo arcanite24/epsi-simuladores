@@ -149,7 +149,7 @@ export class StatsService {
 
   }
 
-  async computeUserTagAverage(tag: string, uid: string): Promise<number> {
+  async computeUserTagAverage(tag: string, uid: string, start?: string, end?: string): Promise<number> {
 
     if (!tag) return 0
     if (!uid) return 0
@@ -159,11 +159,18 @@ export class StatsService {
     .valueChanges()
     .pipe(
       map(results => results.map(r => ({
-        ...r, 
+        ...r,
         tags: r.tags ? r.tags.map((tag: any) => {
           return tag ? typeof tag === 'object' ? tag.text : tag : null
         }).filter(t => t) : []
       }))),
+      map(results => {
+        if (start && end) {
+          return results.filter(r => moment(r.date).isSameOrAfter(start) && moment(r.date).isSameOrBefore(end));
+        } else {
+          return results;
+        }
+      }),
       take(1),
     ).toPromise()
 

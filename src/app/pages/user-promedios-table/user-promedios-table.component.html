@@ -15,3 +15,16 @@
 
 <button (click)="exportToCSV()" *ngIf="mode === 'default'" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>
 <button (click)="exportToCSV()" *ngIf="mode === 'presenciales'" class="btn btn-primary">Descargar CSV (Esperar a que esté completado)</button>
+
+<div class="row" *ngIf="mode === 'presenciales'">
+  <div class="col-md-12 form-group">
+    <input type="datetime-local" class="form-control" placeholder="Fecha Inicio" [(ngModel)]="filter.start">
+  </div>
+  <div class="col-md-12 form-group">
+    <input type="datetime-local" class="form-control" placeholder="Fecha Fin" [(ngModel)]="filter.end">
+  </div>
+  <div class="col-md-12">
+    <button class="btn btn-primary mr-2" (click)="loadTablePresenciales(filter.start, filter.end)">Filtrar por Fecha</button>
+    <button class="btn btn-primary mr-2" (click)="loadTablePresenciales()">Generar sin Fecha</button>
+  </div>
+</div>
