@@ -1,0 +1,14 @@
+<epsi-panel title="Materias">
+  <div class="contanier-fluid">
+    <div class="row">
+
+      <div
+        (click)="openMateria(materia)"
+        class="col-xs-12 col-sm-4 col-md-3"
+        *ngFor="let materia of materias$ | async">
+        <epsi-materia-item [materia]="materia"></epsi-materia-item>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>

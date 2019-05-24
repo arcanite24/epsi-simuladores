@@ -10,6 +10,13 @@ export const ContentTypes: string[] = [
   'submtema'
 ];
 
+export enum ContentTypesEnum {
+  Materia = 'materia',
+  Bloque = 'bloque',
+  Tema = 'tema',
+  Subtema ='submtema'
+}
+
 export enum HomeLists {
   SimuladoresList = 'simuladores-list',
   SimulacrosList = 'simulacros-list',
@@ -71,6 +78,7 @@ export enum Collections {
   TUTORIAL = 'tutorial',
   DAILY = 'daily-noti',
   DAILY_REGISTER = 'daily-register',
+  HelpRequest = 'help-request',
 }
 
 export enum PaymentStatus {

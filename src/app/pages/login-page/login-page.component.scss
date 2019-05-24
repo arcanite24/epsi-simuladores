@@ -2,7 +2,8 @@
 
 .login-container {
   height: 100vh;
-  background: url('/assets/login-bg.png');
+  /* background: url('/assets/login-bg.png'); */
+  background-color: #0F7CFF;
   background-size: cover;
   overflow-y: auto;
 }
@@ -72,7 +73,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-  
+
   .btn-social {
     font-size: 0.75rem !important;
   }

@@ -10,7 +10,7 @@
 
 <div class="epsi-panel">
 
-  <small class="ml-2" *ngIf="!showContent && !toggleText">Dar click para ver sección</small>
+  <!-- <small class="ml-2" *ngIf="!showContent && !toggleText">Dar click para ver sección</small> -->
 
   <div class="epsi-panel-title manita flex flex-row flex-start" *ngIf="title">
     <img [src]="img" *ngIf="img" (click)="showContent = !showContent">
@@ -25,9 +25,9 @@
 
   <small class="ml-2 text-danger" *ngIf="!showContent && toggleText">{{toggleText}}</small>
 
-  <div 
-    class="epsi-panel-content" 
-    *ngIf="showContent" 
+  <div
+    class="epsi-panel-content"
+    *ngIf="showContent"
     [ngStyle]="{overflowY: height ? 'auto' : null, height: height}"
     [ngClass]="{'blur-panel': blur}">
     <ng-content></ng-content>

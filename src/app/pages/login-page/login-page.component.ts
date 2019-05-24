@@ -1,3 +1,5 @@
+import { Collections } from 'src/app/app.models';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -21,12 +23,19 @@ export class LoginPageComponent implements OnInit {
 
   public hideLoader: boolean = false
 
+  public helpForm = {
+    name: '',
+    email: '',
+    text: '',
+  };
+
   constructor(
     private fb: FormBuilder,
     private afAuth: AngularFireAuth,
     public auth: AuthService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
@@ -101,7 +110,7 @@ export class LoginPageComponent implements OnInit {
           photoURL: _user.photoURL,
           uid: _user.uid,
         })
-        
+
         this.toastr.success('Tu cuente se acaba de crear correctamente.')
         this.mode = 'login'
         this.registerForm.reset()
@@ -112,7 +121,7 @@ export class LoginPageComponent implements OnInit {
       }
 
     } else {
-      this.toastr.error('Por favor ingresa información válida...') 
+      this.toastr.error('Por favor ingresa información válida...')
     }
 
   }
@@ -149,6 +158,22 @@ export class LoginPageComponent implements OnInit {
       console.log(error)
       this.toastr.error('Algo ocurrió al iniciar sesión con tu cuenta de Facebook. Contacta con un administrador.')
     }
+  }
+
+  async sendHelpRequest() {
+
+    try {
+      await this.afs.collection(Collections.HelpRequest).add(this.helpForm);
+      this.toastr.success('Gracias por enviar tu información, a la brevedad nos pondremos en contacto contigo.');
+      this.helpForm = {
+        name: '',
+        email: '',
+        text: '',
+      };
+    } catch (error) {
+      this.toastr.error('Oops, algo ocurrió al enviar tu información, intentalo más tarde');
+    }
+
   }
 
 }

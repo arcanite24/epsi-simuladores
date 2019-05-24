@@ -4,8 +4,8 @@
 
 <div class="epsi-navbar flex flex-row flex-start align-center flex-wrap" [hidden]="hideNavbar">
 
-  <img src="assets/zamnademy/logo.png" alt="2Guía">
-  <span (click)="router.navigate(['/home'])"><strong>2</strong>Guía</span>
+  <img style="width: 128px" src="assets/logo-white.svg" alt="2Guía" (click)="router.navigate(['/home'])">
+  <!-- <span (click)="router.navigate(['/home'])"><strong>2</strong>Guía</span> -->
   <!--<div class="ml-2 navbar-timer" [innerHTML]="timerLabel"></div>-->
 
   <div class="navbar-user-info flex flex-row flex-center flex-wrap" *ngIf="auth.loggedIn">

@@ -62,7 +62,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.router.navigate(['/exam/demo', 'PX8Jnk9nY4f1brnfhYCd']);
 
     /*this.buildModels();*/
     /* this.buildLists() */
