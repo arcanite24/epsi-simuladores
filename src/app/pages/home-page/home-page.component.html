@@ -117,11 +117,11 @@
       <!-- Programa Panel Alt -->
       <epsi-programa-panel-alt *ngIf="auth.isPrograma"></epsi-programa-panel-alt>
 
-      <!-- Programa Panel --> 
+      <!-- Programa Panel -->
       <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel *ngIf="(auth.isCalendar || auth.isPresencial || auth.isEsencial360 || auth.isPremium360) && !auth.isAdmin"></epsi-calendar-panel>
+      <!-- <epsi-calendar-panel *ngIf="(auth.isCalendar || auth.isPresencial || auth.isEsencial360 || auth.isPremium360) && !auth.isAdmin"></epsi-calendar-panel>
       <epsi-smart-calendar-panel *ngIf="(auth.isAdmin || auth.isSmartCalendar) && !auth.user.noCalendar"></epsi-smart-calendar-panel>
       <epsi-panel *ngIf="auth.user && auth.user.noCalendar">
         <div class="container">
@@ -131,13 +131,13 @@
             </div>
           </div>
         </div>
-      </epsi-panel>
+      </epsi-panel> -->
 
       <!-- Content Panel -->
-      <epsi-content-panel *ngIf="auth.isAdmin"></epsi-content-panel>
+      <!-- <epsi-content-panel *ngIf="auth.isAdmin"></epsi-content-panel> -->
 
       <!-- Zona ENARM Panel -->
-      <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zona-enarm-panel>
+      <!-- <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zona-enarm-panel> -->
 
     </div>
 
@@ -209,6 +209,6 @@
       <epsi-feed-panel></epsi-feed-panel>
     </div>
 
-  </div>  
-  
+  </div>
+
 </div>

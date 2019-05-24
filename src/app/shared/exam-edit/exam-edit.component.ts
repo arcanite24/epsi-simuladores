@@ -68,7 +68,8 @@ export class ExamEditComponent implements OnInit {
       isPresencial: false,
       extraTags: null,
       tags_structure: [],
-      colors: []
+      colors: [],
+      completeProfile: [false],
     })
 
   }

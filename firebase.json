@@ -7,17 +7,11 @@
     "source": "functions"
   },
   "hosting": {
-    "public": "dist/epsi-simuladores",
+    "public": "public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
     ]
   }
 }

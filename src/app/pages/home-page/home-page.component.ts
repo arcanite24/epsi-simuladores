@@ -16,14 +16,15 @@ import { take } from 'rxjs/operators';
 import { trigger, transition, style, animate, state, keyframes } from '@angular/animations';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { DataService } from 'src/app/services/data.service';
-import moment from 'moment'
+import moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss'],
   animations: [
-    trigger('animateItem', [      
+    trigger('animateItem', [
       transition(':enter', [
         style({ opacity: 1 })
       ]),
@@ -39,8 +40,8 @@ import moment from 'moment'
 })
 export class HomePageComponent implements OnInit {
 
-  public modelEsencial$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).valueChanges()
-  public modelPremium$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).valueChanges()
+  public modelEsencial$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).valueChanges();
+  public modelPremium$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).valueChanges();
 
   public mood = {
     mood: 1,
@@ -49,49 +50,52 @@ export class HomePageComponent implements OnInit {
 
   public selectedMood: number;
 
-  public daily: Daily
+  public daily: Daily;
 
   constructor(
     public auth: AuthService,
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
-    private data: DataService
+    private data: DataService,
+    private router: Router
   ) { }
 
   ngOnInit() {
 
+    this.router.navigate(['/exam/demo', 'PX8Jnk9nY4f1brnfhYCd']);
+
     /*this.buildModels();*/
     /* this.buildLists() */
 
-    this.auth.user$.subscribe(user => {
+    /* this.auth.user$.subscribe(user => {
       if (user) {
         this.loadMoodRates(user.uid)
       }
-    })
+    }) */
 
   }
 
   async loadMoodRates(uid: string) {
 
-    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', uid))
-    const dailyRegisters = await this.data.getCollectionQuery<MoodRate>(Collections.DAILY_REGISTER, ref => ref.where('user', '==', uid))
-    const today = moment().format('DD-MM-YYYY')
-    const canOpen = rates.filter(r => r.date == today).length <= 0
-    const canOpenDaily = rates.filter(r => r.date == today).length <= 0
+    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', uid));
+    const dailyRegisters = await this.data.getCollectionQuery<MoodRate>(Collections.DAILY_REGISTER, ref => ref.where('user', '==', uid));
+    const today = moment().format('DD-MM-YYYY');
+    const canOpen = rates.filter(r => r.date == today).length <= 0;
+    const canOpenDaily = rates.filter(r => r.date == today).length <= 0;
 
-    console.log(rates, today)
+    console.log(rates, today);
 
-    if (canOpen) this.modal.getModal('moodAddModal').open()
-    if (canOpenDaily) this.openDaily(uid, today)
+    if (canOpen) { this.modal.getModal('moodAddModal').open() }
+    if (canOpenDaily) { this.openDaily(uid, today) }
 
   }
 
   async openDaily(uid: string, date: string) {
-    const dailys = await this.data.getCollection<Daily>(Collections.DAILY)
-    if (!dailys || dailys.length <= 0) return
-    this.daily = dailys[Math.floor(Math.random() * dailys.length)]
-    
-    const noti_id = this.afs.createId()
+    const dailys = await this.data.getCollection<Daily>(Collections.DAILY);
+    if (!dailys || dailys.length <= 0) { return }
+    this.daily = dailys[Math.floor(Math.random() * dailys.length)];
+
+    const noti_id = this.afs.createId();
     await this.afs.collection(Collections.NOTIFICATION).doc(noti_id).set({
       id: noti_id,
       title: this.daily.title,
@@ -99,15 +103,15 @@ export class HomePageComponent implements OnInit {
       date: new Date().toISOString(),
       isGlobal: false,
       user: uid
-    })
+    });
 
-    const id = this.afs.createId()
+    const id = this.afs.createId();
     await this.afs.collection(Collections.DAILY_REGISTER).doc(id).set({
       id,
       user: uid,
       date,
       daily: {...this.daily}
-    })
+    });
   }
 
   sendMood(mood: number, text: string) {
@@ -118,8 +122,8 @@ export class HomePageComponent implements OnInit {
         mood,
         user: this.auth.user.uid,
         date: moment().format('DD-MM-YYYY'),
-      })
-      this.modal.getModal('moodAddModal').close()
+      });
+      this.modal.getModal('moodAddModal').close();
     } else {
       this.selectedMood = mood;
     }
@@ -132,8 +136,8 @@ export class HomePageComponent implements OnInit {
       mood,
       user: this.auth.user.uid,
       date: moment().format('DD-MM-YYYY'),
-    })
-    this.modal.getModal('moodAddModal').close()
+    });
+    this.modal.getModal('moodAddModal').close();
   }
 
   async buildLists() {
@@ -143,7 +147,7 @@ export class HomePageComponent implements OnInit {
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
     await this.afs.doc(`${Collections.LIST}/${HomeLists.SimuladoresList}`).set({
       id: HomeLists.SimuladoresList,
@@ -155,14 +159,14 @@ export class HomePageComponent implements OnInit {
         type: s.type,
         date: s.date,
       }))
-    })
+    });
 
     const simulacros = await this.afs.collection(Collections.EXAM, ref => ref
       .where('type', '==', ExamTypes.SIMULACRO))
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
     await this.afs.doc(`${Collections.LIST}/${HomeLists.SimulacrosList}`).set({
       id: HomeLists.SimulacrosList,
@@ -173,7 +177,7 @@ export class HomePageComponent implements OnInit {
         id: s.id,
         type: s.type
       }))
-    })
+    });
 
   }
 
@@ -189,9 +193,9 @@ export class HomePageComponent implements OnInit {
       ]
     })*/
 
-    let premium2019Roles = [];
+    const premium2019Roles = [];
 
-    for (let role of Premium2019Model) {
+    for (const role of Premium2019Model) {
       premium2019Roles.push(role);
     }
 
@@ -206,20 +210,20 @@ export class HomePageComponent implements OnInit {
         {quantity: 5, label: '5 Personas', price: 17306},
         {quantity: 10, label: '10 Personas', price: 22161},
       ]
-    })
+    });
 
   }
 
   unlockedPremiumUpgrade(): boolean {
-    if (this.auth.isPremium2019) return false
-    if (this.auth.isPremium) return false
-    if (this.auth.isZamna360_2019) return false
-    if (this.auth.isPresencial) return false
-    return true
+    if (this.auth.isPremium2019) { return false }
+    if (this.auth.isPremium) { return false }
+    if (this.auth.isZamna360_2019) { return false }
+    if (this.auth.isPresencial) { return false }
+    return true;
   }
 
   removeNoCalendar() {
-    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({noCalendar: false})
+    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({noCalendar: false});
   }
 
 }
