@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod && rm -rf ./public/app/ && mv ./dist/epsi-simuladores/ ./public/app/ && git add . && git commit -m \"EpsiDev Galaxy Automatic Deploy\" && git push origin master && firebase deploy --only hosting",
+    "deploy": "ng build --prod --base-href /app/ && rm -rf ./public/app/ && mv ./dist/epsi-simuladores/ ./public/app/ && git add . && git commit -m \"EpsiDev Galaxy Automatic Deploy\" && git push origin master && firebase deploy --only hosting",
     "deploy:fun": "firebase deploy --only functions"
   },
   "private": true,
