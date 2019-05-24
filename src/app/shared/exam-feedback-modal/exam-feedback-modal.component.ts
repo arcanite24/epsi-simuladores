@@ -52,4 +52,9 @@ export class ExamFeedbackModalComponent implements OnInit {
     this.modal.getModal('examFeedbackModal').close()
   }
 
+  filterStats(question: Question, stats: any[]) {
+    const ans = question && question.respuestas ? question.respuestas.map(r => r.text) : []
+    return stats ? stats.filter(s => ans.includes(s[0])) : []
+  }
+
 }

@@ -39,7 +39,7 @@
     <h4>Tags</h4>
     <div class="flex flex-row flex-start align-center">
       <input type="text" [ngbTypeahead]="searchTag" [(ngModel)]="tempTags" [ngModelOptions]="{standalone: true}" (selectItem)="tagInputChanged($event.item, currTags)" class="form-control">
-      <button type="button" (click)="addNewTag(tempTags)" class="btn btn-success">Agregar Nuevo Tag</button>
+      <button type="button" (click)="addNewTag(tempTags)" class="btn btn-success ml-2">Agregar Nuevo Tag</button>
     </div>
   </div>
 

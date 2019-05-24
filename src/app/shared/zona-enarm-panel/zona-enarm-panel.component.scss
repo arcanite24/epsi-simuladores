@@ -1,0 +1,19 @@
+.blur {
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.soon-text {
+  position: absolute;
+  z-index: 99;
+}
+
+.zona-enarm-image {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .zona-enarm-image {
+    width: 40%;
+  }
+}

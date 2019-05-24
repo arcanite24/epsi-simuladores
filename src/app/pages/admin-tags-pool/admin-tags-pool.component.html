@@ -1,0 +1,36 @@
+<ngx-smart-modal identifier="poolEditModal">
+  <div class="container">
+    <form class="row" [formGroup]="editForm" (ngSubmit)="submitForm(editForm.value)">
+
+      <div class="col-md-12">
+        <h4>Editar Tema</h4>
+      </div>
+
+      <div class="col-md-12 form-group">
+        <label for="">Nombre</label>
+        <input type="text" class="form-control" formControlName="name">
+      </div>
+
+      <div class="col-md-12 form-group">
+        <label for="">Tags</label>
+        <ul class="list-group" *ngIf="tags$ | async as tags">
+          <li class="list-group-item" *ngFor="let tag of tags">
+            <input type="checkbox" [(ngModel)]="tag.selected" [ngModelOptions]="{standalone: true}" class="mr-2" (change)="changeTags(tags)" [checked]="editForm.value.tags.includes(tag.value)">
+            <span>{{tag.display}}</span>
+          </li>
+        </ul>
+      </div>      
+
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-primary" [disabled]="loading">Guardar</button>
+      </div>
+
+    </form>
+  </div>
+</ngx-smart-modal>
+
+<div class="container mt-retro">
+  <epsi-panel title="Administrar Temas">
+    <adonalsium-crud-table [config]="config"></adonalsium-crud-table>
+  </epsi-panel>
+</div>

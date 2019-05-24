@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
@@ -41,7 +41,14 @@ export class ExamDetailPageComponent implements OnInit {
     private store: Store<AppState>,
     private modal: NgxSmartModalService,
     private auth: AuthService
-  ) { }
+  ) {
+
+  }
+
+  @HostListener("window:beforeunload", ["$event"])
+  beforeUnload(event) {
+    event.returnValue = '¿Estás seguro de salir? El progresó se perderá...';
+  }
 
   ngOnInit() {
 

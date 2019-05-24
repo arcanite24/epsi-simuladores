@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
-import { Collections } from 'src/app/app.models';
+import { Collections, Notification, NotificationResponse } from 'src/app/app.models';
 import moment from 'moment'
+import { DataService } from 'src/app/services/data.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-admin-notifications',
@@ -9,6 +11,8 @@ import moment from 'moment'
   styleUrls: ['./admin-notifications.component.scss']
 })
 export class AdminNotificationsComponent implements OnInit {
+
+  public tempResponses: NotificationResponse[]
 
   public config: CrudTableConfig = {
     collection: Collections.NOTIFICATION,
@@ -24,12 +28,24 @@ export class AdminNotificationsComponent implements OnInit {
       text: '.',
       isGlobal: false,
       date: new Date().toISOString()
-    }
+    },
+    customActions: [
+      {iconClasses: 'fa fa-comment', handler: noti => this.openResponses(noti)}
+    ]
   }
 
-  constructor() { }
+  constructor(
+    private data: DataService,
+    private modal: NgxSmartModalService
+  ) { }
 
   ngOnInit() {
+  }
+
+  private async openResponses(noti: Notification) {
+    const responses = await this.data.getCollectionQuery<NotificationResponse>(Collections.NOTIFICATION_RESPONSE, ref => ref.where('noti', '==', noti.id))
+    this.tempResponses = responses
+    this.modal.getModal('notiResponsesModal').open()
   }
 
 }

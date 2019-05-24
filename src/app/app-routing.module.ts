@@ -54,6 +54,13 @@ import { AdminLandingFieldsComponent } from './pages/admin-landing-fields/admin-
 import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.component';
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
+import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
+import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
+import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
+import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
+import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-results.component";
+import {UserPromediosTableComponent} from "./pages/user-promedios-table/user-promedios-table.component";
+import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions-average/admin-exams-questions-average.component";
 
 const routes: Routes = [
 
@@ -89,6 +96,10 @@ const routes: Routes = [
   {path: 'pagar/:slug', component: PaymentPageComponent},
   {path: 'pago/status/:id', component: PaymentRequestDetailPageComponent},
 
+  // Programa Alt
+  {path: 'programa/materia/:id', component: ProgramaAltMateriaPageComponent},
+  {path: 'programa/bloque/:id', component: ProgramaAltBloquePageComponent},
+
   // Admin
   {canActivate: [AuthGuard, AdminGuard], path: 'admin', component: AdminPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
@@ -110,6 +121,8 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/livestreams', component: AdminLivestreamsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags', component: AdminTagsComponent},
   {canActivate: [AuthGuard], path: 'admin/stats', component: AdminStatsComponent},
+  {canActivate: [AuthGuard], path: 'admin/stats/promedios/:mode', component: UserPromediosTableComponent},
+  {canActivate: [AuthGuard], path: 'admin/stats/exam-questions/:id', component: AdminExamsQuestionsAverageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/payment-models', component: AdminPaymentModelsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/tags-pool', component: AdminTagsPoolComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/notifications', component: AdminNotificationsComponent},
@@ -122,6 +135,9 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/ad-texts', component: AdminAdTextsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/tutorials', component: AdminTutorialsComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/daily', component: AdminDailyComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam/results/:id', component: AdminExamResultsComponent},
 
 ];
 

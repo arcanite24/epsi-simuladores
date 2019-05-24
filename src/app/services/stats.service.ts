@@ -4,9 +4,11 @@ import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Quest
 import { take, map, tap } from 'rxjs/operators';
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
-import moment from 'moment'
+import { flattenDeep, uniq } from 'lodash'
+import moment, {months} from 'moment'
 import { averageMultiplier } from '../app.config';
 import { Observable } from 'rxjs';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -28,9 +30,37 @@ export class StatsService {
     {key: '12', label: 'Diciembre'},
   ]
 
+  private results: ExamResults[]
+
   constructor(
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    private data: DataService
   ) { }
+
+  async modifyCustomCounter(key: string, label: string, delta: number) {
+
+    const counter = await this.data.getDoc<StatCounter>(Collections.STAT_COUNTER, key)
+
+    if (!counter) {
+
+      await this.afs.collection(Collections.STAT_COUNTER).doc(key).set({
+        id: key,
+        key,
+        label,
+        value: 1,
+        lastModified: new Date().toISOString(),
+      })
+
+    } else {
+
+      await this.afs.collection(Collections.STAT_COUNTER).doc(key).update({
+        value: counter.value += delta,
+        lastModified: new Date().toISOString(),
+      })
+
+    }
+
+  }
 
   // Stat Counter
   async modifyCounter(key: string, delta: number, exam?: Exam) {
@@ -44,7 +74,7 @@ export class StatsService {
       )
       .toPromise()
 
-    if (!counter) counter = {id: key, key, label: exam.name, value: 0, lastModified: new Date().toISOString()}
+    if (!counter) counter = {id: key, key, label: exam ? exam.name : key, value: 0, lastModified: new Date().toISOString()}
     if (counter.value != null) counter.value += delta
 
     await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({
@@ -59,7 +89,7 @@ export class StatsService {
   }
 
   // Timeline
-  async computeTimeline(tag: string) {
+  async computeTimeline(tag: string, uid: string) {
 
     const year = moment().year()
     let cache = {
@@ -67,30 +97,41 @@ export class StatsService {
       total: 0,
     }
 
-    const results: ExamResults[] = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref.where('tags', 'array-contains', tag))
+    const results: ExamResults[] = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('tags', 'array-contains', tag)
+      .where('user', '==', uid))
       .valueChanges()
       .pipe(take(1))
       .toPromise()
 
+    console.log('results timeline:', tag, results);
+
     const grouped = groupBy(results, r => r.date.substr(0, 7))
 
-    this.months.forEach(m => {
+    console.log('grouped timeline:', tag, grouped);
 
+    for (const m of this.months) {
       const key = `${year}-${m.key}`
 
       cache.timeline[m.label] = {
         mes: m,
-        promedio: grouped[key] ? this.calculateAverage(grouped[key]) : 0
+        promedio: grouped[key] ? await this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
       }
-      
-    })
+
+      console.log('month', m, cache.timeline[m.label])
+    }
+
+    console.log('timeline', cache.timeline)
 
     cache.total = results.length
-
-    return {
+    const final = {
       total: cache.total,
       timeline: sortBy(cache.timeline, (m: any) => m.mes.key)
-    }
+    };
+
+    console.log(final)
+
+    return final;
 
   }
 
@@ -108,20 +149,67 @@ export class StatsService {
 
   }
 
-  async computeUserTagAverage(tag: string, uid: string): Promise<number> {
+  async computeUserTagAverage(tag: string, uid: string, start?: string, end?: string): Promise<number> {
 
     if (!tag) return 0
     if (!uid) return 0
 
-    return this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
-        .where('user', '==', uid)
-        .where('tags', 'array-contains', tag))
-      .valueChanges()
-      .pipe(
-        map(results => results.map(r => r.promedio).reduce((a, b) => a + b, 0) / results.length * averageMultiplier),
-        take(1),
-      ).toPromise()
+    if (!this.results) this.results = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('user', '==', uid))
+    .valueChanges()
+    .pipe(
+      map(results => results.map(r => ({
+        ...r,
+        tags: r.tags ? r.tags.map((tag: any) => {
+          return tag ? typeof tag === 'object' ? tag.text : tag : null
+        }).filter(t => t) : []
+      }))),
+      map(results => {
+        if (start && end) {
+          return results.filter(r => moment(r.date).isSameOrAfter(start) && moment(r.date).isSameOrBefore(end));
+        } else {
+          return results;
+        }
+      }),
+      take(1),
+    ).toPromise()
 
+    /* console.log(this.results.map(r => r.tags)) */
+
+    const total = flattenDeep(this.results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
+    })).filter((q: any) => q.tags.includes(tag))
+
+    /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
+
+    return total.filter((q: any) => q.correcta).length / total.length
+
+  }
+
+  async computeUserTagAverageWithData(tag: string, uid: string, results: ExamResults[]): Promise<number> {
+   
+    if (!tag) return 0
+    if (!uid) return 0
+
+    results = results.map(r => ({
+      ...r, 
+      tags: r.tags ? r.tags.map((tag: any) => {
+        return tag ? typeof tag === 'object' ? tag.text : tag : null
+      }).filter(t => t) : []
+    }))
+
+    const total = flattenDeep(results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
+    })).filter((q: any) => q.tags.includes(tag))
+
+    /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
+
+    return total.filter((q: any) => q.correcta).length / total.length
+
+  }
+
+  formatTags(tags: any): string[] {
+    return tags ? tags.map(tag => tag ? (typeof tag === 'object' ? tag.text : tag) : null).filter(t => t) : []
   }
 
   async computeUserTagListAverage(tags: string[], uid: string): Promise<number> {
@@ -137,15 +225,25 @@ export class StatsService {
 
   }
 
-  computeUserAverage(uid: string): Promise<number> {
+  computeUserAverage(uid: string, month: boolean = false): Promise<number> {
 
     return this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref.where('user', '==', uid))
       .valueChanges()
       .pipe(
         take(1),
         map(results => {
+
           const total = results.length
-          return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+
+          if (month) {
+            return results
+              .filter(r => moment(r.date).isSameOrAfter(moment().startOf('month')) && moment(r.date).isSameOrBefore(moment().endOf('month')))
+              .map((r: ExamResults) => r.promedio)
+              .reduce((a, b) => a + b, 0) / total * averageMultiplier
+          } else {
+            return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+          }
+
         }),
         tap(async (average: number) => {
           this.afs.doc(`${Collections.USER}/${uid}`).update({promedio: average})
@@ -166,6 +264,14 @@ export class StatsService {
       map(tags => tags.map(t => t.value) as string[]),
       take(1)
     ).toPromise()
+  }
+
+  async getAllTagPresenciales() {
+
+    const exams = await this.data.getCollectionQuery<Exam>(Collections.EXAM, ref => ref.where('isPresencial', '==', true));
+    const _tags = exams.map(e => e.questions);
+    return uniq(flattenDeep(flattenDeep(_tags).map((q: Question) => q.tags)));
+
   }
 
   // Optimization Helpers
@@ -275,6 +381,8 @@ export class StatsService {
       promedio,
       date: new Date().toISOString()
     })
+
+    return id
 
   }
 

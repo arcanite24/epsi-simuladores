@@ -21,6 +21,7 @@ export class StatStructureItemComponent implements OnInit {
   public promedio: number
 
   @Input() public view: StatView
+  @Input() public user: string;
 
   constructor(
     private afs: AngularFirestore,
@@ -47,7 +48,7 @@ export class StatStructureItemComponent implements OnInit {
       if (!_user) return
       if (this.promedio) return
       const tag = this.view.includeTags[0]
-      await this.loadTagPromedio(tag, _user.uid)
+      await this.loadTagPromedio(tag, this.user ? this.user : _user.uid)
     })
 
   }
@@ -56,7 +57,7 @@ export class StatStructureItemComponent implements OnInit {
     const promedio = await this.stats.computeUserTagAverage(tag, uid)
     await this.afs.doc(`${Collections.USER}/${uid}`).set({structure: {[tag]: promedio}}, {merge: true})
     this.promedio = isNaN(promedio) ? 0 : promedio
-    console.log(promedio)
+    console.log(tag, promedio)
   }
 
 }

@@ -16,6 +16,8 @@ export class ContentNotesPanelComponent implements OnInit {
   @Input() public parent_type: string
   @Input() public parent_id: string
   @Input() public content_type: string
+  @Input() public extra_paylod: any
+  @Input() public title: string = 'Mis Notas'
 
   public noteForm: FormGroup
   public notes$: Observable<Note[]>
@@ -54,8 +56,10 @@ export class ContentNotesPanelComponent implements OnInit {
   async addNote() {
     
     if (this.noteForm.valid) {
+
       await this.afs.doc(`${Collections.NOTE}/${this.noteForm.value.id}`).set(this.noteForm.value)
       this.toastr.success('Nota agregada correctamente.')
+
       this.noteForm.reset({
         id: this.afs.createId(),
         title: '',
@@ -64,7 +68,9 @@ export class ContentNotesPanelComponent implements OnInit {
         parent_type: this.parent_type,
         parent_id: this.parent_id,
         content_type: this.content_type,
+        ...(this.extra_paylod ? this.extra_paylod : {})
       })
+
     } else {
       this.toastr.error('Por favor ingresa datos válidos para crear una nota...')
     }

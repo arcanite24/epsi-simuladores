@@ -35,12 +35,17 @@
     </ul>
 
     <hr>
-    <h4>Links</h4>
-    <ul *ngIf="event.links as links">
-      <li *ngFor="let link of links">
-        <a class="btn btn-secondary" [routerLink]="[ link.url ]">{{link.label}}</a>
-      </li>
-    </ul>
+    <div class="event-links" *ngIf="!auth.isPresencial">
+      <h4>Links</h4>
+      <ul *ngIf="event.links as links">
+        <li *ngFor="let link of links">
+          <a class="btn btn-secondary" [routerLink]="[ link.url ]">{{link.label}}</a>
+        </li>
+      </ul>
+    </div>
+
+    <hr>
+    <epsi-content-notes-panel title="¿Me dejaré pendiente algo en éste tema?" [content_type]="'event'" [parent_id]="'event_note-' + event.id" *ngIf="event"></epsi-content-notes-panel>
     
   </div>
 

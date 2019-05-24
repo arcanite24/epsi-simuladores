@@ -40,7 +40,10 @@
 
   <div class="question-tags form-group" *ngIf="tags && addForm.value.tags as currTags">
     <label for="">Tags</label>
-    <input class="form-control" type="text" [ngbTypeahead]="searchTag" [(ngModel)]="tempTags" [ngModelOptions]="{standalone: true}" (selectItem)="tagInputChanged($event.item, currTags)">
+    <div class="flex flex-row flex-start align-center">
+      <input class="form-control" type="text" [ngbTypeahead]="searchTag" [(ngModel)]="tempTags" [ngModelOptions]="{standalone: true}" (selectItem)="tagInputChanged($event.item, currTags)">
+      <button type="button" (click)="addNewTag(tempTags)" class="btn btn-success ml-2">Agregar Nuevo Tag</button>
+    </div>
   </div>
 
   <button class="btn btn-primary w-100 mt-2 mb-2" type="button" (click)="addNewTag(tempTags)">Agregar Nuevo Tag</button>

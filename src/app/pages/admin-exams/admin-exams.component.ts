@@ -33,6 +33,8 @@ export class AdminExamsComponent implements OnInit {
     customActions: [
       {iconClasses: 'fa fa-edit', handler: row => this.openEdit(row)},
       {iconClasses: 'fa fa-bar-chart', handler: row => this.openStats(row)},
+      {iconClasses: 'fa fa-tasks', handler: row => this.router.navigate(['/admin/exam/results', row.id])},
+      {iconClasses: 'fa fa-database', handler: row => this.router.navigate(['/admin/stats/exam-questions', row.id])},
     ],
     postCreate: <Exam>(exam) => {
       // Register entity to HomeList

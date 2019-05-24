@@ -52,6 +52,7 @@ export class StatUserGeneralAverageComponent implements OnInit {
       this.calculateAverage(uid)
     } else {
       this.promedio = stat.data()['generalAverage']
+      this.calculateAverage(uid)
     }
 
   }

@@ -2,6 +2,14 @@
   <epsi-user-roles [user]="tempUser"></epsi-user-roles>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="userMoodModal">
+  <epsi-user-mood-overview [rates]="tempRates" *ngIf="tempRates"></epsi-user-mood-overview>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="userNotiAdd">
+  <epsi-user-noti-add *ngIf="tempUser" [uid]="tempUser.uid"></epsi-user-noti-add>
+</ngx-smart-modal>
+
 <div class="epsi-admin-users-page container mt-retro">
 
   <epsi-panel title="Administrar Usuarios">
@@ -14,6 +22,7 @@
         
         <div class="col-md-12">
           <button class="btn btn-primary" type="button" (click)="exportUsers()">Exportar Usuarios</button>
+          <button class="ml-2 btn btn-primary" type="button" (click)="exportPresenciales()">Exportar Presenciales</button>
         </div>
 
       </div>

@@ -1,0 +1,27 @@
+<div class="container mt-retro">
+  <epsi-panel title="Estadísticas del Usuario">
+
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+
+    <div class="container" *ngIf="user$ | async as user">
+      <div class="row">
+        
+        <div class="col-xs-12 col-md-6">
+          <epsi-stat-user-general-average [uid]="user.uid"></epsi-stat-user-general-average>
+          <epsi-stat-user-month-average [uid]="user.uid"></epsi-stat-user-month-average>
+          <epsi-stat-user-timeline [uid]="user.uid"></epsi-stat-user-timeline>
+          <epsi-stat-user-tags-average [uid]="user.uid"></epsi-stat-user-tags-average>
+        </div>
+    
+        <div class="col-xs-12 col-md-6">
+          <epsi-stat-user-performance [user]="user"></epsi-stat-user-performance>
+          <epsi-stat-user-structure-panel [user]="user.uid"></epsi-stat-user-structure-panel>
+        </div>
+
+      </div>
+    </div>
+
+  </epsi-panel>
+</div>

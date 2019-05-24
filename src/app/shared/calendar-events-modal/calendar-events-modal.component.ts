@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Event } from 'src/app/app.models';
 
 @Component({
@@ -9,6 +9,8 @@ import { Event } from 'src/app/app.models';
 export class CalendarEventsModalComponent implements OnInit {
 
   @Input() public events: Event[]
+
+  @Output() public checkChanged: EventEmitter<{id: string, added: boolean}> = new EventEmitter();
 
   constructor() { }
 

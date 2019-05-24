@@ -1,0 +1,43 @@
+<div class="container" *ngIf="rates">
+  <div class="row">
+
+    <div class="col-md-12">
+      <h4>Mood Rate Overview</h4>
+    </div>
+
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Promedio</strong>
+        </li>
+        <li class="list-group-item" *ngFor="let m of promedio">
+          <strong>{{m.mood}}: </strong>
+          <span>{{m.total}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-12 mt-4">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Mood Rates</strong>
+        </li>
+        <li class="list-group-item" *ngFor="let r of rates">
+          <p class="m-0">
+            <strong>Mood: </strong>
+            <span>{{r.mood}}</span>
+          </p>
+          <p class="m-0">
+            <strong>Fecha: </strong>
+            <span>{{r.date}}</span>
+          </p>
+          <p class="m-0">
+            <strong>Comentario: </strong>
+            <span>{{r.text}}</span>
+          </p>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</div>

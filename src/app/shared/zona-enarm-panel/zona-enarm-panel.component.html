@@ -1,0 +1,49 @@
+<ngx-smart-modal identifier="simuladoresModal" #simuladoresModal>
+  <epsi-simuladores-panel [showContent]="true"></epsi-simuladores-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="poolModal" #poolModal>
+  <epsi-question-pool-panel [showContent]="true"></epsi-question-pool-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="porTemaModal" #porTemaModal>
+  <epsi-tags-pool-panel [showContent]="true"></epsi-tags-pool-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="simulacrosModal" #simulacrosModal>
+  <epsi-simulacros-panel [showContent]="true"></epsi-simulacros-panel>
+</ngx-smart-modal>
+
+<epsi-panel title="Zona ENARM" img="assets/zamnademy/simulacro.png" tutorial="KIwqMKIN9tzXuGSz0PaF" [showContent]="false">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="https://zamnademy.com/site/images/clients/simuladordiario.png" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="aAJhqc44b26QNbICJwCT"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="simuladoresModal.open()">MODO PRESENCIAL</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="assets/zamnademy/zona-simulacro.svg" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="simulacrosModal.open()">SIMULACRO REAL</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial && !auth.isZamna360_2019">
+        <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">Disponible el...</h4>
+        <img src="assets/zamnademy/zona-pool.svg" class="zona-enarm-image mb-2" [ngClass]="{blur: isBlur()}">
+        <epsi-tutorial-button tutorial="BQ5uDzkeJhdnq9E35LPX" [ngClass]="{blur: isBlur()}"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="poolModal.open()" [ngClass]="{blur: isBlur()}">RANDOM</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial && !auth.isZamna360_2019">
+        <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">Disponible el...</h4>
+        <img src="assets/zamnademy/zona-portema.svg" class="zona-enarm-image mb-2" [ngClass]="{blur: isBlur()}">
+        <epsi-tutorial-button tutorial="i4yxcWHMSmKtwJLol4aI" [ngClass]="{blur: isBlur()}"></epsi-tutorial-button>
+        <button class="btn btn-secondary" (click)="porTemaModal.open()" [ngClass]="{blur: isBlur()}">CUSTOM</button>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>

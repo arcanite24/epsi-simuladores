@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StatView, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -14,6 +14,8 @@ export class StatStructureAdminPanelComponent implements OnInit {
 
   public views$: Observable<StatView[]>
   public tempView: StatView
+
+  @Output() public remove: EventEmitter<string> = new EventEmitter<string>();
 
   constructor(
     private afs: AngularFirestore,
@@ -38,8 +40,9 @@ export class StatStructureAdminPanelComponent implements OnInit {
   }
 
   async removeView(id: string) {
-    await this.afs.doc(`${Collections.STAT_VIEW}/${id}`).delete()
-    this.toastr.success('La vista fue borrada correctamente.')
+    /*await this.afs.doc(`${Collections.STAT_VIEW}/${id}`).delete()
+    this.toastr.success('La vista fue borrada correctamente.')*/
+    this.remove.next(id);
   }
 
   openEditView(view: StatView) {

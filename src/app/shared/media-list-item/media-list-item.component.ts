@@ -18,7 +18,7 @@ export class MediaListItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.slides$ = this.afs.collection<Media>(Collections.MEDIA, ref => ref.where('cat_id', '==', this.category.id)).valueChanges()
+    this.slides$ = this.afs.collection<Media>(Collections.MEDIA, ref => ref.where('categoria.id', '==', this.category.id)).valueChanges()
   }
 
 }

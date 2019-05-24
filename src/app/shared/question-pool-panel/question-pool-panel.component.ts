@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Question, Collections, Exam, ExamTypes } from 'src/app/app.models';
@@ -13,6 +13,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class QuestionPoolPanelComponent implements OnInit {
 
+  @Input() public showContent: boolean = false
   public loader: boolean = false
   public quantity: number
 

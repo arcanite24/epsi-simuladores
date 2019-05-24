@@ -1,30 +1,49 @@
-<ngx-smart-modal identifier="examRankingAdd">
-  <epsi-exam-ranking-add [exam]="result.exam" [promedio]="result.promedio " *ngIf="result$ | async as result"></epsi-exam-ranking-add>
+<ngx-smart-modal identifier="examRankingAdd" #examRankingAdd>
+  <epsi-exam-ranking-add (rankingAdded)="myRanking = $event" [exam]="result.exam" [promedio]="result.promedio " *ngIf="result$ | async as result"></epsi-exam-ranking-add>
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="adModal">
+<ngx-smart-modal identifier="adModal" #adModal>
   <div class="container">
     <div class="row">
 
-      <div class="col-md-12" *ngIf="promedio < 75">
-        <div *ngIf="adPremium$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
-        </div>
+      <div class="col-md-12">
+        <h2 class="c-epsi-primary">Promedio: <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h2>
       </div>
 
-      <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
-        <div *ngIf="adEsencial$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
-        </div>
+      <div class="col-md-12 flex flex-row flex-start align-center" *ngIf="exam && exam.modalAdText">
+        <a class="btn-whats" href="https://wa.me/525575717513" target="_blank">
+          <img src="assets/whats.png" style="width: 32px; height: 32px;">
+        </a>
+        <span *ngIf="exam && exam.modalAdText">{{exam.modalAdText}}</span>
       </div>
 
-      <div class="col-md-12" *ngIf="promedio >= 85">
-        <div *ngIf="adResidente$ | async as ad">
-          <p>{{ad.value}}</p>
-          <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary">{{ad.button_text}}</a>
-        </div>
+      <div class="col-md-12">
+        <h5>Quedaste en el lugar <strong *ngIf="tempPosition">{{tempPosition}}</strong> con una puntuación de <strong *ngIf="promedio">{{promedio.toFixed(2)}}/100.00</strong></h5>
+      </div>
+
+      <!--<div class="col-md-12">
+        <ul class="list-group">
+          <li class="list-group-item">Promedio por tema</li>
+          <li *ngFor="let tag of tags" class="list-group-item">
+            <strong>{{tag.value * 100 | number}}%</strong>
+            <span class="ml-2">{{tag.name}}</span>
+            <div class="bar-container">
+              <div class="bar" [style.width.%]="tag.value * 100"></div>
+            </div>
+          </li>
+        </ul>
+      </div>-->
+
+      <div class="col-md-12" *ngIf="result$ | async as result">
+        <epsi-exam-results-tag-structure
+          class="w-100"
+          [colors]="exam.colors"
+          *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
+          [result]="result"></epsi-exam-results-tag-structure>
+      </div>
+
+      <div class="col-md-12 mt-2">
+        <button type="button" class="btn btn-secondary w-100" (click)="adModal.close()">VER RESUMEN DE MIS RESPUESTAS</button>
       </div>
 
     </div>
@@ -41,17 +60,88 @@
           <div class="row">
             
             <div class="result-header col-md-12">
-              <h4 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h4>
+              <h2 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h2>
               <p>Correctas {{correctas}} de {{questions.length}}</p>
             </div>
 
-            <div class="col-md-12">
-              <p>Acompáñanos presencialmente si te es posible , ya que solo abrimos 1 grupo en la CDMX para seguir siempre cuidando la calidad de nuestra atención en su preparación</p>
-              <a href="https://enarmzamna.com" class="mt-2 btn btn-primary">VER CURSO PRESENCIAL</a>
+            <epsi-exam-results-tag-structure
+              class="w-100"
+              [colors]="exam.colors"
+              *ngIf="exam && (result.exam_type != 'simulacro' && result.exam_type != 'simulador')"
+              [result]="result"></epsi-exam-results-tag-structure>
+
+            <!--<div class="col-md-12" *ngIf="result.exam_type == 'simulacro'">
+              <ul class="list-group">
+                <li class="list-group-item">Promedio por tema</li>
+                <li *ngFor="let tag of tags" class="list-group-item">
+                  <strong>{{tag.value * 100 | number}}%</strong>
+                  <span class="ml-2">{{tag.name}}</span>
+                  <div class="bar-container">
+                    <div class="bar" [style.width.%]="tag.value * 100"></div>
+                  </div>
+                </li>
+              </ul>
+            </div>-->
+
+            <div class="col-md-12" *ngIf="exam && (result.exam_type == 'simulacro' || result.exam_type == 'simulador')">
+              <epsi-exam-results-tag-structure
+                class="w-100"
+                [colors]="exam.colors"
+                [result]="result"></epsi-exam-results-tag-structure>
             </div>
+
+            <div class="col-md-12 mt-4" *ngIf="exam && exam.showAd">
+              <div class="row">
+
+                <div class="col-md-12" *ngIf="promedio < 75">
+                  <div *ngIf="adPremium$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
+                  </div>
+                </div>
+          
+                <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
+                  <div *ngIf="adEsencial$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
+                  </div>
+                </div>
+          
+                <div class="col-md-12" *ngIf="promedio >= 85">
+                  <div *ngIf="adResidente$ | async as ad">
+                    <p>{{ad.value}}</p>
+                    <a *ngIf="ad.button_text" [href]="ad.href" class="mt-2 btn btn-primary" style="background-color: #5e4b8b">{{ad.button_text}}</a>
+                    <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
+                  </div>
+                </div>
+          
+              </div>
+            </div>
+
+            <div class="col-md-12 mt-4" *ngIf="exam && exam.adDesc">
+              <p>{{exam.adDesc}}</p>
+              <a *ngIf="exam.adButton" [href]="exam.adHref" class="btn btn-success" style="background-color: #5cc05f">{{exam.adButton}}</a>
+            </div>
+
+            <div class="col-xs-12 d-lg-none" *ngIf="result.exam_type == 'demo'">
+              <epsi-panel title="Ranking">
+                <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
+                  <li class="list-group-item mb-2" *ngIf="myRanking">
+                    <strong>{{getMyPosition(rankings, myRanking)}}.- Mi promedio: </strong> {{myRanking.promedio * 10 | number}}
+                  </li>
+                  <li class="list-group-item" *ngFor="let r of rankings.slice(0, 10); let i = index">
+                    {{i + 1}}.-<strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>
+                  </li>
+                </ul>
+              </epsi-panel>
+            </div>
+            
+            <hr>
       
             <div class="result-questions col-md-12" *ngFor="let q of questions; let i = index">
-              <small>Pregunta {{i + 1}} de {{questions.length}}</small>
+              <small>Pregunta {{i + 1}} de {{questions.length}} <!--{{q.index}}--></small>
               <div class="flex flex-row flex-start align-center">
                 <i class="fa fa-remove" style="color:red" *ngIf="!q.correcta"></i>
                 <i class="fa fa-check" style="color:green" *ngIf="q.correcta"></i>
@@ -62,15 +152,18 @@
               <!-- <pre>{{ q | json }}</pre> -->
             </div>
 
-            <div class="col-md-12">
+            <!--<div class="col-md-12" *ngIf="result.exam_type != 'simulacro'">
               <ul class="list-group">
                 <li class="list-group-item">Promedio por tema</li>
                 <li *ngFor="let tag of tags" class="list-group-item">
-                  <strong>{{tag.value | number}}</strong>
+                  <strong>{{tag.value * 100 | number}}%</strong>
                   <span class="ml-2">{{tag.name}}</span>
+                  <div class="bar-container">
+                    <div class="bar" [style.background-color]="colors[tag.name]" [style.width.%]="tag.value * 100"></div>
+                  </div>
                 </li>
               </ul>
-            </div>
+            </div>-->
       
           </div>
         </div>
@@ -78,11 +171,14 @@
       </epsi-panel>
     </div>
 
-    <div class="col-xs-12 col-md-4" *ngIf="result.exam_type == 'demo'">
+    <div class="col-xs-12 col-md-4 d-none d-lg-block" *ngIf="result.exam_type == 'demo'">
       <epsi-panel title="Ranking">
         <ul class="list-group m-4" *ngIf="rankings$ | async as rankings">
-          <li class="list-group-item" *ngFor="let r of rankings">
-            <strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>
+          <li class="list-group-item mb-2" *ngIf="myRanking">
+            <strong>{{getMyPosition(rankings, myRanking)}}.- Mi promedio: </strong> {{myRanking.promedio * 10 | number}} <span *ngIf="result && result.completedIn">, resuelto en {{(result.completedIn / 60).toFixed(2)}} minutos</span>
+          </li>
+          <li class="list-group-item" *ngFor="let r of rankings.slice(0, 10); let i = index">
+            {{i + 1}}.-<strong>{{r.promedio * 10 | number}}</strong> <span class="ml-2">{{r.user.displayName}}</span>
           </li>
         </ul>
       </epsi-panel>

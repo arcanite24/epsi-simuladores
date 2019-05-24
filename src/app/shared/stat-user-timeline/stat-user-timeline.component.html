@@ -1,8 +1,8 @@
 <ngx-smart-modal identifier="viewDetailModal" customClass="max-w-75">
-  <epsi-stat-view-detail [view]="tempView"></epsi-stat-view-detail>
+  <epsi-stat-view-detail *ngIf="auth.user" [uid]="auth.user.uid" [view]="tempView"></epsi-stat-view-detail>
 </ngx-smart-modal>
 
-<epsi-panel [showContent]="true" title="Timeline">
+<epsi-panel [showContent]="true" title="Timeline" *ngIf="auth.loggedIn">
   
   <ng-template #loader>
     <epsi-loader></epsi-loader>

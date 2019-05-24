@@ -4,6 +4,6 @@
 
 <div class="epsi-calendar-events-modal" *ngIf="events else loader">
 
-  <epsi-event-detail [event]="event" *ngFor="let event of events"></epsi-event-detail>
+  <epsi-event-detail (checkChanged)="checkChanged.next($event)" [event]="event" *ngFor="let event of events"></epsi-event-detail>
 
 </div>

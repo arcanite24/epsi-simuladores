@@ -1,6 +1,8 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
+import {Observable} from "rxjs";
+
 export const ContentTypes: string[] = [
   'materia',
   'bloque',
@@ -52,6 +54,7 @@ export enum Collections {
   PAYMENT_MODEL = 'payment-model',
   PAYMENT_REQUEST = 'payment-request',
   NOTIFICATION = 'notification',
+  NOTIFICATION_RESPONSE = 'notification-response',
   NOTIFICATION_COMMENT = 'notification-comment',
   COUPON = 'coupon',
   MERCADOPAGO_IPN = 'mercadopago-ipn',
@@ -63,7 +66,11 @@ export enum Collections {
   EXAM_RANKING = 'exam-ranking',
   LANDING_FIELD = 'landing-field',
   TAG_POOL = 'tag-pool',
-  AD_TEXT = 'ad-text'
+  AD_TEXT = 'ad-text',
+  MOOD_RATE = 'mood-rate',
+  TUTORIAL = 'tutorial',
+  DAILY = 'daily-noti',
+  DAILY_REGISTER = 'daily-register',
 }
 
 export enum PaymentStatus {
@@ -79,6 +86,8 @@ export enum Roles {
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
+  Premium2019 = 'isPremium2019',
+  Zamna360_2019 = 'is3602019',
 
   Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
   Premium360 = 'isPremium360', // CURSO_PREMIUM_360
@@ -87,6 +96,7 @@ export enum Roles {
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
+  SmartCalendar = 'isSmartCalendar',
   TopUsers = 'isTopUsers',
   Galleries = 'isGalleries',
   Simuladores = 'isSimuladores',
@@ -99,6 +109,7 @@ export enum Roles {
   Programa = 'isPrograma',
   Pool = 'isPool',
   TagPool = 'isTagPool',
+  ZonaEnarm = 'isZonaEnarm',
 }
 
 export const EsencialModel: string[] = [
@@ -137,6 +148,35 @@ export const PremiumModel: string[] = [
   Roles.TagPool
 ]
 
+export const Premium2019Model: string[] = [
+  Roles.Checklist,
+  Roles.SmartCalendar,
+  Roles.TopUsers,
+  Roles.Galleries,
+  Roles.Feed,
+  Roles.Forum,
+  Roles.Streaming,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Premium2019,
+  Roles.Programa,
+  Roles.ZonaEnarm,
+]
+
+export const Zamna360_2019Model: string[] = [
+  Roles.Zamna360_2019,
+  Roles.Calendar,
+  Roles.Checklist,
+  Roles.TopUsers,
+  Roles.ZonaEnarm,
+  Roles.Programa,
+  Roles.Galleries,
+  Roles.Forum,
+  Roles.Media,
+  Roles.Slides,
+  Roles.Feed
+]
+
 export const TempranoModel: string[] = [
   Roles.Temprano
 ]
@@ -150,6 +190,8 @@ export class User {
   uid: string;
   completedTasks?: string[]
   migrated?: boolean
+  customCalendar?: any
+  noCalendar?: boolean
 
   // Zamnademy Fields
   new_email?: string
@@ -158,6 +200,7 @@ export class User {
   especialidad?: string
   about?: string
   lugar_origen?: string
+  smartCalendarCreated?: boolean
 
   // Stats
   average_list?: {tag: string, promedio: number}[]
@@ -169,10 +212,14 @@ export class User {
   isPremium?: boolean
   isEsencial?: boolean
   isTemprano?: boolean
+  isPresencial?: boolean
+  isEsencial360?: boolean
+  isPremium360?: boolean
+  isPremium2019?: boolean
+  is3602019?: boolean
 
 }
 
-// TODO: Verify if using Interfaces instead of classes works as expected
 export interface Content {
   id: string
   name: string
@@ -181,6 +228,7 @@ export interface Content {
   cover?: string
   parent_id?: string
   parent_type?: string
+  parent_name?: string
   ratings?: {}
   totalRatings?: number
   video?: string
@@ -191,6 +239,14 @@ export interface Content {
   haveChildren?: boolean
   forum?: string
   sortIndex?: number
+  event?: string
+  selected?: boolean
+  is360?: boolean
+  ignoreOnSmartCalendar?: boolean
+  order?: number
+  temas$?: Observable<Content[]>
+  temas?: Content[],
+  liberadoInPrograma?: boolean
 }
 
 export interface Marker {
@@ -244,6 +300,7 @@ export interface Question {
   img?: string
   group?: string
   selectedAnswer?: Answer
+  selectedAnswerId?: string
 }
 
 export interface Answer {
@@ -261,7 +318,7 @@ export interface Exam {
   content?: Content
   questions: Question[]
   duration?: number
-  colors?: {}
+  colors?: ExamTagColor[]
   liberado?: boolean
   formattedQuestions?: Question[][]
   isPool?: boolean
@@ -269,6 +326,20 @@ export interface Exam {
   isPrueba?: boolean
   date?: string
   time?: number
+  showAd?: boolean
+  adDesc?: string
+  adHref?: string
+  adButton?: string
+  modalAdText?: string
+  isLight?: boolean
+  isPresencial?: boolean
+  extraTags?: string
+  tags_structure?: any[]
+}
+
+export interface ExamTagColor {
+  tag: string
+  color: string
 }
 
 export enum ExamTypes {
@@ -278,7 +349,8 @@ export enum ExamTypes {
   CONTENIDO = 'contenido',
   POOL = 'pool',
   TAGS = 'tags',
-  PRUEBA = 'demo'
+  PRUEBA = 'demo',
+  MULTI = 'multi'
 }
 
 export interface Livestream {
@@ -391,6 +463,7 @@ export interface Thread {
   date: string
   cat_id: string
   cat_name: string
+  user?: string;
 }
 
 export interface ThreadResponse {
@@ -411,6 +484,7 @@ export interface ExamResults {
   promedio: number
   tags: string[]
   exam_type?: string
+  completedIn?: number
 }
 
 export interface Post {
@@ -499,6 +573,18 @@ export interface Notification {
   text: string
   date: Date
   isGlobal: boolean
+  user?: string,
+  link_name: string,
+  link_href: string,
+}
+
+export interface NotificationResponse {
+  id: string
+  user: string
+  noti: string
+  text: string
+  date: string
+  username: string
 }
 
 export interface NotificationComment {
@@ -578,4 +664,31 @@ export interface TagPool {
   questions: string[],
   tags: string[]
   exam: string
+}
+
+export interface MoodRate {
+  id: string
+  user: string
+  mood: 1 | 2 | 3 | 4 | 5 | 6
+  date: string
+  text: string
+}
+
+export interface Tutorial {
+  key: string
+  label: string
+  text: string
+}
+
+export interface Daily {
+  id: string
+  title: string
+  text: string
+}
+
+export interface DailyRegister {
+  id: string
+  user: string
+  daily: Daily
+  date: string
 }
