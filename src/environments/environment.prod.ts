@@ -3,12 +3,13 @@ import { environment as env } from './environment'
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyAkRoZR2ihUIsS6Z7Dt8EF5LY5AgKdcS-I",
-    authDomain: "epsi-simuladores.firebaseapp.com",
-    databaseURL: "https://epsi-simuladores.firebaseio.com",
-    projectId: "epsi-simuladores",
-    storageBucket: "epsi-simuladores.appspot.com",
-    messagingSenderId: "109307489918"
+    apiKey: "AIzaSyDBmqeyl06tkORD0Lms2fg3LFGIs3PfvaU",
+    authDomain: "epsi-simuladores-645d4.firebaseapp.com",
+    databaseURL: "https://epsi-simuladores-645d4.firebaseio.com",
+    projectId: "epsi-simuladores-645d4",
+    storageBucket: "epsi-simuladores-645d4.appspot.com",
+    messagingSenderId: "96794283612",
+    appId: "1:96794283612:web:445c58feb7325979"
   },
   ui: {
     defaultAvatar: 'https://via.placeholder.com/128'
