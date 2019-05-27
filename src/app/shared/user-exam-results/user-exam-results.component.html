@@ -1,0 +1,8 @@
+<ul class="list-group" *ngIf="results$ | async as results">
+
+  <li *ngFor="let r of results" class="list-group-item">
+    <strong>{{r.promedio * 10 | number}}/10</strong>
+    <span class="ml-2">{{r.date | amCalendar}}</span>
+  </li>
+
+</ul>

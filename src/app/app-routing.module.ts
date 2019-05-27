@@ -61,11 +61,15 @@ import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-results.component";
 import {UserPromediosTableComponent} from "./pages/user-promedios-table/user-promedios-table.component";
 import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions-average/admin-exams-questions-average.component";
+import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-page.component';
 
 const routes: Routes = [
 
   // Master
-  //{path: '**', redirectTo: '/'},
+  // {path: '**', redirectTo: '/'},
+
+  // 2GUIA Core
+  { path: 'curso/:materia', component: MateriaAltPageComponent },
 
   // Core
   {path: '', component: LoginPageComponent},

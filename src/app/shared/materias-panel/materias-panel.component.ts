@@ -1,7 +1,10 @@
+import { AuthService } from './../../services/auth.service';
 import { Collections, ContentTypesEnum, Content } from './../../app.models';
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { map } from 'rxjs/operators';
+import { sortBy } from 'lodash';
 
 @Component({
   selector: 'epsi-materias-panel',
@@ -13,6 +16,7 @@ export class MateriasPanelComponent implements OnInit {
   public materias$: Observable<Content[]>;
 
   constructor(
+    public auth: AuthService,
     private afs: AngularFirestore,
   ) { }
 
@@ -23,11 +27,8 @@ export class MateriasPanelComponent implements OnInit {
   loadMaterias() {
     this.materias$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
       .where('type', '==', ContentTypesEnum.Materia))
-      .valueChanges();
-  }
-
-  openMateria(materia: Content) {
-
+      .valueChanges()
+      .pipe(map(materias => sortBy(materias, 'sortIndex')));
   }
 
 }

@@ -46,6 +46,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th>Index</th>
             <th>Imágen</th>
             <th>Nombre</th>
             <th>Tipo</th>
@@ -55,6 +56,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let c of content">
+            <td>{{c.sortIndex}}</td>
             <td>
               <img [src]="c.cover" [alt]="c.name" style="width:32px" *ngIf="c.cover">
               <span *ngIf="!c.cover">-</span>

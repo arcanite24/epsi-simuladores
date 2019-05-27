@@ -2,49 +2,59 @@
 
     <h1>Editar Contenido</h1>
 
-    <div class="epsi-input">
+    <div class="form-group">
+      <label for="">Sort Index</label>
+      <input type="number" class="form-control" formControlName="sortIndex">
+    </div>
+
+    <div class="form-group">
       <label for="">Link</label>
-      <input type="text" [value]="content_url" readonly>
+      <input type="text" class="form-control" [value]="content_url" readonly>
     </div>
-  
-    <div class="epsi-input">
+
+    <div class="form-group">
       <label for="">Nombre</label>
-      <input type="text" formControlName="name">
+      <input type="text" class="form-control" formControlName="name">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label for="">Video</label>
-      <input type="text" formControlName="video">
+      <input type="text" class="form-control" formControlName="video">
     </div>
 
-    <div class="epsi-input">
-      <label for="">Categoría del Foro</label>
-      <input type="text" formControlName="forum" placeholder="Solo el Id de la categoría del foro">
+    <div class="form-group">
+      <label for="">Exámen</label>
+      <input type="text" class="form-control" formControlName="exam">
     </div>
-  
-    <div class="epsi-input">
+
+    <div class="form-group">
+      <label for="">Categoría del Foro</label>
+      <input type="text" class="form-control" formControlName="forum" placeholder="Solo el Id de la categoría del foro">
+    </div>
+
+    <div class="form-group">
       <label for="">Descripción</label>
       <textarea formControlName="description"></textarea>
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label for="">¿Liberado a 360?</label>
       <input type="checkbox" formControlName="is360">
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label for="">¿Videoclase 2019?</label>
       <input type="checkbox" formControlName="ignoreOnSmartCalendar">
     </div>
-  
-    <div class="epsi-input">
+
+    <div class="form-group">
       <label for="">Tipo</label>
       <select formControlName="type">
         <option [value]="type" *ngFor="let type of contentTypes">{{type}}</option>
       </select>
     </div>
-  
-    <div class="epsi-input" *ngIf="contents$ | async as contents">
+
+    <div class="form-group" *ngIf="contents$ | async as contents">
       <label for="">Padre</label>
       <select (change)="parentSelected(tempParent)" [(ngModel)]="tempParent" [ngModelOptions]="{standalone: true}">
         <option [ngValue]="null">-</option>
@@ -52,13 +62,13 @@
       </select>
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label for="">Evento</label>
-      <input type="text" formControlName="event" placeholder="Solo el Id del Evento para el Programa">
+      <input type="text" class="form-control" formControlName="event" placeholder="Solo el Id del Evento para el Programa">
     </div>
-  
+
     <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>
-  
+
     <hr>
 
     <div class="content-edit-markers">
@@ -71,7 +81,7 @@
       </div>
 
       <div class="market-input flex flex-row flex-start" *ngFor="let marker of editForm.value.markers">
-        <input type="text" [(ngModel)]="marker.tag" [ngModelOptions]="{standalone: true}" placeholder="Texto del Marcador">
+        <input type="text" class="form-control" [(ngModel)]="marker.tag" [ngModelOptions]="{standalone: true}" placeholder="Texto del Marcador">
         <ngb-timepicker [(ngModel)]="marker.time" [seconds]="true" (change)="markerChanged(marker)" [ngModelOptions]="{standalone: true}"></ngb-timepicker>
       </div>
 
@@ -88,7 +98,7 @@
 
       <ul>
         <li *ngFor="let item of roles; let iRole = index" class="flex flex-row flex-start align-center p-1">
-          <input type="text" class="form-control" [(ngModel)]="roles[iRole]" [ngModelOptions]="{updateOn: 'blur', standalone: true}">
+          <input type="text" class="form-control" class="form-control" [(ngModel)]="roles[iRole]" [ngModelOptions]="{updateOn: 'blur', standalone: true}">
           <button type="button" class="btn btn-danger ml-1" (click)="roles.splice(iRole, 1)">
             <i class="fa fa-close"></i>
           </button>
@@ -97,13 +107,13 @@
 
     </div>
 
-    <div class="epsi-input">
+    <div class="form-group">
       <label for="">Slug de Modelo de Pago</label>
-      <input type="text" formControlName="model_slug">
+      <input type="text" class="form-control" formControlName="model_slug">
     </div>
-  
+
     <button type="submit">Editar Contenido</button>
-  
+
     <pre>{{editForm.value | json}}</pre>
-  
+
   </form>

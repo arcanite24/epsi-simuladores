@@ -206,6 +206,9 @@ import { UserPromediosTableComponent } from './pages/user-promedios-table/user-p
 import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questions-average/admin-exams-questions-average.component';
 import { MateriasPanelComponent } from './shared/materias-panel/materias-panel.component';
 import { MateriaItemComponent } from './shared/materia-item/materia-item.component';
+import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-page.component';
+import { UserExamResultsComponent } from './shared/user-exam-results/user-exam-results.component';
+import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-exam-line-chart.component';
 
 @NgModule({
   declarations: [
@@ -373,6 +376,9 @@ import { MateriaItemComponent } from './shared/materia-item/materia-item.compone
     AdminExamsQuestionsAverageComponent,
     MateriasPanelComponent,
     MateriaItemComponent,
+    MateriaAltPageComponent,
+    UserExamResultsComponent,
+    UserExamLineChartComponent,
   ],
   imports: [
     BrowserAnimationsModule,

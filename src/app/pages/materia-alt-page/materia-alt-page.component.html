@@ -1,0 +1,29 @@
+<div class="container mt-retro">
+  <div class="row" *ngIf="materia$ | async as materia">
+
+    <div class="col-md-4">
+      <epsi-panel title="Exámen">
+        <div class="w-100 p-3">
+          <img src="assets/img/btn-start-exam.png" alt="Iniciar Exámen" class="w-100 manita" (click)="router.navigate(['/exam', 'simulador', materia.exam])">
+        </div>
+      </epsi-panel>
+    </div>
+
+    <div class="col-md-4">
+      <epsi-panel [title]="materia.name">
+        <div class="w-100 p-1">
+          <epsi-user-exam-line-chart *ngIf="auth.user" [user]="auth.user.uid" [exam]="materia.exam"></epsi-user-exam-line-chart>
+        </div>
+      </epsi-panel>
+    </div>
+
+    <div class="col-md-4">
+      <epsi-panel title="Mis Resultados">
+        <div class="w-100">
+          <epsi-user-exam-results *ngIf="auth.user" [user]="auth.user.uid" [exam]="materia.exam"></epsi-user-exam-results>
+        </div>
+      </epsi-panel>
+    </div>
+
+  </div>
+</div>

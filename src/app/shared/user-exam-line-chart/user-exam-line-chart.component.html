@@ -1,0 +1,14 @@
+<div class="w-100 user-line-chart">
+  <ngx-charts-line-chart
+  *ngIf="chartData"
+  [scheme]="'fire'"
+  [xAxis]="false"
+  [yAxis]="true"
+  [xAxisLabel]="'Fecha'"
+  [yAxisLabel]="'Promedio'"
+  [showXAxisLabel]="false"
+  [showYAxisLabel]="true"
+  [yScaleMax]="10"
+  [yScaleMin]="0"
+  [results]="chartData"></ngx-charts-line-chart>
+</div>

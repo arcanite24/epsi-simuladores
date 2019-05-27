@@ -101,6 +101,14 @@ export enum Roles {
   Premium360 = 'isPremium360', // CURSO_PREMIUM_360
   Presencial = 'isPresencial', // CURSO_PRESENCIAL
 
+  // 2guia materias
+  isMatematicas = 'isMatematicas',
+  isCienciasExperimentales = 'isCienciasExperimentales',
+  isComunicacion = 'isComunicacion',
+  isRh = 'isRh',
+  isInformatica = 'isInformatica',
+  isContabilidad = 'isContabilidad',
+
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',
@@ -255,6 +263,7 @@ export interface Content {
   temas$?: Observable<Content[]>;
   temas?: Content[];
   liberadoInPrograma?: boolean;
+  exam?: string;
 }
 
 export interface Marker {
