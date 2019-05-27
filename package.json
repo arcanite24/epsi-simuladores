@@ -48,6 +48,7 @@
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-gallery": "^5.9.1",
     "ngx-moment": "^3.3.0",
+    "ngx-papaparse": "^3.0.2",
     "ngx-select-dropdown": "^1.0.1",
     "ngx-smart-modal": "^7.1.1",
     "ngx-toastr": "^9.1.1",

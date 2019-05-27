@@ -1,8 +1,9 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ExamResults, Collections } from 'src/app/app.models';
 import { tap } from 'rxjs/operators';
+import { meanBy } from 'lodash';
 
 @Component({
   selector: 'epsi-user-exam-results',
@@ -18,6 +19,8 @@ export class UserExamResultsComponent implements OnInit {
     this._exam = exam;
     if (this.user && exam) { this.loadResults(this.user, exam); }
   }
+
+  @Output() public computedMean: EventEmitter<number> = new EventEmitter();
 
   public get exam(): string { return this._exam; }
   public results$: Observable<ExamResults[]>;
@@ -35,7 +38,8 @@ export class UserExamResultsComponent implements OnInit {
     this.results$ = this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
       .where('user', '==', user)
       .where('exam', '==', exam))
-      .valueChanges();
+      .valueChanges()
+      .pipe(tap(results => this.computedMean.next(meanBy(results, 'promedio'))));
   }
 
 }

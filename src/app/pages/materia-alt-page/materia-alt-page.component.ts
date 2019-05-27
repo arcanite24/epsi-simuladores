@@ -16,6 +16,8 @@ export class MateriaAltPageComponent implements OnInit {
   public id: string = this.route.snapshot.paramMap.get('materia');
   public materia$: Observable<Content>;
 
+  public promedio: number;
+
   constructor(
     public router: Router,
     public auth: AuthService,

@@ -1,0 +1,38 @@
+<div class="container mt-retro">
+  <div class="row">
+
+    <div class="col-md-9">
+      <epsi-panel title="Promedio General">
+        <div class="w-100">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <td>Materia</td>
+                <td>Promedio</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let promedio of promedios">
+                <td>{{promedio.name}}</td>
+                <td>{{promedio.promedio * 10 | number}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </epsi-panel>
+    </div>
+
+    <div class="col-md-3">
+      <epsi-panel title="Gráfica">
+        <div class="w-100 promedios-chart">
+          <ngx-charts-pie-chart
+            *ngIf="chartData"
+            [results]="chartData"
+            [scheme]="'fire'"
+            ></ngx-charts-pie-chart>
+        </div>
+      </epsi-panel>
+    </div>
+
+  </div>
+</div>

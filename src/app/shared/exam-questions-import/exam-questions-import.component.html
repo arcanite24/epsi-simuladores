@@ -1,0 +1,26 @@
+<div class="container mt-retro">
+  <div class="row">
+
+    <div class="col-md-12">
+      <epsi-panel title="Importar Preguntas">
+        <div class="row">
+
+          <div class="col-md-6">
+            <input type="file" hidden #fileInput id="file-input" (change)="onFileChange(fileInput.files)">
+            <label for="file-input" class="btn btn-primary">Seleccionar Archivo</label>
+          </div>
+
+          <div class="col-md-6" *ngIf="questions">
+            <button (click)="writeToDB(questions)">Importar a la DB</button>
+          </div>
+
+          <div class="col-md-12" *ngIf="questions">
+            <pre>{{questions | json}}</pre>
+          </div>
+
+        </div>
+      </epsi-panel>
+    </div>
+
+  </div>
+</div>

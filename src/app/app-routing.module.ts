@@ -1,3 +1,4 @@
+import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exam-questions-import.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -62,6 +63,7 @@ import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-r
 import {UserPromediosTableComponent} from "./pages/user-promedios-table/user-promedios-table.component";
 import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions-average/admin-exams-questions-average.component";
 import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-page.component';
+import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
 
 const routes: Routes = [
 
@@ -70,6 +72,7 @@ const routes: Routes = [
 
   // 2GUIA Core
   { path: 'curso/:materia', component: MateriaAltPageComponent },
+  { path: 'promedio', component: UserMateriasPromediosComponent },
 
   // Core
   {path: '', component: LoginPageComponent},
@@ -114,6 +117,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/questions', component: AdminQuestionsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exams', component: AdminExamsComponent},
   {canActivate: [AuthGuard], path: 'admin/exam/stats/:id', component: AdminExamStatsPageComponent},
+  { canActivate: [AuthGuard], path: 'admin/exam/import/:id', component: ExamQuestionsImportComponent },
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/asesorias', component: AdminAsesoriasComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/slides', component: AdminSlidesComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/checklist', component: AdminTodoComponent},

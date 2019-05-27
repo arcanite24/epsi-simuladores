@@ -25,6 +25,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import localeEs from '@angular/common/locales/es';
 import { Angular2CsvModule } from 'angular2-csv';
+import { PapaParseModule } from 'ngx-papaparse';
 
 registerLocaleData(localeEs)
 
@@ -209,6 +210,8 @@ import { MateriaItemComponent } from './shared/materia-item/materia-item.compone
 import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-page.component';
 import { UserExamResultsComponent } from './shared/user-exam-results/user-exam-results.component';
 import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-exam-line-chart.component';
+import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
+import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exam-questions-import.component';
 
 @NgModule({
   declarations: [
@@ -379,6 +382,8 @@ import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-e
     MateriaAltPageComponent,
     UserExamResultsComponent,
     UserExamLineChartComponent,
+    UserMateriasPromediosComponent,
+    ExamQuestionsImportComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -424,6 +429,7 @@ import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-e
     ScrollToModule.forRoot(),
     LoadingBarModule,
     Angular2CsvModule,
+    PapaParseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
