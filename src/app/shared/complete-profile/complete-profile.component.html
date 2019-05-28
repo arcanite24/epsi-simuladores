@@ -1,0 +1,59 @@
+<div class="container">
+  <form class="row" [formGroup]="userForm" (ngSubmit)="saveInfo(userForm.value)">
+
+    <div class="col-md-12">
+      <h4>Completa tu perfil para continuar</h4>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Nombre Completo</label>
+      <input type="text" class="form-control" formControlName="nombre_completo">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Correo Electrónico</label>
+      <input type="text" class="form-control" formControlName="new_email">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Celular</label>
+      <input type="text" class="form-control" formControlName="celular">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Lugar de Origen</label>
+      <input type="text" class="form-control" formControlName="lugar_origen">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Edad</label>
+      <input type="text" class="form-control" formControlName="edad">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Piensas entrar a la universidad?</label>
+      <select formControlName="entrar_uni" class="form-control">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Es tu primer intento?</label>
+      <select formControlName="primer_intento" class="form-control">
+        <option value="si">Sí</option>
+        <option value="no">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Cómo te gustaría que <strong>TuGuía</strong> te ayudara?</label>
+      <textarea formControlName="feedback" class="form-control"></textarea>
+    </div>
+
+    <div class="col-md-12">
+      <button class="btn btn-success" type="submit" [disabled]="!userForm.valid">Guardar</button>
+    </div>
+
+  </form>
+</div>

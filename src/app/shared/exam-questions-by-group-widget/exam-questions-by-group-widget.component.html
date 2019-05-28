@@ -6,8 +6,12 @@
   <epsi-exam-ranking-add [exam]="exam" *ngIf="exam"></epsi-exam-ranking-add>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="profileModal" [closable]="false" [dismissable]="false" [escapable]="false">
+  <epsi-complete-profile *ngIf="uid" [uid]="uid"></epsi-complete-profile>
+</ngx-smart-modal>
+
 <epsi-panel *ngIf="exam else loader" [title]="exam.name" [showContent]="true">
-  
+
   <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>
 
     <!--<pre>{{state | json}}</pre>-->

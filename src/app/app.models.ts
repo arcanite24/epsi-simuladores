@@ -210,6 +210,11 @@ export class User {
   noCalendar?: boolean;
 
   // Zamnademy Fields
+  nombre_completo?: string;
+  edad?: string;
+  entrar_uni?: string;
+  primer_intento?: string;
+  feedback?: string;
   new_email?: string;
   universidad?: string;
   celular?: string;

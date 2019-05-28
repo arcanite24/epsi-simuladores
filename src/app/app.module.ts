@@ -212,6 +212,7 @@ import { UserExamResultsComponent } from './shared/user-exam-results/user-exam-r
 import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-exam-line-chart.component';
 import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
 import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exam-questions-import.component';
+import { CompleteProfileComponent } from './shared/complete-profile/complete-profile.component';
 
 @NgModule({
   declarations: [
@@ -384,6 +385,7 @@ import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exa
     UserExamLineChartComponent,
     UserMateriasPromediosComponent,
     ExamQuestionsImportComponent,
+    CompleteProfileComponent,
   ],
   imports: [
     BrowserAnimationsModule,
