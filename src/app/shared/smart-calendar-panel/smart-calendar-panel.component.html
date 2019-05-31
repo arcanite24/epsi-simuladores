@@ -1,0 +1,60 @@
+<ngx-smart-modal identifier="eventsModal" customClass="max-w-50">
+  <epsi-calendar-events-modal (checkChanged)="eventCheckChanged($event)" [events]="dayEvents"></epsi-calendar-events-modal>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="removeModal" customClass="max-w-50" #removeModal>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <p>¿Estás seguro de re-hacer tu calendario? Se perderá el avance que tengas hasta éste momento</p>
+      </div>
+      <div class="col-md-12">
+        <button class="btn btn-danger" type="button" (click)="removeCalendar()">Quitar</button>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<epsi-panel title="Mi calendario personalizado" desc="Tu calendario puede cargar en 30 a 90 segundos dependiendo la velocidad de tu conexión a internet" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="false" tutorial="Mwe2Sv0rSsAmytfy3CoV">
+
+  <epsi-plan-selector-panel *ngIf="auth.user && !auth.user.customCalendar"></epsi-plan-selector-panel>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+  
+  <div *ngIf="auth.user && auth.user.customCalendar" class="calendar-panel-actions flex flex-row flex-start align-center">
+
+    <button class="btn btn-danger" type="button" (click)="removeCalendar()" *ngIf="auth.isAdmin">Quitar Calendario</button>
+    <button class="btn btn-danger" type="button" (click)="removeModal.open()">Volver a hacer mi calendario</button>
+
+    <button 
+      type="button"
+      class="btn btn-secondary mr-4"
+      mwlCalendarPreviousView
+      [(viewDate)]="viewDate"
+      [view]="view">Mes Anterior</button>
+
+    <h4 style="text-transform: capitalize">{{mesLabel}}</h4>
+
+    <button 
+      type="button"
+      class="btn btn-secondary ml-4"
+      mwlCalendarNextView
+      [(viewDate)]="viewDate"
+      [view]="view">Mes Siguiente</button>
+
+  </div>
+
+  <div class="calendar-container" *ngIf="auth.user && auth.user.customCalendar">
+    <div class="calendar-panel-body mt-2" *ngIf="events else loader">
+      <mwl-calendar-month-view
+        locale="es"
+        [viewDate]="viewDate"
+        [events]="events"
+        [refresh]="refresh"
+        (dayClicked)="dayClicked($event.day)"></mwl-calendar-month-view>
+    </div>
+  </div>
+
+</epsi-panel>

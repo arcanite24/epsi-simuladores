@@ -1,0 +1,19 @@
+<div class="container">
+  <form class="row" [formGroup]="addForm" (ngSubmit)="submitForm(addForm.value)">
+
+    <div class="col-md-12 form-group">
+      <label for="">Titulo</label>
+      <input class="form-control" type="text" formControlName="title">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Texto</label>
+      <textarea class="form-control" type="text" formControlName="text"></textarea>
+    </div>
+
+    <div class="col-md-12">
+      <button type="submit" class="btn btn-primary" [disabled]="!addForm.valid">Agregar</button>
+    </div>
+
+  </form>
+</div>

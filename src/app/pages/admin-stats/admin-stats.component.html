@@ -1,12 +1,29 @@
+<ngx-smart-modal identifier="removeModal" #removeModal>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4>¿Estás seguro de eliminar éste elemento?</h4>
+      </div>
+
+      <div class="col-md-12">
+        <button type="button" class="btn btn-danger" (click)="removeStat(tempId)">Eliminar</button>
+        <button class="btn btn-secondary ml-2" (click)="removeModal.close()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="epsi-admin-stats container">
   <div class="row">
 
     <div class="col-xs-12 col-md-6">
-      <epsi-stat-view-admin-panel></epsi-stat-view-admin-panel>
+      <epsi-stat-view-admin-panel (remove)="openRemove($event)"></epsi-stat-view-admin-panel>
     </div>
     
     <div class="col-xs-12 col-md-6">
-      <epsi-stat-structure-admin-panel></epsi-stat-structure-admin-panel>
+      <epsi-stat-structure-admin-panel (remove)="openRemove($event)"></epsi-stat-structure-admin-panel>
     </div>
 
   </div>

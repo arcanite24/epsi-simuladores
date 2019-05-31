@@ -1,6 +1,11 @@
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
     <h1>Editar Contenido</h1>
+
+    <div class="epsi-input">
+      <label for="">Link</label>
+      <input type="text" [value]="content_url" readonly>
+    </div>
   
     <div class="epsi-input">
       <label for="">Nombre</label>
@@ -21,6 +26,16 @@
       <label for="">Descripción</label>
       <textarea formControlName="description"></textarea>
     </div>
+
+    <div class="epsi-input">
+      <label for="">¿Liberado a 360?</label>
+      <input type="checkbox" formControlName="is360">
+    </div>
+
+    <div class="epsi-input">
+      <label for="">¿Videoclase 2019?</label>
+      <input type="checkbox" formControlName="ignoreOnSmartCalendar">
+    </div>
   
     <div class="epsi-input">
       <label for="">Tipo</label>
@@ -35,6 +50,11 @@
         <option [ngValue]="null">-</option>
         <option *ngFor="let content of contents" [selected]="content.id == editForm.value.parent_id" [ngValue]="content">{{content.name}}</option>
       </select>
+    </div>
+
+    <div class="epsi-input">
+      <label for="">Evento</label>
+      <input type="text" formControlName="event" placeholder="Solo el Id del Evento para el Programa">
     </div>
   
     <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>

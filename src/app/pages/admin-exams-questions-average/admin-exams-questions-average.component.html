@@ -1,0 +1,10 @@
+<div class="container mt-retro">
+  <epsi-panel title="Promedio por Preguntas" *ngIf="results$ | async as res">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let p of preguntas">
+        <strong>Correctas: {{(p.total / p.average) * 10 | number}}%</strong> <small class="ml-2">{{p.text}}</small>
+        <!--<pre>{{p | json}}</pre>-->
+      </li>
+    </ul>
+  </epsi-panel>
+</div>

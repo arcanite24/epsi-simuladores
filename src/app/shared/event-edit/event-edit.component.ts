@@ -31,7 +31,7 @@ export class EventEditComponent implements OnInit {
       id: ['', Validators.required],
       title: ['', Validators.required],
       desc: ['', Validators.required],
-      date: [new Date().toISOString(), Validators.required],
+      date: [null],
       tasks: [[]],
       links: [[]]
     })

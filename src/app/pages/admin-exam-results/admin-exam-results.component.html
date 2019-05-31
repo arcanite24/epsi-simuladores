@@ -1,0 +1,29 @@
+<div class="container mt-retro">
+  <epsi-panel title="Resultado de Exámen">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="results$ | async as results else loader">
+          <ul class="list-group m-4">
+            <li class="list-group-item" *ngFor="let r of results">
+              <a *ngIf="r.exam$ | async as exam else examLoader" [routerLink]="[ '/result', r.id ]">
+                <strong class="mr-2" *ngIf="r.user$ | async as user">{{r.promedio * 100 | number}} | {{user.displayName}}</strong>
+                {{exam.name}} - {{r.date | amCalendar}}
+              </a>
+              <ng-template #examLoader>
+                <span>Cargando exámen...</span>
+              </ng-template>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-12">
+          <ng-template #loader>
+            <epsi-loader></epsi-loader>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+  </epsi-panel>
+</div>

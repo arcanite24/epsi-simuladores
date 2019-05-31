@@ -31,7 +31,7 @@ export class NotesPageComponent implements OnInit {
           .where('user', '==', user.uid))
           .valueChanges()
           .pipe(
-            map(notes => Object.values(groupBy(notes)))
+            map(notes => Object.values(groupBy(notes.filter(n => n.content_type != 'event'))))
           )
       }
     })

@@ -8,35 +8,39 @@
 
 <epsi-panel *ngIf="exam else loader" [title]="exam.name" [showContent]="true">
   
-  <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state">
+  <div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>
 
-    <h5 class="m-0">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</h5>
-    <p class="m-0 mb-2" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
+    <!--<pre>{{state | json}}</pre>-->
+
+    <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante: {{duration_label}}</strong></p>
+    <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>
 
     <div class="question-group" *ngIf="question as group">
 
       <div class="question-body" *ngFor="let question of group">
         <img [src]="question.img" *ngIf="question.img" class="w-100">
-        <h2>{{question.text}}</h2>
+        <h4 style="white-space: pre-wrap;">{{question.text}}</h4>
 
         <ul *ngIf="question.respuestas as respuestas else loaderQuestions">
           <li *ngFor="let respuesta of respuestas">
             <input
               type="radio"
               [name]="question.id"
-              [checked]="question.selectedAnswer && respuesta.id == question.selectedAnswer.id"
-              [(ngModel)]="question.selectedAnswer" 
-              [value]="respuesta" 
+              [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"
+              [(ngModel)]="question.selectedAnswerId"
+              [value]="respuesta.id"
               [id]="respuesta.id"
-              (change)="answerChanged(question.selectedAnswer, question)">
+              (change)="answerChanged(respuesta, question)">
             <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>
           </li>
+          <!--<pre>{{question.selectedAnswer | json}}</pre>-->
         </ul>
       </div>
 
       <div class="question-actions flex flex-row flex-start">
+        <!--<pre>{{group | json}}</pre>-->
         <button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>
-        <button class="btn btn-secondary" [disabled]="!state.selectedAnswer" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
+        <button class="btn btn-secondary" [disabled]="canGoNext(group)" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
         <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
       </div>
 
@@ -44,7 +48,7 @@
         <epsi-loader></epsi-loader>
       </ng-template>
 
-      <!-- <pre class="mt-2 mb-2">{{results | json}}</pre> -->
+       <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->
 
     </div>
 

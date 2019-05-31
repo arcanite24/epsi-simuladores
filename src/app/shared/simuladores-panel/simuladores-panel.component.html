@@ -2,8 +2,9 @@
   title="Mi Simulador Diario ENARM" 
   img="https://zamnademy.com/site/images/clients/simuladordiario.png" 
   height="300px" 
-  [showContent]="false"
-  [blur]="!auth.isTemprano">
+  tutorial="tWP3Mu1pDg4BzpULhr3C"
+  [showContent]="showContent"
+  [blur]="isBlur()">
 
   <ul *ngIf="exams$ | async as exams else loaderSimuladores" class="m-3 list-group">
     <li *ngFor="let exam of exams" class="list-group-item">

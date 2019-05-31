@@ -1,0 +1,56 @@
+<div class="mt-retro container">
+  <epsi-panel title="Resultados">
+
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+
+    <div class="container" *ngIf="info$ | async as info else loader">
+      <div class="row">
+
+        <div class="col-md-12">
+          <ul class="list-group">
+
+            <li class="list-group-item">
+              <strong>Número de alumnos que lo resolvieron: </strong>
+              <span>{{info.samples | number}}</span>
+            </li>
+
+            <li class="list-group-item">
+              <strong>Promedio general: </strong>
+              <span>{{info.mean * 10 | number}}/10</span>
+            </li>
+
+          </ul>
+        </div>
+
+        <!-- Exam Result Stats Bar Chart -->
+        <div class="col-md-12 mt-4">
+          <ngx-charts-bar-vertical
+            [view]="[null, 300]"
+            [showXAxisLabel]="true"
+            [showYAxisLabel]="true"
+            [legend]="false"
+            [xAxisLabel]="'Pregunta'"
+            [yAxisLabel]="'Correctas'"
+            [xAxis]="true"
+            [yAxis]="true"
+            [results]="info.questions"></ngx-charts-bar-vertical>
+        </div>
+
+        <div class="col-md-12 mt-2">
+          <h4>Preguntas</h4>
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let q of info.questions">
+              <p>
+                <strong>{{(q.correctas / q.total) * 100 | number}}%</strong>
+                <span class="ml-2">{{q.text}}</span>
+              </p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </epsi-panel>
+</div>

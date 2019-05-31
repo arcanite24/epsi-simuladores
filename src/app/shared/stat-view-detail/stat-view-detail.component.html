@@ -9,7 +9,7 @@
       <ul *ngIf="v.cache as c">
         <li *ngIf="c.total">{{c.total | number}} resultados</li>
         <li *ngIf="c.promedio">
-          <strong>Promedio: </strong> {{c.promedio | number}}/100
+          <strong>Promedio: </strong> {{c.promedio * 100 | number}}/100
         </li>
       </ul>
     </div>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="col-md-12">
-      <button type="button" (click)="reloadData()">Recargar Información</button>
+      <button type="button" (click)="reloadData(v)">Recargar Información</button>
     </div>
     
   </div>

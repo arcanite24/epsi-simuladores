@@ -1,11 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Exam, ExamTypes, Collections, Question, ContentTypes, Content } from 'src/app/app.models';
+import {Exam, ExamTypes, Collections, Question, ContentTypes, Content, ExamTagColor} from 'src/app/app.models';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { ScrollToService } from '@nicky-lenaers/ngx-scroll-to';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'epsi-exam-edit',
@@ -32,11 +34,15 @@ export class ExamEditComponent implements OnInit {
   public set exam(e: Exam) { this.examChanged(e) }
   public get exam(): Exam { return this._exam }
 
+  public importExamId: string
+
   constructor(
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private toastr: ToastrService,
     private modal: NgxSmartModalService,
+    private scroll: ScrollToService,
+    private data: DataService
   ) { }
 
   ngOnInit() {
@@ -52,7 +58,17 @@ export class ExamEditComponent implements OnInit {
       questions: [[]],
       isPrueba: false,
       liberado: null,
-      date: null
+      date: null,
+      showAd: false,
+      adDesc: '',
+      adHref: '',
+      adButton: '',
+      modalAdText: '',
+      isLight: false,
+      isPresencial: false,
+      extraTags: null,
+      tags_structure: [],
+      colors: []
     })
 
   }
@@ -112,9 +128,15 @@ export class ExamEditComponent implements OnInit {
     this.questionSelected(q)
   }
 
-  openEditQuestion(q: Question) {
+  openEditQuestion(q: Question, e?: HTMLElement) {
     this.tempQuestion = q
     this.modal.getModal('questionEditModal').open()
+    if (e) setTimeout(() => this.scroll.scrollTo({target: 'questionEditModal'}), 300)
+  }
+
+  openAddQuestion() {
+    this.modal.getModal('questionAddModal').open()
+    setTimeout(() => this.scroll.scrollTo({target: 'questionAddModal'}), 300)
   }
 
   postEditQuestion(q: Question) {
@@ -122,6 +144,45 @@ export class ExamEditComponent implements OnInit {
     this.editForm.patchValue({
       questions: this.editForm.value.questions.map(qq => q.id == qq.id ? q : qq)
     })
+  }
+
+  scrollTo(e: HTMLElement) {
+    e.scrollIntoView({behavior: 'smooth'})
+  }
+
+  openImportExam() {
+    this.modal.getModal('importExamModal').open()
+    setTimeout(() => this.scroll.scrollTo({target: 'importExamModal'}), 300)
+  }
+
+  async importExam(id: string) {
+    console.log('importing exam', id)
+    const exam = await this.data.getDoc<Exam>(Collections.EXAM, id)
+    this.editForm.patchValue({
+      questions: [...this.editForm.value.questions, ...exam.questions]
+    })
+    this.modal.getModal('importExamModal').close()
+  }
+
+  addStructTag(struct: any[] = []) {
+    struct.push({text: '', children: []})
+    this.editForm.patchValue({tags_structure: struct})
+  }
+
+  addStructChild(struct: any[] = [], i: number) {
+    struct[i].children.push({text: '', children: []})
+    this.editForm.patchValue({tags_structure: struct})
+  }
+
+  addColor(colors: ExamTagColor[] = []) {
+    if (!colors) colors = []
+    colors.push({tag: '', color: '#fff'});
+    this.editForm.patchValue({colors})
+  }
+
+  removeColor(colors: ExamTagColor[] = [], index: number) {
+    colors.splice(index, 1)
+    this.editForm.patchValue({colors})
   }
 
 }

@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Event, Collections, User, EventTask } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';
+import { StatsService } from 'src/app/services/stats.service';
 
 @Component({
   selector: 'epsi-event-detail',
@@ -12,12 +13,14 @@ import { take } from 'rxjs/operators';
 export class EventDetailComponent implements OnInit {
 
   @Input() public event: Event
+  @Output() public checkChanged: EventEmitter<{id: string, added: boolean}> = new EventEmitter();
 
   public completedTasks: string[] = []
 
   constructor(
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private stats: StatsService
   ) { }
 
   ngOnInit() {
@@ -43,11 +46,14 @@ export class EventDetailComponent implements OnInit {
 
       completedTasks.push(id)
       await this.afs.doc(userKey).update({completedTasks})
+      this.checkChanged.next({id, added: true});
 
     } else {
       if (completedTasks.length > 0) completedTasks.splice(completedTasks.indexOf(id), 1)
       await this.afs.doc(userKey).update({completedTasks})
+      this.checkChanged.next({id, added: false});
     }
+    this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
 
   }
 

@@ -32,8 +32,10 @@ export class ThreadDetailPageComponent implements OnInit {
   }
 
   async postReply(text: string, thread: Thread) {
+
     if (!text || text.length < 0) return
     const id = this.afs.createId()
+
     await this.afs.doc(`${Collections.THREAD_RESPONSE}/${id}`).set({
       id,
       text,
@@ -42,8 +44,24 @@ export class ThreadDetailPageComponent implements OnInit {
       user: this.auth.user,
       user_id: this.auth.user.uid,
     })
+
     this.toastr.success('Respuesta enviada correctamente.')
     this.tempReply = ''
+
+    // Send noti to owner
+    if (!thread.user) return;
+
+    const noti_id = this.afs.createId();
+    await  this.afs.collection(Collections.NOTIFICATION).doc(noti_id).set({
+      noti_id,
+      title: 'Nueva respuesta a tu pregunta',
+      text: `Alguien respondió a tu pregunta: ${thread.title}`,
+      date: new Date().toISOString(),
+      user: thread.user,
+      link_name: 'Pregunta: ' + thread.title,
+      link_href: '/thread/' + thread.id,
+    })
+
   }
 
 }

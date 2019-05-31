@@ -17,6 +17,7 @@
     color: $epsi-text-color-primary;
     align-items: center;
 
+
     img {
       width: 64px !important;
       height: 64px !important;
@@ -30,4 +31,18 @@
 .blur-panel {
   filter: blur(10px);
   pointer-events: none;
+}
+
+.tutorial-button-icon {
+  color: #ff8989;
+  font-size: 1.15rem !important;
+}
+
+@media only screen and (min-width: 768px) {
+  font-size: 1.25rem !important;
+}
+
+.panel-desc {
+  font-size: 0.75rem !important;
+  color: red;
 }

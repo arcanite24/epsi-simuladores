@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 // Custom Modules
 import { ScrollingModule } from '@angular/cdk/scrolling';
@@ -12,7 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgAisModule } from 'angular-instantsearch';
-import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
@@ -20,12 +21,19 @@ import { TagInputModule } from 'ngx-chips'
 import { NgxChartsModule } from '@swimlane/ngx-charts'
 import { MomentModule } from 'ngx-moment'
 import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
+import { LoadingBarModule } from '@ngx-loading-bar/core';
 import localeEs from '@angular/common/locales/es';
+import { Angular2CsvModule } from 'angular2-csv';
 
 registerLocaleData(localeEs)
 
 // Store
-import { StoreModule } from '@ngrx/store';
+import {ActionReducer, MetaReducer, StoreModule} from '@ngrx/store';
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['exam'], rehydrate: true})(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 
 // Videoplayer modules
 import { VgCoreModule } from 'videogular2/core';
@@ -181,6 +189,21 @@ import { AdminTagsPoolComponent } from './pages/admin-tags-pool/admin-tags-pool.
 import { AdminUserStatsComponent } from './pages/admin-user-stats/admin-user-stats.component';
 import { UserCouponsPanelComponent } from './shared/user-coupons-panel/user-coupons-panel.component';
 import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.component';
+import { UserMoodOverviewComponent } from './shared/user-mood-overview/user-mood-overview.component';
+import { UserNotiAddComponent } from './shared/user-noti-add/user-noti-add.component';
+import { AdminTutorialsComponent } from './pages/admin-tutorials/admin-tutorials.component';
+import { ProgramaPanelAltComponent } from './shared/programa-panel-alt/programa-panel-alt.component';
+import { ProgramaAltMateriaPageComponent } from './pages/programa-alt-materia-page/programa-alt-materia-page.component';
+import { ProgramaAltBloquePageComponent } from './pages/programa-alt-bloque-page/programa-alt-bloque-page.component';
+import { PlanSelectorPanelComponent } from './shared/plan-selector-panel/plan-selector-panel.component';
+import { SmartCalendarPanelComponent } from './shared/smart-calendar-panel/smart-calendar-panel.component';
+import { TutorialButtonComponent } from './shared/tutorial-button/tutorial-button.component';
+import { ZonaEnarmPanelComponent } from './shared/zona-enarm-panel/zona-enarm-panel.component';
+import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
+import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam-results.component';
+import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-structure/exam-results-tag-structure.component';
+import { UserPromediosTableComponent } from './pages/user-promedios-table/user-promedios-table.component';
+import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questions-average/admin-exams-questions-average.component';
 
 @NgModule({
   declarations: [
@@ -331,6 +354,21 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     AdminUserStatsComponent,
     UserCouponsPanelComponent,
     AdminAdTextsComponent,
+    UserMoodOverviewComponent,
+    UserNotiAddComponent,
+    AdminTutorialsComponent,
+    ProgramaPanelAltComponent,
+    ProgramaAltMateriaPageComponent,
+    ProgramaAltBloquePageComponent,
+    PlanSelectorPanelComponent,
+    SmartCalendarPanelComponent,
+    TutorialButtonComponent,
+    ZonaEnarmPanelComponent,
+    AdminDailyComponent,
+    AdminExamResultsComponent,
+    ExamResultsTagStructureComponent,
+    UserPromediosTableComponent,
+    AdminExamsQuestionsAverageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -341,7 +379,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     TagInputModule,
     NgxSmartModalModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule.enablePersistence(),
+    AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
     HttpClientModule,
@@ -350,6 +388,7 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     NgbTimepickerModule,
     NgbCarouselModule,
     NgbTypeaheadModule,
+    NgbDatepickerModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
@@ -361,7 +400,9 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     NgxGalleryModule,
     StoreModule.forRoot({
       exam: examReducer
-    }),
+    }/*, {
+      metaReducers
+    }*/),
     NgxChartsModule,
     MomentModule,
     ToastrModule.forRoot({
@@ -370,6 +411,9 @@ import { AdminAdTextsComponent } from './pages/admin-ad-texts/admin-ad-texts.com
     }),
     SelectDropDownModule,
     ScrollingModule,
+    ScrollToModule.forRoot(),
+    LoadingBarModule,
+    Angular2CsvModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

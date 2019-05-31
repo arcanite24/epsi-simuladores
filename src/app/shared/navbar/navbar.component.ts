@@ -3,7 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Collections, Notification, User } from 'src/app/app.models';
-import { take } from 'rxjs/operators';
+import { take, map } from 'rxjs/operators';
+import { combineLatest } from 'rxjs';
 const moment = require('moment')
 const countdown = require('countdown')
 countdown.setLabels(
@@ -68,7 +69,7 @@ export class NavbarComponent implements OnInit {
     return this.hiddenOn.indexOf(this.currentUrl) >= 0
   }
 
-  private async loadNotis() {
+  /* private async loadNotis() {
 
     this.afs.collection<Notification>(Collections.NOTIFICATION)
       .valueChanges()
@@ -106,6 +107,37 @@ export class NavbarComponent implements OnInit {
       }
     })
 
+  } */
+
+  private loadNotis() {
+    this.auth.user$.subscribe(_user => {
+      if (_user) {
+
+        combineLatest(
+          this.afs.collection<Notification>(Collections.NOTIFICATION, ref => ref.where('isGlobal', '==', true)).valueChanges(),
+          this.afs.collection<Notification>(Collections.NOTIFICATION, ref => ref.where('user', '==', _user.uid)).valueChanges(),
+          this.afs.collection(Collections.USER).doc<User>(_user.uid).valueChanges(),
+        ).pipe(
+          map(([global, local, user]) => {
+            return {
+              notis: [...global, ...local],
+              read: user.completedTasks ? user.completedTasks : []
+            }
+          })
+        ).subscribe(info => {
+
+          let counter = 0
+
+          for (const noti of info.notis) {
+            if (!info.read.includes(noti.id)) counter++
+          }
+
+          this.notReadCount = counter
+
+        })
+
+      }
+    })
   }
 
 }

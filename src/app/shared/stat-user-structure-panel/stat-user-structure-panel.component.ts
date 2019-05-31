@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { Observable } from 'rxjs';
 import { StatView, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -11,12 +11,14 @@ import { map } from 'rxjs/operators';
 })
 export class StatUserStructurePanelComponent implements OnInit {
 
+  @Input() public user: string;
+
   public views$: Observable<StatView[]> = this.afs.collection<StatView>(Collections.STAT_VIEW, ref => ref
     .where('isTimeline', '==', false))
     .valueChanges()
     .pipe(
       map(views => views.filter(v => !v.parent)),
-    )
+    );
 
   constructor(
     private afs: AngularFirestore

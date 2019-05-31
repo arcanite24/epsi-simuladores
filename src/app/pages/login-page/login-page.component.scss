@@ -2,17 +2,22 @@
 
 .login-container {
   height: 100vh;
-  background: url('/assets/zamnademy/bg1.jpg');
+  background: url('/assets/login-bg.png');
   background-size: cover;
+  overflow-y: auto;
 }
 
 .main-login-title {
   color: white;
 }
 
+.auth-controls {
+  margin-top: 5rem;
+  padding-right: 4rem !important;
+}
+
 .btn-social {
   border: none;
-  padding: 1rem;
   font-size: 1.25rem;
   border-radius: 10px;
   width: 100%;
@@ -23,29 +28,62 @@
   justify-content: flex-start;
   color: white;
   cursor: pointer;
-
-  i { margin-right: 0.5rem; }
+  padding: 0 !important;
 
   &:active, &:focus {
     outline: none;
   }
 
+  .social-icon-container {
+    padding: 1rem;
+    border-radius: 10px 0 0 10px;
+    width: 62px;
+  }
+
+  span {
+    margin: 1rem;
+  }
+
 }
 
 .btn-facebook {
-  background-color: #395aa1;
+  background-color: #5869AF;
+  .social-icon-container { background-color: #4F5EA1; }
 }
 
 .btn-google {
-  background-color: #e04b37;
+  background-color: #B04845;
+  .social-icon-container { background-color: #8E3A3B; }
 }
 
 .register-button {
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: white;
+  background: none;
+  border: none;
+  border: 2px solid white;
+  padding: 1.25rem;
 }
 
 .register-social-buttons {
   padding-right: 1rem;
   margin-right: 1rem;
   border-right: 1px solid white;
+}
+
+@media only screen and (max-width: 768px) {
+  
+  .btn-social {
+    font-size: 0.75rem !important;
+  }
+
+  .register-button {
+    padding: 0.5rem !important;
+  }
+
+  .auth-controls {
+    margin-top: 0 !important;
+    padding-right: 0 !important;
+  }
+
 }

@@ -87,7 +87,7 @@ export class QuestionAddComponent implements OnInit {
     const id = this.afs.createId()
     const answer: Answer = {
       id,
-      text: 'Nueva Respuesta',
+      text: '',
       parent: this.addForm.value.id
     }
 

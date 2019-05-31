@@ -29,6 +29,7 @@
           <div class="col-md-12 mt-4" *ngIf="stat.q.feedback">
             <h5 class="m-0">Feedback</h5>
             <p class="m-0 m-t1">{{stat.q.feedback}}</p>
+            <!--<pre>{{stat | json}}</pre>-->
           </div>
       
           <hr>
@@ -36,7 +37,7 @@
           <div class="col-md-12 mt-4" *ngIf="stat.stat$ | async as _stat">
             <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>
             <ul class="list-group" *ngIf="_stat.stat">
-              <li class="list-group-item flex flex-col flex-start" *ngFor="let s of _stat.stat">
+              <li class="list-group-item flex flex-col flex-start" *ngFor="let s of filterStats(stat.q, _stat.stat)">
                 <strong> <span class="c-epsi-primary">{{(s[1] / _stat.total) * 100 | number}}%</span> {{s[0]}}</strong>
                 <!-- <pre>{{ s | json }}</pre> -->
                 <div class="barra-container" [style.width.%]="(s[1] / _stat.total) * 100">
@@ -50,8 +51,8 @@
       <hr>
     </div>
     
-    <div class="col-md-12 flex flex-row flex-end mt-2">
-      <button class="btn btn-secondary ml-auto" type="button" (click)="closeModal()">Seguir</button>
+    <div class="col-md-12 flex-loader mt-2">
+      <button class="btn btn-secondary" type="button" (click)="closeModal()">Seguir</button>
     </div>
 
     <!-- <div class="col-md-12">

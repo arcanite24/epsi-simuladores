@@ -111,6 +111,14 @@
         <div class="col-xs-12 col-md-2">
           <epsi-admin-tile title="Recomendaciones" icon="id-badge" page="/admin/ad-texts"></epsi-admin-tile>
         </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Tutoriales" icon="info-circle" page="/admin/tutorials"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Daily" icon="bell" page="/admin/daily"></epsi-admin-tile>
+        </div>
   
       </div>
     </div>
@@ -130,6 +138,46 @@
 
         <div class="col-md-2">
           <epsi-admin-tile page="/admin/landing-fields" title="Landing Fields" icon="commenting-o"></epsi-admin-tile>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" [disabled]="loading" (click)="setEsencialToPresenciales()">Dar Esencial a Presenciales</button>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" [disabled]="loading" (click)="removeRolesToExcludedUsers()">Quitar Roles a lista de usuarios</button>
+        </div>
+
+        <div class="col-md-12">
+          <button type="button" [disabled]="loading" (click)="migratePresencialYEsencial()">migratePresencialYEsencial</button>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Tabla de Promedios" icon="bar-chart" page="/admin/stats/promedios/default"></epsi-admin-tile>
+        </div>
+
+        <div class="col-xs-12 col-md-2">
+          <epsi-admin-tile title="Tags Presenciales" icon="bar-chart" page="/admin/stats/promedios/presenciales"></epsi-admin-tile>
+        </div>
+  
+      </div>
+    </div>
+  </epsi-panel>
+
+  <epsi-panel title="Información">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-12" *ngIf="rates">
+          <ul class="list-group">
+            <li class="list-group-item">
+              <strong>Estádistica general de mood de usuarios</strong>
+            </li>
+            <li class="list-group-item" *ngFor="let m of rates">
+              <strong>{{m.mood}}: </strong>
+              <span>{{m.total}}</span>
+            </li>
+          </ul>
         </div>
   
       </div>

@@ -5,7 +5,7 @@
   </ng-template>
 
   <div class="structure-list" *ngIf="views$ | async as views else loader">
-    <epsi-stat-structure-item *ngFor="let view of views" [view]="view"></epsi-stat-structure-item>
+    <epsi-stat-structure-item *ngFor="let view of views" [view]="view" [user]="user"></epsi-stat-structure-item>
   </div>
 
 </epsi-panel>

@@ -1,14 +1,40 @@
-<ngx-smart-modal identifier="questionAddModal" #questionAddModal>
+<ngx-smart-modal identifier="questionAddModal" #questionAddModal id="questionAddModal">
   <epsi-question-add (questionAdded)="onQuestionAdded($event)"></epsi-question-add>
 </ngx-smart-modal>
 
-<ngx-smart-modal identifier="questionEditModal">
+<ngx-smart-modal identifier="questionEditModal" #questionEditModal id="questionEditModal">
   <epsi-question-edit [question]="tempQuestion" (postEdit)="postEditQuestion($event)"></epsi-question-edit>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="importExamModal" #importExamModal id="importExamModal">
+  <div class="container-fluid">
+    <div class="row">
+      
+      <div class="col-md-12">
+        <h4>Importar Exámen</h4>
+      </div>
+
+      <div class="col-md-12 form-group">
+        <label for="">ID del Exámen</label>
+        <input type="text" [(ngModel)]="importExamId">
+      </div>
+
+      <div class="col-md-12">
+        <button class="btn btn-primary" type="button" (click)="importExam(importExamId)">Importar Exámen</button>
+      </div>
+
+    </div>
+  </div>
 </ngx-smart-modal>
 
 <form [formGroup]="editForm" (ngSubmit)="submitForm()">
 
   <h2 class="text-boler c-epsi-primary">Editar Exámen</h2>
+
+  <div class="form-group">
+    <label for="">Id</label>
+    <input type="text" class="form-control" formControlName="id" readonly>
+  </div>
 
   <div class="form-group">
     <label for="">Nombre</label>
@@ -26,6 +52,21 @@
   </div>
 
   <div class="form-group">
+    <input type="checkbox" formControlName="showAd" id="exam-edit-showAd">
+    <label for="exam-edit-showAd">¿Mostrar Recomendación?</label>
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" formControlName="isLight" id="exam-edit-isLight">
+    <label for="exam-edit-isLight">¿Es Light?</label>
+  </div>
+
+  <div class="form-group">
+    <input type="checkbox" formControlName="isPresencial" id="exam-edit-isLight">
+    <label for="exam-edit-isLight">¿Es Presencial?</label>
+  </div>
+
+  <div class="form-group">
     <label for="">Fecha de liberación</label>
     <input type="datetime-local" class="form-control" formControlName="date">
   </div>
@@ -39,6 +80,26 @@
   <div class="form-group">
     <label for="">Tiempo Límite</label>
     <input type="number" class="form-control" formControlName="duration" placeholder="Duración del exámen en minutos">
+  </div>
+
+  <div class="form-group">
+    <label for="">Recomendación - Descripción</label>
+    <input type="text" class="form-control" formControlName="adDesc">
+  </div>
+
+  <div class="form-group">
+    <label for="">Recomendación - Link</label>
+    <input type="text" class="form-control" formControlName="adHref">
+  </div>
+
+  <div class="form-group">
+    <label for="">Recomendación - Texto del Botón</label>
+    <input type="text" class="form-control" formControlName="adButton">
+  </div>
+
+  <div class="form-group">
+    <label for="">Modal - Recomendación Texto</label>
+    <input type="text" class="form-control" formControlName="modalAdText">
   </div>
 
   <div class="form-group">
@@ -60,11 +121,60 @@
     <ngx-select-dropdown formControlName="content" [options]="content" [config]="{displayKey: 'name', search: true, placeholder: 'Seleccionar contenido', searchPlaceholder: 'Buscar:'}"></ngx-select-dropdown>
   </div>
 
+  <!--<div class="form-group">
+    <label for="">Extra Tags</label>
+    <input type="text" class="form-control" formControlName="extraTags" placeholder="Tags extra separados por comma">
+  </div>-->
+
+  <!--<div class="form-group flex flex-row flex-start align-center">
+
+    <label>Estructura de Tags</label>
+    <button class="btn btn-secondary" type="button" (click)="addStructTag(editForm.value.tags_structure)">Agregar Tag</button>
+
+    <div class="row" *ngIf="editForm.value.tags_structure as struct">
+      <div class="col-md-12" *ngFor="let tag of struct; let i = index">
+
+        <input type="text" [(ngModel)]="tag.text" ngModelOptions="{standalone: true}">
+        <button (click)="addStructChild(struct, i)" type="button" ><i class="fa fa-plus"></i></button>
+
+        <div class="ml-4 row" *ngIf="tag.children as children">
+          <div class="col-md-12" *ngFor="let child of children">
+            <input type="text" [(ngModel)]="child.text" ngModelOptions="{standalone: true}">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>-->
+
+  <hr>
+
+  <div class="form-group flex flex-row flex-start align-center">
+
+    <label>Colores</label>
+    <button class="btn btn-secondary" type="button" (click)="addColor(editForm.value.colors)">Agregar Color</button>
+
+    <div class="row" *ngIf="editForm.value.colors as colors">
+      <div class="col-md-12" *ngFor="let color of colors; let i = index">
+        <div class="flex flex-row flex-start align-center">
+          <input type="text" [(ngModel)]="color.tag" [ngModelOptions]="{standalone: true}" class="form-control mr-2" placeholder="Tag">
+          <input type="color" [(ngModel)]="color.color" [ngModelOptions]="{standalone: true}" class="form-control mr-2" placeholder="Color">
+          <button class="btn btn-danger" (click)="removeColor(colors, i)" type="button">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <hr>
 
   <div class="flex flex-row flex-start align-center mb-2">
     <h4 class="c-epsi-primary">Preguntas</h4>
-    <button class="btn btn-secondary ml-auto" type="button" (click)="questionAddModal.open()">Nueva Pregunta</button>
+    <button class="btn btn-secondary ml-auto" type="button" (click)="importExamModal.open()">Importar Exámen</button>
+    <button class="btn btn-secondary ml-auto" type="button" (click)="openAddQuestion()">Nueva Pregunta</button>
   </div>
   <epsi-search placeholder="Buscar preguntas" (onSelect)="questionSelected($event)"></epsi-search>
 
@@ -77,7 +187,7 @@
           <i class="fa fa-remove"></i>
         </button>
 
-        <button class="btn btn-secondary ml-2" type="button" (click)="openEditQuestion(q)">
+        <button class="btn btn-secondary ml-2" type="button" (click)="openEditQuestion(q, questionEditModal)">
           <i class="fa fa-edit"></i>
           <span class="ml-2">Editar</span>
         </button>
@@ -92,6 +202,7 @@
     </li>
   </ul>
 
+  <button class="btn btn-secondary mt-3 w-100" type="button" (click)="openAddQuestion()">Nueva Pregunta</button>
   <button class="btn btn-success w-100 mt-3" type="submit" [disabled]="!editForm.valid">Editar Exámen</button>
 
   <pre class="mt-4">{{editForm.value | json}}</pre>

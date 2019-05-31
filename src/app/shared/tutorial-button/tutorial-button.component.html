@@ -1,0 +1,13 @@
+<ngx-smart-modal #tutorialModal identifier="tutorialModal">
+  <div class="container-fluid" *ngIf="tutorial$ | async as tut">
+    <div class="row">
+      <div class="col-md-12">
+        <p style="white-space: pre-wrap !important;">{{tut.text}}</p>
+      </div>
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<button class="btn ml-2" (click)="tutorialModal.open()">
+  <i class="fa fa-info-circle tutorial-button-icon"></i>
+</button>

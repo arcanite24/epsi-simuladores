@@ -1,4 +1,4 @@
-<epsi-panel title="Mis Notas" [showContent]="true">
+<epsi-panel [title]="title" [showContent]="true">
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>
@@ -18,8 +18,8 @@
   </div>
 
   <form class="notes-add-form flex flex-col flex-start" *ngIf="noteForm" [formGroup]="noteForm" (ngSubmit)="addNote()">
-    <input type="text" formControlName="title" placeholder="Titulo">
-    <textarea formControlName="text" rows="3" placeholder="Contenido"></textarea>
+    <input type="text" formControlName="title" placeholder="Tarea">
+    <textarea formControlName="text" rows="3" placeholder="Instrucciones"></textarea>
     <button class="btn btn-secondary" type="submit" [disabled]="!noteForm.valid">Agregar Nota</button>
   </form>
 

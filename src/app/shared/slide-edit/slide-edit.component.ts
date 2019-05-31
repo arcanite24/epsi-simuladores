@@ -17,7 +17,7 @@ import { sortBy } from 'lodash'
 })
 export class SlideEditComponent implements OnInit {
 
-  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=vK4JtRBmoCG8AA7Z'
+  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=91QuqcR2zZvneuoz'
   
   private _slide: Slide
 
@@ -29,6 +29,8 @@ export class SlideEditComponent implements OnInit {
   public tempCat: SlideCategory
   public cats$: Observable<SlideCategory[]> = this.afs.collection<SlideCategory>(Collections.SLIDE_CATEGORY).valueChanges()
   public l: boolean = false
+
+  public lastIndex: number = -1;
 
   constructor(
     private afs: AngularFirestore,
@@ -47,7 +49,8 @@ export class SlideEditComponent implements OnInit {
       desc: ['', Validators.required],
       cat_id: [null],
       cat_name: [null],
-      images: []
+      images: [[]],
+      images_order: [[]],
     })
 
   }
@@ -59,7 +62,7 @@ export class SlideEditComponent implements OnInit {
 
   fileUploaded(url: string, images: string[] = []) {
     this.editForm.patchValue({
-      images: [...images, url]
+      images: [...images, url],
     })
   }
 
@@ -109,6 +112,8 @@ export class SlideEditComponent implements OnInit {
     const file = files.item(0)
     if (!file.name.includes('.pptx')) return this.toastr.error('El archivo debe ser de tipo .pptx')
     this.l = true
+
+    console.log(files);
     
     try {
 
