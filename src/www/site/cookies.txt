@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 # HTTrack Website Copier Cookie File
 # This file format is compatible with Netscape cookies
 iqonicthemes.com	TRUE	/	FALSE	1999999999	PHPSESSID	osf7rtaecl811rqf83edgimkd4
 .iqonicthemes.com	TRUE	/	FALSE	1999999999	__cfduid	d84ee02a329917a0a42b2bb29950b35881534268832
 
+=======
+# HTTrack Website Copier Cookie File
+# This file format is compatible with Netscape cookies
+iqonicthemes.com	TRUE	/	FALSE	1999999999	PHPSESSID	osf7rtaecl811rqf83edgimkd4
+.iqonicthemes.com	TRUE	/	FALSE	1999999999	__cfduid	d84ee02a329917a0a42b2bb29950b35881534268832
+
+>>>>>>> be0183bfac2199255ae37ce48235ca5626d4c558
