@@ -82,7 +82,7 @@ export enum PaymentStatus {
 export enum Roles {
 
   Admin = 'isAdmin',
-  
+
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
@@ -206,6 +206,7 @@ export class User {
   average_list?: {tag: string, promedio: number}[]
   structure?: {}
   promedio?: number
+  completedExams?: {};
 
   // Roles
   isAdmin?: boolean

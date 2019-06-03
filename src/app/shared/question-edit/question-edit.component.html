@@ -39,7 +39,7 @@
     <h4>Tags</h4>
     <div class="flex flex-row flex-start align-center">
       <input type="text" [ngbTypeahead]="searchTag" [(ngModel)]="tempTags" [ngModelOptions]="{standalone: true}" (selectItem)="tagInputChanged($event.item, currTags)" class="form-control">
-      <button type="button" (click)="addNewTag(tempTags)" class="btn btn-success ml-2">Agregar Nuevo Tag</button>
+      <!-- <button type="button" (click)="addNewTag(tempTags)" class="btn btn-success ml-2">Agregar Nuevo Tag</button> -->
     </div>
   </div>
 
@@ -49,7 +49,7 @@
       <button type="button" (click)="removeTag(tag, currTags)" class="btn btn-danger ml-2">Quitar</button>
     </li>
   </ul>
-  
+
   <button type="submit" [disabled]="!editForm.valid" class="btn btn-success">Editar Pregunta</button>
 
   <!-- <pre>{{editForm.value | json}}</pre> -->

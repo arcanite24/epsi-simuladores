@@ -140,6 +140,12 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
     this.results.tags = _.uniq(_.flattenDeep(questions.map(q => q.raw.tags)))
     console.log(this.results.tags, questions.map(q => q.raw.tags))
 
+    // Set completed on user
+    const completed = this.auth.user.completedExams ? this.auth.user.completedExams : {};
+    completed[this.exam.id] = true;
+
+    await this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({ completedExams: completed });
+
     // Create result doc
     console.log(state.results, this.results)
     await this.afs.doc(`${Collections.EXAM_RESULT}/${state.results.id}`).set(this.results)
@@ -196,7 +202,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
       this.finishExam()
       clearInterval(timer)
     }, duration)
-    
+
   }
 
   public canGoNext(questions: Question[]): boolean {
