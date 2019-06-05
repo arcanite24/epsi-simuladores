@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 webpackJsonp([1],{
 
-/***/ 740:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaPageModule", function() { return MateriaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(803);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(781);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(807);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(783);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -42,7 +41,7 @@ var MateriaPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 766:
+/***/ 768:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -76,7 +75,7 @@ exports.AddPipe = AddPipe;
 
 /***/ }),
 
-/***/ 767:
+/***/ 769:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -187,7 +186,7 @@ exports.CalendarPipe = CalendarPipe;
 
 /***/ }),
 
-/***/ 768:
+/***/ 770:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -226,7 +225,7 @@ exports.DateFormatPipe = DateFormatPipe;
 
 /***/ }),
 
-/***/ 769:
+/***/ 771:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -261,7 +260,7 @@ exports.DifferencePipe = DifferencePipe;
 
 /***/ }),
 
-/***/ 770:
+/***/ 772:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -298,7 +297,7 @@ exports.DurationPipe = DurationPipe;
 
 /***/ }),
 
-/***/ 771:
+/***/ 773:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -336,7 +335,7 @@ exports.FromUnixPipe = FromUnixPipe;
 
 /***/ }),
 
-/***/ 772:
+/***/ 774:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -368,7 +367,7 @@ exports.ParsePipe = ParsePipe;
 
 /***/ }),
 
-/***/ 773:
+/***/ 775:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -402,7 +401,7 @@ exports.SubtractPipe = SubtractPipe;
 
 /***/ }),
 
-/***/ 774:
+/***/ 776:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -513,7 +512,7 @@ exports.TimeAgoPipe = TimeAgoPipe;
 
 /***/ }),
 
-/***/ 775:
+/***/ 777:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -545,7 +544,7 @@ exports.UtcPipe = UtcPipe;
 
 /***/ }),
 
-/***/ 776:
+/***/ 778:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -580,7 +579,7 @@ exports.FromUtcPipe = FromUtcPipe;
 
 /***/ }),
 
-/***/ 777:
+/***/ 779:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -612,7 +611,7 @@ exports.LocalTimePipe = LocalTimePipe;
 
 /***/ }),
 
-/***/ 778:
+/***/ 780:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -644,45 +643,45 @@ exports.LocalePipe = LocalePipe;
 
 /***/ }),
 
-/***/ 779:
+/***/ 781:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var add_pipe_1 = __webpack_require__(766);
+var add_pipe_1 = __webpack_require__(768);
 exports.AddPipe = add_pipe_1.AddPipe;
-var calendar_pipe_1 = __webpack_require__(767);
+var calendar_pipe_1 = __webpack_require__(769);
 exports.CalendarPipe = calendar_pipe_1.CalendarPipe;
-var date_format_pipe_1 = __webpack_require__(768);
+var date_format_pipe_1 = __webpack_require__(770);
 exports.DateFormatPipe = date_format_pipe_1.DateFormatPipe;
-var difference_pipe_1 = __webpack_require__(769);
+var difference_pipe_1 = __webpack_require__(771);
 exports.DifferencePipe = difference_pipe_1.DifferencePipe;
-var duration_pipe_1 = __webpack_require__(770);
+var duration_pipe_1 = __webpack_require__(772);
 exports.DurationPipe = duration_pipe_1.DurationPipe;
-var from_unix_pipe_1 = __webpack_require__(771);
+var from_unix_pipe_1 = __webpack_require__(773);
 exports.FromUnixPipe = from_unix_pipe_1.FromUnixPipe;
-var parse_pipe_1 = __webpack_require__(772);
+var parse_pipe_1 = __webpack_require__(774);
 exports.ParsePipe = parse_pipe_1.ParsePipe;
-var moment_module_1 = __webpack_require__(780);
+var moment_module_1 = __webpack_require__(782);
 exports.MomentModule = moment_module_1.MomentModule;
-var subtract_pipe_1 = __webpack_require__(773);
+var subtract_pipe_1 = __webpack_require__(775);
 exports.SubtractPipe = subtract_pipe_1.SubtractPipe;
-var time_ago_pipe_1 = __webpack_require__(774);
+var time_ago_pipe_1 = __webpack_require__(776);
 exports.TimeAgoPipe = time_ago_pipe_1.TimeAgoPipe;
-var utc_pipe_1 = __webpack_require__(775);
+var utc_pipe_1 = __webpack_require__(777);
 exports.UtcPipe = utc_pipe_1.UtcPipe;
-var from_utc_pipe_1 = __webpack_require__(776);
+var from_utc_pipe_1 = __webpack_require__(778);
 exports.FromUtcPipe = from_utc_pipe_1.FromUtcPipe;
-var local_pipe_1 = __webpack_require__(777);
+var local_pipe_1 = __webpack_require__(779);
 exports.LocalTimePipe = local_pipe_1.LocalTimePipe;
-var locale_pipe_1 = __webpack_require__(778);
+var locale_pipe_1 = __webpack_require__(780);
 exports.LocalePipe = locale_pipe_1.LocalePipe;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 780:
+/***/ 782:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -695,19 +694,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var add_pipe_1 = __webpack_require__(766);
-var calendar_pipe_1 = __webpack_require__(767);
-var date_format_pipe_1 = __webpack_require__(768);
-var difference_pipe_1 = __webpack_require__(769);
-var duration_pipe_1 = __webpack_require__(770);
-var from_unix_pipe_1 = __webpack_require__(771);
-var parse_pipe_1 = __webpack_require__(772);
-var subtract_pipe_1 = __webpack_require__(773);
-var time_ago_pipe_1 = __webpack_require__(774);
-var utc_pipe_1 = __webpack_require__(775);
-var from_utc_pipe_1 = __webpack_require__(776);
-var local_pipe_1 = __webpack_require__(777);
-var locale_pipe_1 = __webpack_require__(778);
+var add_pipe_1 = __webpack_require__(768);
+var calendar_pipe_1 = __webpack_require__(769);
+var date_format_pipe_1 = __webpack_require__(770);
+var difference_pipe_1 = __webpack_require__(771);
+var duration_pipe_1 = __webpack_require__(772);
+var from_unix_pipe_1 = __webpack_require__(773);
+var parse_pipe_1 = __webpack_require__(774);
+var subtract_pipe_1 = __webpack_require__(775);
+var time_ago_pipe_1 = __webpack_require__(776);
+var utc_pipe_1 = __webpack_require__(777);
+var from_utc_pipe_1 = __webpack_require__(778);
+var local_pipe_1 = __webpack_require__(779);
+var locale_pipe_1 = __webpack_require__(780);
 var ANGULAR_MOMENT_PIPES = [
     add_pipe_1.AddPipe,
     calendar_pipe_1.CalendarPipe,
@@ -739,21 +738,21 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 781:
+/***/ 783:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(782);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(784);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(783);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(784);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(779);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(785);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(786);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(781);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(785);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(786);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(787);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(788);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -796,7 +795,7 @@ var ComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 784:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -835,7 +834,7 @@ var AccordionListComponent = /** @class */ (function () {
     ], AccordionListComponent.prototype, "information", void 0);
     AccordionListComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'accordion-list',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\accordion-list\accordion-list.html"*/'<ion-list class="accordion-list">\n\n  <!-- First Level -->\n\n  <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>\n\n    <!-- Toggle Button -->\n\n    <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{\'section-active\': item.open, \'section\': !item.open}">\n\n      <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>\n\n      <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>\n\n        {{ item.name }}\n\n    </button>\n\n\n\n    <ion-list *ngIf="item.children && item.open" no-lines>\n\n      <!-- Second Level -->\n\n      <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>\n\n        <!-- Toggle Button -->\n\n        <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>\n\n          <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>\n\n          <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>\n\n          {{ child.name }}\n\n        </button>\n\n\n\n        <!-- Direct Add Button as Fallback -->\n\n        <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap (click)="openClase(child, \'tema\')">\n\n          <h2>{{ child.name }}</h2>\n\n          <!--<p text-lowercase>{{ child.information }}</p>-->\n\n          <!--<button ion-button outline item-end (click)="buyItem(child)">{{ child.price }}</button>-->\n\n        </ion-item>\n\n\n\n        <ion-list *ngIf="child.children && child.open">\n\n          <!-- Third Level -->\n\n          <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap (click)="openClase(item, \'subtema\')">\n\n            <h2>{{ item.name }}</h2>\n\n            <!--<p text-lowercase>{{ item.information }}</p>-->\n\n            <!-- Direct Add Button -->\n\n            <!--<button ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</button>-->\n\n          </ion-item>\n\n        </ion-list>\n\n\n\n      </ion-list-header>\n\n    </ion-list>\n\n    \n\n  </ion-list-header>\n\n</ion-list>'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\accordion-list\accordion-list.html"*/
+            selector: 'accordion-list',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/accordion-list/accordion-list.html"*/'<ion-list class="accordion-list">\n  <!-- First Level -->\n  <ion-list-header *ngFor="let item of information; let i = index" no-lines no-padding>\n    <!-- Toggle Button -->\n    <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{\'section-active\': item.open, \'section\': !item.open}">\n      <ion-icon item-left name="arrow-forward" *ngIf="!item.open"></ion-icon>\n      <ion-icon item-left name="arrow-down" *ngIf="item.open"></ion-icon>\n        {{ item.name }}\n    </button>\n\n    <ion-list *ngIf="item.children && item.open" no-lines>\n      <!-- Second Level -->\n      <ion-list-header *ngFor="let child of item.children; let j = index" no-padding>\n        <!-- Toggle Button -->\n        <button ion-item (click)="toggleItem(i, j)" *ngIf="child.children" class="child" detail-none>\n          <ion-icon item-left name="add" *ngIf="!child.open"></ion-icon>\n          <ion-icon item-left name="close" *ngIf="child.open"></ion-icon>\n          {{ child.name }}\n        </button>\n\n        <!-- Direct Add Button as Fallback -->\n        <ion-item *ngIf="!child.children" ion-item detail-none class="child-item" text-wrap (click)="openClase(child, \'tema\')">\n          <h2>{{ child.name }}</h2>\n          <!--<p text-lowercase>{{ child.information }}</p>-->\n          <!--<button ion-button outline item-end (click)="buyItem(child)">{{ child.price }}</button>-->\n        </ion-item>\n\n        <ion-list *ngIf="child.children && child.open">\n          <!-- Third Level -->\n          <ion-item *ngFor="let item of child.children; let k = index" detail-none class="child-item" text-wrap (click)="openClase(item, \'subtema\')">\n            <h2>{{ item.name }}</h2>\n            <!--<p text-lowercase>{{ item.information }}</p>-->\n            <!-- Direct Add Button -->\n            <!--<button ion-button outline item-end (click)="buyItem(item)">{{ item.price }}</button>-->\n          </ion-item>\n        </ion-list>\n\n      </ion-list-header>\n    </ion-list>\n    \n  </ion-list-header>\n</ion-list>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/accordion-list/accordion-list.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */]])
     ], AccordionListComponent);
@@ -846,7 +845,7 @@ var AccordionListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 785:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -930,7 +929,7 @@ var TimerComponent = /** @class */ (function () {
     ], TimerComponent.prototype, "timeInSeconds", void 0);
     TimerComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'timer',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\timer\timer.html"*/'<ion-card *ngIf="timer">\n\n	<ion-card-header>\n\n		<button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large block clear class="timer-button x-large">{{timer.displayTime}}</button>\n\n		<button ion-button *ngIf="!timeInSeconds || timeInSeconds == 0" large block clear class="timer-button">Formato de tiempo erroneo</button>\n\n	</ion-card-header>\n\n	<ion-item *ngIf="timeInSeconds && timeInSeconds > 0">\n\n		<button ion-button clear class="large" color="danger" (click)="initTimer()" item-start *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">\n\n            <ion-icon name="refresh"></ion-icon>\n\n            Restart\n\n        </button>\n\n		<button ion-button clear class="large" (click)="pauseTimer()" item-end *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">\n\n            <ion-icon name="pause"></ion-icon>\n\n            Pause\n\n        </button>\n\n		<button ion-button clear class="large" (click)="resumeTimer()" item-end *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">\n\n            <ion-icon name="play"></ion-icon>\n\n            Resume\n\n        </button>\n\n		<button ion-button clear class="large" (click)="startTimer()" item-end *ngIf="!timer.hasStarted">\n\n            <ion-icon name="play"></ion-icon>\n\n            Start\n\n        </button>\n\n	</ion-item>\n\n</ion-card>'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\timer\timer.html"*/
+            selector: 'timer',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/timer/timer.html"*/'<ion-card *ngIf="timer">\n	<ion-card-header>\n		<button ion-button *ngIf="timeInSeconds && timeInSeconds > 0" large block clear class="timer-button x-large">{{timer.displayTime}}</button>\n		<button ion-button *ngIf="!timeInSeconds || timeInSeconds == 0" large block clear class="timer-button">Formato de tiempo erroneo</button>\n	</ion-card-header>\n	<ion-item *ngIf="timeInSeconds && timeInSeconds > 0">\n		<button ion-button clear class="large" color="danger" (click)="initTimer()" item-start *ngIf="!timer.runTimer && (timer.hasStarted || timer.hasFinished) || timer.hasFinished">\n            <ion-icon name="refresh"></ion-icon>\n            Restart\n        </button>\n		<button ion-button clear class="large" (click)="pauseTimer()" item-end *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished">\n            <ion-icon name="pause"></ion-icon>\n            Pause\n        </button>\n		<button ion-button clear class="large" (click)="resumeTimer()" item-end *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">\n            <ion-icon name="play"></ion-icon>\n            Resume\n        </button>\n		<button ion-button clear class="large" (click)="startTimer()" item-end *ngIf="!timer.hasStarted">\n            <ion-icon name="play"></ion-icon>\n            Start\n        </button>\n	</ion-item>\n</ion-card>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/timer/timer.html"*/
         })
     ], TimerComponent);
     return TimerComponent;
@@ -940,7 +939,7 @@ var TimerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 786:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1067,7 +1066,7 @@ var ZamnaFeedComponent = /** @class */ (function () {
     };
     ZamnaFeedComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'zamna-feed',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\zamna-feed\zamna-feed.html"*/'<div class="zamna-feed" *ngIf="auth.loggedIn">\n\n\n\n  <div class="feed-input">\n\n\n\n  </div>\n\n\n\n  <div class="feed-list" *ngIf="feed$ | async as feed">\n\n\n\n    <div class="feed-post" *ngFor="let post of feed.reverse()">\n\n      \n\n      <ion-card>\n\n\n\n        <ion-item *ngIf="post.user">\n\n          <ion-avatar item-start>\n\n            <img [src]="post.user.photoURL">\n\n          </ion-avatar>\n\n          <h2>{{post.user.displayName}} {{post.user.lastName}}</h2>\n\n          <p>{{post.date | amCalendar}}</p>\n\n        </ion-item>\n\n\n\n        <img [src]="post.img" *ngIf="post.img">\n\n\n\n        <ion-card-content *ngIf="post.text">\n\n          <p>{{post.text}}</p>\n\n        </ion-card-content>\n\n\n\n        <ion-row>\n\n          <ion-col>\n\n            <button ion-button icon-start clear small [color]="post.likes.indexOf(auth.user.uid) >= 0 ? \'primary\' : \'disabled\'" (click)="toggleLike(post, post.id, post.likes)" [disabled]="loader">\n\n              <ion-icon name="thumbs-up"></ion-icon>\n\n              <div>{{post.likes.length}} Likes</div>\n\n            </button>\n\n          </ion-col>\n\n          <ion-col>\n\n            <button ion-button icon-start clear small (click)="openComments(post)" [disabled]="loader">\n\n              <ion-icon name="text"></ion-icon>\n\n              <div>Comentarios</div>\n\n            </button>\n\n          </ion-col>\n\n        </ion-row>\n\n\n\n      </ion-card>\n\n    </div>\n\n\n\n  </div>\n\n  \n\n</div>'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\zamna-feed\zamna-feed.html"*/
+            selector: 'zamna-feed',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/'<div class="zamna-feed" *ngIf="auth.loggedIn">\n\n  <div class="feed-input">\n\n  </div>\n\n  <div class="feed-list" *ngIf="feed$ | async as feed">\n\n    <div class="feed-post" *ngFor="let post of feed.reverse()">\n      \n      <ion-card>\n\n        <ion-item *ngIf="post.user">\n          <ion-avatar item-start>\n            <img [src]="post.user.photoURL">\n          </ion-avatar>\n          <h2>{{post.user.displayName}} {{post.user.lastName}}</h2>\n          <p>{{post.date | amCalendar}}</p>\n        </ion-item>\n\n        <img [src]="post.img" *ngIf="post.img">\n\n        <ion-card-content *ngIf="post.text">\n          <p>{{post.text}}</p>\n        </ion-card-content>\n\n        <ion-row>\n          <ion-col>\n            <button ion-button icon-start clear small [color]="post.likes.indexOf(auth.user.uid) >= 0 ? \'primary\' : \'disabled\'" (click)="toggleLike(post, post.id, post.likes)" [disabled]="loader">\n              <ion-icon name="thumbs-up"></ion-icon>\n              <div>{{post.likes.length}} Likes</div>\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button icon-start clear small (click)="openComments(post)" [disabled]="loader">\n              <ion-icon name="text"></ion-icon>\n              <div>Comentarios</div>\n            </button>\n          </ion-col>\n        </ion-row>\n\n      </ion-card>\n    </div>\n\n  </div>\n  \n</div>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
@@ -1080,7 +1079,7 @@ var ZamnaFeedComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 787:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1175,7 +1174,7 @@ var GalleryItemComponent = /** @class */ (function () {
     ], GalleryItemComponent.prototype, "gallery", void 0);
     GalleryItemComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'gallery-item',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\gallery-item\gallery-item.html"*/'<ion-list style="margin-bottom:3rem">\n\n  <ion-list-header><strong style="font-size:1.75rem;">{{gallery.name}}</strong></ion-list-header>\n\n  <ion-item *ngFor="let g of galleries" (click)="navCtrl.push(\'GaleriaDetailPage\', {id: g.id})">\n\n    <h2>{{g.name}}</h2>\n\n    <!--<p>{{g.desc}}</p>-->\n\n  </ion-item>\n\n</ion-list>'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\gallery-item\gallery-item.html"*/
+            selector: 'gallery-item',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/gallery-item/gallery-item.html"*/'<ion-list style="margin-bottom:3rem">\n  <ion-list-header><strong style="font-size:1.75rem;">{{gallery.name}}</strong></ion-list-header>\n  <ion-item *ngFor="let g of galleries" (click)="navCtrl.push(\'GaleriaDetailPage\', {id: g.id})">\n    <h2>{{g.name}}</h2>\n    <!--<p>{{g.desc}}</p>-->\n  </ion-item>\n</ion-list>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/gallery-item/gallery-item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["p" /* NavController */]])
@@ -1187,7 +1186,7 @@ var GalleryItemComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 788:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1284,7 +1283,7 @@ var MediaItemComponent = /** @class */ (function () {
     ], MediaItemComponent.prototype, "media", void 0);
     MediaItemComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'media-item',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\media-item\media-item.html"*/'<ion-list style="margin-bottom:3rem">\n\n  <ion-list-header><strong style="font-size:1.75rem;">{{media.name}}</strong></ion-list-header>\n\n  <ion-item *ngFor="let g of medias" (click)="openMedia(g.url)">\n\n    <h2>{{g.name}}</h2>\n\n    <!--<p>{{g.desc}}</p>-->\n\n  </ion-item>\n\n</ion-list>'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\components\media-item\media-item.html"*/
+            selector: 'media-item',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/media-item/media-item.html"*/'<ion-list style="margin-bottom:3rem">\n  <ion-list-header><strong style="font-size:1.75rem;">{{media.name}}</strong></ion-list-header>\n  <ion-item *ngFor="let g of medias" (click)="openMedia(g.url)">\n    <h2>{{g.name}}</h2>\n    <!--<p>{{g.desc}}</p>-->\n  </ion-item>\n</ion-list>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/media-item/media-item.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_in_app_browser__["a" /* InAppBrowser */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
@@ -1296,7 +1295,7 @@ var MediaItemComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 803:
+/***/ 807:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1479,7 +1478,7 @@ var MateriaPage = /** @class */ (function () {
     };
     MateriaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-materia',template:/*ion-inline-start:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\pages\materia\materia.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Materia</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="loader">\n\n    <img src="assets/imgs/rings.svg">\n\n  </div>\n\n  <accordion-list [information]="information"></accordion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\Brandon G. Neri\code\zamnademy-app-v1\src\pages\materia\materia.html"*/,
+            selector: 'page-materia',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Materia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <div class="flex-col" *ngIf="loader">\n    <img src="assets/imgs/rings.svg">\n  </div>\n  <accordion-list [information]="information"></accordion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */],
@@ -1494,6 +1493,3 @@ var MateriaPage = /** @class */ (function () {
 
 });
 //# sourceMappingURL=1.js.map
-=======
-webpackJsonp([1],{563:function(n,e,l){"use strict";function t(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,10,"ion-item",[["class","item item-block"]],null,[[null,"click"]],function(n,e,l){var t=!0;if("click"===e){t=!1!==n.component.openMedia(n.context.$implicit.url)&&t}return t},C.b,C.a)),s["ɵdid"](1,1097728,null,3,_.a,[x.a,E.a,s.ElementRef,s.Renderer,[2,O.a]],null,null),s["ɵqud"](335544320,4,{contentLabel:0}),s["ɵqud"](603979776,5,{_buttons:1}),s["ɵqud"](603979776,6,{_icons:1}),s["ɵdid"](5,16384,null,0,P.a,[],null,null),(n()(),s["ɵted"](-1,2,["\n    "])),(n()(),s["ɵeld"](7,0,null,2,1,"h2",[],null,null,null,null,null)),(n()(),s["ɵted"](8,null,["",""])),(n()(),s["ɵted"](-1,2,["\n    "])),(n()(),s["ɵted"](-1,2,["\n  "]))],null,function(n,e){n(e,8,0,e.context.$implicit.name)})}function u(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,14,"ion-list",[["style","margin-bottom:3rem"]],null,null,null,null,null)),s["ɵdid"](1,16384,null,0,M.a,[E.a,s.ElementRef,s.Renderer,I.a,T.l,S.a],null,null),(n()(),s["ɵted"](-1,null,["\n  "])),(n()(),s["ɵeld"](3,0,null,null,7,"ion-list-header",[["class","item"]],null,null,null,C.b,C.a)),s["ɵdid"](4,1097728,null,3,_.a,[x.a,E.a,s.ElementRef,s.Renderer,[2,O.a]],null,null),s["ɵqud"](335544320,1,{contentLabel:0}),s["ɵqud"](603979776,2,{_buttons:1}),s["ɵqud"](603979776,3,{_icons:1}),s["ɵdid"](8,16384,null,0,D.a,[E.a,s.Renderer,s.ElementRef,[8,null]],null,null),(n()(),s["ɵeld"](9,0,null,2,1,"strong",[["style","font-size:1.75rem;"]],null,null,null,null,null)),(n()(),s["ɵted"](10,null,["",""])),(n()(),s["ɵted"](-1,null,["\n  "])),(n()(),s["ɵand"](16777216,null,null,1,null,t)),s["ɵdid"](13,802816,null,0,F.j,[s.ViewContainerRef,s.TemplateRef,s.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(n()(),s["ɵted"](-1,null,["\n"]))],function(n,e){n(e,13,0,e.component.medias)},function(n,e){n(e,10,0,e.component.media.name)})}function i(n){return s["ɵvid"](0,[(n()(),s["ɵted"](-1,null,["\n    "])),(n()(),s["ɵeld"](1,0,null,null,3,"div",[["class","flex-col"]],null,null,null,null,null)),(n()(),s["ɵted"](-1,null,["\n      "])),(n()(),s["ɵeld"](3,0,null,null,0,"img",[["src","assets/imgs/rings.svg"]],null,null,null,null,null)),(n()(),s["ɵted"](-1,null,["\n    "])),(n()(),s["ɵted"](-1,null,["\n  "]))],null,null)}function o(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,1,"media-item",[],null,null,null,u,A)),s["ɵdid"](1,114688,null,0,L.a,[j.a,q.AngularFirestore],{media:[0,"media"]},null)],function(n,e){n(e,1,0,e.context.$implicit)},null)}function r(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,4,"div",[["class","medias-container"]],null,null,null,null,null)),(n()(),s["ɵted"](-1,null,["\n    "])),(n()(),s["ɵand"](16777216,null,null,1,null,o)),s["ɵdid"](3,802816,null,0,F.j,[s.ViewContainerRef,s.TemplateRef,s.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(n()(),s["ɵted"](-1,null,["\n  "]))],function(n,e){n(e,3,0,e.context.ngIf)},null)}function a(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,10,"ion-header",[],null,null,null,null,null)),s["ɵdid"](1,16384,null,0,G.a,[E.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),(n()(),s["ɵted"](-1,null,["\n\n  "])),(n()(),s["ɵeld"](3,0,null,null,6,"ion-navbar",[["class","toolbar"],["color","primary"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,V.b,V.a)),s["ɵdid"](4,49152,null,0,N.a,[Y.a,[2,$.a],[2,z.a],E.a,s.ElementRef,s.Renderer],{color:[0,"color"]},null),(n()(),s["ɵted"](-1,3,["\n    "])),(n()(),s["ɵeld"](6,0,null,3,2,"ion-title",[],null,null,null,J.b,J.a)),s["ɵdid"](7,49152,null,0,K.a,[E.a,s.ElementRef,s.Renderer,[2,Z.a],[2,N.a]],null,null),(n()(),s["ɵted"](-1,0,["Material Extra"])),(n()(),s["ɵted"](-1,3,["\n  "])),(n()(),s["ɵted"](-1,null,["\n\n"])),(n()(),s["ɵted"](-1,null,["\n\n\n"])),(n()(),s["ɵeld"](12,0,null,null,8,"ion-content",[["class","bg-eee"]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,B.b,B.a)),s["ɵdid"](13,4374528,null,0,H.a,[E.a,I.a,S.a,s.ElementRef,s.Renderer,Y.a,Q.a,s.NgZone,[2,$.a],[2,z.a]],null,null),(n()(),s["ɵted"](-1,1,["\n  \n  "])),(n()(),s["ɵand"](0,[["loader",2]],1,0,null,i)),(n()(),s["ɵted"](-1,1,["\n\n  "])),(n()(),s["ɵand"](16777216,null,1,2,null,r)),s["ɵdid"](18,16384,null,0,F.k,[s.ViewContainerRef,s.TemplateRef],{ngIf:[0,"ngIf"],ngIfElse:[1,"ngIfElse"]},null),s["ɵpid"](131072,F.b,[s.ChangeDetectorRef]),(n()(),s["ɵted"](-1,1,["\n\n"])),(n()(),s["ɵted"](-1,null,["\n"]))],function(n,e){var l=e.component;n(e,4,0,"primary");n(e,18,0,s["ɵunv"](e,18,0,s["ɵnov"](e,19).transform(l.medias$)),s["ɵnov"](e,15))},function(n,e){n(e,3,0,s["ɵnov"](e,4)._hidden,s["ɵnov"](e,4)._sbPadding);n(e,12,0,s["ɵnov"](e,13).statusbarPadding,s["ɵnov"](e,13)._hasRefresher)})}Object.defineProperty(e,"__esModule",{value:!0});var s=l(0),c=(l(1),l(28),l(457)),d=(l(458),function(){function n(n,e,l){this.navCtrl=n,this.navParams=e,this.afs=l,this.medias$=this.afs.collection(c.a.MEDIA_CATEGORY).valueChanges()}return n.prototype.ionViewDidLoad=function(){},n}()),f=l(584),p=function(){return function(){}}(),h=l(447),m=l(448),b=l(449),v=l(450),y=l(451),g=l(452),w=l(453),R=l(454),k=l(455),C=l(459),_=l(29),x=l(23),E=l(3),O=l(74),P=l(131),M=l(96),I=l(6),T=l(8),S=l(14),D=l(133),F=l(16),L=l(590),j=l(202),q=l(132),A=s["ɵcrt"]({encapsulation:2,styles:[],data:{}}),G=l(130),$=l(7),V=l(456),N=l(53),Y=l(13),z=l(31),J=l(582),K=l(196),Z=l(95),B=l(581),H=l(40),Q=l(61),U=l(15),W=s["ɵcrt"]({encapsulation:2,styles:[],data:{}}),X=s["ɵccf"]("page-media",d,function(n){return s["ɵvid"](0,[(n()(),s["ɵeld"](0,0,null,null,1,"page-media",[],null,null,null,a,W)),s["ɵdid"](1,49152,null,0,d,[z.a,U.a,q.AngularFirestore],null,null)],null,null)},{},{},[]),nn=l(22),en=l(197),ln=l(204),tn=l(62);l.d(e,"MediaPageModuleNgFactory",function(){return un});var un=s["ɵcmf"](p,[],function(n){return s["ɵmod"]([s["ɵmpd"](512,s.ComponentFactoryResolver,s["ɵCodegenComponentFactoryResolver"],[[8,[h.a,m.a,b.a,v.a,y.a,g.a,w.a,R.a,k.a,X]],[3,s.ComponentFactoryResolver],s.NgModuleRef]),s["ɵmpd"](4608,F.m,F.l,[s.LOCALE_ID,[2,F.w]]),s["ɵmpd"](4608,nn.k,nn.k,[]),s["ɵmpd"](4608,nn.c,nn.c,[]),s["ɵmpd"](512,F.c,F.c,[]),s["ɵmpd"](512,nn.j,nn.j,[]),s["ɵmpd"](512,nn.d,nn.d,[]),s["ɵmpd"](512,nn.i,nn.i,[]),s["ɵmpd"](512,en.a,en.a,[]),s["ɵmpd"](512,en.b,en.b,[]),s["ɵmpd"](512,ln.MomentModule,ln.MomentModule,[]),s["ɵmpd"](512,f.a,f.a,[]),s["ɵmpd"](512,p,p,[]),s["ɵmpd"](256,tn.a,d,[])])})},581:function(n,e,l){"use strict";function t(n){return u["ɵvid"](2,[u["ɵqud"](402653184,1,{_fixedContent:0}),u["ɵqud"](402653184,2,{_scrollContent:0}),(n()(),u["ɵeld"](2,0,[[1,0],["fixedContent",1]],null,1,"div",[["class","fixed-content"]],null,null,null,null,null)),u["ɵncd"](null,0),(n()(),u["ɵeld"](4,0,[[2,0],["scrollContent",1]],null,1,"div",[["class","scroll-content"]],null,null,null,null,null)),u["ɵncd"](null,1),u["ɵncd"](null,2)],null,null)}l.d(e,"a",function(){return i}),e.b=t;var u=l(0),i=(l(3),l(6),l(14),l(61),l(7),l(31),u["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},582:function(n,e,l){"use strict";function t(n){return u["ɵvid"](2,[(n()(),u["ɵeld"](0,0,null,null,2,"div",[["class","toolbar-title"]],null,null,null,null,null)),u["ɵdid"](1,278528,null,0,i.i,[u.IterableDiffers,u.KeyValueDiffers,u.ElementRef,u.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),u["ɵncd"](null,0)],function(n,e){n(e,1,0,"toolbar-title","toolbar-title-"+e.component._mode)},null)}l.d(e,"a",function(){return o}),e.b=t;var u=l(0),i=l(16),o=(l(3),u["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},584:function(n,e,l){"use strict";l(1),l(0),l(587),l(16),l(28),l(588),l(460),l(589),l(590);l.d(e,"a",function(){return t});var t=function(){return function(){}}()},587:function(n,e,l){"use strict";l.d(e,"a",function(){return t});l(1),l(28);var t=function(){function n(n){this.navCtrl=n}return n.prototype.toggleSection=function(n){this.information[n].open=!this.information[n].open},n.prototype.toggleItem=function(n,e){this.information[n].children[e].open=!this.information[n].children[e].open},n.prototype.openClase=function(n,e){n.video&&this.navCtrl.push("ClaseDetailPage",{id:n.id,type:e})},n}()},588:function(n,e,l){"use strict";l.d(e,"a",function(){return a});l(1),l(28);var t=l(458),u=(l.n(t),l(457)),i=(l(198),l(24)),o=this&&this.__awaiter||function(n,e,l,t){return new(l||(l=Promise))(function(u,i){function o(n){try{a(t.next(n))}catch(n){i(n)}}function r(n){try{a(t.throw(n))}catch(n){i(n)}}function a(n){n.done?u(n.value):new l(function(e){e(n.value)}).then(o,r)}a((t=t.apply(n,e||[])).next())})},r=this&&this.__generator||function(n,e){function l(l){return function(o){return function(l){if(t)throw new TypeError("Generator is already executing.");for(;r;)try{if(t=1,u&&(i=u[2&l[0]?"return":l[0]?"throw":"next"])&&!(i=i.call(u,l[1])).done)return i;switch(u=0,i&&(l=[0,i.value]),l[0]){case 0:case 1:i=l;break;case 4:return r.label++,{value:l[1],done:!1};case 5:r.label++,u=l[1],l=[0];continue;case 7:l=r.ops.pop(),r.trys.pop();continue;default:if(i=r.trys,!(i=i.length>0&&i[i.length-1])&&(6===l[0]||2===l[0])){r=0;continue}if(3===l[0]&&(!i||l[1]>i[0]&&l[1]<i[3])){r.label=l[1];break}if(6===l[0]&&r.label<i[1]){r.label=i[1],i=l;break}if(i&&r.label<i[2]){r.label=i[2],r.ops.push(l);break}i[2]&&r.ops.pop(),r.trys.pop();continue}l=e.call(n,r)}catch(n){l=[6,n],u=0}finally{t=i=0}if(5&l[0])throw l[1];return{value:l[0]?l[1]:void 0,done:!0}}([l,o])}}var t,u,i,o,r={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return o={next:l(0),throw:l(1),return:l(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o},a=function(){function n(n,e,l){this.modal=n,this.afs=e,this.auth=l,this.feed$=this.afs.collection(u.a.POST).valueChanges(),this.loader=!1}return n.prototype.openComments=function(n){return o(this,void 0,void 0,function(){var e;return r(this,function(l){switch(l.label){case 0:return this.loader=!0,[4,this.afs.collection(u.a.POST_COMMENT,function(e){return e.where("post","==",n.id)}).valueChanges().pipe(Object(i.take)(1)).toPromise()];case 1:return e=l.sent(),this.modal.create("PostCommentsPage",{comments:e}).present(),this.loader=!1,[2]}})})},n.prototype.isLiked=function(n){return!!this.auth.user&&(!!n&&(!!n.likes&&n.likes.indexOf(this.auth.user.uid)>=0))},n.prototype.toggleLike=function(n,e,l){void 0===l&&(l=[]),this.isLiked(n)?l.splice(l.indexOf(this.auth.user.uid),1):l.push(this.auth.user.uid),this.afs.doc(u.a.POST+"/"+e).update({likes:l})},n.prototype.removePost=function(n){this.afs.doc(u.a.POST+"/"+n).delete()},n}()},589:function(n,e,l){"use strict";l.d(e,"a",function(){return a});l(1);var t=l(457),u=l(458),i=(l.n(u),l(24)),o=this&&this.__awaiter||function(n,e,l,t){return new(l||(l=Promise))(function(u,i){function o(n){try{a(t.next(n))}catch(n){i(n)}}function r(n){try{a(t.throw(n))}catch(n){i(n)}}function a(n){n.done?u(n.value):new l(function(e){e(n.value)}).then(o,r)}a((t=t.apply(n,e||[])).next())})},r=this&&this.__generator||function(n,e){function l(l){return function(o){return function(l){if(t)throw new TypeError("Generator is already executing.");for(;r;)try{if(t=1,u&&(i=u[2&l[0]?"return":l[0]?"throw":"next"])&&!(i=i.call(u,l[1])).done)return i;switch(u=0,i&&(l=[0,i.value]),l[0]){case 0:case 1:i=l;break;case 4:return r.label++,{value:l[1],done:!1};case 5:r.label++,u=l[1],l=[0];continue;case 7:l=r.ops.pop(),r.trys.pop();continue;default:if(i=r.trys,!(i=i.length>0&&i[i.length-1])&&(6===l[0]||2===l[0])){r=0;continue}if(3===l[0]&&(!i||l[1]>i[0]&&l[1]<i[3])){r.label=l[1];break}if(6===l[0]&&r.label<i[1]){r.label=i[1],i=l;break}if(i&&r.label<i[2]){r.label=i[2],r.ops.push(l);break}i[2]&&r.ops.pop(),r.trys.pop();continue}l=e.call(n,r)}catch(n){l=[6,n],u=0}finally{t=i=0}if(5&l[0])throw l[1];return{value:l[0]?l[1]:void 0,done:!0}}([l,o])}}var t,u,i,o,r={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return o={next:l(0),throw:l(1),return:l(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o},a=function(){function n(n,e){this.afs=n,this.navCtrl=e,this.galleries=[]}return n.prototype.ngOnInit=function(){this.gallery&&this.loadGalleries(this.gallery.id)},n.prototype.loadGalleries=function(n){return o(this,void 0,void 0,function(){var e;return r(this,function(l){switch(l.label){case 0:return[4,this.afs.collection(t.a.GALLERY,function(e){return e.where("cat_id","==",n)}).valueChanges().pipe(Object(i.take)(1)).toPromise()];case 1:return e=l.sent(),this.galleries=e,[2]}})})},n}()},590:function(n,e,l){"use strict";l.d(e,"a",function(){return a});l(1);var t=l(457),u=(l(202),l(458)),i=(l.n(u),l(24)),o=this&&this.__awaiter||function(n,e,l,t){return new(l||(l=Promise))(function(u,i){function o(n){try{a(t.next(n))}catch(n){i(n)}}function r(n){try{a(t.throw(n))}catch(n){i(n)}}function a(n){n.done?u(n.value):new l(function(e){e(n.value)}).then(o,r)}a((t=t.apply(n,e||[])).next())})},r=this&&this.__generator||function(n,e){function l(l){return function(o){return function(l){if(t)throw new TypeError("Generator is already executing.");for(;r;)try{if(t=1,u&&(i=u[2&l[0]?"return":l[0]?"throw":"next"])&&!(i=i.call(u,l[1])).done)return i;switch(u=0,i&&(l=[0,i.value]),l[0]){case 0:case 1:i=l;break;case 4:return r.label++,{value:l[1],done:!1};case 5:r.label++,u=l[1],l=[0];continue;case 7:l=r.ops.pop(),r.trys.pop();continue;default:if(i=r.trys,!(i=i.length>0&&i[i.length-1])&&(6===l[0]||2===l[0])){r=0;continue}if(3===l[0]&&(!i||l[1]>i[0]&&l[1]<i[3])){r.label=l[1];break}if(6===l[0]&&r.label<i[1]){r.label=i[1],i=l;break}if(i&&r.label<i[2]){r.label=i[2],r.ops.push(l);break}i[2]&&r.ops.pop(),r.trys.pop();continue}l=e.call(n,r)}catch(n){l=[6,n],u=0}finally{t=i=0}if(5&l[0])throw l[1];return{value:l[0]?l[1]:void 0,done:!0}}([l,o])}}var t,u,i,o,r={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return o={next:l(0),throw:l(1),return:l(2)},"function"==typeof Symbol&&(o[Symbol.iterator]=function(){return this}),o},a=function(){function n(n,e){this.iab=n,this.afs=e,this.medias=[]}return n.prototype.ngOnInit=function(){this.loadMedias(this.media.id)},n.prototype.openMedia=function(n){this.iab.create(n,"_system")},n.prototype.loadMedias=function(n){return o(this,void 0,void 0,function(){var e;return r(this,function(l){switch(l.label){case 0:return[4,this.afs.collection(t.a.MEDIA,function(e){return e.where("categoria.id","==",n)}).valueChanges().pipe(Object(i.take)(1)).toPromise()];case 1:return e=l.sent(),this.medias=e,[2]}})})},n}()}});
->>>>>>> be0183bfac2199255ae37ce48235ca5626d4c558
