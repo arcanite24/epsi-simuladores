@@ -46,7 +46,7 @@
     </div>
   </div>
 
-  <button class="btn btn-primary w-100 mt-2 mb-2" type="button" (click)="addNewTag(tempTags)">Agregar Nuevo Tag</button>
+  <!-- <button class="btn btn-primary w-100 mt-2 mb-2" type="button" (click)="addNewTag(tempTags)">Agregar Nuevo Tag</button> -->
 
   <ul *ngIf="addForm.value.tags as currTags" class="p-0">
     <li *ngFor="let tag of currTags" class="flex flex-row flex-start align-center mb-2">
@@ -59,7 +59,7 @@
 
     </li>
   </ul>
-  
+
   <button class="w-100 btn btn-success" type="submit" [disabled]="!addForm.valid">Agregar Pregunta</button>
 
   <pre>{{addForm.value | json}}</pre>
