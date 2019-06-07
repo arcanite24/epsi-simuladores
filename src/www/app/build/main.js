@@ -573,11 +573,11 @@ var map = {
 		43
 	],
 	"../pages/asesoria-detail/asesoria-detail.module": [
-		726,
+		725,
 		42
 	],
 	"../pages/asesorias/asesorias.module": [
-		725,
+		726,
 		41
 	],
 	"../pages/avance-examen/avance-examen.module": [
@@ -585,15 +585,15 @@ var map = {
 		40
 	],
 	"../pages/bloque-alt/bloque-alt.module": [
-		729,
+		728,
 		39
 	],
 	"../pages/calendar/calendar.module": [
-		728,
+		730,
 		38
 	],
 	"../pages/checklist/checklist.module": [
-		730,
+		729,
 		37
 	],
 	"../pages/clase-detail/clase-detail.module": [
@@ -601,148 +601,148 @@ var map = {
 		36
 	],
 	"../pages/como-te-sientes-hoy/como-te-sientes-hoy.module": [
-		732,
+		733,
 		35
 	],
 	"../pages/especialidades/especialidades.module": [
-		735,
+		732,
 		34
 	],
 	"../pages/examen-detail/examen-detail.module": [
-		733,
-		33
+		734,
+		6
 	],
 	"../pages/foro-detail/foro-detail.module": [
-		734,
-		32
+		766,
+		33
 	],
 	"../pages/foros/foros.module": [
-		736,
-		31
+		735,
+		32
 	],
 	"../pages/galeria-detail/galeria-detail.module": [
-		737,
-		30
+		736,
+		31
 	],
 	"../pages/galerias/galerias.module": [
 		738,
 		3
 	],
 	"../pages/hilo-detail/hilo-detail.module": [
-		739,
+		737,
 		5
 	],
 	"../pages/home/home.module": [
-		740,
+		739,
 		2
 	],
 	"../pages/login/login.module": [
 		767,
-		29
+		30
 	],
 	"../pages/materia-alt/materia-alt.module": [
-		741,
-		28
+		740,
+		29
 	],
 	"../pages/materia/materia.module": [
-		742,
+		741,
 		1
 	],
 	"../pages/media/media.module": [
-		743,
+		742,
 		0
 	],
 	"../pages/mi-analitica/mi-analitica.module": [
+		743,
+		28
+	],
+	"../pages/mi-curso/mi-curso.module": [
 		744,
 		27
 	],
-	"../pages/mi-curso/mi-curso.module": [
-		745,
-		26
-	],
 	"../pages/mis-resultados/mis-resultados.module": [
-		751,
+		745,
 		4
 	],
 	"../pages/notas-add/notas-add.module": [
 		746,
-		25
+		26
 	],
 	"../pages/notas-global-detail/notas-global-detail.module": [
+		748,
+		25
+	],
+	"../pages/notas-global/notas-global.module": [
 		747,
 		24
 	],
-	"../pages/notas-global/notas-global.module": [
-		748,
-		23
-	],
 	"../pages/notas/notas.module": [
 		749,
-		22
+		23
 	],
 	"../pages/notifications/notifications.module": [
 		750,
-		21
+		22
 	],
 	"../pages/post-comments/post-comments.module": [
-		752,
-		20
+		751,
+		21
 	],
 	"../pages/profile/profile.module": [
-		754,
-		19
+		753,
+		20
 	],
 	"../pages/programa-bloque/programa-bloque.module": [
-		753,
-		18
+		752,
+		19
 	],
 	"../pages/programa-materia/programa-materia.module": [
+		754,
+		18
+	],
+	"../pages/ratings/ratings.module": [
 		755,
 		17
 	],
-	"../pages/ratings/ratings.module": [
+	"../pages/resultado-detail/resultado-detail.module": [
 		756,
 		16
 	],
-	"../pages/resultado-detail/resultado-detail.module": [
+	"../pages/resultados-examen/resultados-examen.module": [
 		757,
 		15
 	],
-	"../pages/resultados-examen/resultados-examen.module": [
-		760,
+	"../pages/simulador-detail/simulador-detail.module": [
+		761,
 		14
 	],
-	"../pages/simulador-detail/simulador-detail.module": [
+	"../pages/simuladores/simuladores.module": [
 		758,
 		13
 	],
-	"../pages/simuladores/simuladores.module": [
-		759,
+	"../pages/slide-detail/slide-detail.module": [
+		760,
 		12
 	],
-	"../pages/slide-detail/slide-detail.module": [
-		761,
+	"../pages/slides/slides.module": [
+		759,
 		11
 	],
-	"../pages/slides/slides.module": [
+	"../pages/smart-calendar/smart-calendar.module": [
 		762,
 		10
 	],
-	"../pages/smart-calendar/smart-calendar.module": [
+	"../pages/tema-alt/tema-alt.module": [
 		763,
 		9
 	],
-	"../pages/tema-alt/tema-alt.module": [
+	"../pages/top-users/top-users.module": [
 		764,
 		8
 	],
-	"../pages/top-users/top-users.module": [
-		766,
-		7
-	],
 	"../pages/zona-enarm/zona-enarm.module": [
 		765,
-		6
+		7
 	]
 };
 function webpackAsyncContext(req) {
@@ -1949,48 +1949,48 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["k" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_14__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/asesoria-add/asesoria-add.module#AsesoriaAddPageModule', name: 'AsesoriaAddPage', segment: 'asesoria-add', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/asesorias/asesorias.module#AsesoriasPageModule', name: 'AsesoriasPage', segment: 'asesorias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asesoria-detail/asesoria-detail.module#AsesoriaDetailPageModule', name: 'AsesoriaDetailPage', segment: 'asesoria/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/asesorias/asesorias.module#AsesoriasPageModule', name: 'AsesoriasPage', segment: 'asesorias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/avance-examen/avance-examen.module#AvanceExamenPageModule', name: 'AvanceExamenPage', segment: 'avance-examen', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/bloque-alt/bloque-alt.module#BloqueAltPageModule', name: 'BloqueAltPage', segment: 'bloque-alt/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checklist/checklist.module#ChecklistPageModule', name: 'ChecklistPage', segment: 'checklist', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/clase-detail/clase-detail.module#ClaseDetailPageModule', name: 'ClaseDetailPage', segment: 'clase/:id/:type', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/especialidades/especialidades.module#EspecialidadesPageModule', name: 'EspecialidadesPage', segment: 'especialidades', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/examen-detail/examen-detail.module#ExamenDetailPageModule', name: 'ExamenDetailPage', segment: 'examen/:type/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/foro-detail/foro-detail.module#ForoDetailPageModule', name: 'ForoDetailPage', segment: 'foro/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/especialidades/especialidades.module#EspecialidadesPageModule', name: 'EspecialidadesPage', segment: 'especialidades', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/foros/foros.module#ForosPageModule', name: 'ForosPage', segment: 'foros', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/galeria-detail/galeria-detail.module#GaleriaDetailPageModule', name: 'GaleriaDetailPage', segment: 'galeria/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/galerias/galerias.module#GaleriasPageModule', name: 'GaleriasPage', segment: 'galerias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/hilo-detail/hilo-detail.module#HiloDetailPageModule', name: 'HiloDetailPage', segment: 'hilo/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/galerias/galerias.module#GaleriasPageModule', name: 'GaleriasPage', segment: 'galerias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/materia-alt/materia-alt.module#MateriaAltPageModule', name: 'MateriaAltPage', segment: 'materia-alt/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/media/media.module#MediaPageModule', name: 'MediaPage', segment: 'media', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mi-analitica/mi-analitica.module#MiAnaliticaPageModule', name: 'MiAnaliticaPage', segment: 'mi-analitica', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mi-curso/mi-curso.module#MiCursoPageModule', name: 'MiCursoPage', segment: 'mi-curso', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas-add/notas-add.module#NotasAddPageModule', name: 'NotasAddPage', segment: 'notas-add', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas-global/notas-global.module#NotasGlobalPageModule', name: 'NotasGlobalPage', segment: 'notas-global', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas/notas.module#NotasPageModule', name: 'NotasPage', segment: 'notas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'NotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/post-comments/post-comments.module#PostCommentsPageModule', name: 'PostCommentsPage', segment: 'post-comments', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/programa-bloque/programa-bloque.module#ProgramaBloquePageModule', name: 'ProgramaBloquePage', segment: 'programa-bloque', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/programa-materia/programa-materia.module#ProgramaMateriaPageModule', name: 'ProgramaMateriaPage', segment: 'programa-materia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratings/ratings.module#RatingsPageModule', name: 'RatingsPage', segment: 'ratings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/resultado-detail/resultado-detail.module#ResultadoDetailPageModule', name: 'ResultadoDetailPage', segment: 'resultado-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/simulador-detail/simulador-detail.module#SimuladorDetailPageModule', name: 'SimuladorDetailPage', segment: 'simulador-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/simuladores/simuladores.module#SimuladoresPageModule', name: 'SimuladoresPage', segment: 'simuladores', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/resultados-examen/resultados-examen.module#ResultadosExamenPageModule', name: 'ResultadosExamenPage', segment: 'resultados-examen', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/simuladores/simuladores.module#SimuladoresPageModule', name: 'SimuladoresPage', segment: 'simuladores', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/simulador-detail/simulador-detail.module#SimuladorDetailPageModule', name: 'SimuladorDetailPage', segment: 'simulador-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/foro-detail/foro-detail.module#ForoDetailPageModule', name: 'ForoDetailPage', segment: 'foro/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
                     ]
                 }),

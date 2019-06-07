@@ -1,6 +1,6 @@
 webpackJsonp([2],{
 
-/***/ 740:
+/***/ 739:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1399,18 +1399,17 @@ var HomePage = /** @class */ (function () {
     };
     HomePage.prototype.loadMoodRates = function (uid) {
         return __awaiter(this, void 0, void 0, function () {
-            var rates, dailyRegisters, today, canOpen, canOpenDaily;
+            var rates, today, canOpen;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_8__app_app_models__["a" /* Collections */].MOOD_RATE, function (ref) { return ref.where('user', '==', uid); })];
+                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_8__app_app_models__["a" /* Collections */].MOOD_RATE, function (ref) { return ref.where('user', '==', uid); })
+                        /* const dailyRegisters = await this.data.getCollectionQuery<MoodRate>(Collections.DAILY_REGISTER, ref => ref.where('user', '==', uid)) */
+                    ];
                     case 1:
                         rates = _a.sent();
-                        return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_8__app_app_models__["a" /* Collections */].DAILY_REGISTER, function (ref) { return ref.where('user', '==', uid); })];
-                    case 2:
-                        dailyRegisters = _a.sent();
                         today = __WEBPACK_IMPORTED_MODULE_9_moment___default()().format('DD-MM-YYYY');
                         canOpen = rates.filter(function (r) { return r.date == today; }).length <= 0;
-                        canOpenDaily = rates.filter(function (r) { return r.date == today; }).length <= 0;
+                        /* const canOpenDaily = rates.filter(r => r.date == today).length <= 0 */
                         console.log(rates, today);
                         if (canOpen) {
                             this.modal.create('ComoTeSientesHoyPage').present();

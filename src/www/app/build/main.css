@@ -30820,6 +30820,10 @@ page-asesoria-detail .chat-frame {
   min-height: 350px;
 }
 
+page-avance-examen .answered {
+  text-decoration: line-through;
+}
+
 page-calendar .list-header {
   margin-bottom: 0;
 }

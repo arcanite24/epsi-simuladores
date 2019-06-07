@@ -1,14 +1,14 @@
 webpackJsonp([28],{
 
-/***/ 741:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaAltPageModule", function() { return MateriaAltPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiAnaliticaPageModule", function() { return MiAnaliticaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia_alt__ = __webpack_require__(806);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_analitica__ = __webpack_require__(809);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,44 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MateriaAltPageModule = /** @class */ (function () {
-    function MateriaAltPageModule() {
+var MiAnaliticaPageModule = /** @class */ (function () {
+    function MiAnaliticaPageModule() {
     }
-    MateriaAltPageModule = __decorate([
+    MiAnaliticaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */],
+                __WEBPACK_IMPORTED_MODULE_2__mi_analitica__["a" /* MiAnaliticaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_analitica__["a" /* MiAnaliticaPage */]),
             ],
         })
-    ], MateriaAltPageModule);
-    return MateriaAltPageModule;
+    ], MiAnaliticaPageModule);
+    return MiAnaliticaPageModule;
 }());
 
-//# sourceMappingURL=materia-alt.module.js.map
+//# sourceMappingURL=mi-analitica.module.js.map
 
 /***/ }),
 
-/***/ 806:
+/***/ 809:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaAltPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(23);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiAnaliticaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_app_config__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(471);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,58 +104,111 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var MateriaAltPage = /** @class */ (function () {
-    function MateriaAltPage(navCtrl, navParams, data) {
+
+
+
+
+
+
+var MiAnaliticaPage = /** @class */ (function () {
+    function MiAnaliticaPage(navCtrl, navParams, afs, auth, stats) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.data = data;
-        this.id = this.navParams.get('id');
+        this.afs = afs;
+        this.auth = auth;
+        this.stats = stats;
     }
-    MateriaAltPage.prototype.ionViewDidLoad = function () {
-        this.loadContent(this.id);
-        this.loadChildren(this.id);
+    MiAnaliticaPage.prototype.ionViewDidLoad = function () {
+        this.loadInfo();
     };
-    MateriaAltPage.prototype.loadContent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, id)];
-                    case 1:
-                        _a.materia = _b.sent();
-                        return [2 /*return*/];
-                }
-            });
+    MiAnaliticaPage.prototype.loadInfo = function () {
+        var _this = this;
+        this.auth.user$.subscribe(function (user) {
+            if (user) {
+                _this.calculateAverage(user.uid);
+                _this.calculateAverageGeneral(user.uid);
+                _this.loadTimeline();
+                _this.loadLowAverage(user);
+                _this.loadStruct();
+            }
         });
     };
-    MateriaAltPage.prototype.loadChildren = function (id) {
+    MiAnaliticaPage.prototype.calculateAverage = function (uid) {
+        var _this = this;
+        var start = __WEBPACK_IMPORTED_MODULE_2_moment___default()().startOf('month').toISOString();
+        var end = __WEBPACK_IMPORTED_MODULE_2_moment___default()().endOf('month').toISOString();
+        this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM_RESULT, function (ref) { return ref
+            .where('user', '==', uid)
+            .where('date', '>=', start)
+            .where('date', '<=', end); })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["map"])(function (results) {
+            var total = results.length;
+            return results.map(function (r) { return r.promedio; }).reduce(function (a, b) { return a + b; }, 0) / total * __WEBPACK_IMPORTED_MODULE_6__app_app_config__["a" /* averageMultiplier */];
+        }), Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["tap"])(function (average) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.promedioMes = average;
+                this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER_STAT + "/stat-" + uid).update({ monthAverage: average });
+                return [2 /*return*/];
+            });
+        }); })).subscribe();
+    };
+    MiAnaliticaPage.prototype.calculateAverageGeneral = function (uid) {
+        var _this = this;
+        this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM_RESULT, function (ref) { return ref.where('user', '==', uid); })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["map"])(function (results) {
+            var total = results.length;
+            return results.map(function (r) { return r.promedio; }).reduce(function (a, b) { return a + b; }, 0) / total * __WEBPACK_IMPORTED_MODULE_6__app_app_config__["a" /* averageMultiplier */];
+        }), Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["tap"])(function (average) { return __awaiter(_this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.promedioGeneral = average;
+                this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER_STAT + "/stat-" + uid).update({ generalAverage: average });
+                return [2 /*return*/];
+            });
+        }); })).subscribe();
+    };
+    MiAnaliticaPage.prototype.loadTimeline = function () {
+        this.timeline$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].STAT_VIEW, function (ref) { return ref.where('isTimeline', '==', true); }).valueChanges();
+    };
+    MiAnaliticaPage.prototype.loadLowAverage = function (user) {
         return __awaiter(this, void 0, void 0, function () {
-            var children;
+            var list;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', id); })];
+                    case 0: return [4 /*yield*/, this.stats.computeUserAverageList(user)];
                     case 1:
-                        children = _a.sent();
-                        this.children = children.filter(function (c) { return c.liberadoInPrograma; });
+                        list = _a.sent();
+                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER + "/" + user.uid).update({ average_list: list })];
+                    case 2:
+                        _a.sent();
+                        this.lowAverageList = Object(__WEBPACK_IMPORTED_MODULE_8_lodash__["sortBy"])(list.filter(function (t) { return t.promedio <= 0.6 && t.promedio > 0; }), 'promedio');
+                        console.log(this.lowAverageList);
                         return [2 /*return*/];
                 }
             });
         });
     };
-    MateriaAltPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-            selector: 'page-materia-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{materia ? materia.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="children">\n    <ion-row>\n\n      <ion-col col-6 *ngFor="let child of children">\n        <ion-card (click)="navCtrl.push(\'BloqueAltPage\', {id: child.id})">\n          <img [src]="child.cover" alt="Children">\n          <ion-card-content>\n            <ion-card-title>{{child.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/,
+    MiAnaliticaPage.prototype.loadStruct = function () {
+        this.struct$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].STAT_VIEW, function (ref) { return ref
+            .where('isTimeline', '==', false); })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["map"])(function (views) { return views.filter(function (v) { return !v.parent; }); }));
+    };
+    MiAnaliticaPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-mi-analitica',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mi-analitica/mi-analitica.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi Analítica Personal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card>\n    <ion-card-title>Promedio General</ion-card-title>\n    <p>{{promedioGeneral | number}}</p>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-title>Promedio del Mes</ion-card-title>\n    <p>{{promedioMes | number}}</p>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-title>Timeline</ion-card-title>\n    <ion-list *ngIf="timeline$ | async as timeline">\n      <ion-item *ngFor="let view of timeline">{{view.name}}</ion-item>\n    </ion-list>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-title>Materias que debes estudiar</ion-card-title>\n    <ion-list *ngIf="lowAverageList">\n      <ion-item *ngFor="let view of lowAverageList">\n        <h2>{{view.tag}}</h2>\n        <p>{{view.promedio * 100 | number}}/100</p>\n      </ion-item>\n    </ion-list>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-title>Rendimiento</ion-card-title>\n    <ion-list>\n\n    </ion-list>\n  </ion-card>\n\n  <ion-card>\n    <ion-card-title>Promedios</ion-card-title>\n    <ion-list *ngIf="struct$ | async as struct">\n      <ion-item *ngFor="let view of struct">{{view.name}}</ion-item>\n    </ion-list>\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mi-analitica/mi-analitica.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */]])
-    ], MateriaAltPage);
-    return MateriaAltPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__["a" /* StatsProvider */]])
+    ], MiAnaliticaPage);
+    return MiAnaliticaPage;
 }());
 
-//# sourceMappingURL=materia-alt.js.map
+//# sourceMappingURL=mi-analitica.js.map
 
 /***/ })
 

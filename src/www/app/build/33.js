@@ -1,14 +1,14 @@
 webpackJsonp([33],{
 
-/***/ 733:
+/***/ 766:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExamenDetailPageModule", function() { return ExamenDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForoDetailPageModule", function() { return ForoDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__examen_detail__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foro_detail__ = __webpack_require__(832);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ExamenDetailPageModule = /** @class */ (function () {
-    function ExamenDetailPageModule() {
+var ForoDetailPageModule = /** @class */ (function () {
+    function ForoDetailPageModule() {
     }
-    ExamenDetailPageModule = __decorate([
+    ForoDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__examen_detail__["a" /* ExamenDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__examen_detail__["a" /* ExamenDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */]),
             ],
         })
-    ], ExamenDetailPageModule);
-    return ExamenDetailPageModule;
+    ], ForoDetailPageModule);
+    return ForoDetailPageModule;
 }());
 
-//# sourceMappingURL=examen-detail.module.js.map
+//# sourceMappingURL=foro-detail.module.js.map
 
 /***/ }),
 
-/***/ 798:
+/***/ 832:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExamenDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators__ = __webpack_require__(18);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForoDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,170 +61,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var ExamenDetailPage = /** @class */ (function () {
-    function ExamenDetailPage(navCtrl, navParams, back, toast, viewCtrl, modal, afs) {
+var ForoDetailPage = /** @class */ (function () {
+    function ForoDetailPage(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.back = back;
-        this.toast = toast;
-        this.viewCtrl = viewCtrl;
-        this.modal = modal;
         this.afs = afs;
-        this.id = this.navParams.get('id');
-        this.type = this.navParams.get('type');
-        this.isOffline = this.navParams.get('offline');
-        this.l = false;
-        this.index = 0;
-        this.cacheKey = "examen-download-" + this.type + "-" + this.id;
-        this.cacheList = [];
-        this.testCache = !!localStorage.getItem(this.cacheKey);
-        this.s = this.navParams.get('s') ? JSON.parse(this.navParams.get('s')) : null;
     }
-    ExamenDetailPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.exam$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM).doc(this.id)
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["tap"])(function (data) {
-            _this.test = { name: data.name, preguntas: data.questions };
-        }));
-        /* if (this.s) return this.test = this.s.test
-        
-        this.back.getClase(this.id, this.type).subscribe(data => {
-          if (!data.preguntas || data.preguntas.length <= 0) {
-            this.toast.create({message: 'No existe un exámen para ésta clase...', duration: 2000}).present()
-            this.viewCtrl.dismiss()
-          } else {
-            this.test = {name: data.name, preguntas: data.preguntas}
-            const cache = JSON.parse(localStorage.getItem(`examen-cache-${this.type}-${this.id}`))
-            if (cache) {
-              this.index = cache.index
-              this.test.preguntas[this.index].s = cache.selected
-            }
-          }
-        }, err => {
-          this.toast.create({message: 'No se pudo cargar el exámen...', duration: 2000}).present()
-        })
-    
-        this.loadCacheList() */
+    ForoDetailPage.prototype.ngOnInit = function () {
     };
-    ExamenDetailPage.prototype.enviarResultados = function () {
-        var _this = this;
-        this.l = true;
-        var resultados = {};
-        this.test.preguntas.forEach(function (p) {
-            resultados[p.id] = {
-                selected: p.s,
-                pregunta: p
-            };
-        });
-        if (this.isOffline) {
-            var list = JSON.parse(localStorage.getItem('offline-results'));
-            var offlineResults = list ? list : [];
-            offlineResults.push(resultados);
-            localStorage.setItem('offline-results', JSON.stringify(offlineResults));
-            this.toast.create({ message: 'Tus resultados se guardaron correctamente.', duration: 2000 }).present();
-            this.viewCtrl.dismiss(resultados);
-        }
-        else {
-            this.back.addResultado(this.type, this.back.uid, this.id, resultados).subscribe(function (data) {
-                _this.toast.create({ message: 'Resultados registrados correctamente.', duration: 2000 }).present();
-                _this.viewCtrl.dismiss(data);
-            }, function (err) {
-                _this.l = false;
-                _this.toast.create({ message: 'No se pudieron agregar tus resultados...', duration: 2000 }).present();
-            });
-        }
+    ForoDetailPage.prototype.ionViewDidLoad = function () {
+        var id = this.navParams.get('id');
+        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, function (ref) { return ref.where('cat_id', '==', id); }).valueChanges();
     };
-    ExamenDetailPage.prototype.openResultados = function (id, type) {
-        var m = this.modal.create('ResultadosExamenPage', { type: type, id: id });
-        m.present();
-    };
-    ExamenDetailPage.prototype.next = function () {
-        if (this.index == this.test.preguntas.length - 1) {
-            this.enviarResultados();
-        }
-        else {
-            this.saveCache();
-            this.index++;
-        }
-    };
-    ExamenDetailPage.prototype.saveCache = function () {
-        var resultados = {};
-        var selected = this.test.preguntas[this.index].s;
-        this.test.preguntas.forEach(function (p) {
-            resultados[p.id] = {
-                selected: p.s,
-                pregunta: p
-            };
-        });
-        localStorage.setItem("examen-cache-" + this.type + "-" + this.id, JSON.stringify({
-            index: this.index,
-            resultados: resultados,
-            selected: selected
-        }));
-        localStorage.setItem("examen-selected-" + this.type + "-" + this.id + "-" + this.index, this.test.preguntas[this.index].s);
-    };
-    ExamenDetailPage.prototype.prev = function () {
-        this.index--;
-        var selected = localStorage.getItem("examen-selected-" + this.type + "-" + this.id + "-" + this.index);
-        if (selected)
-            this.test.preguntas[this.index].s = selected;
-    };
-    ExamenDetailPage.prototype.openAvance = function () {
-        var _this = this;
-        var m = this.modal.create('AvanceExamenPage', { preguntas: this.test.preguntas });
-        m.present();
-        m.onDidDismiss(function (index) {
-            if (!index)
-                return;
-            _this.index = index;
-        });
-    };
-    ExamenDetailPage.prototype.loadCacheList = function () {
-        var list = JSON.parse(localStorage.getItem('zamnademy-cache-list'));
-        this.cacheList = list ? list : [];
-    };
-    ExamenDetailPage.prototype.downloadExamen = function () {
-        var cache = {
-            id: this.id,
-            type: this.type,
-            test: this.test
-        };
-        this.cacheList.push({
-            id: cache.id,
-            name: cache.test.name,
-            type: cache.type
-        });
-        localStorage.setItem('zamnademy-cache-list', JSON.stringify(this.cacheList));
-        localStorage.setItem(this.cacheKey, JSON.stringify(cache));
-        this.testCache = cache;
-        this.toast.create({ message: 'Exámen descargado correctamente.', duration: 2000 }).present();
-    };
-    ExamenDetailPage.prototype.removeExamen = function () {
-        var _this = this;
-        localStorage.removeItem(this.cacheKey);
-        this.cacheList = this.cacheList.filter(function (test) { return test.id != _this.id; });
-        localStorage.setItem('zamnademy-cache-list', JSON.stringify(this.cacheList));
-        this.testCache = null;
-    };
-    ExamenDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-examen-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/examen-detail/examen-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{test ? test.name : \'Exámen\'}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" *ngIf="(exam$ | async)">\n\n  <div class="flex-col" *ngIf="!test">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <div *ngIf="test">\n\n    <!--<ion-card *ngFor="let p of test.preguntas">\n      <img [src]="p.img" *ngIf="p.img">\n      <ion-card-header>{{p.text}}</ion-card-header>\n      <ion-list radio-group [(ngModel)]="p.s" [disabled]="l">\n        <ion-list-header>Respuestas</ion-list-header>\n        <ion-item *ngFor="let r of p.respuestas">\n          <ion-label>{{r.text}}</ion-label>\n          <ion-radio [value]="r.id"></ion-radio>\n        </ion-item>\n      </ion-list>\n    </ion-card>-->\n\n    <ion-card>\n      <ion-list-header>Pregunta {{index + 1 | number}} de {{test ? test.preguntas.length : 0}}</ion-list-header>\n      <img [src]="test.preguntas[index].img" *ngIf="test.preguntas[index].img">\n      <ion-card-header text-wrap>{{test.preguntas[index].text}}</ion-card-header>\n\n      <ion-list radio-group [(ngModel)]="test.preguntas[index].s" [disabled]="l">\n        <ion-list-header>Respuestas</ion-list-header>\n        <ion-item *ngFor="let r of test.preguntas[index].respuestas" text-wrap>\n          <ion-label>{{r.text}}</ion-label>\n          <ion-radio [value]="r.id"></ion-radio>\n        </ion-item>\n      </ion-list>\n\n      <ion-list *ngIf="test.preguntas[index].feedback && index > 0" class="mt-1">\n        <ion-list-header>Feedback Pregunta Anterior</ion-list-header>\n        <ion-item text-wrap>{{test.preguntas[index - 1].feedback}}</ion-item>\n      </ion-list>\n\n    </ion-card>\n\n    <div class="flex-row mb-1" *ngIf="test">\n      <button ion-button (click)="prev()" *ngIf="index > 0" ><ion-icon name="arrow-back"></ion-icon></button>\n      <button ion-button (click)="next()" [disabled]="l">{{index == test.preguntas.length - 1 ? \'Enviar Resultados\' : \'Siguiente Pregunta\'}}</button>  \n    </div>\n\n  </div>\n\n  <ion-fab right bottom *ngIf="type == \'simulador\'">\n    <button ion-fab color="rojito"><ion-icon name="menu"></ion-icon></button>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openResultados(id, type)">\n        <ion-label>Ver Resultados</ion-label>\n        <ion-icon name="checkbox"></ion-icon>\n      </button>\n      <button ion-fab (click)="openAvance()">\n        <ion-label>Avance</ion-label>\n        <ion-icon name="bookmark"></ion-icon>\n      </button>\n      <button ion-fab (click)="downloadExamen()" *ngIf="!testCache">\n        <ion-label>Descargar</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n      <button ion-fab (click)="removeExamen()" *ngIf="testCache">\n        <ion-label>Borrar</ion-label>\n        <ion-icon name="trash"></ion-icon>\n      </button>\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/examen-detail/examen-detail.html"*/,
+    ForoDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-foro-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <ion-list *ngIf="thread$ | async as threads else loader">\n    <ion-list-header>Hilos</ion-list-header>\n    <ion-item *ngFor="let h of threads" (click)="navCtrl.push(\'HiloDetailPage\', {id: h.id})">\n      <h2>{{h.title}}</h2>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["w" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["o" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"]])
-    ], ExamenDetailPage);
-    return ExamenDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+    ], ForoDetailPage);
+    return ForoDetailPage;
 }());
 
-//# sourceMappingURL=examen-detail.js.map
+//# sourceMappingURL=foro-detail.js.map
 
 /***/ })
 
