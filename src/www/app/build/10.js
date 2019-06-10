@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 762:
+/***/ 768:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartCalendarPageModule", function() { return SmartCalendarPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemaAltPageModule", function() { return TemaAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(828);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(837);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,53 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SmartCalendarPageModule = /** @class */ (function () {
-    function SmartCalendarPageModule() {
+var TemaAltPageModule = /** @class */ (function () {
+    function TemaAltPageModule() {
     }
-    SmartCalendarPageModule = __decorate([
+    TemaAltPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */],
+                __WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */]),
             ],
         })
-    ], SmartCalendarPageModule);
-    return SmartCalendarPageModule;
+    ], TemaAltPageModule);
+    return TemaAltPageModule;
 }());
 
-//# sourceMappingURL=smart-calendar.module.js.map
+//# sourceMappingURL=tema-alt.module.js.map
 
 /***/ }),
 
-/***/ 828:
+/***/ 837:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartCalendarPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(467);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemaAltPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -113,113 +95,84 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-
-
-var SmartCalendarPage = /** @class */ (function () {
-    function SmartCalendarPage(navCtrl, navParams, auth, afs, data) {
+var TemaAltPage = /** @class */ (function () {
+    function TemaAltPage(navCtrl, navParams, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.auth = auth;
-        this.afs = afs;
         this.data = data;
-        this.completedTasks = [];
-        this.events = [];
-        this.loadedEvents = [];
+        this.id = this.navParams.get('id');
     }
-    SmartCalendarPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.auth.user$.subscribe(function (user) {
-            if (user) {
-                _this.afs
-                    .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
-                    .doc(user.uid)
-                    .valueChanges()
-                    .subscribe(function (u) {
-                    return (_this.completedTasks = u.completedTasks ? u.completedTasks : []);
-                });
-                if (!_this.events$)
-                    _this.loadEvents(user.uid);
-            }
-        });
+    TemaAltPage.prototype.ionViewDidLoad = function () {
+        this.loadContent(this.id);
+        this.loadChildren(this.id);
     };
-    SmartCalendarPage.prototype.loadEvents = function (uid) {
-        var _this = this;
-        this.userSub = this.afs
-            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
-            .doc(uid)
-            .valueChanges()
-            .subscribe(function (user) { return __awaiter(_this, void 0, void 0, function () {
-            var events, _loop_1, this_1, _i, events_1, e;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+    TemaAltPage.prototype.loadContent = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        if (!user.customCalendar)
-                            return [2 /*return*/];
-                        events = Object(__WEBPACK_IMPORTED_MODULE_6_lodash__["flattenDeep"])(Object.values(user.customCalendar)).filter(function (e) {
-                            return e.start.substr(0, 10) === __WEBPACK_IMPORTED_MODULE_7_moment___default()().format('YYYY-MM-DD');
-                        });
-                        console.log(events);
-                        if (!user.completedTasks)
-                            user.completedTasks = [];
-                        this.completedTasks = user.completedTasks;
-                        /*let formatedEvents = []*/
-                        if (this.events.length > 0)
-                            return [2 /*return*/];
-                        _loop_1 = function (e) {
-                            var eventDoc_1;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        if (!(e.event && !this_1.loadedEvents.includes(e.event))) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, this_1.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].EVENT, e.event)];
-                                    case 1:
-                                        eventDoc_1 = _a.sent();
-                                        setTimeout(function () {
-                                            _this.events.push(__assign({}, e, { id: eventDoc_1.id, start: new Date(e.start), title: e.content_name, desc: eventDoc_1.desc, date: new Date().toISOString(), tasks: eventDoc_1.tasks, links: eventDoc_1.links, color: _this.completedTasks.indexOf(eventDoc_1.id) >= 0
-                                                    ? { primary: '#5e4b8b', secondary: '#5e4b8b' }
-                                                    : { primary: '#CF4747', secondary: '#CF4747' } }));
-                                            _this.loadedEvents.push(e.event);
-                                        }, 100);
-                                        _a.label = 2;
-                                    case 2: return [2 /*return*/];
-                                }
-                            });
-                        };
-                        this_1 = this;
-                        _i = 0, events_1 = events;
-                        _a.label = 1;
+                        _a = this;
+                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, id)];
                     case 1:
-                        if (!(_i < events_1.length)) return [3 /*break*/, 4];
-                        e = events_1[_i];
-                        return [5 /*yield**/, _loop_1(e)];
-                    case 2:
-                        _a.sent();
-                        _a.label = 3;
-                    case 3:
-                        _i++;
-                        return [3 /*break*/, 1];
-                    case 4: return [2 /*return*/];
+                        _a.tema = _b.sent();
+                        if (this.tema && this.tema.event)
+                            this.loadEvent(this.tema.event);
+                        return [2 /*return*/];
                 }
             });
-        }); });
+        });
     };
-    SmartCalendarPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-            selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
+    TemaAltPage.prototype.loadChildren = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var children;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', id); })];
+                    case 1:
+                        children = _a.sent();
+                        this.children = children.filter(function (c) { return c.liberadoInPrograma; });
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    TemaAltPage.prototype.loadEvent = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        _a = this;
+                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EVENT, id)];
+                    case 1:
+                        _a.event = _b.sent();
+                        console.log(this.event);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    TemaAltPage.prototype.openLink = function (url) {
+        console.log(url);
+        // Content Detail
+        if (url.includes('/content')) {
+            var _a = url.split('/'), _1 = _a[0], mode = _a[1], type = _a[2], id = _a[3];
+            this.navCtrl.push('ClaseDetailPage', { type: type, id: id });
+        }
+    };
+    TemaAltPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-tema-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{tema ? tema.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="event as e">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n    <ion-card-content>{{e.desc}}</ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button (click)="openLink(link.url)">{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_0__providers_data_data__["a" /* DataProvider */]])
-    ], SmartCalendarPage);
-    return SmartCalendarPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
+    ], TemaAltPage);
+    return TemaAltPage;
 }());
 
-//# sourceMappingURL=smart-calendar.js.map
+//# sourceMappingURL=tema-alt.js.map
 
 /***/ })
 

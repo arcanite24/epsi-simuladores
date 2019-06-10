@@ -1,14 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 760:
+/***/ 765:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SlideDetailPageModule", function() { return SlideDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SlidesPageModule", function() { return SlidesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slide_detail__ = __webpack_require__(826);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slides__ = __webpack_require__(834);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,48 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SlideDetailPageModule = /** @class */ (function () {
-    function SlideDetailPageModule() {
+var SlidesPageModule = /** @class */ (function () {
+    function SlidesPageModule() {
     }
-    SlideDetailPageModule = __decorate([
+    SlidesPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__slide_detail__["a" /* SlideDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__slide_detail__["a" /* SlideDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */]),
             ],
         })
-    ], SlideDetailPageModule);
-    return SlideDetailPageModule;
+    ], SlidesPageModule);
+    return SlidesPageModule;
 }());
 
-//# sourceMappingURL=slide-detail.module.js.map
+//# sourceMappingURL=slides.module.js.map
 
 /***/ }),
 
-/***/ 826:
+/***/ 834:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlideDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlidesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(18);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,46 +74,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SlideDetailPage = /** @class */ (function () {
-    function SlideDetailPage(navCtrl, navParams, afs, imgCtrl) {
+var SlidesPage = /** @class */ (function () {
+    function SlidesPage(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
-        this.imgCtrl = imgCtrl;
-        this.id = this.navParams.get('id');
-        this.lc = false;
-        this.newNota = { title: '', text: '' };
     }
-    SlideDetailPage.prototype.ionViewDidLoad = function () {
-        this.slide$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].SLIDE).doc(this.id).valueChanges();
+    SlidesPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        this.slides$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE_CATEGORY)
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(function (cats) { return cats.map(function (cat) { return (__assign({}, cat, { children$: _this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE, function (ref) { return ref.where('cat_id', '==', cat.id); }).valueChanges() })); }); }), Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["tap"])(console.log));
     };
-    SlideDetailPage.prototype.openSlide = function (img) {
-        this.imgCtrl.create(img).present();
-    };
-    SlideDetailPage.prototype.addNota = function (title, text) {
-        this.lc = true;
-    };
-    SlideDetailPage.prototype.onSlideChange = function () {
-        //this.index = this.slides.getActiveIndex()
-        //
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["t" /* Slides */])
-    ], SlideDetailPage.prototype, "slides", void 0);
-    SlideDetailPage = __decorate([
+    SlidesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-slide-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/slide-detail/slide-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Presentación</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-slides *ngIf="slide$ | async as s" (ionSlideDidChange)="onSlideChange()">\n    <ion-slide *ngFor="let slide of s.images">\n      <img [src]="slide" #img (click)="openSlide(img)">\n    </ion-slide>\n  </ion-slides>\n\n  <!-- <ion-list *ngIf="s">\n    <ion-list-header class="flex-row">Notas</ion-list-header>\n    <ion-item>\n      <ion-input placeholder="Titulo de la nota" [(ngModel)]="newNota.title" [disabled]="lc"></ion-input>\n      <button ion-button clear item-end (click)="addNota(newNota.title, newNota.text)" [disabled]="(newNota.title.length <= 0 && newNota.text.length <= 0) || newNota.title.length <= 0 || newNota.text.length <= 0">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Texto de la nota" [(ngModel)]="newNota.text"></ion-textarea>\n    </ion-item>\n    <ion-item *ngFor="let nota of notas" text-wrap>\n      <h2>{{nota.title}}</h2>\n      <p>{{nota.text}}</p>\n    </ion-item>\n  </ion-list> -->\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/slide-detail/slide-detail.html"*/,
+            selector: 'page-slides',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Presentaciones</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      <p>Cargar las infografías puede llevar más de lo esperado.</p>\n    </div>\n  </ng-template>\n\n  <div *ngIf="slides$ | async as slides else loader">\n    <ion-list *ngFor="let cat of slides">\n      <ion-list-header style="font-size:1.75rem"><strong>{{cat.name}}</strong></ion-list-header>\n      <ion-item *ngFor="let s of cat.children$ | async" (click)="navCtrl.push(\'SlideDetailPage\', {id: s.id})" >{{s.name}}</ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */]])
-    ], SlideDetailPage);
-    return SlideDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+    ], SlidesPage);
+    return SlidesPage;
 }());
 
-//# sourceMappingURL=slide-detail.js.map
+//# sourceMappingURL=slides.js.map
 
 /***/ })
 

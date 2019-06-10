@@ -1,14 +1,14 @@
 webpackJsonp([27],{
 
-/***/ 744:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiCursoPageModule", function() { return MiCursoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotasGlobalDetailPageModule", function() { return NotasGlobalDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_curso__ = __webpack_require__(810);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notas_global_detail__ = __webpack_require__(821);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MiCursoPageModule = /** @class */ (function () {
-    function MiCursoPageModule() {
+var NotasGlobalDetailPageModule = /** @class */ (function () {
+    function NotasGlobalDetailPageModule() {
     }
-    MiCursoPageModule = __decorate([
+    NotasGlobalDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */],
+                __WEBPACK_IMPORTED_MODULE_2__notas_global_detail__["a" /* NotasGlobalDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notas_global_detail__["a" /* NotasGlobalDetailPage */]),
             ],
         })
-    ], MiCursoPageModule);
-    return MiCursoPageModule;
+    ], NotasGlobalDetailPageModule);
+    return NotasGlobalDetailPageModule;
 }());
 
-//# sourceMappingURL=mi-curso.module.js.map
+//# sourceMappingURL=notas-global-detail.module.js.map
 
 /***/ }),
 
-/***/ 810:
+/***/ 821:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiCursoPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(18);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotasGlobalDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,68 +58,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
-var MiCursoPage = /** @class */ (function () {
-    function MiCursoPage(afs, auth, navCtrl) {
-        this.afs = afs;
-        this.auth = auth;
+var NotasGlobalDetailPage = /** @class */ (function () {
+    function NotasGlobalDetailPage(navCtrl, navParams, toast, back) {
         this.navCtrl = navCtrl;
-        this.mainContent = __WEBPACK_IMPORTED_MODULE_3__app_app_config__["b" /* contentHierarchy */].slice().shift();
+        this.navParams = navParams;
+        this.toast = toast;
+        this.back = back;
+        this.id = this.navParams.get('id');
+        this.rest = this.navParams.get('rest');
+        this.uid = localStorage.getItem('uid');
+        this.notas = [];
     }
-    MiCursoPage.prototype.ngOnInit = function () {
+    NotasGlobalDetailPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.content$ = this.afs
-            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTENT, function (ref) {
-            return ref.where('type', '==', _this.mainContent);
-        })
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["map"])(function (content) {
-            return content
-                .filter(function (c) { return !c.name.includes('Temprano'); })
-                .filter(function (c) { return !c.ignoreOnSmartCalendar; })
-                .filter(function (c) { return c.liberadoInPrograma; });
-        }));
+        this.back.getNotasRest(this.id, this.rest, this.uid).subscribe(function (data) {
+            _this.notas = data;
+            console.log(data);
+        }, function (err) {
+            _this.toast.create({ message: 'No se pudieron cargar las notas...', duration: 2000 }).present();
+            _this.navCtrl.setRoot('HomePage');
+        });
     };
-    MiCursoPage.prototype.isBlur = function (name) {
-        if (!this.auth.user)
-            return true;
-        if (!name)
-            return true;
-        if (this.auth.isAdmin)
-            return false;
-        if (this.auth.isZamna360_2019)
-            return false;
-        if (this.auth.isPremium2019)
-            return false;
-        if (name.toLowerCase().includes('temprano')) {
-            return !this.auth.isTemprano;
-        }
-        return false;
-    };
-    MiCursoPage.prototype.isLiberado = function (content) {
-        if (!this.auth.user)
-            return false;
-        if (this.auth.user.isAdmin)
-            return true;
-        if (this.auth.user.isPremium2019)
-            return true;
-        return content.liberadoInPrograma;
-    };
-    MiCursoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-mi-curso',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi Curso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="content$ | async as content">\n    <ion-row>\n\n      <ion-col *ngFor="let m of content" col-6>\n        <ion-card (click)="navCtrl.push(\'MateriaAltPage\', {id: m.id})">\n          <img [src]="m.cover" alt="Content">\n          <ion-card-content>\n            <ion-card-title>{{m.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/,
+    NotasGlobalDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-notas-global-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notas-global-detail/notas-global-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Notas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <ion-item *ngFor="let n of notas" text-wrap>\n      <h2>{{n.title}}</h2>\n      <p>{{n.text}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notas-global-detail/notas-global-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* NavController */]])
-    ], MiCursoPage);
-    return MiCursoPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */]])
+    ], NotasGlobalDetailPage);
+    return NotasGlobalDetailPage;
 }());
 
-//# sourceMappingURL=mi-curso.js.map
+//# sourceMappingURL=notas-global-detail.js.map
 
 /***/ })
 

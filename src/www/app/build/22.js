@@ -1,14 +1,14 @@
 webpackJsonp([22],{
 
-/***/ 750:
+/***/ 756:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotificationsPageModule", function() { return NotificationsPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PostCommentsPageModule", function() { return PostCommentsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notifications__ = __webpack_require__(816);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__post_comments__ = __webpack_require__(825);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NotificationsPageModule = /** @class */ (function () {
-    function NotificationsPageModule() {
+var PostCommentsPageModule = /** @class */ (function () {
+    function PostCommentsPageModule() {
     }
-    NotificationsPageModule = __decorate([
+    PostCommentsPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */],
+                __WEBPACK_IMPORTED_MODULE_2__post_comments__["a" /* PostCommentsPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__post_comments__["a" /* PostCommentsPage */]),
             ],
         })
-    ], NotificationsPageModule);
-    return NotificationsPageModule;
+    ], PostCommentsPageModule);
+    return PostCommentsPageModule;
 }());
 
-//# sourceMappingURL=notifications.module.js.map
+//# sourceMappingURL=post-comments.module.js.map
 
 /***/ }),
 
-/***/ 816:
+/***/ 825:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotificationsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PostCommentsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,72 +56,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-var NotificationsPage = /** @class */ (function () {
-    function NotificationsPage(navCtrl, navParams, back, toast, load, viewCtrl) {
+var PostCommentsPage = /** @class */ (function () {
+    function PostCommentsPage(navCtrl, navParams, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.back = back;
-        this.toast = toast;
-        this.load = load;
         this.viewCtrl = viewCtrl;
-        this.notis = [];
-        this.uid = localStorage.getItem('uid');
+        this.comments = this.navParams.get('comments');
     }
-    NotificationsPage.prototype.ionViewDidLoad = function () {
-        this.loadNotis();
-    };
-    NotificationsPage.prototype.reload = function (e) { this.loadNotis(function () { return e.complete(); }); };
-    NotificationsPage.prototype.loadNotis = function (cb) {
-        var _this = this;
-        var l = this.load.create({ content: 'Cargando notificaciones...' });
-        l.present();
-        this.back.getNotisUser(this.uid).subscribe(function (data) {
-            _this.notis = data;
-            l.dismiss();
-            if (cb)
-                cb();
-        }, function (err) {
-            l.dismiss();
-            _this.toast.create({ message: 'No se pudieron cargar las notificaciones', duration: 2000 }).present();
-            _this.viewCtrl.dismiss();
-        });
-    };
-    NotificationsPage.prototype.setRead = function (id, i, read) {
-        var _this = this;
-        if (read)
-            return;
-        this.notis[i].read = true;
-        this.back.updateNoti(id, { read: this.notis[i].read }).subscribe(function (data) {
-            console.log(data);
-        }, function (err) {
-            _this.notis[i].read = read;
-            _this.toast.create({ message: 'No se pudo marcar como leída la notificación...', duration: 2000 }).present();
-        });
-    };
-    NotificationsPage.prototype.getDate = function (date) {
-        return __WEBPACK_IMPORTED_MODULE_3_moment___default()(date).fromNow();
-    };
-    NotificationsPage.prototype.handleClick = function (noti) {
-        if (noti.hilo)
-            this.navCtrl.push('HiloDetailPage', { id: noti.hilo.id });
-    };
-    NotificationsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-notifications',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Notificaciones</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-list>\n    <ion-item *ngFor="let n of notis.reverse(); let i = index" [ngClass]="{\'read\': n.read}" (click)="setRead(n.id, i, n.read); handleClick(n)" text-wrap>\n      <h2>{{n.title}} <small>{{getDate(n.createdAt)}}</small> </h2>\n      <p>{{n.desc}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/,
+    PostCommentsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-post-comments',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/post-comments/post-comments.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Comentarios</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <ion-item *ngIf="!comments || comments.length <= 0">No hay comentarios en ésta publicación...</ion-item>\n    <ion-item *ngFor="let c of comments" text-wrap>\n      <ion-avatar item-start>\n        <img [src]="c.user.photoURL ? c.user.photoURL : \'assets/imgs/profile.jpg\'">\n      </ion-avatar>\n      <h2>{{c.user.displayName}}</h2>\n      <p>{{c.text}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/post-comments/post-comments.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["u" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["w" /* ViewController */]])
-    ], NotificationsPage);
-    return NotificationsPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+    ], PostCommentsPage);
+    return PostCommentsPage;
 }());
 
-//# sourceMappingURL=notifications.js.map
+//# sourceMappingURL=post-comments.js.map
 
 /***/ })
 

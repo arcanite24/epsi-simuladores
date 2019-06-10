@@ -1,14 +1,14 @@
 webpackJsonp([41],{
 
-/***/ 726:
+/***/ 730:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsesoriasPageModule", function() { return AsesoriasPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPageModule", function() { return CalendarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asesorias__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar__ = __webpack_require__(799);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +18,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AsesoriasPageModule = /** @class */ (function () {
-    function AsesoriasPageModule() {
+var CalendarPageModule = /** @class */ (function () {
+    function CalendarPageModule() {
     }
-    AsesoriasPageModule = __decorate([
+    CalendarPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */],
+                __WEBPACK_IMPORTED_MODULE_2__calendar__["a" /* CalendarPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__calendar__["a" /* CalendarPage */]),
             ],
         })
-    ], AsesoriasPageModule);
-    return AsesoriasPageModule;
+    ], CalendarPageModule);
+    return CalendarPageModule;
 }());
 
-//# sourceMappingURL=asesorias.module.js.map
+//# sourceMappingURL=calendar.module.js.map
 
 /***/ }),
 
-/***/ 791:
+/***/ 799:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsesoriasPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(111);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__ = __webpack_require__(464);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -64,43 +64,70 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var AsesoriasPage = /** @class */ (function () {
-    function AsesoriasPage(navCtrl, navParams, back, modal, auth, afs) {
+var CalendarPage = /** @class */ (function () {
+    function CalendarPage(navCtrl, navParams, load, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.back = back;
-        this.modal = modal;
-        this.auth = auth;
+        this.load = load;
         this.afs = afs;
-        this.asesorias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].LIVESTREAM).valueChanges();
+        this.calendar = [];
+        this.uid = localStorage.getItem('uid');
     }
-    AsesoriasPage.prototype.ionViewDidLoad = function () {
-    };
-    AsesoriasPage.prototype.openAdd = function () {
+    CalendarPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        var m = this.modal.create('AsesoriaAddPage');
-        m.present();
-        m.onDidDismiss(function (data) {
-            if (data)
-                _this.ionViewDidLoad();
+        var l = this.load.create({ content: 'Cargando calendario...' });
+        l.present();
+        this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EVENT)
+            .valueChanges()
+            .subscribe(function (events) {
+            l.dismiss();
+            _this.calendar = events.filter(function (e) { return __WEBPACK_IMPORTED_MODULE_4_moment___default()(e.date).startOf('day').format('DD-MM-YYYY') == __WEBPACK_IMPORTED_MODULE_4_moment___default()().startOf('day').format('DD-MM-YYYY'); });
+            console.log(_this.calendar);
         });
+        /* this.back.getEventosDay().subscribe(data => {
+          const c = data.map(day => {
+            day.tareas = day.tareas.map(task => {
+              if (localStorage.getItem(`evento-${day.id}-${task.id}-${this.uid}`)) task.completed = true
+              return task
+            })
+            return day
+          })
+          this.calendar = c
+          l.dismiss()
+        }, err => {
+          this.toast.create({message: 'No se pudo cargar el calendario...', duration: 2000}).present()
+          l.dismiss()
+        }) */
     };
-    AsesoriasPage = __decorate([
+    CalendarPage.prototype.onChangeTask = function (completed, id, i, ii, evento) {
+        if (completed) {
+            localStorage.setItem("evento-" + evento + "-" + id + "-" + this.uid, "" + completed);
+        }
+        else {
+            localStorage.removeItem("evento-" + evento + "-" + id + "-" + this.uid);
+        }
+        this.calendar[ii].tareas[i].completed = completed;
+    };
+    CalendarPage.prototype.openVideo = function (c) {
+        console.log(c);
+        this.navCtrl.push('ClaseDetailPage', { id: c.link_video_1, type: c.type_video_1 });
+    };
+    CalendarPage.prototype.openSlide = function (c) {
+        this.navCtrl.push('SlideDetailPage', { id: c.link_slide_1 });
+    };
+    CalendarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-asesorias',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Asesorias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="asesorias$ | async as asesorias else loader">\n    <ion-item *ngFor="let a of asesorias" (click)="navCtrl.push(\'AsesoriaDetailPage\', {id: a.id})">\n      <h2>{{a.name}}</h2>\n      <!--<p>{{a.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n  \n  <ion-fab right bottom *ngIf="auth.isAdmin" >\n    <button ion-fab color="rojito" (click)="openAdd()" ><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/,
+            selector: 'page-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/calendar/calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Programa paso a paso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list *ngFor="let c of calendar; let ii = index" class="mt-3">\n    <ion-list-header class="calendar-header" text-wrap>{{c.title}}</ion-list-header>\n    <div class="calendar-item" *ngFor="let task of c.tasks; let i = index">\n      <ion-item>\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox [(ngModel)]="task.completed" (ionChange)="onChangeTask(task.completed, task.id, i, ii, c.id)"></ion-checkbox>\n      </ion-item>\n    </div>\n    <!-- <ion-item>\n      <button ion-button *ngIf="c.link_video_1" (click)="openVideo(c)">Ver VideoClase</button>\n      <button ion-button *ngIf="c.link_slide_1" (click)="openSlide(c)">Ver Presentación</button>\n    </ion-item> -->\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/calendar/calendar.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["o" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"]])
-    ], AsesoriasPage);
-    return AsesoriasPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
+    ], CalendarPage);
+    return CalendarPage;
 }());
 
-//# sourceMappingURL=asesorias.js.map
+//# sourceMappingURL=calendar.js.map
 
 /***/ })
 

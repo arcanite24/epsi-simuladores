@@ -1,14 +1,14 @@
 webpackJsonp([35],{
 
-/***/ 733:
+/***/ 738:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComoTeSientesHoyPageModule", function() { return ComoTeSientesHoyPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForoDetailPageModule", function() { return ForoDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__ = __webpack_require__(798);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foro_detail__ = __webpack_require__(807);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ComoTeSientesHoyPageModule = /** @class */ (function () {
-    function ComoTeSientesHoyPageModule() {
+var ForoDetailPageModule = /** @class */ (function () {
+    function ForoDetailPageModule() {
     }
-    ComoTeSientesHoyPageModule = __decorate([
+    ForoDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__["a" /* ComoTeSientesHoyPage */],
+                __WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__["a" /* ComoTeSientesHoyPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */]),
             ],
         })
-    ], ComoTeSientesHoyPageModule);
-    return ComoTeSientesHoyPageModule;
+    ], ForoDetailPageModule);
+    return ForoDetailPageModule;
 }());
 
-//# sourceMappingURL=como-te-sientes-hoy.module.js.map
+//# sourceMappingURL=foro-detail.module.js.map
 
 /***/ }),
 
-/***/ 798:
+/***/ 807:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComoTeSientesHoyPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForoDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,25 +59,32 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ComoTeSientesHoyPage = /** @class */ (function () {
-    function ComoTeSientesHoyPage(navCtrl, navParams, viewCtrl) {
+
+
+var ForoDetailPage = /** @class */ (function () {
+    function ForoDetailPage(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.viewCtrl = viewCtrl;
+        this.afs = afs;
     }
-    ComoTeSientesHoyPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ComoTeSientesHoyPage');
+    ForoDetailPage.prototype.ngOnInit = function () {
     };
-    ComoTeSientesHoyPage = __decorate([
+    ForoDetailPage.prototype.ionViewDidLoad = function () {
+        var id = this.navParams.get('id');
+        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, function (ref) { return ref.where('cat_id', '==', id); }).valueChanges();
+    };
+    ForoDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-como-te-sientes-hoy',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/como-te-sientes-hoy/como-te-sientes-hoy.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo te sientes hoy?</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="bg-eee">\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/como-te-sientes-hoy/como-te-sientes-hoy.html"*/,
+            selector: 'page-foro-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <ion-list *ngIf="thread$ | async as threads else loader">\n    <ion-list-header>Hilos</ion-list-header>\n    <ion-item *ngFor="let h of threads" (click)="navCtrl.push(\'HiloDetailPage\', {id: h.id})">\n      <h2>{{h.title}}</h2>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["w" /* ViewController */]])
-    ], ComoTeSientesHoyPage);
-    return ComoTeSientesHoyPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+    ], ForoDetailPage);
+    return ForoDetailPage;
 }());
 
-//# sourceMappingURL=como-te-sientes-hoy.js.map
+//# sourceMappingURL=foro-detail.js.map
 
 /***/ })
 
