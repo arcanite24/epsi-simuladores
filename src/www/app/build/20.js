@@ -1,14 +1,14 @@
 webpackJsonp([20],{
 
-/***/ 758:
+/***/ 759:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgramaBloquePageModule", function() { return ProgramaBloquePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgramaMateriaPageModule", function() { return ProgramaMateriaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__programa_bloque__ = __webpack_require__(827);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__programa_materia__ = __webpack_require__(829);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ProgramaBloquePageModule = /** @class */ (function () {
-    function ProgramaBloquePageModule() {
+var ProgramaMateriaPageModule = /** @class */ (function () {
+    function ProgramaMateriaPageModule() {
     }
-    ProgramaBloquePageModule = __decorate([
+    ProgramaMateriaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__programa_bloque__["a" /* ProgramaBloquePage */],
+                __WEBPACK_IMPORTED_MODULE_2__programa_materia__["a" /* ProgramaMateriaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__programa_bloque__["a" /* ProgramaBloquePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__programa_materia__["a" /* ProgramaMateriaPage */]),
             ],
         })
-    ], ProgramaBloquePageModule);
-    return ProgramaBloquePageModule;
+    ], ProgramaMateriaPageModule);
+    return ProgramaMateriaPageModule;
 }());
 
-//# sourceMappingURL=programa-bloque.module.js.map
+//# sourceMappingURL=programa-materia.module.js.map
 
 /***/ }),
 
-/***/ 827:
+/***/ 829:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgramaBloquePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgramaMateriaPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_firestore__ = __webpack_require__(85);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__ = __webpack_require__(85);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,33 +60,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ProgramaBloquePage = /** @class */ (function () {
-    function ProgramaBloquePage(navCtrl, navParams, afs) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
+var ProgramaMateriaPage = /** @class */ (function () {
+    function ProgramaMateriaPage(afs, navParams, navCtrl) {
         this.afs = afs;
+        this.navParams = navParams;
+        this.navCtrl = navCtrl;
         this.id = this.navParams.get('id');
     }
-    ProgramaBloquePage.prototype.ionViewDidLoad = function () {
+    ProgramaMateriaPage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        this.bloque$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT).doc(this.id).valueChanges();
-        this.temas$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', _this.id); }).valueChanges();
+        this.materia$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT).doc(this.id).valueChanges();
+        this.bloques$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', _this.id); }).valueChanges();
     };
-    ProgramaBloquePage.prototype.openTema = function (id) {
-        this.navCtrl.push('ClaseDetailPage', { type: 'tema', id: id });
+    ProgramaMateriaPage.prototype.openBloque = function (id) {
+        this.navCtrl.push('ProgramaBloquePage', { id: id });
     };
-    ProgramaBloquePage = __decorate([
+    ProgramaMateriaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-programa-bloque',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/programa-bloque/programa-bloque.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Bloque</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-grid>\n\n    <ion-row *ngIf="bloque$ | async as bloque">\n      <ion-col col-12>\n        <h4>{{bloque.name}}</h4>\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf="temas$ | async as temas">\n      <ion-col col-12>\n        <ion-list>\n          <ion-list-header>Temas</ion-list-header>\n          <ion-item (click)="openTema(tema.id)" *ngFor="let tema of temas">{{tema.name}}</ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/programa-bloque/programa-bloque.html"*/,
+            selector: 'page-programa-materia',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/programa-materia/programa-materia.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Materia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-grid>\n\n    <ion-row *ngIf="materia$ | async as materia">\n      <ion-col col-12>\n        <h4 text-center>{{materia.name}}</h4>\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf="bloques$ | async as bloques">\n      <ion-col col-6 *ngFor="let bloque of bloques" (click)="openBloque(bloque.id)">\n        <div class="flex flex-col flex-center">\n          <img [src]="bloque.cover || \'https://via.placeholder.com/128\'" alt="" class="w-100">\n          <strong text-center="">{{bloque.name}}</strong>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/programa-materia/programa-materia.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__["AngularFirestore"],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__angular_fire_firestore__["AngularFirestore"]])
-    ], ProgramaBloquePage);
-    return ProgramaBloquePage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */]])
+    ], ProgramaMateriaPage);
+    return ProgramaMateriaPage;
 }());
 
-//# sourceMappingURL=programa-bloque.js.map
+//# sourceMappingURL=programa-materia.js.map
 
 /***/ })
 

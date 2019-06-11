@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 745:
+/***/ 746:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaPageModule", function() { return MateriaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaPageModule", function() { return MediaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(814);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__media__ = __webpack_require__(816);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(788);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,24 +20,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MateriaPageModule = /** @class */ (function () {
-    function MateriaPageModule() {
+var MediaPageModule = /** @class */ (function () {
+    function MediaPageModule() {
     }
-    MateriaPageModule = __decorate([
+    MediaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__materia__["a" /* MateriaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__media__["a" /* MediaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materia__["a" /* MateriaPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__media__["a" /* MediaPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
             ],
         })
-    ], MateriaPageModule);
-    return MateriaPageModule;
+    ], MediaPageModule);
+    return MediaPageModule;
 }());
 
-//# sourceMappingURL=materia.module.js.map
+//# sourceMappingURL=media.module.js.map
 
 /***/ }),
 
@@ -754,12 +754,14 @@ exports.MomentModule = MomentModule;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(792);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(793);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(794);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(795);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -780,7 +782,8 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__["a" /* ZamnaFeedComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__["a" /* GalleryItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__["a" /* MediaItemComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */]
+                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
             ],
             imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* IonicModule */], __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"]],
             exports: [__WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__["a" /* AccordionListComponent */],
@@ -788,7 +791,8 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__["a" /* ZamnaFeedComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__["a" /* GalleryItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__["a" /* MediaItemComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */]
+                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
             ]
         })
     ], ComponentsModule);
@@ -1395,26 +1399,17 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 814:
+/***/ 795:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatStructureItemComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(465);
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(85);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(110);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1463,131 +1458,132 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var MateriaPage = /** @class */ (function () {
-    function MateriaPage(navCtrl, navParams, data) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.data = data;
-        this.information = [];
-        this.loader = false;
+
+
+var StatStructureItemComponent = /** @class */ (function () {
+    function StatStructureItemComponent(afs, auth, stats) {
+        this.afs = afs;
+        this.auth = auth;
+        this.stats = stats;
+        this.children = [];
+        this.haveChildren = false;
+        this.showChildren = false;
     }
-    MateriaPage.prototype.ionViewDidLoad = function () {
-        this.loader = true;
-        var id = this.navParams.get('id');
-        this.loadContent(id);
-        /* this.back.getTemario(this.navParams.get('id')).subscribe(data => {
-          console.log(data)
-          this.information = data.map(b => ({
-            name: b.name,
-            children: b.temas.map(t => ({
-              id: t.id,
-              name: t.name,
-              information: t.desc,
-              video: t.video,
-              children: !t.video ? t.subs.map(s => ({
-                id: s.id,
-                name: s.name,
-                information: s.desc,
-                video: s.video})) : null
-              }))
-            }))
-          this.loader = false
-        }, err => {
-          this.toast.create({message: 'No se pudo cargar el temario...', duration: 2000}).present()
-          this.loader = false
-          if (this.navCtrl.canGoBack()) this.navCtrl.pop()
-        }) */
-    };
-    MateriaPage.prototype.loadContent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var materia, _a, _loop_1, this_1, _i, _b, bloque;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0: return [4 /*yield*/, this.data.getDoc(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, id)];
+    StatStructureItemComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        if (!this.view)
+            return;
+        this.children$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].STAT_VIEW, function (ref) { return ref
+            .where('parent', '==', _this.view.id); })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["tap"])(function (children) {
+            _this.haveChildren = children.length > 0;
+            if (_this.haveChildren)
+                _this.children = children;
+        }));
+        this.children$.subscribe();
+        this.auth.user$.subscribe(function (_user) { return __awaiter(_this, void 0, void 0, function () {
+            var tag;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!_user)
+                            return [2 /*return*/];
+                        if (this.promedio)
+                            return [2 /*return*/];
+                        tag = this.view.includeTags[0];
+                        return [4 /*yield*/, this.loadTagPromedio(tag, this.user ? this.user : _user.uid)];
                     case 1:
-                        materia = _c.sent();
-                        _a = materia;
-                        return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                .where('parent_id', '==', materia.id); })];
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    StatStructureItemComponent.prototype.loadTagPromedio = function (tag, uid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _a, promedio;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0: return [4 /*yield*/, this.stats.computeUserTagAverage(tag, uid)];
+                    case 1:
+                        promedio = _b.sent();
+                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER + "/" + uid).set({ structure: (_a = {}, _a[tag] = promedio, _a) }, { merge: true })];
                     case 2:
-                        _a.children = _c.sent();
-                        materia.children = materia.children.map(function (m) { return (__assign({}, m, { children: [] })); });
-                        _loop_1 = function (bloque) {
-                            var _a, _loop_2, _i, _b, tema;
-                            return __generator(this, function (_c) {
-                                switch (_c.label) {
-                                    case 0:
-                                        _a = bloque;
-                                        return [4 /*yield*/, this_1.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                                .where('parent_id', '==', bloque.id); })
-                                            // Load subtemas
-                                        ];
-                                    case 1:
-                                        _a.children = _c.sent();
-                                        _loop_2 = function (tema) {
-                                            var _a;
-                                            return __generator(this, function (_b) {
-                                                switch (_b.label) {
-                                                    case 0:
-                                                        _a = tema;
-                                                        return [4 /*yield*/, this_1.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                                                .where('parent_id', '==', tema.id); })];
-                                                    case 1:
-                                                        _a.children = _b.sent();
-                                                        return [2 /*return*/];
-                                                }
-                                            });
-                                        };
-                                        _i = 0, _b = bloque.children;
-                                        _c.label = 2;
-                                    case 2:
-                                        if (!(_i < _b.length)) return [3 /*break*/, 5];
-                                        tema = _b[_i];
-                                        return [5 /*yield**/, _loop_2(tema)];
-                                    case 3:
-                                        _c.sent();
-                                        _c.label = 4;
-                                    case 4:
-                                        _i++;
-                                        return [3 /*break*/, 2];
-                                    case 5: return [2 /*return*/];
-                                }
-                            });
-                        };
-                        this_1 = this;
-                        _i = 0, _b = materia.children;
-                        _c.label = 3;
-                    case 3:
-                        if (!(_i < _b.length)) return [3 /*break*/, 6];
-                        bloque = _b[_i];
-                        return [5 /*yield**/, _loop_1(bloque)];
-                    case 4:
-                        _c.sent();
-                        _c.label = 5;
-                    case 5:
-                        _i++;
-                        return [3 /*break*/, 3];
-                    case 6:
-                        this.loader = false;
-                        this.information = materia.children;
-                        console.log(materia);
+                        _b.sent();
+                        this.promedio = isNaN(promedio) ? 0 : promedio;
+                        console.log(tag, promedio);
                         return [2 /*return*/];
                 }
             });
         });
     };
-    MateriaPage = __decorate([
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], StatStructureItemComponent.prototype, "view", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], StatStructureItemComponent.prototype, "user", void 0);
+    StatStructureItemComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-materia',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Materia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <div class="flex-col" *ngIf="loader">\n    <img src="assets/imgs/rings.svg">\n  </div>\n  <accordion-list [information]="information"></accordion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/,
+            selector: 'epsi-stat-structure-item',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/stat-structure-item/stat-structure-item.component.html"*/'<div class="epsi-stat-structure-item" *ngIf="view">\n\n  <button type="button" (click)="showChildren = true" *ngIf="haveChildren && !showChildren">\n    <ion-icon name="add"></ion-icon>\n  </button>\n  <button type="button" (click)="showChildren = false" *ngIf="haveChildren && showChildren">\n    <ion-icon name="close"></ion-icon>\n  </button>\n\n  <span>{{view.name}}</span>\n  <strong class="ml-2">{{promedio * 100 | number}}%</strong>\n\n  <ul *ngIf="showChildren">\n    <li *ngFor="let v of children">\n      <epsi-stat-structure-item [view]="v"></epsi-stat-structure-item>\n    </li>\n  </ul>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/stat-structure-item/stat-structure-item.component.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__["a" /* StatsProvider */]])
+    ], StatStructureItemComponent);
+    return StatStructureItemComponent;
+}());
+
+//# sourceMappingURL=stat-structure-item.component.js.map
+
+/***/ }),
+
+/***/ 816:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var MediaPage = /** @class */ (function () {
+    function MediaPage(navCtrl, navParams, afs) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.afs = afs;
+        this.medias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].MEDIA_CATEGORY).valueChanges();
+    }
+    MediaPage.prototype.ionViewDidLoad = function () { };
+    MediaPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-media',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/media/media.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Material Extra</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="medias-container" *ngIf="medias$ | async as medias else loader">\n    <media-item *ngFor="let media of medias" [media]="media"></media-item>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/media/media.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
-    ], MateriaPage);
-    return MateriaPage;
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+    ], MediaPage);
+    return MediaPage;
 }());
 
-//# sourceMappingURL=materia.js.map
+//# sourceMappingURL=media.js.map
 
 /***/ })
 

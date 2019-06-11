@@ -51723,6 +51723,29 @@ exam-feedback-modal .c-epsi-primary {
   color: #5e4b8b;
 }
 
+.epsi-stat-structure-item {
+  padding: 1rem;
+}
+
+.epsi-stat-structure-item button {
+  border: none;
+  background: none;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.epsi-stat-structure-item button:active, .epsi-stat-structure-item button:focus {
+  outline: none;
+}
+
+.epsi-stat-structure-item button:hover {
+  color: red;
+}
+
+.epsi-stat-structure-item li {
+  list-style-type: none;
+}
+
 zamna-feed .zamna-feed {
   height: 300px;
   overflow-y: scroll;

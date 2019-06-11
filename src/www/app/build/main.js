@@ -585,11 +585,11 @@ var map = {
 		43
 	],
 	"../pages/bloque-alt/bloque-alt.module": [
-		731,
+		730,
 		42
 	],
 	"../pages/calendar/calendar.module": [
-		730,
+		731,
 		41
 	],
 	"../pages/checklist/checklist.module": [
@@ -614,11 +614,11 @@ var map = {
 	],
 	"../pages/exam-feedback/exam-feedback.module": [
 		737,
-		4
+		5
 	],
 	"../pages/examen-detail/examen-detail.module": [
 		771,
-		7
+		8
 	],
 	"../pages/foro-detail/foro-detail.module": [
 		738,
@@ -634,15 +634,15 @@ var map = {
 	],
 	"../pages/galerias/galerias.module": [
 		741,
-		3
+		4
 	],
 	"../pages/hilo-detail/hilo-detail.module": [
 		742,
-		6
+		7
 	],
 	"../pages/home/home.module": [
 		743,
-		2
+		3
 	],
 	"../pages/login/login.module": [
 		772,
@@ -654,107 +654,107 @@ var map = {
 	],
 	"../pages/materia/materia.module": [
 		745,
-		1
+		2
 	],
 	"../pages/media/media.module": [
 		746,
-		0
+		1
 	],
 	"../pages/mi-analitica/mi-analitica.module": [
 		747,
-		30
+		0
 	],
 	"../pages/mi-curso/mi-curso.module": [
-		749,
-		29
+		748,
+		30
 	],
 	"../pages/mis-resultados/mis-resultados.module": [
-		748,
-		5
+		749,
+		6
 	],
 	"../pages/notas-add/notas-add.module": [
 		750,
-		28
+		29
 	],
 	"../pages/notas-global-detail/notas-global-detail.module": [
+		751,
+		28
+	],
+	"../pages/notas-global/notas-global.module": [
 		752,
 		27
 	],
-	"../pages/notas-global/notas-global.module": [
+	"../pages/notas/notas.module": [
 		753,
 		26
 	],
-	"../pages/notas/notas.module": [
-		751,
-		25
-	],
 	"../pages/notifications/notifications.module": [
 		754,
-		24
+		25
 	],
 	"../pages/offline-video/offline-video.module": [
 		755,
-		23
+		24
 	],
 	"../pages/post-comments/post-comments.module": [
 		756,
-		22
+		23
 	],
 	"../pages/profile/profile.module": [
 		757,
-		21
+		22
 	],
 	"../pages/programa-bloque/programa-bloque.module": [
 		758,
-		20
+		21
 	],
 	"../pages/programa-materia/programa-materia.module": [
 		759,
-		19
+		20
 	],
 	"../pages/ratings/ratings.module": [
 		760,
-		18
+		19
 	],
 	"../pages/resultado-detail/resultado-detail.module": [
 		761,
-		17
+		18
 	],
 	"../pages/resultados-examen/resultados-examen.module": [
 		762,
-		16
+		17
 	],
 	"../pages/simulador-detail/simulador-detail.module": [
 		763,
-		15
+		16
 	],
 	"../pages/simuladores/simuladores.module": [
 		764,
-		14
+		15
 	],
 	"../pages/slide-detail/slide-detail.module": [
-		767,
-		13
+		765,
+		14
 	],
 	"../pages/slides/slides.module": [
-		765,
-		12
+		766,
+		13
 	],
 	"../pages/smart-calendar/smart-calendar.module": [
-		766,
-		11
+		767,
+		12
 	],
 	"../pages/tema-alt/tema-alt.module": [
 		768,
-		10
+		11
 	],
 	"../pages/top-users/top-users.module": [
 		769,
-		9
+		10
 	],
 	"../pages/zona-enarm/zona-enarm.module": [
 		770,
-		8
+		9
 	]
 };
 function webpackAsyncContext(req) {
@@ -1268,56 +1268,7 @@ var AuthProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 471:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export functionsEndpoint */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return contentHierarchy; });
-/* unused harmony export contentRatings */
-/* unused harmony export generalAverageTypes */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return averageMultiplier; });
-/* unused harmony export statRefreshTimeout */
-/* unused harmony export performancePlotTags */
-/*
-  Epsi Simuladores
-    Main Config File
-
-  Here you need to customize almost every parameter in this file before compiling and deploying
-
-*/
-// Core
-var functionsEndpoint = 'https://us-central1-epsi-simuladores.cloudfunctions.net';
-// Content
-var contentHierarchy = [
-    'materia',
-    'bloque',
-    'tema',
-    'subtema'
-];
-var contentRatings = [
-    { key: 'content', label: 'Contenido', max: 5 },
-    { key: 'design', label: 'Diseño', max: 5 },
-    { key: 'understandable', label: 'Agradable/Entendible', max: 5 },
-];
-// Statistics
-// General Average content type calculation. If false it will take all ExamResults associated with the user
-var generalAverageTypes = false;
-// Average Multiplier, normally the average is calculated in a model like x out of 1
-var averageMultiplier = 100;
-// Milliseconds to wait after each refresh
-var statRefreshTimeout = 10000;
-// Stat Performance Tags to use for the plot
-var performancePlotTags = [
-    'Vue',
-    'Angular',
-    'React'
-];
-//# sourceMappingURL=app.config.js.map
-
-/***/ }),
-
-/***/ 472:
+/***/ 467:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1329,9 +1280,9 @@ var performancePlotTags = [
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_firestore__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(467);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_config__ = __webpack_require__(471);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_config__ = __webpack_require__(470);
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -1860,6 +1811,55 @@ var StatsProvider = /** @class */ (function () {
 
 /***/ }),
 
+/***/ 470:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export functionsEndpoint */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return contentHierarchy; });
+/* unused harmony export contentRatings */
+/* unused harmony export generalAverageTypes */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return averageMultiplier; });
+/* unused harmony export statRefreshTimeout */
+/* unused harmony export performancePlotTags */
+/*
+  Epsi Simuladores
+    Main Config File
+
+  Here you need to customize almost every parameter in this file before compiling and deploying
+
+*/
+// Core
+var functionsEndpoint = 'https://us-central1-epsi-simuladores.cloudfunctions.net';
+// Content
+var contentHierarchy = [
+    'materia',
+    'bloque',
+    'tema',
+    'subtema'
+];
+var contentRatings = [
+    { key: 'content', label: 'Contenido', max: 5 },
+    { key: 'design', label: 'Diseño', max: 5 },
+    { key: 'understandable', label: 'Agradable/Entendible', max: 5 },
+];
+// Statistics
+// General Average content type calculation. If false it will take all ExamResults associated with the user
+var generalAverageTypes = false;
+// Average Multiplier, normally the average is calculated in a model like x out of 1
+var averageMultiplier = 100;
+// Milliseconds to wait after each refresh
+var statRefreshTimeout = 10000;
+// Stat Performance Tags to use for the plot
+var performancePlotTags = [
+    'Vue',
+    'Angular',
+    'React'
+];
+//# sourceMappingURL=app.config.js.map
+
+/***/ }),
+
 /***/ 476:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1892,7 +1892,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2__ = __webpack_require__(717);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__ = __webpack_require__(470);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__ = __webpack_require__(472);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore__);
@@ -1902,17 +1902,17 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_facebook__ = __webpack_require__(720);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_google_plus__ = __webpack_require__(721);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ionic2_rating__ = __webpack_require__(475);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_img_viewer__ = __webpack_require__(469);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_img_viewer__ = __webpack_require__(471);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__app_auth__ = __webpack_require__(722);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_in_app_browser__ = __webpack_require__(466);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_device__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_fcm_fcm__ = __webpack_require__(462);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_firebase__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_auth_auth__ = __webpack_require__(465);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_stats_stats__ = __webpack_require__(472);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_stats_stats__ = __webpack_require__(467);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_data_data__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_file_transfer__ = __webpack_require__(473);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_file__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_file__ = __webpack_require__(469);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1968,8 +1968,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/asesoria-detail/asesoria-detail.module#AsesoriaDetailPageModule', name: 'AsesoriaDetailPage', segment: 'asesoria/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/asesorias/asesorias.module#AsesoriasPageModule', name: 'AsesoriasPage', segment: 'asesorias', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/avance-examen/avance-examen.module#AvanceExamenPageModule', name: 'AvanceExamenPage', segment: 'avance-examen', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/bloque-alt/bloque-alt.module#BloqueAltPageModule', name: 'BloqueAltPage', segment: 'bloque-alt/:id', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/checklist/checklist.module#ChecklistPageModule', name: 'ChecklistPage', segment: 'checklist', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/clase-detail/clase-detail.module#ClaseDetailPageModule', name: 'ClaseDetailPage', segment: 'clase/:id/:type', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
@@ -1986,12 +1986,12 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/media/media.module#MediaPageModule', name: 'MediaPage', segment: 'media', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mi-analitica/mi-analitica.module#MiAnaliticaPageModule', name: 'MiAnaliticaPage', segment: 'mi-analitica', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/mi-curso/mi-curso.module#MiCursoPageModule', name: 'MiCursoPage', segment: 'mi-curso', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas-add/notas-add.module#NotasAddPageModule', name: 'NotasAddPage', segment: 'notas-add', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/notas/notas.module#NotasPageModule', name: 'NotasPage', segment: 'notas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notas-global/notas-global.module#NotasGlobalPageModule', name: 'NotasGlobalPage', segment: 'notas-global', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/notas/notas.module#NotasPageModule', name: 'NotasPage', segment: 'notas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'NotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/offline-video/offline-video.module#OfflineVideoPageModule', name: 'OfflineVideoPage', segment: 'offline-video', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/post-comments/post-comments.module#PostCommentsPageModule', name: 'PostCommentsPage', segment: 'post-comments', priority: 'low', defaultHistory: [] },
@@ -2000,12 +2000,12 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/programa-materia/programa-materia.module#ProgramaMateriaPageModule', name: 'ProgramaMateriaPage', segment: 'programa-materia', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/ratings/ratings.module#RatingsPageModule', name: 'RatingsPage', segment: 'ratings', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/resultado-detail/resultado-detail.module#ResultadoDetailPageModule', name: 'ResultadoDetailPage', segment: 'resultado-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/resultados-examen/resultados-examen.module#ResultadosExamenPageModule', name: 'ResultadosExamenPage', segment: 'resultados-examen', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/resultados-examen/resultados-examen.module#ResultadosExamenPageModule', name: 'ResultadosExamenPage', segment: 'resultado/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/simulador-detail/simulador-detail.module#SimuladorDetailPageModule', name: 'SimuladorDetailPage', segment: 'simulador-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/simuladores/simuladores.module#SimuladoresPageModule', name: 'SimuladoresPage', segment: 'simuladores', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
