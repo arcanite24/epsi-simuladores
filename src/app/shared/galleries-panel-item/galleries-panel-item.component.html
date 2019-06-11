@@ -4,7 +4,7 @@
 
   <ul *ngFor="let gallery of galleries" class="list-group m-3">
     <li class="list-group-item">
-      <a [routerLink]="[ '/gallery', gallery.id ]">{{gallery.name}}</a>
+      <a [routerLink]="[ '/gallery', gallery.id ]"><strong>{{gallery.name}}</strong></a>
     </li>
   </ul>
 

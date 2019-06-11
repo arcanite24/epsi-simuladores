@@ -12,7 +12,9 @@
 
     <ul *ngIf="medias$ | async as medias else loader" class="m-3 list-group">
       <li *ngFor="let media of medias" class="list-group-item">
-        <a [routerLink]="[ '/media', media.id ]">{{media.name}}</a>
+        <a [routerLink]="[ '/media', media.id ]">
+          <strong>{{media.name}}</strong>
+        </a>
       </li>
     </ul>
 
