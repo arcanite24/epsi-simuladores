@@ -12,10 +12,10 @@ import { StatsService } from 'src/app/services/stats.service';
 })
 export class EventDetailComponent implements OnInit {
 
-  @Input() public event: Event
+  @Input() public event: Event;
   @Output() public checkChanged: EventEmitter<{id: string, added: boolean}> = new EventEmitter();
 
-  public completedTasks: string[] = []
+  public completedTasks: string[] = [];
 
   constructor(
     private afs: AngularFirestore,
@@ -26,39 +26,39 @@ export class EventDetailComponent implements OnInit {
   ngOnInit() {
 
     this.auth.user$.subscribe(user => {
-      if (!user) return
-      const userKey = `${Collections.USER}/${user.uid}`
+      if (!user) { return; }
+      const userKey = `${Collections.USER}/${user.uid}`;
       this.afs.doc<User>(userKey).valueChanges().subscribe(_user => {
-        if (!_user.completedTasks) return
-        this.completedTasks = user.completedTasks
-      })
-    })
+        if (!_user.completedTasks) { return; }
+        this.completedTasks = user.completedTasks;
+      });
+    });
 
   }
 
   async toggleCompleted(id: string) {
 
-    const userKey = `${Collections.USER}/${this.auth.user.uid}`
-    const _user = await this.afs.doc<User>(userKey).valueChanges().pipe(take(1)).toPromise()
-    const completedTasks: string[] = _user.completedTasks || []
+    const userKey = `${Collections.USER}/${this.auth.user.uid}`;
+    const _user = await this.afs.doc<User>(userKey).valueChanges().pipe(take(1)).toPromise();
+    const completedTasks: string[] = _user.completedTasks || [];
 
-    if (completedTasks.indexOf(id) < 0) {  
+    if (completedTasks.indexOf(id) < 0) {
 
-      completedTasks.push(id)
-      await this.afs.doc(userKey).update({completedTasks})
+      completedTasks.push(id);
+      await this.afs.doc(userKey).update({completedTasks});
       this.checkChanged.next({id, added: true});
 
     } else {
-      if (completedTasks.length > 0) completedTasks.splice(completedTasks.indexOf(id), 1)
-      await this.afs.doc(userKey).update({completedTasks})
+      if (completedTasks.length > 0) { completedTasks.splice(completedTasks.indexOf(id), 1); }
+      await this.afs.doc(userKey).update({completedTasks});
       this.checkChanged.next({id, added: false});
     }
-    this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
+    this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1);
 
   }
 
   trackByFn(i: number, item: any) {
-    return item.id
+    return item.id;
   }
 
 }

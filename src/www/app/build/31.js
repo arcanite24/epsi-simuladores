@@ -1,6 +1,6 @@
 webpackJsonp([31],{
 
-/***/ 744:
+/***/ 763:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaAltPageModule", function() { return MateriaAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia_alt__ = __webpack_require__(814);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia_alt__ = __webpack_require__(835);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,15 +38,16 @@ var MateriaAltPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 814:
+/***/ 835:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaAltPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_models__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(198);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(463);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,16 +96,23 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var MateriaAltPage = /** @class */ (function () {
-    function MateriaAltPage(navCtrl, navParams, data) {
+    function MateriaAltPage(navCtrl, navParams, data, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.data = data;
+        this.auth = auth;
         this.id = this.navParams.get('id');
     }
     MateriaAltPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         this.loadContent(this.id);
         this.loadChildren(this.id);
+        this.auth.user$.subscribe(function (user) {
+            if (user && !_this.completed)
+                _this.completed = user.completedTasks ? user.completedTasks : [];
+        });
     };
     MateriaAltPage.prototype.loadContent = function (id) {
         return __awaiter(this, void 0, void 0, function () {
@@ -135,13 +143,27 @@ var MateriaAltPage = /** @class */ (function () {
             });
         });
     };
+    MateriaAltPage.prototype.getCompletedTemas = function (temas, completed) {
+        if (temas === void 0) { temas = []; }
+        if (completed === void 0) { completed = []; }
+        var counter = 0;
+        var ids = temas.map(function (t) { return t.id; });
+        for (var _i = 0, ids_1 = ids; _i < ids_1.length; _i++) {
+            var id = ids_1[_i];
+            if (completed.includes(id)) {
+                counter++;
+            }
+        }
+        return counter;
+    };
     MateriaAltPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-            selector: 'page-materia-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{materia ? materia.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="children">\n    <ion-row>\n\n      <ion-col col-6 *ngFor="let child of children">\n        <ion-card (click)="navCtrl.push(\'BloqueAltPage\', {id: child.id})">\n          <img [src]="child.cover" alt="Children">\n          <ion-card-content>\n            <ion-card-title>{{child.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/,
+            selector: 'page-materia-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{materia ? materia.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="children">\n    <ion-row>\n\n      <ion-col col-6 *ngFor="let child of children">\n        <ion-card (click)="navCtrl.push(\'BloqueAltPage\', {id: child.id})">\n          <img [src]="child.cover" alt="Children">\n          <ion-card-content>\n            <ion-card-title>{{child.name}}</ion-card-title>\n            <ion-card-content>{{getCompletedTemas(children, completed)}}/{{children.length | number}}</ion-card-content>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */]])
+            __WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
     ], MateriaAltPage);
     return MateriaAltPage;
 }());

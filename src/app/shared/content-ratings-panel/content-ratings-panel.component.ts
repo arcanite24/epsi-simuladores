@@ -14,16 +14,16 @@ import { take, map, tap, finalize } from 'rxjs/operators';
 })
 export class ContentRatingsPanelComponent implements OnInit {
 
-  @Input() public parent_type: string
-  @Input() public parent_id: string
-  @Input() public content_type: string
-  @Input() public content: Content
+  @Input() public parent_type: string;
+  @Input() public parent_id: string;
+  @Input() public content_type: string;
+  @Input() public content: Content;
 
-  public contentRatings = [ ...contentRatings ]
-  public ratingsModel = {}
+  public contentRatings = [ ...contentRatings ];
+  public ratingsModel = {};
 
-  private ratingKey: string
-  public rating$: Observable<Rating>
+  private ratingKey: string;
+  public rating$: Observable<Rating>;
 
   constructor(
     private afs: AngularFirestore,
@@ -35,37 +35,42 @@ export class ContentRatingsPanelComponent implements OnInit {
 
     this.auth.user$.subscribe(user => {
 
-      if (!user && !this.rating$) return
-      //console.log(this.parent_type, this.parent_id, this.content_type, this.content)
+      if (!user && !this.rating$) { return; }
+      // console.log(this.parent_type, this.parent_id, this.content_type, this.content)
 
       // Generates the key for the userRating
-      this.ratingKey = `${this.parent_id}-${user.uid}`
-      this.rating$ = this.afs.doc<Rating>(`${Collections.RATING}/${this.ratingKey}`).valueChanges()
+      this.ratingKey = `${this.parent_id}-${user.uid}`;
+      this.rating$ = this.afs.doc<Rating>(`${Collections.RATING}/${this.ratingKey}`).valueChanges();
 
       // This loads the current user rating for the specific content
       this.rating$.subscribe(ratings => {
-        this.ratingsModel = ratings ? ratings : {id: this.ratingKey}
-      })
+        this.ratingsModel = ratings ? ratings : {id: this.ratingKey};
+      });
 
-    })
+    });
 
   }
 
   async updateRating(key: string, value: number) {
 
-    if (isNaN(value)) return
+    if (isNaN(value)) { return; }
     console.log(`updateing rating "${key}" to "${value}"`);
 
-    const content = await this.afs.doc<Content>(`${Collections.CONTENT}/${this.parent_id}`).valueChanges().pipe(take(1)).toPromise()
-    if (!content.totalRatings) content.totalRatings = 0
-    if (!content.ratings) content.ratings = {}
-    if (!content.ratings[key]) content.ratings[key] = 0
+    const content = await this.afs.doc<Content>(`${Collections.CONTENT}/${this.parent_id}`).valueChanges().pipe(take(1)).toPromise();
+    if (!content.totalRatings) { content.totalRatings = 0; }
+    if (!content.ratings) { content.ratings = {}; }
+    if (!content.ratings[key]) { content.ratings[key] = 0; }
 
-    content.totalRatings++
+    content.totalRatings++;
     // content.ratings[key] = (content.ratings[key] + value) / content.totalRatings
 
-    await this.afs.doc(`${Collections.RATING}/${this.ratingKey}`).set({id: this.ratingKey, [key]: value, parent: this.parent_id}, {merge: true})
-    this.toastr.success('Gracias por tu calificación.')
+    await this.afs.doc(`${Collections.RATING}/${this.ratingKey}`).set({
+      id: this.ratingKey,
+      [key]: value,
+      parent: this.parent_id
+    }, {merge: true});
+
+    this.toastr.success('Gracias por tu calificación.');
 
     // Calculate rating every update (might not be the best idea until we find another thing)
     this.afs.collection<Rating>(Collections.RATING, ref => ref
@@ -74,9 +79,9 @@ export class ContentRatingsPanelComponent implements OnInit {
       .pipe(
         map(ratings => ratings.map(r => r[key]).reduce((a, b) => a + b, 0) / ratings.length),
       ).subscribe(rating => {
-        content.ratings[key] = parseFloat(rating.toString())
-        this.afs.doc(`${Collections.CONTENT}/${this.parent_id}`).update({ratings: content.ratings, totalRatings: content.totalRatings})
-      })
+        content.ratings[key] = parseFloat(rating.toString());
+        this.afs.doc(`${Collections.CONTENT}/${this.parent_id}`).update({ratings: content.ratings, totalRatings: content.totalRatings});
+      });
 
   }
 

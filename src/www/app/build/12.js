@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 767:
+/***/ 786:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartCalendarPageModule", function() { return SmartCalendarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(837);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(858);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,19 +38,19 @@ var SmartCalendarPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 837:
+/***/ 858:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartCalendarPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(462);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(468);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(465);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
@@ -206,9 +206,17 @@ var SmartCalendarPage = /** @class */ (function () {
             });
         }); });
     };
+    SmartCalendarPage.prototype.openLink = function (url) {
+        console.log(url);
+        // Content Detail
+        if (url.includes('/content')) {
+            var _a = url.split('/'), _1 = _a[0], mode = _a[1], type = _a[2], id = _a[3];
+            this.navCtrl.push('ClaseDetailPage', { type: type, id: id });
+        }
+    };
     SmartCalendarPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-            selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
+            selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button (click)="openLink(link.url)" ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["r" /* NavParams */],

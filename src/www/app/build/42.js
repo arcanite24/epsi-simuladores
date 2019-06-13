@@ -1,6 +1,6 @@
 webpackJsonp([42],{
 
-/***/ 730:
+/***/ 749:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BloqueAltPageModule", function() { return BloqueAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bloque_alt__ = __webpack_require__(800);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bloque_alt__ = __webpack_require__(821);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,15 +38,17 @@ var BloqueAltPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 800:
+/***/ 821:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BloqueAltPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash__ = __webpack_require__(465);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,17 +97,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var BloqueAltPage = /** @class */ (function () {
     function BloqueAltPage(navCtrl, navParams, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.data = data;
         this.id = this.navParams.get('id');
+        this.completed = [];
+        this.contentIds = [];
     }
     BloqueAltPage.prototype.ionViewDidLoad = function () {
         this.loadContent(this.id);
         this.loadChildren(this.id);
     };
+    Object.defineProperty(BloqueAltPage.prototype, "completedContent", {
+        get: function () {
+            if (!this.completed) {
+                return 0;
+            }
+            if (!this.contentIds) {
+                return 0;
+            }
+            var counter = 0;
+            for (var _i = 0, _a = this.contentIds; _i < _a.length; _i++) {
+                var content = _a[_i];
+                if (this.completed.includes(content)) {
+                    counter++;
+                }
+            }
+            return counter;
+        },
+        enumerable: true,
+        configurable: true
+    });
     BloqueAltPage.prototype.loadContent = function (id) {
         return __awaiter(this, void 0, void 0, function () {
             var _a;
@@ -130,6 +155,7 @@ var BloqueAltPage = /** @class */ (function () {
                     case 1:
                         children = _a.sent();
                         this.children = children.filter(function (c) { return c.liberadoInPrograma; });
+                        this.contentIds = Object(__WEBPACK_IMPORTED_MODULE_4_lodash__["sortBy"])(children, 'sortIndex').map(function (t) { return t.event || 'NULL'; });
                         return [2 /*return*/];
                 }
             });
@@ -137,7 +163,7 @@ var BloqueAltPage = /** @class */ (function () {
     };
     BloqueAltPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-bloque-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/bloque-alt/bloque-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{bloque ? bloque.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="bloque">\n\n    <img [src]="bloque.cover" alt="Bloque">\n\n    <ion-card-content>\n      <ion-card-title>{{bloque.name}}</ion-card-title>\n    </ion-card-content>\n\n    <ion-list *ngIf="children">\n      <button ion-item *ngFor="let child of children" (click)="navCtrl.push(\'TemaAltPage\', {id: child.id})">\n        <ion-icon name="checkmark" color="primary" item-start></ion-icon>\n        {{child.name}}\n      </button>\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/bloque-alt/bloque-alt.html"*/,
+            selector: 'page-bloque-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/bloque-alt/bloque-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{bloque ? bloque.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="bloque">\n\n    <img [src]="bloque.cover" alt="Bloque">\n\n    <ion-card-content>\n      <ion-card-title>{{bloque.name}}</ion-card-title>\n      <small>{{completedContent}}/{{children.length}}</small>\n    </ion-card-content>\n\n    <ion-list *ngIf="children">\n      <button ion-item *ngFor="let child of children" (click)="navCtrl.push(\'TemaAltPage\', {id: child.id})">\n        <ion-icon name="checkmark" color="primary" item-start></ion-icon>\n        {{child.name}}\n      </button>\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/bloque-alt/bloque-alt.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],

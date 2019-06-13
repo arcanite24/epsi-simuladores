@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 768:
+/***/ 787:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemaAltPageModule", function() { return TemaAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(838);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(859);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,15 +38,20 @@ var TemaAltPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 838:
+/***/ 859:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemaAltPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(110);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(112);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(463);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_stats_stats__ = __webpack_require__(464);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -95,16 +100,37 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
+
+
+
 var TemaAltPage = /** @class */ (function () {
-    function TemaAltPage(navCtrl, navParams, data) {
+    function TemaAltPage(navCtrl, navParams, data, auth, afs, stats) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.data = data;
+        this.auth = auth;
+        this.afs = afs;
+        this.stats = stats;
         this.id = this.navParams.get('id');
+        this.completedTasks = [];
     }
     TemaAltPage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         this.loadContent(this.id);
         this.loadChildren(this.id);
+        this.auth.user$.subscribe(function (user) {
+            if (!user) {
+                return;
+            }
+            var userKey = __WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER + "/" + user.uid;
+            _this.afs.doc(userKey).valueChanges().subscribe(function (_user) {
+                if (!_user.completedTasks) {
+                    return;
+                }
+                _this.completedTasks = user.completedTasks;
+            });
+        });
     };
     TemaAltPage.prototype.loadContent = function (id) {
         return __awaiter(this, void 0, void 0, function () {
@@ -161,13 +187,52 @@ var TemaAltPage = /** @class */ (function () {
             this.navCtrl.push('ClaseDetailPage', { type: type, id: id });
         }
     };
+    TemaAltPage.prototype.toggleCompleted = function (id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var userKey, _user, completedTasks;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        console.log(id);
+                        userKey = __WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER + "/" + this.auth.user.uid;
+                        return [4 /*yield*/, this.afs.doc(userKey).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["take"])(1)).toPromise()];
+                    case 1:
+                        _user = _a.sent();
+                        completedTasks = _user.completedTasks || [];
+                        if (!(completedTasks.indexOf(id) < 0)) return [3 /*break*/, 3];
+                        completedTasks.push(id);
+                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
+                            /* this.checkChanged.next({ id, added: true }); */
+                        ];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 5];
+                    case 3:
+                        if (completedTasks.length > 0)
+                            completedTasks.splice(completedTasks.indexOf(id), 1);
+                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
+                            /* this.checkChanged.next({ id, added: false }); */
+                        ];
+                    case 4:
+                        _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        this.stats.modifyCustomCounter("event-" + id, this.event.title, 1);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     TemaAltPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tema-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{tema ? tema.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="event as e">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n    <ion-card-content>{{e.desc}}</ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button (click)="openLink(link.url)">{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/,
+            selector: 'page-tema-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{tema ? tema.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="event as e">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n    <ion-card-content>{{e.desc}}</ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button (click)="openLink(link.url)">{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */]])
+            __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */],
+            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_7__providers_stats_stats__["a" /* StatsProvider */]])
     ], TemaAltPage);
     return TemaAltPage;
 }());
