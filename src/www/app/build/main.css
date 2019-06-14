@@ -51837,6 +51837,10 @@ button[ion-fab] ion-label {
   contain: layout;
 }
 
+page-como-te-sientes-hoy ul, page-como-te-sientes-hoy li {
+  list-style-type: none;
+}
+
 page-especialidades .home-grid {
   display: -webkit-box;
   display: -webkit-flex;
