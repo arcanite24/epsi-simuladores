@@ -52083,6 +52083,14 @@ page-media .list-header {
   margin-bottom: 0;
 }
 
+page-mi-analitica .ngx-charts {
+  width: 100% !important;
+}
+
+page-mi-analitica .epsi-chart-container {
+  display: grid;
+}
+
 page-notifications .read {
   background-color: #eee;
 }

@@ -12,13 +12,13 @@ import { take, map } from 'rxjs/operators';
 })
 export class ContentDetailPageComponent implements OnInit {
 
-  public content$: Observable<Content>
+  public content$: Observable<Content>;
 
-  public content_type: string = this.route.snapshot.paramMap.get('type')
-  public parent_id: string = this.route.snapshot.paramMap.get('id')
+  public content_type: string = this.route.snapshot.paramMap.get('type');
+  public parent_id: string = this.route.snapshot.paramMap.get('id');
 
-  public seekTime: number
-  public contentExam: Exam
+  public seekTime: number;
+  public contentExam: Exam;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +27,8 @@ export class ContentDetailPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.content$ = this.afs.doc<Content>(`${Collections.CONTENT}/${this.parent_id}`).valueChanges()
-    this.loadContentExam()
+    this.content$ = this.afs.doc<Content>(`${Collections.CONTENT}/${this.parent_id}`).valueChanges();
+    this.loadContentExam();
 
   }
 
@@ -37,22 +37,22 @@ export class ContentDetailPageComponent implements OnInit {
     const oldExam = await this.afs.collection(Collections.EXAM).doc<Exam>(this.parent_id)
       .valueChanges()
       .pipe(take(1))
-      .toPromise()
+      .toPromise();
 
-    if (oldExam) return this.contentExam = oldExam
+    if (oldExam) { return this.contentExam = oldExam; }
 
     const contentExam = await this.afs.collection<Exam>(Collections.EXAM, ref => ref
       .where('content.id', '==', this.parent_id)
       .where('type', '==', ExamTypes.CONTENIDO))
       .valueChanges()
       .pipe(take(1), map(exams => exams ? exams[0] : null))
-      .toPromise()
+      .toPromise();
 
     if (contentExam) {
-      console.log(contentExam)
-      this.contentExam = contentExam
+      console.log(contentExam);
+      this.contentExam = contentExam;
     } else {
-      console.log('content exam not found')
+      console.log('content exam not found');
     }
 
   }

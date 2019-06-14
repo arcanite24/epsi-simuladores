@@ -1,14 +1,14 @@
 webpackJsonp([39],{
 
-/***/ 752:
+/***/ 1109:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClaseDetailPageModule", function() { return ClaseDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase_detail__ = __webpack_require__(824);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase_detail__ = __webpack_require__(1181);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,18 +38,21 @@ var ClaseDetailPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 824:
+/***/ 1181:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClaseDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(113);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(463);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(112);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(470);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(473);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -101,8 +104,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
+
 var ClaseDetailPage = /** @class */ (function () {
-    function ClaseDetailPage(navCtrl, navParams, back, toast, modal, data, file, transfer, load) {
+    function ClaseDetailPage(navCtrl, navParams, back, toast, modal, data, file, transfer, load, afs, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.back = back;
@@ -112,6 +117,8 @@ var ClaseDetailPage = /** @class */ (function () {
         this.file = file;
         this.transfer = transfer;
         this.load = load;
+        this.afs = afs;
+        this.auth = auth;
         this.resultados = [];
         this.type = this.navParams.get('type');
         this.id = this.navParams.get('id');
@@ -244,6 +251,44 @@ var ClaseDetailPage = /** @class */ (function () {
             });
         });
     };
+    ClaseDetailPage.prototype.loadPreclase = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var exam, resuelto;
+            var _this = this;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM, function (ref) { return ref
+                            .where('content.id', '==', _this.id)
+                            .where('type', '==', __WEBPACK_IMPORTED_MODULE_4__app_app_models__["b" /* ExamTypes */].PRECLASE); })
+                            .valueChanges()
+                            .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["take"])(1), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["map"])(function (exams) { return exams ? exams[0] : null; }))
+                            .toPromise()];
+                    case 1:
+                        exam = _a.sent();
+                        if (!exam) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.preclaseResuelto(this.auth.user.uid, exam.id)];
+                    case 2:
+                        resuelto = _a.sent();
+                        console.log('preclase', exam, 'resuelto:', resuelto);
+                        if (!resuelto)
+                            this.navCtrl.push('ExamenDetailPage', { id: exam.id, type: 'preclase' });
+                        _a.label = 3;
+                    case 3: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ClaseDetailPage.prototype.preclaseResuelto = function (uid, exam) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM_RESULT, function (ref) { return ref
+                        .where('exam', '==', exam)
+                        .where('user', '==', uid); })
+                        .valueChanges()
+                        .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["take"])(1), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["tap"])(console.log), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["map"])(function (results) { return results && results.length > 0; })).toPromise()];
+            });
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('zamnaPlayer'),
         __metadata("design:type", Object)
@@ -260,7 +305,9 @@ var ClaseDetailPage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */],
             __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__["a" /* FileTransfer */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
     ], ClaseDetailPage);
     return ClaseDetailPage;
 }());

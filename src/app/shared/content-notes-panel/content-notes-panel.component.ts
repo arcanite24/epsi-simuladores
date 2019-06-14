@@ -13,14 +13,14 @@ import { Observable } from 'rxjs';
 })
 export class ContentNotesPanelComponent implements OnInit {
 
-  @Input() public parent_type: string
-  @Input() public parent_id: string
-  @Input() public content_type: string
-  @Input() public extra_paylod: any
-  @Input() public title: string = 'Mis Notas'
+  @Input() public parent_type: string;
+  @Input() public parent_id: string;
+  @Input() public content_type: string;
+  @Input() public extra_paylod: any;
+  @Input() public title = 'Mis Notas';
 
-  public noteForm: FormGroup
-  public notes$: Observable<Note[]>
+  public noteForm: FormGroup;
+  public notes$: Observable<Note[]>;
 
   constructor(
     private afs: AngularFirestore,
@@ -33,7 +33,7 @@ export class ContentNotesPanelComponent implements OnInit {
 
     this.auth.user$.subscribe(user => {
 
-      if (!user) return
+      if (!user) { return; }
 
       this.noteForm = this.fb.group({
         id: [this.afs.createId(), Validators.required],
@@ -43,22 +43,22 @@ export class ContentNotesPanelComponent implements OnInit {
         parent_type: this.parent_type,
         parent_id: this.parent_id,
         content_type: this.content_type,
-      })
+      });
 
       this.notes$ = this.afs.collection<Note>(Collections.NOTE, ref => ref
         .where('user', '==', user.uid)
-        .where('parent_id', '==', this.parent_id)).valueChanges()
+        .where('parent_id', '==', this.parent_id)).valueChanges();
 
-    })
-  
+    });
+
   }
 
   async addNote() {
-    
+
     if (this.noteForm.valid) {
 
-      await this.afs.doc(`${Collections.NOTE}/${this.noteForm.value.id}`).set(this.noteForm.value)
-      this.toastr.success('Nota agregada correctamente.')
+      await this.afs.doc(`${Collections.NOTE}/${this.noteForm.value.id}`).set(this.noteForm.value);
+      this.toastr.success('Nota agregada correctamente.');
 
       this.noteForm.reset({
         id: this.afs.createId(),
@@ -69,10 +69,10 @@ export class ContentNotesPanelComponent implements OnInit {
         parent_id: this.parent_id,
         content_type: this.content_type,
         ...(this.extra_paylod ? this.extra_paylod : {})
-      })
+      });
 
     } else {
-      this.toastr.error('Por favor ingresa datos válidos para crear una nota...')
+      this.toastr.error('Por favor ingresa datos válidos para crear una nota...');
     }
 
   }
