@@ -15,17 +15,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ContentVideoPanelComponent implements OnInit {
 
-  private _seek: number
+  private _seek: number;
 
-  @Input() public content: Content
-  @Input() public set seekTime(time: number) { this.seekChanged(time) }
-  public get seekTime() { return this._seek }
+  @Input() public content: Content;
+  @Input() public set seekTime(time: number) { this.seekChanged(time); }
+  public get seekTime() { return this._seek; }
 
-  @Output() public openContentExam: EventEmitter<any> = new EventEmitter()
+  @Output() public openContentExam: EventEmitter<any> = new EventEmitter();
 
-  private videoApi: VgAPI
-  public preclase$: Observable<Exam>
-  public examId: string
+  private videoApi: VgAPI;
+  public preclase$: Observable<Exam>;
+  public examId: string;
 
   constructor(
     public router: Router,
@@ -35,7 +35,7 @@ export class ContentVideoPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadPreclase()
+    this.loadPreclase();
   }
 
   async loadPreclase() {
@@ -52,24 +52,24 @@ export class ContentVideoPanelComponent implements OnInit {
       .toPromise();
 
     if (exam) {
-      const resuelto = await this.preclaseResuelto(this.auth.user.uid, exam.id)
-      this.examId = exam.id
+      const resuelto = await this.preclaseResuelto(this.auth.user.uid, exam.id);
+      this.examId = exam.id;
       console.log('preclase', exam, 'resuelto:', resuelto);
-      if (!resuelto) this.modal.getModal('preclaseExamModal').open()
+      if (!resuelto) { this.modal.getModal('preclaseExamModal').open(); }
     }
 
   }
 
   onPlayerReady(api: VgAPI) {
-    this.videoApi = api
+    this.videoApi = api;
   }
 
   seekChanged(time: number) {
-    if (!time) return
-    this._seek = time
-    this.videoApi.play()
-    this.videoApi.seekTime(time)
-    this._seek = null
+    if (!time) { return; }
+    this._seek = time;
+    this.videoApi.play();
+    this.videoApi.seekTime(time);
+    this._seek = null;
   }
 
   async preclaseResuelto(uid: string, exam: string) {
@@ -81,7 +81,7 @@ export class ContentVideoPanelComponent implements OnInit {
         take(1),
         tap(console.log),
         map(results => results && results.length > 0)
-      ).toPromise()
+      ).toPromise();
   }
 
   async getExamByContentName(name: string): Promise<Exam> {
@@ -90,18 +90,18 @@ export class ContentVideoPanelComponent implements OnInit {
       .where('name', '==', name))
       .valueChanges()
       .pipe(take(1), map(exams => exams ? exams[0] : null))
-      .toPromise()
+      .toPromise();
 
-    if (nameExam) return nameExam
+    if (nameExam) { return nameExam; }
 
     const contentExam = await this.afs.collection<Exam>(Collections.EXAM, ref => ref
       .where('type', '==', ExamTypes.PRECLASE)
       .where('content.id', '==', this.content.id))
       .valueChanges()
       .pipe(take(1), map(exams => exams ? exams[0] : null))
-      .toPromise()
+      .toPromise();
 
-    return contentExam
+    return contentExam;
 
   }
 

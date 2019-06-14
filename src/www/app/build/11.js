@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 1142:
+/***/ 1143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemaAltPageModule", function() { return TemaAltPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreadAddPageModule", function() { return ThreadAddPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(1214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thread_add__ = __webpack_require__(1216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,40 +18,49 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var TemaAltPageModule = /** @class */ (function () {
-    function TemaAltPageModule() {
+var ThreadAddPageModule = /** @class */ (function () {
+    function ThreadAddPageModule() {
     }
-    TemaAltPageModule = __decorate([
+    ThreadAddPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */],
+                __WEBPACK_IMPORTED_MODULE_2__thread_add__["a" /* ThreadAddPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__thread_add__["a" /* ThreadAddPage */]),
             ],
         })
-    ], TemaAltPageModule);
-    return TemaAltPageModule;
+    ], ThreadAddPageModule);
+    return ThreadAddPageModule;
 }());
 
-//# sourceMappingURL=tema-alt.module.js.map
+//# sourceMappingURL=thread-add.module.js.map
 
 /***/ }),
 
-/***/ 1214:
+/***/ 1216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemaAltPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThreadAddPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_stats_stats__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_navigation_view_controller__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(263);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -102,142 +111,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-var TemaAltPage = /** @class */ (function () {
-    function TemaAltPage(navCtrl, navParams, data, auth, afs, stats) {
+var ThreadAddPage = /** @class */ (function () {
+    function ThreadAddPage(navCtrl, navParams, afs, viewCtrl, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.data = data;
-        this.auth = auth;
         this.afs = afs;
-        this.stats = stats;
-        this.id = this.navParams.get('id');
-        this.completedTasks = [];
+        this.viewCtrl = viewCtrl;
+        this.data = data;
+        this.thread = {};
+        this.cat_id = this.navParams.get('cat');
     }
-    TemaAltPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.loadContent(this.id);
-        this.loadChildren(this.id);
-        this.auth.user$.subscribe(function (user) {
-            if (!user) {
-                return;
-            }
-            var userKey = __WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER + "/" + user.uid;
-            _this.afs.doc(userKey).valueChanges().subscribe(function (_user) {
-                if (!_user.completedTasks) {
-                    return;
-                }
-                _this.completedTasks = user.completedTasks;
-            });
-        });
-    };
-    TemaAltPage.prototype.loadContent = function (id) {
+    ThreadAddPage.prototype.addThread = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _a;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _a = this;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, id)];
+                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_CATEGORY, this.cat_id)];
                     case 1:
-                        _a.tema = _b.sent();
-                        if (this.tema && this.tema.event)
-                            this.loadEvent(this.tema.event);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    TemaAltPage.prototype.loadChildren = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var children;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', id); })];
-                    case 1:
-                        children = _a.sent();
-                        this.children = children.filter(function (c) { return c.liberadoInPrograma; });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    TemaAltPage.prototype.loadEvent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EVENT, id)];
-                    case 1:
-                        _a.event = _b.sent();
-                        console.log(this.event);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    TemaAltPage.prototype.openLink = function (url) {
-        console.log(url);
-        // Content Detail
-        if (url.includes('/content')) {
-            var _a = url.split('/'), _1 = _a[0], mode = _a[1], type = _a[2], id = _a[3];
-            this.navCtrl.push('ClaseDetailPage', { type: type, id: id });
-        }
-    };
-    TemaAltPage.prototype.toggleCompleted = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var userKey, _user, completedTasks;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        console.log(id);
-                        userKey = __WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER + "/" + this.auth.user.uid;
-                        return [4 /*yield*/, this.afs.doc(userKey).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["take"])(1)).toPromise()];
-                    case 1:
-                        _user = _a.sent();
-                        completedTasks = _user.completedTasks || [];
-                        if (!(completedTasks.indexOf(id) < 0)) return [3 /*break*/, 3];
-                        completedTasks.push(id);
-                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
-                            /* this.checkChanged.next({ id, added: true }); */
-                        ];
+                        _a.cat = _b.sent();
+                        this.thread.id = this.afs.createId();
+                        this.thread.date = new Date().toISOString();
+                        this.thread.cat_id = this.cat_id;
+                        this.thread.cat_name = this.cat.name;
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD).doc(this.thread.id).set(__assign({}, this.thread))];
                     case 2:
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 3:
-                        if (completedTasks.length > 0)
-                            completedTasks.splice(completedTasks.indexOf(id), 1);
-                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
-                            /* this.checkChanged.next({ id, added: false }); */
-                        ];
-                    case 4:
-                        _a.sent();
-                        _a.label = 5;
-                    case 5:
-                        this.stats.modifyCustomCounter("event-" + id, this.event.title, 1);
+                        _b.sent();
+                        this.viewCtrl.dismiss();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    TemaAltPage = __decorate([
+    ThreadAddPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tema-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{tema ? tema.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="event as e">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n    <ion-card-content>{{e.desc}}</ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button (click)="openLink(link.url)">{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/,
+            selector: 'page-thread-add',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Hacer una pregunta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Tema de la publicación" [(ngModel)]="thread.title"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Pregunta de la publicación" [(ngModel)]="thread.text"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button (click)="addThread()">Agregar</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_7__providers_stats_stats__["a" /* StatsProvider */]])
-    ], TemaAltPage);
-    return TemaAltPage;
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular_navigation_view_controller__["a" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
+    ], ThreadAddPage);
+    return ThreadAddPage;
 }());
 
-//# sourceMappingURL=tema-alt.js.map
+//# sourceMappingURL=thread-add.js.map
 
 /***/ })
 
