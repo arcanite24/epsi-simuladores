@@ -213,6 +213,7 @@ import { UserExamLineChartComponent } from './shared/user-exam-line-chart/user-e
 import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
 import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exam-questions-import.component';
 import { CompleteProfileComponent } from './shared/complete-profile/complete-profile.component';
+import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
 
 @NgModule({
   declarations: [
@@ -386,6 +387,7 @@ import { CompleteProfileComponent } from './shared/complete-profile/complete-pro
     UserMateriasPromediosComponent,
     ExamQuestionsImportComponent,
     CompleteProfileComponent,
+    AdminPagosPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,
