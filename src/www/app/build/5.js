@@ -3455,6 +3455,7 @@ var ExamenDetailPage = /** @class */ (function () {
             var _questionsWithGroup = Object.values(Object(__WEBPACK_IMPORTED_MODULE_8_lodash__["groupBy"])(exam.questions.filter(function (q) { return q.group; }), 'group'));
             var _questions = exam.questions.filter(function (q) { return !q.group; }).map(function (q) { return [q]; });
             var _exam = __assign({}, exam, { formattedQuestions: _questionsWithGroup.concat(_questions) });
+            _this.formattedQuestions = _exam.formattedQuestions;
             return _exam;
         }), Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["tap"])(function (data) {
             if (!data)
@@ -3579,7 +3580,7 @@ var ExamenDetailPage = /** @class */ (function () {
     };
     ExamenDetailPage.prototype.openAvance = function () {
         var _this = this;
-        var m = this.modal.create('AvanceExamenPage', { preguntas: this.test.preguntas, answered: this.answeredQuestions });
+        var m = this.modal.create('AvanceExamenPage', { questions: this.formattedQuestions });
         m.present();
         m.onDidDismiss(function (index) {
             if (!index)
