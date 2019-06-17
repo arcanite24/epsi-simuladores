@@ -1,14 +1,14 @@
 webpackJsonp([32],{
 
-/***/ 1118:
+/***/ 1122:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaAltPageModule", function() { return MateriaAltPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiCursoPageModule", function() { return MiCursoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia_alt__ = __webpack_require__(1191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_curso__ = __webpack_require__(1196);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,36 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MateriaAltPageModule = /** @class */ (function () {
-    function MateriaAltPageModule() {
+var MiCursoPageModule = /** @class */ (function () {
+    function MiCursoPageModule() {
     }
-    MateriaAltPageModule = __decorate([
+    MiCursoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */],
+                __WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */]),
             ],
         })
-    ], MateriaAltPageModule);
-    return MateriaAltPageModule;
+    ], MiCursoPageModule);
+    return MiCursoPageModule;
 }());
 
-//# sourceMappingURL=materia-alt.module.js.map
+//# sourceMappingURL=mi-curso.module.js.map
 
 /***/ }),
 
-/***/ 1191:
+/***/ 1196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaAltPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MiCursoPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_config__ = __webpack_require__(594);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -57,118 +60,71 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 
 
 
 
 
-var MateriaAltPage = /** @class */ (function () {
-    function MateriaAltPage(navCtrl, navParams, data, auth) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.data = data;
+
+
+var MiCursoPage = /** @class */ (function () {
+    function MiCursoPage(afs, auth, navCtrl) {
+        this.afs = afs;
         this.auth = auth;
-        this.id = this.navParams.get('id');
+        this.navCtrl = navCtrl;
+        this.mainContent = __WEBPACK_IMPORTED_MODULE_3__app_app_config__["b" /* contentHierarchy */].slice().shift();
     }
-    MateriaAltPage.prototype.ionViewDidLoad = function () {
+    MiCursoPage.prototype.ngOnInit = function () {
         var _this = this;
-        this.loadContent(this.id);
-        this.loadChildren(this.id);
-        this.auth.user$.subscribe(function (user) {
-            if (user && !_this.completed)
-                _this.completed = user.completedTasks ? user.completedTasks : [];
-        });
+        this.content$ = this.afs
+            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTENT, function (ref) {
+            return ref.where('type', '==', _this.mainContent);
+        })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["map"])(function (content) {
+            return content
+                .filter(function (c) { return !c.name.includes('Temprano'); })
+                .filter(function (c) { return !c.ignoreOnSmartCalendar; })
+                .filter(function (c) { return c.liberadoInPrograma; });
+        }));
     };
-    MateriaAltPage.prototype.loadContent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, id)];
-                    case 1:
-                        _a.materia = _b.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    MateriaAltPage.prototype.loadChildren = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var children;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', id); })];
-                    case 1:
-                        children = _a.sent();
-                        this.children = children.filter(function (c) { return c.liberadoInPrograma; });
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    MateriaAltPage.prototype.getCompletedTemas = function (temas, completed) {
-        if (temas === void 0) { temas = []; }
-        if (completed === void 0) { completed = []; }
-        var counter = 0;
-        var ids = temas.map(function (t) { return t.id; });
-        for (var _i = 0, ids_1 = ids; _i < ids_1.length; _i++) {
-            var id = ids_1[_i];
-            if (completed.includes(id)) {
-                counter++;
-            }
+    MiCursoPage.prototype.isBlur = function (name) {
+        if (!this.auth.user)
+            return true;
+        if (!name)
+            return true;
+        if (this.auth.isAdmin)
+            return false;
+        if (this.auth.isZamna360_2019)
+            return false;
+        if (this.auth.isPremium2019)
+            return false;
+        if (name.toLowerCase().includes('temprano')) {
+            return !this.auth.isTemprano;
         }
-        return counter;
+        return false;
     };
-    MateriaAltPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
-            selector: 'page-materia-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{materia ? materia.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="children">\n    <ion-row>\n\n      <ion-col col-6 *ngFor="let child of children">\n        <ion-card (click)="navCtrl.push(\'BloqueAltPage\', {id: child.id})">\n          <img [src]="child.cover" alt="Children">\n          <ion-card-content>\n            <ion-card-title>{{child.name}}</ion-card-title>\n            <ion-card-content>{{getCompletedTemas(children, completed)}}/{{children.length | number}}</ion-card-content>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/,
+    MiCursoPage.prototype.isLiberado = function (content) {
+        if (!this.auth.user)
+            return false;
+        if (this.auth.user.isAdmin)
+            return true;
+        if (this.auth.user.isPremium2019)
+            return true;
+        return content.liberadoInPrograma;
+    };
+    MiCursoPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'page-mi-curso',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi Curso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="content$ | async as content">\n    <ion-row>\n\n      <ion-col *ngFor="let m of content" col-6>\n        <ion-card (click)="navCtrl.push(\'MateriaAltPage\', {id: m.id})">\n          <img [src]="m.cover" alt="Content">\n          <ion-card-content>\n            <ion-card-title>{{m.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
-    ], MateriaAltPage);
-    return MateriaAltPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */]])
+    ], MiCursoPage);
+    return MiCursoPage;
 }());
 
-//# sourceMappingURL=materia-alt.js.map
+//# sourceMappingURL=mi-curso.js.map
 
 /***/ })
 

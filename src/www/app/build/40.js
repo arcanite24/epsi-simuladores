@@ -1,14 +1,14 @@
 webpackJsonp([40],{
 
-/***/ 1107:
+/***/ 1108:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClaseDetailPageModule", function() { return ClaseDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ComoTeSientesHoyPageModule", function() { return ComoTeSientesHoyPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase_detail__ = __webpack_require__(1180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__ = __webpack_require__(1182);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,41 +18,51 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ClaseDetailPageModule = /** @class */ (function () {
-    function ClaseDetailPageModule() {
+var ComoTeSientesHoyPageModule = /** @class */ (function () {
+    function ComoTeSientesHoyPageModule() {
     }
-    ClaseDetailPageModule = __decorate([
+    ComoTeSientesHoyPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__clase_detail__["a" /* ClaseDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__["a" /* ComoTeSientesHoyPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__clase_detail__["a" /* ClaseDetailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__como_te_sientes_hoy__["a" /* ComoTeSientesHoyPage */]),
             ],
         })
-    ], ClaseDetailPageModule);
-    return ClaseDetailPageModule;
+    ], ComoTeSientesHoyPageModule);
+    return ComoTeSientesHoyPageModule;
 }());
 
-//# sourceMappingURL=clase-detail.module.js.map
+//# sourceMappingURL=como-te-sientes-hoy.module.js.map
 
 /***/ }),
 
-/***/ 1180:
+/***/ 1182:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ClaseDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComoTeSientesHoyPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(588);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(598);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_data_data__ = __webpack_require__(263);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,230 +114,119 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-var ClaseDetailPage = /** @class */ (function () {
-    function ClaseDetailPage(navCtrl, navParams, back, toast, modal, data, file, transfer, load, afs, auth) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.back = back;
-        this.toast = toast;
-        this.modal = modal;
-        this.data = data;
-        this.file = file;
-        this.transfer = transfer;
-        this.load = load;
-        this.afs = afs;
+var ComoTeSientesHoyPage = /** @class */ (function () {
+    function ComoTeSientesHoyPage(auth, afs, data, viewCtrl) {
         this.auth = auth;
-        this.resultados = [];
-        this.type = this.navParams.get('type');
-        this.id = this.navParams.get('id');
-        this.newComentario = '';
-        this.lc = false;
+        this.afs = afs;
+        this.data = data;
+        this.viewCtrl = viewCtrl;
+        this.mood = {
+            mood: 1,
+            text: ''
+        };
     }
-    ClaseDetailPage.prototype.ionViewDidLoad = function () {
+    ComoTeSientesHoyPage.prototype.ngOnInit = function () {
+        /*this.buildModels();*/
+        /* this.buildLists() */
         var _this = this;
-        this.loadClase(this.id);
-        this.comentarios = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].COMMENT, function (ref) { return ref.where('parent_id', '==', _this.id); }).valueChanges();
-        /* this.back.getComentarios(this.id, this.type).subscribe(data => this.comentarios = data.reverse())
-        this.back.getResultados(this.type, this.back.uid, this.id).subscribe(data => {
-          this.resultados = data ? data : []
-        }) */
-    };
-    ClaseDetailPage.prototype.openModal = function (id, type, modal) {
-        var m = this.modal.create(modal, { id: id, type: type });
-        m.present();
-    };
-    ClaseDetailPage.prototype.openExamen = function (type, id) {
-        var _this = this;
-        if (!this.resultados || this.resultados.length <= 0) {
-            var m = this.modal.create('ExamenDetailPage', { type: type, id: id });
-            m.present();
-            m.onDidDismiss(function (data) {
-                if (!data)
-                    return;
-                _this.back.getResultados(_this.type, _this.back.uid, _this.id).subscribe(function (data) { return _this.resultados = data ? data : []; });
-            });
-        }
-        else {
-            var m = this.modal.create('ResultadosExamenPage', { type: type, id: id, user: this.back.uid });
-            m.present();
-        }
-    };
-    ClaseDetailPage.prototype.deleteResultados = function (type, id) {
-        var _this = this;
-        this.back.deleteResultados(type, this.back.uid, id).subscribe(function () {
-            _this.ionViewDidLoad();
+        this.auth.user$.subscribe(function (user) {
+            if (user) {
+                _this.loadMoodRates(user.uid);
+            }
         });
     };
-    ClaseDetailPage.prototype.sendComentario = function (text) {
+    ComoTeSientesHoyPage.prototype.loadMoodRates = function (uid) {
         return __awaiter(this, void 0, void 0, function () {
-            var comment;
+            var rates, today;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        if (!text)
-                            return [2 /*return*/];
-                        this.lc = true;
-                        comment = {
-                            id: this.afs.createId(),
-                            text: text,
-                            user: this.auth.user.uid,
-                            user_name: this.auth.user.displayName,
-                            user_photo: this.auth.user.photoURL,
-                            parent_id: this.id,
-                            date: new Date().toISOString(),
-                        };
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].COMMENT).doc(comment.id).set(comment)];
+                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].MOOD_RATE, function (ref) { return ref.where('user', '==', uid); })];
                     case 1:
-                        _a.sent();
-                        this.newComentario = '';
-                        this.lc = false;
+                        rates = _a.sent();
+                        today = __WEBPACK_IMPORTED_MODULE_4_moment___default()().format('DD-MM-YYYY');
+                        console.log(rates, today);
                         return [2 /*return*/];
                 }
             });
         });
     };
-    ClaseDetailPage.prototype.goto = function (time) {
-        var horas = parseInt(time.HH) * 3600;
-        var minInSecs = parseInt(time.mm) * 60;
-        var t = parseInt(time.ss) + minInSecs + horas;
-        this.video.nativeElement.currentTime = t;
-    };
-    ClaseDetailPage.prototype.loadClase = function (id) {
+    ComoTeSientesHoyPage.prototype.openDaily = function (uid, date) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.data.getDoc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].CONTENT, id)];
-                    case 1:
-                        _a.clase = _b.sent();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ClaseDetailPage.prototype.downloadVideo = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var l_1, fileTransfer;
-            var _this = this;
+            var dailys, noti_id, id;
             return __generator(this, function (_a) {
-                try {
-                    l_1 = this.load.create({ content: 'Descargando clase, por favor no cierres la aplicación' });
-                    l_1.present();
-                    fileTransfer = this.transfer.create();
-                    fileTransfer.download(this.clase.video, this.file.dataDirectory + "/.zamna-cache/" + this.clase.id).then(function (entry) {
-                        _this.debug = entry;
-                        localStorage.setItem("offline-" + _this.clase.id, JSON.stringify(_this.clase));
-                        l_1.dismiss();
-                        _this.toast.create({ message: 'La clase se descargó correctamente, la puedes ver desde la página de descargas.', duration: 2000 }).present();
-                    }).catch(function (error) {
-                        _this.toast.create({ message: 'Ocurrió un error al descargar la clase...' });
-                        _this.debug = error;
-                    });
-                    fileTransfer.onProgress(function (e) { return _this.downloadProgress(e); });
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.data.getCollection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].DAILY)];
+                    case 1:
+                        dailys = _a.sent();
+                        if (!dailys || dailys.length <= 0)
+                            return [2 /*return*/];
+                        this.daily = dailys[Math.floor(Math.random() * dailys.length)];
+                        noti_id = this.afs.createId();
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].NOTIFICATION).doc(noti_id).set({
+                                id: noti_id,
+                                title: this.daily.title,
+                                text: this.daily.text,
+                                date: new Date().toISOString(),
+                                isGlobal: false,
+                                user: uid
+                            })];
+                    case 2:
+                        _a.sent();
+                        id = this.afs.createId();
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].DAILY_REGISTER).doc(id).set({
+                                id: id,
+                                user: uid,
+                                date: date,
+                                daily: __assign({}, this.daily)
+                            })];
+                    case 3:
+                        _a.sent();
+                        return [2 /*return*/];
                 }
-                catch (error) {
-                    this.toast.create({ message: 'Ocurrió un error al descargar la clase...' });
-                    this.debug = error;
-                }
+            });
+        });
+    };
+    ComoTeSientesHoyPage.prototype.sendMood = function (mood, text) {
+        if (mood === -1) {
+            this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].MOOD_RATE).add({
+                text: text,
+                mood: mood,
+                user: this.auth.user.uid,
+                date: __WEBPACK_IMPORTED_MODULE_4_moment___default()().format('DD-MM-YYYY'),
+            });
+            this.viewCtrl.dismiss();
+        }
+        else {
+            this.selectedMood = mood;
+        }
+    };
+    ComoTeSientesHoyPage.prototype.sendFinalMood = function (mood, text) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].MOOD_RATE).add({
+                    text: text,
+                    mood: mood,
+                    user: this.auth.user.uid,
+                    date: __WEBPACK_IMPORTED_MODULE_4_moment___default()().format('DD-MM-YYYY'),
+                });
+                this.viewCtrl.dismiss();
                 return [2 /*return*/];
             });
         });
     };
-    ClaseDetailPage.prototype.downloadProgress = function (e) {
-        console.log(e);
-        this.debug = e;
-    };
-    ClaseDetailPage.prototype.listDir = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var list, error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, this.file.checkDir(this.file.dataDirectory, '.zamna-cache')];
-                    case 1:
-                        _a.sent();
-                        this.debug = { message: '.zamna-cache dir exists' };
-                        return [4 /*yield*/, this.file.listDir(this.file.dataDirectory, '.zamna-cache')];
-                    case 2:
-                        list = _a.sent();
-                        this.debug = list;
-                        return [3 /*break*/, 4];
-                    case 3:
-                        error_1 = _a.sent();
-                        this.debug = error_1;
-                        return [3 /*break*/, 4];
-                    case 4: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ClaseDetailPage.prototype.loadPreclase = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var exam, resuelto;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM, function (ref) { return ref
-                            .where('content.id', '==', _this.id)
-                            .where('type', '==', __WEBPACK_IMPORTED_MODULE_4__app_app_models__["b" /* ExamTypes */].PRECLASE); })
-                            .valueChanges()
-                            .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["take"])(1), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["map"])(function (exams) { return exams ? exams[0] : null; }))
-                            .toPromise()];
-                    case 1:
-                        exam = _a.sent();
-                        if (!exam) return [3 /*break*/, 3];
-                        return [4 /*yield*/, this.preclaseResuelto(this.auth.user.uid, exam.id)];
-                    case 2:
-                        resuelto = _a.sent();
-                        console.log('preclase', exam, 'resuelto:', resuelto);
-                        if (!resuelto)
-                            this.navCtrl.push('ExamenDetailPage', { id: exam.id, type: 'preclase' });
-                        _a.label = 3;
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    ClaseDetailPage.prototype.preclaseResuelto = function (uid, exam) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                return [2 /*return*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].EXAM_RESULT, function (ref) { return ref
-                        .where('exam', '==', exam)
-                        .where('user', '==', uid); })
-                        .valueChanges()
-                        .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["take"])(1), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["tap"])(console.log), Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["map"])(function (results) { return results && results.length > 0; })).toPromise()];
-            });
-        });
-    };
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('zamnaPlayer'),
-        __metadata("design:type", Object)
-    ], ClaseDetailPage.prototype, "video", void 0);
-    ClaseDetailPage = __decorate([
+    ComoTeSientesHoyPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-clase-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{clase ? clase.name : \'Cargando...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="!clase">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <div class="zamna-player" *ngIf="clase">\n    <video controls controlsList="nodownload" class="zamna-player" #zamnaPlayer>\n      <source [src]="clase.video">\n    </video>\n  </div>\n\n  <!-- <div class="w-100" *ngIf="debug">\n    <pre>{{debug | json}}</pre>\n  </div> -->\n\n  <ion-list *ngIf="clase && clase.marks">\n    <ion-list-header>Marcadores</ion-list-header>\n    <ion-item *ngFor="let m of clase.marks" (click)="goto(m.time)" >\n      <h2>{{m.text}}</h2>\n      <p>{{m.time.HH}}:{{m.time.mm}}:{{m.time.ss}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3" *ngIf="clase">\n    <ion-list-header>Comentarios</ion-list-header>\n    <ion-item>\n      <ion-input placeholder="Agregar comentario" [(ngModel)]="newComentario" [disabled]="lc"></ion-input>\n      <button ion-button clear item-end (click)="sendComentario(newComentario)" [disabled]="!newComentario || newComentario.length <= 0" *ngIf="!lc">\n        <ion-icon name="send"></ion-icon>\n      </button>\n      <ion-thumbnail item-end *ngIf="lc">\n        <img src="assets/imgs/rings.svg">\n      </ion-thumbnail>\n    </ion-item>\n    <ion-item *ngFor="let c of comentarios | async" text-wrap>\n      <ion-avatar item-start>\n        <img [src]="c.user_photo ? c.user_photo : \'assets/imgs/profile.jpg\'">\n      </ion-avatar>\n      <h2>{{c.user_name}}</h2>\n      <p>{{c.text}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom *ngIf="clase">\n    <button ion-fab color="rojito"><ion-icon name="arrow-dropup"></ion-icon></button>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'NotasPage\')">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="document"></ion-icon>\n      </button>\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'RatingsPage\')">\n      <ion-label>Calificación</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button>\n      <button ion-fab (click)="openExamen(type, id)" *ngIf="resultados.length <= 0">\n        <ion-label>Evaluación</ion-label>\n        <ion-icon name="archive"></ion-icon>\n      </button>\n      <button ion-fab (click)="downloadVideo()">\n        <ion-label>Descargar Clase</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n      <!-- <button ion-fab (click)="listDir()">\n        <ion-label>List Dir</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button> -->\n      <!--<button ion-fab (click)="deleteResultados(type, id)" *ngIf="auth.isAdmin">\n        <ion-label>Borrar Resultados</ion-label>\n        <ion-icon name="logo-facebook"></ion-icon>\n      </button>-->\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/,
+            selector: 'page-como-te-sientes-hoy',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/como-te-sientes-hoy/como-te-sientes-hoy.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo te sientes hoy?</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding class="bg-eee">\n  <div class="col-md-12" *ngIf="!selectedMood">\n    <h4>¿Cómo te sientes hoy?</h4>\n  </div>\n\n  <div class="col-md-12" *ngIf="!selectedMood">\n    <ul class="list-group">\n      <li class="list-group-item">\n        <button ion-button color="muyMal" class="btn btn-danger" type="button" (click)="sendMood(1, mood.text)">Muy Mal</button>\n        <!--<input type="radio" [value]="1" id="mood-1" [(ngModel)]="mood.mood">\n              <label class="ml-2" for="mood-1">Muy Mal</label>-->\n      </li>\n      <li class="list-group-item">\n        <button ion-button color="mal" class="btn btn-warning" type="button" (click)="sendMood(2, mood.text)">Mal</button>\n        <!--<input type="radio" [value]="2" id="mood-2" [(ngModel)]="mood.mood">\n              <label class="ml-2" for="mood-2">Mal</label>-->\n      </li>\n      <li class="list-group-item">\n        <button ion-button color="regular" class="btn btn-secondary btn-orange" type="button" (click)="sendMood(3, mood.text)">Regular</button>\n      </li>\n      <li class="list-group-item">\n        <button ion-button color="bien" class="btn btn-success" type="button" (click)="sendMood(4, mood.text)">Bien</button>\n      </li>\n      <li class="list-group-item">\n        <button ion-button color="muyBien" class="btn btn-info" type="button" (click)="sendMood(5, mood.text)">Muy Bien</button>\n      </li>\n      <li class="list-group-item">\n        <button ion-button color="excelente" class="btn btn-primary" type="button" (click)="sendMood(6, mood.text)">Excelente</button>\n      </li>\n    </ul>\n  </div>\n\n  <div class="col-md-12 form-group mt-3" *ngIf="selectedMood">\n    <label for="">¿Por qué te sientes así?</label>\n    <textarea [(ngModel)]="mood.text" class="form-control"></textarea>\n  </div>\n\n  <div class="col-md-12" *ngIf="selectedMood">\n    <button type="button" class="btn btn-primary" (click)="sendFinalMood(selectedMood, mood.text)">Enviar</button>\n  </div>\n\n  <div class="col-md-12" *ngIf="!selectedMood">\n    <!--<button class="btn btn-success" [disabled]="!mood.mood && !mood.text" (click)="sendMood()">Enviar</button>-->\n    <button ion-button color="danger" class="btn btn-danger ml-2" type="button" (click)="sendMood(-1, mood.text)">No quiero contestar hoy</button>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/como-te-sientes-hoy/como-te-sientes-hoy.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__["a" /* File */],
-            __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__["a" /* FileTransfer */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
-    ], ClaseDetailPage);
-    return ClaseDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_6__providers_data_data__["a" /* DataProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+    ], ComoTeSientesHoyPage);
+    return ComoTeSientesHoyPage;
 }());
 
-//# sourceMappingURL=clase-detail.js.map
+//# sourceMappingURL=como-te-sientes-hoy.js.map
 
 /***/ })
 

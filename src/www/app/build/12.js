@@ -1,6 +1,6 @@
 webpackJsonp([12],{
 
-/***/ 1142:
+/***/ 1143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemaAltPageModule", function() { return TemaAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(1215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(1217);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var TemaAltPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1215:
+/***/ 1217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -114,7 +114,6 @@ var TemaAltPage = /** @class */ (function () {
     TemaAltPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.loadContent(this.id);
-        this.loadChildren(this.id);
         this.auth.user$.subscribe(function (user) {
             if (_this.loaded)
                 return;
@@ -143,20 +142,6 @@ var TemaAltPage = /** @class */ (function () {
                         _a.tema = _b.sent();
                         if (this.tema && this.tema.event)
                             this.loadEvent(this.tema.event);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    TemaAltPage.prototype.loadChildren = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var children;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref.where('parent_id', '==', id); })];
-                    case 1:
-                        children = _a.sent();
-                        this.children = children.filter(function (c) { return c.liberadoInPrograma; });
                         return [2 /*return*/];
                 }
             });

@@ -1,14 +1,14 @@
 webpackJsonp([47],{
 
-/***/ 1100:
+/***/ 1101:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsesoriaAddPageModule", function() { return AsesoriaAddPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsesoriaDetailPageModule", function() { return AsesoriaDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asesoria_add__ = __webpack_require__(1173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asesoria_detail__ = __webpack_require__(1175);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,47 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AsesoriaAddPageModule = /** @class */ (function () {
-    function AsesoriaAddPageModule() {
+var AsesoriaDetailPageModule = /** @class */ (function () {
+    function AsesoriaDetailPageModule() {
     }
-    AsesoriaAddPageModule = __decorate([
+    AsesoriaDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__asesoria_add__["a" /* AsesoriaAddPage */],
+                __WEBPACK_IMPORTED_MODULE_2__asesoria_detail__["a" /* AsesoriaDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesoria_add__["a" /* AsesoriaAddPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesoria_detail__["a" /* AsesoriaDetailPage */]),
             ],
         })
-    ], AsesoriaAddPageModule);
-    return AsesoriaAddPageModule;
+    ], AsesoriaDetailPageModule);
+    return AsesoriaDetailPageModule;
 }());
 
-//# sourceMappingURL=asesoria-add.module.js.map
+//# sourceMappingURL=asesoria-detail.module.js.map
 
 /***/ }),
 
-/***/ 1173:
+/***/ 1175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsesoriaAddPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsesoriaDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(12);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -107,50 +99,85 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var AsesoriaAddPage = /** @class */ (function () {
-    function AsesoriaAddPage(navCtrl, navParams, load, viewCtrl, afs) {
+
+
+
+var AsesoriaDetailPage = /** @class */ (function () {
+    function AsesoriaDetailPage(navCtrl, navParams, back, sanitize, toast, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.load = load;
-        this.viewCtrl = viewCtrl;
+        this.back = back;
+        this.sanitize = sanitize;
+        this.toast = toast;
         this.afs = afs;
-        this.addData = { name: '', desc: '', url: '' };
+        this.id = this.navParams.get('id');
+        this.uid = localStorage.getItem('uid');
+        this.newNota = { text: '', title: '' };
+        this.lc = false;
     }
-    AsesoriaAddPage.prototype.ionViewDidLoad = function () {
+    AsesoriaDetailPage.prototype.ionViewDidLoad = function () {
+        this.loadAsesoria();
     };
-    AsesoriaAddPage.prototype.addAsesoria = function () {
+    AsesoriaDetailPage.prototype.loadAsesoria = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var l, id;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var _a;
+            var _this = this;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
                     case 0:
-                        l = this.load.create({ content: 'Agregando Asesoría...' });
-                        l.present();
-                        id = this.afs.createId();
-                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].LIVESTREAM + "/" + id).set(__assign({ id: id }, this.addData, { date: new Date().toISOString() }))];
+                        _a = this;
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].LIVESTREAM).doc(this.id).valueChanges()
+                                .pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["tap"])(function (a) { return _this.chat = _this.sanitize.bypassSecurityTrustResourceUrl("https://www.youtube.com/live_chat?v=" + _this.YouTubeGetID(a.url) + "&embed_domain=" + document.domain); }))];
                     case 1:
-                        _a.sent();
-                        l.dismiss();
-                        this.viewCtrl.dismiss();
+                        _a.live$ = _b.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    AsesoriaAddPage = __decorate([
+    AsesoriaDetailPage.prototype.sanitizeUrl = function (url) {
+        return this.sanitize.bypassSecurityTrustResourceUrl("https://youtube.com/embed/" + this.YouTubeGetID(url));
+    };
+    AsesoriaDetailPage.prototype.YouTubeGetID = function (url) {
+        var ID = '';
+        url = url.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+        if (url[2] !== undefined) {
+            ID = url[2].split(/[^0-9a-z_\-]/i);
+            ID = ID[0];
+        }
+        else {
+            ID = url;
+        }
+        return ID;
+    };
+    AsesoriaDetailPage.prototype.addNota = function (title, text) {
+        var _this = this;
+        this.lc = true;
+        this.back.addNota(title, text, 'asesoria', this.id).subscribe(function (data) {
+            /* this.a.notas.push(data) */
+            _this.toast.create({ message: 'Nota agregada correctamente.', duration: 2000 }).present();
+            _this.lc = false;
+            _this.newNota = { text: '', title: '' };
+        }, function (err) {
+            _this.lc = false;
+            _this.toast.create({ message: 'No se pudo agregar tu nota...', duration: 2000 }).present();
+        });
+    };
+    AsesoriaDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-asesoria-add',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesoria-add/asesoria-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Agregar Asesoría</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ion-list>\n    <ion-item>\n      <ion-label>Nombre</ion-label>\n      <ion-input type="text" [(ngModel)]="addData.name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Descripción</ion-label>\n      <ion-input type="text" [(ngModel)]="addData.desc"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>URL de YouTube</ion-label>\n      <ion-input type="text" [(ngModel)]="addData.url"></ion-input>\n    </ion-item>\n  </ion-list>\n\n  <div padding class="flex-col">\n    <button ion-button color="secondary" (click)="addAsesoria()">Agregar Asesoría</button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesoria-add/asesoria-add.html"*/,
+            selector: 'page-asesoria-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesoria-detail/asesoria-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Asesoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="asesoria-container" *ngIf="live$ | async as a else loader">\n\n    <iframe *ngIf="a" [src]="sanitizeUrl(a.url)" frameborder="0" allowfullscreen class="main-video"></iframe>\n    <ion-item *ngIf="a">\n      <h2>{{a.name}}</h2>\n      <p>{{a.desc}}</p>\n    </ion-item>\n\n    <ion-list *ngIf="a" >\n      <ion-list-header><strong>Notas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Titulo de la nota" [(ngModel)]="newNota.title" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addNota(newNota.title, newNota.text)" [disabled]="(newNota.title.length <= 0 && newNota.text.length <= 0) || newNota.title.length <= 0 || newNota.text.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item>\n        <ion-textarea placeholder="Texto de la nota" [(ngModel)]="newNota.text"></ion-textarea>\n      </ion-item>\n      <ion-item *ngFor="let n of notas" text-wrap>\n        <h2>{{n.title}}</h2>\n        <p>{{n.text}}</p>\n      </ion-item>\n    </ion-list>\n\n    <iframe *ngIf="chat" [src]="chat" frameborder="0" class="chat-frame"></iframe>\n\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesoria-detail/asesoria-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-    ], AsesoriaAddPage);
-    return AsesoriaAddPage;
+            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"]])
+    ], AsesoriaDetailPage);
+    return AsesoriaDetailPage;
 }());
 
-//# sourceMappingURL=asesoria-add.js.map
+//# sourceMappingURL=asesoria-detail.js.map
 
 /***/ })
 

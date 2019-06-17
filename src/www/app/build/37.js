@@ -1,14 +1,14 @@
 webpackJsonp([37],{
 
-/***/ 1110:
+/***/ 1112:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EspecialidadesPageModule", function() { return EspecialidadesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForoDetailPageModule", function() { return ForoDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__especialidades__ = __webpack_require__(1183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foro_detail__ = __webpack_require__(1186);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EspecialidadesPageModule = /** @class */ (function () {
-    function EspecialidadesPageModule() {
+var ForoDetailPageModule = /** @class */ (function () {
+    function ForoDetailPageModule() {
     }
-    EspecialidadesPageModule = __decorate([
+    ForoDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */],
+                __WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */]),
             ],
         })
-    ], EspecialidadesPageModule);
-    return EspecialidadesPageModule;
+    ], ForoDetailPageModule);
+    return ForoDetailPageModule;
 }());
 
-//# sourceMappingURL=especialidades.module.js.map
+//# sourceMappingURL=foro-detail.module.js.map
 
 /***/ }),
 
-/***/ 1183:
+/***/ 1186:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EspecialidadesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForoDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,35 +61,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-var EspecialidadesPage = /** @class */ (function () {
-    function EspecialidadesPage(navCtrl, navParams, afs) {
+var ForoDetailPage = /** @class */ (function () {
+    function ForoDetailPage(navCtrl, navParams, afs, modal) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
-        this.isPrograma = this.navParams.get('isPrograma');
+        this.modal = modal;
     }
-    EspecialidadesPage.prototype.ionViewDidLoad = function () {
-        /* this.back.getAllMaterias().subscribe(data => this.materias = data.filter(m => m.name.includes('Temprano')), err => this.toast.create({message: 'No se pudieron cargar las materias...', duration: 2000}).present()) */
-        this.materias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT)
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(function (materias) { return materias.filter(function (m) { return m.name.includes('Temprano'); }); }));
+    ForoDetailPage.prototype.ngOnInit = function () {
     };
-    EspecialidadesPage.prototype.openMateria = function (id) {
-        this.navCtrl.push(this.isPrograma ? 'ProgramaMateriaPage' : 'MateriaPage', { id: id });
+    ForoDetailPage.prototype.ionViewDidLoad = function () {
+        var id = this.navParams.get('id');
+        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, function (ref) { return ref.where('cat_id', '==', id); }).valueChanges();
     };
-    EspecialidadesPage = __decorate([
+    ForoDetailPage.prototype.openAddThread = function () {
+        var m = this.modal.create('ThreadAddPage', { cat: this.navParams.get('id') });
+        m.present();
+    };
+    ForoDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-especialidades',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Especialidades</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="home-grid" *ngIf="materias$ | async as materias">\n    <div class="home-tile" *ngFor="let m of materias">\n      <ion-card (click)="openMateria(m.id)">\n        <img [src]="m.cover">\n        <!--<ion-card-content>\n          <ion-card-title>{{m.name}}</ion-card-title>\n          <p>{{m.desc}}</p>\n        </ion-card-content>-->\n      </ion-card>\n    </div>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/,
+            selector: 'page-foro-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <ion-list *ngIf="thread$ | async as threads else loader">\n    <ion-list-header>Hilos</ion-list-header>\n    <ion-item *ngFor="let h of threads" (click)="navCtrl.push(\'HiloDetailPage\', {id: h.id})">\n      <h2>{{h.title}}</h2>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito" (click)="openAddThread()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-    ], EspecialidadesPage);
-    return EspecialidadesPage;
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */]])
+    ], ForoDetailPage);
+    return ForoDetailPage;
 }());
 
-//# sourceMappingURL=especialidades.js.map
+//# sourceMappingURL=foro-detail.js.map
 
 /***/ })
 
