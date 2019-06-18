@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
 import { Collections } from 'src/app/app.models';
 import moment from 'moment';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'epsi-admin-pagos-page',
@@ -10,8 +11,11 @@ import moment from 'moment';
 })
 export class AdminPagosPageComponent implements OnInit {
 
-  public config: CrudTableConfig = {
+  public config: CrudTableConfig<PaymentRequest> = {
     collection: Collections.PAYMENT_REQUEST,
+    dataSource: this.afs.collection<PaymentRequest>(Collections.PAYMENT_REQUEST, ref => ref
+      .orderBy('model.createdAt', 'desc'))
+      .valueChanges(),
     fullEdit: true,
     headers: [
       { field: 'user_name', type: 'text' },
@@ -23,7 +27,9 @@ export class AdminPagosPageComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor(
+    private afs: AngularFirestore,
+  ) { }
 
   ngOnInit() {
   }
