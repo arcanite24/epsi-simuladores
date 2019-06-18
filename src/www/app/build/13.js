@@ -1,14 +1,15 @@
 webpackJsonp([13],{
 
-/***/ 1142:
+/***/ 1143:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartCalendarPageModule", function() { return SmartCalendarPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatViewDetailPageModule", function() { return StatViewDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(1216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stat_view_detail__ = __webpack_require__(1218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__swimlane_ngx_charts__ = __webpack_require__(598);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,53 +19,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SmartCalendarPageModule = /** @class */ (function () {
-    function SmartCalendarPageModule() {
+
+var StatViewDetailPageModule = /** @class */ (function () {
+    function StatViewDetailPageModule() {
     }
-    SmartCalendarPageModule = __decorate([
+    StatViewDetailPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */],
+                __WEBPACK_IMPORTED_MODULE_2__stat_view_detail__["a" /* StatViewDetailPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__swimlane_ngx_charts__["a" /* NgxChartsModule */],
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stat_view_detail__["a" /* StatViewDetailPage */]),
             ],
         })
-    ], SmartCalendarPageModule);
-    return SmartCalendarPageModule;
+    ], StatViewDetailPageModule);
+    return StatViewDetailPageModule;
 }());
 
-//# sourceMappingURL=smart-calendar.module.js.map
+//# sourceMappingURL=stat-view-detail.module.js.map
 
 /***/ }),
 
-/***/ 1216:
+/***/ 1218:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartCalendarPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatViewDetailPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(588);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(590);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(589);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -113,155 +98,55 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-
-
-var SmartCalendarPage = /** @class */ (function () {
-    function SmartCalendarPage(navCtrl, navParams, auth, afs, data) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
+var StatViewDetailPage = /** @class */ (function () {
+    function StatViewDetailPage(stats, auth, navParams) {
+        this.stats = stats;
         this.auth = auth;
-        this.afs = afs;
-        this.data = data;
-        this.completedTasks = [];
-        this.events = [];
-        this.loadedEvents = [];
+        this.navParams = navParams;
+        this.view = this.navParams.get('view');
+        this.uid = this.navParams.get('uid');
     }
-    SmartCalendarPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.auth.user$.subscribe(function (user) {
-            if (user) {
-                _this.afs
-                    .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
-                    .doc(user.uid)
-                    .valueChanges()
-                    .subscribe(function (u) {
-                    return (_this.completedTasks = u.completedTasks ? u.completedTasks : []);
-                });
-                if (!_this.events$)
-                    _this.loadEvents(user.uid);
-            }
-        });
+    StatViewDetailPage.prototype.ngOnInit = function () {
     };
-    SmartCalendarPage.prototype.loadEvents = function (uid) {
-        var _this = this;
-        this.userSub = this.afs
-            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
-            .doc(uid)
-            .valueChanges()
-            .subscribe(function (user) { return __awaiter(_this, void 0, void 0, function () {
-            var events, _loop_1, this_1, _i, events_1, e;
-            var _this = this;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (!user.customCalendar)
-                            return [2 /*return*/];
-                        events = Object(__WEBPACK_IMPORTED_MODULE_6_lodash__["flattenDeep"])(Object.values(user.customCalendar)).filter(function (e) {
-                            return e.start.substr(0, 10) === __WEBPACK_IMPORTED_MODULE_7_moment___default()().format('YYYY-MM-DD');
-                        });
-                        console.log(events);
-                        if (!user.completedTasks)
-                            user.completedTasks = [];
-                        this.completedTasks = user.completedTasks;
-                        /*let formatedEvents = []*/
-                        if (this.events.length > 0)
-                            return [2 /*return*/];
-                        _loop_1 = function (e) {
-                            var eventDoc_1;
-                            return __generator(this, function (_a) {
-                                switch (_a.label) {
-                                    case 0:
-                                        if (!(e.event && !this_1.loadedEvents.includes(e.event))) return [3 /*break*/, 2];
-                                        return [4 /*yield*/, this_1.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].EVENT, e.event)];
-                                    case 1:
-                                        eventDoc_1 = _a.sent();
-                                        setTimeout(function () {
-                                            _this.events.push(__assign({}, e, { id: eventDoc_1.id, start: new Date(e.start), title: e.content_name, desc: eventDoc_1.desc, date: new Date().toISOString(), tasks: eventDoc_1.tasks, links: eventDoc_1.links, color: _this.completedTasks.indexOf(eventDoc_1.id) >= 0
-                                                    ? { primary: '#5e4b8b', secondary: '#5e4b8b' }
-                                                    : { primary: '#CF4747', secondary: '#CF4747' } }));
-                                            _this.loadedEvents.push(e.event);
-                                        }, 100);
-                                        _a.label = 2;
-                                    case 2: return [2 /*return*/];
-                                }
-                            });
-                        };
-                        this_1 = this;
-                        _i = 0, events_1 = events;
-                        _a.label = 1;
-                    case 1:
-                        if (!(_i < events_1.length)) return [3 /*break*/, 4];
-                        e = events_1[_i];
-                        return [5 /*yield**/, _loop_1(e)];
-                    case 2:
-                        _a.sent();
-                        _a.label = 3;
-                    case 3:
-                        _i++;
-                        return [3 /*break*/, 1];
-                    case 4: return [2 /*return*/];
-                }
-            });
-        }); });
+    StatViewDetailPage.prototype.ionViewDidLoad = function () {
+        this.reloadData(this.view);
     };
-    SmartCalendarPage.prototype.openLink = function (url) {
-        console.log(url);
-        // Content Detail
-        if (url.includes('/content')) {
-            var _a = url.split('/'), type = _a[2], id = _a[3];
-            this.navCtrl.push('ClaseDetailPage', { type: type, id: id });
-        }
-    };
-    SmartCalendarPage.prototype.toggleCompleted = function (id) {
+    StatViewDetailPage.prototype.reloadData = function (v) {
         return __awaiter(this, void 0, void 0, function () {
-            var userKey, _user, completedTasks;
+            var cache;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log(id);
-                        userKey = __WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER + "/" + this.auth.user.uid;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER, this.auth.user.uid)];
+                    case 0: return [4 /*yield*/, this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid)];
                     case 1:
-                        _user = _a.sent();
-                        completedTasks = _user.completedTasks || [];
-                        if (!(completedTasks.indexOf(id) < 0)) return [3 /*break*/, 3];
-                        completedTasks.push(id);
-                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
-                            /* this.checkChanged.next({ id, added: true }); */
+                        cache = _a.sent();
+                        v.cache = cache;
+                        v.cache.promedio = v.cache.timeline.map(function (m) { return m.promedio; }).reduce(function (a, b) { return a + b; }, 0);
+                        this.chartData = [
+                            {
+                                name: 'Promedio',
+                                series: v.cache.timeline.map(function (m) { return ({
+                                    name: m.mes.label,
+                                    value: m.promedio * 100
+                                }); })
+                            }
                         ];
-                    case 2:
-                        _a.sent();
-                        return [3 /*break*/, 5];
-                    case 3:
-                        if (completedTasks.length > 0)
-                            completedTasks.splice(completedTasks.indexOf(id), 1);
-                        return [4 /*yield*/, this.afs.doc(userKey).update({ completedTasks: completedTasks })
-                            /* this.checkChanged.next({ id, added: false }); */
-                        ];
-                    case 4:
-                        _a.sent();
-                        _a.label = 5;
-                    case 5: return [2 /*return*/];
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    SmartCalendarPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-            selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button (click)="openLink(link.url)" ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
+    StatViewDetailPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-stat-view-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/stat-view-detail/stat-view-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ view ? view.name : \'...\' }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <div class="container-fluid">\n    <div class="row" *ngIf="view as v">\n\n      <div class="col-md-12">\n        <h4>{{v.name}}</h4>\n      </div>\n\n      <div class="col-md-12">\n        <ul *ngIf="v.cache as c">\n          <li *ngIf="c.total">{{c.total | number}} resultados</li>\n          <li *ngIf="c.promedio">\n            <strong>Promedio: </strong> {{c.promedio * 100 | number}}/100\n          </li>\n        </ul>\n      </div>\n\n      <div class="col-md-12" *ngIf="chartData">\n        <div class="w-100 epsi-chart-container">\n          <ngx-charts-line-chart [view]="undefined" [yScaleMin]="0" [yScaleMax]="100" [legend]="true"\n            [legendTitle]="\'Materias\'" [legendPosition]="\'below\'" [showXAxisLabel]="true" [showYAxisLabel]="true"\n            [xAxisLabel]="\'Mes\'" [yAxisLabel]="\'Promedio\'" [xAxis]="true" [yAxis]="true" [results]="chartData">\n          </ngx-charts-line-chart>\n        </div>\n      </div>\n\n      <div class="col-md-12">\n        <button type="button" (click)="reloadData(v)">Recargar Información</button>\n      </div>\n\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/stat-view-detail/stat-view-detail.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["r" /* NavParams */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__["a" /* StatsProvider */],
             __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_0__providers_data_data__["a" /* DataProvider */]])
-    ], SmartCalendarPage);
-    return SmartCalendarPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+    ], StatViewDetailPage);
+    return StatViewDetailPage;
 }());
 
-//# sourceMappingURL=smart-calendar.js.map
+//# sourceMappingURL=stat-view-detail.js.map
 
 /***/ })
 

@@ -1,14 +1,14 @@
 webpackJsonp([46],{
 
-/***/ 1102:
+/***/ 1103:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AsesoriasPageModule", function() { return AsesoriasPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AvanceExamenPageModule", function() { return AvanceExamenPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__asesorias__ = __webpack_require__(1176);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__avance_examen__ = __webpack_require__(1178);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,38 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AsesoriasPageModule = /** @class */ (function () {
-    function AsesoriasPageModule() {
+var AvanceExamenPageModule = /** @class */ (function () {
+    function AvanceExamenPageModule() {
     }
-    AsesoriasPageModule = __decorate([
+    AvanceExamenPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */],
+                __WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */]),
             ],
         })
-    ], AsesoriasPageModule);
-    return AsesoriasPageModule;
+    ], AvanceExamenPageModule);
+    return AvanceExamenPageModule;
 }());
 
-//# sourceMappingURL=asesorias.module.js.map
+//# sourceMappingURL=avance-examen.module.js.map
 
 /***/ }),
 
-/***/ 1176:
+/***/ 1178:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AsesoriasPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AvanceExamenPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(588);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers_exam_reducer__ = __webpack_require__(592);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngrx_store__ = __webpack_require__(593);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,44 +60,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-var AsesoriasPage = /** @class */ (function () {
-    function AsesoriasPage(navCtrl, navParams, back, modal, auth, afs) {
-        this.navCtrl = navCtrl;
+var AvanceExamenPage = /** @class */ (function () {
+    function AvanceExamenPage(store, navParams, viewCtrl) {
+        this.store = store;
         this.navParams = navParams;
-        this.back = back;
-        this.modal = modal;
-        this.auth = auth;
-        this.afs = afs;
-        this.asesorias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].LIVESTREAM).valueChanges();
+        this.viewCtrl = viewCtrl;
+        this.isGroup = false;
+        this.completed = [];
+        this.activeIndex = 0;
+        this.examState$ = this.store.select('exam');
     }
-    AsesoriasPage.prototype.ionViewDidLoad = function () {
-    };
-    AsesoriasPage.prototype.openAdd = function () {
+    AvanceExamenPage.prototype.ngOnInit = function () {
         var _this = this;
-        var m = this.modal.create('AsesoriaAddPage');
-        m.present();
-        m.onDidDismiss(function (data) {
-            if (data)
-                _this.ionViewDidLoad();
+        // Load questions
+        var questions = this.navParams.get('questions');
+        if (questions[0] instanceof Array)
+            this.isGroup = true;
+        console.log(questions, this.isGroup);
+        this.qList = questions;
+        this.examState$.subscribe(function (state) {
+            if (state.results && state.results.questions)
+                _this.completed = Object.keys(state.results.questions);
+            if (state.finished)
+                _this.completed = [];
+            _this.activeIndex = state.index;
         });
     };
-    AsesoriasPage = __decorate([
+    AvanceExamenPage.prototype.gotoQuestion = function (index) {
+        this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_2__reducers_exam_reducer__["e" /* SetIndex */](index));
+        this.viewCtrl.dismiss();
+    };
+    AvanceExamenPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-asesorias',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Asesorias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="asesorias$ | async as asesorias else loader">\n    <ion-item *ngFor="let a of asesorias" (click)="navCtrl.push(\'AsesoriaDetailPage\', {id: a.id})">\n      <h2>{{a.name}}</h2>\n      <!--<p>{{a.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n  \n  <ion-fab right bottom *ngIf="auth.isAdmin" >\n    <button ion-fab color="rojito" (click)="openAdd()" ><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/,
+            selector: 'page-avance-examen',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Avance</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ul *ngIf="!isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question)">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question.id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question.text.substr(0, 100)}}\n        {{question.text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <ul *ngIf="isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question[0])">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question.id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question[0].text.substr(0, 100)}}\n        {{question[0].text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <style>\n    .active-question {\n      font-weight: bolder;\n    }\n  </style>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngrx_store__["a" /* Store */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"]])
-    ], AsesoriasPage);
-    return AsesoriasPage;
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+    ], AvanceExamenPage);
+    return AvanceExamenPage;
 }());
 
-//# sourceMappingURL=asesorias.js.map
+//# sourceMappingURL=avance-examen.js.map
 
 /***/ })
 

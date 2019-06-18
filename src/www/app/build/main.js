@@ -1,4 +1,4 @@
-webpackJsonp([49],{
+webpackJsonp([50],{
 
 /***/ 1090:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -756,67 +756,67 @@ webpackEmptyAsyncContext.id = 293;
 var map = {
 	"../pages/asesoria-add/asesoria-add.module": [
 		1100,
-		48
+		49
 	],
 	"../pages/asesoria-detail/asesoria-detail.module": [
 		1101,
-		47
+		48
 	],
 	"../pages/asesorias/asesorias.module": [
 		1102,
-		46
+		47
 	],
 	"../pages/avance-examen/avance-examen.module": [
 		1103,
-		45
+		46
 	],
 	"../pages/bloque-alt/bloque-alt.module": [
 		1104,
-		44
+		45
 	],
 	"../pages/calendar/calendar.module": [
 		1105,
-		43
+		44
 	],
 	"../pages/checklist/checklist.module": [
 		1106,
-		42
+		43
 	],
 	"../pages/clase-detail/clase-detail.module": [
 		1107,
-		41
+		42
 	],
 	"../pages/como-te-sientes-hoy/como-te-sientes-hoy.module": [
 		1108,
-		40
+		41
 	],
 	"../pages/downloads/downloads.module": [
 		1109,
-		39
+		40
 	],
 	"../pages/especialidades/especialidades.module": [
 		1110,
-		38
+		39
 	],
 	"../pages/exam-feedback/exam-feedback.module": [
 		1111,
 		6
 	],
 	"../pages/examen-detail/examen-detail.module": [
-		1147,
+		1148,
 		5
 	],
 	"../pages/foro-detail/foro-detail.module": [
 		1112,
-		37
+		38
 	],
 	"../pages/foros/foros.module": [
 		1113,
-		36
+		37
 	],
 	"../pages/galeria-detail/galeria-detail.module": [
 		1114,
-		35
+		36
 	],
 	"../pages/galerias/galerias.module": [
 		1115,
@@ -831,12 +831,12 @@ var map = {
 		3
 	],
 	"../pages/login/login.module": [
-		1148,
-		34
+		1149,
+		35
 	],
 	"../pages/materia-alt/materia-alt.module": [
 		1118,
-		33
+		34
 	],
 	"../pages/materia/materia.module": [
 		1119,
@@ -852,7 +852,7 @@ var map = {
 	],
 	"../pages/mi-curso/mi-curso.module": [
 		1122,
-		32
+		33
 	],
 	"../pages/mis-resultados/mis-resultados.module": [
 		1123,
@@ -860,94 +860,98 @@ var map = {
 	],
 	"../pages/notas-add/notas-add.module": [
 		1124,
-		31
+		32
 	],
 	"../pages/notas-global-detail/notas-global-detail.module": [
 		1125,
-		30
+		31
 	],
 	"../pages/notas-global/notas-global.module": [
 		1126,
-		29
+		30
 	],
 	"../pages/notas/notas.module": [
 		1127,
-		28
+		29
 	],
 	"../pages/notifications/notifications.module": [
 		1128,
-		27
+		28
 	],
 	"../pages/offline-video/offline-video.module": [
 		1129,
-		26
+		27
 	],
 	"../pages/post-comments/post-comments.module": [
 		1130,
-		25
+		26
 	],
 	"../pages/profile/profile.module": [
 		1131,
-		24
+		25
 	],
 	"../pages/programa-bloque/programa-bloque.module": [
 		1132,
-		23
+		24
 	],
 	"../pages/programa-materia/programa-materia.module": [
 		1133,
-		22
+		23
 	],
 	"../pages/ratings/ratings.module": [
 		1134,
-		21
+		22
 	],
 	"../pages/resultado-detail/resultado-detail.module": [
 		1135,
-		20
+		21
 	],
 	"../pages/resultados-examen/resultados-examen.module": [
 		1136,
-		19
+		20
 	],
 	"../pages/simulacros/simulacros.module": [
 		1137,
-		18
+		19
 	],
 	"../pages/simulador-detail/simulador-detail.module": [
 		1138,
-		17
+		18
 	],
 	"../pages/simuladores/simuladores.module": [
 		1139,
-		16
+		17
 	],
 	"../pages/slide-detail/slide-detail.module": [
 		1140,
-		15
+		16
 	],
 	"../pages/slides/slides.module": [
 		1141,
-		14
+		15
 	],
 	"../pages/smart-calendar/smart-calendar.module": [
 		1142,
+		14
+	],
+	"../pages/stat-view-detail/stat-view-detail.module": [
+		1143,
 		13
 	],
 	"../pages/tema-alt/tema-alt.module": [
-		1143,
+		1144,
 		12
 	],
 	"../pages/thread-add/thread-add.module": [
-		1144,
+		1145,
 		11
 	],
 	"../pages/top-users/top-users.module": [
-		1145,
+		1146,
 		10
 	],
 	"../pages/zona-enarm/zona-enarm.module": [
-		1146,
+		1147,
 		9
 	]
 };
@@ -2230,7 +2234,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(582);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(583);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__ = __webpack_require__(600);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_moment__ = __webpack_require__(1088);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(1);
@@ -2256,11 +2260,11 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_stats_stats__ = __webpack_require__(589);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_file_transfer__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_file_transfer__ = __webpack_require__(599);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_file__ = __webpack_require__(595);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ngrx_store__ = __webpack_require__(593);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__reducers_exam_reducer__ = __webpack_require__(592);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__swimlane_ngx_charts__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__swimlane_ngx_charts__ = __webpack_require__(598);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__angular_platform_browser_animations__ = __webpack_require__(1098);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2361,6 +2365,7 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/stat-view-detail/stat-view-detail.module#StatViewDetailPageModule', name: 'StatViewDetailPage', segment: 'stat-view-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/thread-add/thread-add.module#ThreadAddPageModule', name: 'ThreadAddPage', segment: 'thread-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },

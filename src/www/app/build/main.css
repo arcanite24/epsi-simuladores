@@ -52149,6 +52149,10 @@ page-slides .list {
   margin-top: 3rem;
 }
 
+page-stat-view-detail .ngx-charts {
+  width: 100% !important;
+}
+
 page-zona-enarm .home-tile {
   width: 100%;
 }
