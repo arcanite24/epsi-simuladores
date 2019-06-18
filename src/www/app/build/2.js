@@ -5,10 +5,10 @@ webpackJsonp([2],{
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaPageModule", function() { return MateriaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MediaPageModule", function() { return MediaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(1194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__media__ = __webpack_require__(1195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1166);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,24 +20,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MateriaPageModule = /** @class */ (function () {
-    function MateriaPageModule() {
+var MediaPageModule = /** @class */ (function () {
+    function MediaPageModule() {
     }
-    MateriaPageModule = __decorate([
+    MediaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__materia__["a" /* MateriaPage */],
+                __WEBPACK_IMPORTED_MODULE_2__media__["a" /* MediaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materia__["a" /* MateriaPage */]),
-                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */]
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__media__["a" /* MediaPage */]),
+                __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
             ],
         })
-    ], MateriaPageModule);
-    return MateriaPageModule;
+    ], MediaPageModule);
+    return MediaPageModule;
 }());
 
-//# sourceMappingURL=materia.module.js.map
+//# sourceMappingURL=media.module.js.map
 
 /***/ }),
 
@@ -2129,12 +2129,14 @@ function(module) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1175);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2160,6 +2162,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
             ],
             imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* IonicModule */], __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"]],
             exports: [__WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__["a" /* AccordionListComponent */],
@@ -2170,6 +2173,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
             ]
         })
     ], ComponentsModule);
@@ -2784,7 +2788,7 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(590);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2931,7 +2935,7 @@ var StatStructureItemComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_models__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(589);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
@@ -2939,7 +2943,7 @@ var StatStructureItemComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngrx_store__ = __webpack_require__(593);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(590);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_data_data__ = __webpack_require__(263);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3360,7 +3364,7 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
     ], ExamQuestionsWidgetComponent.prototype, "answerSelected", void 0);
     ExamQuestionsWidgetComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante:\n      {{duration_label}}</strong></p>\n  <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button class="btn btn-secondary" [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
+            selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante:\n      {{duration_label}}</strong></p>\n  <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button ion-button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button ion-button [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
             __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */],
@@ -3378,15 +3382,14 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1194:
+/***/ 1175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExamResultsTagStructureComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -3407,170 +3410,145 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+
+
+var ExamResultsTagStructureComponent = /** @class */ (function () {
+    function ExamResultsTagStructureComponent() {
+        this.colors = [];
+        this.tags = [];
+        this.tagColors = {};
+        this.extraTags = [];
+        this.ignored_tags = ['tagbloqueado', 'ignorartag'];
     }
+    ExamResultsTagStructureComponent.prototype.ngOnInit = function () {
+        this.loadStruct(this.result);
+        this.initTagColors();
+    };
+    ExamResultsTagStructureComponent.prototype.initTagColors = function () {
+        if (!this.colors)
+            return {};
+        var payload = {};
+        for (var _i = 0, _a = this.colors; _i < _a.length; _i++) {
+            var color = _a[_i];
+            payload[color.tag] = color.color;
+        }
+        this.tagColors = payload;
+    };
+    ExamResultsTagStructureComponent.prototype.loadStruct = function (r) {
+        var _this = this;
+        var struct = {};
+        var allTags = Object.values(r.questions).map(function (q) { return q.raw.tags; }).filter(function (t) { return t; });
+        /*console.log(allTags)*/
+        // Get extra tags
+        var withExtra = allTags.filter(function (t) { return t.length > 3; }).map(function (t) { return t[3]; });
+        var extraTags = Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["uniq"])(Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["flattenDeep"])(withExtra));
+        this.extraTags = extraTags.map(function (tag) { return ({
+            tag: tag,
+            value: _this.getPromedioByTag(tag, _this.result)
+        }); });
+        // Remove ignored tags
+        var removedIgnored = allTags.map(function (t) { return t.filter(function (tt) { return !_this.ignored_tags.includes(tt); }); });
+        var removedExtras = removedIgnored.map(function (t) { return t.filter(function (tt) { return !extraTags.includes(tt); }); });
+        /*console.log('removedExtras', removedExtras)*/
+        // Set struct
+        var _removedExtras = removedExtras.slice();
+        for (var _i = 0, _removedExtras_1 = _removedExtras; _i < _removedExtras_1.length; _i++) {
+            var family = _removedExtras_1[_i];
+            // Get and set parent
+            var parent_1 = family.shift();
+            if (!struct[parent_1])
+                struct[parent_1] = { tag: parent_1, children: {} };
+            // If have children, now set children
+            if (family.length > 0) {
+                var child = family.shift();
+                if (!struct[parent_1].children[child])
+                    struct[parent_1].children[child] = { tag: child, grandchildren: [] };
+                /*console.log(struct[parent].children[child], family)*/
+                // If have grandchildren, set those
+                if (family.length > 0) {
+                    var grandchildren = family.shift();
+                    if (struct[parent_1].children[child].grandchildren && !struct[parent_1].children[child].grandchildren.includes(grandchildren))
+                        struct[parent_1].children[child].grandchildren.push(grandchildren);
+                }
+            }
+        }
+        this.tags = Object.values(struct)
+            .map(function (parent) { return (__assign({}, parent, { value: _this.getPromedioByTag(parent.tag, _this.result), children: Object.values(parent.children).map(function (child) { return (__assign({}, child, { value: _this.getPromedioByTag(child.tag, _this.result), grandchildren: Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["uniq"])(child.grandchildren).map(function (grandchild) { return ({
+                    value: _this.getPromedioByTag(grandchild, _this.result),
+                    tag: grandchild
+                }); }) })); }) })); });
+    };
+    ExamResultsTagStructureComponent.prototype.getPromedioByTag = function (tag, result) {
+        var total = Object.values(result.questions)
+            .map(function (q) { return ({ correcta: q.correcta, tags: q.raw.tags }); })
+            .filter(function (q) { return q.tags && q.tags.includes(tag); });
+        var correctas = total.filter(function (q) { return q.correcta; }).length;
+        return correctas / total.length;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], ExamResultsTagStructureComponent.prototype, "result", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Array)
+    ], ExamResultsTagStructureComponent.prototype, "colors", void 0);
+    ExamResultsTagStructureComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'exam-results-tag-structure',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-results-tag-structure/exam-results-tag-structure.html"*/'<ul class="list-group w-100">\n\n  <li class="list-group-item">Promedio por tema</li>\n\n  <!--<li>\n    <pre>{{tagColors | json}}</pre>\n  </li>-->\n\n  <li *ngFor="let parent of tags" class="list-group-item">\n\n    <strong>{{parent.value * 100 | number}}%</strong>\n    <span class="ml-2">{{parent.tag}}</span>\n    <div class="bar-container">\n      <div class="bar" [style.background-color]="tagColors[parent.tag]" [style.width.%]="parent.value * 100"></div>\n    </div>\n\n    <!-- Children -->\n    <ul class="list-group" *ngIf="parent.children as children">\n      <li *ngFor="let child of children" class="list-group-item">\n\n        <strong>{{child.value * 100 | number}}%</strong>\n        <span class="ml-2">{{child.tag}}</span>\n        <div class="bar-container">\n          <div class="bar" [style.background-color]="tagColors[child.tag]" [style.width.%]="child.value * 100"></div>\n        </div>\n\n        <!-- Grandchildren -->\n        <ul class="list-group" *ngIf="child.grandchildren as grandchildren">\n          <li *ngFor="let grand of grandchildren" class="list-group-item">\n\n            <strong>{{grand.value * 100 | number}}%</strong>\n            <span class="ml-2">{{grand.tag}}</span>\n            <div class="bar-container">\n              <div class="bar" [style.background-color]="tagColors[grand.tag]" [style.width.%]="grand.value * 100">\n              </div>\n            </div>\n\n          </li>\n        </ul>\n\n      </li>\n    </ul>\n\n  </li>\n\n  <li *ngFor="let tag of extraTags" class="list-group-item">\n\n    <strong>{{tag.value * 100 | number}}%</strong>\n    <span class="ml-2">{{tag.tag}}</span>\n    <div class="bar-container">\n      <div class="bar" [style.background-color]="tagColors[tag.tag]" [style.width.%]="tag.value * 100"></div>\n    </div>\n\n  </li>\n\n</ul>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-results-tag-structure/exam-results-tag-structure.html"*/
+        }),
+        __metadata("design:paramtypes", [])
+    ], ExamResultsTagStructureComponent);
+    return ExamResultsTagStructureComponent;
+}());
+
+//# sourceMappingURL=exam-results-tag-structure.js.map
+
+/***/ }),
+
+/***/ 1195:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MediaPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
 
 
 
-var MateriaPage = /** @class */ (function () {
-    function MateriaPage(navCtrl, navParams, data) {
+var MediaPage = /** @class */ (function () {
+    function MediaPage(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.data = data;
-        this.information = [];
-        this.loader = false;
+        this.afs = afs;
+        this.medias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].MEDIA_CATEGORY).valueChanges();
     }
-    MateriaPage.prototype.ionViewDidLoad = function () {
-        this.loader = true;
-        var id = this.navParams.get('id');
-        this.loadContent(id);
-        /* this.back.getTemario(this.navParams.get('id')).subscribe(data => {
-          console.log(data)
-          this.information = data.map(b => ({
-            name: b.name,
-            children: b.temas.map(t => ({
-              id: t.id,
-              name: t.name,
-              information: t.desc,
-              video: t.video,
-              children: !t.video ? t.subs.map(s => ({
-                id: s.id,
-                name: s.name,
-                information: s.desc,
-                video: s.video})) : null
-              }))
-            }))
-          this.loader = false
-        }, err => {
-          this.toast.create({message: 'No se pudo cargar el temario...', duration: 2000}).present()
-          this.loader = false
-          if (this.navCtrl.canGoBack()) this.navCtrl.pop()
-        }) */
-    };
-    MateriaPage.prototype.loadContent = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var materia, _a, _loop_1, this_1, _i, _b, bloque;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0: return [4 /*yield*/, this.data.getDoc(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, id)];
-                    case 1:
-                        materia = _c.sent();
-                        _a = materia;
-                        return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                .where('parent_id', '==', materia.id); })];
-                    case 2:
-                        _a.children = _c.sent();
-                        materia.children = materia.children.map(function (m) { return (__assign({}, m, { children: [] })); });
-                        _loop_1 = function (bloque) {
-                            var _a, _loop_2, _i, _b, tema;
-                            return __generator(this, function (_c) {
-                                switch (_c.label) {
-                                    case 0:
-                                        _a = bloque;
-                                        return [4 /*yield*/, this_1.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                                .where('parent_id', '==', bloque.id); })
-                                            // Load subtemas
-                                        ];
-                                    case 1:
-                                        _a.children = _c.sent();
-                                        _loop_2 = function (tema) {
-                                            var _a;
-                                            return __generator(this, function (_b) {
-                                                switch (_b.label) {
-                                                    case 0:
-                                                        _a = tema;
-                                                        return [4 /*yield*/, this_1.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, function (ref) { return ref
-                                                                .where('parent_id', '==', tema.id); })];
-                                                    case 1:
-                                                        _a.children = _b.sent();
-                                                        return [2 /*return*/];
-                                                }
-                                            });
-                                        };
-                                        _i = 0, _b = bloque.children;
-                                        _c.label = 2;
-                                    case 2:
-                                        if (!(_i < _b.length)) return [3 /*break*/, 5];
-                                        tema = _b[_i];
-                                        return [5 /*yield**/, _loop_2(tema)];
-                                    case 3:
-                                        _c.sent();
-                                        _c.label = 4;
-                                    case 4:
-                                        _i++;
-                                        return [3 /*break*/, 2];
-                                    case 5: return [2 /*return*/];
-                                }
-                            });
-                        };
-                        this_1 = this;
-                        _i = 0, _b = materia.children;
-                        _c.label = 3;
-                    case 3:
-                        if (!(_i < _b.length)) return [3 /*break*/, 6];
-                        bloque = _b[_i];
-                        return [5 /*yield**/, _loop_1(bloque)];
-                    case 4:
-                        _c.sent();
-                        _c.label = 5;
-                    case 5:
-                        _i++;
-                        return [3 /*break*/, 3];
-                    case 6:
-                        this.loader = false;
-                        this.information = materia.children;
-                        console.log(materia);
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    MateriaPage = __decorate([
+    MediaPage.prototype.ionViewDidLoad = function () { };
+    MediaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-materia',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Materia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <div class="flex-col" *ngIf="loader">\n    <img src="assets/imgs/rings.svg">\n  </div>\n  <accordion-list [information]="information"></accordion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia/materia.html"*/,
+            selector: 'page-media',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/media/media.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Material Extra</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="medias-container" *ngIf="medias$ | async as medias else loader">\n    <media-item *ngFor="let media of medias" [media]="media"></media-item>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/media/media.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */]])
-    ], MateriaPage);
-    return MateriaPage;
+            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+    ], MediaPage);
+    return MediaPage;
 }());
 
-//# sourceMappingURL=materia.js.map
+//# sourceMappingURL=media.js.map
 
 /***/ })
 

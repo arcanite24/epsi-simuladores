@@ -1,14 +1,14 @@
 webpackJsonp([4],{
 
-/***/ 1115:
+/***/ 1116:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GaleriasPageModule", function() { return GaleriasPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galerias__ = __webpack_require__(1190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(1192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1166);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -20,24 +20,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var GaleriasPageModule = /** @class */ (function () {
-    function GaleriasPageModule() {
+var HomePageModule = /** @class */ (function () {
+    function HomePageModule() {
     }
-    GaleriasPageModule = __decorate([
+    HomePageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__galerias__["a" /* GaleriasPage */],
+                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__galerias__["a" /* GaleriasPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
                 __WEBPACK_IMPORTED_MODULE_3__components_components_module__["a" /* ComponentsModule */],
             ],
         })
-    ], GaleriasPageModule);
-    return GaleriasPageModule;
+    ], HomePageModule);
+    return HomePageModule;
 }());
 
-//# sourceMappingURL=galerias.module.js.map
+//# sourceMappingURL=home.module.js.map
 
 /***/ }),
 
@@ -2129,12 +2129,14 @@ function(module) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1175);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -2160,6 +2162,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
             ],
             imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* IonicModule */], __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"]],
             exports: [__WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__["a" /* AccordionListComponent */],
@@ -2170,6 +2173,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
             ]
         })
     ], ComponentsModule);
@@ -2784,7 +2788,7 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(590);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -2931,7 +2935,7 @@ var StatStructureItemComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_models__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(589);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
@@ -2939,7 +2943,7 @@ var StatStructureItemComponent = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ngrx_store__ = __webpack_require__(593);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(590);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_data_data__ = __webpack_require__(263);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3360,7 +3364,7 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
     ], ExamQuestionsWidgetComponent.prototype, "answerSelected", void 0);
     ExamQuestionsWidgetComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante:\n      {{duration_label}}</strong></p>\n  <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button class="btn btn-secondary" [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
+            selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante:\n      {{duration_label}}</strong></p>\n  <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button ion-button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button ion-button [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
             __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */],
@@ -3378,16 +3382,25 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1190:
+/***/ 1175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GaleriasPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExamResultsTagStructureComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_lodash__);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3399,29 +3412,336 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-var GaleriasPage = /** @class */ (function () {
-    function GaleriasPage(navCtrl, navParams, afs) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.afs = afs;
-        this.galerias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].GALLERY_CATEGORY).valueChanges();
+var ExamResultsTagStructureComponent = /** @class */ (function () {
+    function ExamResultsTagStructureComponent() {
+        this.colors = [];
+        this.tags = [];
+        this.tagColors = {};
+        this.extraTags = [];
+        this.ignored_tags = ['tagbloqueado', 'ignorartag'];
     }
-    GaleriasPage.prototype.ionViewDidLoad = function () {
+    ExamResultsTagStructureComponent.prototype.ngOnInit = function () {
+        this.loadStruct(this.result);
+        this.initTagColors();
     };
-    GaleriasPage = __decorate([
+    ExamResultsTagStructureComponent.prototype.initTagColors = function () {
+        if (!this.colors)
+            return {};
+        var payload = {};
+        for (var _i = 0, _a = this.colors; _i < _a.length; _i++) {
+            var color = _a[_i];
+            payload[color.tag] = color.color;
+        }
+        this.tagColors = payload;
+    };
+    ExamResultsTagStructureComponent.prototype.loadStruct = function (r) {
+        var _this = this;
+        var struct = {};
+        var allTags = Object.values(r.questions).map(function (q) { return q.raw.tags; }).filter(function (t) { return t; });
+        /*console.log(allTags)*/
+        // Get extra tags
+        var withExtra = allTags.filter(function (t) { return t.length > 3; }).map(function (t) { return t[3]; });
+        var extraTags = Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["uniq"])(Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["flattenDeep"])(withExtra));
+        this.extraTags = extraTags.map(function (tag) { return ({
+            tag: tag,
+            value: _this.getPromedioByTag(tag, _this.result)
+        }); });
+        // Remove ignored tags
+        var removedIgnored = allTags.map(function (t) { return t.filter(function (tt) { return !_this.ignored_tags.includes(tt); }); });
+        var removedExtras = removedIgnored.map(function (t) { return t.filter(function (tt) { return !extraTags.includes(tt); }); });
+        /*console.log('removedExtras', removedExtras)*/
+        // Set struct
+        var _removedExtras = removedExtras.slice();
+        for (var _i = 0, _removedExtras_1 = _removedExtras; _i < _removedExtras_1.length; _i++) {
+            var family = _removedExtras_1[_i];
+            // Get and set parent
+            var parent_1 = family.shift();
+            if (!struct[parent_1])
+                struct[parent_1] = { tag: parent_1, children: {} };
+            // If have children, now set children
+            if (family.length > 0) {
+                var child = family.shift();
+                if (!struct[parent_1].children[child])
+                    struct[parent_1].children[child] = { tag: child, grandchildren: [] };
+                /*console.log(struct[parent].children[child], family)*/
+                // If have grandchildren, set those
+                if (family.length > 0) {
+                    var grandchildren = family.shift();
+                    if (struct[parent_1].children[child].grandchildren && !struct[parent_1].children[child].grandchildren.includes(grandchildren))
+                        struct[parent_1].children[child].grandchildren.push(grandchildren);
+                }
+            }
+        }
+        this.tags = Object.values(struct)
+            .map(function (parent) { return (__assign({}, parent, { value: _this.getPromedioByTag(parent.tag, _this.result), children: Object.values(parent.children).map(function (child) { return (__assign({}, child, { value: _this.getPromedioByTag(child.tag, _this.result), grandchildren: Object(__WEBPACK_IMPORTED_MODULE_1_lodash__["uniq"])(child.grandchildren).map(function (grandchild) { return ({
+                    value: _this.getPromedioByTag(grandchild, _this.result),
+                    tag: grandchild
+                }); }) })); }) })); });
+    };
+    ExamResultsTagStructureComponent.prototype.getPromedioByTag = function (tag, result) {
+        var total = Object.values(result.questions)
+            .map(function (q) { return ({ correcta: q.correcta, tags: q.raw.tags }); })
+            .filter(function (q) { return q.tags && q.tags.includes(tag); });
+        var correctas = total.filter(function (q) { return q.correcta; }).length;
+        return correctas / total.length;
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object)
+    ], ExamResultsTagStructureComponent.prototype, "result", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Array)
+    ], ExamResultsTagStructureComponent.prototype, "colors", void 0);
+    ExamResultsTagStructureComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-galerias',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/galerias/galerias.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Galerias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!galerias">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div *ngIf="galerias$ | async as galerias else loader">\n\n    <gallery-item *ngFor="let cat of galerias" [gallery]="cat"></gallery-item>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/galerias/galerias.html"*/,
+            selector: 'exam-results-tag-structure',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-results-tag-structure/exam-results-tag-structure.html"*/'<ul class="list-group w-100">\n\n  <li class="list-group-item">Promedio por tema</li>\n\n  <!--<li>\n    <pre>{{tagColors | json}}</pre>\n  </li>-->\n\n  <li *ngFor="let parent of tags" class="list-group-item">\n\n    <strong>{{parent.value * 100 | number}}%</strong>\n    <span class="ml-2">{{parent.tag}}</span>\n    <div class="bar-container">\n      <div class="bar" [style.background-color]="tagColors[parent.tag]" [style.width.%]="parent.value * 100"></div>\n    </div>\n\n    <!-- Children -->\n    <ul class="list-group" *ngIf="parent.children as children">\n      <li *ngFor="let child of children" class="list-group-item">\n\n        <strong>{{child.value * 100 | number}}%</strong>\n        <span class="ml-2">{{child.tag}}</span>\n        <div class="bar-container">\n          <div class="bar" [style.background-color]="tagColors[child.tag]" [style.width.%]="child.value * 100"></div>\n        </div>\n\n        <!-- Grandchildren -->\n        <ul class="list-group" *ngIf="child.grandchildren as grandchildren">\n          <li *ngFor="let grand of grandchildren" class="list-group-item">\n\n            <strong>{{grand.value * 100 | number}}%</strong>\n            <span class="ml-2">{{grand.tag}}</span>\n            <div class="bar-container">\n              <div class="bar" [style.background-color]="tagColors[grand.tag]" [style.width.%]="grand.value * 100">\n              </div>\n            </div>\n\n          </li>\n        </ul>\n\n      </li>\n    </ul>\n\n  </li>\n\n  <li *ngFor="let tag of extraTags" class="list-group-item">\n\n    <strong>{{tag.value * 100 | number}}%</strong>\n    <span class="ml-2">{{tag.tag}}</span>\n    <div class="bar-container">\n      <div class="bar" [style.background-color]="tagColors[tag.tag]" [style.width.%]="tag.value * 100"></div>\n    </div>\n\n  </li>\n\n</ul>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-results-tag-structure/exam-results-tag-structure.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
-    ], GaleriasPage);
-    return GaleriasPage;
+        __metadata("design:paramtypes", [])
+    ], ExamResultsTagStructureComponent);
+    return ExamResultsTagStructureComponent;
 }());
 
-//# sourceMappingURL=galerias.js.map
+//# sourceMappingURL=exam-results-tag-structure.js.map
+
+/***/ }),
+
+/***/ 1192:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_in_app_browser__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_back_back__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_data_data__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2_firestore__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+var HomePage = /** @class */ (function () {
+    function HomePage(navCtrl, navParams, back, toast, modal, iap, network, afAuth, auth, data, afs) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.back = back;
+        this.toast = toast;
+        this.modal = modal;
+        this.iap = iap;
+        this.network = network;
+        this.afAuth = afAuth;
+        this.auth = auth;
+        this.data = data;
+        this.afs = afs;
+        this.notRead = 0;
+        this.uid = localStorage.getItem('uid');
+        this.modalOpened = false;
+        this.tempranoUnlock = [
+            'MediaPage',
+            'ForosPage',
+            'AsesoriasPage',
+            'SimuladoresPage'
+        ];
+        this.loaded = false;
+        this.feed = false;
+    }
+    HomePage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        // this.loadNotis()
+        this.checkForInternet();
+        this.auth.user$.subscribe(function (user) {
+            if (user) {
+                if (!_this.loaded)
+                    _this.loadMoodRates(user.uid);
+            }
+        });
+        this.users$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_8__app_app_models__["a" /* Collections */].USER, function (ref) { return ref
+            .where('promedio', '>', 0)
+            .orderBy('promedio', 'desc')
+            .limit(5); })
+            .valueChanges();
+    };
+    HomePage.prototype.loadMoodRates = function (uid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var rates, today, canOpen;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_8__app_app_models__["a" /* Collections */].MOOD_RATE, function (ref) { return ref.where('user', '==', uid); })
+                        /* const dailyRegisters = await this.data.getCollectionQuery<MoodRate>(Collections.DAILY_REGISTER, ref => ref.where('user', '==', uid)) */
+                    ];
+                    case 1:
+                        rates = _a.sent();
+                        today = __WEBPACK_IMPORTED_MODULE_9_moment___default()().format('DD-MM-YYYY');
+                        canOpen = rates.filter(function (r) { return r.date == today; }).length <= 0;
+                        /* const canOpenDaily = rates.filter(r => r.date == today).length <= 0 */
+                        console.log(rates, today);
+                        if (canOpen && !this.modalOpened) {
+                            this.modal.create('ComoTeSientesHoyPage').present();
+                            this.modalOpened = true;
+                        }
+                        /* if (canOpenDaily) this.openDaily(uid, today) */
+                        this.loaded = true;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    HomePage.prototype.openNotis = function () {
+        var _this = this;
+        var m = this.modal.create('NotificationsPage');
+        m.present();
+        m.onDidDismiss(function (data) { return _this.loadNotis(); });
+    };
+    HomePage.prototype.loadNotis = function () {
+        var _this = this;
+        this.back.getNotisUser(this.uid).subscribe(function (data) {
+            _this.notRead = data.filter(function (n) { return !n.read; }).length;
+        }, function (err) { /* this.toast.create({message: 'No se pudo cargar la cantidad de notificaciones no leídas...', duration: 2000}).present() */ return null; });
+    };
+    HomePage.prototype.checkForInternet = function () {
+        this.network.onDisconnect().subscribe(function () {
+            console.log('no connection');
+        });
+    };
+    HomePage.prototype.reload = function (r) {
+        setTimeout(function () { return r.complete(); }, 1000);
+    };
+    HomePage.prototype.openChecklist = function () {
+        this.navCtrl.push('ChecklistPage');
+    };
+    HomePage.prototype.goto = function (page) {
+        this.navCtrl.push(page);
+        /* if (this.back.isTemprano && this.tempranoUnlock.indexOf(page) >= 0) {
+          this.navCtrl.push(page)
+        } else if (page == 'lock') {
+          this.toast.create({message: 'Disponible en Abril', duration: 2000}).present()
+        } else if (!this.back.isTemprano && this.tempranoUnlock.indexOf(page) >= 0) {
+          this.toast.create({message: 'Disponible en Abril', duration: 2000}).present()
+        } else {
+          this.navCtrl.push(page)
+        } */
+    };
+    HomePage.prototype.openVideos = function (isPrograma) {
+        if (isPrograma === void 0) { isPrograma = false; }
+        // EspecialidadesPage
+        if (this.auth.isTemprano)
+            return this.navCtrl.push('EspecialidadesPage', { isPrograma: isPrograma });
+        return this.toast.create({ message: 'Disponible en Abril', duration: 2000 }).present();
+        //this.toast.create({message: 'Debes adquirir el curso premium.', duration: 2000}).present()
+    };
+    HomePage.prototype.logout = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: 
+                    /* localStorage.removeItem('user')
+                    localStorage.removeItem('token')
+                    localStorage.removeItem('uid')
+                    this.navCtrl.setRoot('LoginPage') */
+                    return [4 /*yield*/, this.afAuth.auth.signOut()];
+                    case 1:
+                        /* localStorage.removeItem('user')
+                        localStorage.removeItem('token')
+                        localStorage.removeItem('uid')
+                        this.navCtrl.setRoot('LoginPage') */
+                        _a.sent();
+                        this.navCtrl.setRoot('LoginPage');
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    HomePage.prototype.openZamna = function (link) {
+        this.iap.create('https://zamnademy.com').show();
+    };
+    HomePage.prototype.purge = function () {
+        this.back.purgeGoogle().subscribe(function (data) { return console.log(data); }, function (err) { return console.log(err); });
+    };
+    HomePage.prototype.openCalendar = function () {
+        if (this.auth.isSmartCalendar && !this.auth.user.noCalendar)
+            return this.navCtrl.push('SmartCalendarPage');
+        this.navCtrl.push('CalendarPage');
+    };
+    HomePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'page-home',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/'<div class="home-loader" *ngIf="!auth.loggedIn">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zamnademy</ion-title>\n    <ion-buttons end hidden>\n      <button ion-button icon-only (click)="openNotis()">\n        <ion-icon name="notifications"></ion-icon>\n        <ion-badge color="danger" class="noti-badge" *ngIf="notRead > 0" >{{notRead | number}}</ion-badge>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!--<ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>-->\n\n  <!--\n    6.-All Your Recorded Songs Are Stuffed Animals - The Yu-Yi Band\n    9.-Phanerozoic I: Paleozoic - The Ocean\n    2-.Postcards from St. Evenage - The Yu-Yi Band\n    1.- Alba, les ombres errantes - A Backward Glance on a Travel Road\n    3.-From the gallery of Sleep - Night Verses\n    7.-Vector - Haken\n    4.-Sonder - TesseracT\n    5.-Hago - Hago\n    8.-Applause Of A Distant Crowd - VOLA\n    10.-Time Will Die and Love Will Bury It - Rolo Tomassi\n  -->\n\n  <!-- <pre class="w100" *ngIf="auth.loggedIn">\n    <pre>{{ auth.user$ | async | json }}</pre>\n  </pre> -->\n\n  <!-- <zamna-feed *ngIf="auth.isComprado" class="w100"></zamna-feed> -->\n  <ion-list *ngIf="users$ | async as users">\n    <ion-item *ngFor="let user of users">\n      <ion-avatar item-start>\n        <img [src]="user.photoURL">\n      </ion-avatar>\n      <h2>{{user.displayName}}</h2>\n      <p>\n        <strong>{{user.promedio | number}}</strong>\n      </p>\n    </ion-item>\n  </ion-list>\n\n   <div class="flex flex-col text-center" padding (click)="openZamna()" *ngIf="!auth.isComprado">\n    <h2>No tienes ningún curso comprado, puedes adquirir el <strong>Curso ENARM Esencial</strong> o <strong>Curso ENARM Premium</strong> en:</h2>\n    <h3 class="c54">zamnademy.com</h3>\n  </div>\n\n  <div class="home-grid" *ngIf="auth.isComprado">\n\n    <!-- <div class="home-tile" (click)="openVideos()">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Streaming</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="openVideos(true)" *ngIf="auth.isAdmin">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Programa</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'MiCursoPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/youtube.png">\n        <span>Mi Curso</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'GaleriasPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Infografias.png">\n        <span>Mi colección de Infografías</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'MediaPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/media.svg">\n        <span>Material Extra</span>\n      </ion-card>\n    </div>\n\n    <!-- <div class="home-tile" (click)="goto(\'AsesoriasPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/ase.svg">\n        <span>Asesorías en vivo</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'ForosPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Foro.png">\n        <span>Mi asesor personal</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'SlidesPage\')">\n    <!-- <div class="home-tile" (click)="goto(\'lock\')"> -->\n      <ion-card class="flex-col">\n        <img src="assets/imgs/presentaciones.svg">\n        <span>Presentaciones</span>\n      </ion-card>\n    </div>\n\n    <!-- <div class="home-tile" (click)="goto(\'SimuladoresPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulador.svg">\n        <span>Mi simulador diario ENARM</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'lock\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Simulacro de examen real</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'ZonaEnarmPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Zona Enarm</span>\n      </ion-card>\n    </div>\n\n  </div>\n\n  <div class="flex-col" padding>\n    <button ion-button (click)="feed = !feed">{{feed ? \'Ocultar Feed\' : \'Feed\'}}</button>\n  </div>\n\n  <zamna-feed *ngIf="feed"></zamna-feed>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito"><ion-icon name="menu"></ion-icon></button>\n    <ion-fab-list side="top">\n\n      <button ion-fab (click)="logout()">\n        <ion-label>Cerrar Sesión</ion-label>\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="openChecklist()" *ngIf="auth.isComprado">\n        <ion-label>Checklist</ion-label>\n        <ion-icon name="checkbox"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="openCalendar()" *ngIf="auth.isComprado">\n        <ion-label>Programa paso a paso</ion-label>\n        <ion-icon name="calendar"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'NotasPage\')" *ngIf="auth.isComprado">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="paper"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'TopUsersPage\')" *ngIf="auth.isComprado">\n        <ion-label>Cuadro de Honor</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'MisResultadosPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mis Resultados</ion-label>\n        <ion-icon name="copy"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'DownloadsPage\')" *ngIf="auth.isComprado">\n        <ion-label>Descargas</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'MiAnaliticaPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mi Analítica Personal</ion-label>\n        <ion-icon name="analytics"></ion-icon>\n      </button>\n\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_back_back__["a" /* BackProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_0__ionic_native_in_app_browser__["a" /* InAppBrowser */],
+            __WEBPACK_IMPORTED_MODULE_4__ionic_native_network__["a" /* Network */],
+            __WEBPACK_IMPORTED_MODULE_5_angularfire2_auth__["AngularFireAuth"],
+            __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_7__providers_data_data__["a" /* DataProvider */],
+            __WEBPACK_IMPORTED_MODULE_10_angularfire2_firestore__["AngularFirestore"]])
+    ], HomePage);
+    return HomePage;
+}());
+
+//# sourceMappingURL=home.js.map
 
 /***/ })
 

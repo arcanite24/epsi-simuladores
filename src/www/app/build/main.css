@@ -51723,6 +51723,22 @@ exam-feedback-modal .c-epsi-primary {
   color: #5e4b8b;
 }
 
+exam-results-tag-structure .result-questions {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+exam-results-tag-structure .bar-container {
+  width: 100%;
+}
+
+exam-results-tag-structure .bar {
+  padding: 5px;
+  background-color: #5e4b8b;
+}
+
 .epsi-stat-structure-item {
   padding: 1rem;
 }

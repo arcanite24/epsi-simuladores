@@ -1,6 +1,6 @@
 webpackJsonp([36],{
 
-/***/ 1114:
+/***/ 1113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -45,7 +45,7 @@ var GaleriaDetailPageModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GaleriaDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(596);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(597);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
@@ -117,7 +117,14 @@ var GaleriaDetailPage = /** @class */ (function () {
     GaleriaDetailPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.gallery$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].GALLERY).doc(this.id).valueChanges();
-        this.notas$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE, function (ref) { return ref.where('parent_id', '==', _this.id); }).valueChanges();
+        this.auth.user$.subscribe(function (user) {
+            if (user && !_this.notas$) {
+                _this.notas$ = _this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE, function (ref) { return ref
+                    .where('parent_id', '==', _this.id)
+                    .where('user', '==', user.uid); })
+                    .valueChanges();
+            }
+        });
     };
     GaleriaDetailPage.prototype.openImg = function (img) {
         this.imgCtrl.create(img).present();

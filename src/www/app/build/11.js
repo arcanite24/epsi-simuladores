@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 1145:
+/***/ 1146:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreadAddPageModule", function() { return ThreadAddPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TopUsersPageModule", function() { return TopUsersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thread_add__ = __webpack_require__(1220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__top_users__ = __webpack_require__(1222);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,49 +18,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ThreadAddPageModule = /** @class */ (function () {
-    function ThreadAddPageModule() {
+var TopUsersPageModule = /** @class */ (function () {
+    function TopUsersPageModule() {
     }
-    ThreadAddPageModule = __decorate([
+    TopUsersPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__thread_add__["a" /* ThreadAddPage */],
+                __WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__thread_add__["a" /* ThreadAddPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */]),
             ],
         })
-    ], ThreadAddPageModule);
-    return ThreadAddPageModule;
+    ], TopUsersPageModule);
+    return TopUsersPageModule;
 }());
 
-//# sourceMappingURL=thread-add.module.js.map
+//# sourceMappingURL=top-users.module.js.map
 
 /***/ }),
 
-/***/ 1220:
+/***/ 1222:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThreadAddPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopUsersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular_navigation_view_controller__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(263);
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__ = __webpack_require__(590);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -111,53 +99,60 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var ThreadAddPage = /** @class */ (function () {
-    function ThreadAddPage(navCtrl, navParams, afs, viewCtrl, data) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
+var TopUsersPage = /** @class */ (function () {
+    function TopUsersPage(auth, afs, stats) {
+        this.auth = auth;
         this.afs = afs;
-        this.viewCtrl = viewCtrl;
-        this.data = data;
-        this.thread = {};
-        this.cat_id = this.navParams.get('cat');
+        this.stats = stats;
     }
-    ThreadAddPage.prototype.addThread = function () {
+    TopUsersPage.prototype.ngOnInit = function () {
+        this.users$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER, function (ref) { return ref
+            .where('promedio', '>', 0)
+            .orderBy('promedio', 'desc')
+            .limit(5); })
+            .valueChanges();
+        this.reloadUsers();
+    };
+    TopUsersPage.prototype.reloadUsers = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        _a = this;
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_CATEGORY, this.cat_id)];
+            var users, _i, users_1, user, promedio;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["take"])(1)).toPromise()];
                     case 1:
-                        _a.cat = _b.sent();
-                        this.thread.id = this.afs.createId();
-                        this.thread.date = new Date().toISOString();
-                        this.thread.cat_id = this.cat_id;
-                        this.thread.cat_name = this.cat.name;
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD).doc(this.thread.id).set(__assign({}, this.thread))];
+                        users = _a.sent();
+                        _i = 0, users_1 = users;
+                        _a.label = 2;
                     case 2:
-                        _b.sent();
-                        this.viewCtrl.dismiss();
-                        return [2 /*return*/];
+                        if (!(_i < users_1.length)) return [3 /*break*/, 6];
+                        user = users_1[_i];
+                        return [4 /*yield*/, this.stats.computeUserAverage(user.uid)];
+                    case 3:
+                        promedio = _a.sent();
+                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER + "/" + user.uid).update({ promedio: promedio })];
+                    case 4:
+                        _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        _i++;
+                        return [3 /*break*/, 2];
+                    case 6: return [2 /*return*/];
                 }
             });
         });
     };
-    ThreadAddPage = __decorate([
+    TopUsersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-thread-add',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Hacer una pregunta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Tema de la publicación" [(ngModel)]="thread.title"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Pregunta de la publicación" [(ngModel)]="thread.text"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button (click)="addThread()">Agregar</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/,
+            selector: 'page-top-users',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Cuadro de Honor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list *ngIf="users$ | async as users">\n    <ion-item *ngFor="let user of users">\n      <ion-avatar item-start>\n        <img [src]="user.photoURL">\n      </ion-avatar>\n      <h2>{{user.displayName}}</h2>\n      <p>\n        <strong>{{user.promedio | number}}</strong>\n      </p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_4_ionic_angular_navigation_view_controller__["a" /* ViewController */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
-    ], ThreadAddPage);
-    return ThreadAddPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__["AngularFirestore"],
+            __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__["a" /* StatsProvider */]])
+    ], TopUsersPage);
+    return TopUsersPage;
 }());
 
-//# sourceMappingURL=thread-add.js.map
+//# sourceMappingURL=top-users.js.map
 
 /***/ })
 

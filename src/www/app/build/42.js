@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ClaseDetailPageModule", function() { return ClaseDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase_detail__ = __webpack_require__(1182);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__clase_detail__ = __webpack_require__(1183);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var ClaseDetailPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1182:
+/***/ 1183:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -48,7 +48,7 @@ var ClaseDetailPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(596);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_file_transfer__ = __webpack_require__(599);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_angularfire2_firestore__ = __webpack_require__(587);
@@ -124,6 +124,10 @@ var ClaseDetailPage = /** @class */ (function () {
         this.id = this.navParams.get('id');
         this.newComentario = '';
         this.lc = false;
+        this.addData = {
+            title: '',
+            text: '',
+        };
     }
     ClaseDetailPage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -304,13 +308,45 @@ var ClaseDetailPage = /** @class */ (function () {
             });
         });
     };
+    ClaseDetailPage.prototype.addNota = function (title, text) {
+        return __awaiter(this, void 0, void 0, function () {
+            var l, id;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!title)
+                            return [2 /*return*/, this.toast.create({ message: 'Ingresa un titulo', duration: 2000 }).present()];
+                        if (!text)
+                            return [2 /*return*/, this.toast.create({ message: 'Ingresa un text', duration: 2000 }).present()];
+                        l = this.load.create({ content: 'Agregando...' });
+                        l.present();
+                        id = this.afs.createId();
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].NOTE).doc(id).set({
+                                id: id,
+                                title: title,
+                                text: text,
+                                parent_id: this.id,
+                                user: this.auth.user.uid,
+                            })];
+                    case 1:
+                        _a.sent();
+                        l.dismiss();
+                        this.addData = {
+                            title: '',
+                            text: '',
+                        };
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('zamnaPlayer'),
         __metadata("design:type", Object)
     ], ClaseDetailPage.prototype, "video", void 0);
     ClaseDetailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-clase-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{clase ? clase.name : \'Cargando...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="!clase">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <div class="zamna-player" *ngIf="clase">\n    <video controls controlsList="nodownload" class="zamna-player" #zamnaPlayer>\n      <source [src]="clase.video">\n    </video>\n  </div>\n\n  <!-- <div class="w-100" *ngIf="debug">\n    <pre>{{debug | json}}</pre>\n  </div> -->\n\n  <ion-list *ngIf="clase && clase.marks">\n    <ion-list-header>Marcadores</ion-list-header>\n    <ion-item *ngFor="let m of clase.marks" (click)="goto(m.time)" >\n      <h2>{{m.text}}</h2>\n      <p>{{m.time.HH}}:{{m.time.mm}}:{{m.time.ss}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3" *ngIf="clase">\n    <ion-list-header>Comentarios</ion-list-header>\n    <ion-item>\n      <ion-input placeholder="Agregar comentario" [(ngModel)]="newComentario" [disabled]="lc"></ion-input>\n      <button ion-button clear item-end (click)="sendComentario(newComentario)" [disabled]="!newComentario || newComentario.length <= 0" *ngIf="!lc">\n        <ion-icon name="send"></ion-icon>\n      </button>\n      <ion-thumbnail item-end *ngIf="lc">\n        <img src="assets/imgs/rings.svg">\n      </ion-thumbnail>\n    </ion-item>\n    <ion-item *ngFor="let c of comentarios | async" text-wrap>\n      <ion-avatar item-start>\n        <img [src]="c.user_photo ? c.user_photo : \'assets/imgs/profile.jpg\'">\n      </ion-avatar>\n      <h2>{{c.user_name}}</h2>\n      <p>{{c.text}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom *ngIf="clase">\n    <button ion-fab color="rojito"><ion-icon name="arrow-dropup"></ion-icon></button>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'NotasPage\')">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="document"></ion-icon>\n      </button>\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'RatingsPage\')">\n      <ion-label>Calificación</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button>\n      <button ion-fab (click)="openExamen(type, id)" *ngIf="resultados.length <= 0">\n        <ion-label>Evaluación</ion-label>\n        <ion-icon name="archive"></ion-icon>\n      </button>\n      <button ion-fab (click)="downloadVideo()">\n        <ion-label>Descargar Clase</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n      <!-- <button ion-fab (click)="listDir()">\n        <ion-label>List Dir</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button> -->\n      <!--<button ion-fab (click)="deleteResultados(type, id)" *ngIf="auth.isAdmin">\n        <ion-label>Borrar Resultados</ion-label>\n        <ion-icon name="logo-facebook"></ion-icon>\n      </button>-->\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/,
+            selector: 'page-clase-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{clase ? clase.name : \'Cargando...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="!clase">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <div class="zamna-player" *ngIf="clase">\n    <video controls controlsList="nodownload" class="zamna-player" #zamnaPlayer>\n      <source [src]="clase.video">\n    </video>\n  </div>\n\n  <!-- <div class="w-100" *ngIf="debug">\n    <pre>{{debug | json}}</pre>\n  </div> -->\n\n  <ion-list *ngIf="clase && clase.marks">\n    <ion-list-header>Marcadores</ion-list-header>\n    <ion-item *ngFor="let m of clase.marks" (click)="goto(m.time)" >\n      <h2>{{m.text}}</h2>\n      <p>{{m.time.HH}}:{{m.time.mm}}:{{m.time.ss}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-list>\n\n    <ion-item>\n      <ion-input type="text" placeholder="Titulo" [(ngModel)]="addData.title"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-textarea placeholder="Texto" [(ngModel)]="addData.text"></ion-textarea>\n    </ion-item>\n\n  </ion-list>\n\n  <div class="flex-col">\n    <button ion-button (click)="addNota(addData.title, addData.text)">Agregar Nota</button>\n  </div>\n\n  <ion-list class="mt-3" *ngIf="clase">\n    <ion-list-header>Comentarios</ion-list-header>\n    <ion-item>\n      <ion-input placeholder="Agregar comentario" [(ngModel)]="newComentario" [disabled]="lc"></ion-input>\n      <button ion-button clear item-end (click)="sendComentario(newComentario)" [disabled]="!newComentario || newComentario.length <= 0" *ngIf="!lc">\n        <ion-icon name="send"></ion-icon>\n      </button>\n      <ion-thumbnail item-end *ngIf="lc">\n        <img src="assets/imgs/rings.svg">\n      </ion-thumbnail>\n    </ion-item>\n    <ion-item *ngFor="let c of comentarios | async" text-wrap>\n      <ion-avatar item-start>\n        <img [src]="c.user_photo ? c.user_photo : \'assets/imgs/profile.jpg\'">\n      </ion-avatar>\n      <h2>{{c.user_name}}</h2>\n      <p>{{c.text}}</p>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom *ngIf="clase">\n    <button ion-fab color="rojito"><ion-icon name="arrow-dropup"></ion-icon></button>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'NotasPage\')">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="document"></ion-icon>\n      </button>\n      <button ion-fab (click)="openModal(clase.id, navParams.get(\'type\'), \'RatingsPage\')">\n      <ion-label>Calificación</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button>\n      <button ion-fab (click)="openExamen(type, id)" *ngIf="resultados.length <= 0">\n        <ion-label>Evaluación</ion-label>\n        <ion-icon name="archive"></ion-icon>\n      </button>\n      <button ion-fab (click)="downloadVideo()">\n        <ion-label>Descargar Clase</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n      <!-- <button ion-fab (click)="listDir()">\n        <ion-label>List Dir</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button> -->\n      <!--<button ion-fab (click)="deleteResultados(type, id)" *ngIf="auth.isAdmin">\n        <ion-label>Borrar Resultados</ion-label>\n        <ion-icon name="logo-facebook"></ion-icon>\n      </button>-->\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/clase-detail/clase-detail.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],

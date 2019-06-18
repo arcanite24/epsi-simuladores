@@ -1,16 +1,16 @@
 webpackJsonp([8],{
 
-/***/ 1116:
+/***/ 1123:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HiloDetailPageModule", function() { return HiloDetailPageModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__hilo_detail__ = __webpack_require__(1191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(1163);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_moment__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MisResultadosPageModule", function() { return MisResultadosPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular2_moment__ = __webpack_require__(1163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angular2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mis_resultados__ = __webpack_require__(1199);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -21,24 +21,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HiloDetailPageModule = /** @class */ (function () {
-    function HiloDetailPageModule() {
+var MisResultadosPageModule = /** @class */ (function () {
+    function MisResultadosPageModule() {
     }
-    HiloDetailPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+    MisResultadosPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */],
+                __WEBPACK_IMPORTED_MODULE_3__mis_resultados__["a" /* MisResultadosPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */]),
-                __WEBPACK_IMPORTED_MODULE_3_angular2_moment__["MomentModule"]
+                __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_3__mis_resultados__["a" /* MisResultadosPage */]),
+                __WEBPACK_IMPORTED_MODULE_0_angular2_moment__["MomentModule"],
             ],
         })
-    ], HiloDetailPageModule);
-    return HiloDetailPageModule;
+    ], MisResultadosPageModule);
+    return MisResultadosPageModule;
 }());
 
-//# sourceMappingURL=hilo-detail.module.js.map
+//# sourceMappingURL=mis-resultados.module.js.map
 
 /***/ }),
 
@@ -739,17 +739,29 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 1191:
+/***/ 1199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HiloDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MisResultadosPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(263);
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -799,58 +811,55 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var HiloDetailPage = /** @class */ (function () {
-    function HiloDetailPage(navCtrl, navParams, afs, auth) {
+
+var MisResultadosPage = /** @class */ (function () {
+    function MisResultadosPage(navCtrl, navParams, auth, data, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.afs = afs;
         this.auth = auth;
-        this.id = this.navParams.get('id');
-        this.tempR = '';
-        this.lc = false;
+        this.data = data;
+        this.afs = afs;
     }
-    HiloDetailPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD).doc(this.id).valueChanges();
-        this.responses$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE, function (ref) { return ref.where('thread', '==', _this.id); }).valueChanges();
+    MisResultadosPage.prototype.ionViewDidLoad = function () {
+        this.loadResults();
     };
-    HiloDetailPage.prototype.addRespuesta = function (text) {
-        return __awaiter(this, void 0, void 0, function () {
-            var id;
+    MisResultadosPage.prototype.loadResults = function () {
+        var _this = this;
+        this.auth.user$.subscribe(function (user) { return __awaiter(_this, void 0, void 0, function () {
+            var results;
+            var _this = this;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        this.lc = true;
-                        id = this.afs.createId();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE).doc(id).set({
-                                id: id,
-                                text: text,
-                                user: this.auth.user,
-                                user_id: this.auth.user.uid,
-                                thread: this.id,
-                                date: new Date().toISOString()
-                            })];
+                        if (!(user && !this.results)) return [3 /*break*/, 2];
+                        return [4 /*yield*/, this.data
+                                .getCollectionQuery(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM_RESULT, function (ref) { return ref.where('user', '==', user.uid); })];
                     case 1:
-                        _a.sent();
-                        this.tempR = '';
-                        return [2 /*return*/];
+                        results = _a.sent();
+                        this.results = results.filter(function (r) { return r.exam; }).map(function (r) { return (__assign({}, r, { exam$: _this.afs
+                                .collection(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM)
+                                .doc(r.exam)
+                                .valueChanges() })); });
+                        _a.label = 2;
+                    case 2: return [2 /*return*/];
                 }
             });
-        });
+        }); });
     };
-    HiloDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-hilo-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/'¡<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Hilo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!h">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n  \n  <div *ngIf="thread$ | async as h else loader">\n\n    <ion-card>\n      <ion-card-header text-wrap><strong>{{h.title}}</strong></ion-card-header>\n      <ion-card-content>{{h.text}}</ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf="h.best">\n      <ion-item>\n        <ion-avatar item-start>\n          <img [src]="h.best.user.avatar ? \'https://zamnademy.com\' + h.best.user.avatar : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{h.best.user.name}} {{h.best.user.lastName}}</h2>\n        <p> <ion-icon name="star" class="mr-1"></ion-icon>Mejor respuesta</p>\n      </ion-item>\n      <ion-card-content>{{h.best.text}}</ion-card-content>\n      <div class="card-footer">\n        <span class="c54 small-text">{{h.createdAt | amCalendar}}</span>\n      </div>\n    </ion-card>\n\n    <ion-list *ngIf="responses$ | async as responses else loader">\n      <ion-list-header><strong>Respuestas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Responder al post" [(ngModel)]="tempR" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addRespuesta(tempR)" [disabled]="!tempR || tempR.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item *ngFor="let r of responses.reverse()" text-wrap>\n        <ion-avatar item-start>\n          <img [src]="r.user.photoURL ? r.user.photoURL : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{r.user.displayName}}</h2>\n        <p style="font-size:1.25rem !important;" class="small-text">{{r.date | amCalendar}}</p>\n        <p class="respuesta-text">{{r.text}}</p>\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/,
+    MisResultadosPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
+            selector: 'page-mis-resultados',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mis-resultados/mis-resultados.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Resultados</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-list *ngIf="results">\n    <ion-list-header>\n      Mis Resultados\n    </ion-list-header>\n    <ion-item *ngFor="let r of results" (click)="navCtrl.push(\'ResultadosExamenPage\', { id: r.id, type: \'generic\' })">\n      <h2 *ngIf="r.exam$ | async as exam">{{exam.name}}</h2>\n      <p>{{r.date | amCalendar}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mis-resultados/mis-resultados.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
-    ], HiloDetailPage);
-    return HiloDetailPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["r" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */],
+            __WEBPACK_IMPORTED_MODULE_0_angularfire2_firestore__["AngularFirestore"]])
+    ], MisResultadosPage);
+    return MisResultadosPage;
 }());
 
-//# sourceMappingURL=hilo-detail.js.map
+//# sourceMappingURL=mis-resultados.js.map
 
 /***/ })
 
