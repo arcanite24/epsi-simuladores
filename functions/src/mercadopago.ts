@@ -1,23 +1,22 @@
 const express = require('express')
 const cors = require('cors')
-const uuid = require('uuid')
 
-import * as mercadopago from 'mercadopago'
+const mercadopago = require('mercadopago')
 import * as admin from 'firebase-admin'
 
 const app = express()
 const firestore = admin.firestore()
 
-const RETURN_URL_PROD = 'https://zamnademy.com/pago/status'
+const RETURN_URL_PROD = 'https://2guia.com.mx/pago/status'
 const RETURN_URL_DEV = 'http://localhost:4200/pago/status'
 
-const RETURN_URL_PROD_PAGOS = 'https://zamnademy.com/pagos'
+const RETURN_URL_PROD_PAGOS = 'https://2guia.com.mx/pagos'
 const RETURN_URL_DEV_PAGOS = 'http://localhost:8100'
 
 export enum Roles {
 
   Admin = 'isAdmin',
-  
+
   Esencial = 'isEsencial',
   Premium = 'isPremium',
   Temprano = 'isTemprano',
@@ -41,6 +40,15 @@ export enum Roles {
   Programa = 'isPrograma',
   Pool = 'isPool',
   TagPool = 'isTagPool',
+
+  // 2guia materias
+  isMatematicas = 'isMatematicas',
+  isCienciasExperimentales = 'isCienciasExperimentales',
+  isComunicacion = 'isComunicacion',
+  isRh = 'isRh',
+  isInformatica = 'isInformatica',
+  isContabilidad = 'isContabilidad',
+
 }
 
 export const EsencialModel: string[] = [
@@ -81,7 +89,7 @@ export const PremiumModel: string[] = [
 
 app.use(cors({ origin: true }))
 
-app.post('/generate_payment', async (req, res) => {
+app.post('/generate_payment', async (req: any, res: any) => {
 
   res.set('Access-Control-Allow-Origin', "*")
   res.set('Access-Control-Allow-Methods', 'GET, POST')
@@ -126,7 +134,7 @@ app.post('/generate_payment', async (req, res) => {
 
 })
 
-app.post('/generate_payment_zamna_pagos', async (req, res) => {
+app.post('/generate_payment_zamna_pagos', async (req: any, res: any) => {
 
   res.set('Access-Control-Allow-Origin', "*")
   res.set('Access-Control-Allow-Methods', 'GET, POST')
@@ -171,7 +179,7 @@ app.post('/generate_payment_zamna_pagos', async (req, res) => {
 
 })
 
-app.post('/webhook', async (req, res) => {
+app.post('/webhook', async (req: any, res: any) => {
 
   try {
 
@@ -198,90 +206,33 @@ app.post('/webhook', async (req, res) => {
     // Update Payment Request
     if (data.external_reference) {
 
-      if (data.external_reference.includes('ZAMNA_PAGOS')) {
+      // Handle Zamnademy Callbck
+      await firestore.doc(`payment-request/${data.external_reference}`).update({
+        status: data.status,
+        ipn: data.id
+      })
 
-        // Handle Zamna Pagos Callback
-        const info = data.external_reference.split('#')
-        const control_id = info[1]
-        const pago_id = info[2]
+      if (data.status === 'approved') {
 
-        console.log('zamna pagos info', info)
+        // Give user permissions
+        const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
+        const r = request$.data()
 
-        await firestore.doc(`control-pago/${control_id}`).update({
-          last_status: data.status,
-          ipn: data.id
-        })
+        const user$: any = await firestore.doc(`user/${r ? r.user : 'NADA'}`).get()
+        const user = user$.data()
 
-        if (data.status === 'approved') {
+        const role_payload: any = {}
 
-          // Restar user amount
-          const _control = await firestore.doc(`control-pago/${control_id}`).get()
-          const control = _control.data()
-
-          const _user = await firestore.collection(`user`).where('email', '==', control.user.email).get()
-          const user = _user.docs[0].data()
-
-          await firestore.doc(`user/${user.uid}`).update({deuda: user.deuda - data.transaction_amount})
-          await firestore.doc(`control-pago/${control.id}`).update({amountLeft: control.amountLeft - data.transaction_amount})
-
-          await grantUserRoles(user.uid, control.price, control.amountLeft - data.transaction_amount, control.tag)
-
-          // Update PagoZamna doc
-          await firestore.collection(`zamna-pago`).doc(pago_id).update({
-            status: data.status,
-            restado: true,
-            createdAt: data.date_created,
-            pago: {
-              status: data.status,
-              restado: true
-            },
-          })
-
-        }
-
-      } else {
-
-        // Handle Zamnademy Callbck
-        await firestore.doc(`payment-request/${data.external_reference}`).update({
-          status: data.status,
-          ipn: data.id
-        })
-
-        if (data.status === 'approved') {
-
-          // Give user permissions
-          const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
-          const r = request$.data()
-
-          const user$ = await firestore.doc(`user/${r.user}`).get()
-          const user = user$.data()
-
-          const role_payload = {}
-
+        if (r && r.model && r.model.unlocks) {
           for (const role of r.model.unlocks) {
             role_payload[role] = true
           }
+        }
 
-          if (r.pack) {
-            for (let index = 0; index < r.pack.quantity.length; index++) {
-
-              const coupon_payload = {
-                code: `ZAMNA-${uuid.v4()}`,
-                date: new Date().toISOString(),
-                used: false,
-                value: 100,
-                owner: r.user
-              }
-
-              await firestore.collection(`coupon`).add(coupon_payload)
-
-            }
-          }
-
+        if (r) {
           await firestore.doc(`user/${r.user}`).update(role_payload)
-          await firestore.doc(`payment-request/${data.external_reference}`).update({delivered: true})
-          if(r.coupon) await firestore.doc(`coupon/${r.coupon}`).update({used: true, date: new Date().toISOString(), user})
-
+          await firestore.doc(`payment-request/${data.external_reference}`).update({ delivered: true })
+          if (r.coupon) await firestore.doc(`coupon/${r.coupon}`).update({ used: true, date: new Date().toISOString(), user })
         }
 
       }
@@ -296,42 +247,5 @@ app.post('/webhook', async (req, res) => {
   }
 
 })
-
-async function grantUserRoles(uid: string, price: number, amountLeft: number, tag: string) {
-
-  const per30 = Math.ceil(price * 0.3)
-  const pagado = price - amountLeft
-
-  if (pagado >= per30) {
-
-    const payload = {}
-
-    if (tag === 'CURSO_PREMIUM_360') {
-      for (const role of PremiumModel) {
-        payload[role] = true
-      } 
-    }
-
-    if (tag === 'CURSO_ESENCIAL_360') {
-      for (const role of EsencialModel) {
-        payload[role] = true
-      }
-    }
-
-    try {
-      await firestore.doc(`user/${uid}`).update(payload)
-      console.log('granted roles to', uid, payload, tag, price, amountLeft, per30, pagado)
-      return true
-    } catch (error) {
-      console.log('error granting roles', uid, payload, tag, price, amountLeft, per30, pagado)
-      console.log(error)
-      return false
-    }
-    
-  } else {
-    return false
-  }
-  
-}
 
 export default app
