@@ -20,8 +20,8 @@ export class PaymentService {
       title,
       amount,
       email,
-      isProd
-    }).toPromise()
+      isProd: true,
+    }).toPromise();
   }
 
   generatePaypalButton(el: string, amount: number, cb: (payment) => any) {
