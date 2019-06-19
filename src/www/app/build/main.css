@@ -51706,23 +51706,6 @@ exam-feedback-modal .barra {
   padding: 1px;
 }
 
-exam-feedback-modal .row {
-  width: 100%;
-  display: block;
-}
-
-exam-feedback-modal .col-md-12 {
-  width: 100%;
-}
-
-exam-feedback-modal .mb-2 {
-  margin-bottom: 2rem;
-}
-
-exam-feedback-modal .c-epsi-primary {
-  color: #5e4b8b;
-}
-
 exam-results-tag-structure .result-questions {
   padding: 1rem;
   border: 1px solid #eee;

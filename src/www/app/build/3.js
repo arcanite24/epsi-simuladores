@@ -1,6 +1,6 @@
 webpackJsonp([3],{
 
-/***/ 1117:
+/***/ 1119:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaPageModule", function() { return MateriaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(1193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia__ = __webpack_require__(1195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1166);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2163,6 +2163,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
             ],
             imports: [__WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["l" /* IonicModule */], __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"]],
             exports: [__WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__["a" /* AccordionListComponent */],
@@ -2174,6 +2175,7 @@ var ComponentsModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__["a" /* StatStructureItemComponent */],
                 __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__["a" /* ExamQuestionsWidgetComponent */],
                 __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__["a" /* ExamResultsTagStructureComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__["a" /* ExamFeedbackModalComponent */],
             ]
         })
     ], ComponentsModule);
@@ -2727,15 +2729,27 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
         this.stats = [];
     }
     Object.defineProperty(ExamFeedbackModalComponent.prototype, "lastQuestion", {
-        get: function () { return []; },
+        get: function () {
+            return [];
+        },
         set: function (qs) {
             this.stats = [];
             var _loop_1 = function (q) {
                 var payload = {
                     q: q,
-                    stat$: this_1.afs.collection(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].QUESTION_STAT).doc(q.id)
+                    stat$: this_1.afs
+                        .collection(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].QUESTION_STAT)
+                        .doc(q.id)
                         .valueChanges()
-                        .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["map"])(function (stat) { return stat ? (__assign({}, stat, { stat: Object.entries(stat.stat) })) : ({ id: __WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].QUESTION_STAT + "/" + q.id, question: q, stat: [], total: 0 }); }))
+                        .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["map"])(function (stat) {
+                        return stat
+                            ? __assign({}, stat, { stat: Object.entries(stat.stat) }) : {
+                            id: __WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].QUESTION_STAT + "/" + q.id,
+                            question: q,
+                            stat: [],
+                            total: 0
+                        };
+                    }))
                 };
                 this_1.stats.push(payload);
             };
@@ -2748,13 +2762,14 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
         enumerable: true,
         configurable: true
     });
-    ExamFeedbackModalComponent.prototype.ngOnInit = function () {
-    };
+    ExamFeedbackModalComponent.prototype.ngOnInit = function () { };
     ExamFeedbackModalComponent.prototype.closeModal = function () {
         this.viewCtrl.dismiss();
     };
     ExamFeedbackModalComponent.prototype.filterStats = function (question, stats) {
-        var ans = question && question.respuestas ? question.respuestas.map(function (r) { return r.text; }) : [];
+        var ans = question && question.respuestas
+            ? question.respuestas.map(function (r) { return r.text; })
+            : [];
         return stats ? stats.filter(function (s) { return ans.includes(s[0]); }) : [];
     };
     __decorate([
@@ -2768,7 +2783,7 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
     ], ExamFeedbackModalComponent.prototype, "lastSelected", void 0);
     ExamFeedbackModalComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'exam-feedback-modal',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/'<div class="container m-2">\n  <div class="row">\n\n    <div class="col-md-12" *ngFor="let stat of stats">\n      <div class="row">\n\n        <div class="col-md-12 mb-2" style="max-height: 200px;overflow-y: auto;">\n          <p>\n            <strong>{{stat.q.text}}</strong>\n          </p>\n        </div>\n\n        <div class="col-md-12">\n          <h5 class="c-epsi-primary">¿Elegiste la correcta?</h5>\n        </div>\n\n        <div class="col-md-12" *ngIf="stat.q.respuestas as rList">\n          <ul class="list-group">\n            <li class="list-group-item flex flex-row flex-start align-center" *ngFor="let r of rList">\n              <ion-icon name="checkmark" color="bien" *ngIf="stat.q.correcta == r.id"></ion-icon>\n              <ion-icon name="close" color="muyMal" *ngIf="stat.q.correcta != r.id"></ion-icon>\n              <span class="ml-2" [ngClass]="{\'c-epsi-primary text-bolder\': lastSelected == r.id}">{{r.text}}</span>\n            </li>\n          </ul>\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.q.feedback">\n          <h5 class="m-0">Feedback</h5>\n          <p class="m-0 m-t1">{{stat.q.feedback}}</p>\n          <!--<pre>{{stat | json}}</pre>-->\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.stat$ | async as _stat">\n          <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>\n          <ul class="list-group" *ngIf="_stat.stat">\n            <li class="list-group-item flex flex-col flex-start" *ngFor="let s of filterStats(stat.q, _stat.stat)">\n              <strong> <span class="c-epsi-primary">{{(s[1] / _stat.total) * 100 | number}}%</span> {{s[0]}}</strong>\n              <!-- <pre>{{ s | json }}</pre> -->\n              <div class="barra-container" [style.width.%]="(s[1] / _stat.total) * 100">\n                <div class="barra"></div>\n              </div>\n            </li>\n          </ul>\n        </div>\n\n      </div>\n      <hr>\n    </div>\n\n    <div class="col-md-12 flex-loader mt-2">\n      <button ion-button color="primary" type="button" (click)="closeModal()">Seguir</button>\n    </div>\n\n    <!-- <div class="col-md-12">\n      <pre>{{ q | json }}</pre>\n    </div> -->\n\n  </div>\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/
+            selector: "exam-feedback-modal",template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/'<div class="container m-2">\n  <div class="row">\n\n    <div class="col-md-12" *ngFor="let stat of stats">\n      <div class="row">\n\n        <div class="col-md-12 mb-2" style="max-height: 200px;overflow-y: auto;">\n          <p>\n            <strong>{{stat.q.text}}</strong>\n          </p>\n        </div>\n\n        <div class="col-md-12">\n          <h5 class="c-epsi-primary">¿Elegiste la correcta?</h5>\n        </div>\n\n        <div class="col-md-12" *ngIf="stat.q.respuestas as rList">\n          <ul class="list-group">\n            <li class="list-group-item flex flex-row flex-start align-center" *ngFor="let r of rList">\n              <i class="fa fa-check text-success" *ngIf="stat.q.correcta == r.id"></i>\n              <i class="fa fa-close text-danger" *ngIf="stat.q.correcta != r.id"></i>\n              <span class="ml-2" [ngClass]="{\'c-epsi-primary text-bolder\': lastSelected == r.id}">{{r.text}}</span>\n            </li>\n          </ul>\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.q.feedback">\n          <h5 class="m-0">Feedback</h5>\n          <p class="m-0 m-t1">{{stat.q.feedback}}</p>\n          <!--<pre>{{stat | json}}</pre>-->\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.stat$ | async as _stat">\n          <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>\n          <ul class="list-group" *ngIf="_stat.stat">\n            <li class="list-group-item flex flex-col flex-start" *ngFor="let s of filterStats(stat.q, _stat.stat)">\n              <strong> <span class="c-epsi-primary">{{(s[1] / _stat.total) * 100 | number}}%</span> {{s[0]}}</strong>\n              <!-- <pre>{{ s | json }}</pre> -->\n              <div class="barra-container" [style.width.%]="(s[1] / _stat.total) * 100">\n                <div class="barra"></div>\n              </div>\n            </li>\n          </ul>\n        </div>\n\n      </div>\n      <hr>\n    </div>\n\n    <div class="col-md-12 flex-loader mt-2">\n      <button class="btn btn-secondary" type="button" (click)="closeModal()">Seguir</button>\n    </div>\n\n    <!-- <div class="col-md-12">\n      <pre>{{ q | json }}</pre>\n    </div> -->\n\n  </div>\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
             __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["x" /* ViewController */]])
@@ -3003,7 +3018,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var countdown = __webpack_require__(1165);
 countdown.setLabels(' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 var ExamQuestionsWidgetComponent = /** @class */ (function () {
-    function ExamQuestionsWidgetComponent(afs, auth, store, toast, stats, stat, data, navCtrl) {
+    function ExamQuestionsWidgetComponent(afs, auth, store, toast, stats, stat, data, navCtrl, modal) {
         this.afs = afs;
         this.auth = auth;
         this.store = store;
@@ -3012,6 +3027,7 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
         this.stat = stat;
         this.data = data;
         this.navCtrl = navCtrl;
+        this.modal = modal;
         this.isPreclase = false;
         this.questionChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.answerSelected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
@@ -3263,7 +3279,7 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
         this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_5__reducers_exam_reducer__["e" /* SetIndex */](currentIndex + 1));
         if (this.exam.type != __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].PRECLASE && this.exam.type != __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].SIMULACRO) {
             /* this.modal.getModal('examFeedbackModal').open() */
-            alert('examFeedbackModal');
+            this.modal.create('ExamFeedbackPage', { q: this.lastQuestion, selected: this.lastSelected }).present();
         }
         this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer);
         // this.store.dispatch(new SetAnswer(null)) removed because we load the cached answer
@@ -3373,7 +3389,8 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__["a" /* StatsProvider */],
             __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__["a" /* StatsProvider */],
             __WEBPACK_IMPORTED_MODULE_10__providers_data_data__["a" /* DataProvider */],
-            __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["q" /* NavController */]])
+            __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["q" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["p" /* ModalController */]])
     ], ExamQuestionsWidgetComponent);
     return ExamQuestionsWidgetComponent;
 }());
@@ -3506,7 +3523,7 @@ var ExamResultsTagStructureComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1193:
+/***/ 1195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
