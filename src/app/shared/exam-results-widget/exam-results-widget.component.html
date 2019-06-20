@@ -4,8 +4,8 @@
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <ul *ngIf="results$ | async as results else loader">
-    <li *ngFor="let r of results">
+  <ul *ngIf="results$ | async as results else loader" class="results-list">
+    <li *ngFor="let r of results" class="zamna-bg-primary flex-loader w-100">
       <a [routerLink]="[ '/result', r.id ]">Resultados de {{r.date | amTimeAgo}}</a>
     </li>
   </ul>

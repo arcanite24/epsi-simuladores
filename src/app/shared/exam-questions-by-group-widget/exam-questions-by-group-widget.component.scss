@@ -1,0 +1,59 @@
+.exam-questions-indicator {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.exam-duration-label {
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-left: auto !important;
+}
+
+.bar-container {
+  background-color: #D9E0E2;
+  height: 5px;
+}
+
+.bar {
+  position: absolute;
+  height: 5px;
+}
+
+.question-text {
+  white-space: pre-wrap;
+  font-weight: lighter;
+  font-size: 1.15rem;
+}
+
+.answer-list {
+
+  margin-top: 1.25rem !important;
+
+  li {
+
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 0.95rem;
+    color: rgba($color: #000000, $alpha: 0.325);
+    margin-bottom: 1rem;
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    label {
+      margin-bottom: 0 !important;
+    }
+
+  }
+
+  li.answer-selected {
+    color: rgba($color: #000000, $alpha: 0.7);
+  }
+
+}
+
+.exam-button-action {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

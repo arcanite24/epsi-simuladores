@@ -1,25 +1,25 @@
-<epsi-panel title="Avance" [showContent]="true" height="300px">
+<epsi-panel class="exam-progress-container" title="Avance" [showContent]="true" height="300px">
 
   <!-- <pre>{{ qList | json }}</pre> -->
 
   <ul *ngIf="!isGroup && qList" class="list-group m-4">
-    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item" (click)="gotoQuestion(i, question)">
-      <i class="fa fa-check" style="color:green" *ngIf="completed.indexOf(question.id) >= 0"></i>
-      <a [ngClass]="{'active-question': i == activeIndex}">{{i + 1}}.- {{question.text.substr(0, 100)}} {{question.text.length > 100 ? '...' : ''}}</a>
+    <li *ngFor="let question of qList; let i = index" class="manita-list-item progress-question" (click)="gotoQuestion(i, question)">
+      <i class="fa fa-check mr-2" style="color:green" *ngIf="completed.indexOf(question.id) >= 0"></i>
+      <a [ngClass]="{'active-question': i == activeIndex}">
+        <small>{{i + 1}}</small>
+        {{question.text.substr(0, 100)}} {{question.text.length > 100 ? '...' : ''}}
+      </a>
     </li>
   </ul>
 
   <ul *ngIf="isGroup && qList" class="list-group m-4">
-    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item" (click)="gotoQuestion(i, question[0])">
-      <i class="fa fa-check" style="color:green" *ngIf="completed.indexOf(question[0].id) >= 0"></i>
-      <a [ngClass]="{'active-question': i == activeIndex}">{{i + 1}}.- {{question[0].text.substr(0, 100)}} {{question[0].text.length > 100 ? '...' : ''}}</a>
+    <li *ngFor="let question of qList; let i = index" class="manita-list-item progress-question" (click)="gotoQuestion(i, question[0])">
+      <i class="fa fa-check mr-2" style="color:green" *ngIf="completed.indexOf(question[0].id) >= 0"></i>
+      <a [ngClass]="{'active-question': i == activeIndex}">
+        <small>{{i + 1}}</small>
+        {{question[0].text.substr(0, 100)}} {{question[0].text.length > 100 ? '...' : ''}}
+      </a>
     </li>
   </ul>
 
 </epsi-panel>
-
-<style>
-  .active-question {
-    font-weight: bolder;
-  }
-</style>

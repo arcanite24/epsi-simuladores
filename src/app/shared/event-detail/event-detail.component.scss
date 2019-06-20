@@ -9,8 +9,12 @@
 }
 
 ul {
+
   padding: 0;
   padding-left: 0.5rem;
+
+  li { list-style-type: none; }
+
 }
 
 .completed-task * {

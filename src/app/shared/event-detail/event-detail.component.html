@@ -10,25 +10,26 @@
   <div class="event-tasks" *ngIf="event.tasks as tasks">
 
     <hr>
-    <h4>Tareas</h4>
+    <h3 class="w-100 text-center zamna-c-primary text-bolder">Tareas</h3>
 
     <ul>
-      <li 
-        *ngFor="let task of tasks; trackBy:trackByFn" 
-        (click)="toggleCompleted(task.id)" 
-        class="manita flex flex-row flex-start align-center event-task" 
+      <li
+        *ngFor="let task of tasks; trackBy:trackByFn"
+        (click)="toggleCompleted(task.id)"
+        class="manita flex flex-row flex-start align-center event-task"
         [ngClass]="{'completed-task': completedTasks.indexOf(task.id) >= 0}">
-        <input type="checkbox" [checked]="completedTasks.indexOf(task.id) >= 0" *ngIf="completedTasks">
+        <!-- <input type="checkbox" [checked]="completedTasks.indexOf(task.id) >= 0" *ngIf="completedTasks"> -->
+        <epsi-zamna-check [checked]="completedTasks.indexOf(task.id) >= 0" *ngIf="completedTasks"></epsi-zamna-check>
         <span>{{task.label}}</span>
       </li>
 
       <hr>
 
-      <li 
-        (click)="toggleCompleted(event.id)" 
+      <li
+        (click)="toggleCompleted(event.id)"
         class="manita flex flex-row flex-start align-center event-task content-task mt-2"
         [ngClass]="{'completed-task': completedTasks.indexOf(event.id) >= 0}">
-        <input type="checkbox" [checked]="completedTasks.indexOf(event.id) >= 0" *ngIf="completedTasks">
+        <epsi-zamna-check [checked]="completedTasks.indexOf(event.id) >= 0" *ngIf="completedTasks"></epsi-zamna-check>
         <span>Terminé de estudiar éste tema</span>
       </li>
 
@@ -36,17 +37,17 @@
 
     <hr>
     <div class="event-links" *ngIf="!auth.isPresencial">
-      <h4>Links</h4>
+      <h3 class="w-100 text-center zamna-c-primary text-bolder">Enlaces</h3>
       <ul *ngIf="event.links as links">
-        <li *ngFor="let link of links">
-          <a class="btn btn-secondary" [routerLink]="[ link.url ]">{{link.label}}</a>
+        <li *ngFor="let link of links" class="mt-2">
+          <a class="btn btn-secondary btn-zamna-primary w-100" [routerLink]="[ link.url ]">{{link.label}}</a>
         </li>
       </ul>
     </div>
 
     <hr>
     <epsi-content-notes-panel title="¿Me dejaré pendiente algo en éste tema?" [content_type]="'event'" [parent_id]="'event_note-' + event.id" *ngIf="event"></epsi-content-notes-panel>
-    
+
   </div>
 
 </div>

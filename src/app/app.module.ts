@@ -204,6 +204,8 @@ import { AdminExamResultsComponent } from './pages/admin-exam-results/admin-exam
 import { ExamResultsTagStructureComponent } from './shared/exam-results-tag-structure/exam-results-tag-structure.component';
 import { UserPromediosTableComponent } from './pages/user-promedios-table/user-promedios-table.component';
 import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questions-average/admin-exams-questions-average.component';
+import { ZamnaCheckComponent } from './shared/zamna-check/zamna-check.component';
+import { ZamnaRadioComponent } from './shared/zamna-radio/zamna-radio.component';
 
 @NgModule({
   declarations: [
@@ -369,6 +371,8 @@ import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questio
     ExamResultsTagStructureComponent,
     UserPromediosTableComponent,
     AdminExamsQuestionsAverageComponent,
+    ZamnaCheckComponent,
+    ZamnaRadioComponent,
   ],
   imports: [
     BrowserAnimationsModule,

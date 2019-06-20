@@ -15,20 +15,21 @@
   </div>
 </ngx-smart-modal>
 
-<epsi-panel title="Mi calendario personalizado" desc="Tu calendario puede cargar en 30 a 90 segundos dependiendo la velocidad de tu conexión a internet" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="false" tutorial="Mwe2Sv0rSsAmytfy3CoV">
+<epsi-panel title="Mi calendario personalizado" img="https://zamnademy.com/site/images/clients/calendario.png" [showContent]="false" tutorial="Mwe2Sv0rSsAmytfy3CoV">
+  <!-- desc="Tu calendario puede cargar en 30 a 90 segundos dependiendo la velocidad de tu conexión a internet" -->
 
   <epsi-plan-selector-panel *ngIf="auth.user && !auth.user.customCalendar"></epsi-plan-selector-panel>
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
-  
+
   <div *ngIf="auth.user && auth.user.customCalendar" class="calendar-panel-actions flex flex-row flex-start align-center">
 
     <button class="btn btn-danger" type="button" (click)="removeCalendar()" *ngIf="auth.isAdmin">Quitar Calendario</button>
     <button class="btn btn-danger" type="button" (click)="removeModal.open()">Volver a hacer mi calendario</button>
 
-    <button 
+    <button
       type="button"
       class="btn btn-secondary mr-4"
       mwlCalendarPreviousView
@@ -37,7 +38,7 @@
 
     <h4 style="text-transform: capitalize">{{mesLabel}}</h4>
 
-    <button 
+    <button
       type="button"
       class="btn btn-secondary ml-4"
       mwlCalendarNextView

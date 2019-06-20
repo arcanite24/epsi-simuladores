@@ -4,40 +4,40 @@
 
 <div class="epsi-navbar flex flex-row flex-start align-center flex-wrap" [hidden]="hideNavbar">
 
-  <img src="assets/zamnademy/logo.png" alt="Zamnademy">
+  <img src="assets/zamnademy/logo-morado.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
   <!--<div class="ml-2 navbar-timer" [innerHTML]="timerLabel"></div>-->
 
-  <div class="navbar-user-info flex flex-row flex-center flex-wrap" *ngIf="auth.loggedIn">
+  <div class="navbar-user-info flex-center" *ngIf="auth.loggedIn">
 
-    <div class="navbar-actions flex flex-row flex-center flex-wrap">
-    
-      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2" [routerLink]="[ '/results' ]">Mis Resultados</a>
-
-      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
-
+    <div class="w-100 flex flex-row flex-start align-center mb-3">
+      <span (click)="router.navigate(['/profile'])" class="manita">{{auth.user.displayName}}</span>
+      <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita">
       <button (click)="router.navigate(['/admin'])" class="navbar-action flex-loader" *ngIf="auth.isAdmin">
         <i class="fa fa-unlock"></i>
       </button>
 
-      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019" (click)="notisModal.open()" class="navbar-action">
+      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019"
+        (click)="notisModal.open()" class="navbar-action">
         <i class="fa fa-bell"></i>
         <span class="badge badge-danger" *ngIf="notReadCount > 0">{{notReadCount | number}}</span>
       </button>
 
-      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019" (click)="router.navigate(['/notes'])" class="navbar-action">
+      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019"
+        (click)="router.navigate(['/notes'])" class="navbar-action">
         <i class="fa fa-sticky-note"></i>
       </button>
-      
+
       <button *ngIf="auth.loggedIn" (click)="auth.logout()" class="navbar-action">
         <i class="fa fa-sign-out"></i>
       </button>
-
     </div>
 
-    <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita mt-sm-3">
-    <span (click)="router.navigate(['/profile'])" class="manita mt-sm-3">{{auth.user.displayName}}</span>
+    <div class="navbar-actions flex flex-row flex-center">
+      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/results' ]">Mis Resultados</a>
+      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/profile' ]">Mi Analítica Personal</a>
+    </div>
 
   </div>
-  
+
 </div>

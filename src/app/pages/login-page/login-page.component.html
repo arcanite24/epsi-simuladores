@@ -36,7 +36,7 @@
     <div class="col-xs-12 col-md-6">
       <div class="auth-controls flex flex-col flex-center p-4">
         <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">Si ya eres alumno, ingresa aquí a tu plataforma</h4>
-    
+
         <div class="social-buttons mt-3 w-100 flex flex-col flex-center" *ngIf="mode == 'login'">
           <button class="btn-social w-100 btn-google" type="button" (click)="loginGoogle()">
             <div class="social-icon-container">
@@ -51,46 +51,46 @@
             <span>Iniciar sesión Usando Facebook</span>
           </button>
         </div>
-        
+
         <div class="mt-4 text-center w-100" *ngIf="mode == 'login'" style="width: 300px">
-          <button class="btn btn-secondary w-100 register-button" (click)="mode = 'register'">¿Quieres Inscribirte?</button>
+          <button class="btn btn-secondary w-100 register-button zamna-c-primary" (click)="mode = 'register'">¿Quieres Inscribirte? TOCA AQUÍ</button>
           <p class="m-0 mt-4 c-white" style="text-transform: uppercase">Página exclusiva para inscripciones e ingreso a Zamnademy.</p>
-          <small class="c-white" (click)="terminosModal.open()">Términos y Condiciones</small>
+          <!-- <small class="c-white" (click)="terminosModal.open()">Términos y Condiciones</small> -->
           <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2019, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p>
         </div>
-    
+
         <form class="auth-login-container w-100" [formGroup]="loginForm" (ngSubmit)="onLogin()" *ngIf="mode == 'admin'">
-    
+
           <epsi-panel class="p-4">
             <div class="container-fluid">
               <div class="row p-4">
-    
+
                 <div class="form-group mt-2 col-md-12">
                   <label class="label">Email</label>
                   <div class="control">
                     <input class="form-control" type="email" placeholder="Ingresa tu correo electrónico" formControlName="email">
                   </div>
                 </div>
-          
+
                 <div class="form-group mt-2 col-md-12">
                   <label class="label">Contraseña</label>
                   <div class="control">
                     <input class="form-control" type="password" placeholder="Tu contraseña" formControlName="password">
                   </div>
                 </div>
-          
+
                 <div class="col-md-12">
                   <button class="button is-primary epsi-button mt-2 btn btn-primary w-100" [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
                 </div>
-    
+
               </div>
             </div>
           </epsi-panel>
-    
+
         </form>
-    
+
         <div class="register-form flex flex-row flex-center" *ngIf="mode == 'register'" style="width: 350px">
-    
+
           <div class="register-social-buttons flex flex-col flex-center">
             <button class="btn-social btn-google" type="button" (click)="loginGoogle()">
               <div class="social-icon-container">
@@ -105,7 +105,7 @@
               <span>Facebook</span>
             </button>
           </div>
-    
+
           <div class="register-info text-center">
             <h5 class="c-white">¿Aún no eres alumno?</h5>
             <p class="c-white">Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción</p>
@@ -113,9 +113,9 @@
               <small>Regresar</small>
             </button>
           </div>
-    
+
         </div>
-    
+
       </div>
     </div>
 

@@ -23,13 +23,16 @@ import moment from 'moment';
 import {DataService} from '../../services/data.service';
 import {ScrollToService} from '@nicky-lenaers/ngx-scroll-to';
 
-const countdown = require('countdown');
+/* const countdown = require('countdown');
 countdown.setLabels(
 	' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio',
 	' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios',
 	' ',
 	' ',
-	'ahora');
+  'ahora'); */
+
+const countdown = require('countdown');
+countdown.setLabels( ' :|:|:|:|:|:|:|:|:|:|:', ' :|:|:|:|:|:|:|:|:|:|:', ' ', ' ', 'ahora');
 
 @Component({
   selector: 'epsi-exam-questions-by-group-widget',
