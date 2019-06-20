@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 1135:
+/***/ 1134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RatingsPageModule", function() { return RatingsPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ratings__ = __webpack_require__(1211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ratings__ = __webpack_require__(1210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic2_rating__ = __webpack_require__(601);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ var RatingsPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1211:
+/***/ 1210:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -125,6 +125,7 @@ var RatingsPage = /** @class */ (function () {
         this.ratingsModel = {};
     }
     RatingsPage.prototype.ionViewDidLoad = function () {
+        this.loadRatings();
         this.loadContent();
         /* this.back.getClase(this.id, this.type).subscribe(data => {
           this.clase = data
@@ -181,10 +182,10 @@ var RatingsPage = /** @class */ (function () {
     };
     RatingsPage.prototype.updateRating = function (key, value) {
         return __awaiter(this, void 0, void 0, function () {
-            var _a, content;
+            var _a, _b, content;
             var _this = this;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
                         if (isNaN(value)) {
                             return [2 /*return*/];
@@ -192,7 +193,7 @@ var RatingsPage = /** @class */ (function () {
                         console.log("updateing rating \"" + key + "\" to \"" + value + "\"");
                         return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].CONTENT + "/" + this.id).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_8_rxjs_operators__["take"])(1)).toPromise()];
                     case 1:
-                        content = _b.sent();
+                        content = _c.sent();
                         if (!content.totalRatings) {
                             content.totalRatings = 0;
                         }
@@ -204,15 +205,20 @@ var RatingsPage = /** @class */ (function () {
                         }
                         content.totalRatings++;
                         // content.ratings[key] = (content.ratings[key] + value) / content.totalRatings
-                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].RATING + "/" + this.ratingKey).set((_a = {
+                        console.log((_a = {
+                                id: this.ratingKey
+                            },
+                            _a[key] = value,
+                            _a.parent = this.id,
+                            _a));
+                        return [4 /*yield*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].RATING + "/" + this.ratingKey).set((_b = {
                                     id: this.ratingKey
                                 },
-                                _a[key] = value,
-                                _a.parent = this.id,
-                                _a), { merge: true })];
+                                _b[key] = value,
+                                _b.parent = this.id,
+                                _b), { merge: true })];
                     case 2:
-                        // content.ratings[key] = (content.ratings[key] + value) / content.totalRatings
-                        _b.sent();
+                        _c.sent();
                         /* this.toastr.success('Gracias por tu calificación.'); */
                         // Calculate rating every update (might not be the best idea until we find another thing)
                         this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].RATING, function (ref) { return ref

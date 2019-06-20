@@ -79,10 +79,13 @@ var LoginPage = /** @class */ (function () {
         this.password = '';
         this.admin = false;
         this.isBrowser = !this.platform.is('cordova');
+        this.loaded = false;
         this.auth.user$.subscribe(function (user) {
             _this.user = true;
-            if (user)
-                _this.navCtrl.setRoot('HomePage');
+            if (user && !_this.loaded) {
+                _this.loaded = true;
+                _this.navCtrl.setRoot("HomePage");
+            }
         });
     }
     LoginPage.prototype.ionViewDidLoad = function () {

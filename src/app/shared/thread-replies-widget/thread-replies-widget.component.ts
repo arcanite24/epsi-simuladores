@@ -12,8 +12,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class ThreadRepliesWidgetComponent implements OnInit {
 
-  @Input() public thread: Thread
-  public replies$: Observable<ThreadResponse[]>
+  @Input() public thread: Thread;
+  public replies$: Observable<ThreadResponse[]>;
 
   constructor(
     private afs: AngularFirestore,
@@ -22,12 +22,13 @@ export class ThreadRepliesWidgetComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.replies$ = this.afs.collection<ThreadResponse>(Collections.THREAD_RESPONSE, ref => ref.where('thread.id', '==', this.thread.id)).valueChanges()
+    this.replies$ = this.afs.collection<ThreadResponse>(Collections.THREAD_RESPONSE, ref => ref
+      .where('thread.id', '==', this.thread.id)).valueChanges();
   }
 
   async removeReply(id: string) {
-    await this.afs.doc(`${Collections.THREAD_RESPONSE}/${id}`).delete()
-    this.toastr.success('Respuesta borrada correctamente.')
+    await this.afs.doc(`${Collections.THREAD_RESPONSE}/${id}`).delete();
+    this.toastr.success('Respuesta borrada correctamente.');
   }
 
 }

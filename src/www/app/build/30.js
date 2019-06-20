@@ -89,7 +89,7 @@ var NotasGlobalPage = /** @class */ (function () {
         }, function (err) {
             l.dismiss();
             _this.toast.create({ message: 'No se pudieron cargar las notas...', duration: 2000 }).present();
-            _this.navCtrl.setRoot('HomePage');
+            /* this.navCtrl.setRoot('HomePage') */
         });
     };
     NotasGlobalPage = __decorate([

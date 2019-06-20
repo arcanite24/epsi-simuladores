@@ -161,7 +161,6 @@ var SmartCalendarPage = /** @class */ (function () {
                         events = Object(__WEBPACK_IMPORTED_MODULE_6_lodash__["flattenDeep"])(Object.values(user.customCalendar)).filter(function (e) {
                             return e.start.substr(0, 10) === __WEBPACK_IMPORTED_MODULE_7_moment___default()().format('YYYY-MM-DD');
                         });
-                        console.log(events);
                         if (!user.completedTasks)
                             user.completedTasks = [];
                         this.completedTasks = user.completedTasks;

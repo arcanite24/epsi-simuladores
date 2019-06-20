@@ -1,14 +1,14 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 export const ContentTypes: string[] = [
   'materia',
   'bloque',
   'tema',
   'submtema'
-]
+];
 
 export enum HomeLists {
   SimuladoresList = 'simuladores-list',
@@ -126,7 +126,7 @@ export const EsencialModel: string[] = [
   Roles.Media,
   Roles.Slides,
   Roles.Simulacros,
-]
+];
 
 export const PremiumModel: string[] = [
   Roles.Checklist,
@@ -146,7 +146,7 @@ export const PremiumModel: string[] = [
   Roles.Programa,
   Roles.Pool,
   Roles.TagPool
-]
+];
 
 export const Premium2019Model: string[] = [
   Roles.Checklist,
@@ -161,7 +161,7 @@ export const Premium2019Model: string[] = [
   Roles.Premium2019,
   Roles.Programa,
   Roles.ZonaEnarm,
-]
+];
 
 export const Zamna360_2019Model: string[] = [
   Roles.Zamna360_2019,
@@ -175,11 +175,11 @@ export const Zamna360_2019Model: string[] = [
   Roles.Media,
   Roles.Slides,
   Roles.Feed
-]
+];
 
 export const TempranoModel: string[] = [
   Roles.Temprano
-]
+];
 
 export class User {
   displayName: string | null;
@@ -188,66 +188,66 @@ export class User {
   photoURL: string | null;
   providerId: string;
   uid: string;
-  completedTasks?: string[]
-  migrated?: boolean
-  customCalendar?: any
-  noCalendar?: boolean
+  completedTasks?: string[];
+  migrated?: boolean;
+  customCalendar?: any;
+  noCalendar?: boolean;
 
   // Zamnademy Fields
-  new_email?: string
-  universidad?: string
-  celular?: string
-  especialidad?: string
-  about?: string
-  lugar_origen?: string
-  smartCalendarCreated?: boolean
+  new_email?: string;
+  universidad?: string;
+  celular?: string;
+  especialidad?: string;
+  about?: string;
+  lugar_origen?: string;
+  smartCalendarCreated?: boolean;
 
   // Stats
-  average_list?: {tag: string, promedio: number}[]
-  structure?: {}
-  promedio?: number
+  average_list?: {tag: string, promedio: number}[];
+  structure?: {};
+  promedio?: number;
   completedExams?: {};
 
   // Roles
-  isAdmin?: boolean
-  isPremium?: boolean
-  isEsencial?: boolean
-  isTemprano?: boolean
-  isPresencial?: boolean
-  isEsencial360?: boolean
-  isPremium360?: boolean
-  isPremium2019?: boolean
-  is3602019?: boolean
+  isAdmin?: boolean;
+  isPremium?: boolean;
+  isEsencial?: boolean;
+  isTemprano?: boolean;
+  isPresencial?: boolean;
+  isEsencial360?: boolean;
+  isPremium360?: boolean;
+  isPremium2019?: boolean;
+  is3602019?: boolean;
 
 }
 
 export interface Content {
-  id: string
-  name: string
-  description: string
-  type: string
-  cover?: string
-  parent_id?: string
-  parent_type?: string
-  parent_name?: string
-  ratings?: {}
-  totalRatings?: number
-  video?: string
-  markers?: Marker[]
-  roles?: string[]
-  model_slug?: string
-  showChildren?: boolean
-  haveChildren?: boolean
-  forum?: string
-  sortIndex?: number
-  event?: string
-  selected?: boolean
-  is360?: boolean
-  ignoreOnSmartCalendar?: boolean
-  order?: number
-  temas$?: Observable<Content[]>
-  temas?: Content[],
-  liberadoInPrograma?: boolean
+  id: string;
+  name: string;
+  description: string;
+  type: string;
+  cover?: string;
+  parent_id?: string;
+  parent_type?: string;
+  parent_name?: string;
+  ratings?: {};
+  totalRatings?: number;
+  video?: string;
+  markers?: Marker[];
+  roles?: string[];
+  model_slug?: string;
+  showChildren?: boolean;
+  haveChildren?: boolean;
+  forum?: string;
+  sortIndex?: number;
+  event?: string;
+  selected?: boolean;
+  is360?: boolean;
+  ignoreOnSmartCalendar?: boolean;
+  order?: number;
+  temas$?: Observable<Content[]>;
+  temas?: Content[];
+  liberadoInPrograma?: boolean;
 }
 
 export interface Marker {
@@ -255,92 +255,92 @@ export interface Marker {
     hour: number | string,
     minute: number | string,
     second: number | string,
-  }
-  tag: string,
+  };
+  tag: string;
 }
 
 export interface GalleryCategory {
-  id: string
-  name: string
-  desc: string
+  id: string;
+  name: string;
+  desc: string;
 }
 
 export interface Gallery {
-  id: string
-  name: string
-  desc: string
-  fotos: string[]
-  categoria: GalleryCategory
-  cat_name: string
-  cat_id: string
+  id: string;
+  name: string;
+  desc: string;
+  fotos: string[];
+  categoria: GalleryCategory;
+  cat_name: string;
+  cat_id: string;
 }
 
 export interface MediaCategory {
-  id: string
-  name: string
-  desc: string
+  id: string;
+  name: string;
+  desc: string;
 }
 
 export interface Media {
-  id: string
-  name: string
-  desc: string
-  url: string
-  categoria: MediaCategory
-  cat_name: string
+  id: string;
+  name: string;
+  desc: string;
+  url: string;
+  categoria: MediaCategory;
+  cat_name: string;
 }
 
 export interface Question {
-  id: string
-  text: string
-  correcta: string
-  respuestas: Answer[]
-  feedback?: string
-  raw?: any
-  tags?: string[]
-  img?: string
-  group?: string
-  selectedAnswer?: Answer
-  selectedAnswerId?: string
+  id: string;
+  text: string;
+  correcta: string;
+  respuestas: Answer[];
+  feedback?: string;
+  raw?: any;
+  tags?: string[];
+  img?: string;
+  group?: string;
+  selectedAnswer?: Answer;
+  selectedAnswerId?: string;
 }
 
 export interface Answer {
-  id: string
-  text: string
-  parent: string
+  id: string;
+  text: string;
+  parent: string;
 }
 
 export interface Exam {
-  id: string
-  name: string
-  desc: string
-  type: ExamTypes
-  content_type?: string
-  content?: Content
-  questions: Question[]
-  duration?: number
-  colors?: ExamTagColor[]
-  liberado?: boolean
-  formattedQuestions?: Question[][]
-  isPool?: boolean
-  isTags?: boolean
-  isPrueba?: boolean
-  date?: string
-  time?: number
-  showAd?: boolean
-  adDesc?: string
-  adHref?: string
-  adButton?: string
-  modalAdText?: string
-  isLight?: boolean
-  isPresencial?: boolean
-  extraTags?: string
-  tags_structure?: any[]
+  id: string;
+  name: string;
+  desc: string;
+  type: ExamTypes;
+  content_type?: string;
+  content?: Content;
+  questions: Question[];
+  duration?: number;
+  colors?: ExamTagColor[];
+  liberado?: boolean;
+  formattedQuestions?: Question[][];
+  isPool?: boolean;
+  isTags?: boolean;
+  isPrueba?: boolean;
+  date?: string;
+  time?: number;
+  showAd?: boolean;
+  adDesc?: string;
+  adHref?: string;
+  adButton?: string;
+  modalAdText?: string;
+  isLight?: boolean;
+  isPresencial?: boolean;
+  extraTags?: string;
+  tags_structure?: any[];
 }
 
 export interface ExamTagColor {
-  tag: string
-  color: string
+  tag: string;
+  color: string;
 }
 
 export enum ExamTypes {
@@ -355,341 +355,341 @@ export enum ExamTypes {
 }
 
 export interface Livestream {
-  id: string
-  name: string
-  desc: string
-  date: string
-  url: string
+  id: string;
+  name: string;
+  desc: string;
+  date: string;
+  url: string;
 }
 
 export interface Slide {
-  id: string
-  name: string
-  desc: string
-  cat_name: string
-  cat_id: string
-  images: string[]
+  id: string;
+  name: string;
+  desc: string;
+  cat_name: string;
+  cat_id: string;
+  images: string[];
 }
 
 export interface SlideCategory {
-  id: string
-  name: string
-  desc: string
+  id: string;
+  name: string;
+  desc: string;
 }
 
 export interface Todo {
-  id: string
-  text: string,
-  completed: number
-  sortIndex: number
+  id: string;
+  text: string;
+  completed: number;
+  sortIndex: number;
 }
 
 export interface Note {
-  id: string
-  title: string
-  text: string
-  parent_type?: string
-  parent_id?: string
-  content_type?: string
-  user: string
+  id: string;
+  title: string;
+  text: string;
+  parent_type?: string;
+  parent_id?: string;
+  content_type?: string;
+  user: string;
 }
 
 export interface Comment {
-  id: string
-  text: string
-  user: string
-  user_name: string
-  user_photo: string
-  parent_type?: string
-  parent_id?: string
-  content_type?: string
-  date: string
+  id: string;
+  text: string;
+  user: string;
+  user_name: string;
+  user_photo: string;
+  parent_type?: string;
+  parent_id?: string;
+  content_type?: string;
+  date: string;
 }
 
 export interface Rating {
-  id: string
-  parent: string
+  id: string;
+  parent: string;
   // TODO: Add remaining attribues to Rating Interface
 }
 
 export interface Suggestion {
-  id: string
-  text: string
-  user: string
-  user_name: string
-  user_photo: string
-  parent_type?: string
-  parent_id?: string
-  content_type?: string
-  content_name?: string
-  date: string
+  id: string;
+  text: string;
+  user: string;
+  user_name: string;
+  user_photo: string;
+  parent_type?: string;
+  parent_id?: string;
+  content_type?: string;
+  content_name?: string;
+  date: string;
 }
 
 export interface Event {
-  id: string
-  title: string
-  desc: string
-  date: string
-  start?: Date
-  end?: string
-  fullDay?: boolean
-  color?: {primary: string, secondary: string}
-  tasks: EventTask[]
-  links: EventLink[]
+  id: string;
+  title: string;
+  desc: string;
+  date: string;
+  start?: Date;
+  end?: string;
+  fullDay?: boolean;
+  color?: {primary: string, secondary: string};
+  tasks: EventTask[];
+  links: EventLink[];
 }
 
 export interface EventTask {
-  id: string
-  label: string
-  users: string[]
-  completed: number
+  id: string;
+  label: string;
+  users: string[];
+  completed: number;
 }
 
 export interface EventLink {
-  id: string
-  label: string
-  url: string
+  id: string;
+  label: string;
+  url: string;
 }
 
 export interface ThreadCategory {
-  id: string
-  name: string
-  desc: string
+  id: string;
+  name: string;
+  desc: string;
 }
 
 export interface Thread {
-  id: string
-  text: string
-  title: string
-  date: string
-  cat_id: string
-  cat_name: string
+  id: string;
+  text: string;
+  title: string;
+  date: string;
+  cat_id: string;
+  cat_name: string;
   user?: string;
 }
 
 export interface ThreadResponse {
-  id: string
-  text: string
-  user: User
-  user_id: string
-  thread: string
+  id: string;
+  text: string;
+  user: User;
+  user_id: string;
+  thread: Thread;
 }
 
 export interface ExamResults {
-  id: string
-  questions: {}
-  lastIndex: number
-  user: string
-  exam: string
-  date: string
-  promedio: number
-  tags: string[]
-  exam_type?: string
-  completedIn?: number
+  id: string;
+  questions: {};
+  lastIndex: number;
+  user: string;
+  exam: string;
+  date: string;
+  promedio: number;
+  tags: string[];
+  exam_type?: string;
+  completedIn?: number;
 }
 
 export interface Post {
-  id: string
-  user: User
-  text: string
-  likes: string[]
-  date: string,
-  image: string
+  id: string;
+  user: User;
+  text: string;
+  likes: string[];
+  date: string;
+  image: string;
 }
 
 export interface PostComment {
-  id: string
-  user: User
-  post: string
-  date: string
-  text: string
-  likes: string[]
+  id: string;
+  user: User;
+  post: string;
+  date: string;
+  text: string;
+  likes: string[];
 }
 
 export interface UserStat {
-  id: string
-  user: string
-  generalAverage?: number
-  monthAverage?: number
+  id: string;
+  user: string;
+  generalAverage?: number;
+  monthAverage?: number;
 }
 
 export interface Tag {
-  id: string
-  value: string
-  display: string
-  selected?: boolean
+  id: string;
+  value: string;
+  display: string;
+  selected?: boolean;
 }
 
 export interface StatView {
-  id: string
-  name: string
-  includeTags: string[]
-  excludeTags: string[],
-  cache?: any,
-  parent?: string
-  parent_name?: string
-  isTimeline?: boolean
+  id: string;
+  name: string;
+  includeTags: string[];
+  excludeTags: string[];
+  cache?: any;
+  parent?: string;
+  parent_name?: string;
+  isTimeline?: boolean;
 }
 
 export interface PaymentModel {
-  id: string
-  name: string
-  desc: string
-  amount: number
-  discountPrice?: number
-  slug: string
-  unlocks: string[],
-  tags: string[],
-  canCard: boolean
-  canPaypal: boolean
-  canStore: boolean
-  canMeses: boolean
-  canDiscount: boolean,
-  packs?: {quantity: number, label: string, price: number}[],
-  roles?: string[],
+  id: string;
+  name: string;
+  desc: string;
+  amount: number;
+  discountPrice?: number;
+  slug: string;
+  unlocks: string[];
+  tags: string[];
+  canCard: boolean;
+  canPaypal: boolean;
+  canStore: boolean;
+  canMeses: boolean;
+  canDiscount: boolean;
+  packs?: {quantity: number, label: string, price: number}[];
+  roles?: string[];
 }
 
 export interface PaymentRequest {
-  id: string
-  user: string
-  user_name: string
-  email: string
-  model: PaymentModel
-  status: PaymentStatus
-  delivered: boolean
-  ipn: string
-  coupon?: string
-  pack?: PaymentPack
+  id: string;
+  user: string;
+  user_name: string;
+  email: string;
+  model: PaymentModel;
+  status: PaymentStatus;
+  delivered: boolean;
+  ipn: string;
+  coupon?: string;
+  pack?: PaymentPack;
 }
 
 export interface PaymentPack {
-  label: string
-  price: number
-  quantity: number
+  label: string;
+  price: number;
+  quantity: number;
 }
 
 export interface Notification {
-  id: string
-  title: string
-  text: string
-  date: Date
-  isGlobal: boolean
-  user?: string,
-  link_name: string,
-  link_href: string,
+  id: string;
+  title: string;
+  text: string;
+  date: Date;
+  isGlobal: boolean;
+  user?: string;
+  link_name: string;
+  link_href: string;
 }
 
 export interface NotificationResponse {
-  id: string
-  user: string
-  noti: string
-  text: string
-  date: string
-  username: string
+  id: string;
+  user: string;
+  noti: string;
+  text: string;
+  date: string;
+  username: string;
 }
 
 export interface NotificationComment {
-  id: string
-  text: string
-  date: Date
-  user: string
-  user_name: string
-  user_photo: string
+  id: string;
+  text: string;
+  date: Date;
+  user: string;
+  user_name: string;
+  user_photo: string;
 }
 
 export interface Coupon {
-  id: string
-  code: string
-  date: string
-  user?: User
-  used: boolean,
-  value: number
-  owner?: string
+  id: string;
+  code: string;
+  date: string;
+  user?: User;
+  used: boolean;
+  value: number;
+  owner?: string;
 }
 
 export interface Programa {
-  id: string
-  name: string
-  text: string
-  links: {label: string, url: string}[]
-  parent: Programa
-  unlockedBy: string
+  id: string;
+  name: string;
+  text: string;
+  links: {label: string, url: string}[];
+  parent: Programa;
+  unlockedBy: string;
 }
 
 export interface StatCounter {
-  id: string
-  key: string
-  label: string
-  value: number
-  lastModified: string
+  id: string;
+  key: string;
+  label: string;
+  value: number;
+  lastModified: string;
 }
 
 export interface List {
-  id: string
-  key: string
-  name: string
-  list: any[]
+  id: string;
+  key: string;
+  name: string;
+  list: any[];
 }
 
 export interface QuestionStat {
-  id: string
-  question: Question
-  stat: {} | []
-  total: number
+  id: string;
+  question: Question;
+  stat: {} | [];
+  total: number;
 }
 
 export interface ContentError {
-  id: string
-  content: Content
-  user: User
-  text: string
+  id: string;
+  content: Content;
+  user: User;
+  text: string;
 }
 
 export interface ExamRanking {
-  id: string
-  user: User
-  exam: Partial<Exam>
-  date: string
-  promedio: number
+  id: string;
+  user: User;
+  exam: Partial<Exam>;
+  date: string;
+  promedio: number;
 }
 
 export interface LandingField {
-  id: string
-  key: string
-  value: string
+  id: string;
+  key: string;
+  value: string;
 }
 
 export interface TagPool {
-  id: string
-  name: string
-  questions: string[],
-  tags: string[]
-  exam: string
+  id: string;
+  name: string;
+  questions: string[];
+  tags: string[];
+  exam: string;
 }
 
 export interface MoodRate {
-  id: string
-  user: string
-  mood: 1 | 2 | 3 | 4 | 5 | 6
-  date: string
-  text: string
+  id: string;
+  user: string;
+  mood: 1 | 2 | 3 | 4 | 5 | 6;
+  date: string;
+  text: string;
 }
 
 export interface Tutorial {
-  key: string
-  label: string
-  text: string
+  key: string;
+  label: string;
+  text: string;
 }
 
 export interface Daily {
-  id: string
-  title: string
-  text: string
+  id: string;
+  title: string;
+  text: string;
 }
 
 export interface DailyRegister {
-  id: string
-  user: string
-  daily: Daily
-  date: string
+  id: string;
+  user: string;
+  daily: Daily;
+  date: string;
 }

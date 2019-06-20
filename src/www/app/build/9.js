@@ -750,6 +750,7 @@ exports.MomentModule = MomentModule;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(587);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(263);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -799,12 +800,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
+
 var HiloDetailPage = /** @class */ (function () {
-    function HiloDetailPage(navCtrl, navParams, afs, auth) {
+    function HiloDetailPage(navCtrl, navParams, afs, auth, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
         this.auth = auth;
+        this.data = data;
         this.id = this.navParams.get('id');
         this.tempR = '';
         this.lc = false;
@@ -812,25 +815,28 @@ var HiloDetailPage = /** @class */ (function () {
     HiloDetailPage.prototype.ionViewDidLoad = function () {
         var _this = this;
         this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD).doc(this.id).valueChanges();
-        this.responses$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE, function (ref) { return ref.where('thread', '==', _this.id); }).valueChanges();
+        this.responses$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE, function (ref) { return ref.where('thread.id', '==', _this.id); }).valueChanges();
     };
     HiloDetailPage.prototype.addRespuesta = function (text) {
         return __awaiter(this, void 0, void 0, function () {
-            var id;
+            var id, thread;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
                         this.lc = true;
                         id = this.afs.createId();
+                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, this.id)];
+                    case 1:
+                        thread = _a.sent();
                         return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE).doc(id).set({
                                 id: id,
                                 text: text,
                                 user: this.auth.user,
                                 user_id: this.auth.user.uid,
-                                thread: this.id,
+                                thread: thread,
                                 date: new Date().toISOString()
                             })];
-                    case 1:
+                    case 2:
                         _a.sent();
                         this.tempR = '';
                         return [2 /*return*/];
@@ -845,7 +851,8 @@ var HiloDetailPage = /** @class */ (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
+            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
     ], HiloDetailPage);
     return HiloDetailPage;
 }());
