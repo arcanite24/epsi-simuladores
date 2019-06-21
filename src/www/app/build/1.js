@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_analitica__ = __webpack_require__(1198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__swimlane_ngx_charts__ = __webpack_require__(595);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -44,7 +44,7 @@ var MiAnaliticaPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1150:
+/***/ 1151:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -78,7 +78,7 @@ exports.AddPipe = AddPipe;
 
 /***/ }),
 
-/***/ 1151:
+/***/ 1152:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -189,7 +189,7 @@ exports.CalendarPipe = CalendarPipe;
 
 /***/ }),
 
-/***/ 1152:
+/***/ 1153:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -228,7 +228,7 @@ exports.DateFormatPipe = DateFormatPipe;
 
 /***/ }),
 
-/***/ 1153:
+/***/ 1154:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -263,7 +263,7 @@ exports.DifferencePipe = DifferencePipe;
 
 /***/ }),
 
-/***/ 1154:
+/***/ 1155:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -300,7 +300,7 @@ exports.DurationPipe = DurationPipe;
 
 /***/ }),
 
-/***/ 1155:
+/***/ 1156:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -338,7 +338,7 @@ exports.FromUnixPipe = FromUnixPipe;
 
 /***/ }),
 
-/***/ 1156:
+/***/ 1157:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -370,7 +370,7 @@ exports.ParsePipe = ParsePipe;
 
 /***/ }),
 
-/***/ 1157:
+/***/ 1158:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -404,7 +404,7 @@ exports.SubtractPipe = SubtractPipe;
 
 /***/ }),
 
-/***/ 1158:
+/***/ 1159:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -515,7 +515,7 @@ exports.TimeAgoPipe = TimeAgoPipe;
 
 /***/ }),
 
-/***/ 1159:
+/***/ 1160:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -547,7 +547,7 @@ exports.UtcPipe = UtcPipe;
 
 /***/ }),
 
-/***/ 1160:
+/***/ 1161:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -582,7 +582,7 @@ exports.FromUtcPipe = FromUtcPipe;
 
 /***/ }),
 
-/***/ 1161:
+/***/ 1162:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -614,7 +614,7 @@ exports.LocalTimePipe = LocalTimePipe;
 
 /***/ }),
 
-/***/ 1162:
+/***/ 1163:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -646,45 +646,45 @@ exports.LocalePipe = LocalePipe;
 
 /***/ }),
 
-/***/ 1163:
+/***/ 1164:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var add_pipe_1 = __webpack_require__(1150);
+var add_pipe_1 = __webpack_require__(1151);
 exports.AddPipe = add_pipe_1.AddPipe;
-var calendar_pipe_1 = __webpack_require__(1151);
+var calendar_pipe_1 = __webpack_require__(1152);
 exports.CalendarPipe = calendar_pipe_1.CalendarPipe;
-var date_format_pipe_1 = __webpack_require__(1152);
+var date_format_pipe_1 = __webpack_require__(1153);
 exports.DateFormatPipe = date_format_pipe_1.DateFormatPipe;
-var difference_pipe_1 = __webpack_require__(1153);
+var difference_pipe_1 = __webpack_require__(1154);
 exports.DifferencePipe = difference_pipe_1.DifferencePipe;
-var duration_pipe_1 = __webpack_require__(1154);
+var duration_pipe_1 = __webpack_require__(1155);
 exports.DurationPipe = duration_pipe_1.DurationPipe;
-var from_unix_pipe_1 = __webpack_require__(1155);
+var from_unix_pipe_1 = __webpack_require__(1156);
 exports.FromUnixPipe = from_unix_pipe_1.FromUnixPipe;
-var parse_pipe_1 = __webpack_require__(1156);
+var parse_pipe_1 = __webpack_require__(1157);
 exports.ParsePipe = parse_pipe_1.ParsePipe;
-var moment_module_1 = __webpack_require__(1164);
+var moment_module_1 = __webpack_require__(1165);
 exports.MomentModule = moment_module_1.MomentModule;
-var subtract_pipe_1 = __webpack_require__(1157);
+var subtract_pipe_1 = __webpack_require__(1158);
 exports.SubtractPipe = subtract_pipe_1.SubtractPipe;
-var time_ago_pipe_1 = __webpack_require__(1158);
+var time_ago_pipe_1 = __webpack_require__(1159);
 exports.TimeAgoPipe = time_ago_pipe_1.TimeAgoPipe;
-var utc_pipe_1 = __webpack_require__(1159);
+var utc_pipe_1 = __webpack_require__(1160);
 exports.UtcPipe = utc_pipe_1.UtcPipe;
-var from_utc_pipe_1 = __webpack_require__(1160);
+var from_utc_pipe_1 = __webpack_require__(1161);
 exports.FromUtcPipe = from_utc_pipe_1.FromUtcPipe;
-var local_pipe_1 = __webpack_require__(1161);
+var local_pipe_1 = __webpack_require__(1162);
 exports.LocalTimePipe = local_pipe_1.LocalTimePipe;
-var locale_pipe_1 = __webpack_require__(1162);
+var locale_pipe_1 = __webpack_require__(1163);
 exports.LocalePipe = locale_pipe_1.LocalePipe;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 1164:
+/***/ 1165:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -697,19 +697,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var add_pipe_1 = __webpack_require__(1150);
-var calendar_pipe_1 = __webpack_require__(1151);
-var date_format_pipe_1 = __webpack_require__(1152);
-var difference_pipe_1 = __webpack_require__(1153);
-var duration_pipe_1 = __webpack_require__(1154);
-var from_unix_pipe_1 = __webpack_require__(1155);
-var parse_pipe_1 = __webpack_require__(1156);
-var subtract_pipe_1 = __webpack_require__(1157);
-var time_ago_pipe_1 = __webpack_require__(1158);
-var utc_pipe_1 = __webpack_require__(1159);
-var from_utc_pipe_1 = __webpack_require__(1160);
-var local_pipe_1 = __webpack_require__(1161);
-var locale_pipe_1 = __webpack_require__(1162);
+var add_pipe_1 = __webpack_require__(1151);
+var calendar_pipe_1 = __webpack_require__(1152);
+var date_format_pipe_1 = __webpack_require__(1153);
+var difference_pipe_1 = __webpack_require__(1154);
+var duration_pipe_1 = __webpack_require__(1155);
+var from_unix_pipe_1 = __webpack_require__(1156);
+var parse_pipe_1 = __webpack_require__(1157);
+var subtract_pipe_1 = __webpack_require__(1158);
+var time_ago_pipe_1 = __webpack_require__(1159);
+var utc_pipe_1 = __webpack_require__(1160);
+var from_utc_pipe_1 = __webpack_require__(1161);
+var local_pipe_1 = __webpack_require__(1162);
+var locale_pipe_1 = __webpack_require__(1163);
 var ANGULAR_MOMENT_PIPES = [
     add_pipe_1.AddPipe,
     calendar_pipe_1.CalendarPipe,
@@ -741,7 +741,7 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 1165:
+/***/ 1166:
 /***/ (function(module, exports) {
 
 /*global window */
@@ -2114,25 +2114,25 @@ function(module) {
 
 /***/ }),
 
-/***/ 1166:
+/***/ 1167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1167);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1168);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1169);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1170);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1171);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1172);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1174);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1172);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1175);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1176);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2189,7 +2189,7 @@ var ComponentsModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1167:
+/***/ 1168:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2239,7 +2239,7 @@ var AccordionListComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1168:
+/***/ 1169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2333,7 +2333,7 @@ var TimerComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1169:
+/***/ 1170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2473,7 +2473,7 @@ var ZamnaFeedComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1170:
+/***/ 1171:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2580,7 +2580,7 @@ var GalleryItemComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1171:
+/***/ 1172:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2689,7 +2689,7 @@ var MediaItemComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1172:
+/***/ 1173:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2798,7 +2798,7 @@ var ExamFeedbackModalComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1173:
+/***/ 1174:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2944,7 +2944,7 @@ var StatStructureItemComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1174:
+/***/ 1175:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3018,7 +3018,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-var countdown = __webpack_require__(1165);
+var countdown = __webpack_require__(1166);
 countdown.setLabels(' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 var ExamQuestionsWidgetComponent = /** @class */ (function () {
     function ExamQuestionsWidgetComponent(afs, auth, store, toast, stats, stat, data, navCtrl, modal) {
@@ -3402,7 +3402,7 @@ var ExamQuestionsWidgetComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 1175:
+/***/ 1176:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
