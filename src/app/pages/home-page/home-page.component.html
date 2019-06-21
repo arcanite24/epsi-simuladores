@@ -12,7 +12,7 @@
   </svg>
 </div>
 
-<ngx-smart-modal identifier="moodAddModal" #moodAddModal>
+<ngx-smart-modal identifier="moodAddModal" #moodAddModal [closable]="false">
   <div class="container">
     <div class="row">
 
@@ -21,35 +21,35 @@
       </div>
 
       <div class="col-md-12" *ngIf="!selectedMood">
-        <ul class="list-group">
-          <li class="list-group-item">
-            <button class="btn btn-danger" type="button" (click)="sendMood(1, mood.text)">Muy Mal</button>
+        <ul class="mood-rate-list">
+          <li class="mt-4">
+            <button class="btn btn-danger w-100" type="button" (click)="sendMood(1, mood.text)">Muy Mal</button>
             <!--<input type="radio" [value]="1" id="mood-1" [(ngModel)]="mood.mood">
             <label class="ml-2" for="mood-1">Muy Mal</label>-->
           </li>
-          <li class="list-group-item">
-            <button class="btn btn-warning" type="button" (click)="sendMood(2, mood.text)">Mal</button>
+          <li class="mt-4">
+            <button class="btn btn-warning w-100" type="button" (click)="sendMood(2, mood.text)">Mal</button>
             <!--<input type="radio" [value]="2" id="mood-2" [(ngModel)]="mood.mood">
             <label class="ml-2" for="mood-2">Mal</label>-->
           </li>
-          <li class="list-group-item">
-            <button class="btn btn-secondary btn-orange" type="button" (click)="sendMood(3, mood.text)">Regular</button>
+          <li class="mt-4">
+            <button class="btn btn-secondary w-100 btn-orange" type="button" (click)="sendMood(3, mood.text)">Regular</button>
           </li>
-          <li class="list-group-item">
-            <button class="btn btn-success" type="button" (click)="sendMood(4, mood.text)">Bien</button>
+          <li class="mt-4">
+            <button class="btn btn-success w-100" type="button" (click)="sendMood(4, mood.text)">Bien</button>
           </li>
-          <li class="list-group-item">
-            <button class="btn btn-info" type="button" (click)="sendMood(5, mood.text)">Muy Bien</button>
+          <li class="mt-4">
+            <button class="btn btn-info w-100" type="button" (click)="sendMood(5, mood.text)">Muy Bien</button>
           </li>
-          <li class="list-group-item">
-            <button class="btn btn-primary" type="button" (click)="sendMood(6, mood.text)">Excelente</button>
+          <li class="mt-4">
+            <button class="btn btn-primary w-100" type="button" (click)="sendMood(6, mood.text)">Excelente</button>
           </li>
         </ul>
       </div>
 
       <div class="col-md-12 form-group mt-3" *ngIf="selectedMood">
         <label for="">¿Por qué te sientes así?</label>
-        <textarea [(ngModel)]="mood.text" class="form-control"></textarea>
+        <textarea placeholder="Si no quieres comentar, solo toca enviar" [(ngModel)]="mood.text" class="form-control"></textarea>
       </div>
 
       <div class="col-md-12" *ngIf="selectedMood">

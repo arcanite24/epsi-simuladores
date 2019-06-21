@@ -34,7 +34,7 @@ export class ProgramaAltBloquePageComponent implements OnInit {
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
     private data: DataService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) { }
 
   get completedContent(): number {

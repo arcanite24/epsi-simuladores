@@ -30,14 +30,14 @@
         class="manita flex flex-row flex-start align-center event-task content-task mt-2"
         [ngClass]="{'completed-task': completedTasks.indexOf(event.id) >= 0}">
         <epsi-zamna-check [checked]="completedTasks.indexOf(event.id) >= 0" *ngIf="completedTasks"></epsi-zamna-check>
-        <span>Terminé de estudiar éste tema</span>
+        <span>Ya terminé éste tema</span>
       </li>
 
     </ul>
 
     <hr>
     <div class="event-links" *ngIf="!auth.isPresencial">
-      <h3 class="w-100 text-center zamna-c-primary text-bolder">Enlaces</h3>
+      <h3 class="w-100 text-center zamna-c-primary text-bolder">Videoclases</h3>
       <ul *ngIf="event.links as links">
         <li *ngFor="let link of links" class="mt-2">
           <a class="btn btn-secondary btn-zamna-primary w-100" [routerLink]="[ link.url ]">{{link.label}}</a>
