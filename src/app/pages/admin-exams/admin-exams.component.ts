@@ -38,27 +38,31 @@ export class AdminExamsComponent implements OnInit {
     ],
     postCreate: <Exam>(exam) => {
       // Register entity to HomeList
-      console.log('adding new exam', exam.name, exam.type)
-      if (exam.type == ExamTypes.SIMULADOR) this.stats.addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type})
-      if (exam.type == ExamTypes.SIMULACRO) this.stats.addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type})
-      this.openEdit(exam)
+      console.log('adding new exam', exam.name, exam.type);
+      if (exam.type == ExamTypes.SIMULADOR) { this.stats
+        .addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}); }
+      if (exam.type == ExamTypes.SIMULACRO) { this.stats
+        .addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}); }
+      this.openEdit(exam);
     },
     postEdit: (exam: Exam, oldItem: Exam) => {
 
-      let old_list_id = HomeLists.SimuladoresList
-      if (oldItem.type == ExamTypes.SIMULADOR) old_list_id = HomeLists.SimuladoresList
-      if (oldItem.type == ExamTypes.SIMULACRO) old_list_id = HomeLists.SimulacrosList
+      let old_list_id = HomeLists.SimuladoresList;
+      if (oldItem.type == ExamTypes.SIMULADOR) { old_list_id = HomeLists.SimuladoresList; }
+      if (oldItem.type == ExamTypes.SIMULACRO) { old_list_id = HomeLists.SimulacrosList; }
 
-      if (exam.type == ExamTypes.SIMULADOR) this.stats.updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem)
-      if (exam.type == ExamTypes.SIMULACRO) this.stats.updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem)
+      if (exam.type == ExamTypes.SIMULADOR) { this.stats
+        .updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem); }
+      if (exam.type == ExamTypes.SIMULACRO) { this.stats
+        .updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem); }
     },
     postDelete: (id: string) => {
-      this.stats.removeFromList(HomeLists.SimuladoresList, {id})
-      this.stats.removeFromList(HomeLists.SimulacrosList, {id})
+      this.stats.removeFromList(HomeLists.SimuladoresList, {id});
+      this.stats.removeFromList(HomeLists.SimulacrosList, {id});
     },
-  }
+  };
 
-  public tempExam: Exam
+  public tempExam: Exam;
 
   constructor(
     private modal: NgxSmartModalService,
@@ -71,12 +75,12 @@ export class AdminExamsComponent implements OnInit {
   }
 
   openEdit(exam: Exam) {
-    this.tempExam = exam
-    this.modal.getModal('examEditModal').open()
+    this.tempExam = exam;
+    this.modal.getModal('examEditModal').open();
   }
 
   openStats(exam: Exam) {
-    this.router.navigate(['/admin/exam/stats', exam.id])
+    this.router.navigate(['/admin/exam/stats', exam.id]);
   }
 
 }

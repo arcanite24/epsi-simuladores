@@ -3,6 +3,12 @@
     <div class="container">
       <div class="row">
 
+        <div class="col-md-12">
+          <button class="btn btn-primary mr-2" *ngIf="!filtering" (click)="loadResults(true)">Solo Presenciales</button>
+          <button class="btn btn-primary mr-2" *ngIf="filtering" (click)="loadResults(false)">Mostrar Todos</button>
+          <button class="btn btn-primary" (click)="exportResults(cache)">Exportar Resultados</button>
+        </div>
+
         <div class="col-md-12" *ngIf="results$ | async as results else loader">
           <ul class="list-group m-4">
             <li class="list-group-item" *ngFor="let r of results">
@@ -27,3 +33,4 @@
     </div>
   </epsi-panel>
 </div>
+

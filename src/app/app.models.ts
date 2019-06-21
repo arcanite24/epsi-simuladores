@@ -486,6 +486,7 @@ export interface ExamResults {
   tags: string[];
   exam_type?: string;
   completedIn?: number;
+  user$: Promise<User>;
 }
 
 export interface Post {
