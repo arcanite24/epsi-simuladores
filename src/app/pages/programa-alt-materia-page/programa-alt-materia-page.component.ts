@@ -25,7 +25,7 @@ export class ProgramaAltMateriaPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     public router: Router,
-    private auth: AuthService
+    public auth: AuthService
   ) { }
 
   ngOnInit() {
@@ -65,7 +65,7 @@ export class ProgramaAltMateriaPageComponent implements OnInit, OnDestroy {
   getCompletedTemas(temas: Content[] = [], completed: string[] = []): number {
 
     let counter = 0;
-    const ids = temas.map(t => t.id);
+    const ids = temas.filter(t => t.event).map(t => t.event);
 
     for (const id of ids) {
       if (completed.includes(id)) { counter++; }

@@ -89,7 +89,7 @@ export class AdminExamResultsComponent implements OnInit {
 
     for (const r of results) {
       const user = await r.user$;
-      data.push({ user: user.displayName, promedio: r.promedio });
+      data.push({ user: user.displayName, promedio: r.promedio * 100 });
     }
 
     const exam = await this.data.getDocAlt<Exam>(Collections.EXAM, this.id);
