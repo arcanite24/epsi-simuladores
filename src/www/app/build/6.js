@@ -3254,19 +3254,18 @@ ExamResultsTagStructureComponent = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExamenDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_countdown__ = __webpack_require__(1188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_countdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_countdown__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash__ = __webpack_require__(591);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_countdown__ = __webpack_require__(1188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_countdown___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_countdown__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_lodash__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_lodash__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -3284,13 +3283,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-__WEBPACK_IMPORTED_MODULE_7_countdown__["setLabels"](' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
+__WEBPACK_IMPORTED_MODULE_6_countdown__["setLabels"](' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 let ExamenDetailPage = class ExamenDetailPage {
-    constructor(navCtrl, navParams, back, toast, viewCtrl, modal, afs, alert) {
+    constructor(navCtrl, navParams, toast, viewCtrl, modal, afs, alert) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.back = back;
         this.toast = toast;
         this.viewCtrl = viewCtrl;
         this.modal = modal;
@@ -3308,15 +3305,15 @@ let ExamenDetailPage = class ExamenDetailPage {
         this.answeredQuestions = [];
     }
     ionViewDidLoad() {
-        this.exam$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM).doc(this.id)
+        this.exam$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].EXAM).doc(this.id)
             .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["map"])(exam => {
-            const _questionsWithGroup = Object.values(Object(__WEBPACK_IMPORTED_MODULE_8_lodash__["groupBy"])(exam.questions.filter(q => q.group), 'group'));
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(exam => {
+            const _questionsWithGroup = Object.values(Object(__WEBPACK_IMPORTED_MODULE_7_lodash__["groupBy"])(exam.questions.filter(q => q.group), 'group'));
             const _questions = exam.questions.filter(q => !q.group).map(q => [q]);
             const _exam = Object.assign({}, exam, { formattedQuestions: [..._questionsWithGroup, ..._questions] });
             this.formattedQuestions = _exam.formattedQuestions;
             return _exam;
-        }), Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["tap"])(data => {
+        }), Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["tap"])(data => {
             if (!data)
                 return;
             this.test = { name: data.name, preguntas: data.questions };
@@ -3386,13 +3383,14 @@ let ExamenDetailPage = class ExamenDetailPage {
             this.viewCtrl.dismiss(resultados);
         }
         else {
-            this.back.addResultado(this.type, this.back.uid, this.id, resultados).subscribe(data => {
-                this.toast.create({ message: 'Resultados registrados correctamente.', duration: 2000 }).present();
-                this.viewCtrl.dismiss(data);
+            this.toast.create({ message: 'Tus resultados se guardaron correctamente.', duration: 2000 }).present();
+            this.viewCtrl.dismiss(resultados);
+            /* this.back.addResultado(this.type, this.back.uid, this.id, resultados).subscribe(data => {
+              this.toast.create({message: 'Resultados registrados correctamente.', duration: 2000}).present()
+              this.viewCtrl.dismiss(data)
             }, err => {
-                this.l = false;
-                /* this.toast.create({message: 'No se pudieron agregar tus resultados...', duration: 2000}).present() */
-            });
+              this.l = false
+            }) */
         }
     }
     openResultados(id, type) {
@@ -3478,8 +3476,8 @@ let ExamenDetailPage = class ExamenDetailPage {
             if (this.duration > 0)
                 this.duration -= 1000;
             /*const time_format = this.exam.type == ExamTypes.SIMULACRO ? countdown.HOURS | countdown.MINUTES | countdown.SECONDS : countdown.MINUTES | countdown.SECONDS*/
-            const time_format = __WEBPACK_IMPORTED_MODULE_7_countdown__["HOURS"] | __WEBPACK_IMPORTED_MODULE_7_countdown__["MINUTES"] | __WEBPACK_IMPORTED_MODULE_7_countdown__["SECONDS"];
-            this.duration_label = __WEBPACK_IMPORTED_MODULE_7_countdown__(__WEBPACK_IMPORTED_MODULE_6_moment___default()().add(this.duration, 'milliseconds').toDate(), null, time_format)
+            const time_format = __WEBPACK_IMPORTED_MODULE_6_countdown__["HOURS"] | __WEBPACK_IMPORTED_MODULE_6_countdown__["MINUTES"] | __WEBPACK_IMPORTED_MODULE_6_countdown__["SECONDS"];
+            this.duration_label = __WEBPACK_IMPORTED_MODULE_6_countdown__(__WEBPACK_IMPORTED_MODULE_5_moment___default()().add(this.duration, 'milliseconds').toDate(), null, time_format)
                 .toString()
                 .replace(/<small>|<\/small>/g, '');
             /* this.duration_label = moment()
@@ -3494,17 +3492,16 @@ let ExamenDetailPage = class ExamenDetailPage {
     }
 };
 ExamenDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
         selector: 'page-examen-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/examen-detail/examen-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{test ? test.name : \'Exámen\'}}</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" *ngIf="exam$ | async as exam">\n\n  <div class="flex-col" *ngIf="!test">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <exam-questions-widget [exam]="exam" ></exam-questions-widget>\n\n  <!-- <div *ngIf="test"> -->\n  <div *ngIf="false">\n\n    <!--<ion-card *ngFor="let p of test.preguntas">\n      <img [src]="p.img" *ngIf="p.img">\n      <ion-card-header>{{p.text}}</ion-card-header>\n      <ion-list radio-group [(ngModel)]="p.s" [disabled]="l">\n        <ion-list-header>Respuestas</ion-list-header>\n        <ion-item *ngFor="let r of p.respuestas">\n          <ion-label>{{r.text}}</ion-label>\n          <ion-radio [value]="r.id"></ion-radio>\n        </ion-item>\n      </ion-list>\n    </ion-card>-->\n\n    <ion-card>\n      <ion-list-header>Pregunta {{index + 1 | number}} de {{test ? test.preguntas.length : 0}}</ion-list-header>\n      <img [src]="test.preguntas[index].img" *ngIf="test.preguntas[index].img">\n      <ion-item *ngIf="duration_label">{{duration_label}}</ion-item>\n      <ion-card-header text-wrap>{{test.preguntas[index].text}}</ion-card-header>\n\n      <ion-list radio-group [(ngModel)]="test.preguntas[index].s" [disabled]="l">\n        <ion-list-header>Respuestas</ion-list-header>\n        <ion-item *ngFor="let r of test.preguntas[index].respuestas" text-wrap>\n          <ion-label>{{r.text}}</ion-label>\n          <ion-radio [value]="r.id"></ion-radio>\n        </ion-item>\n      </ion-list>\n\n      <ion-list *ngIf="test.preguntas[index].feedback && index > 0" class="mt-1">\n        <ion-list-header>Feedback Pregunta Anterior</ion-list-header>\n        <ion-item text-wrap>{{test.preguntas[index - 1].feedback}}</ion-item>\n      </ion-list>\n\n    </ion-card>\n\n    <div class="flex-row mb-1" *ngIf="test">\n      <button ion-button (click)="prev()" *ngIf="index > 0" ><ion-icon name="arrow-back"></ion-icon></button>\n      <button ion-button (click)="next()" [disabled]="l">{{index == test.preguntas.length - 1 ? \'Enviar Resultados\' : \'Siguiente Pregunta\'}}</button>\n    </div>\n\n  </div>\n\n  <ion-fab right bottom *ngIf="type == \'simulador\'">\n    <button ion-fab color="rojito"><ion-icon name="menu"></ion-icon></button>\n    <ion-fab-list side="top">\n      <button ion-fab (click)="openResultados(id, type)">\n        <ion-label>Ver Resultados</ion-label>\n        <ion-icon name="checkbox"></ion-icon>\n      </button>\n      <button ion-fab (click)="openAvance()">\n        <ion-label>Avance</ion-label>\n        <ion-icon name="bookmark"></ion-icon>\n      </button>\n      <button ion-fab (click)="downloadExamen()" *ngIf="!testCache">\n        <ion-label>Descargar</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button>\n      <button ion-fab (click)="removeExamen()" *ngIf="testCache">\n        <ion-label>Borrar</ion-label>\n        <ion-icon name="trash"></ion-icon>\n      </button>\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/examen-detail/examen-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["x" /* ViewController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["p" /* ModalController */],
-        __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
 ], ExamenDetailPage);
 
 //# sourceMappingURL=examen-detail.js.map
