@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EspecialidadesPageModule = /** @class */ (function () {
-    function EspecialidadesPageModule() {
-    }
-    EspecialidadesPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */]),
-            ],
-        })
-    ], EspecialidadesPageModule);
-    return EspecialidadesPageModule;
-}());
+let EspecialidadesPageModule = class EspecialidadesPageModule {
+};
+EspecialidadesPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */]),
+        ],
+    })
+], EspecialidadesPageModule);
 
 //# sourceMappingURL=especialidades.module.js.map
 
@@ -63,32 +60,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var EspecialidadesPage = /** @class */ (function () {
-    function EspecialidadesPage(navCtrl, navParams, afs) {
+let EspecialidadesPage = class EspecialidadesPage {
+    constructor(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
         this.isPrograma = this.navParams.get('isPrograma');
     }
-    EspecialidadesPage.prototype.ionViewDidLoad = function () {
+    ionViewDidLoad() {
         /* this.back.getAllMaterias().subscribe(data => this.materias = data.filter(m => m.name.includes('Temprano')), err => this.toast.create({message: 'No se pudieron cargar las materias...', duration: 2000}).present()) */
         this.materias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT)
             .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(function (materias) { return materias.filter(function (m) { return m.name.includes('Temprano'); }); }));
-    };
-    EspecialidadesPage.prototype.openMateria = function (id) {
-        this.navCtrl.push(this.isPrograma ? 'ProgramaMateriaPage' : 'MateriaPage', { id: id });
-    };
-    EspecialidadesPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-especialidades',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Especialidades</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="home-grid" *ngIf="materias$ | async as materias">\n    <div class="home-tile" *ngFor="let m of materias">\n      <ion-card (click)="openMateria(m.id)">\n        <img [src]="m.cover">\n        <!--<ion-card-content>\n          <ion-card-title>{{m.name}}</ion-card-title>\n          <p>{{m.desc}}</p>\n        </ion-card-content>-->\n      </ion-card>\n    </div>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-    ], EspecialidadesPage);
-    return EspecialidadesPage;
-}());
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(materias => materias.filter(m => m.name.includes('Temprano'))));
+    }
+    openMateria(id) {
+        this.navCtrl.push(this.isPrograma ? 'ProgramaMateriaPage' : 'MateriaPage', { id });
+    }
+};
+EspecialidadesPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-especialidades',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Especialidades</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="home-grid" *ngIf="materias$ | async as materias">\n    <div class="home-tile" *ngFor="let m of materias">\n      <ion-card (click)="openMateria(m.id)">\n        <img [src]="m.cover">\n        <!--<ion-card-content>\n          <ion-card-title>{{m.name}}</ion-card-title>\n          <p>{{m.desc}}</p>\n        </ion-card-content>-->\n      </ion-card>\n    </div>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
+], EspecialidadesPage);
 
 //# sourceMappingURL=especialidades.js.map
 

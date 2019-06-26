@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ResultadoDetailPageModule = /** @class */ (function () {
-    function ResultadoDetailPageModule() {
-    }
-    ResultadoDetailPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */]),
-            ],
-        })
-    ], ResultadoDetailPageModule);
-    return ResultadoDetailPageModule;
-}());
+let ResultadoDetailPageModule = class ResultadoDetailPageModule {
+};
+ResultadoDetailPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */]),
+        ],
+    })
+], ResultadoDetailPageModule);
 
 //# sourceMappingURL=resultado-detail.module.js.map
 
@@ -62,22 +59,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-var ResultadoDetailPage = /** @class */ (function () {
-    function ResultadoDetailPage(navCtrl, navParams) {
+let ResultadoDetailPage = class ResultadoDetailPage {
+    constructor(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    ResultadoDetailPage.prototype.ionViewDidLoad = function () {
+    ionViewDidLoad() {
         console.log('ionViewDidLoad ResultadoDetailPage');
-    };
-    ResultadoDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-resultado-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/'<!--\n  Generated template for the ResultadoDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ResultadoDetail</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
-    ], ResultadoDetailPage);
-    return ResultadoDetailPage;
-}());
+    }
+};
+ResultadoDetailPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-resultado-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/'<!--\n  Generated template for the ResultadoDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ResultadoDetail</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], ResultadoDetailPage);
 
 //# sourceMappingURL=resultado-detail.js.map
 

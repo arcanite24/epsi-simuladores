@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SimulacrosPageModule = /** @class */ (function () {
-    function SimulacrosPageModule() {
-    }
-    SimulacrosPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__simulacros__["a" /* SimulacrosPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__simulacros__["a" /* SimulacrosPage */]),
-            ],
-        })
-    ], SimulacrosPageModule);
-    return SimulacrosPageModule;
-}());
+let SimulacrosPageModule = class SimulacrosPageModule {
+};
+SimulacrosPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__simulacros__["a" /* SimulacrosPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__simulacros__["a" /* SimulacrosPage */]),
+        ],
+    })
+], SimulacrosPageModule);
 
 //# sourceMappingURL=simulacros.module.js.map
 
@@ -63,36 +60,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SimulacrosPage = /** @class */ (function () {
-    function SimulacrosPage(navCtrl, navParams, afs) {
+let SimulacrosPage = class SimulacrosPage {
+    constructor(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
         this.isOffline = false;
     }
-    SimulacrosPage.prototype.ionViewDidLoad = function () {
-        this.exams$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM, function (ref) { return ref
-            .where('type', '==', __WEBPACK_IMPORTED_MODULE_3__app_app_models__["b" /* ExamTypes */].SIMULACRO); })
+    ionViewDidLoad() {
+        this.exams$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM, ref => ref
+            .where('type', '==', __WEBPACK_IMPORTED_MODULE_3__app_app_models__["b" /* ExamTypes */].SIMULACRO))
             .valueChanges()
             .pipe(
         /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-        Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(function (list) { return list.reverse(); }));
+        Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(list => list.reverse()));
         /* this.back.getSimuladoresHome().subscribe(data => this.sims = data.reverse(), err => {
           const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'))
           this.downloadList = list ? list : []
           this.isOffline = true
         }) */
-    };
-    SimulacrosPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-simulacros',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/simulacros/simulacros.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Simulacros</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="exams$ | async as sims else loader">\n    <ion-item *ngFor="let s of sims" (click)="navCtrl.push(\'ExamenDetailPage\', {id: s.id, type: \'simulador\'})">\n      <h2>{{s.name}}</h2>\n      <!--<p>{{s.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/simulacros/simulacros.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-    ], SimulacrosPage);
-    return SimulacrosPage;
-}());
+    }
+};
+SimulacrosPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-simulacros',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/simulacros/simulacros.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Simulacros</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="exams$ | async as sims else loader">\n    <ion-item *ngFor="let s of sims" (click)="navCtrl.push(\'ExamenDetailPage\', {id: s.id, type: \'simulador\'})">\n      <h2>{{s.name}}</h2>\n      <!--<p>{{s.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/simulacros/simulacros.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
+], SimulacrosPage);
 
 //# sourceMappingURL=simulacros.js.map
 

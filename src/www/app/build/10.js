@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ZonaEnarmPageModule = /** @class */ (function () {
-    function ZonaEnarmPageModule() {
-    }
-    ZonaEnarmPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */]),
-            ],
-        })
-    ], ZonaEnarmPageModule);
-    return ZonaEnarmPageModule;
-}());
+let ZonaEnarmPageModule = class ZonaEnarmPageModule {
+};
+ZonaEnarmPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */]),
+        ],
+    })
+], ZonaEnarmPageModule);
 
 //# sourceMappingURL=zona-enarm.module.js.map
 
@@ -56,23 +53,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var ZonaEnarmPage = /** @class */ (function () {
-    function ZonaEnarmPage(navCtrl, navParams) {
+let ZonaEnarmPage = class ZonaEnarmPage {
+    constructor(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
     }
-    ZonaEnarmPage.prototype.ionViewDidLoad = function () {
+    ionViewDidLoad() {
         console.log('ionViewDidLoad ZonaEnarmPage');
-    };
-    ZonaEnarmPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-zona-enarm',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zona Enarm</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid>\n    <ion-row>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimuladoresPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulador.svg">\n            <span>Mi simulador diario ENARM</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimulacrosPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulacro.png">\n            <span>Simulacro de examen real</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
-    ], ZonaEnarmPage);
-    return ZonaEnarmPage;
-}());
+    }
+};
+ZonaEnarmPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-zona-enarm',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zona Enarm</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid>\n    <ion-row>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimuladoresPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulador.svg">\n            <span>Mi simulador diario ENARM</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimulacrosPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulacro.png">\n            <span>Simulacro de examen real</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], ZonaEnarmPage);
 
 //# sourceMappingURL=zona-enarm.js.map
 

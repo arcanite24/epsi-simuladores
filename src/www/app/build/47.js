@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AsesoriasPageModule = /** @class */ (function () {
-    function AsesoriasPageModule() {
-    }
-    AsesoriasPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */]),
-            ],
-        })
-    ], AsesoriasPageModule);
-    return AsesoriasPageModule;
-}());
+let AsesoriasPageModule = class AsesoriasPageModule {
+};
+AsesoriasPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__asesorias__["a" /* AsesoriasPage */]),
+        ],
+    })
+], AsesoriasPageModule);
 
 //# sourceMappingURL=asesorias.module.js.map
 
@@ -65,8 +62,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AsesoriasPage = /** @class */ (function () {
-    function AsesoriasPage(navCtrl, navParams, back, modal, auth, afs) {
+let AsesoriasPage = class AsesoriasPage {
+    constructor(navCtrl, navParams, back, modal, auth, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.back = back;
@@ -75,30 +72,28 @@ var AsesoriasPage = /** @class */ (function () {
         this.afs = afs;
         this.asesorias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].LIVESTREAM).valueChanges();
     }
-    AsesoriasPage.prototype.ionViewDidLoad = function () {
-    };
-    AsesoriasPage.prototype.openAdd = function () {
-        var _this = this;
-        var m = this.modal.create('AsesoriaAddPage');
+    ionViewDidLoad() {
+    }
+    openAdd() {
+        const m = this.modal.create('AsesoriaAddPage');
         m.present();
-        m.onDidDismiss(function (data) {
+        m.onDidDismiss(data => {
             if (data)
-                _this.ionViewDidLoad();
+                this.ionViewDidLoad();
         });
-    };
-    AsesoriasPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-asesorias',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Asesorias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="asesorias$ | async as asesorias else loader">\n    <ion-item *ngFor="let a of asesorias" (click)="navCtrl.push(\'AsesoriaDetailPage\', {id: a.id})">\n      <h2>{{a.name}}</h2>\n      <!--<p>{{a.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n  \n  <ion-fab right bottom *ngIf="auth.isAdmin" >\n    <button ion-fab color="rojito" (click)="openAdd()" ><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"]])
-    ], AsesoriasPage);
-    return AsesoriasPage;
-}());
+    }
+};
+AsesoriasPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-asesorias',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Asesorias</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  \n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="asesorias$ | async as asesorias else loader">\n    <ion-item *ngFor="let a of asesorias" (click)="navCtrl.push(\'AsesoriaDetailPage\', {id: a.id})">\n      <h2>{{a.name}}</h2>\n      <!--<p>{{a.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n  \n  <ion-fab right bottom *ngIf="auth.isAdmin" >\n    <button ion-fab color="rojito" (click)="openAdd()" ><ion-icon name="add"></ion-icon></button>\n  </ion-fab>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/asesorias/asesorias.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"]])
+], AsesoriasPage);
 
 //# sourceMappingURL=asesorias.js.map
 

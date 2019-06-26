@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AvanceExamenPageModule = /** @class */ (function () {
-    function AvanceExamenPageModule() {
-    }
-    AvanceExamenPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */]),
-            ],
-        })
-    ], AvanceExamenPageModule);
-    return AvanceExamenPageModule;
-}());
+let AvanceExamenPageModule = class AvanceExamenPageModule {
+};
+AvanceExamenPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__avance_examen__["a" /* AvanceExamenPage */]),
+        ],
+    })
+], AvanceExamenPageModule);
 
 //# sourceMappingURL=avance-examen.module.js.map
 
@@ -60,8 +57,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var AvanceExamenPage = /** @class */ (function () {
-    function AvanceExamenPage(store, navParams, viewCtrl) {
+let AvanceExamenPage = class AvanceExamenPage {
+    constructor(store, navParams, viewCtrl) {
         this.store = store;
         this.navParams = navParams;
         this.viewCtrl = viewCtrl;
@@ -70,36 +67,34 @@ var AvanceExamenPage = /** @class */ (function () {
         this.activeIndex = 0;
         this.examState$ = this.store.select('exam');
     }
-    AvanceExamenPage.prototype.ngOnInit = function () {
-        var _this = this;
+    ngOnInit() {
         // Load questions
-        var questions = this.navParams.get('questions');
+        const questions = this.navParams.get('questions');
         if (questions[0] instanceof Array)
             this.isGroup = true;
         console.log(questions, this.isGroup);
         this.qList = questions;
-        this.examState$.subscribe(function (state) {
+        this.examState$.subscribe(state => {
             if (state.results && state.results.questions)
-                _this.completed = Object.keys(state.results.questions);
+                this.completed = Object.keys(state.results.questions);
             if (state.finished)
-                _this.completed = [];
-            _this.activeIndex = state.index;
+                this.completed = [];
+            this.activeIndex = state.index;
         });
-    };
-    AvanceExamenPage.prototype.gotoQuestion = function (index) {
+    }
+    gotoQuestion(index) {
         this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_2__reducers_exam_reducer__["e" /* SetIndex */](index));
         this.viewCtrl.dismiss();
-    };
-    AvanceExamenPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-avance-examen',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Avance</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <!-- <pre>{{ completed | json }}</pre> -->\n\n  <ul *ngIf="!isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question)">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question[0].id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question.text.substr(0, 100)}}\n        {{question.text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <ul *ngIf="isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question[0])">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question[0].id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question[0].text.substr(0, 100)}}\n        {{question[0].text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <style>\n    .active-question {\n      font-weight: bolder;\n    }\n  </style>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngrx_store__["a" /* Store */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
-    ], AvanceExamenPage);
-    return AvanceExamenPage;
-}());
+    }
+};
+AvanceExamenPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-avance-examen',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Avance</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <!-- <pre>{{ completed | json }}</pre> -->\n\n  <ul *ngIf="!isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question)">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question[0].id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question.text.substr(0, 100)}}\n        {{question.text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <ul *ngIf="isGroup && qList" class="list-group m-4">\n    <li *ngFor="let question of qList; let i = index" class="list-group-item manita-list-item"\n      (click)="gotoQuestion(i, question[0])">\n      <ion-icon name="checkmark" color="bien" *ngIf="completed.indexOf(question[0].id) >= 0"></ion-icon>\n      <a [ngClass]="{\'active-question\': i == activeIndex}">{{i + 1}}.- {{question[0].text.substr(0, 100)}}\n        {{question[0].text.length > 100 ? \'...\' : \'\'}}</a>\n    </li>\n  </ul>\n\n  <style>\n    .active-question {\n      font-weight: bolder;\n    }\n  </style>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/avance-examen/avance-examen.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__ngrx_store__["a" /* Store */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */]])
+], AvanceExamenPage);
 
 //# sourceMappingURL=avance-examen.js.map
 

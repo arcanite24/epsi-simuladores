@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var MiCursoPageModule = /** @class */ (function () {
-    function MiCursoPageModule() {
-    }
-    MiCursoPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */]),
-            ],
-        })
-    ], MiCursoPageModule);
-    return MiCursoPageModule;
-}());
+let MiCursoPageModule = class MiCursoPageModule {
+};
+MiCursoPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__mi_curso__["a" /* MiCursoPage */]),
+        ],
+    })
+], MiCursoPageModule);
 
 //# sourceMappingURL=mi-curso.module.js.map
 
@@ -67,28 +64,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var MiCursoPage = /** @class */ (function () {
-    function MiCursoPage(afs, auth, navCtrl) {
+let MiCursoPage = class MiCursoPage {
+    constructor(afs, auth, navCtrl) {
         this.afs = afs;
         this.auth = auth;
         this.navCtrl = navCtrl;
-        this.mainContent = __WEBPACK_IMPORTED_MODULE_3__app_app_config__["b" /* contentHierarchy */].slice().shift();
+        this.mainContent = [...__WEBPACK_IMPORTED_MODULE_3__app_app_config__["b" /* contentHierarchy */]].shift();
     }
-    MiCursoPage.prototype.ngOnInit = function () {
-        var _this = this;
+    ngOnInit() {
         this.content$ = this.afs
-            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTENT, function (ref) {
-            return ref.where('type', '==', _this.mainContent);
-        })
+            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTENT, ref => ref.where('type', '==', this.mainContent))
             .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["map"])(function (content) {
-            return content
-                .filter(function (c) { return !c.name.includes('Temprano'); })
-                .filter(function (c) { return !c.ignoreOnSmartCalendar; })
-                .filter(function (c) { return c.liberadoInPrograma; });
-        }));
-    };
-    MiCursoPage.prototype.isBlur = function (name) {
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["map"])(content => content
+            .filter(c => !c.name.includes('Temprano'))
+            .filter(c => !c.ignoreOnSmartCalendar)
+            .filter(c => c.liberadoInPrograma)));
+    }
+    isBlur(name) {
         if (!this.auth.user)
             return true;
         if (!name)
@@ -103,8 +95,8 @@ var MiCursoPage = /** @class */ (function () {
             return !this.auth.isTemprano;
         }
         return false;
-    };
-    MiCursoPage.prototype.isLiberado = function (content) {
+    }
+    isLiberado(content) {
         if (!this.auth.user)
             return false;
         if (this.auth.user.isAdmin)
@@ -112,17 +104,16 @@ var MiCursoPage = /** @class */ (function () {
         if (this.auth.user.isPremium2019)
             return true;
         return content.liberadoInPrograma;
-    };
-    MiCursoPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-mi-curso',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi Curso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="content$ | async as content">\n    <ion-row>\n\n      <ion-col *ngFor="let m of content" col-6>\n        <ion-card (click)="navCtrl.push(\'MateriaAltPage\', {id: m.id})">\n          <img [src]="m.cover" alt="Content">\n          <ion-card-content>\n            <ion-card-title>{{m.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */]])
-    ], MiCursoPage);
-    return MiCursoPage;
-}());
+    }
+};
+MiCursoPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-mi-curso',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi Curso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="content$ | async as content">\n    <ion-row>\n\n      <ion-col *ngFor="let m of content" col-6>\n        <ion-card (click)="navCtrl.push(\'MateriaAltPage\', {id: m.id})">\n          <img [src]="m.cover" alt="Content">\n          <ion-card-content>\n            <ion-card-title>{{m.name}}</ion-card-title>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/mi-curso/mi-curso.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_0__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */]])
+], MiCursoPage);
 
 //# sourceMappingURL=mi-curso.js.map
 

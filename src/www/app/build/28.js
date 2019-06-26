@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var NotificationsPageModule = /** @class */ (function () {
-    function NotificationsPageModule() {
-    }
-    NotificationsPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]),
-            ],
-        })
-    ], NotificationsPageModule);
-    return NotificationsPageModule;
-}());
+let NotificationsPageModule = class NotificationsPageModule {
+};
+NotificationsPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notifications__["a" /* NotificationsPage */]),
+        ],
+    })
+], NotificationsPageModule);
 
 //# sourceMappingURL=notifications.module.js.map
 
@@ -61,8 +58,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var NotificationsPage = /** @class */ (function () {
-    function NotificationsPage(navCtrl, navParams, back, toast, load, viewCtrl) {
+let NotificationsPage = class NotificationsPage {
+    constructor(navCtrl, navParams, back, toast, load, viewCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.back = back;
@@ -72,57 +69,54 @@ var NotificationsPage = /** @class */ (function () {
         this.notis = [];
         this.uid = localStorage.getItem('uid');
     }
-    NotificationsPage.prototype.ionViewDidLoad = function () {
+    ionViewDidLoad() {
         this.loadNotis();
-    };
-    NotificationsPage.prototype.reload = function (e) { this.loadNotis(function () { return e.complete(); }); };
-    NotificationsPage.prototype.loadNotis = function (cb) {
-        var _this = this;
-        var l = this.load.create({ content: 'Cargando notificaciones...' });
+    }
+    reload(e) { this.loadNotis(() => e.complete()); }
+    loadNotis(cb) {
+        const l = this.load.create({ content: 'Cargando notificaciones...' });
         l.present();
-        this.back.getNotisUser(this.uid).subscribe(function (data) {
-            _this.notis = data;
+        this.back.getNotisUser(this.uid).subscribe(data => {
+            this.notis = data;
             l.dismiss();
             if (cb)
                 cb();
-        }, function (err) {
+        }, err => {
             l.dismiss();
-            _this.toast.create({ message: 'No se pudieron cargar las notificaciones', duration: 2000 }).present();
-            _this.viewCtrl.dismiss();
+            this.toast.create({ message: 'No se pudieron cargar las notificaciones', duration: 2000 }).present();
+            this.viewCtrl.dismiss();
         });
-    };
-    NotificationsPage.prototype.setRead = function (id, i, read) {
-        var _this = this;
+    }
+    setRead(id, i, read) {
         if (read)
             return;
         this.notis[i].read = true;
-        this.back.updateNoti(id, { read: this.notis[i].read }).subscribe(function (data) {
+        this.back.updateNoti(id, { read: this.notis[i].read }).subscribe(data => {
             console.log(data);
-        }, function (err) {
-            _this.notis[i].read = read;
-            _this.toast.create({ message: 'No se pudo marcar como leída la notificación...', duration: 2000 }).present();
+        }, err => {
+            this.notis[i].read = read;
+            this.toast.create({ message: 'No se pudo marcar como leída la notificación...', duration: 2000 }).present();
         });
-    };
-    NotificationsPage.prototype.getDate = function (date) {
+    }
+    getDate(date) {
         return __WEBPACK_IMPORTED_MODULE_3_moment___default()(date).fromNow();
-    };
-    NotificationsPage.prototype.handleClick = function (noti) {
+    }
+    handleClick(noti) {
         if (noti.hilo)
             this.navCtrl.push('HiloDetailPage', { id: noti.hilo.id });
-    };
-    NotificationsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-notifications',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Notificaciones</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-list>\n    <ion-item *ngFor="let n of notis.reverse(); let i = index" [ngClass]="{\'read\': n.read}" (click)="setRead(n.id, i, n.read); handleClick(n)" text-wrap>\n      <h2>{{n.title}} <small>{{getDate(n.createdAt)}}</small> </h2>\n      <p>{{n.desc}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["x" /* ViewController */]])
-    ], NotificationsPage);
-    return NotificationsPage;
-}());
+    }
+};
+NotificationsPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-notifications',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Notificaciones</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n\n  <ion-list>\n    <ion-item *ngFor="let n of notis.reverse(); let i = index" [ngClass]="{\'read\': n.read}" (click)="setRead(n.id, i, n.read); handleClick(n)" text-wrap>\n      <h2>{{n.title}} <small>{{getDate(n.createdAt)}}</small> </h2>\n      <p>{{n.desc}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notifications/notifications.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["x" /* ViewController */]])
+], NotificationsPage);
 
 //# sourceMappingURL=notifications.js.map
 

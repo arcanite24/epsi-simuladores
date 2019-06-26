@@ -21,22 +21,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var HiloDetailPageModule = /** @class */ (function () {
-    function HiloDetailPageModule() {
-    }
-    HiloDetailPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */]),
-                __WEBPACK_IMPORTED_MODULE_3_angular2_moment__["MomentModule"]
-            ],
-        })
-    ], HiloDetailPageModule);
-    return HiloDetailPageModule;
-}());
+let HiloDetailPageModule = class HiloDetailPageModule {
+};
+HiloDetailPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__hilo_detail__["a" /* HiloDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_3_angular2_moment__["MomentModule"]
+        ],
+    })
+], HiloDetailPageModule);
 
 //# sourceMappingURL=hilo-detail.module.js.map
 
@@ -768,41 +765,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
 
 
 
 
 
 
-var HiloDetailPage = /** @class */ (function () {
-    function HiloDetailPage(navCtrl, navParams, afs, auth, data) {
+let HiloDetailPage = class HiloDetailPage {
+    constructor(navCtrl, navParams, afs, auth, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
@@ -812,50 +782,37 @@ var HiloDetailPage = /** @class */ (function () {
         this.tempR = '';
         this.lc = false;
     }
-    HiloDetailPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
+    ionViewDidLoad() {
         this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD).doc(this.id).valueChanges();
-        this.responses$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE, function (ref) { return ref.where('thread.id', '==', _this.id); }).valueChanges();
-    };
-    HiloDetailPage.prototype.addRespuesta = function (text) {
-        return __awaiter(this, void 0, void 0, function () {
-            var id, thread;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        this.lc = true;
-                        id = this.afs.createId();
-                        return [4 /*yield*/, this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, this.id)];
-                    case 1:
-                        thread = _a.sent();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE).doc(id).set({
-                                id: id,
-                                text: text,
-                                user: this.auth.user,
-                                user_id: this.auth.user.uid,
-                                thread: thread,
-                                date: new Date().toISOString()
-                            })];
-                    case 2:
-                        _a.sent();
-                        this.tempR = '';
-                        return [2 /*return*/];
-                }
+        this.responses$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE, ref => ref.where('thread.id', '==', this.id)).valueChanges();
+    }
+    addRespuesta(text) {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.lc = true;
+            const id = this.afs.createId();
+            const thread = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, this.id);
+            yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_RESPONSE).doc(id).set({
+                id,
+                text,
+                user: this.auth.user,
+                user_id: this.auth.user.uid,
+                thread,
+                date: new Date().toISOString()
             });
+            this.tempR = '';
         });
-    };
-    HiloDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-hilo-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/'¡<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Hilo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!h">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n  \n  <div *ngIf="thread$ | async as h else loader">\n\n    <ion-card>\n      <ion-card-header text-wrap><strong>{{h.title}}</strong></ion-card-header>\n      <ion-card-content>{{h.text}}</ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf="h.best">\n      <ion-item>\n        <ion-avatar item-start>\n          <img [src]="h.best.user.avatar ? \'https://zamnademy.com\' + h.best.user.avatar : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{h.best.user.name}} {{h.best.user.lastName}}</h2>\n        <p> <ion-icon name="star" class="mr-1"></ion-icon>Mejor respuesta</p>\n      </ion-item>\n      <ion-card-content>{{h.best.text}}</ion-card-content>\n      <div class="card-footer">\n        <span class="c54 small-text">{{h.createdAt | amCalendar}}</span>\n      </div>\n    </ion-card>\n\n    <ion-list *ngIf="responses$ | async as responses else loader">\n      <ion-list-header><strong>Respuestas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Responder al post" [(ngModel)]="tempR" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addRespuesta(tempR)" [disabled]="!tempR || tempR.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item *ngFor="let r of responses.reverse()" text-wrap>\n        <ion-avatar item-start>\n          <img [src]="r.user.photoURL ? r.user.photoURL : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{r.user.displayName}}</h2>\n        <p style="font-size:1.25rem !important;" class="small-text">{{r.date | amCalendar}}</p>\n        <p class="respuesta-text">{{r.text}}</p>\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
-    ], HiloDetailPage);
-    return HiloDetailPage;
-}());
+    }
+};
+HiloDetailPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-hilo-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/'¡<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Hilo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!h">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n  \n  <div *ngIf="thread$ | async as h else loader">\n\n    <ion-card>\n      <ion-card-header text-wrap><strong>{{h.title}}</strong></ion-card-header>\n      <ion-card-content>{{h.text}}</ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf="h.best">\n      <ion-item>\n        <ion-avatar item-start>\n          <img [src]="h.best.user.avatar ? \'https://zamnademy.com\' + h.best.user.avatar : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{h.best.user.name}} {{h.best.user.lastName}}</h2>\n        <p> <ion-icon name="star" class="mr-1"></ion-icon>Mejor respuesta</p>\n      </ion-item>\n      <ion-card-content>{{h.best.text}}</ion-card-content>\n      <div class="card-footer">\n        <span class="c54 small-text">{{h.createdAt | amCalendar}}</span>\n      </div>\n    </ion-card>\n\n    <ion-list *ngIf="responses$ | async as responses else loader">\n      <ion-list-header><strong>Respuestas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Responder al post" [(ngModel)]="tempR" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addRespuesta(tempR)" [disabled]="!tempR || tempR.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item *ngFor="let r of responses.reverse()" text-wrap>\n        <ion-avatar item-start>\n          <img [src]="r.user.photoURL ? r.user.photoURL : \'assets/imgs/profile.jpg\'">\n        </ion-avatar>\n        <h2>{{r.user.displayName}}</h2>\n        <p style="font-size:1.25rem !important;" class="small-text">{{r.date | amCalendar}}</p>\n        <p class="respuesta-text">{{r.text}}</p>\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/hilo-detail/hilo-detail.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
+], HiloDetailPage);
 
 //# sourceMappingURL=hilo-detail.js.map
 

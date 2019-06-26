@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var ForoDetailPageModule = /** @class */ (function () {
-    function ForoDetailPageModule() {
-    }
-    ForoDetailPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */]),
-            ],
-        })
-    ], ForoDetailPageModule);
-    return ForoDetailPageModule;
-}());
+let ForoDetailPageModule = class ForoDetailPageModule {
+};
+ForoDetailPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foro_detail__["a" /* ForoDetailPage */]),
+        ],
+    })
+], ForoDetailPageModule);
 
 //# sourceMappingURL=foro-detail.module.js.map
 
@@ -61,34 +58,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var ForoDetailPage = /** @class */ (function () {
-    function ForoDetailPage(navCtrl, navParams, afs, modal) {
+let ForoDetailPage = class ForoDetailPage {
+    constructor(navCtrl, navParams, afs, modal) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
         this.modal = modal;
     }
-    ForoDetailPage.prototype.ngOnInit = function () {
-    };
-    ForoDetailPage.prototype.ionViewDidLoad = function () {
-        var id = this.navParams.get('id');
-        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, function (ref) { return ref.where('cat_id', '==', id); }).valueChanges();
-    };
-    ForoDetailPage.prototype.openAddThread = function () {
-        var m = this.modal.create('ThreadAddPage', { cat: this.navParams.get('id') });
+    ngOnInit() {
+    }
+    ionViewDidLoad() {
+        const id = this.navParams.get('id');
+        this.thread$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD, ref => ref.where('cat_id', '==', id)).valueChanges();
+    }
+    openAddThread() {
+        const m = this.modal.create('ThreadAddPage', { cat: this.navParams.get('id') });
         m.present();
-    };
-    ForoDetailPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-foro-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <ion-list *ngIf="thread$ | async as threads else loader">\n    <ion-list-header>Hilos</ion-list-header>\n    <ion-item *ngFor="let h of threads" (click)="navCtrl.push(\'HiloDetailPage\', {id: h.id})">\n      <h2>{{h.title}}</h2>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito" (click)="openAddThread()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */]])
-    ], ForoDetailPage);
-    return ForoDetailPage;
-}());
+    }
+};
+ForoDetailPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-foro-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categoría</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <ion-list *ngIf="thread$ | async as threads else loader">\n    <ion-list-header>Hilos</ion-list-header>\n    <ion-item *ngFor="let h of threads" (click)="navCtrl.push(\'HiloDetailPage\', {id: h.id})">\n      <h2>{{h.title}}</h2>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito" (click)="openAddThread()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foro-detail/foro-detail.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */]])
+], ForoDetailPage);
 
 //# sourceMappingURL=foro-detail.js.map
 

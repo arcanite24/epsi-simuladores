@@ -18,21 +18,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
-    }
-    LoginPageModule = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-            declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
-            ],
-            imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
-            ],
-        })
-    ], LoginPageModule);
-    return LoginPageModule;
-}());
+let LoginPageModule = class LoginPageModule {
+};
+LoginPageModule = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+        declarations: [
+            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+        ],
+        imports: [
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+        ],
+    })
+], LoginPageModule);
 
 //# sourceMappingURL=login.module.js.map
 
@@ -65,9 +62,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, back, afAuth, auth, platform, iap) {
-        var _this = this;
+let LoginPage = class LoginPage {
+    constructor(navCtrl, navParams, back, afAuth, auth, platform, iap) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.back = back;
@@ -80,50 +76,48 @@ var LoginPage = /** @class */ (function () {
         this.admin = false;
         this.isBrowser = !this.platform.is('cordova');
         this.loaded = false;
-        this.auth.user$.subscribe(function (user) {
-            _this.user = true;
-            if (user && !_this.loaded) {
-                _this.loaded = true;
-                _this.navCtrl.setRoot("HomePage");
+        this.auth.user$.subscribe(user => {
+            this.user = true;
+            if (user && !this.loaded) {
+                this.loaded = true;
+                this.navCtrl.setRoot("HomePage");
             }
         });
     }
-    LoginPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        var uid = localStorage.getItem('uid');
+    ionViewDidLoad() {
+        const uid = localStorage.getItem('uid');
         if (uid) {
-            this.back.saveFcmToken(uid, localStorage.getItem('fcm_token')).then(function (data) {
-                _this.navCtrl.setRoot('HomePage');
-            }).catch(function (err) {
-                var list = JSON.parse(localStorage.getItem('zamnademy-cache-list'));
+            this.back.saveFcmToken(uid, localStorage.getItem('fcm_token')).then(data => {
+                this.navCtrl.setRoot('HomePage');
+            }).catch(err => {
+                const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'));
                 if (list)
-                    _this.navCtrl.setRoot('SimuladoresPage');
+                    this.navCtrl.setRoot('SimuladoresPage');
             });
         }
-    };
-    LoginPage.prototype.loginGoogleFirebase = function () {
+    }
+    loginGoogleFirebase() {
         this.auth.loginGoogle(this.isBrowser);
-    };
-    LoginPage.prototype.loginFacebookFirebase = function () {
+    }
+    loginFacebookFirebase() {
         this.auth.loginFacebook(this.isBrowser);
-    };
-    LoginPage.prototype.loginEmailFirebase = function (email, password) {
+    }
+    loginEmailFirebase(email, password) {
         this.afAuth.auth.signInWithEmailAndPassword(email, password);
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/'<!--<div class="login-loader">\n  <img src="assets/imgs/update-cover.png" (click)="iap.create(\'https://zamnademy.com\', \'_system\').show()">\n</div>-->\n\n<div class="login-loader" *ngIf="!user">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-content class="login-bg">\n\n  <div class="h100 flex-col login-col" padding *ngIf="admin" >\n    <div class="login-inputs flex-col w100" padding>\n      <input placeholder="Email" type="text" class="mb-1 w100 login-input" [(ngModel)]="email" >\n      <input placeholder="Contraseña" type="password" class="w100 login-input" [(ngModel)]="password">\n    </div>\n    <div class="flex-col">\n      <button ion-button color="secondary" (click)="loginEmailFirebase(email, password)">Iniciar Sesión</button>\n      <button clear ion-button color="secondary" (click)="admin = false">Regresar</button>\n    </div>\n  </div>\n\n  <div class="h100 flex-col login-col" padding *ngIf="!admin" >\n    <div class="flex-col" style="color:white; text-align:center">\n      <h1 style="font-size:2rem">¡Hola!<br>Qué gusto vernos otra vez</h1>\n    </div>\n    <div class="flex-col" style="color:white; text-align:center;font-size:2rem">\n      <h1>Ingresar a Mi<br>ENARM 2019<br></h1>\n      <img src="assets/imgs/texto.png" style="width:90%">\n      <h1>con:</h1>\n    </div>\n       <div class="login-buttons flex-col">\n        <div class="flex-col social-buttons">\n          <button class="btn-facebook" (click)="loginFacebookFirebase()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            <span>Iniciar sesión con Facebook</span>\n          </button>\n          <button class="btn-google" (click)="loginGoogleFirebase()">\n            <ion-icon name="logo-google"></ion-icon>\n            <span>Iniciar sesión con Google</span>\n          </button>\n        </div>\n\n      </div>\n\n      <div class="flex-row-no-wrap w100">\n        <img src="assets/imgs/weon.png" style="margin-left:auto;width:64px" (click)="admin = true">\n      </div>\n      \n      <!-- <pre style="width:100%; background-color: white; color: black;">\n        {{user | json}}\n      </pre> -->\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__["AngularFireAuth"],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
-    ], LoginPage);
-    return LoginPage;
-}());
+    }
+};
+LoginPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/'<!--<div class="login-loader">\n  <img src="assets/imgs/update-cover.png" (click)="iap.create(\'https://zamnademy.com\', \'_system\').show()">\n</div>-->\n\n<div class="login-loader" *ngIf="!user">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-content class="login-bg">\n\n  <div class="h100 flex-col login-col" padding *ngIf="admin" >\n    <div class="login-inputs flex-col w100" padding>\n      <input placeholder="Email" type="text" class="mb-1 w100 login-input" [(ngModel)]="email" >\n      <input placeholder="Contraseña" type="password" class="w100 login-input" [(ngModel)]="password">\n    </div>\n    <div class="flex-col">\n      <button ion-button color="secondary" (click)="loginEmailFirebase(email, password)">Iniciar Sesión</button>\n      <button clear ion-button color="secondary" (click)="admin = false">Regresar</button>\n    </div>\n  </div>\n\n  <div class="h100 flex-col login-col" padding *ngIf="!admin" >\n    <div class="flex-col" style="color:white; text-align:center">\n      <h1 style="font-size:2rem">¡Hola!<br>Qué gusto vernos otra vez</h1>\n    </div>\n    <div class="flex-col" style="color:white; text-align:center;font-size:2rem">\n      <h1>Ingresar a Mi<br>ENARM 2019<br></h1>\n      <img src="assets/imgs/texto.png" style="width:90%">\n      <h1>con:</h1>\n    </div>\n       <div class="login-buttons flex-col">\n        <div class="flex-col social-buttons">\n          <button class="btn-facebook" (click)="loginFacebookFirebase()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            <span>Iniciar sesión con Facebook</span>\n          </button>\n          <button class="btn-google" (click)="loginGoogleFirebase()">\n            <ion-icon name="logo-google"></ion-icon>\n            <span>Iniciar sesión con Google</span>\n          </button>\n        </div>\n\n      </div>\n\n      <div class="flex-row-no-wrap w100">\n        <img src="assets/imgs/weon.png" style="margin-left:auto;width:64px" (click)="admin = true">\n      </div>\n      \n      <!-- <pre style="width:100%; background-color: white; color: black;">\n        {{user | json}}\n      </pre> -->\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/,
+    }),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__["AngularFireAuth"],
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+], LoginPage);
 
 //# sourceMappingURL=login.js.map
 
