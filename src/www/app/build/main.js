@@ -1,6 +1,6 @@
 webpackJsonp([50],{
 
-/***/ 1091:
+/***/ 1113:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -20,20 +20,20 @@ const firebaseConfig = {
 
 /***/ }),
 
-/***/ 1092:
+/***/ 1114:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_device__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_device__ = __webpack_require__(586);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_back_back__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(583);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(582);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(585);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(584);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_push__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_fcm_fcm__ = __webpack_require__(585);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__node_modules_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_fcm_fcm__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__node_modules_rxjs_operators__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,7 +104,7 @@ MyApp = __decorate([
 
 /***/ }),
 
-/***/ 1095:
+/***/ 1117:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -113,7 +113,7 @@ MyApp = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__ = __webpack_require__(1096);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__ = __webpack_require__(1118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -539,8 +539,8 @@ BackProvider = __decorate([
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_firestore__ = __webpack_require__(106);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_fire_firestore__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operators__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -645,203 +645,203 @@ webpackEmptyAsyncContext.id = 293;
 
 var map = {
 	"../pages/asesoria-add/asesoria-add.module": [
-		1101,
+		1123,
 		49
 	],
 	"../pages/asesoria-detail/asesoria-detail.module": [
-		1102,
+		1124,
 		48
 	],
 	"../pages/asesorias/asesorias.module": [
-		1103,
+		1125,
 		47
 	],
 	"../pages/avance-examen/avance-examen.module": [
-		1104,
+		1126,
 		46
 	],
 	"../pages/bloque-alt/bloque-alt.module": [
-		1106,
+		1127,
 		45
 	],
 	"../pages/calendar/calendar.module": [
-		1105,
+		1128,
 		44
 	],
 	"../pages/checklist/checklist.module": [
-		1108,
+		1129,
 		43
 	],
 	"../pages/clase-detail/clase-detail.module": [
-		1107,
+		1130,
 		42
 	],
 	"../pages/como-te-sientes-hoy/como-te-sientes-hoy.module": [
-		1109,
+		1132,
 		41
 	],
 	"../pages/downloads/downloads.module": [
-		1110,
+		1131,
 		40
 	],
 	"../pages/especialidades/especialidades.module": [
-		1111,
+		1133,
 		39
 	],
 	"../pages/exam-feedback/exam-feedback.module": [
-		1112,
+		1134,
 		7
 	],
 	"../pages/examen-detail/examen-detail.module": [
-		1149,
+		1171,
 		6
 	],
 	"../pages/foro-detail/foro-detail.module": [
-		1113,
+		1135,
 		38
 	],
 	"../pages/foros/foros.module": [
-		1114,
+		1136,
 		37
 	],
 	"../pages/galeria-detail/galeria-detail.module": [
-		1115,
+		1137,
 		36
 	],
 	"../pages/galerias/galerias.module": [
-		1116,
+		1138,
 		5
 	],
 	"../pages/hilo-detail/hilo-detail.module": [
-		1117,
+		1139,
 		9
 	],
 	"../pages/home/home.module": [
-		1118,
+		1140,
 		4
 	],
 	"../pages/login/login.module": [
-		1150,
+		1172,
 		35
 	],
 	"../pages/materia-alt/materia-alt.module": [
-		1119,
+		1141,
 		34
 	],
 	"../pages/materia/materia.module": [
-		1120,
+		1142,
 		3
 	],
 	"../pages/media/media.module": [
-		1121,
+		1143,
 		2
 	],
 	"../pages/mi-analitica/mi-analitica.module": [
-		1122,
+		1144,
 		1
 	],
 	"../pages/mi-curso/mi-curso.module": [
-		1123,
+		1145,
 		33
 	],
 	"../pages/mis-resultados/mis-resultados.module": [
-		1124,
+		1146,
 		8
 	],
 	"../pages/notas-add/notas-add.module": [
-		1126,
+		1147,
 		32
 	],
 	"../pages/notas-global-detail/notas-global-detail.module": [
-		1125,
+		1148,
 		31
 	],
 	"../pages/notas-global/notas-global.module": [
-		1127,
+		1149,
 		30
 	],
 	"../pages/notas/notas.module": [
-		1128,
+		1150,
 		29
 	],
 	"../pages/notifications/notifications.module": [
-		1129,
+		1151,
 		28
 	],
 	"../pages/offline-video/offline-video.module": [
-		1131,
+		1152,
 		27
 	],
 	"../pages/post-comments/post-comments.module": [
-		1130,
+		1153,
 		26
 	],
 	"../pages/profile/profile.module": [
-		1133,
+		1154,
 		25
 	],
 	"../pages/programa-bloque/programa-bloque.module": [
-		1132,
+		1155,
 		24
 	],
 	"../pages/programa-materia/programa-materia.module": [
-		1134,
+		1156,
 		23
 	],
 	"../pages/ratings/ratings.module": [
-		1135,
+		1157,
 		22
 	],
 	"../pages/resultado-detail/resultado-detail.module": [
-		1136,
+		1159,
 		21
 	],
 	"../pages/resultados-examen/resultados-examen.module": [
-		1137,
+		1158,
 		0
 	],
 	"../pages/simulacros/simulacros.module": [
-		1138,
+		1160,
 		20
 	],
 	"../pages/simulador-detail/simulador-detail.module": [
-		1139,
+		1161,
 		19
 	],
 	"../pages/simuladores/simuladores.module": [
-		1140,
+		1162,
 		18
 	],
 	"../pages/slide-detail/slide-detail.module": [
-		1142,
+		1163,
 		17
 	],
 	"../pages/slides/slides.module": [
-		1141,
+		1164,
 		16
 	],
 	"../pages/smart-calendar/smart-calendar.module": [
-		1143,
+		1165,
 		15
 	],
 	"../pages/stat-view-detail/stat-view-detail.module": [
-		1144,
+		1166,
 		14
 	],
 	"../pages/tema-alt/tema-alt.module": [
-		1145,
+		1167,
 		13
 	],
 	"../pages/thread-add/thread-add.module": [
-		1147,
+		1168,
 		12
 	],
 	"../pages/top-users/top-users.module": [
-		1146,
+		1169,
 		11
 	],
 	"../pages/zona-enarm/zona-enarm.module": [
-		1148,
+		1170,
 		10
 	]
 };
@@ -861,13 +861,13 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 585:
+/***/ 587:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FcmProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_firebase__ = __webpack_require__(586);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_native_firebase__ = __webpack_require__(588);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -935,17 +935,17 @@ FcmProvider = __decorate([
 
 /***/ }),
 
-/***/ 588:
+/***/ 590:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_auth__ = __webpack_require__(349);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_auth__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase_app__ = __webpack_require__(337);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_firebase_app__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1138,21 +1138,21 @@ AuthProvider = __decorate([
 
 /***/ }),
 
-/***/ 590:
+/***/ 592:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatsProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_firestore__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_firestore__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(591);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_config__ = __webpack_require__(594);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_config__ = __webpack_require__(596);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1476,7 +1476,7 @@ StatsProvider = __decorate([
 
 /***/ }),
 
-/***/ 592:
+/***/ 594:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1607,7 +1607,7 @@ function examReducer(state = initialState, action) {
 
 /***/ }),
 
-/***/ 594:
+/***/ 596:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1663,13 +1663,13 @@ const performancePlotTags = [
 
 /***/ }),
 
-/***/ 603:
+/***/ 605:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(604);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(728);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(606);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(730);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -1677,7 +1677,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 728:
+/***/ 730:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1686,41 +1686,41 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(582);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(583);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__ = __webpack_require__(601);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_moment__ = __webpack_require__(1089);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(584);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(585);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_network__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_moment__ = __webpack_require__(1111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common_http__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2__ = __webpack_require__(1090);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2__ = __webpack_require__(1112);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angularfire2___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angularfire2__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__ = __webpack_require__(599);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__ = __webpack_require__(601);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_angularfire2_auth__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore__ = __webpack_require__(589);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__config__ = __webpack_require__(1091);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__(1092);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__config__ = __webpack_require__(1113);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_component__ = __webpack_require__(1114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_back_back__ = __webpack_require__(147);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_facebook__ = __webpack_require__(1093);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_google_plus__ = __webpack_require__(1094);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ionic2_rating__ = __webpack_require__(602);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_img_viewer__ = __webpack_require__(598);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__app_auth__ = __webpack_require__(1095);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_in_app_browser__ = __webpack_require__(591);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_device__ = __webpack_require__(584);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_fcm_fcm__ = __webpack_require__(585);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_firebase__ = __webpack_require__(586);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_auth_auth__ = __webpack_require__(588);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_stats_stats__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__ionic_native_facebook__ = __webpack_require__(1115);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_google_plus__ = __webpack_require__(1116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_ionic2_rating__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_ionic_img_viewer__ = __webpack_require__(600);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__app_auth__ = __webpack_require__(1117);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__ionic_native_in_app_browser__ = __webpack_require__(593);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ionic_native_device__ = __webpack_require__(586);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_fcm_fcm__ = __webpack_require__(587);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__node_modules_ionic_native_firebase__ = __webpack_require__(588);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__providers_stats_stats__ = __webpack_require__(592);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_file_transfer__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_file__ = __webpack_require__(596);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ngrx_store__ = __webpack_require__(593);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__reducers_exam_reducer__ = __webpack_require__(592);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__swimlane_ngx_charts__ = __webpack_require__(595);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__angular_platform_browser_animations__ = __webpack_require__(1099);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ngx_progressbar_core__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__ionic_native_file_transfer__ = __webpack_require__(602);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__ionic_native_file__ = __webpack_require__(598);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__ngrx_store__ = __webpack_require__(595);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__reducers_exam_reducer__ = __webpack_require__(594);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__swimlane_ngx_charts__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__angular_platform_browser_animations__ = __webpack_require__(1121);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__ngx_progressbar_core__ = __webpack_require__(599);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1781,12 +1781,12 @@ AppModule = __decorate([
                     { loadChildren: '../pages/asesoria-detail/asesoria-detail.module#AsesoriaDetailPageModule', name: 'AsesoriaDetailPage', segment: 'asesoria/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/asesorias/asesorias.module#AsesoriasPageModule', name: 'AsesoriasPage', segment: 'asesorias', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/avance-examen/avance-examen.module#AvanceExamenPageModule', name: 'AvanceExamenPage', segment: 'avance-examen', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/bloque-alt/bloque-alt.module#BloqueAltPageModule', name: 'BloqueAltPage', segment: 'bloque-alt/:id', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/clase-detail/clase-detail.module#ClaseDetailPageModule', name: 'ClaseDetailPage', segment: 'clase/:id/:type', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checklist/checklist.module#ChecklistPageModule', name: 'ChecklistPage', segment: 'checklist', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/clase-detail/clase-detail.module#ClaseDetailPageModule', name: 'ClaseDetailPage', segment: 'clase/:id/:type', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/downloads/downloads.module#DownloadsPageModule', name: 'DownloadsPage', segment: 'downloads', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/especialidades/especialidades.module#EspecialidadesPageModule', name: 'EspecialidadesPage', segment: 'especialidades', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/exam-feedback/exam-feedback.module#ExamFeedbackPageModule', name: 'ExamFeedbackPage', segment: 'exam-feedback', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/foro-detail/foro-detail.module#ForoDetailPageModule', name: 'ForoDetailPage', segment: 'foro/:id', priority: 'low', defaultHistory: [] },
@@ -1801,29 +1801,29 @@ AppModule = __decorate([
                     { loadChildren: '../pages/mi-analitica/mi-analitica.module#MiAnaliticaPageModule', name: 'MiAnaliticaPage', segment: 'mi-analitica', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mi-curso/mi-curso.module#MiCursoPageModule', name: 'MiCursoPage', segment: 'mi-curso', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas-add/notas-add.module#NotasAddPageModule', name: 'NotasAddPage', segment: 'notas-add', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas-global/notas-global.module#NotasGlobalPageModule', name: 'NotasGlobalPage', segment: 'notas-global', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas/notas.module#NotasPageModule', name: 'NotasPage', segment: 'notas', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'NotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/post-comments/post-comments.module#PostCommentsPageModule', name: 'PostCommentsPage', segment: 'post-comments', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/offline-video/offline-video.module#OfflineVideoPageModule', name: 'OfflineVideoPage', segment: 'offline-video', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/programa-bloque/programa-bloque.module#ProgramaBloquePageModule', name: 'ProgramaBloquePage', segment: 'programa-bloque', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/post-comments/post-comments.module#PostCommentsPageModule', name: 'PostCommentsPage', segment: 'post-comments', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/programa-bloque/programa-bloque.module#ProgramaBloquePageModule', name: 'ProgramaBloquePage', segment: 'programa-bloque', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/programa-materia/programa-materia.module#ProgramaMateriaPageModule', name: 'ProgramaMateriaPage', segment: 'programa-materia', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/ratings/ratings.module#RatingsPageModule', name: 'RatingsPage', segment: 'ratings', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/resultado-detail/resultado-detail.module#ResultadoDetailPageModule', name: 'ResultadoDetailPage', segment: 'resultado-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/resultados-examen/resultados-examen.module#ResultadosExamenPageModule', name: 'ResultadosExamenPage', segment: 'resultado/:id', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/resultado-detail/resultado-detail.module#ResultadoDetailPageModule', name: 'ResultadoDetailPage', segment: 'resultado-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/simulacros/simulacros.module#SimulacrosPageModule', name: 'SimulacrosPage', segment: 'simulacros', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/simulador-detail/simulador-detail.module#SimuladorDetailPageModule', name: 'SimuladorDetailPage', segment: 'simulador-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/simuladores/simuladores.module#SimuladoresPageModule', name: 'SimuladoresPage', segment: 'simuladores', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stat-view-detail/stat-view-detail.module#StatViewDetailPageModule', name: 'StatViewDetailPage', segment: 'stat-view-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thread-add/thread-add.module#ThreadAddPageModule', name: 'ThreadAddPage', segment: 'thread-add', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/examen-detail/examen-detail.module#ExamenDetailPageModule', name: 'ExamenDetailPage', segment: 'examen/:type/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
@@ -1877,260 +1877,260 @@ AppModule = __decorate([
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./af": 352,
-	"./af.js": 352,
-	"./ar": 353,
-	"./ar-dz": 354,
-	"./ar-dz.js": 354,
-	"./ar-kw": 355,
-	"./ar-kw.js": 355,
-	"./ar-ly": 356,
-	"./ar-ly.js": 356,
-	"./ar-ma": 357,
-	"./ar-ma.js": 357,
-	"./ar-sa": 358,
-	"./ar-sa.js": 358,
-	"./ar-tn": 359,
-	"./ar-tn.js": 359,
-	"./ar.js": 353,
-	"./az": 360,
-	"./az.js": 360,
-	"./be": 361,
-	"./be.js": 361,
-	"./bg": 362,
-	"./bg.js": 362,
-	"./bm": 363,
-	"./bm.js": 363,
-	"./bn": 364,
-	"./bn.js": 364,
-	"./bo": 365,
-	"./bo.js": 365,
-	"./br": 366,
-	"./br.js": 366,
-	"./bs": 367,
-	"./bs.js": 367,
-	"./ca": 368,
-	"./ca.js": 368,
-	"./cs": 369,
-	"./cs.js": 369,
-	"./cv": 370,
-	"./cv.js": 370,
-	"./cy": 371,
-	"./cy.js": 371,
-	"./da": 372,
-	"./da.js": 372,
-	"./de": 373,
-	"./de-at": 374,
-	"./de-at.js": 374,
-	"./de-ch": 375,
-	"./de-ch.js": 375,
-	"./de.js": 373,
-	"./dv": 376,
-	"./dv.js": 376,
-	"./el": 377,
-	"./el.js": 377,
-	"./en-SG": 378,
-	"./en-SG.js": 378,
-	"./en-au": 379,
-	"./en-au.js": 379,
-	"./en-ca": 380,
-	"./en-ca.js": 380,
-	"./en-gb": 381,
-	"./en-gb.js": 381,
-	"./en-ie": 382,
-	"./en-ie.js": 382,
-	"./en-il": 383,
-	"./en-il.js": 383,
-	"./en-nz": 384,
-	"./en-nz.js": 384,
-	"./eo": 385,
-	"./eo.js": 385,
-	"./es": 386,
-	"./es-do": 387,
-	"./es-do.js": 387,
-	"./es-us": 388,
-	"./es-us.js": 388,
-	"./es.js": 386,
-	"./et": 389,
-	"./et.js": 389,
-	"./eu": 390,
-	"./eu.js": 390,
-	"./fa": 391,
-	"./fa.js": 391,
-	"./fi": 392,
-	"./fi.js": 392,
-	"./fo": 393,
-	"./fo.js": 393,
-	"./fr": 394,
-	"./fr-ca": 395,
-	"./fr-ca.js": 395,
-	"./fr-ch": 396,
-	"./fr-ch.js": 396,
-	"./fr.js": 394,
-	"./fy": 397,
-	"./fy.js": 397,
-	"./ga": 398,
-	"./ga.js": 398,
-	"./gd": 399,
-	"./gd.js": 399,
-	"./gl": 400,
-	"./gl.js": 400,
-	"./gom-latn": 401,
-	"./gom-latn.js": 401,
-	"./gu": 402,
-	"./gu.js": 402,
-	"./he": 403,
-	"./he.js": 403,
-	"./hi": 404,
-	"./hi.js": 404,
-	"./hr": 405,
-	"./hr.js": 405,
-	"./hu": 406,
-	"./hu.js": 406,
-	"./hy-am": 407,
-	"./hy-am.js": 407,
-	"./id": 408,
-	"./id.js": 408,
-	"./is": 409,
-	"./is.js": 409,
-	"./it": 410,
-	"./it-ch": 411,
-	"./it-ch.js": 411,
-	"./it.js": 410,
-	"./ja": 412,
-	"./ja.js": 412,
-	"./jv": 413,
-	"./jv.js": 413,
-	"./ka": 414,
-	"./ka.js": 414,
-	"./kk": 415,
-	"./kk.js": 415,
-	"./km": 416,
-	"./km.js": 416,
-	"./kn": 417,
-	"./kn.js": 417,
-	"./ko": 418,
-	"./ko.js": 418,
-	"./ku": 419,
-	"./ku.js": 419,
-	"./ky": 420,
-	"./ky.js": 420,
-	"./lb": 421,
-	"./lb.js": 421,
-	"./lo": 422,
-	"./lo.js": 422,
-	"./lt": 423,
-	"./lt.js": 423,
-	"./lv": 424,
-	"./lv.js": 424,
-	"./me": 425,
-	"./me.js": 425,
-	"./mi": 426,
-	"./mi.js": 426,
-	"./mk": 427,
-	"./mk.js": 427,
-	"./ml": 428,
-	"./ml.js": 428,
-	"./mn": 429,
-	"./mn.js": 429,
-	"./mr": 430,
-	"./mr.js": 430,
-	"./ms": 431,
-	"./ms-my": 432,
-	"./ms-my.js": 432,
-	"./ms.js": 431,
-	"./mt": 433,
-	"./mt.js": 433,
-	"./my": 434,
-	"./my.js": 434,
-	"./nb": 435,
-	"./nb.js": 435,
-	"./ne": 436,
-	"./ne.js": 436,
-	"./nl": 437,
-	"./nl-be": 438,
-	"./nl-be.js": 438,
-	"./nl.js": 437,
-	"./nn": 439,
-	"./nn.js": 439,
-	"./pa-in": 440,
-	"./pa-in.js": 440,
-	"./pl": 441,
-	"./pl.js": 441,
-	"./pt": 442,
-	"./pt-br": 443,
-	"./pt-br.js": 443,
-	"./pt.js": 442,
-	"./ro": 444,
-	"./ro.js": 444,
-	"./ru": 445,
-	"./ru.js": 445,
-	"./sd": 446,
-	"./sd.js": 446,
-	"./se": 447,
-	"./se.js": 447,
-	"./si": 448,
-	"./si.js": 448,
-	"./sk": 449,
-	"./sk.js": 449,
-	"./sl": 450,
-	"./sl.js": 450,
-	"./sq": 451,
-	"./sq.js": 451,
-	"./sr": 452,
-	"./sr-cyrl": 453,
-	"./sr-cyrl.js": 453,
-	"./sr.js": 452,
-	"./ss": 454,
-	"./ss.js": 454,
-	"./sv": 455,
-	"./sv.js": 455,
-	"./sw": 456,
-	"./sw.js": 456,
-	"./ta": 457,
-	"./ta.js": 457,
-	"./te": 458,
-	"./te.js": 458,
-	"./tet": 459,
-	"./tet.js": 459,
-	"./tg": 460,
-	"./tg.js": 460,
-	"./th": 461,
-	"./th.js": 461,
-	"./tl-ph": 462,
-	"./tl-ph.js": 462,
-	"./tlh": 463,
-	"./tlh.js": 463,
-	"./tr": 464,
-	"./tr.js": 464,
-	"./tzl": 465,
-	"./tzl.js": 465,
-	"./tzm": 466,
-	"./tzm-latn": 467,
-	"./tzm-latn.js": 467,
-	"./tzm.js": 466,
-	"./ug-cn": 468,
-	"./ug-cn.js": 468,
-	"./uk": 469,
-	"./uk.js": 469,
-	"./ur": 470,
-	"./ur.js": 470,
-	"./uz": 471,
-	"./uz-latn": 472,
-	"./uz-latn.js": 472,
-	"./uz.js": 471,
-	"./vi": 473,
-	"./vi.js": 473,
-	"./x-pseudo": 474,
-	"./x-pseudo.js": 474,
-	"./yo": 475,
-	"./yo.js": 475,
-	"./zh-cn": 476,
-	"./zh-cn.js": 476,
-	"./zh-hk": 477,
-	"./zh-hk.js": 477,
-	"./zh-tw": 478,
-	"./zh-tw.js": 478
+	"./af": 354,
+	"./af.js": 354,
+	"./ar": 355,
+	"./ar-dz": 356,
+	"./ar-dz.js": 356,
+	"./ar-kw": 357,
+	"./ar-kw.js": 357,
+	"./ar-ly": 358,
+	"./ar-ly.js": 358,
+	"./ar-ma": 359,
+	"./ar-ma.js": 359,
+	"./ar-sa": 360,
+	"./ar-sa.js": 360,
+	"./ar-tn": 361,
+	"./ar-tn.js": 361,
+	"./ar.js": 355,
+	"./az": 362,
+	"./az.js": 362,
+	"./be": 363,
+	"./be.js": 363,
+	"./bg": 364,
+	"./bg.js": 364,
+	"./bm": 365,
+	"./bm.js": 365,
+	"./bn": 366,
+	"./bn.js": 366,
+	"./bo": 367,
+	"./bo.js": 367,
+	"./br": 368,
+	"./br.js": 368,
+	"./bs": 369,
+	"./bs.js": 369,
+	"./ca": 370,
+	"./ca.js": 370,
+	"./cs": 371,
+	"./cs.js": 371,
+	"./cv": 372,
+	"./cv.js": 372,
+	"./cy": 373,
+	"./cy.js": 373,
+	"./da": 374,
+	"./da.js": 374,
+	"./de": 375,
+	"./de-at": 376,
+	"./de-at.js": 376,
+	"./de-ch": 377,
+	"./de-ch.js": 377,
+	"./de.js": 375,
+	"./dv": 378,
+	"./dv.js": 378,
+	"./el": 379,
+	"./el.js": 379,
+	"./en-SG": 380,
+	"./en-SG.js": 380,
+	"./en-au": 381,
+	"./en-au.js": 381,
+	"./en-ca": 382,
+	"./en-ca.js": 382,
+	"./en-gb": 383,
+	"./en-gb.js": 383,
+	"./en-ie": 384,
+	"./en-ie.js": 384,
+	"./en-il": 385,
+	"./en-il.js": 385,
+	"./en-nz": 386,
+	"./en-nz.js": 386,
+	"./eo": 387,
+	"./eo.js": 387,
+	"./es": 388,
+	"./es-do": 389,
+	"./es-do.js": 389,
+	"./es-us": 390,
+	"./es-us.js": 390,
+	"./es.js": 388,
+	"./et": 391,
+	"./et.js": 391,
+	"./eu": 392,
+	"./eu.js": 392,
+	"./fa": 393,
+	"./fa.js": 393,
+	"./fi": 394,
+	"./fi.js": 394,
+	"./fo": 395,
+	"./fo.js": 395,
+	"./fr": 396,
+	"./fr-ca": 397,
+	"./fr-ca.js": 397,
+	"./fr-ch": 398,
+	"./fr-ch.js": 398,
+	"./fr.js": 396,
+	"./fy": 399,
+	"./fy.js": 399,
+	"./ga": 400,
+	"./ga.js": 400,
+	"./gd": 401,
+	"./gd.js": 401,
+	"./gl": 402,
+	"./gl.js": 402,
+	"./gom-latn": 403,
+	"./gom-latn.js": 403,
+	"./gu": 404,
+	"./gu.js": 404,
+	"./he": 405,
+	"./he.js": 405,
+	"./hi": 406,
+	"./hi.js": 406,
+	"./hr": 407,
+	"./hr.js": 407,
+	"./hu": 408,
+	"./hu.js": 408,
+	"./hy-am": 409,
+	"./hy-am.js": 409,
+	"./id": 410,
+	"./id.js": 410,
+	"./is": 411,
+	"./is.js": 411,
+	"./it": 412,
+	"./it-ch": 413,
+	"./it-ch.js": 413,
+	"./it.js": 412,
+	"./ja": 414,
+	"./ja.js": 414,
+	"./jv": 415,
+	"./jv.js": 415,
+	"./ka": 416,
+	"./ka.js": 416,
+	"./kk": 417,
+	"./kk.js": 417,
+	"./km": 418,
+	"./km.js": 418,
+	"./kn": 419,
+	"./kn.js": 419,
+	"./ko": 420,
+	"./ko.js": 420,
+	"./ku": 421,
+	"./ku.js": 421,
+	"./ky": 422,
+	"./ky.js": 422,
+	"./lb": 423,
+	"./lb.js": 423,
+	"./lo": 424,
+	"./lo.js": 424,
+	"./lt": 425,
+	"./lt.js": 425,
+	"./lv": 426,
+	"./lv.js": 426,
+	"./me": 427,
+	"./me.js": 427,
+	"./mi": 428,
+	"./mi.js": 428,
+	"./mk": 429,
+	"./mk.js": 429,
+	"./ml": 430,
+	"./ml.js": 430,
+	"./mn": 431,
+	"./mn.js": 431,
+	"./mr": 432,
+	"./mr.js": 432,
+	"./ms": 433,
+	"./ms-my": 434,
+	"./ms-my.js": 434,
+	"./ms.js": 433,
+	"./mt": 435,
+	"./mt.js": 435,
+	"./my": 436,
+	"./my.js": 436,
+	"./nb": 437,
+	"./nb.js": 437,
+	"./ne": 438,
+	"./ne.js": 438,
+	"./nl": 439,
+	"./nl-be": 440,
+	"./nl-be.js": 440,
+	"./nl.js": 439,
+	"./nn": 441,
+	"./nn.js": 441,
+	"./pa-in": 442,
+	"./pa-in.js": 442,
+	"./pl": 443,
+	"./pl.js": 443,
+	"./pt": 444,
+	"./pt-br": 445,
+	"./pt-br.js": 445,
+	"./pt.js": 444,
+	"./ro": 446,
+	"./ro.js": 446,
+	"./ru": 447,
+	"./ru.js": 447,
+	"./sd": 448,
+	"./sd.js": 448,
+	"./se": 449,
+	"./se.js": 449,
+	"./si": 450,
+	"./si.js": 450,
+	"./sk": 451,
+	"./sk.js": 451,
+	"./sl": 452,
+	"./sl.js": 452,
+	"./sq": 453,
+	"./sq.js": 453,
+	"./sr": 454,
+	"./sr-cyrl": 455,
+	"./sr-cyrl.js": 455,
+	"./sr.js": 454,
+	"./ss": 456,
+	"./ss.js": 456,
+	"./sv": 457,
+	"./sv.js": 457,
+	"./sw": 458,
+	"./sw.js": 458,
+	"./ta": 459,
+	"./ta.js": 459,
+	"./te": 460,
+	"./te.js": 460,
+	"./tet": 461,
+	"./tet.js": 461,
+	"./tg": 462,
+	"./tg.js": 462,
+	"./th": 463,
+	"./th.js": 463,
+	"./tl-ph": 464,
+	"./tl-ph.js": 464,
+	"./tlh": 465,
+	"./tlh.js": 465,
+	"./tr": 466,
+	"./tr.js": 466,
+	"./tzl": 467,
+	"./tzl.js": 467,
+	"./tzm": 468,
+	"./tzm-latn": 469,
+	"./tzm-latn.js": 469,
+	"./tzm.js": 468,
+	"./ug-cn": 470,
+	"./ug-cn.js": 470,
+	"./uk": 471,
+	"./uk.js": 471,
+	"./ur": 472,
+	"./ur.js": 472,
+	"./uz": 473,
+	"./uz-latn": 474,
+	"./uz-latn.js": 474,
+	"./uz.js": 473,
+	"./vi": 475,
+	"./vi.js": 475,
+	"./x-pseudo": 476,
+	"./x-pseudo.js": 476,
+	"./yo": 477,
+	"./yo.js": 477,
+	"./zh-cn": 478,
+	"./zh-cn.js": 478,
+	"./zh-hk": 479,
+	"./zh-hk.js": 479,
+	"./zh-tw": 480,
+	"./zh-tw.js": 480
 };
 function webpackContext(req) {
 	return __webpack_require__(webpackContextResolve(req));
@@ -2150,5 +2150,5 @@ webpackContext.id = 838;
 
 /***/ })
 
-},[603]);
+},[605]);
 //# sourceMappingURL=main.js.map
