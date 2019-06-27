@@ -13,10 +13,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StatUserGeneralAverageComponent implements OnInit {
 
-  @Input() public uid: string 
+  @Input() public uid: string
 
-  public promedio: number
-  private canReload: boolean = true
+  public promedio: number;
+  private canReload = true;
 
   constructor(
     private afs: AngularFirestore,
@@ -25,22 +25,22 @@ export class StatUserGeneralAverageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    
+
     if (this.uid) {
-      this.loadInfo(this.uid)
+      this.loadInfo(this.uid);
     } else {
       this.auth.user$.subscribe(async user => {
-        if (!user) return
-        this.loadInfo(user.uid)
-      })
+        if (!user) { return }
+        this.loadInfo(user.uid);
+      });
     }
 
   }
 
   async loadInfo(uid: string) {
 
-    const key = `${Collections.USER_STAT}/stat-${uid}`
-    const stat = await this.afs.doc<UserStat>(key).get().toPromise()
+    const key = `${Collections.USER_STAT}/stat-${uid}`;
+    const stat = await this.afs.doc<UserStat>(key).get().toPromise();
 
     // TODO: Move this userstat initialization to a Service
     if (!stat.exists) {
@@ -48,35 +48,35 @@ export class StatUserGeneralAverageComponent implements OnInit {
         id: key,
         user: uid,
         generalAverage: 0
-      }, {merge: true})
-      this.calculateAverage(uid)
+      }, {merge: true});
+      this.calculateAverage(uid);
     } else {
-      this.promedio = stat.data()['generalAverage']
-      this.calculateAverage(uid)
+      this.promedio = stat.data()['generalAverage'];
+      this.calculateAverage(uid);
     }
 
   }
 
   calculateAverage(uid: string) {
 
-    if (!this.canReload) this.toastr.error('Por favor espera para poder recargar tus resultados...')
+    if (!this.canReload) { this.toastr.error('Por favor espera para poder recargar tus resultados...') }
 
     this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref.where('user', '==', uid))
       .valueChanges()
       .pipe(
         map(results => {
-          const total = results.length
-          return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+          const total = results.length;
+          return results.map((r: ExamResults) => r.promedio).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0) / total * averageMultiplier;
         }),
         tap(async (average: number) => {
-          this.promedio = average
-          this.afs.doc(`${Collections.USER_STAT}/stat-${uid}`).update({generalAverage: average})
+          this.promedio = average;
+          this.afs.doc(`${Collections.USER_STAT}/stat-${uid}`).update({generalAverage: average});
         })
-      ).subscribe()
+      ).subscribe();
 
     if (!this.auth.isAdmin) {
-      this.canReload = false
-      setTimeout(() => this.canReload = true, statRefreshTimeout)
+      this.canReload = false;
+      setTimeout(() => this.canReload = true, statRefreshTimeout);
     }
 
   }

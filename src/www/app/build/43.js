@@ -106,16 +106,6 @@ let ChecklistPage = class ChecklistPage {
           this.navCtrl.setRoot('HomePage')
         }) */
     }
-    onChangeTodo(completed, users, id) {
-        if (!users)
-            users = { [this.uid]: completed };
-        users[this.uid] = completed;
-        this.back.updateTodo(id, { users }).subscribe(data => {
-            console.log(data);
-        }, err => {
-            this.toast.create({ message: 'No se pudo actualizar el checklist...', duration: 2000 }).present();
-        });
-    }
     toggleCompleted(id) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(id);
@@ -139,7 +129,7 @@ let ChecklistPage = class ChecklistPage {
 };
 ChecklistPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-checklist',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi checklist diario</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <div *ngFor="let c of checklist" class="checklist-item">\n      <ion-item text-wrap>\n        <ion-label>{{c.text}}</ion-label>\n        <!-- <ion-checkbox [(ngModel)]="c.users[uid]" [checked]="c.users[uid]" (ionChange)="onChangeTodo(c.users[uid], c.users, c.id)"></ion-checkbox> -->\n        <ion-checkbox (click)="toggleCompleted(c.id)" [checked]="completed && completed.includes(c.id)"></ion-checkbox>\n      </ion-item>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/,
+        selector: 'page-checklist',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi checklist diario</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <div *ngFor="let c of checklist" class="checklist-item">\n      <ion-item text-wrap>\n        <ion-label>{{c.text}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(c.id)" [checked]="completed && completed.includes(c.id)"></ion-checkbox>\n      </ion-item>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],

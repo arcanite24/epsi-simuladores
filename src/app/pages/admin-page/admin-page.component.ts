@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import {Collections, EsencialModel, MoodRate, Premium2019Model, Roles, User} from 'src/app/app.models';
-import { groupBy } from 'lodash'
-import {AngularFirestore} from "@angular/fire/firestore";
-import {excluded_users} from "../../app.utils";
+import {Collections, EsencialModel, MoodRate, Premium2019Model, Roles, User, ExamResults} from 'src/app/app.models';
+import { groupBy } from 'lodash';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {excluded_users} from '../../app.utils';
+import { StatsService } from 'src/app/services/stats.service';
+import { averageMultiplier } from 'src/app/app.config';
 
 @Component({
   selector: 'epsi-admin-page',
@@ -12,53 +14,62 @@ import {excluded_users} from "../../app.utils";
 })
 export class AdminPageComponent implements OnInit {
 
-  public rates: any[]
-  public loading: boolean = false
+  public rates: any[];
+  public loading = false;
 
   constructor(
     private data: DataService,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
   ) { }
 
   ngOnInit() {
 
-    this.loadRates()
+    this.loadRates();
 
   }
 
   async loadRates() {
 
-    const rates = await this.data.getCollection<MoodRate>(Collections.MOOD_RATE)
+    // remove
+    /* const results = await this.data.getCollectionQuery<ExamResults>(Collections.EXAM_RESULT, ref => ref
+      .where('user', '==', 'pcqGrTSEsaNKjiNJieLJOdjbspP2'));
 
-    if (!rates) return []
-    let payload = {}
+    const total = results.length;
+    const avg = results.map((r: ExamResults) => r.promedio).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0) / total * averageMultiplier;
+    console.log(avg) */
 
-    const group = groupBy(rates, 'mood')
+    const rates = await this.data.getCollection<MoodRate>(Collections.MOOD_RATE);
+
+    if (!rates) { return [] }
+    const payload = {};
+
+    const group = groupBy(rates, 'mood');
 
     for (const [key, value] of Object.entries(group)) {
-      payload[key] = {mood: key, total: value.length}
+      payload[key] = {mood: key, total: value.length};
     }
 
-    this.rates = Object.values(payload)
+    this.rates = Object.values(payload);
 
   }
 
   async setEsencialToPresenciales() {
 
-    let payload = {}
+    const payload = {};
 
-    for (let role of EsencialModel) {
+    for (const role of EsencialModel) {
       payload[role] = true;
     }
 
-    console.log(payload)
+    console.log(payload);
 
-    const sub = this.afs.collection<User>(Collections.USER, ref => ref.where(Roles.Presencial, '==', true)).valueChanges().subscribe(async users => {
+    const sub = this.afs.collection<User>(Collections.USER, ref => ref
+      .where(Roles.Presencial, '==', true)).valueChanges().subscribe(async users => {
       if (users.length > 3 && !this.loading) {
 
-        this.loading = true
+        this.loading = true;
 
-        for (let user of users) {
+        for (const user of users) {
           console.log(`updating user: ${user.email} ${user.uid}`);
           await this.afs.collection(Collections.USER).doc(user.uid).update(payload);
         }
@@ -68,7 +79,7 @@ export class AdminPageComponent implements OnInit {
         console.log('setting roles finished');
 
       }
-    })
+    });
 
 
 
@@ -79,50 +90,50 @@ export class AdminPageComponent implements OnInit {
     this.loading = true;
     const payload = {};
 
-    for (let role of Object.values(Roles)) {
-      payload[role] = false
+    for (const role of Object.values(Roles)) {
+      payload[role] = false;
     }
 
-    console.log(payload)
+    console.log(payload);
 
-    for (let user of excluded_users) {
-      console.log('updating user', user)
+    for (const user of excluded_users) {
+      console.log('updating user', user);
       await this.data.updateUserByEmail(user, payload);
     }
 
-    this.loading = false
-    console.log('updated', excluded_users.length, 'users')
+    this.loading = false;
+    console.log('updated', excluded_users.length, 'users');
 
   }
 
   async migratePresencialYEsencial() {
 
-    this.loading = true
+    this.loading = true;
 
-    const users: User[] = await this.data.getCollectionAlt<User>(Collections.USER)
+    const users: User[] = await this.data.getCollectionAlt<User>(Collections.USER);
     const filteredUsers = users.filter(u => {
       /*if (u.isPresencial) return true
       if (u.isEsencial) return true
       return false*/
-      return true
-    })
+      return true;
+    });
 
-    let removePayload = {}
-    let newRolesPayload = {}
+    const removePayload = {};
+    const newRolesPayload = {};
 
-    for (let role of Object.values(Roles)) { removePayload[role] = false }
-    for (let role of Premium2019Model) { newRolesPayload[role] = true }
+    for (const role of Object.values(Roles)) { removePayload[role] = false; }
+    for (const role of Premium2019Model) { newRolesPayload[role] = true; }
 
-    console.log(newRolesPayload)
+    console.log(newRolesPayload);
 
-    for (let user of filteredUsers) {
-      console.log('removing all roles for', user.email)
-      await this.afs.collection(Collections.USER).doc(user.uid).update(removePayload)
-      await this.afs.collection(Collections.USER).doc(user.uid).update(newRolesPayload)
+    for (const user of filteredUsers) {
+      console.log('removing all roles for', user.email);
+      await this.afs.collection(Collections.USER).doc(user.uid).update(removePayload);
+      await this.afs.collection(Collections.USER).doc(user.uid).update(newRolesPayload);
     }
 
-    this.loading = false
-    console.log(JSON.stringify(filteredUsers.map(u => u.email)))
+    this.loading = false;
+    console.log(JSON.stringify(filteredUsers.map(u => u.email)));
 
   }
 

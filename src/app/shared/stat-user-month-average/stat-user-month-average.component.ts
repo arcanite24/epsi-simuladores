@@ -70,7 +70,7 @@ export class StatUserMonthAverageComponent implements OnInit {
       .pipe(
         map(results => {
           const total = results.length;
-          return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier;
+          return results.map((r: ExamResults) => r.promedio).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0) / total * averageMultiplier;
         }),
         tap(async (average: number) => {
           this.promedio = average;
