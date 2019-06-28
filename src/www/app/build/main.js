@@ -673,11 +673,11 @@ var map = {
 		43
 	],
 	"../pages/clase-detail/clase-detail.module": [
-		1131,
+		1130,
 		42
 	],
 	"../pages/como-te-sientes-hoy/como-te-sientes-hoy.module": [
-		1130,
+		1131,
 		41
 	],
 	"../pages/downloads/downloads.module": [
@@ -705,19 +705,19 @@ var map = {
 		37
 	],
 	"../pages/galeria-detail/galeria-detail.module": [
-		1137,
+		1139,
 		36
 	],
 	"../pages/galerias/galerias.module": [
-		1138,
+		1137,
 		5
 	],
 	"../pages/hilo-detail/hilo-detail.module": [
-		1140,
+		1138,
 		9
 	],
 	"../pages/home/home.module": [
-		1139,
+		1140,
 		4
 	],
 	"../pages/login/login.module": [
@@ -725,11 +725,11 @@ var map = {
 		35
 	],
 	"../pages/materia-alt/materia-alt.module": [
-		1141,
+		1170,
 		34
 	],
 	"../pages/materia/materia.module": [
-		1143,
+		1141,
 		3
 	],
 	"../pages/media/media.module": [
@@ -737,19 +737,19 @@ var map = {
 		2
 	],
 	"../pages/mi-analitica/mi-analitica.module": [
-		1144,
+		1143,
 		1
 	],
 	"../pages/mi-curso/mi-curso.module": [
-		1145,
+		1144,
 		33
 	],
 	"../pages/mis-resultados/mis-resultados.module": [
-		1146,
+		1145,
 		8
 	],
 	"../pages/notas-add/notas-add.module": [
-		1148,
+		1146,
 		32
 	],
 	"../pages/notas-global-detail/notas-global-detail.module": [
@@ -757,23 +757,23 @@ var map = {
 		31
 	],
 	"../pages/notas-global/notas-global.module": [
-		1149,
+		1148,
 		30
 	],
 	"../pages/notas/notas.module": [
-		1150,
+		1149,
 		29
 	],
 	"../pages/notifications/notifications.module": [
-		1151,
+		1150,
 		28
 	],
 	"../pages/offline-video/offline-video.module": [
-		1152,
+		1151,
 		27
 	],
 	"../pages/post-comments/post-comments.module": [
-		1154,
+		1152,
 		26
 	],
 	"../pages/profile/profile.module": [
@@ -781,43 +781,43 @@ var map = {
 		25
 	],
 	"../pages/programa-bloque/programa-bloque.module": [
-		1155,
+		1154,
 		24
 	],
 	"../pages/programa-materia/programa-materia.module": [
-		1156,
+		1155,
 		23
 	],
 	"../pages/ratings/ratings.module": [
-		1157,
+		1156,
 		22
 	],
 	"../pages/resultado-detail/resultado-detail.module": [
-		1158,
+		1157,
 		21
 	],
 	"../pages/resultados-examen/resultados-examen.module": [
-		1159,
+		1158,
 		0
 	],
 	"../pages/simulacros/simulacros.module": [
-		1160,
+		1159,
 		20
 	],
 	"../pages/simulador-detail/simulador-detail.module": [
-		1161,
+		1160,
 		19
 	],
 	"../pages/simuladores/simuladores.module": [
-		1162,
+		1161,
 		18
 	],
 	"../pages/slide-detail/slide-detail.module": [
-		1163,
+		1162,
 		17
 	],
 	"../pages/slides/slides.module": [
-		1165,
+		1163,
 		16
 	],
 	"../pages/smart-calendar/smart-calendar.module": [
@@ -825,7 +825,7 @@ var map = {
 		15
 	],
 	"../pages/stat-view-detail/stat-view-detail.module": [
-		1166,
+		1165,
 		14
 	],
 	"../pages/tema-alt/tema-alt.module": [
@@ -833,11 +833,11 @@ var map = {
 		13
 	],
 	"../pages/thread-add/thread-add.module": [
-		1168,
+		1166,
 		12
 	],
 	"../pages/top-users/top-users.module": [
-		1170,
+		1168,
 		11
 	],
 	"../pages/zona-enarm/zona-enarm.module": [
@@ -1784,31 +1784,30 @@ AppModule = __decorate([
                     { loadChildren: '../pages/bloque-alt/bloque-alt.module#BloqueAltPageModule', name: 'BloqueAltPage', segment: 'bloque-alt/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/calendar/calendar.module#CalendarPageModule', name: 'CalendarPage', segment: 'calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/checklist/checklist.module#ChecklistPageModule', name: 'ChecklistPage', segment: 'checklist', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/clase-detail/clase-detail.module#ClaseDetailPageModule', name: 'ClaseDetailPage', segment: 'clase/:id/:type', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/como-te-sientes-hoy/como-te-sientes-hoy.module#ComoTeSientesHoyPageModule', name: 'ComoTeSientesHoyPage', segment: 'como-te-sientes-hoy', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/downloads/downloads.module#DownloadsPageModule', name: 'DownloadsPage', segment: 'downloads', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/especialidades/especialidades.module#EspecialidadesPageModule', name: 'EspecialidadesPage', segment: 'especialidades', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/exam-feedback/exam-feedback.module#ExamFeedbackPageModule', name: 'ExamFeedbackPage', segment: 'exam-feedback', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/foro-detail/foro-detail.module#ForoDetailPageModule', name: 'ForoDetailPage', segment: 'foro/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/foros/foros.module#ForosPageModule', name: 'ForosPage', segment: 'foros', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/galeria-detail/galeria-detail.module#GaleriaDetailPageModule', name: 'GaleriaDetailPage', segment: 'galeria/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/galerias/galerias.module#GaleriasPageModule', name: 'GaleriasPage', segment: 'galerias', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/hilo-detail/hilo-detail.module#HiloDetailPageModule', name: 'HiloDetailPage', segment: 'hilo/:id', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/materia-alt/materia-alt.module#MateriaAltPageModule', name: 'MateriaAltPage', segment: 'materia-alt/:id', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/media/media.module#MediaPageModule', name: 'MediaPage', segment: 'media', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/galeria-detail/galeria-detail.module#GaleriaDetailPageModule', name: 'GaleriaDetailPage', segment: 'galeria/:id', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/materia/materia.module#MateriaPageModule', name: 'MateriaPage', segment: 'materia/:id', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/media/media.module#MediaPageModule', name: 'MediaPage', segment: 'media', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mi-analitica/mi-analitica.module#MiAnaliticaPageModule', name: 'MiAnaliticaPage', segment: 'mi-analitica', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mi-curso/mi-curso.module#MiCursoPageModule', name: 'MiCursoPage', segment: 'mi-curso', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/mis-resultados/mis-resultados.module#MisResultadosPageModule', name: 'MisResultadosPage', segment: 'mis-resultados', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas-add/notas-add.module#NotasAddPageModule', name: 'NotasAddPage', segment: 'notas-add', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/notas-global-detail/notas-global-detail.module#NotasGlobalDetailPageModule', name: 'NotasGlobalDetailPage', segment: 'notas/:rest/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas-global/notas-global.module#NotasGlobalPageModule', name: 'NotasGlobalPage', segment: 'notas-global', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notas/notas.module#NotasPageModule', name: 'NotasPage', segment: 'notas', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/notifications/notifications.module#NotificationsPageModule', name: 'NotificationsPage', segment: 'notifications', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/offline-video/offline-video.module#OfflineVideoPageModule', name: 'OfflineVideoPage', segment: 'offline-video', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/post-comments/post-comments.module#PostCommentsPageModule', name: 'PostCommentsPage', segment: 'post-comments', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/programa-bloque/programa-bloque.module#ProgramaBloquePageModule', name: 'ProgramaBloquePage', segment: 'programa-bloque', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/programa-materia/programa-materia.module#ProgramaMateriaPageModule', name: 'ProgramaMateriaPage', segment: 'programa-materia', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/ratings/ratings.module#RatingsPageModule', name: 'RatingsPage', segment: 'ratings', priority: 'low', defaultHistory: [] },
@@ -1818,13 +1817,14 @@ AppModule = __decorate([
                     { loadChildren: '../pages/simulador-detail/simulador-detail.module#SimuladorDetailPageModule', name: 'SimuladorDetailPage', segment: 'simulador-detail', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/simuladores/simuladores.module#SimuladoresPageModule', name: 'SimuladoresPage', segment: 'simuladores', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/slide-detail/slide-detail.module#SlideDetailPageModule', name: 'SlideDetailPage', segment: 'presentacion/:id', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/slides/slides.module#SlidesPageModule', name: 'SlidesPage', segment: 'slides', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/smart-calendar/smart-calendar.module#SmartCalendarPageModule', name: 'SmartCalendarPage', segment: 'smart-calendar', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/stat-view-detail/stat-view-detail.module#StatViewDetailPageModule', name: 'StatViewDetailPage', segment: 'stat-view-detail', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/thread-add/thread-add.module#ThreadAddPageModule', name: 'ThreadAddPage', segment: 'thread-add', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/tema-alt/tema-alt.module#TemaAltPageModule', name: 'TemaAltPage', segment: 'tema-alt/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/top-users/top-users.module#TopUsersPageModule', name: 'TopUsersPage', segment: 'top-users', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/zona-enarm/zona-enarm.module#ZonaEnarmPageModule', name: 'ZonaEnarmPage', segment: 'zona-enarm', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/materia-alt/materia-alt.module#MateriaAltPageModule', name: 'MateriaAltPage', segment: 'materia-alt/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/examen-detail/examen-detail.module#ExamenDetailPageModule', name: 'ExamenDetailPage', segment: 'examen/:type/:id', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] }
                 ]

@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 1139:
+/***/ 1140:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(1215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(1216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1189);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2641,7 +2641,7 @@ __decorate([
 ], ExamFeedbackModalComponent.prototype, "lastSelected", void 0);
 ExamFeedbackModalComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: "exam-feedback-modal",template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/'<div class="container m-2">\n  <div class="row">\n\n    <div class="col-md-12" *ngFor="let stat of stats">\n      <div class="row">\n\n        <div class="col-md-12 mb-2" style="max-height: 200px;overflow-y: auto;">\n          <p>\n            <strong>{{stat.q.text}}</strong>\n          </p>\n        </div>\n\n        <div class="col-md-12">\n          <h5 class="c-epsi-primary">¿Elegiste la correcta?</h5>\n        </div>\n\n        <div class="col-md-12" *ngIf="stat.q.respuestas as rList">\n          <ul class="list-group">\n            <li class="list-group-item flex flex-row flex-start align-center" *ngFor="let r of rList">\n              <i class="fa fa-check text-success" *ngIf="stat.q.correcta == r.id"></i>\n              <i class="fa fa-close text-danger" *ngIf="stat.q.correcta != r.id"></i>\n              <span class="ml-2" [ngClass]="{\'c-epsi-primary text-bolder\': lastSelected == r.id}">{{r.text}}</span>\n            </li>\n          </ul>\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.q.feedback">\n          <h5 class="m-0">Feedback</h5>\n          <p class="m-0 m-t1">{{stat.q.feedback}}</p>\n          <!--<pre>{{stat | json}}</pre>-->\n        </div>\n\n        <hr>\n\n        <div class="col-md-12 mt-4" *ngIf="stat.stat$ | async as _stat">\n          <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>\n          <ul class="list-group" *ngIf="_stat.stat">\n            <li class="list-group-item flex flex-col flex-start" *ngFor="let s of filterStats(stat.q, _stat.stat)">\n              <strong> <span class="c-epsi-primary">{{(s[1] / _stat.total) * 100 | number}}%</span> {{s[0]}}</strong>\n              <!-- <pre>{{ s | json }}</pre> -->\n              <div class="barra-container" [style.width.%]="(s[1] / _stat.total) * 100">\n                <div class="barra"></div>\n              </div>\n            </li>\n          </ul>\n        </div>\n\n      </div>\n      <hr>\n    </div>\n\n    <div class="col-md-12 flex-loader mt-2">\n      <button class="btn btn-secondary" type="button" (click)="closeModal()">Seguir</button>\n    </div>\n\n    <!-- <div class="col-md-12">\n      <pre>{{ q | json }}</pre>\n    </div> -->\n\n  </div>\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/
+        selector: "exam-feedback-modal",template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/'<ion-card class="w-100" *ngFor="let stat of stats" style="margin-bottom: 2rem">\n  <div class="row">\n\n    <div class="col-md-12 mb-2" style="max-height: 200px;overflow-y: auto;">\n      <p>\n        <strong>{{stat.q.text}}</strong>\n      </p>\n    </div>\n\n    <div class="col-md-12">\n      <h5 class="c-epsi-primary">¿Elegiste la correcta?</h5>\n    </div>\n\n    <ion-list *ngIf="stat.q.respuestas as rList">\n      <ion-item *ngFor="let r of rList">\n        <ion-icon item-start name="checkmark" *ngIf="stat.q.correcta == r.id" color="bien"></ion-icon>\n        <ion-icon item-start name="close" *ngIf="stat.q.correcta != r.id" color="muyMal"></ion-icon>\n        <h2 class="ml-2" [ngClass]="{\'c-epsi-primary text-bolder\': lastSelected == r.id}">{{r.text}}</h2>\n      </ion-item>\n    </ion-list>\n\n    <hr>\n\n    <div class="col-md-12 mt-4" *ngIf="stat.q.feedback">\n      <h5 class="m-0">Feedback</h5>\n      <p class="m-0 m-t1">{{stat.q.feedback}}</p>\n      <!--<pre>{{stat | json}}</pre>-->\n    </div>\n\n    <hr>\n\n    <div class="col-md-12 mt-4" *ngIf="stat.stat$ | async as _stat">\n      <h5 class="m-0 text-danger">Y los demás... ¿Qué eligieron?</h5>\n      <ion-list class="list-group" *ngIf="_stat.stat">\n        <ion-item *ngFor="let s of filterStats(stat.q, _stat.stat)">\n          <strong> <span class="c-epsi-primary">{{(s[1] / _stat.total) * 100 | number}}%</span> {{s[0]}}</strong>\n          <!-- <pre>{{ s | json }}</pre> -->\n          <div class="barra-container" [style.width.%]="(s[1] / _stat.total) * 100">\n            <div class="barra"></div>\n          </div>\n        </ion-item>\n      </ion-list>\n    </div>\n\n  </div>\n  <hr>\n</ion-card>\n\n<div class="col-md-12 flex-loader mt-2">\n  <button ion-button (click)="closeModal()">Seguir</button>\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-feedback-modal/exam-feedback-modal.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
         __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["x" /* ViewController */]])
@@ -3249,7 +3249,7 @@ ExamResultsTagStructureComponent = __decorate([
 
 /***/ }),
 
-/***/ 1215:
+/***/ 1216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
