@@ -61,6 +61,9 @@ import { AdminDailyComponent } from './pages/admin-daily/admin-daily.component';
 import {AdminExamResultsComponent} from "./pages/admin-exam-results/admin-exam-results.component";
 import {UserPromediosTableComponent} from "./pages/user-promedios-table/user-promedios-table.component";
 import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions-average/admin-exams-questions-average.component";
+import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
+import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
+import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
 
 const routes: Routes = [
 
@@ -90,6 +93,8 @@ const routes: Routes = [
 
   // Content
   {path: 'content/:id', component: ContentPageComponent, canActivate: [AuthGuard]},
+  {path: 'pdf', component: PdfListPageComponent, canActivate: [AuthGuard]},
+  {path: 'pdf/:id', component: PdfDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'content/:type/:id', component: ContentDetailPageComponent, canActivate: [AuthGuard]},
 
   // Payment
@@ -105,6 +110,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/user/stats/:id', component: AdminUserStatsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content', component: AdminContentPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/pdf', component: AdminPdfComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/galleries', component: AdminGalleriesComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/media', component: AdminMediaComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/questions', component: AdminQuestionsComponent},

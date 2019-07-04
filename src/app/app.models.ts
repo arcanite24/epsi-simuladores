@@ -248,6 +248,9 @@ export interface Content {
   temas$?: Observable<Content[]>;
   temas?: Content[];
   liberadoInPrograma?: boolean;
+  isPdf?: boolean;
+  pdf?: string;
+  children?: Content[];
 }
 
 export interface Marker {

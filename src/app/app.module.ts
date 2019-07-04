@@ -206,6 +206,10 @@ import { UserPromediosTableComponent } from './pages/user-promedios-table/user-p
 import { AdminExamsQuestionsAverageComponent } from './pages/admin-exams-questions-average/admin-exams-questions-average.component';
 import { ZamnaCheckComponent } from './shared/zamna-check/zamna-check.component';
 import { ZamnaRadioComponent } from './shared/zamna-radio/zamna-radio.component';
+import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
+import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
+import { ZamnaContigoPanelComponent } from './shared/zamna-contigo-panel/zamna-contigo-panel.component';
+import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
 
 @NgModule({
   declarations: [
@@ -373,6 +377,10 @@ import { ZamnaRadioComponent } from './shared/zamna-radio/zamna-radio.component'
     AdminExamsQuestionsAverageComponent,
     ZamnaCheckComponent,
     ZamnaRadioComponent,
+    AdminPdfComponent,
+    PdfDetailPageComponent,
+    ZamnaContigoPanelComponent,
+    PdfListPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

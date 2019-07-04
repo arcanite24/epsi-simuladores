@@ -1,0 +1,53 @@
+<ngx-smart-modal identifier="infografiasModal" #infografiasModal>
+  <epsi-galleries-panel></epsi-galleries-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="forumPanel" #forumPanel>
+  <epsi-forum-panel></epsi-forum-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="mediaPanel" #mediaPanel>
+  <epsi-media-panel></epsi-media-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="slidesModal" #slidesModal>
+  <epsi-slides-panel></epsi-slides-panel>
+</ngx-smart-modal>
+
+<epsi-panel title="Zamná contigo" tutorial="BFMLml62nWlRdgBhEd5t" [showContent]="false">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isGalleries">
+        <img src="https://zamnademy.com/site/images/clients/infografia.png" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="aAJhqc44b26QNbICJwCT"></epsi-tutorial-button>
+        <button class="btn btn-primary" (click)="infografiasModal.open()">Infografía</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isForum">
+        <img src="https://zamnademy.com/site/images/clients/asesorpersonal.png" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <button class="btn btn-primary" (click)="forumPanel.open()">Asesor</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isMedia">
+        <img src="assets/zamnademy/media.svg" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <button class="btn btn-primary" (click)="mediaPanel.open()">GPC</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isSlides">
+        <img src="https://zamnademy.com/site/images/clients/presentacione.png" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <button class="btn btn-primary" (click)="slidesModal.open()">Presentaciones</button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+        <img src="assets/zamnademy/zona-simulacro.svg" class="zona-enarm-image mb-2">
+        <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
+        <a class="btn btn-primary" [routerLink]="['/pdf']">Manual Zamná</a>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>

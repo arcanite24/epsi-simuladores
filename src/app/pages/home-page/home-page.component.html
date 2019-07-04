@@ -139,10 +139,12 @@
       <!-- Zona ENARM Panel -->
       <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zona-enarm-panel>
 
+      <epsi-zamna-contigo-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zamna-contigo-panel>
+
     </div>
 
     <!-- Home Secondary Grid -->
-    <div class="col-xs-12 col-md-12">
+    <div class="col-xs-12 col-md-12" *ngIf="false">
       <div class="row">
 
         <!-- Galleries Panel -->

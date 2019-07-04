@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Content, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
+import { Collections, Content } from 'src/app/app.models';
 
 @Component({
-  selector: 'epsi-admin-content-page',
-  templateUrl: './admin-content-page.component.html',
-  styleUrls: ['./admin-content-page.component.scss']
+  selector: 'epsi-admin-pdf',
+  templateUrl: './admin-pdf.component.html',
+  styleUrls: ['./admin-pdf.component.scss']
 })
-export class AdminContentPageComponent implements OnInit {
+export class AdminPdfComponent implements OnInit {
 
   public content$: Observable<Content[]>;
   public tempContent: Content;
@@ -25,7 +25,7 @@ export class AdminContentPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.content$ = this.afs.collection<Content>('content').valueChanges();
+    this.content$ = this.afs.collection<Content>('content', ref => ref.where('isPdf', '==', true)).valueChanges();
 
   }
 

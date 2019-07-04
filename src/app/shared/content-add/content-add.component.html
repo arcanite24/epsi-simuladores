@@ -1,42 +1,48 @@
 <form [formGroup]="addForm" (ngSubmit)="submitForm()">
 
-  <h1>Agregar Contenido</h1>
+  <h1 *ngIf="!isPdf">Agregar Contenido</h1>
+  <h1 *ngIf="!isPdf">Agregar PDF</h1>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Nombre</label>
-    <input type="text" formControlName="name">
+    <input type="text" class="form-control" formControlName="name">
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group" *ngIf="!isPdf">
     <label for="">URL de Video</label>
-    <input type="text" formControlName="video">
+    <input type="text" class="form-control" formControlName="video">
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group">
     <label for="">Descripción</label>
-    <textarea formControlName="description"></textarea>
+    <textarea class="form-control" formControlName="description"></textarea>
   </div>
 
-  <div class="epsi-input">
+  <div class="form-group" *ngIf="!isPdf">
     <label for="">Tipo</label>
-    <select formControlName="type">
+    <select class="form-control" formControlName="type">
       <option [value]="type" *ngFor="let type of contentTypes">{{type}}</option>
     </select>
   </div>
 
-  <div class="epsi-input" *ngIf="contents$ | async as contents">
+  <div class="form-group" *ngIf="contents$ | async as contents">
     <label for="">Padre</label>
-    <select (change)="parentSelected(tempParent)" [(ngModel)]="tempParent" [ngModelOptions]="{standalone: true}">
+    <select (change)="parentSelected(tempParent)" [(ngModel)]="tempParent" [ngModelOptions]="{standalone: true}" class="form-control">
       <option [ngValue]="null">-</option>
       <option *ngFor="let content of contents" [ngValue]="content">{{content.name}}</option>
     </select>
   </div>
 
-  <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>
+  <app-storage-uploader *ngIf="!isPdf" (onFinish)="coverUploaded($event)"></app-storage-uploader>
+
+  <div class="form-group" *ngIf="isPdf">
+    <label for="">Subir PDF</label>
+    <app-storage-uploader (onFinish)="addForm.patchValue({ pdf: $event })"></app-storage-uploader>
+  </div>
 
   <!-- TODO: Add nesting forms -->
 
-  <button type="submit">Agregar Contenido</button>
+  <button class="btn btn-primary w-100" type="submit">Agregar Contenido</button>
 
   <pre>{{addForm.value | json}}</pre>
 
