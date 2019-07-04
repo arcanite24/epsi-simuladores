@@ -19,8 +19,8 @@
       <p class="m-0 mb-2 exam-duration-label zamna-c-primary" *ngIf="duration_label">- {{duration_label}}</p>
     </div>
 
-    <div class="bar-container w-100 my-3">
-      <div class="bar zamna-bg-primary" [style.width]="'50%'"></div>
+    <div class="bar-container w-100 my-3" *ngIf="state.progress">
+      <div class="bar zamna-bg-primary" [style.width]="state.progress + '%'"></div>
     </div>
 
     <div class="question-group mt-4" *ngIf="question as group">

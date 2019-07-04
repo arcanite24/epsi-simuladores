@@ -12,7 +12,8 @@ import {
   SetAnswer,
   SetIndex,
   SetQuestion,
-  SetResults
+  SetResults,
+  SetProgress
 } from 'src/app/reducers/exam.reducer';
 import {ToastrService} from 'ngx-toastr';
 import _ from 'lodash';
@@ -95,9 +96,9 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
     this.examState$.subscribe(examState => {
       /* if (examState.index && this.lastIndex != examState.index) this.handleIndexChange(examState) */
-      if (examState.index != null && this.lastIndex != examState.index) { this.handleIndexChange(examState) }
-      if (examState.finished) { this.handleExamFinish(examState) }
-      if (examState.timer && !this.duration) { this.handleSetTimer(examState.timer * 60 * 1000) }
+      if (examState.index != null && this.lastIndex != examState.index) { this.handleIndexChange(examState); }
+      if (examState.finished) { this.handleExamFinish(examState); }
+      if (examState.timer && !this.duration) { this.handleSetTimer(examState.timer * 60 * 1000); }
       this.lastIndex = examState.index;
     });
 
@@ -187,7 +188,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
     console.log('duration', duration);
 
     const timer = setInterval(() => {
-      if (this.duration > 0) { this.duration -= 1000 }
+      if (this.duration > 0) { this.duration -= 1000; }
 
       /*const time_format = this.exam.type == ExamTypes.SIMULACRO ? countdown.HOURS | countdown.MINUTES | countdown.SECONDS : countdown.MINUTES | countdown.SECONDS*/
       const time_format = countdown.HOURS | countdown.MINUTES | countdown.SECONDS;
@@ -214,23 +215,23 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
   }
 
   public get questionsLeft(): boolean {
-    if (!this.exam) { return false }
-    if (!this.exam.formattedQuestions) { return false }
-    if (this.exam.formattedQuestions.length < 0) { return false }
+    if (!this.exam) { return false; }
+    if (!this.exam.formattedQuestions) { return false; }
+    if (this.exam.formattedQuestions.length < 0) { return false; }
     return this.lastIndex < this.exam.formattedQuestions.length;
   }
 
   public get isLastQuestion(): boolean {
-    if (!this.exam) { return false }
-    if (!this.exam.formattedQuestions) { return false }
-    if (this.exam.formattedQuestions.length < 0) { return false }
+    if (!this.exam) { return false; }
+    if (!this.exam.formattedQuestions) { return false; }
+    if (this.exam.formattedQuestions.length < 0) { return false; }
     return this.lastIndex + 1 == this.exam.formattedQuestions.length;
   }
 
   public get canGoBack(): boolean {
-    if (!this.exam) { return false }
-    if (!this.exam.formattedQuestions) { return false }
-    if (this.exam.formattedQuestions.length < 0) { return false }
+    if (!this.exam) { return false; }
+    if (!this.exam.formattedQuestions) { return false; }
+    if (this.exam.formattedQuestions.length < 0) { return false; }
     return this.lastIndex > 0;
   }
 
@@ -260,19 +261,19 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
     this.startTime = Date.now();
 
     this.auth.user$.subscribe(user => {
-      if (!user) { return }
+      if (!user) { return; }
       this.results.user = user.uid;
     });
 
-    if (this.isPreclase) { this.store.dispatch(new SetResults(this.results)) }
+    if (this.isPreclase) { this.store.dispatch(new SetResults(this.results)); }
 
   }
 
   setQuestion(index: number) {
 
-    if (!this.exam) { return }
-    if (!this.exam.questions) { return }
-    if (!this.exam.questions[index]) { return }
+    if (!this.exam) { return; }
+    if (!this.exam.questions) { return; }
+    if (!this.exam.questions[index]) { return; }
 
     this.lastQuestion = this.question;
 
@@ -280,6 +281,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
     this.results.lastIndex = index;
 
     this.store.dispatch(new SetQuestion(this.question));
+    this.store.dispatch(new SetProgress((index * 100) / this.exam.formattedQuestions.length));
 
     this.loadCachedAnswer(this.question);
 
@@ -293,7 +295,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
     this.store.dispatch(new SetIndex(currentIndex + 1));
 
-    if (this.exam.type != ExamTypes.PRECLASE && this.exam.type != ExamTypes.SIMULACRO) { this.modal.getModal('examFeedbackModal').open() }
+    if (this.exam.type != ExamTypes.PRECLASE && this.exam.type != ExamTypes.SIMULACRO) { this.modal.getModal('examFeedbackModal').open(); }
 
     this.stat.updateQuestionStat(this.lastQuestion, selectedAnswer);
     // this.store.dispatch(new SetAnswer(null)) removed because we load the cached answer
@@ -347,8 +349,8 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
   saveCache(q: Question | Question[], index: number, answer: Answer, noDispatch: boolean = false) {
 
-    if (!answer) { return }
-    if (!q) { return }
+    if (!answer) { return; }
+    if (!q) { return; }
     /*if (!this.results) this.setInitialResults()*/
 
     if (q instanceof Array) {
@@ -377,7 +379,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
 
     }
 
-    if (!noDispatch) { this.store.dispatch(new SetResults(this.results)) }
+    if (!noDispatch) { this.store.dispatch(new SetResults(this.results)); }
 
   }
 

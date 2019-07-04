@@ -11,68 +11,76 @@ export enum ExamActionTypes {
   SetFeedback = '[Exam] SetFeedback',
   SetTimer = '[Exam] SetTimer',
   ResetTimer = '[Exam] ResetTimer',
+  SetProgress = '[Exam] SetProgress',
 }
 
 export class SetQuestion implements Action {
-  readonly type: string = ExamActionTypes.SetQuestion
+  readonly type: string = ExamActionTypes.SetQuestion;
   constructor(public payload: Question | Question[]) {}
 }
 
 export class SetIndex implements Action {
-  readonly type: string = ExamActionTypes.SetIndex
+  readonly type: string = ExamActionTypes.SetIndex;
   constructor(public payload: number) {}
 }
 
 export class SetFeedback implements Action {
-  readonly type: string = ExamActionTypes.SetFeedback
+  readonly type: string = ExamActionTypes.SetFeedback;
   constructor(public payload: string) {}
 }
 
 export class SetTimer implements Action {
-  readonly type: string = ExamActionTypes.SetTimer
+  readonly type: string = ExamActionTypes.SetTimer;
   constructor(public payload: number) {}
 }
 
 export class SetAnswer implements Action {
-  readonly type: string = ExamActionTypes.SetAnswer
+  readonly type: string = ExamActionTypes.SetAnswer;
   constructor(public payload: Answer) {}
 }
 
 export class SetResults implements Action {
-  readonly type: string = ExamActionTypes.SetResults
+  readonly type: string = ExamActionTypes.SetResults;
   constructor(public payload: ExamResults) {}
 }
 
 export class FinishExam implements Action {
-  readonly type: string = ExamActionTypes.FinishExam
+  readonly type: string = ExamActionTypes.FinishExam;
   constructor(public payload?) {}
 }
 
 export class ResetExam implements Action {
-  readonly type: string = ExamActionTypes.ResetExam
+  readonly type: string = ExamActionTypes.ResetExam;
   constructor(public payload?) {}
 }
 
 export class ResetTimer implements Action {
-  readonly type: string = ExamActionTypes.ResetTimer
+  readonly type: string = ExamActionTypes.ResetTimer;
 }
 
-export type ExamActions = 
+export class SetProgress implements Action {
+  readonly type: string = ExamActionTypes.SetProgress;
+  constructor(public payload: number) {}
+}
+
+export type ExamActions =
   SetQuestion |
   SetIndex |
   SetAnswer |
   SetResults |
   FinishExam |
-  ResetExam
+  ResetExam |
+  SetProgress;
 
 export interface IExamReducer {
-  question: Question | Question[],
-  index: number,
-  selectedAnswer: Answer,
-  results: ExamResults,
-  finished: boolean,
-  feedback: string,
-  timer: number,
+  question: Question | Question[];
+  index: number;
+  selectedAnswer: Answer;
+  results: ExamResults;
+  finished: boolean;
+  feedback: string;
+  timer: number;
+  progress: number;
 }
 
 export const initialState: IExamReducer = {
@@ -83,43 +91,47 @@ export const initialState: IExamReducer = {
   finished: false,
   feedback: null,
   timer: 0,
-}
+  progress: 0,
+};
 
 export function examReducer(state: IExamReducer = initialState, action: ExamActions) {
   switch (action.type) {
 
     case ExamActionTypes.SetIndex:
-      return { ...state, index: action.payload }
+      return { ...state, index: action.payload };
 
     case ExamActionTypes.SetFeedback:
-      return { ...state, feedback: action.payload }
+      return { ...state, feedback: action.payload };
 
     case ExamActionTypes.SetTimer:
-      return { ...state, timer: action.payload }
+      return { ...state, timer: action.payload };
 
     case ExamActionTypes.SetQuestion:
-      return { ...state, question: action.payload }
+      return { ...state, question: action.payload };
 
     case ExamActionTypes.SetAnswer:
       if (action.payload) {
         localStorage.setItem(action.payload.parent, JSON.stringify(action.payload));
       }
-      return { ...state, selectedAnswer: action.payload }
+      return { ...state, selectedAnswer: action.payload };
 
     case ExamActionTypes.SetResults:
-      return { ...state, results: action.payload }
+      return { ...state, results: action.payload };
 
     case ExamActionTypes.FinishExam:
-      return { ...state, finished: true }
+      return { ...state, finished: true };
 
     case ExamActionTypes.ResetExam:
-      return initialState
+      return initialState;
 
     case ExamActionTypes.ResetTimer:
-      return { ...state, timer: null }
+      return { ...state, timer: null };
+
+    case ExamActionTypes.SetProgress:
+      return { ...state, progress: action.payload };
 
     default:
-      return state
+      return state;
 
   }
 }
