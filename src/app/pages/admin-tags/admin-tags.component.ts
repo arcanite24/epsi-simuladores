@@ -17,6 +17,7 @@ export class AdminTagsComponent implements OnInit {
   public config: CrudTableConfig = {
     collection: Collections.TAG,
     headers: [
+      {field: 'id', type: 'text'},
       {field: 'value', type: 'text'},
       {field: 'display', type: 'text'},
     ],
