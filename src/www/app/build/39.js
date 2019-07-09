@@ -1,14 +1,14 @@
 webpackJsonp([39],{
 
-/***/ 1133:
+/***/ 1137:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EspecialidadesPageModule", function() { return EspecialidadesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForosPageModule", function() { return ForosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__especialidades__ = __webpack_require__(1209);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foros__ = __webpack_require__(1215);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let EspecialidadesPageModule = class EspecialidadesPageModule {
+let ForosPageModule = class ForosPageModule {
 };
-EspecialidadesPageModule = __decorate([
+ForosPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__foros__["a" /* ForosPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__especialidades__["a" /* EspecialidadesPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foros__["a" /* ForosPage */]),
         ],
     })
-], EspecialidadesPageModule);
+], ForosPageModule);
 
-//# sourceMappingURL=especialidades.module.js.map
+//# sourceMappingURL=foros.module.js.map
 
 /***/ }),
 
-/***/ 1209:
+/***/ 1215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return EspecialidadesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -59,34 +58,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-let EspecialidadesPage = class EspecialidadesPage {
+let ForosPage = class ForosPage {
     constructor(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
-        this.isPrograma = this.navParams.get('isPrograma');
+        this.cats$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_CATEGORY).valueChanges();
     }
     ionViewDidLoad() {
-        /* this.back.getAllMaterias().subscribe(data => this.materias = data.filter(m => m.name.includes('Temprano')), err => this.toast.create({message: 'No se pudieron cargar las materias...', duration: 2000}).present()) */
-        this.materias$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT)
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(materias => materias.filter(m => m.name.includes('Temprano'))));
-    }
-    openMateria(id) {
-        this.navCtrl.push(this.isPrograma ? 'ProgramaMateriaPage' : 'MateriaPage', { id });
     }
 };
-EspecialidadesPage = __decorate([
+ForosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-especialidades',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Especialidades</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <div class="home-grid" *ngIf="materias$ | async as materias">\n    <div class="home-tile" *ngFor="let m of materias">\n      <ion-card (click)="openMateria(m.id)">\n        <img [src]="m.cover">\n        <!--<ion-card-content>\n          <ion-card-title>{{m.name}}</ion-card-title>\n          <p>{{m.desc}}</p>\n        </ion-card-content>-->\n      </ion-card>\n    </div>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/especialidades/especialidades.html"*/,
+        selector: 'page-foros',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foros/foros.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categorías</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="cats$ | async as foros else loader">\n    <ion-item *ngFor="let c of foros" (click)="navCtrl.push(\'ForoDetailPage\', {id: c.id})">\n      <h2>{{c.name}}</h2>\n      <!--<p>{{c.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foros/foros.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-], EspecialidadesPage);
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+], ForosPage);
 
-//# sourceMappingURL=especialidades.js.map
+//# sourceMappingURL=foros.js.map
 
 /***/ })
 

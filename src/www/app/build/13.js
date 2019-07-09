@@ -1,14 +1,14 @@
 webpackJsonp([13],{
 
-/***/ 1167:
+/***/ 1170:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TemaAltPageModule", function() { return TemaAltPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TopUsersPageModule", function() { return TopUsersPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tema_alt__ = __webpack_require__(1243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__top_users__ = __webpack_require__(1248);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let TemaAltPageModule = class TemaAltPageModule {
+let TopUsersPageModule = class TopUsersPageModule {
 };
-TemaAltPageModule = __decorate([
+TopUsersPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */],
+            __WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__tema_alt__["a" /* TemaAltPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */]),
         ],
     })
-], TemaAltPageModule);
+], TopUsersPageModule);
 
-//# sourceMappingURL=tema-alt.module.js.map
+//# sourceMappingURL=top-users.module.js.map
 
 /***/ }),
 
-/***/ 1243:
+/***/ 1248:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TemaAltPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopUsersPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(590);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__ = __webpack_require__(592);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,89 +69,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-let TemaAltPage = class TemaAltPage {
-    constructor(navCtrl, navParams, data, auth, afs) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.data = data;
+let TopUsersPage = class TopUsersPage {
+    constructor(auth, afs, stats) {
         this.auth = auth;
         this.afs = afs;
-        this.id = this.navParams.get('id');
-        this.completedTasks = [];
-        this.loaded = false;
+        this.stats = stats;
     }
-    ionViewDidLoad() {
-        this.loadContent(this.id);
-        this.auth.user$.subscribe(user => {
-            if (this.loaded)
-                return;
-            if (!user) {
-                return;
-            }
-            const userKey = `${__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER}/${user.uid}`;
-            this.afs.doc(userKey).valueChanges().subscribe(_user => {
-                if (!_user.completedTasks) {
-                    return;
-                }
-                this.completedTasks = user.completedTasks;
-            });
-            this.loaded = true;
-        });
+    ngOnInit() {
+        this.users$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER, ref => ref
+            .where('promedio', '>', 0)
+            .orderBy('promedio', 'desc')
+            .limit(5))
+            .valueChanges();
+        this.reloadUsers();
     }
-    loadContent(id) {
+    reloadUsers() {
         return __awaiter(this, void 0, void 0, function* () {
-            this.tema = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].CONTENT, id);
-            if (this.tema && this.tema.event)
-                this.loadEvent(this.tema.event);
-        });
-    }
-    loadEvent(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            this.event = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EVENT, id);
-            console.log(this.event);
-        });
-    }
-    openLink(url) {
-        console.log(url);
-        // Content Detail
-        if (url.includes('/content')) {
-            const [, , type, id] = url.split('/');
-            this.navCtrl.push('ClaseDetailPage', { type, id });
-        }
-    }
-    toggleCompleted(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            console.log(id);
-            const userKey = `${__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER}/${this.auth.user.uid}`;
-            const _user = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER, this.auth.user.uid);
-            const completedTasks = _user.completedTasks || [];
-            if (completedTasks.indexOf(id) < 0) {
-                completedTasks.push(id);
-                yield this.afs.doc(userKey).update({ completedTasks });
-                /* this.checkChanged.next({ id, added: true }); */
+            const users = yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["take"])(1)).toPromise();
+            for (const user of users) {
+                const promedio = yield this.stats.computeUserAverage(user.uid);
+                yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER}/${user.uid}`).update({ promedio: promedio });
             }
-            else {
-                if (completedTasks.length > 0)
-                    completedTasks.splice(completedTasks.indexOf(id), 1);
-                yield this.afs.doc(userKey).update({ completedTasks });
-                /* this.checkChanged.next({ id, added: false }); */
-            }
-            // this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
         });
     }
 };
-TemaAltPage = __decorate([
+TopUsersPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-tema-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{tema ? tema.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-card *ngIf="event as e">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n    <ion-card-content>{{e.desc}}</ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links">\n        <button ion-button (click)="openLink(link.url)">{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/tema-alt/tema-alt.html"*/,
+        selector: 'page-top-users',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Cuadro de Honor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list *ngIf="users$ | async as users">\n    <ion-item *ngFor="let user of users">\n      <ion-avatar item-start>\n        <img [src]="user.photoURL">\n      </ion-avatar>\n      <h2>{{user.displayName}}</h2>\n      <p>\n        <strong>{{user.promedio | number}}</strong>\n      </p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__providers_data_data__["a" /* DataProvider */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-        __WEBPACK_IMPORTED_MODULE_5_angularfire2_firestore__["AngularFirestore"]])
-], TemaAltPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__["a" /* StatsProvider */]])
+], TopUsersPage);
 
-//# sourceMappingURL=tema-alt.js.map
+//# sourceMappingURL=top-users.js.map
 
 /***/ })
 

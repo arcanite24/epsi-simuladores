@@ -17,8 +17,8 @@ import { sortBy } from 'lodash'
 })
 export class SlideEditComponent implements OnInit {
 
-  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=91QuqcR2zZvneuoz'
-  
+  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=43t9qN33feZzdpDF'
+
   private _slide: Slide
 
   @Input()
@@ -71,7 +71,7 @@ export class SlideEditComponent implements OnInit {
     this.editForm.patchValue({
       images
     })
-  } 
+  }
 
   async saveSlide() {
     await this.afs.doc(`${Collections.SLIDE}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
@@ -105,7 +105,7 @@ export class SlideEditComponent implements OnInit {
   }
 
   async pptxSelected(files: FileList) {
-  
+
     if (!files) return
     if (files.length <= 0) return
 
@@ -114,14 +114,14 @@ export class SlideEditComponent implements OnInit {
     this.l = true
 
     console.log(files);
-    
+
     try {
 
       const result = await this.convertSlide(file)
       const urls = await this.uploadSlides(result.Files)
       this.editForm.patchValue({images: [...this.editForm.value.images, ...urls]})
       this.l = false
-      
+
     } catch (error) {
       this.toastr.error('Ocurrió un error al convertir la presentación')
       console.log(error)

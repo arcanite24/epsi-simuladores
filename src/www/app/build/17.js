@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 1162:
+/***/ 1166:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SlideDetailPageModule", function() { return SlideDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartCalendarPageModule", function() { return SmartCalendarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slide_detail__ = __webpack_require__(1238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(1244);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let SlideDetailPageModule = class SlideDetailPageModule {
+let SmartCalendarPageModule = class SmartCalendarPageModule {
 };
-SlideDetailPageModule = __decorate([
+SmartCalendarPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__slide_detail__["a" /* SlideDetailPage */],
+            __WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__slide_detail__["a" /* SlideDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__smart_calendar__["a" /* SmartCalendarPage */]),
         ],
     })
-], SlideDetailPageModule);
+], SmartCalendarPageModule);
 
-//# sourceMappingURL=slide-detail.module.js.map
+//# sourceMappingURL=smart-calendar.module.js.map
 
 /***/ }),
 
-/***/ 1238:
+/***/ 1244:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlideDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(590);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartCalendarPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,85 +74,101 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-let SlideDetailPage = class SlideDetailPage {
-    constructor(navCtrl, navParams, afs, imgCtrl, toast, auth, load) {
+
+
+let SmartCalendarPage = class SmartCalendarPage {
+    constructor(navCtrl, navParams, auth, afs, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.afs = afs;
-        this.imgCtrl = imgCtrl;
-        this.toast = toast;
         this.auth = auth;
-        this.load = load;
-        this.id = this.navParams.get("id");
-        this.lc = false;
-        this.newNota = { title: "", text: "" };
+        this.afs = afs;
+        this.data = data;
+        this.completedTasks = [];
+        this.events = [];
+        this.loadedEvents = [];
     }
     ionViewDidLoad() {
-        this.slide$ = this.afs
-            .collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].SLIDE)
-            .doc(this.id)
-            .valueChanges();
         this.auth.user$.subscribe(user => {
-            if (user && !this.notas$) {
-                this.notas$ = this.afs
-                    .collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].NOTE, ref => ref.where("parent_id", "==", this.id).where("user", "==", user.uid))
-                    .valueChanges();
+            if (user) {
+                this.afs
+                    .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
+                    .doc(user.uid)
+                    .valueChanges()
+                    .subscribe(u => (this.completedTasks = u.completedTasks ? u.completedTasks : []));
+                if (!this.events$)
+                    this.loadEvents(user.uid);
             }
         });
     }
-    openSlide(img) {
-        this.imgCtrl.create(img).present();
+    loadEvents(uid) {
+        this.userSub = this.afs
+            .collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER)
+            .doc(uid)
+            .valueChanges()
+            .subscribe((user) => __awaiter(this, void 0, void 0, function* () {
+            if (!user.customCalendar)
+                return;
+            const events = Object(__WEBPACK_IMPORTED_MODULE_6_lodash__["flattenDeep"])(Object.values(user.customCalendar)).filter((e) => e.start.substr(0, 10) === __WEBPACK_IMPORTED_MODULE_7_moment___default()().format('YYYY-MM-DD'));
+            if (!user.completedTasks)
+                user.completedTasks = [];
+            this.completedTasks = user.completedTasks;
+            /*let formatedEvents = []*/
+            if (this.events.length > 0)
+                return;
+            for (let e of events) {
+                if (e.event && !this.loadedEvents.includes(e.event)) {
+                    const eventDoc = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].EVENT, e.event);
+                    setTimeout(() => {
+                        this.events.push(Object.assign({}, e, { id: eventDoc.id, start: new Date(e.start), title: e.content_name, desc: eventDoc.desc, date: new Date().toISOString(), tasks: eventDoc.tasks, links: eventDoc.links, color: this.completedTasks.indexOf(eventDoc.id) >= 0
+                                ? { primary: '#5e4b8b', secondary: '#5e4b8b' }
+                                : { primary: '#CF4747', secondary: '#CF4747' } }));
+                        this.loadedEvents.push(e.event);
+                    }, 100);
+                }
+            }
+        }));
     }
-    addNota(title, text) {
+    openLink(url) {
+        console.log(url);
+        // Content Detail
+        if (url.includes('/content')) {
+            const [, , type, id] = url.split('/');
+            this.navCtrl.push('ClaseDetailPage', { type, id });
+        }
+    }
+    toggleCompleted(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!title)
-                return this.toast
-                    .create({ message: "Ingresa un titulo", duration: 2000 })
-                    .present();
-            if (!text)
-                return this.toast
-                    .create({ message: "Ingresa un text", duration: 2000 })
-                    .present();
-            const l = this.load.create({ content: "Agregando..." });
-            l.present();
-            const id = this.afs.createId();
-            yield this.afs
-                .collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].NOTE)
-                .doc(id)
-                .set({
-                id,
-                title,
-                text,
-                parent_id: this.id,
-                user: this.auth.user.uid
-            });
-            l.dismiss();
-            this.newNota = { title: '', text: '' };
+            console.log(id);
+            const userKey = `${__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER}/${this.auth.user.uid}`;
+            const _user = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER, this.auth.user.uid);
+            const completedTasks = _user.completedTasks || [];
+            if (completedTasks.indexOf(id) < 0) {
+                completedTasks.push(id);
+                yield this.afs.doc(userKey).update({ completedTasks });
+                /* this.checkChanged.next({ id, added: true }); */
+            }
+            else {
+                if (completedTasks.length > 0)
+                    completedTasks.splice(completedTasks.indexOf(id), 1);
+                yield this.afs.doc(userKey).update({ completedTasks });
+                /* this.checkChanged.next({ id, added: false }); */
+            }
+            // this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
         });
     }
-    onSlideChange() {
-        //this.index = this.slides.getActiveIndex()
-        //
-    }
 };
-__decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Slides */]),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Slides */])
-], SlideDetailPage.prototype, "slides", void 0);
-SlideDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: "page-slide-detail",template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/slide-detail/slide-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Presentación</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-slides *ngIf="slide$ | async as s" (ionSlideDidChange)="onSlideChange()">\n    <ion-slide *ngFor="let slide of s.images">\n      <img [src]="slide" #img (click)="openSlide(img)">\n    </ion-slide>\n  </ion-slides>\n\n  <ion-list>\n    <ion-list-header class="flex-row">Notas</ion-list-header>\n    <ion-item>\n      <ion-input placeholder="Titulo de la nota" [(ngModel)]="newNota.title" [disabled]="lc"></ion-input>\n      <button ion-button clear item-end (click)="addNota(newNota.title, newNota.text)" [disabled]="(newNota.title.length <= 0 && newNota.text.length <= 0) || newNota.title.length <= 0 || newNota.text.length <= 0">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Texto de la nota" [(ngModel)]="newNota.text"></ion-textarea>\n    </ion-item>\n    <ion-item *ngFor="let nota of notas$ | async" text-wrap>\n      <h2>{{nota.title}}</h2>\n      <p>{{nota.text}}</p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/slide-detail/slide-detail.html"*/
+SmartCalendarPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
+        selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item class="item-termine" text-wrap>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links" class="item-center">\n        <button (click)="openLink(link.url)" ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */]])
-], SlideDetailPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_0__providers_data_data__["a" /* DataProvider */]])
+], SmartCalendarPage);
 
-//# sourceMappingURL=slide-detail.js.map
+//# sourceMappingURL=smart-calendar.js.map
 
 /***/ })
 

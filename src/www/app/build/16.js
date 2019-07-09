@@ -1,14 +1,15 @@
 webpackJsonp([16],{
 
-/***/ 1163:
+/***/ 1167:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SlidesPageModule", function() { return SlidesPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StatViewDetailPageModule", function() { return StatViewDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slides__ = __webpack_require__(1239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__stat_view_detail__ = __webpack_require__(1245);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__swimlane_ngx_charts__ = __webpack_require__(598);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +19,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let SlidesPageModule = class SlidesPageModule {
+
+let StatViewDetailPageModule = class StatViewDetailPageModule {
 };
-SlidesPageModule = __decorate([
+StatViewDetailPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */],
+            __WEBPACK_IMPORTED_MODULE_2__stat_view_detail__["a" /* StatViewDetailPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */]),
+            __WEBPACK_IMPORTED_MODULE_3__swimlane_ngx_charts__["a" /* NgxChartsModule */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__stat_view_detail__["a" /* StatViewDetailPage */]),
         ],
     })
-], SlidesPageModule);
+], StatViewDetailPageModule);
 
-//# sourceMappingURL=slides.module.js.map
+//# sourceMappingURL=stat-view-detail.module.js.map
 
 /***/ }),
 
-/***/ 1239:
+/***/ 1245:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlidesPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatViewDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__ = __webpack_require__(592);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,33 +56,58 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 
 
-
-let SlidesPage = class SlidesPage {
-    constructor(navCtrl, navParams, afs) {
-        this.navCtrl = navCtrl;
+let StatViewDetailPage = class StatViewDetailPage {
+    constructor(stats, auth, navParams) {
+        this.stats = stats;
+        this.auth = auth;
         this.navParams = navParams;
-        this.afs = afs;
+        this.view = this.navParams.get('view');
+        this.uid = this.navParams.get('uid');
+    }
+    ngOnInit() {
     }
     ionViewDidLoad() {
-        this.slides$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE_CATEGORY)
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(cats => cats.map(cat => (Object.assign({}, cat, { children$: this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE, ref => ref.where('cat_id', '==', cat.id)).valueChanges() })))), Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["tap"])(console.log));
+        this.reloadData(this.view);
+    }
+    reloadData(v) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const cache = yield this.stats.computeTimeline(v.includeTags[0], this.uid ? this.uid : this.auth.user.uid);
+            v.cache = cache;
+            v.cache.promedio = v.cache.timeline.map((m) => m.promedio).reduce((a, b) => a + b, 0);
+            this.chartData = [
+                {
+                    name: 'Promedio',
+                    series: v.cache.timeline.map(m => ({
+                        name: m.mes.label,
+                        value: m.promedio * 100
+                    }))
+                }
+            ];
+        });
     }
 };
-SlidesPage = __decorate([
+StatViewDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-slides',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Presentaciones</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      <p>Cargar las infografías puede llevar más de lo esperado.</p>\n    </div>\n  </ng-template>\n\n  <div *ngIf="slides$ | async as slides else loader">\n    <ion-list *ngFor="let cat of slides">\n      <ion-list-header style="font-size:1.75rem"><strong>{{cat.name}}</strong></ion-list-header>\n      <ion-item *ngFor="let s of cat.children$ | async" (click)="navCtrl.push(\'SlideDetailPage\', {id: s.id})" >{{s.name}}</ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/,
+        selector: 'page-stat-view-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/stat-view-detail/stat-view-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{ view ? view.name : \'...\' }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content>\n  <div class="container-fluid">\n    <div class="row" *ngIf="view as v">\n\n      <div class="col-md-12">\n        <h4>{{v.name}}</h4>\n      </div>\n\n      <div class="col-md-12">\n        <ul *ngIf="v.cache as c">\n          <li *ngIf="c.total">{{c.total | number}} resultados</li>\n          <li *ngIf="c.promedio">\n            <strong>Promedio: </strong> {{c.promedio * 100 | number}}/100\n          </li>\n        </ul>\n      </div>\n\n      <div class="col-md-12" *ngIf="chartData">\n        <div class="w-100 epsi-chart-container">\n          <ngx-charts-line-chart [view]="undefined" [yScaleMin]="0" [yScaleMax]="100" [legend]="true"\n            [legendTitle]="\'Materias\'" [legendPosition]="\'below\'" [showXAxisLabel]="true" [showYAxisLabel]="true"\n            [xAxisLabel]="\'Mes\'" [yAxisLabel]="\'Promedio\'" [xAxis]="true" [yAxis]="true" [results]="chartData">\n          </ngx-charts-line-chart>\n        </div>\n      </div>\n\n      <div class="col-md-12">\n        <button type="button" (click)="reloadData(v)">Recargar Información</button>\n      </div>\n\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/stat-view-detail/stat-view-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
-], SlidesPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__providers_stats_stats__["a" /* StatsProvider */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], StatViewDetailPage);
 
-//# sourceMappingURL=slides.js.map
+//# sourceMappingURL=stat-view-detail.js.map
 
 /***/ })
 

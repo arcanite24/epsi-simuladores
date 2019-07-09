@@ -1,14 +1,14 @@
 webpackJsonp([37],{
 
-/***/ 1136:
+/***/ 1174:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ForosPageModule", function() { return ForosPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__foros__ = __webpack_require__(1212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(1252);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,33 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let ForosPageModule = class ForosPageModule {
+let LoginPageModule = class LoginPageModule {
 };
-ForosPageModule = __decorate([
+LoginPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__foros__["a" /* ForosPage */],
+            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__foros__["a" /* ForosPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
         ],
     })
-], ForosPageModule);
+], LoginPageModule);
 
-//# sourceMappingURL=foros.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 1212:
+/***/ 1252:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ForosPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__ = __webpack_require__(602);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_back_back__ = __webpack_require__(147);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(593);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -58,26 +60,66 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-let ForosPage = class ForosPage {
-    constructor(navCtrl, navParams, afs) {
+
+
+let LoginPage = class LoginPage {
+    constructor(navCtrl, navParams, back, afAuth, auth, platform, iap) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.afs = afs;
-        this.cats$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].THREAD_CATEGORY).valueChanges();
+        this.back = back;
+        this.afAuth = afAuth;
+        this.auth = auth;
+        this.platform = platform;
+        this.iap = iap;
+        this.email = '';
+        this.password = '';
+        this.admin = false;
+        this.isBrowser = !this.platform.is('cordova');
+        this.loaded = false;
+        this.auth.user$.subscribe(user => {
+            this.user = true;
+            if (user && !this.loaded) {
+                this.loaded = true;
+                this.navCtrl.setRoot("HomePage");
+            }
+        });
     }
     ionViewDidLoad() {
+        const uid = localStorage.getItem('uid');
+        if (uid) {
+            this.back.saveFcmToken(uid, localStorage.getItem('fcm_token')).then(data => {
+                this.navCtrl.setRoot('HomePage');
+            }).catch(err => {
+                const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'));
+                if (list)
+                    this.navCtrl.setRoot('SimuladoresPage');
+            });
+        }
+    }
+    loginGoogleFirebase() {
+        this.auth.loginGoogle(this.isBrowser);
+    }
+    loginFacebookFirebase() {
+        this.auth.loginFacebook(this.isBrowser);
+    }
+    loginEmailFirebase(email, password) {
+        this.afAuth.auth.signInWithEmailAndPassword(email, password);
     }
 };
-ForosPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-foros',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/foros/foros.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Categorías</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <ion-list *ngIf="cats$ | async as foros else loader">\n    <ion-item *ngFor="let c of foros" (click)="navCtrl.push(\'ForoDetailPage\', {id: c.id})">\n      <h2>{{c.name}}</h2>\n      <!--<p>{{c.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/foros/foros.html"*/,
+LoginPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/'<!--<div class="login-loader">\n  <img src="assets/imgs/update-cover.png" (click)="iap.create(\'https://zamnademy.com\', \'_system\').show()">\n</div>-->\n\n<div class="login-loader" *ngIf="!user">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-content class="login-bg">\n\n  <div class="h100 flex-col login-col" padding *ngIf="admin" >\n    <div class="login-inputs flex-col w100" padding>\n      <input placeholder="Email" type="text" class="mb-1 w100 login-input" [(ngModel)]="email" >\n      <input placeholder="Contraseña" type="password" class="w100 login-input" [(ngModel)]="password">\n    </div>\n    <div class="flex-col">\n      <button ion-button color="secondary" (click)="loginEmailFirebase(email, password)">Iniciar Sesión</button>\n      <button clear ion-button color="secondary" (click)="admin = false">Regresar</button>\n    </div>\n  </div>\n\n  <div class="h100 flex-col login-col" padding *ngIf="!admin" >\n    <div class="flex-col" style="color:white; text-align:center">\n      <h1 style="font-size:2rem">Curso ENARM Online 2019</h1>\n    </div>\n    <div class="flex-col" style="color:white; text-align:center;font-size:2rem">\n      <img src="assets/imgs/texto.png" style="width:90%">\n      <h3>¿Ya eres alumno?</h3>\n      <h4>Ingresa tu cuenta:</h4>\n    </div>\n\n      <div class="social-buttons mt-3 w-100 flex flex-col flex-center">\n        <button class="btn-social w-100 btn-google" type="button" (click)="loginGoogleFirebase()">\n          <div class="social-icon-container">\n            <ion-icon name="logo-google"></ion-icon>\n          </div>\n          <span>Iniciar sesión Usando Google</span>\n        </button>\n        <button class="btn-social w-100 btn-facebook" type="button" (click)="loginFacebookFirebase()">\n          <div class="social-icon-container">\n            <ion-icon name="logo-facebook"></ion-icon>\n          </div>\n          <span>Iniciar sesión Usando Facebook</span>\n        </button>\n      </div>\n\n       <!-- <div class="login-buttons flex-col">\n        <div class="flex-col social-buttons">\n          <button class="btn-facebook" (click)="loginFacebookFirebase()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            <span>Iniciar sesión con Facebook</span>\n          </button>\n          <button class="btn-google" (click)="loginGoogleFirebase()">\n            <ion-icon name="logo-google"></ion-icon>\n            <span>Iniciar sesión con Google</span>\n          </button>\n        </div>\n\n      </div> -->\n\n      <div class="flex-row-no-wrap w100">\n        <img src="assets/imgs/weon.png" style="margin-left:auto;width:64px" (click)="admin = true">\n      </div>\n\n      <!-- <pre style="width:100%; background-color: white; color: black;">\n        {{user | json}}\n      </pre> -->\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
-], ForosPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__["AngularFireAuth"],
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+], LoginPage);
 
-//# sourceMappingURL=foros.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

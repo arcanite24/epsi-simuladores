@@ -1,14 +1,14 @@
 webpackJsonp([11],{
 
-/***/ 1168:
+/***/ 1172:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TopUsersPageModule", function() { return TopUsersPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ZonaEnarmPageModule", function() { return ZonaEnarmPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__top_users__ = __webpack_require__(1244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__zona_enarm__ = __webpack_require__(1250);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +18,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let TopUsersPageModule = class TopUsersPageModule {
+let ZonaEnarmPageModule = class ZonaEnarmPageModule {
 };
-TopUsersPageModule = __decorate([
+ZonaEnarmPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */],
+            __WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__top_users__["a" /* TopUsersPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__zona_enarm__["a" /* ZonaEnarmPage */]),
         ],
     })
-], TopUsersPageModule);
+], ZonaEnarmPageModule);
 
-//# sourceMappingURL=top-users.module.js.map
+//# sourceMappingURL=zona-enarm.module.js.map
 
 /***/ }),
 
-/***/ 1244:
+/***/ 1250:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TopUsersPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ZonaEnarmPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(590);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__ = __webpack_require__(592);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,54 +51,26 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 
 
-
-
-
-
-let TopUsersPage = class TopUsersPage {
-    constructor(auth, afs, stats) {
-        this.auth = auth;
-        this.afs = afs;
-        this.stats = stats;
+let ZonaEnarmPage = class ZonaEnarmPage {
+    constructor(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
     }
-    ngOnInit() {
-        this.users$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER, ref => ref
-            .where('promedio', '>', 0)
-            .orderBy('promedio', 'desc')
-            .limit(5))
-            .valueChanges();
-        this.reloadUsers();
-    }
-    reloadUsers() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const users = yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators__["take"])(1)).toPromise();
-            for (const user of users) {
-                const promedio = yield this.stats.computeUserAverage(user.uid);
-                yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].USER}/${user.uid}`).update({ promedio: promedio });
-            }
-        });
+    ionViewDidLoad() {
+        console.log('ionViewDidLoad ZonaEnarmPage');
     }
 };
-TopUsersPage = __decorate([
+ZonaEnarmPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-top-users',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Cuadro de Honor</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list *ngIf="users$ | async as users">\n    <ion-item *ngFor="let user of users">\n      <ion-avatar item-start>\n        <img [src]="user.photoURL">\n      </ion-avatar>\n      <h2>{{user.displayName}}</h2>\n      <p>\n        <strong>{{user.promedio | number}}</strong>\n      </p>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/top-users/top-users.html"*/,
+        selector: 'page-zona-enarm',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zona Enarm</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid>\n    <ion-row>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimuladoresPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulador.svg">\n            <span>Mi simulador diario ENARM</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n      <ion-col col-6>\n        <div class="home-tile" (click)="navCtrl.push(\'SimulacrosPage\')">\n          <ion-card class="flex-col">\n            <img src="assets/imgs/simulacro.png">\n            <span>Simulacro de examen real</span>\n          </ion-card>\n        </div>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/zona-enarm/zona-enarm.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-        __WEBPACK_IMPORTED_MODULE_1__angular_fire_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_5__providers_stats_stats__["a" /* StatsProvider */]])
-], TopUsersPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], ZonaEnarmPage);
 
-//# sourceMappingURL=top-users.js.map
+//# sourceMappingURL=zona-enarm.js.map
 
 /***/ })
 

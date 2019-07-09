@@ -1,14 +1,14 @@
 webpackJsonp([21],{
 
-/***/ 1157:
+/***/ 1162:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResultadoDetailPageModule", function() { return ResultadoDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimuladorDetailPageModule", function() { return SimuladorDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__resultado_detail__ = __webpack_require__(1233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simulador_detail__ = __webpack_require__(1240);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,30 +18,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let ResultadoDetailPageModule = class ResultadoDetailPageModule {
+let SimuladorDetailPageModule = class SimuladorDetailPageModule {
 };
-ResultadoDetailPageModule = __decorate([
+SimuladorDetailPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */],
+            __WEBPACK_IMPORTED_MODULE_2__simulador_detail__["a" /* SimuladorDetailPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__simulador_detail__["a" /* SimuladorDetailPage */]),
         ],
     })
-], ResultadoDetailPageModule);
+], SimuladorDetailPageModule);
 
-//# sourceMappingURL=resultado-detail.module.js.map
+//# sourceMappingURL=simulador-detail.module.js.map
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultadoDetailPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SimuladorDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(147);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,29 +54,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the ResultadoDetailPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-let ResultadoDetailPage = class ResultadoDetailPage {
-    constructor(navCtrl, navParams) {
+
+let SimuladorDetailPage = class SimuladorDetailPage {
+    constructor(navCtrl, navParams, back, toast) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.back = back;
+        this.toast = toast;
+        this.id = this.navParams.get('id');
     }
     ionViewDidLoad() {
-        console.log('ionViewDidLoad ResultadoDetailPage');
+        this.back.getSimuladorDetail(this.id).subscribe(data => this.s = data, err => {
+            this.toast.create({ message: 'No se pudo cargar el simulador...', duration: 2000 }).present();
+            if (this.navCtrl.canGoBack())
+                this.navCtrl.pop();
+        });
     }
 };
-ResultadoDetailPage = __decorate([
+SimuladorDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-resultado-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/'<!--\n  Generated template for the ResultadoDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ResultadoDetail</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/,
+        selector: 'page-simulador-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/simulador-detail/simulador-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{s ? s.name : \'Cargando...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="!s">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  \n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/simulador-detail/simulador-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
-], ResultadoDetailPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */]])
+], SimuladorDetailPage);
 
-//# sourceMappingURL=resultado-detail.js.map
+//# sourceMappingURL=simulador-detail.js.map
 
 /***/ })
 

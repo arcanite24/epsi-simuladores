@@ -1,14 +1,14 @@
 webpackJsonp([36],{
 
-/***/ 1139:
+/***/ 1142:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GaleriaDetailPageModule", function() { return GaleriaDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MateriaAltPageModule", function() { return MateriaAltPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galeria_detail__ = __webpack_require__(1215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__materia_alt__ = __webpack_require__(1220);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let GaleriaDetailPageModule = class GaleriaDetailPageModule {
+let MateriaAltPageModule = class MateriaAltPageModule {
 };
-GaleriaDetailPageModule = __decorate([
+MateriaAltPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__galeria_detail__["a" /* GaleriaDetailPage */],
+            __WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__galeria_detail__["a" /* GaleriaDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__materia_alt__["a" /* MateriaAltPage */]),
         ],
     })
-], GaleriaDetailPageModule);
+], MateriaAltPageModule);
 
-//# sourceMappingURL=galeria-detail.module.js.map
+//# sourceMappingURL=materia-alt.module.js.map
 
 /***/ }),
 
-/***/ 1215:
+/***/ 1220:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GaleriaDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(600);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(590);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MateriaAltPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__providers_data_data__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(590);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -69,73 +67,56 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-
-let GaleriaDetailPage = class GaleriaDetailPage {
-    constructor(navCtrl, navParams, toast, imgCtrl, afs, load, auth) {
+let MateriaAltPage = class MateriaAltPage {
+    constructor(navCtrl, navParams, data, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toast = toast;
-        this.imgCtrl = imgCtrl;
-        this.afs = afs;
-        this.load = load;
+        this.data = data;
         this.auth = auth;
         this.id = this.navParams.get('id');
-        this.uid = localStorage.getItem('uid');
-        this.newNota = { text: '', title: '' };
-        this.lc = false;
     }
     ionViewDidLoad() {
-        this.gallery$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].GALLERY).doc(this.id).valueChanges();
+        this.loadContent(this.id);
         this.auth.user$.subscribe(user => {
-            if (user && !this.notas$) {
-                this.notas$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE, ref => ref
-                    .where('parent_id', '==', this.id)
-                    .where('user', '==', user.uid))
-                    .valueChanges();
-            }
+            if (user && !this.completed)
+                this.completed = user.completedTasks ? user.completedTasks : [];
+            if (user && !this.children)
+                this.loadChildren(this.id, user);
         });
     }
-    openImg(img) {
-        this.imgCtrl.create(img).present();
-    }
-    addNota(title, text) {
+    loadContent(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            if (!title)
-                return this.toast.create({ message: 'Ingresa un titulo', duration: 2000 }).present();
-            if (!text)
-                return this.toast.create({ message: 'Ingresa un text', duration: 2000 }).present();
-            const l = this.load.create({ content: 'Agregando...' });
-            l.present();
-            const id = this.afs.createId();
-            yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE).doc(id).set({
-                id,
-                title,
-                text,
-                parent_id: this.id,
-                user: this.auth.user.uid,
-            });
-            l.dismiss();
-            /* this.back.addNota(title, text, this.type, this.id).subscribe(data => {}, err => {
-              this.toast.create({message: 'No se pudo agregar tu nota...', duration: 2000}).present()
-              l.dismiss()
-            }) */
+            this.materia = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, id);
         });
+    }
+    loadChildren(id, user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const children = yield this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, ref => ref
+                .where('parent_id', '==', id)
+                .orderBy('sortIndex', 'asc'));
+            this.children = children
+                .filter(c => user.isPremium2019 ? true : c.liberadoInPrograma)
+                .map(c => (Object.assign({}, c, { temas$: this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_0__app_app_models__["a" /* Collections */].CONTENT, ref => ref.where('parent_id', '==', c.id)) })));
+        });
+    }
+    getTemasCount(temas = []) {
+        return temas.filter(t => t.liberadoInPrograma).length;
+    }
+    getCompletedTemas(temas = []) {
+        return temas.filter(t => this.completed.includes(t.event)).length;
     }
 };
-GaleriaDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-galeria-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/galeria-detail/galeria-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Galería</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!g">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <div *ngIf="gallery$ | async as g else loader">\n\n    <ion-slides>\n      <ion-slide *ngFor="let img of g.fotos">\n        <img [src]="img" #imagen (click)="openImg(imagen)">\n      </ion-slide>\n    </ion-slides>\n\n    <ion-item style="margin-bottom:2rem">\n      <h2>{{g.name}}</h2>\n      <p>{{g.desc}}</p>\n    </ion-item>\n\n    <ion-list>\n      <ion-list-header><strong>Notas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Titulo de la nota" [(ngModel)]="newNota.title" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addNota(newNota.title, newNota.text)" [disabled]="(newNota.title.length <= 0 && newNota.text.length <= 0) || newNota.title.length <= 0 || newNota.text.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item>\n        <ion-textarea placeholder="Texto de la nota" [(ngModel)]="newNota.text"></ion-textarea>\n      </ion-item>\n      <ion-item *ngFor="let n of notas$ | async" text-wrap>\n        <h2>{{n.title}}</h2>\n        <p>{{n.text}}</p>\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/galeria-detail/galeria-detail.html"*/,
+MateriaAltPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+        selector: 'page-materia-alt',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{materia ? materia.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid *ngIf="children">\n    <ion-row>\n\n      <ion-col col-6 *ngFor="let child of children">\n        <ion-card (click)="navCtrl.push(\'BloqueAltPage\', {id: child.id})">\n          <img [src]="child.cover" alt="Children">\n          <ion-card-content>\n            <ion-card-title>{{child.name}}</ion-card-title>\n            <ion-card-content *ngIf="child.temas$ | async as temas">{{getCompletedTemas(temas)}}/{{getTemasCount(temas) | number}}</ion-card-content>\n          </ion-card-content>\n        </ion-card>\n      </ion-col>\n\n    </ion-row>\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/materia-alt/materia-alt.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */],
-        __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */]])
-], GaleriaDetailPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1__providers_data_data__["a" /* DataProvider */],
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
+], MateriaAltPage);
 
-//# sourceMappingURL=galeria-detail.js.map
+//# sourceMappingURL=materia-alt.js.map
 
 /***/ })
 

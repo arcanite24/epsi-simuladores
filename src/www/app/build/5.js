@@ -1,6 +1,6 @@
 webpackJsonp([5],{
 
-/***/ 1137:
+/***/ 1139:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GaleriasPageModule", function() { return GaleriasPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galerias__ = __webpack_require__(1213);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galerias__ = __webpack_require__(1217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1191);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ GaleriasPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1173:
+/***/ 1175:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72,7 +72,7 @@ exports.AddPipe = AddPipe;
 
 /***/ }),
 
-/***/ 1174:
+/***/ 1176:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -183,7 +183,7 @@ exports.CalendarPipe = CalendarPipe;
 
 /***/ }),
 
-/***/ 1175:
+/***/ 1177:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -222,7 +222,7 @@ exports.DateFormatPipe = DateFormatPipe;
 
 /***/ }),
 
-/***/ 1176:
+/***/ 1178:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -257,7 +257,7 @@ exports.DifferencePipe = DifferencePipe;
 
 /***/ }),
 
-/***/ 1177:
+/***/ 1179:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -294,7 +294,7 @@ exports.DurationPipe = DurationPipe;
 
 /***/ }),
 
-/***/ 1178:
+/***/ 1180:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -332,7 +332,7 @@ exports.FromUnixPipe = FromUnixPipe;
 
 /***/ }),
 
-/***/ 1179:
+/***/ 1181:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -364,7 +364,7 @@ exports.ParsePipe = ParsePipe;
 
 /***/ }),
 
-/***/ 1180:
+/***/ 1182:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -398,7 +398,7 @@ exports.SubtractPipe = SubtractPipe;
 
 /***/ }),
 
-/***/ 1181:
+/***/ 1183:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -509,7 +509,7 @@ exports.TimeAgoPipe = TimeAgoPipe;
 
 /***/ }),
 
-/***/ 1182:
+/***/ 1184:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,7 +541,7 @@ exports.UtcPipe = UtcPipe;
 
 /***/ }),
 
-/***/ 1183:
+/***/ 1185:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -576,7 +576,7 @@ exports.FromUtcPipe = FromUtcPipe;
 
 /***/ }),
 
-/***/ 1184:
+/***/ 1186:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -608,7 +608,7 @@ exports.LocalTimePipe = LocalTimePipe;
 
 /***/ }),
 
-/***/ 1185:
+/***/ 1187:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -640,45 +640,45 @@ exports.LocalePipe = LocalePipe;
 
 /***/ }),
 
-/***/ 1186:
+/***/ 1188:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var add_pipe_1 = __webpack_require__(1173);
+var add_pipe_1 = __webpack_require__(1175);
 exports.AddPipe = add_pipe_1.AddPipe;
-var calendar_pipe_1 = __webpack_require__(1174);
+var calendar_pipe_1 = __webpack_require__(1176);
 exports.CalendarPipe = calendar_pipe_1.CalendarPipe;
-var date_format_pipe_1 = __webpack_require__(1175);
+var date_format_pipe_1 = __webpack_require__(1177);
 exports.DateFormatPipe = date_format_pipe_1.DateFormatPipe;
-var difference_pipe_1 = __webpack_require__(1176);
+var difference_pipe_1 = __webpack_require__(1178);
 exports.DifferencePipe = difference_pipe_1.DifferencePipe;
-var duration_pipe_1 = __webpack_require__(1177);
+var duration_pipe_1 = __webpack_require__(1179);
 exports.DurationPipe = duration_pipe_1.DurationPipe;
-var from_unix_pipe_1 = __webpack_require__(1178);
+var from_unix_pipe_1 = __webpack_require__(1180);
 exports.FromUnixPipe = from_unix_pipe_1.FromUnixPipe;
-var parse_pipe_1 = __webpack_require__(1179);
+var parse_pipe_1 = __webpack_require__(1181);
 exports.ParsePipe = parse_pipe_1.ParsePipe;
-var moment_module_1 = __webpack_require__(1187);
+var moment_module_1 = __webpack_require__(1189);
 exports.MomentModule = moment_module_1.MomentModule;
-var subtract_pipe_1 = __webpack_require__(1180);
+var subtract_pipe_1 = __webpack_require__(1182);
 exports.SubtractPipe = subtract_pipe_1.SubtractPipe;
-var time_ago_pipe_1 = __webpack_require__(1181);
+var time_ago_pipe_1 = __webpack_require__(1183);
 exports.TimeAgoPipe = time_ago_pipe_1.TimeAgoPipe;
-var utc_pipe_1 = __webpack_require__(1182);
+var utc_pipe_1 = __webpack_require__(1184);
 exports.UtcPipe = utc_pipe_1.UtcPipe;
-var from_utc_pipe_1 = __webpack_require__(1183);
+var from_utc_pipe_1 = __webpack_require__(1185);
 exports.FromUtcPipe = from_utc_pipe_1.FromUtcPipe;
-var local_pipe_1 = __webpack_require__(1184);
+var local_pipe_1 = __webpack_require__(1186);
 exports.LocalTimePipe = local_pipe_1.LocalTimePipe;
-var locale_pipe_1 = __webpack_require__(1185);
+var locale_pipe_1 = __webpack_require__(1187);
 exports.LocalePipe = locale_pipe_1.LocalePipe;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 1187:
+/***/ 1189:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -691,19 +691,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var add_pipe_1 = __webpack_require__(1173);
-var calendar_pipe_1 = __webpack_require__(1174);
-var date_format_pipe_1 = __webpack_require__(1175);
-var difference_pipe_1 = __webpack_require__(1176);
-var duration_pipe_1 = __webpack_require__(1177);
-var from_unix_pipe_1 = __webpack_require__(1178);
-var parse_pipe_1 = __webpack_require__(1179);
-var subtract_pipe_1 = __webpack_require__(1180);
-var time_ago_pipe_1 = __webpack_require__(1181);
-var utc_pipe_1 = __webpack_require__(1182);
-var from_utc_pipe_1 = __webpack_require__(1183);
-var local_pipe_1 = __webpack_require__(1184);
-var locale_pipe_1 = __webpack_require__(1185);
+var add_pipe_1 = __webpack_require__(1175);
+var calendar_pipe_1 = __webpack_require__(1176);
+var date_format_pipe_1 = __webpack_require__(1177);
+var difference_pipe_1 = __webpack_require__(1178);
+var duration_pipe_1 = __webpack_require__(1179);
+var from_unix_pipe_1 = __webpack_require__(1180);
+var parse_pipe_1 = __webpack_require__(1181);
+var subtract_pipe_1 = __webpack_require__(1182);
+var time_ago_pipe_1 = __webpack_require__(1183);
+var utc_pipe_1 = __webpack_require__(1184);
+var from_utc_pipe_1 = __webpack_require__(1185);
+var local_pipe_1 = __webpack_require__(1186);
+var locale_pipe_1 = __webpack_require__(1187);
 var ANGULAR_MOMENT_PIPES = [
     add_pipe_1.AddPipe,
     calendar_pipe_1.CalendarPipe,
@@ -735,7 +735,7 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 1188:
+/***/ 1190:
 /***/ (function(module, exports) {
 
 /*global window */
@@ -2108,25 +2108,25 @@ function(module) {
 
 /***/ }),
 
-/***/ 1189:
+/***/ 1191:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1194);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1195);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1197);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1198);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1200);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2180,7 +2180,7 @@ ComponentsModule = __decorate([
 
 /***/ }),
 
-/***/ 1190:
+/***/ 1192:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2229,7 +2229,7 @@ AccordionListComponent = __decorate([
 
 /***/ }),
 
-/***/ 1191:
+/***/ 1193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2319,7 +2319,7 @@ TimerComponent = __decorate([
 
 /***/ }),
 
-/***/ 1192:
+/***/ 1194:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2355,13 +2355,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 let ZamnaFeedComponent = class ZamnaFeedComponent {
-    constructor(modal, afs, auth) {
+    constructor(modal, afs, auth, toast) {
         this.modal = modal;
         this.afs = afs;
         this.auth = auth;
+        this.toast = toast;
         /* public feed$: Observable<any[]> = this.back.loadFeed().pipe(map(feed => feed.filter(f => f.user))) */
         this.feed$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].POST).valueChanges();
         this.loader = false;
+        this.post = {};
     }
     openComments(post) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -2371,7 +2373,7 @@ let ZamnaFeedComponent = class ZamnaFeedComponent {
                 .valueChanges()
                 .pipe(Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["take"])(1))
                 .toPromise();
-            const m = this.modal.create('PostCommentsPage', { comments });
+            const m = this.modal.create('PostCommentsPage', { comments, post: post.id });
             m.present();
             this.loader = false;
         });
@@ -2407,21 +2409,29 @@ let ZamnaFeedComponent = class ZamnaFeedComponent {
     removePost(id) {
         this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].POST}/${id}`).delete();
     }
+    addPost() {
+        return __awaiter(this, void 0, void 0, function* () {
+            this.post = Object.assign({}, this.post, { id: this.afs.createId(), user: this.auth.user, likes: [], date: new Date().toISOString(), image: null });
+            yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].POST).doc(this.post.id).set(this.post);
+            this.toast.create({ message: 'Post creado correctamente', duration: 2000 }).present();
+        });
+    }
 };
 ZamnaFeedComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'zamna-feed',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/'<div class="zamna-feed" *ngIf="auth.loggedIn">\n\n  <div class="feed-input">\n\n  </div>\n\n  <div class="feed-list" *ngIf="feed$ | async as feed">\n\n    <div class="feed-post" *ngFor="let post of feed.reverse()">\n      \n      <ion-card>\n\n        <ion-item *ngIf="post.user">\n          <ion-avatar item-start>\n            <img [src]="post.user.photoURL">\n          </ion-avatar>\n          <h2>{{post.user.displayName}} {{post.user.lastName}}</h2>\n          <p>{{post.date | amCalendar}}</p>\n        </ion-item>\n\n        <img [src]="post.img" *ngIf="post.img">\n\n        <ion-card-content *ngIf="post.text">\n          <p>{{post.text}}</p>\n        </ion-card-content>\n\n        <ion-row>\n          <ion-col>\n            <button ion-button icon-start clear small [color]="post.likes.indexOf(auth.user.uid) >= 0 ? \'primary\' : \'disabled\'" (click)="toggleLike(post, post.id, post.likes)" [disabled]="loader">\n              <ion-icon name="thumbs-up"></ion-icon>\n              <div>{{post.likes.length}} Likes</div>\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button icon-start clear small (click)="openComments(post)" [disabled]="loader">\n              <ion-icon name="text"></ion-icon>\n              <div>Comentarios</div>\n            </button>\n          </ion-col>\n        </ion-row>\n\n      </ion-card>\n    </div>\n\n  </div>\n  \n</div>'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/
+        selector: 'zamna-feed',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/'<div class="zamna-feed" *ngIf="auth.loggedIn">\n\n  <div class="feed-input">\n    <ion-card>\n      <ion-list>\n        <ion-item>\n          <ion-textarea [(ngModel)]="post.text" placeholder="¿Quieres compartir o preguntar algo con tus compañeros Zamná? :)"></ion-textarea>\n        </ion-item>\n        <ion-item>\n          <button (click)="addPost()" ion-button block>Compartir</button>\n        </ion-item>\n      </ion-list>\n    </ion-card>\n  </div>\n\n  <div class="feed-list" *ngIf="feed$ | async as feed">\n\n    <div class="feed-post" *ngFor="let post of feed.reverse()">\n\n      <ion-card>\n\n        <ion-item *ngIf="post.user">\n          <ion-avatar item-start>\n            <img [src]="post.user.photoURL">\n          </ion-avatar>\n          <h2>{{post.user.displayName}} {{post.user.lastName}}</h2>\n          <p>{{post.date | amCalendar}}</p>\n        </ion-item>\n\n        <img [src]="post.img" *ngIf="post.img">\n\n        <ion-card-content *ngIf="post.text">\n          <p>{{post.text}}</p>\n        </ion-card-content>\n\n        <ion-row>\n          <ion-col>\n            <button ion-button icon-start clear small [color]="post.likes.indexOf(auth.user.uid) >= 0 ? \'primary\' : \'disabled\'" (click)="toggleLike(post, post.id, post.likes)" [disabled]="loader">\n              <ion-icon name="thumbs-up"></ion-icon>\n              <div>{{post.likes.length}} Likes</div>\n            </button>\n          </ion-col>\n          <ion-col>\n            <button ion-button icon-start clear small (click)="openComments(post)" [disabled]="loader">\n              <ion-icon name="text"></ion-icon>\n              <div>Comentarios</div>\n            </button>\n          </ion-col>\n        </ion-row>\n\n      </ion-card>\n    </div>\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/zamna-feed/zamna-feed.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
         __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */]])
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */]])
 ], ZamnaFeedComponent);
 
 //# sourceMappingURL=zamna-feed.js.map
 
 /***/ }),
 
-/***/ 1193:
+/***/ 1195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2492,7 +2502,7 @@ GalleryItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1194:
+/***/ 1196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2565,7 +2575,7 @@ MediaItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1195:
+/***/ 1197:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2651,7 +2661,7 @@ ExamFeedbackModalComponent = __decorate([
 
 /***/ }),
 
-/***/ 1196:
+/***/ 1198:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2749,11 +2759,12 @@ StatStructureItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1197:
+/***/ 1199:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ExamQuestionsWidgetComponent; });
+/* unused harmony export ConnectionStatusEnum */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_app_models__ = __webpack_require__(146);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(589);
@@ -2768,6 +2779,8 @@ StatStructureItemComponent = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ionic_angular__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__ = __webpack_require__(592);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_data_data__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__ionic_native_network__ = __webpack_require__(596);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common_http__ = __webpack_require__(108);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2796,10 +2809,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-const countdown = __webpack_require__(1188);
+
+
+const countdown = __webpack_require__(1190);
 countdown.setLabels(' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
-    constructor(afs, auth, store, toast, stats, stat, data, navCtrl, modal) {
+    constructor(afs, auth, store, toast, stats, stat, data, navCtrl, modal, alert, load, network, http) {
         this.afs = afs;
         this.auth = auth;
         this.store = store;
@@ -2809,16 +2824,33 @@ let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
         this.data = data;
         this.navCtrl = navCtrl;
         this.modal = modal;
+        this.alert = alert;
+        this.load = load;
+        this.network = network;
+        this.http = http;
         this.isPreclase = false;
         this.questionChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.answerSelected = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.startTime = 0;
+        this.lastStatus = ConnectionStatusEnum.Online;
+        this.online = false;
         this.examState$ = this.store.select('exam');
+        this.networkChanges();
     }
     ngOnDestroy() {
         this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_5__reducers_exam_reducer__["c" /* ResetTimer */]());
     }
     ngOnInit() {
+        if (this.exam.duration) {
+            const alert = this.alert.create({
+                message: '¿Quieres iniciar el exámen con tiempo?',
+                buttons: [
+                    { text: 'Sí', handler: () => this.handleSetTimer(this.exam.duration * 60 * 1000) },
+                    { text: 'No', role: 'cancel' }
+                ]
+            });
+            alert.present();
+        }
         /*const lastExam = localStorage.getItem('last-exam')
         if (lastExam && lastExam != this.exam.id) {
           this.store.dispatch(new ResetExam())
@@ -2844,6 +2876,32 @@ let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
             setTimeout(() => this.checkIfResuelto(this.exam.id), 1000);
         }
     }
+    networkChanges() {
+        this.network.onchange().subscribe((data) => {
+            console.log('network change', data);
+        });
+        this.network.onDisconnect().subscribe(() => {
+            this.lastStatus = ConnectionStatusEnum.Offline;
+        });
+        this.network.onConnect().subscribe(() => {
+            this.lastStatus = ConnectionStatusEnum.Online;
+        });
+    }
+    checkConnection() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                yield this.http.get('//internethealthtest.org').toPromise();
+                this.lastStatus = ConnectionStatusEnum.Online;
+            }
+            catch (error) {
+                this.lastStatus = ConnectionStatusEnum.Offline;
+            }
+            finally {
+                console.log(this.lastStatus);
+                console.log(navigator.onLine);
+            }
+        });
+    }
     checkIfResuelto(examId) {
         return __awaiter(this, void 0, void 0, function* () {
             const results = yield this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM_RESULT, ref => ref
@@ -2858,56 +2916,76 @@ let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
     handleIndexChange(state) {
         console.log('New Exam Index: ' + state.index);
         this.setQuestion(state.index);
+        this.online = navigator.onLine;
     }
     handleExamFinish(state) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log('Handling Exam Finish', state.results);
-            // Set final time
-            this.results.completedIn = (Date.now() - this.startTime) / 1000;
-            // Save last question
-            this.saveCache(this.question, state.index, state.selectedAnswer, true);
-            // Calculate Average
-            const questions = Object.values(state.results.questions);
-            this.results.promedio = questions.filter(q => q.correcta).length / questions.length;
-            // Re-set exam type
-            this.results.exam_type = this.exam.type;
-            // Save all question tags in one place
-            this.results.tags = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniq(__WEBPACK_IMPORTED_MODULE_3_lodash___default.a.flattenDeep(questions.map(q => q.raw.tags)));
-            console.log(this.results.tags, questions.map(q => q.raw.tags));
-            // Set completed on user
-            if (this.auth.user) {
-                const completed = this.auth.user.completedExams ? this.auth.user.completedExams : {};
-                completed[this.exam.id] = true;
-                yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update({ completedExams: completed });
+            const l = this.load.create({ content: 'Enviando resultados...' });
+            l.present();
+            console.log(this.lastStatus);
+            try {
+                console.log('Handling Exam Finish', state.results);
+                // Set final time
+                this.results.completedIn = (Date.now() - this.startTime) / 1000;
+                // Save last question
+                this.saveCache(this.question, state.index, state.selectedAnswer, true);
+                // Calculate Average
+                const questions = Object.values(state.results.questions);
+                this.results.promedio = questions.filter(q => q.correcta).length / questions.length;
+                // Re-set exam type
+                this.results.exam_type = this.exam.type;
+                // Save all question tags in one place
+                this.results.tags = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniq(__WEBPACK_IMPORTED_MODULE_3_lodash___default.a.flattenDeep(questions.map(q => q.raw.tags)));
+                console.log(this.results.tags, questions.map(q => q.raw.tags));
+                // Set completed on user
+                if (this.auth.user && navigator.onLine) {
+                    const completed = this.auth.user.completedExams ? this.auth.user.completedExams : {};
+                    completed[this.exam.id] = true;
+                    yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update({ completedExams: completed });
+                }
+                // Create result doc
+                console.log(state.results, this.results);
+                if (navigator.onLine)
+                    yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM_RESULT}/${state.results.id}`).set(this.results);
+                if (!navigator.onLine)
+                    localStorage.setItem('result-offline-' + state.results.id, JSON.stringify(this.results));
+                /* this.toastr.success('Haz completado tu exámen.'); */
+                this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_5__reducers_exam_reducer__["b" /* ResetExam */]());
+                /*this.setInitialResults()*/
+                this.selectedAnswer = null;
+                this.lastIndex = 0;
+                this.question = this.exam.formattedQuestions[this.lastIndex];
+                l.dismiss();
+                if (!navigator.onLine) {
+                    this.toast.create({ message: 'Tus resultados han sido guardados, serán enviado cuando se detecte conexión a internet.', duration: 4000 }).present();
+                    this.navCtrl.setRoot('HomePage');
+                    return;
+                }
+                // Register ranking in DEMO type
+                if (this.exam.type == __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].PRUEBA) {
+                    console.log('abriendo modal ranking');
+                    /* this.modal.getModal('examRankingAdd').open(); */
+                    alert('examRankingAdd Modal');
+                    this.stats.modifyCounter(this.exam.id, 1, this.exam);
+                }
+                // If exam is pool delete the exam
+                if (this.exam.type == __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].POOL) {
+                    yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM}/${this.exam.id}`).delete();
+                }
+                // Redirect to exam results in all exam types except Preclase
+                if (this.exam.type != __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].PRECLASE) {
+                    /* this.router.navigate(['/result', state.results.id]); */
+                    this.navCtrl.push('ResultadosExamenPage', { id: state.results.id });
+                }
+                else {
+                    /* this.modal.getModal('preclaseExamModal').close(); */
+                    alert('close preclaseExamModal');
+                }
             }
-            // Create result doc
-            console.log(state.results, this.results);
-            yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM_RESULT}/${state.results.id}`).set(this.results);
-            /* this.toastr.success('Haz completado tu exámen.'); */
-            this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_5__reducers_exam_reducer__["b" /* ResetExam */]());
-            /*this.setInitialResults()*/
-            this.selectedAnswer = null;
-            this.lastIndex = 0;
-            this.question = this.exam.formattedQuestions[this.lastIndex];
-            // Register ranking in DEMO type
-            if (this.exam.type == __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].PRUEBA) {
-                console.log('abriendo modal ranking');
-                /* this.modal.getModal('examRankingAdd').open(); */
-                alert('examRankingAdd Modal');
-                this.stats.modifyCounter(this.exam.id, 1, this.exam);
-            }
-            // If exam is pool delete the exam
-            if (this.exam.type == __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].POOL) {
-                yield this.afs.doc(`${__WEBPACK_IMPORTED_MODULE_1__app_app_models__["a" /* Collections */].EXAM}/${this.exam.id}`).delete();
-            }
-            // Redirect to exam results in all exam types except Preclase
-            if (this.exam.type != __WEBPACK_IMPORTED_MODULE_1__app_app_models__["b" /* ExamTypes */].PRECLASE) {
-                /* this.router.navigate(['/result', state.results.id]); */
-                alert('/result');
-            }
-            else {
-                /* this.modal.getModal('preclaseExamModal').close(); */
-                alert('close preclaseExamModal');
+            catch (error) {
+                l.dismiss();
+                this.toast.create({ message: 'Tus resultados han sido guardados, serán enviado cuando se detecte conexión a internet.', duration: 4000 }).present();
+                this.navCtrl.setRoot('HomePage');
             }
         });
     }
@@ -3123,7 +3201,7 @@ __decorate([
 ], ExamQuestionsWidgetComponent.prototype, "answerSelected", void 0);
 ExamQuestionsWidgetComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="m-0 mb-2" style="font-size: 1.25rem" *ngIf="duration_label"><strong>Tiempo restante:\n      {{duration_label}}</strong></p>\n  <small class="m-0 c-epsi-primary">Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button ion-button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button ion-button [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
+        selector: 'exam-questions-widget',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/'<div class="exam-questions p-4" *ngIf="exam.formattedQuestions && (examState$ | async) as state" #scrollAnchor>\n\n  <!--<pre>{{state | json}}</pre>-->\n\n  <p class="mb-1" style="font-size: 1.6rem; margin-top: 4rem !important;" *ngIf="duration_label">\n    <strong>Tiempo restante:{{duration_label}}</strong>\n  </p>\n  <small class="c-epsi-primary"><small *ngIf="!online">(Offline)</small> Pregunta {{state.index + 1}} de {{exam.formattedQuestions.length}}</small>\n\n  <div class="question-group" *ngIf="question as group">\n\n    <div class="question-body" *ngFor="let question of group">\n      <img [src]="question.img" *ngIf="question.img" class="w-100">\n      <h4 style="white-space: pre-wrap;">{{question.text}}</h4>\n\n      <ul *ngIf="question.respuestas as respuestas else loaderQuestions">\n        <li *ngFor="let respuesta of respuestas">\n          <input type="radio" [name]="question.id"\n            [checked]="question.selectedAnswerId && respuesta.id == question.selectedAnswerId"\n            [(ngModel)]="question.selectedAnswerId" [value]="respuesta.id" [id]="respuesta.id"\n            (change)="answerChanged(respuesta, question)">\n          <label class="ml-2" [for]="respuesta.id">{{respuesta.text}}</label>\n        </li>\n        <!--<pre>{{question.selectedAnswer | json}}</pre>-->\n      </ul>\n    </div>\n\n    <div class="question-actions flex flex-row flex-start">\n      <!--<pre>{{group | json}}</pre>-->\n      <button ion-button class="btn btn-secondary mr-2" type="button" *ngIf="canGoBack"\n        (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>\n      <button ion-button [disabled]="canGoNext(group)" type="button"\n        *ngIf="questionsLeft && !isLastQuestion"\n        (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>\n      <button class="btn btn-primary ml-2" type="button" *ngIf="isLastQuestion"\n        (click)="finishExam()">Finalizar</button>\n    </div>\n\n    <ng-template #loaderQuestions>\n      <small>Cargando...</small>\n    </ng-template>\n\n    <!-- <button ion-button (click)="checkConnection()">Test Connection</button> -->\n\n    <!--<pre class="mt-2 mb-2">{{state | json}}</pre>-->\n\n  </div>\n\n</div>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/components/exam-questions-widget/exam-questions-widget.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
         __WEBPACK_IMPORTED_MODULE_7__providers_auth_auth__["a" /* AuthProvider */],
@@ -3133,14 +3211,23 @@ ExamQuestionsWidgetComponent = __decorate([
         __WEBPACK_IMPORTED_MODULE_9__providers_stats_stats__["a" /* StatsProvider */],
         __WEBPACK_IMPORTED_MODULE_10__providers_data_data__["a" /* DataProvider */],
         __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["p" /* ModalController */]])
+        __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["p" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["a" /* AlertController */],
+        __WEBPACK_IMPORTED_MODULE_8_ionic_angular__["n" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_11__ionic_native_network__["a" /* Network */],
+        __WEBPACK_IMPORTED_MODULE_12__angular_common_http__["b" /* HttpClient */]])
 ], ExamQuestionsWidgetComponent);
 
+var ConnectionStatusEnum;
+(function (ConnectionStatusEnum) {
+    ConnectionStatusEnum[ConnectionStatusEnum["Online"] = 0] = "Online";
+    ConnectionStatusEnum[ConnectionStatusEnum["Offline"] = 1] = "Offline";
+})(ConnectionStatusEnum || (ConnectionStatusEnum = {}));
 //# sourceMappingURL=exam-questions-widget.js.map
 
 /***/ }),
 
-/***/ 1198:
+/***/ 1200:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3249,7 +3336,7 @@ ExamResultsTagStructureComponent = __decorate([
 
 /***/ }),
 
-/***/ 1213:
+/***/ 1217:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

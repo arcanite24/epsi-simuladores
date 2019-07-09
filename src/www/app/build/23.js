@@ -1,14 +1,14 @@
 webpackJsonp([23],{
 
-/***/ 1155:
+/***/ 1159:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProgramaMateriaPageModule", function() { return ProgramaMateriaPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ResultadoDetailPageModule", function() { return ResultadoDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__programa_materia__ = __webpack_require__(1231);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__resultado_detail__ = __webpack_require__(1237);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,32 +18,30 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let ProgramaMateriaPageModule = class ProgramaMateriaPageModule {
+let ResultadoDetailPageModule = class ResultadoDetailPageModule {
 };
-ProgramaMateriaPageModule = __decorate([
+ResultadoDetailPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__programa_materia__["a" /* ProgramaMateriaPage */],
+            __WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__programa_materia__["a" /* ProgramaMateriaPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__resultado_detail__["a" /* ResultadoDetailPage */]),
         ],
     })
-], ProgramaMateriaPageModule);
+], ResultadoDetailPageModule);
 
-//# sourceMappingURL=programa-materia.module.js.map
+//# sourceMappingURL=resultado-detail.module.js.map
 
 /***/ }),
 
-/***/ 1231:
+/***/ 1237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProgramaMateriaPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ResultadoDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__ = __webpack_require__(107);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -55,33 +53,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
-let ProgramaMateriaPage = class ProgramaMateriaPage {
-    constructor(afs, navParams, navCtrl) {
-        this.afs = afs;
-        this.navParams = navParams;
+/**
+ * Generated class for the ResultadoDetailPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+let ResultadoDetailPage = class ResultadoDetailPage {
+    constructor(navCtrl, navParams) {
         this.navCtrl = navCtrl;
-        this.id = this.navParams.get('id');
+        this.navParams = navParams;
     }
     ionViewDidLoad() {
-        this.materia$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT).doc(this.id).valueChanges();
-        this.bloques$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].CONTENT, ref => ref.where('parent_id', '==', this.id)).valueChanges();
-    }
-    openBloque(id) {
-        this.navCtrl.push('ProgramaBloquePage', { id });
+        console.log('ionViewDidLoad ResultadoDetailPage');
     }
 };
-ProgramaMateriaPage = __decorate([
+ResultadoDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-programa-materia',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/programa-materia/programa-materia.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Materia</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-grid>\n\n    <ion-row *ngIf="materia$ | async as materia">\n      <ion-col col-12>\n        <h4 text-center>{{materia.name}}</h4>\n      </ion-col>\n    </ion-row>\n\n    <ion-row *ngIf="bloques$ | async as bloques">\n      <ion-col col-6 *ngFor="let bloque of bloques" (click)="openBloque(bloque.id)">\n        <div class="flex flex-col flex-center">\n          <img [src]="bloque.cover || \'https://via.placeholder.com/128\'" alt="" class="w-100">\n          <strong text-center="">{{bloque.name}}</strong>\n        </div>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/programa-materia/programa-materia.html"*/,
+        selector: 'page-resultado-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/'<!--\n  Generated template for the ResultadoDetailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>ResultadoDetail</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/resultado-detail/resultado-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */]])
-], ProgramaMateriaPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], ResultadoDetailPage);
 
-//# sourceMappingURL=programa-materia.js.map
+//# sourceMappingURL=resultado-detail.js.map
 
 /***/ })
 

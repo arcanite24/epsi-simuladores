@@ -1,14 +1,14 @@
 webpackJsonp([18],{
 
-/***/ 1161:
+/***/ 1165:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimuladoresPageModule", function() { return SimuladoresPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SlidesPageModule", function() { return SlidesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simuladores__ = __webpack_require__(1237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slides__ = __webpack_require__(1243);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,37 +18,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let SimuladoresPageModule = class SimuladoresPageModule {
+let SlidesPageModule = class SlidesPageModule {
 };
-SimuladoresPageModule = __decorate([
+SlidesPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__simuladores__["a" /* SimuladoresPage */],
+            __WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__simuladores__["a" /* SimuladoresPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__slides__["a" /* SlidesPage */]),
         ],
     })
-], SimuladoresPageModule);
+], SlidesPageModule);
 
-//# sourceMappingURL=simuladores.module.js.map
+//# sourceMappingURL=slides.module.js.map
 
 /***/ }),
 
-/***/ 1237:
+/***/ 1243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SimuladoresPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlidesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(9);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -63,46 +60,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-let SimuladoresPage = class SimuladoresPage {
-    constructor(navCtrl, navParams, afs, auth) {
+let SlidesPage = class SlidesPage {
+    constructor(navCtrl, navParams, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
-        this.auth = auth;
-        this.isOffline = false;
     }
     ionViewDidLoad() {
-        this.auth.user$.subscribe(user => {
-            if (user && !this.completed)
-                this.completed = user.completedExams || [];
-        });
-        this.exams$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM, ref => ref
-            .where('type', '==', __WEBPACK_IMPORTED_MODULE_3__app_app_models__["b" /* ExamTypes */].SIMULADOR)
-            .where('date', '<=', __WEBPACK_IMPORTED_MODULE_4_moment___default()().endOf('day').toISOString()))
+        this.slides$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE_CATEGORY)
             .valueChanges()
-            .pipe(
-        /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-        Object(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators__["map"])(list => list.reverse()));
-        /* this.back.getSimuladoresHome().subscribe(data => this.sims = data.reverse(), err => {
-          const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'))
-          this.downloadList = list ? list : []
-          this.isOffline = true
-        }) */
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(cats => cats.map(cat => (Object.assign({}, cat, { children$: this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].SLIDE, ref => ref.where('cat_id', '==', cat.id)).valueChanges() })))), Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["tap"])(console.log));
     }
 };
-SimuladoresPage = __decorate([
+SlidesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-simuladores',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/simuladores/simuladores.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Simuladores</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n    </div>\n  </ng-template>\n\n  <!-- <pre>{{ completed | json }}</pre> -->\n\n  <ion-list *ngIf="exams$ | async as sims else loader">\n    <ion-item *ngFor="let s of sims" (click)="navCtrl.push(\'ExamenDetailPage\', {id: s.id, type: \'simulador\'})">\n      <ion-icon item-start name="checkmark" color="bien" *ngIf="completed && completed[s.id]"></ion-icon>\n      <h2>{{s.name}}</h2>\n      <!--<p>{{s.desc}}</p>-->\n    </ion-item>\n  </ion-list>\n\n  <ion-list *ngIf="isOffline">\n    <ion-list-header>Simuladores Offline</ion-list-header>\n    <ion-item *ngFor="let s of downloadList" (click)="navCtrl.push(\'ExamenDetailPage\', {id: s.id, type: \'simulador\', offline: true, data: s})">\n      <h2>{{s.name}}</h2>\n    </ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/simuladores/simuladores.html"*/,
+        selector: 'page-slides',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Presentaciones</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col">\n      <img src="assets/imgs/rings.svg">\n      <p>Cargar las infografías puede llevar más de lo esperado.</p>\n    </div>\n  </ng-template>\n\n  <div *ngIf="slides$ | async as slides else loader">\n    <ion-list *ngFor="let cat of slides">\n      <ion-list-header style="font-size:1.75rem"><strong>{{cat.name}}</strong></ion-list-header>\n      <ion-item *ngFor="let s of cat.children$ | async" (click)="navCtrl.push(\'SlideDetailPage\', {id: s.id})" >{{s.name}}</ion-item>\n    </ion-list>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/slides/slides.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */]])
-], SimuladoresPage);
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"]])
+], SlidesPage);
 
-//# sourceMappingURL=simuladores.js.map
+//# sourceMappingURL=slides.js.map
 
 /***/ })
 
