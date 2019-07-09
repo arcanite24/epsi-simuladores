@@ -1,1 +1,165 @@
-webpackJsonp([8],{532:function(l,n,e){"use strict";function u(l){return o["ɵvid"](0,[(l()(),o["ɵted"](-1,null,["\n    "])),(l()(),o["ɵeld"](1,0,null,null,4,"div",[["class","flex-loader"]],null,null,null,null,null)),(l()(),o["ɵted"](-1,null,["\n      "])),(l()(),o["ɵeld"](3,0,null,null,1,"ion-spinner",[],[[2,"spinner-paused",null]],null,null,k.b,k.a)),o["ɵdid"](4,114688,null,0,_.a,[h.a,o.ElementRef,o.Renderer],null,null),(l()(),o["ɵted"](-1,null,["\n    "])),(l()(),o["ɵted"](-1,null,["\n  "]))],function(l,n){l(n,4,0)},function(l,n){l(n,3,0,o["ɵnov"](n,4)._paused)})}function t(l){return o["ɵvid"](0,[(l()(),o["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,E.b,E.a)),o["ɵdid"](1,1097728,null,3,y.a,[D.a,h.a,o.ElementRef,o.Renderer,[2,I.a]],null,null),o["ɵqud"](335544320,4,{contentLabel:0}),o["ɵqud"](603979776,5,{_buttons:1}),o["ɵqud"](603979776,6,{_icons:1}),o["ɵdid"](5,16384,null,0,N.a,[],null,null),(l()(),o["ɵted"](-1,2,["\n        "])),(l()(),o["ɵeld"](7,0,null,2,1,"h2",[],null,null,null,null,null)),(l()(),o["ɵted"](8,null,[""," ",""])),(l()(),o["ɵted"](-1,2,["\n        "])),(l()(),o["ɵeld"](10,0,null,2,1,"p",[],null,null,null,null,null)),(l()(),o["ɵted"](11,null,["Roles: ",""])),(l()(),o["ɵted"](-1,2,["\n      "]))],null,function(l,n){l(n,8,0,n.context.$implicit.name,n.context.$implicit.lastName);l(n,11,0,n.context.$implicit.roles)})}function a(l){return o["ɵvid"](0,[(l()(),o["ɵeld"](0,0,null,null,16,"div",[["class","team-container"]],null,null,null,null,null)),(l()(),o["ɵted"](-1,null,["\n\n    "])),(l()(),o["ɵeld"](2,0,null,null,13,"ion-list",[],null,null,null,null,null)),o["ɵdid"](3,16384,null,0,x.a,[h.a,o.ElementRef,o.Renderer,q.a,V.l,L.a],null,null),(l()(),o["ɵted"](-1,null,["\n      "])),(l()(),o["ɵeld"](5,0,null,null,6,"ion-list-header",[["class","item"]],null,null,null,E.b,E.a)),o["ɵdid"](6,1097728,null,3,y.a,[D.a,h.a,o.ElementRef,o.Renderer,[2,I.a]],null,null),o["ɵqud"](335544320,1,{contentLabel:0}),o["ɵqud"](603979776,2,{_buttons:1}),o["ɵqud"](603979776,3,{_icons:1}),o["ɵdid"](10,16384,null,0,F.a,[h.a,o.Renderer,o.ElementRef,[8,null]],null,null),(l()(),o["ɵted"](-1,2,["Miembros"])),(l()(),o["ɵted"](-1,null,["\n      "])),(l()(),o["ɵand"](16777216,null,null,1,null,t)),o["ɵdid"](14,802816,null,0,P.NgForOf,[o.ViewContainerRef,o.TemplateRef,o.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(l()(),o["ɵted"](-1,null,["\n    "])),(l()(),o["ɵted"](-1,null,["\n\n  "]))],function(l,n){l(n,14,0,n.context.ngIf.members)},null)}function d(l){return o["ɵvid"](0,[(l()(),o["ɵeld"](0,0,null,null,10,"ion-header",[],null,null,null,null,null)),o["ɵdid"](1,16384,null,0,K.a,[h.a,o.ElementRef,o.Renderer,[2,M.a]],null,null),(l()(),o["ɵted"](-1,null,["\n\n  "])),(l()(),o["ɵeld"](3,0,null,null,6,"ion-navbar",[["class","toolbar"],["color","primary"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,O.b,O.a)),o["ɵdid"](4,49152,null,0,T.a,[$.a,[2,M.a],[2,w.a],h.a,o.ElementRef,o.Renderer],{color:[0,"color"]},null),(l()(),o["ɵted"](-1,3,["\n    "])),(l()(),o["ɵeld"](6,0,null,3,2,"ion-title",[],null,null,null,z.b,z.a)),o["ɵdid"](7,49152,null,0,A.a,[h.a,o.ElementRef,o.Renderer,[2,B.a],[2,T.a]],null,null),(l()(),o["ɵted"](-1,0,["Detalle del equipo"])),(l()(),o["ɵted"](-1,3,["\n  "])),(l()(),o["ɵted"](-1,null,["\n\n"])),(l()(),o["ɵted"](-1,null,["\n\n\n"])),(l()(),o["ɵeld"](12,0,null,null,8,"ion-content",[["class","bg-eee"]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,j.b,j.a)),o["ɵdid"](13,4374528,null,0,J.a,[h.a,q.a,L.a,o.ElementRef,o.Renderer,$.a,Z.a,o.NgZone,[2,M.a],[2,w.a]],null,null),(l()(),o["ɵted"](-1,1,["\n\n  "])),(l()(),o["ɵand"](0,[["loading",2]],1,0,null,u)),(l()(),o["ɵted"](-1,1,["\n\n  "])),(l()(),o["ɵand"](16777216,null,1,2,null,a)),o["ɵdid"](18,16384,null,0,P.NgIf,[o.ViewContainerRef,o.TemplateRef],{ngIf:[0,"ngIf"],ngIfElse:[1,"ngIfElse"]},null),o["ɵpid"](131072,P.AsyncPipe,[o.ChangeDetectorRef]),(l()(),o["ɵted"](-1,1,["\n\n"])),(l()(),o["ɵted"](-1,null,["\n"]))],function(l,n){var e=n.component;l(n,4,0,"primary");l(n,18,0,o["ɵunv"](n,18,0,o["ɵnov"](n,19).transform(e.team$)),o["ɵnov"](n,15))},function(l,n){l(n,3,0,o["ɵnov"](n,4)._hidden,o["ɵnov"](n,4)._sbPadding);l(n,12,0,o["ɵnov"](n,13).statusbarPadding,o["ɵnov"](n,13)._hasRefresher)})}Object.defineProperty(n,"__esModule",{value:!0});var o=e(0),i=(e(1),e(124),e(125)),r=function(){function l(l,n,e){this.navCtrl=l,this.navParams=n,this.back=e}return l.prototype.ionViewDidLoad=function(){var l=this.navParams.get("id");this.team$=this.back.getTeamDetail(l)},l}(),s=function(){return function(){}}(),c=e(424),f=e(425),m=e(426),b=e(427),g=e(428),p=e(429),R=e(430),v=e(431),C=e(432),k=e(435),_=e(93),h=e(3),E=e(433),y=e(27),D=e(22),I=e(70),N=e(128),x=e(92),q=e(6),V=e(9),L=e(14),F=e(130),P=e(18),K=e(194),M=e(7),O=e(535),T=e(67),$=e(13),w=e(36),z=e(536),A=e(189),B=e(91),j=e(534),J=e(38),Z=e(59),G=e(16),H=o["ɵcrt"]({encapsulation:2,styles:[],data:{}}),Q=o["ɵccf"]("page-team-detail",r,function(l){return o["ɵvid"](0,[(l()(),o["ɵeld"](0,0,null,null,1,"page-team-detail",[],null,null,null,d,H)),o["ɵdid"](1,49152,null,0,r,[w.a,G.a,i.a],null,null)],null,null)},{},{},[]),S=e(26),U=e(190),W=e(60);e.d(n,"TeamDetailPageModuleNgFactory",function(){return X});var X=o["ɵcmf"](s,[],function(l){return o["ɵmod"]([o["ɵmpd"](512,o.ComponentFactoryResolver,o["ɵCodegenComponentFactoryResolver"],[[8,[c.a,f.a,m.a,b.a,g.a,p.a,R.a,v.a,C.a,Q]],[3,o.ComponentFactoryResolver],o.NgModuleRef]),o["ɵmpd"](4608,P.NgLocalization,P.NgLocaleLocalization,[o.LOCALE_ID,[2,P["ɵa"]]]),o["ɵmpd"](4608,S.n,S.n,[]),o["ɵmpd"](4608,S.c,S.c,[]),o["ɵmpd"](512,P.CommonModule,P.CommonModule,[]),o["ɵmpd"](512,S.m,S.m,[]),o["ɵmpd"](512,S.d,S.d,[]),o["ɵmpd"](512,S.l,S.l,[]),o["ɵmpd"](512,U.a,U.a,[]),o["ɵmpd"](512,U.b,U.b,[]),o["ɵmpd"](512,s,s,[]),o["ɵmpd"](256,W.a,r,[])])})},534:function(l,n,e){"use strict";function u(l){return t["ɵvid"](2,[t["ɵqud"](402653184,1,{_fixedContent:0}),t["ɵqud"](402653184,2,{_scrollContent:0}),(l()(),t["ɵeld"](2,0,[[1,0],["fixedContent",1]],null,1,"div",[["class","fixed-content"]],null,null,null,null,null)),t["ɵncd"](null,0),(l()(),t["ɵeld"](4,0,[[2,0],["scrollContent",1]],null,1,"div",[["class","scroll-content"]],null,null,null,null,null)),t["ɵncd"](null,1),t["ɵncd"](null,2)],null,null)}e.d(n,"a",function(){return a}),n.b=u;var t=e(0),a=(e(3),e(6),e(14),e(59),e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},535:function(l,n,e){"use strict";function u(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,0,null,null,1,"div",[["class","toolbar-background"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵeld"](2,0,null,null,8,"button",[["class","back-button"],["ion-button","bar-button"]],[[8,"hidden",0]],[[null,"click"]],function(l,n,e){var u=!0;if("click"===n){u=!1!==l.component.backButtonClick(e)&&u}return u},d.b,d.a)),t["ɵdid"](3,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](4,1097728,null,0,o.a,[[8,"bar-button"],i.a,t.ElementRef,t.Renderer],null,null),(l()(),t["ɵeld"](5,0,null,0,2,"ion-icon",[["class","back-button-icon"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t["ɵdid"](6,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](7,147456,null,0,r.a,[i.a,t.ElementRef,t.Renderer],{name:[0,"name"]},null),(l()(),t["ɵeld"](8,0,null,0,2,"span",[["class","back-button-text"]],null,null,null,null,null)),t["ɵdid"](9,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵted"](10,null,["",""])),t["ɵncd"](null,0),t["ɵncd"](null,1),t["ɵncd"](null,2),(l()(),t["ɵeld"](14,0,null,null,2,"div",[["class","toolbar-content"]],null,null,null,null,null)),t["ɵdid"](15,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,3)],function(l,n){var e=n.component;l(n,1,0,"toolbar-background","toolbar-background-"+e._mode);l(n,3,0,"back-button","back-button-"+e._mode);l(n,6,0,"back-button-icon","back-button-icon-"+e._mode);l(n,7,0,e._bbIcon);l(n,9,0,"back-button-text","back-button-text-"+e._mode);l(n,15,0,"toolbar-content","toolbar-content-"+e._mode)},function(l,n){var e=n.component;l(n,2,0,e._hideBb);l(n,5,0,t["ɵnov"](n,7)._hidden);l(n,10,0,e._backText)})}e.d(n,"a",function(){return s}),n.b=u;var t=e(0),a=e(18),d=e(68),o=e(33),i=e(3),r=e(69),s=(e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},536:function(l,n,e){"use strict";function u(l){return t["ɵvid"](2,[(l()(),t["ɵeld"](0,0,null,null,2,"div",[["class","toolbar-title"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,0)],function(l,n){l(n,1,0,"toolbar-title","toolbar-title-"+n.component._mode)},null)}e.d(n,"a",function(){return d}),n.b=u;var t=e(0),a=e(18),d=(e(3),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))}});
+webpackJsonp([8],{
+
+/***/ 719:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaypalCheckoutPageModule", function() { return PaypalCheckoutPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__paypal_checkout__ = __webpack_require__(743);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var PaypalCheckoutPageModule = /** @class */ (function () {
+    function PaypalCheckoutPageModule() {
+    }
+    PaypalCheckoutPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__paypal_checkout__["a" /* PaypalCheckoutPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__paypal_checkout__["a" /* PaypalCheckoutPage */]),
+            ],
+        })
+    ], PaypalCheckoutPageModule);
+    return PaypalCheckoutPageModule;
+}());
+
+//# sourceMappingURL=paypal-checkout.module.js.map
+
+/***/ }),
+
+/***/ 743:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaypalCheckoutPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var PaypalCheckoutPage = /** @class */ (function () {
+    function PaypalCheckoutPage(navCtrl, navParams, viewCtrl, toast) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.viewCtrl = viewCtrl;
+        this.toast = toast;
+        this.amount = this.navParams.get('amount');
+    }
+    PaypalCheckoutPage.prototype.ionViewDidLoad = function () {
+        if (!this.amount)
+            this.viewCtrl.dismiss();
+        console.log(this.amount);
+        var _amount = this.amount;
+        var _this = this;
+        paypal.Button.render({
+            env: 'production',
+            commit: true,
+            style: {
+                color: 'gold',
+                size: 'small'
+            },
+            client: {
+                sandbox: 'AXD_aOCopqUyduDmDGWXJ0HbBhquAANCu37LEt3yXn40T3gU0ns-12nDt-zdvB4tIUSYBembxZ84UcSC',
+                production: 'AWHs7gj9JnaTbF9LIhZOjC7lQ_uH-adbN4zWhVfFzA_zy7EpLz091PjEsGzQSjaEaQuCDHOxe7GMvK5L'
+            },
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: _amount, currency: 'MXN' }
+                            }
+                        ]
+                    }
+                });
+            },
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function (payment) {
+                    return __awaiter(this, void 0, void 0, function () {
+                        return __generator(this, function (_a) {
+                            if (payment.state == 'approved') {
+                                _this.handlePaypalApproved(payment);
+                            }
+                            return [2 /*return*/];
+                        });
+                    });
+                });
+            },
+        }, '#paypal-button');
+    };
+    PaypalCheckoutPage.prototype.handlePaypalApproved = function (payment) {
+        this.toast.create({ message: 'Pago realizado con PayPal correctamente.', duration: 2000 }).present();
+        this.viewCtrl.dismiss(payment);
+    };
+    PaypalCheckoutPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-paypal-checkout',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/paypal-checkout/paypal-checkout.html"*/'<!--\n  Generated template for the PaypalCheckoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Pagar con PayPal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <h4 class="c87 text-center w-100">Pago con PayPal</h4>\n  <div class="flex flex-col justify-center align-center">\n    <div id="paypal-button"></div>\n  </div>\n\n  <div class="flex flex-col justify-center align-center">\n    <button ion-button clear (click)="viewCtrl.dismiss()" >Regresar</button>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/paypal-checkout/paypal-checkout.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
+    ], PaypalCheckoutPage);
+    return PaypalCheckoutPage;
+}());
+
+//# sourceMappingURL=paypal-checkout.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=8.js.map

@@ -1,1 +1,394 @@
-webpackJsonp([2],{522:function(l,n,e){"use strict";function u(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,47,"ion-card",[],null,null,null,null,null)),s["ɵdid"](1,16384,null,0,E.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](3,0,null,null,5,"ion-card-content",[],null,null,null,null,null)),s["ɵdid"](4,16384,null,0,x.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](6,0,null,null,1,"p",[],null,null,null,null,null)),(l()(),s["ɵted"](-1,null,["Parece que no tienes ningún grupo para aplicar a una beca. Crea una a continuación:"])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](10,0,null,null,36,"ion-list",[["text-wrap",""]],null,null,null,null,null)),s["ɵdid"](11,16384,null,0,w.a,[I.a,s.ElementRef,s.Renderer,T.a,N.l,D.a],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](13,0,null,null,6,"ion-list-header",[["class","item"]],null,null,null,V.b,V.a)),s["ɵdid"](14,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,1,{contentLabel:0}),s["ɵqud"](603979776,2,{_buttons:1}),s["ɵqud"](603979776,3,{_icons:1}),s["ɵdid"](18,16384,null,0,M.a,[I.a,s.Renderer,s.ElementRef,[8,null]],null,null),(l()(),s["ɵted"](-1,2,["Si eres el capitán del equipo, crea el equipo, y comparte el código de equipo para que tus amigos lo ingresen en la parte de abajo:"])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](21,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](22,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,4,{contentLabel:0}),s["ɵqud"](603979776,5,{_buttons:1}),s["ɵqud"](603979776,6,{_icons:1}),s["ɵdid"](26,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](28,0,null,3,4,"ion-input",[["placeholder","Nombre del equipo"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,e){var u=!0;if("ngModelChange"===n){u=!1!==(l.component.newBeca.name=e)&&u}return u},O.b,O.a)),s["ɵdid"](29,671744,null,0,j.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),s["ɵprd"](2048,null,j.i,null,[j.k]),s["ɵdid"](31,16384,null,0,j.j,[j.i],null,null),s["ɵdid"](32,5423104,null,0,P.a,[I.a,T.a,B.a,A.a,s.ElementRef,s.Renderer,[2,K.a],[2,L.a],[2,j.i],D.a],{placeholder:[0,"placeholder"]},null),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](35,0,null,null,10,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](36,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,7,{contentLabel:0}),s["ɵqud"](603979776,8,{_buttons:1}),s["ɵqud"](603979776,9,{_icons:1}),s["ɵdid"](40,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](42,0,null,2,2,"button",[["ion-button",""]],null,[[null,"click"]],function(l,n,e){var u=!0;if("click"===n){u=!1!==l.component.addTeam()&&u}return u},U.b,U.a)),s["ɵdid"](43,1097728,[[8,4]],0,S.a,[[8,""],I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,0,["Crear Equipo"])),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n    "]))],function(l,n){l(n,29,0,n.component.newBeca.name);l(n,32,0,"Nombre del equipo")},function(l,n){l(n,28,0,s["ɵnov"](n,31).ngClassUntouched,s["ɵnov"](n,31).ngClassTouched,s["ɵnov"](n,31).ngClassPristine,s["ɵnov"](n,31).ngClassDirty,s["ɵnov"](n,31).ngClassValid,s["ɵnov"](n,31).ngClassInvalid,s["ɵnov"](n,31).ngClassPending)})}function t(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,47,"ion-card",[],null,null,null,null,null)),s["ɵdid"](1,16384,null,0,E.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](3,0,null,null,5,"ion-card-content",[],null,null,null,null,null)),s["ɵdid"](4,16384,null,0,x.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](6,0,null,null,1,"p",[],null,null,null,null,null)),(l()(),s["ɵted"](-1,null,["También puedes unirte a un equipo ya existente:"])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](10,0,null,null,36,"ion-list",[],null,null,null,null,null)),s["ɵdid"](11,16384,null,0,w.a,[I.a,s.ElementRef,s.Renderer,T.a,N.l,D.a],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](13,0,null,null,6,"ion-list-header",[["class","item"]],null,null,null,V.b,V.a)),s["ɵdid"](14,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,10,{contentLabel:0}),s["ɵqud"](603979776,11,{_buttons:1}),s["ɵqud"](603979776,12,{_icons:1}),s["ɵdid"](18,16384,null,0,M.a,[I.a,s.Renderer,s.ElementRef,[8,null]],null,null),(l()(),s["ɵted"](-1,2,["Unirse a grupo"])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](21,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](22,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,13,{contentLabel:0}),s["ɵqud"](603979776,14,{_buttons:1}),s["ɵqud"](603979776,15,{_icons:1}),s["ɵdid"](26,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵeld"](28,0,null,3,4,"ion-input",[["placeholder","Código de Equipo"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(l,n,e){var u=!0;if("ngModelChange"===n){u=!1!==(l.component.newBeca.code=e)&&u}return u},O.b,O.a)),s["ɵdid"](29,671744,null,0,j.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),s["ɵprd"](2048,null,j.i,null,[j.k]),s["ɵdid"](31,16384,null,0,j.j,[j.i],null,null),s["ɵdid"](32,5423104,null,0,P.a,[I.a,T.a,B.a,A.a,s.ElementRef,s.Renderer,[2,K.a],[2,L.a],[2,j.i],D.a],{placeholder:[0,"placeholder"]},null),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](35,0,null,null,10,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](36,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,16,{contentLabel:0}),s["ɵqud"](603979776,17,{_buttons:1}),s["ɵqud"](603979776,18,{_icons:1}),s["ɵdid"](40,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](42,0,null,2,2,"button",[["ion-button",""]],null,[[null,"click"]],function(l,n,e){var u=!0,t=l.component;if("click"===n){u=!1!==t.joinTeam(t.newBeca.code)&&u}return u},U.b,U.a)),s["ɵdid"](43,1097728,[[17,4]],0,S.a,[[8,""],I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,0,["Unirse a Equipo"])),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n    "]))],function(l,n){l(n,29,0,n.component.newBeca.code);l(n,32,0,"Código de Equipo")},function(l,n){l(n,28,0,s["ɵnov"](n,31).ngClassUntouched,s["ɵnov"](n,31).ngClassTouched,s["ɵnov"](n,31).ngClassPristine,s["ɵnov"](n,31).ngClassDirty,s["ɵnov"](n,31).ngClassValid,s["ɵnov"](n,31).ngClassInvalid,s["ɵnov"](n,31).ngClassPending)})}function a(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,1,"ion-icon",[["color","success"],["item-start",""],["name","checkmark"],["role","img"]],[[2,"hide",null]],null,null,null,null)),s["ɵdid"](1,147456,[[33,4]],0,z.a,[I.a,s.ElementRef,s.Renderer],{color:[0,"color"],name:[1,"name"]},null)],function(l,n){l(n,1,0,"success","checkmark")},function(l,n){l(n,0,0,s["ɵnov"](n,1)._hidden)})}function d(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,17,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](1,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,31,{contentLabel:0}),s["ɵqud"](603979776,32,{_buttons:1}),s["ɵqud"](603979776,33,{_icons:1}),s["ɵdid"](5,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵand"](16777216,null,0,1,null,a)),s["ɵdid"](8,16384,null,0,G.NgIf,[s.ViewContainerRef,s.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](10,0,null,2,1,"h2",[],null,null,null,null,null)),(l()(),s["ɵted"](11,null,[""," ",""])),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](13,0,null,2,3,"p",[],null,null,null,null,null)),(l()(),s["ɵted"](14,null,["$ "," de $ ",""])),s["ɵppd"](15,1),s["ɵppd"](16,1),(l()(),s["ɵted"](-1,2,["\n        "]))],function(l,n){l(n,8,0,n.context.$implicit.deudaTotal-n.context.$implicit.deuda>=.3*n.context.$implicit.deudaTotal)},function(l,n){l(n,11,0,n.context.$implicit.name,n.context.$implicit.lastName);l(n,14,0,s["ɵunv"](n,14,0,l(n,15,0,s["ɵnov"](n.parent.parent,0),n.context.$implicit.deudaTotal-n.context.$implicit.deuda)),s["ɵunv"](n,14,1,l(n,16,0,s["ɵnov"](n.parent.parent,0),n.context.$implicit.deudaTotal)))})}function o(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,10,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](1,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,34,{contentLabel:0}),s["ɵqud"](603979776,35,{_buttons:1}),s["ɵqud"](603979776,36,{_icons:1}),s["ɵdid"](5,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](7,0,null,2,2,"button",[["color","danger"],["ion-button",""]],null,[[null,"click"]],function(l,n,e){var u=!0;if("click"===n){u=!1!==l.component.deleteTeam(l.parent.context.$implicit.id)&&u}return u},U.b,U.a)),s["ɵdid"](8,1097728,[[35,4]],0,S.a,[[8,""],I.a,s.ElementRef,s.Renderer],{color:[0,"color"]},null),(l()(),s["ɵted"](-1,0,["Borrar Equipo"])),(l()(),s["ɵted"](-1,2,["\n        "]))],function(l,n){l(n,8,0,"danger")},null)}function i(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,58,"ion-card",[],null,null,null,null,null)),s["ɵdid"](1,16384,null,0,E.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](3,0,null,null,6,"ion-card-header",[],null,null,null,null,null)),s["ɵdid"](4,16384,null,0,Z.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](6,0,null,null,2,"ion-card-title",[],null,null,null,null,null)),s["ɵdid"](7,16384,null,0,J.a,[I.a,s.ElementRef,s.Renderer],null,null),(l()(),s["ɵted"](8,null,["",""])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵeld"](11,0,null,null,46,"ion-list",[["text-wrap",""]],null,null,null,null,null)),s["ɵdid"](12,16384,null,0,w.a,[I.a,s.ElementRef,s.Renderer,T.a,N.l,D.a],null,null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](14,0,null,null,6,"ion-list-header",[["class","item"]],null,null,null,V.b,V.a)),s["ɵdid"](15,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,19,{contentLabel:0}),s["ɵqud"](603979776,20,{_buttons:1}),s["ɵqud"](603979776,21,{_icons:1}),s["ɵdid"](19,16384,null,0,M.a,[I.a,s.Renderer,s.ElementRef,[8,null]],null,null),(l()(),s["ɵted"](-1,2,["Integrantes"])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](22,0,null,null,9,"ion-item",[["class","item item-block"],["style","user-select:text"]],null,null,null,V.b,V.a)),s["ɵdid"](23,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,22,{contentLabel:0}),s["ɵqud"](603979776,23,{_buttons:1}),s["ɵqud"](603979776,24,{_icons:1}),s["ɵdid"](27,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](29,0,null,2,1,"strong",[],null,null,null,null,null)),(l()(),s["ɵted"](-1,null,["Código de equipo para unir a los otros miembros: "])),(l()(),s["ɵted"](31,2,[" ","\n        "])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](33,0,null,null,6,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](34,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,25,{contentLabel:0}),s["ɵqud"](603979776,26,{_buttons:1}),s["ɵqud"](603979776,27,{_icons:1}),s["ɵdid"](38,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          Recuerden que el % de descuento, no se verá reflejado en la cantidad del saldo pendiente hasta que sepamos el número de alumnos  que se inscribió realmente en el equipo, el equipo tiene 10 dias para completar la inscripción del 30%, de lo contrario, el sistema cerrará las inscripciones para los integrantes del equipo que falten, y no podrán ser parte del mismo, tendrán que inscribirse aparte del equipo y a los miembros ya inscritos, les reajustará el % de descuento al número final de integrantes\n        "])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵeld"](41,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,V.b,V.a)),s["ɵdid"](42,1097728,null,3,L.a,[B.a,I.a,s.ElementRef,s.Renderer,[2,$.a]],null,null),s["ɵqud"](335544320,28,{contentLabel:0}),s["ɵqud"](603979776,29,{_buttons:1}),s["ɵqud"](603979776,30,{_icons:1}),s["ɵdid"](46,16384,null,0,F.a,[],null,null),(l()(),s["ɵted"](-1,2,["\n          "])),(l()(),s["ɵeld"](48,0,null,2,1,"strong",[],null,null,null,null,null)),(l()(),s["ɵted"](49,null,["Descuento: ","%"])),(l()(),s["ɵted"](-1,2,["\n        "])),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵand"](16777216,null,null,1,null,d)),s["ɵdid"](53,802816,null,0,G.NgForOf,[s.ViewContainerRef,s.TemplateRef,s.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(l()(),s["ɵted"](-1,null,["\n        "])),(l()(),s["ɵand"](16777216,null,null,1,null,o)),s["ɵdid"](56,16384,null,0,G.NgIf,[s.ViewContainerRef,s.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),s["ɵted"](-1,null,["\n      "])),(l()(),s["ɵted"](-1,null,["\n    "]))],function(l,n){var e=n.component;l(n,53,0,n.context.$implicit.members);l(n,56,0,e.auth.isAdmin)},function(l,n){var e=n.component;l(n,8,0,n.context.$implicit.name);l(n,31,0,n.context.$implicit.code);l(n,49,0,e.getDescuento(n.context.$implicit))})}function r(l){return s["ɵvid"](0,[s["ɵpid"](0,G.DecimalPipe,[s.LOCALE_ID]),(l()(),s["ɵeld"](1,0,null,null,10,"ion-header",[],null,null,null,null,null)),s["ɵdid"](2,16384,null,0,H.a,[I.a,s.ElementRef,s.Renderer,[2,Q.a]],null,null),(l()(),s["ɵted"](-1,null,["\n\n  "])),(l()(),s["ɵeld"](4,0,null,null,6,"ion-navbar",[["class","toolbar"],["color","primary"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,W.b,W.a)),s["ɵdid"](5,49152,null,0,X.a,[A.a,[2,Q.a],[2,Y.a],I.a,s.ElementRef,s.Renderer],{color:[0,"color"]},null),(l()(),s["ɵted"](-1,3,["\n    "])),(l()(),s["ɵeld"](7,0,null,3,2,"ion-title",[],null,null,null,ll.b,ll.a)),s["ɵdid"](8,49152,null,0,nl.a,[I.a,s.ElementRef,s.Renderer,[2,el.a],[2,X.a]],null,null),(l()(),s["ɵted"](-1,0,["Becas Grupales"])),(l()(),s["ɵted"](-1,3,["\n  "])),(l()(),s["ɵted"](-1,null,["\n\n"])),(l()(),s["ɵted"](-1,null,["\n\n\n"])),(l()(),s["ɵeld"](13,0,null,null,15,"ion-content",[["class","bg-eee"]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,ul.b,ul.a)),s["ɵdid"](14,4374528,null,0,K.a,[I.a,T.a,D.a,s.ElementRef,s.Renderer,A.a,tl.a,s.NgZone,[2,Q.a],[2,Y.a]],null,null),(l()(),s["ɵted"](-1,1,["\n\n  "])),(l()(),s["ɵeld"](16,0,null,1,11,"ion-grid",[["class","grid"],["fixed",""]],null,null,null,null,null)),s["ɵdid"](17,16384,null,0,al.a,[],null,null),(l()(),s["ɵted"](-1,null,["\n\n    "])),(l()(),s["ɵand"](16777216,null,null,1,null,u)),s["ɵdid"](20,16384,null,0,G.NgIf,[s.ViewContainerRef,s.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),s["ɵted"](-1,null,["\n\n    "])),(l()(),s["ɵand"](16777216,null,null,1,null,t)),s["ɵdid"](23,16384,null,0,G.NgIf,[s.ViewContainerRef,s.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),s["ɵted"](-1,null,["\n\n    "])),(l()(),s["ɵand"](16777216,null,null,1,null,i)),s["ɵdid"](26,802816,null,0,G.NgForOf,[s.ViewContainerRef,s.TemplateRef,s.IterableDiffers],{ngForOf:[0,"ngForOf"]},null),(l()(),s["ɵted"](-1,null,["\n\n  "])),(l()(),s["ɵted"](-1,1,["\n\n"])),(l()(),s["ɵted"](-1,null,["\n"]))],function(l,n){var e=n.component;l(n,5,0,"primary");l(n,20,0,e.becas.length<=0);l(n,23,0,e.becas.length<=0);l(n,26,0,e.becas)},function(l,n){l(n,4,0,s["ɵnov"](n,5)._hidden,s["ɵnov"](n,5)._sbPadding);l(n,13,0,s["ɵnov"](n,14).statusbarPadding,s["ɵnov"](n,14)._hasRefresher)})}Object.defineProperty(n,"__esModule",{value:!0});var s=e(0),c=(e(1),e(124),e(125)),f=e(541),m=e.n(f),p=function(){function l(l,n,e,u,t){this.navCtrl=l,this.navParams=n,this.back=e,this.toast=u,this.load=t,this.becas=[],this.newBeca={}}return l.prototype.ionViewDidLoad=function(){this.loadTeams()},l.prototype.loadTeams=function(){var l=this;this.back.getUserBecas(this.back.uid).subscribe(function(n){return l.becas=n},function(n){return l.toast.create({message:"No se pudo cargar la información de becas...",duration:2e3}).present()})},l.prototype.deleteTeam=function(l){var n=this;this.back.deleteBeca(l).subscribe(function(l){return n.loadTeams()})},l.prototype.addTeam=function(){var l=this,n=this.load.create({content:"Creando grupo..."});n.present(),this.back.addBeca({name:this.newBeca.name,creator:this.back.uid,code:"ZAMNA-"+m.a.v4()}).subscribe(function(e){l.back.joinToTeam(l.back.uid,e.id).subscribe(function(e){l.toast.create({message:"Grupo creado correctamente",duration:2e3}).present(),l.loadTeams(),n.dismiss()})},function(e){n.dismiss(),l.toast.create({message:"No se pudo crear tu grupo...",duration:2e3}).present()})},l.prototype.joinTeam=function(l){var n=this,e=this.load.create({content:"Creando grupo..."});e.present(),this.back.joinTeamByCode(l,this.back.uid).subscribe(function(l){n.toast.create({message:"Te uniste correctamente.",duration:2e3}).present(),n.loadTeams(),e.dismiss()},function(l){e.dismiss(),n.toast.create({message:"Ocurrió un error al unirte al grupo.",duration:2e3}).present()})},l.prototype.getDescuento=function(l){return l&&l.members?l.members.length<=0?0:2==l.members.length?5:3==l.members.length?8:4==l.members.length?10:5==l.members.length?13:6==l.members.length?15:"Contacta con el Admin":0},l}(),b=function(){return function(){}}(),g=e(424),R=e(425),v=e(426),h=e(427),C=e(428),k=e(429),y=e(430),q=e(431),_=e(432),E=e(197),I=e(3),x=e(199),w=e(92),T=e(6),N=e(9),D=e(14),V=e(433),L=e(27),B=e(22),$=e(70),M=e(130),F=e(128),O=e(537),j=e(26),P=e(191),A=e(13),K=e(38),U=e(68),S=e(33),z=e(69),G=e(18),Z=e(204),J=e(205),H=e(194),Q=e(7),W=e(535),X=e(67),Y=e(36),ll=e(536),nl=e(189),el=e(91),ul=e(534),tl=e(59),al=e(196),dl=e(16),ol=e(127),il=e(129),rl=s["ɵcrt"]({encapsulation:2,styles:[],data:{}}),sl=s["ɵccf"]("page-becas",p,function(l){return s["ɵvid"](0,[(l()(),s["ɵeld"](0,0,null,null,1,"page-becas",[],null,null,null,r,rl)),s["ɵdid"](1,49152,null,0,p,[Y.a,dl.a,c.a,ol.a,il.a],null,null)],null,null)},{},{},[]),cl=e(190),fl=e(60);e.d(n,"BecasPageModuleNgFactory",function(){return ml});var ml=s["ɵcmf"](b,[],function(l){return s["ɵmod"]([s["ɵmpd"](512,s.ComponentFactoryResolver,s["ɵCodegenComponentFactoryResolver"],[[8,[g.a,R.a,v.a,h.a,C.a,k.a,y.a,q.a,_.a,sl]],[3,s.ComponentFactoryResolver],s.NgModuleRef]),s["ɵmpd"](4608,G.NgLocalization,G.NgLocaleLocalization,[s.LOCALE_ID,[2,G["ɵa"]]]),s["ɵmpd"](4608,j.n,j.n,[]),s["ɵmpd"](4608,j.c,j.c,[]),s["ɵmpd"](512,G.CommonModule,G.CommonModule,[]),s["ɵmpd"](512,j.m,j.m,[]),s["ɵmpd"](512,j.d,j.d,[]),s["ɵmpd"](512,j.l,j.l,[]),s["ɵmpd"](512,cl.a,cl.a,[]),s["ɵmpd"](512,cl.b,cl.b,[]),s["ɵmpd"](512,b,b,[]),s["ɵmpd"](256,fl.a,p,[])])})},534:function(l,n,e){"use strict";function u(l){return t["ɵvid"](2,[t["ɵqud"](402653184,1,{_fixedContent:0}),t["ɵqud"](402653184,2,{_scrollContent:0}),(l()(),t["ɵeld"](2,0,[[1,0],["fixedContent",1]],null,1,"div",[["class","fixed-content"]],null,null,null,null,null)),t["ɵncd"](null,0),(l()(),t["ɵeld"](4,0,[[2,0],["scrollContent",1]],null,1,"div",[["class","scroll-content"]],null,null,null,null,null)),t["ɵncd"](null,1),t["ɵncd"](null,2)],null,null)}e.d(n,"a",function(){return a}),n.b=u;var t=e(0),a=(e(3),e(6),e(14),e(59),e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},535:function(l,n,e){"use strict";function u(l){return t["ɵvid"](0,[(l()(),t["ɵeld"](0,0,null,null,1,"div",[["class","toolbar-background"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵeld"](2,0,null,null,8,"button",[["class","back-button"],["ion-button","bar-button"]],[[8,"hidden",0]],[[null,"click"]],function(l,n,e){var u=!0;if("click"===n){u=!1!==l.component.backButtonClick(e)&&u}return u},d.b,d.a)),t["ɵdid"](3,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](4,1097728,null,0,o.a,[[8,"bar-button"],i.a,t.ElementRef,t.Renderer],null,null),(l()(),t["ɵeld"](5,0,null,0,2,"ion-icon",[["class","back-button-icon"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t["ɵdid"](6,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](7,147456,null,0,r.a,[i.a,t.ElementRef,t.Renderer],{name:[0,"name"]},null),(l()(),t["ɵeld"](8,0,null,0,2,"span",[["class","back-button-text"]],null,null,null,null,null)),t["ɵdid"](9,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(l()(),t["ɵted"](10,null,["",""])),t["ɵncd"](null,0),t["ɵncd"](null,1),t["ɵncd"](null,2),(l()(),t["ɵeld"](14,0,null,null,2,"div",[["class","toolbar-content"]],null,null,null,null,null)),t["ɵdid"](15,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,3)],function(l,n){var e=n.component;l(n,1,0,"toolbar-background","toolbar-background-"+e._mode);l(n,3,0,"back-button","back-button-"+e._mode);l(n,6,0,"back-button-icon","back-button-icon-"+e._mode);l(n,7,0,e._bbIcon);l(n,9,0,"back-button-text","back-button-text-"+e._mode);l(n,15,0,"toolbar-content","toolbar-content-"+e._mode)},function(l,n){var e=n.component;l(n,2,0,e._hideBb);l(n,5,0,t["ɵnov"](n,7)._hidden);l(n,10,0,e._backText)})}e.d(n,"a",function(){return s}),n.b=u;var t=e(0),a=e(18),d=e(68),o=e(33),i=e(3),r=e(69),s=(e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},536:function(l,n,e){"use strict";function u(l){return t["ɵvid"](2,[(l()(),t["ɵeld"](0,0,null,null,2,"div",[["class","toolbar-title"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,a.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,0)],function(l,n){l(n,1,0,"toolbar-title","toolbar-title-"+n.component._mode)},null)}e.d(n,"a",function(){return d}),n.b=u;var t=e(0),a=e(18),d=(e(3),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},537:function(l,n,e){"use strict";function u(l){return i["ɵvid"](0,[(l()(),i["ɵeld"](0,0,[[1,0],["textInput",1]],null,1,"input",[["class","text-input"],["dir","auto"]],[[8,"type",0],[1,"aria-labelledby",0],[1,"min",0],[1,"max",0],[1,"step",0],[1,"autocomplete",0],[1,"autocorrect",0],[8,"placeholder",0],[8,"disabled",0],[8,"readOnly",0]],[[null,"input"],[null,"blur"],[null,"focus"],[null,"keydown"]],function(l,n,e){var u=!0,t=l.component;if("input"===n){u=!1!==t.onInput(e)&&u}if("blur"===n){u=!1!==t.onBlur(e)&&u}if("focus"===n){u=!1!==t.onFocus(e)&&u}if("keydown"===n){u=!1!==t.onKeydown(e)&&u}return u},null,null)),i["ɵdid"](1,278528,null,0,r.NgClass,[i.IterableDiffers,i.KeyValueDiffers,i.ElementRef,i.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null)],function(l,n){l(n,1,0,"text-input","text-input-"+n.component._mode)},function(l,n){var e=n.component;l(n,0,0,e._type,e._labelId,e.min,e.max,e.step,e.autocomplete,e.autocorrect,e.placeholder,e._disabled,e._readonly)})}function t(l){return i["ɵvid"](0,[(l()(),i["ɵeld"](0,0,[[1,0],["textInput",1]],null,1,"textarea",[["class","text-input"]],[[1,"aria-labelledby",0],[1,"autocomplete",0],[1,"autocorrect",0],[8,"placeholder",0],[8,"disabled",0],[8,"readOnly",0]],[[null,"input"],[null,"blur"],[null,"focus"],[null,"keydown"]],function(l,n,e){var u=!0,t=l.component;if("input"===n){u=!1!==t.onInput(e)&&u}if("blur"===n){u=!1!==t.onBlur(e)&&u}if("focus"===n){u=!1!==t.onFocus(e)&&u}if("keydown"===n){u=!1!==t.onKeydown(e)&&u}return u},null,null)),i["ɵdid"](1,278528,null,0,r.NgClass,[i.IterableDiffers,i.KeyValueDiffers,i.ElementRef,i.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null)],function(l,n){l(n,1,0,"text-input","text-input-"+n.component._mode)},function(l,n){var e=n.component;l(n,0,0,e._labelId,e.autocomplete,e.autocorrect,e.placeholder,e._disabled,e._readonly)})}function a(l){return i["ɵvid"](0,[(l()(),i["ɵeld"](0,0,null,null,1,"button",[["class","text-input-clear-icon"],["clear",""],["ion-button",""],["tabindex","-1"],["type","button"]],null,[[null,"click"],[null,"mousedown"]],function(l,n,e){var u=!0,t=l.component;if("click"===n){u=!1!==t.clearTextInput(e)&&u}if("mousedown"===n){u=!1!==t.clearTextInput(e)&&u}return u},s.b,s.a)),i["ɵdid"](1,1097728,null,0,c.a,[[8,""],f.a,i.ElementRef,i.Renderer],{clear:[0,"clear"]},null)],function(l,n){l(n,1,0,"")},null)}function d(l){return i["ɵvid"](0,[(l()(),i["ɵeld"](0,0,null,null,0,"div",[["class","input-cover"]],null,[[null,"touchstart"],[null,"touchend"],[null,"mousedown"],[null,"mouseup"]],function(l,n,e){var u=!0,t=l.component;if("touchstart"===n){u=!1!==t._pointerStart(e)&&u}if("touchend"===n){u=!1!==t._pointerEnd(e)&&u}if("mousedown"===n){u=!1!==t._pointerStart(e)&&u}if("mouseup"===n){u=!1!==t._pointerEnd(e)&&u}return u},null,null))],null,null)}function o(l){return i["ɵvid"](2,[i["ɵqud"](671088640,1,{_native:0}),(l()(),i["ɵand"](16777216,null,null,1,null,u)),i["ɵdid"](2,16384,null,0,r.NgIf,[i.ViewContainerRef,i.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),i["ɵand"](16777216,null,null,1,null,t)),i["ɵdid"](4,16384,null,0,r.NgIf,[i.ViewContainerRef,i.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),i["ɵand"](16777216,null,null,1,null,a)),i["ɵdid"](6,16384,null,0,r.NgIf,[i.ViewContainerRef,i.TemplateRef],{ngIf:[0,"ngIf"]},null),(l()(),i["ɵand"](16777216,null,null,1,null,d)),i["ɵdid"](8,16384,null,0,r.NgIf,[i.ViewContainerRef,i.TemplateRef],{ngIf:[0,"ngIf"]},null)],function(l,n){var e=n.component;l(n,2,0,!e._isTextarea);l(n,4,0,e._isTextarea);l(n,6,0,e._clearInput);l(n,8,0,e._useAssist)},null)}e.d(n,"a",function(){return m}),n.b=o;var i=e(0),r=e(18),s=e(68),c=e(33),f=e(3),m=(e(6),e(22),e(14),i["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},538:function(l,n){var e="undefined"!=typeof crypto&&crypto.getRandomValues&&crypto.getRandomValues.bind(crypto)||"undefined"!=typeof msCrypto&&"function"==typeof window.msCrypto.getRandomValues&&msCrypto.getRandomValues.bind(msCrypto);if(e){var u=new Uint8Array(16);l.exports=function(){return e(u),u}}else{var t=new Array(16);l.exports=function(){for(var l,n=0;n<16;n++)0==(3&n)&&(l=4294967296*Math.random()),t[n]=l>>>((3&n)<<3)&255;return t}}},539:function(l,n){for(var e=[],u=0;u<256;++u)e[u]=(u+256).toString(16).substr(1);l.exports=function(l,n){var u=n||0;return[e[l[u++]],e[l[u++]],e[l[u++]],e[l[u++]],"-",e[l[u++]],e[l[u++]],"-",e[l[u++]],e[l[u++]],"-",e[l[u++]],e[l[u++]],"-",e[l[u++]],e[l[u++]],e[l[u++]],e[l[u++]],e[l[u++]],e[l[u++]]].join("")}},541:function(l,n,e){var u=e(542),t=e(543),a=t;a.v1=u,a.v4=t,l.exports=a},542:function(l,n,e){var u,t,a=e(538),d=e(539),o=0,i=0;l.exports=function(l,n,e){var r=n&&e||0,s=n||[],c=(l=l||{}).node||u,f=void 0!==l.clockseq?l.clockseq:t;if(null==c||null==f){var m=a();null==c&&(c=u=[1|m[0],m[1],m[2],m[3],m[4],m[5]]),null==f&&(f=t=16383&(m[6]<<8|m[7]))}var p=void 0!==l.msecs?l.msecs:(new Date).getTime(),b=void 0!==l.nsecs?l.nsecs:i+1,g=p-o+(b-i)/1e4;if(g<0&&void 0===l.clockseq&&(f=f+1&16383),(g<0||p>o)&&void 0===l.nsecs&&(b=0),b>=1e4)throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");o=p,i=b,t=f;var R=(1e4*(268435455&(p+=122192928e5))+b)%4294967296;s[r++]=R>>>24&255,s[r++]=R>>>16&255,s[r++]=R>>>8&255,s[r++]=255&R;var v=p/4294967296*1e4&268435455;s[r++]=v>>>8&255,s[r++]=255&v,s[r++]=v>>>24&15|16,s[r++]=v>>>16&255,s[r++]=f>>>8|128,s[r++]=255&f;for(var h=0;h<6;++h)s[r+h]=c[h];return n||d(s)}},543:function(l,n,e){var u=e(538),t=e(539);l.exports=function(l,n,e){var a=n&&e||0;"string"==typeof l&&(n="binary"===l?new Array(16):null,l=null);var d=(l=l||{}).random||(l.rng||u)();if(d[6]=15&d[6]|64,d[8]=63&d[8]|128,n)for(var o=0;o<16;++o)n[a+o]=d[o];return n||t(d)}}});
+webpackJsonp([2],{
+
+/***/ 713:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BecasPageModule", function() { return BecasPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__becas__ = __webpack_require__(737);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+var BecasPageModule = /** @class */ (function () {
+    function BecasPageModule() {
+    }
+    BecasPageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__becas__["a" /* BecasPage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__becas__["a" /* BecasPage */]),
+            ],
+        })
+    ], BecasPageModule);
+    return BecasPageModule;
+}());
+
+//# sourceMappingURL=becas.module.js.map
+
+/***/ }),
+
+/***/ 725:
+/***/ (function(module, exports) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+// implementation. Also, find the complete implementation of crypto on IE11.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
+
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+
+/***/ }),
+
+/***/ 726:
+/***/ (function(module, exports) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+  return ([bth[buf[i++]], bth[buf[i++]], 
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]]]).join('');
+}
+
+module.exports = bytesToUuid;
+
+
+/***/ }),
+
+/***/ 727:
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(728);
+var v4 = __webpack_require__(729);
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+
+/***/ 728:
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(725);
+var bytesToUuid = __webpack_require__(726);
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/broofa/node-uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
+
+
+/***/ }),
+
+/***/ 729:
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(725);
+var bytesToUuid = __webpack_require__(726);
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
+
+
+/***/ }),
+
+/***/ 737:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BecasPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_uuid__ = __webpack_require__(727);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_uuid__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var BecasPage = /** @class */ (function () {
+    function BecasPage(navCtrl, navParams, back, toast, load) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.back = back;
+        this.toast = toast;
+        this.load = load;
+        this.becas = [];
+        this.newBeca = {};
+    }
+    BecasPage.prototype.ionViewDidLoad = function () {
+        this.loadTeams();
+    };
+    BecasPage.prototype.loadTeams = function () {
+        var _this = this;
+        //this.back.getUserDetail(this.back.uid).subscribe(data => this.becas = data.teams)
+        this.back.getUserBecas(this.back.uid).subscribe(function (data) { return _this.becas = data; }, function (err) { return _this.toast.create({ message: 'No se pudo cargar la información de becas...', duration: 2000 }).present(); });
+    };
+    BecasPage.prototype.deleteTeam = function (id) {
+        var _this = this;
+        this.back.deleteBeca(id).subscribe(function (data) { return _this.loadTeams(); });
+    };
+    BecasPage.prototype.addTeam = function () {
+        var _this = this;
+        var l = this.load.create({ content: 'Creando grupo...' });
+        l.present();
+        this.back.addBeca({
+            name: this.newBeca.name,
+            creator: this.back.uid,
+            code: "ZAMNA-" + __WEBPACK_IMPORTED_MODULE_3_uuid___default.a.v4()
+        }).subscribe(function (data) {
+            _this.back.joinToTeam(_this.back.uid, data.id).subscribe(function (_team) {
+                _this.toast.create({ message: 'Grupo creado correctamente', duration: 2000 }).present();
+                _this.loadTeams();
+                l.dismiss();
+            });
+        }, function (err) {
+            l.dismiss();
+            _this.toast.create({ message: 'No se pudo crear tu grupo...', duration: 2000 }).present();
+        });
+    };
+    BecasPage.prototype.joinTeam = function (code) {
+        var _this = this;
+        var l = this.load.create({ content: 'Creando grupo...' });
+        l.present();
+        this.back.joinTeamByCode(code, this.back.uid).subscribe(function (data) {
+            _this.toast.create({ message: 'Te uniste correctamente.', duration: 2000 }).present();
+            _this.loadTeams();
+            l.dismiss();
+        }, function (err) {
+            l.dismiss();
+            _this.toast.create({ message: 'Ocurrió un error al unirte al grupo.', duration: 2000 }).present();
+        });
+    };
+    BecasPage.prototype.getDescuento = function (team) {
+        if (!team)
+            return 0;
+        if (!team.members)
+            return 0;
+        if (team.members.length <= 0)
+            return 0;
+        if (team.members.length == 2)
+            return 5;
+        if (team.members.length == 3)
+            return 8;
+        if (team.members.length == 4)
+            return 10;
+        if (team.members.length == 5)
+            return 13;
+        if (team.members.length == 6)
+            return 15;
+        return 'Contacta con el Admin';
+    };
+    BecasPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+            selector: 'page-becas',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/becas/becas.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Becas Grupales</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <ion-card *ngIf="becas.length <= 0">\n      <ion-card-content>\n        <p>Parece que no tienes ningún grupo para aplicar a una beca. Crea una a continuación:</p>\n      </ion-card-content>\n      <ion-list text-wrap>\n        <ion-list-header>Si eres el capitán del equipo, crea el equipo, y comparte el código de equipo para que tus amigos lo ingresen en la parte de abajo:</ion-list-header>\n        <ion-item>\n          <ion-input placeholder="Nombre del equipo" [(ngModel)]="newBeca.name"></ion-input>\n        </ion-item>\n        <ion-item>\n          <button ion-button (click)="addTeam()" >Crear Equipo</button>\n        </ion-item>\n      </ion-list>\n    </ion-card>\n\n    <ion-card *ngIf="becas.length <= 0">\n      <ion-card-content>\n        <p>También puedes unirte a un equipo ya existente:</p>\n      </ion-card-content>\n      <ion-list>\n        <ion-list-header>Unirse a grupo</ion-list-header>\n        <ion-item>\n        <ion-input placeholder="Código de Equipo" [(ngModel)]="newBeca.code"></ion-input>\n        </ion-item>\n        <ion-item>\n          <button ion-button (click)="joinTeam(newBeca.code)" >Unirse a Equipo</button>\n        </ion-item>\n      </ion-list>\n    </ion-card>\n\n    <ion-card *ngFor="let team of becas">\n      <ion-card-header>\n        <ion-card-title>{{team.name}}</ion-card-title>\n      </ion-card-header>\n      <ion-list text-wrap>\n        <ion-list-header>Integrantes</ion-list-header>\n        <ion-item style="user-select:text">\n          <strong>Código de equipo para unir a los otros miembros: </strong> {{team.code}}\n        </ion-item>\n        <ion-item>\n          Recuerden que el % de descuento, no se verá reflejado en la cantidad del saldo pendiente hasta que sepamos el número de alumnos  que se inscribió realmente en el equipo, el equipo tiene 10 dias para completar la inscripción del 30%, de lo contrario, el sistema cerrará las inscripciones para los integrantes del equipo que falten, y no podrán ser parte del mismo, tendrán que inscribirse aparte del equipo y a los miembros ya inscritos, les reajustará el % de descuento al número final de integrantes\n        </ion-item>\n        <ion-item>\n          <strong>Descuento: {{getDescuento(team)}}%</strong>\n        </ion-item>\n        <ion-item *ngFor="let user of team.members" >\n          <ion-icon item-start color="success" name="checkmark" *ngIf="(user.deudaTotal - user.deuda) >= user.deudaTotal * 0.3"></ion-icon>\n          <h2>{{user.name}} {{user.lastName}}</h2>\n          <p>$ {{user.deudaTotal - user.deuda | number}} de $ {{user.deudaTotal | number}}</p>\n        </ion-item>\n        <ion-item *ngIf="auth.isAdmin" >\n          <button ion-button (click)="deleteTeam(team.id)" color="danger">Borrar Equipo</button>\n        </ion-item>\n      </ion-list>\n    </ion-card>\n\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/becas/becas.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* LoadingController */]])
+    ], BecasPage);
+    return BecasPage;
+}());
+
+//# sourceMappingURL=becas.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=2.js.map

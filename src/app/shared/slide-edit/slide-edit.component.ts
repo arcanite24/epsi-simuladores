@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { sortBy } from 'lodash'
+import { sortBy } from 'lodash';
 
 @Component({
   selector: 'epsi-slide-edit',
@@ -17,20 +17,20 @@ import { sortBy } from 'lodash'
 })
 export class SlideEditComponent implements OnInit {
 
-  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=43t9qN33feZzdpDF'
+  private SLIDE_API = 'https://v2.convertapi.com/pptx/to/jpg?Secret=43t9qN33feZzdpDF';
 
-  private _slide: Slide
+  private _slide: Slide;
 
   @Input()
-  public set slide(s: Slide) { this.slideChanged(s) }
-  public get slide() { return this._slide }
+  public set slide(s: Slide) { this.slideChanged(s); }
+  public get slide() { return this._slide; }
 
-  public editForm: FormGroup
-  public tempCat: SlideCategory
-  public cats$: Observable<SlideCategory[]> = this.afs.collection<SlideCategory>(Collections.SLIDE_CATEGORY).valueChanges()
-  public l: boolean = false
+  public editForm: FormGroup;
+  public tempCat: SlideCategory;
+  public cats$: Observable<SlideCategory[]> = this.afs.collection<SlideCategory>(Collections.SLIDE_CATEGORY).valueChanges();
+  public l = false;
 
-  public lastIndex: number = -1;
+  public lastIndex = -1;
 
   constructor(
     private afs: AngularFirestore,
@@ -51,37 +51,37 @@ export class SlideEditComponent implements OnInit {
       cat_name: [null],
       images: [[]],
       images_order: [[]],
-    })
+    });
 
   }
 
   slideChanged(s: Slide) {
-    this._slide = s
-    if (this.editForm) this.editForm.patchValue(s)
+    this._slide = s;
+    if (this.editForm) { this.editForm.patchValue(s) }
   }
 
   fileUploaded(url: string, images: string[] = []) {
     this.editForm.patchValue({
       images: [...images, url],
-    })
+    });
   }
 
   removeImage(i: number, images: string[] = []) {
-    images.splice(i, 1)
+    images.splice(i, 1);
     this.editForm.patchValue({
       images
-    })
+    });
   }
 
   async saveSlide() {
-    await this.afs.doc(`${Collections.SLIDE}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
+    await this.afs.doc(`${Collections.SLIDE}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true});
   }
 
   catSelected(cat: SlideCategory) {
     this.editForm.patchValue({
       cat_name: cat.name,
       cat_id: cat.id
-    })
+    });
   }
 
   async submitForm() {
@@ -89,91 +89,91 @@ export class SlideEditComponent implements OnInit {
     if (this.editForm.valid) {
 
       try {
-        await this.afs.doc(`${Collections.SLIDE}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
-        this.toastr.success('Presentación editado correctamente.')
-        this.modal.getModal('slideEditModal').close()
-        this.editForm.reset()
+        await this.afs.doc(`${Collections.SLIDE}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true});
+        this.toastr.success('Presentación editado correctamente.');
+        this.modal.getModal('slideEditModal').close();
+        this.editForm.reset();
       } catch (error) {
-        console.log(error)
-        this.toastr.error('Ocurrió un error al editar...')
+        console.log(error);
+        this.toastr.error('Ocurrió un error al editar...');
       }
 
     } else {
-      this.toastr.error('La información que ingresaste no es válida.')
+      this.toastr.error('La información que ingresaste no es válida.');
     }
 
   }
 
   async pptxSelected(files: FileList) {
 
-    if (!files) return
-    if (files.length <= 0) return
+    if (!files) { return }
+    if (files.length <= 0) { return }
 
-    const file = files.item(0)
-    if (!file.name.includes('.pptx')) return this.toastr.error('El archivo debe ser de tipo .pptx')
-    this.l = true
+    const file = files.item(0);
+    if (!file.name.includes('.pptx')) { return this.toastr.error('El archivo debe ser de tipo .pptx') }
+    this.l = true;
 
     console.log(files);
 
     try {
 
-      const result = await this.convertSlide(file)
-      const urls = await this.uploadSlides(result.Files)
-      this.editForm.patchValue({images: [...this.editForm.value.images, ...urls]})
-      this.l = false
+      const result = await this.convertSlide(file);
+      const urls = await this.uploadSlides(result.Files);
+      this.editForm.patchValue({images: [...this.editForm.value.images, ...urls]});
+      this.l = false;
 
     } catch (error) {
-      this.toastr.error('Ocurrió un error al convertir la presentación')
-      console.log(error)
-      this.l = false
+      this.toastr.error('Ocurrió un error al convertir la presentación');
+      console.log(error);
+      this.l = false;
     }
 
   }
 
   convertSlide(file: File) {
-    const data = new FormData()
-    data.append('File', file)
-    return this.http.post<any>(this.SLIDE_API, data).toPromise()
+    const data = new FormData();
+    data.append('File', file);
+    return this.http.post<any>(this.SLIDE_API, data).toPromise();
   }
 
   async uploadSlides(slides: {FileData: string, FileName: string, FileSize: number}[]) {
-    const queue = slides.map(slide => this.uploadFile(slide.FileName, slide.FileData))
-    return Promise.all(queue)
+    const queue = slides.map(slide => this.uploadFile(slide.FileName, slide.FileData));
+    return Promise.all(queue);
   }
 
   uploadFile(filename: string, data: string): Promise<string | null> {
     return new Promise((resolve, _) => {
-      const ref = this.storage.ref(`slides/${filename}`)
-      const task = ref.putString(data, 'base64')
+      const ref = this.storage.ref(`slides/${filename}`);
+      const task = ref.putString(data, 'base64');
       task.snapshotChanges().pipe(
         finalize(() => {
-          ref.getDownloadURL().subscribe(url => resolve(url))
+          ref.getDownloadURL().subscribe(url => resolve(url));
         })
-      ).subscribe()
-    })
+      ).subscribe();
+    });
   }
 
   array_move(arr: any[], old_index: number, new_index: number) {
     if (new_index >= arr.length) {
       let k = new_index - arr.length + 1;
       while (k--) {
-        arr.push(undefined)
+        arr.push(undefined);
       }
     }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0])
-    return arr
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr;
   }
 
   movePicture(images: string[], old_index: number, new_index: number) {
     this.editForm.patchValue({
       images: this.array_move(images, old_index, new_index)
-    })
+    });
   }
 
   orderImages(images: string[] = []) {
     this.editForm.patchValue({
       images: sortBy(images.map(f => ({small: f, medium: f, big: f})), 'small')
-    })
+    });
   }
 
 }

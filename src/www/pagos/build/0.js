@@ -1,1 +1,717 @@
-webpackJsonp([0],{530:function(n,l,e){"use strict";function u(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,3,"div",[["class","flex flex-col justify-center align-center"]],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["\n      "])),(n()(),y["ɵeld"](2,0,null,null,0,"img",[["class","profile-avatar"]],[[8,"src",4]],null,null,null,null)),(n()(),y["ɵted"](-1,null,["\n    "]))],null,function(n,l){n(l,2,0,l.component.user.photoURL)})}function t(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,4,{contentLabel:0}),y["ɵqud"](603979776,5,{_buttons:1}),y["ɵqud"](603979776,6,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Nombre(s): "])),(n()(),y["ɵted"](9,2,[" ","\n        "]))],null,function(n,l){n(l,9,0,l.component.user.displayName)})}function i(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,7,{contentLabel:0}),y["ɵqud"](603979776,8,{_buttons:1}),y["ɵqud"](603979776,9,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,3,4,"ion-input",[["placeholder","Nombre(s)"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(n,l,e){var u=!0;if("ngModelChange"===l){u=!1!==(n.component.user.displayName=e)&&u}return u},Z.b,Z.a)),y["ɵdid"](8,671744,null,0,$.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),y["ɵprd"](2048,null,$.i,null,[$.k]),y["ɵdid"](10,16384,null,0,$.j,[$.i],null,null),y["ɵdid"](11,5423104,null,0,H.a,[G.a,Q.a,B.a,X.a,y.ElementRef,y.Renderer,[2,Y.a],[2,z.a],[2,$.i],nn.a],{placeholder:[0,"placeholder"]},null),(n()(),y["ɵted"](-1,2,["\n        "]))],function(n,l){n(l,8,0,l.component.user.displayName);n(l,11,0,"Nombre(s)")},function(n,l){n(l,7,0,y["ɵnov"](l,10).ngClassUntouched,y["ɵnov"](l,10).ngClassTouched,y["ɵnov"](l,10).ngClassPristine,y["ɵnov"](l,10).ngClassDirty,y["ɵnov"](l,10).ngClassValid,y["ɵnov"](l,10).ngClassInvalid,y["ɵnov"](l,10).ngClassPending)})}function a(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,10,{contentLabel:0}),y["ɵqud"](603979776,11,{_buttons:1}),y["ɵqud"](603979776,12,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Celular: "])),(n()(),y["ɵted"](9,2,[" ","\n        "]))],null,function(n,l){n(l,9,0,l.component.user.celular)})}function o(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,13,{contentLabel:0}),y["ɵqud"](603979776,14,{_buttons:1}),y["ɵqud"](603979776,15,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,3,4,"ion-input",[["placeholder","Celular"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(n,l,e){var u=!0;if("ngModelChange"===l){u=!1!==(n.component.user.celular=e)&&u}return u},Z.b,Z.a)),y["ɵdid"](8,671744,null,0,$.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),y["ɵprd"](2048,null,$.i,null,[$.k]),y["ɵdid"](10,16384,null,0,$.j,[$.i],null,null),y["ɵdid"](11,5423104,null,0,H.a,[G.a,Q.a,B.a,X.a,y.ElementRef,y.Renderer,[2,Y.a],[2,z.a],[2,$.i],nn.a],{placeholder:[0,"placeholder"]},null),(n()(),y["ɵted"](-1,2,["\n        "]))],function(n,l){n(l,8,0,l.component.user.celular);n(l,11,0,"Celular")},function(n,l){n(l,7,0,y["ɵnov"](l,10).ngClassUntouched,y["ɵnov"](l,10).ngClassTouched,y["ɵnov"](l,10).ngClassPristine,y["ɵnov"](l,10).ngClassDirty,y["ɵnov"](l,10).ngClassValid,y["ɵnov"](l,10).ngClassInvalid,y["ɵnov"](l,10).ngClassPending)})}function d(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,16,{contentLabel:0}),y["ɵqud"](603979776,17,{_buttons:1}),y["ɵqud"](603979776,18,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Universidad: "])),(n()(),y["ɵted"](9,2,[" ","\n        "]))],null,function(n,l){n(l,9,0,l.component.user.universidad)})}function r(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,19,{contentLabel:0}),y["ɵqud"](603979776,20,{_buttons:1}),y["ɵqud"](603979776,21,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,3,4,"ion-input",[["placeholder","Universidad"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(n,l,e){var u=!0;if("ngModelChange"===l){u=!1!==(n.component.user.universidad=e)&&u}return u},Z.b,Z.a)),y["ɵdid"](8,671744,null,0,$.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),y["ɵprd"](2048,null,$.i,null,[$.k]),y["ɵdid"](10,16384,null,0,$.j,[$.i],null,null),y["ɵdid"](11,5423104,null,0,H.a,[G.a,Q.a,B.a,X.a,y.ElementRef,y.Renderer,[2,Y.a],[2,z.a],[2,$.i],nn.a],{placeholder:[0,"placeholder"]},null),(n()(),y["ɵted"](-1,2,["\n        "]))],function(n,l){n(l,8,0,l.component.user.universidad);n(l,11,0,"Universidad")},function(n,l){n(l,7,0,y["ɵnov"](l,10).ngClassUntouched,y["ɵnov"](l,10).ngClassTouched,y["ɵnov"](l,10).ngClassPristine,y["ɵnov"](l,10).ngClassDirty,y["ɵnov"](l,10).ngClassValid,y["ɵnov"](l,10).ngClassInvalid,y["ɵnov"](l,10).ngClassPending)})}function s(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,22,{contentLabel:0}),y["ɵqud"](603979776,23,{_buttons:1}),y["ɵqud"](603979776,24,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Especialidad: "])),(n()(),y["ɵted"](9,2,[" ","\n        "]))],null,function(n,l){n(l,9,0,l.component.user.especialidad)})}function c(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,25,{contentLabel:0}),y["ɵqud"](603979776,26,{_buttons:1}),y["ɵqud"](603979776,27,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,3,4,"ion-input",[["placeholder","Especialidad"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(n,l,e){var u=!0;if("ngModelChange"===l){u=!1!==(n.component.user.especialidad=e)&&u}return u},Z.b,Z.a)),y["ɵdid"](8,671744,null,0,$.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),y["ɵprd"](2048,null,$.i,null,[$.k]),y["ɵdid"](10,16384,null,0,$.j,[$.i],null,null),y["ɵdid"](11,5423104,null,0,H.a,[G.a,Q.a,B.a,X.a,y.ElementRef,y.Renderer,[2,Y.a],[2,z.a],[2,$.i],nn.a],{placeholder:[0,"placeholder"]},null),(n()(),y["ɵted"](-1,2,["\n        "]))],function(n,l){n(l,8,0,l.component.user.especialidad);n(l,11,0,"Especialidad")},function(n,l){n(l,7,0,y["ɵnov"](l,10).ngClassUntouched,y["ɵnov"](l,10).ngClassTouched,y["ɵnov"](l,10).ngClassPristine,y["ɵnov"](l,10).ngClassDirty,y["ɵnov"](l,10).ngClassValid,y["ɵnov"](l,10).ngClassInvalid,y["ɵnov"](l,10).ngClassPending)})}function f(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,28,{contentLabel:0}),y["ɵqud"](603979776,29,{_buttons:1}),y["ɵqud"](603979776,30,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Email: "])),(n()(),y["ɵted"](9,2,[" ","\n        "]))],null,function(n,l){n(l,9,0,l.component.user.new_email)})}function p(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,31,{contentLabel:0}),y["ɵqud"](603979776,32,{_buttons:1}),y["ɵqud"](603979776,33,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,3,4,"ion-input",[["placeholder","Correo electrónico"]],[[2,"ng-untouched",null],[2,"ng-touched",null],[2,"ng-pristine",null],[2,"ng-dirty",null],[2,"ng-valid",null],[2,"ng-invalid",null],[2,"ng-pending",null]],[[null,"ngModelChange"]],function(n,l,e){var u=!0;if("ngModelChange"===l){u=!1!==(n.component.user.new_email=e)&&u}return u},Z.b,Z.a)),y["ɵdid"](8,671744,null,0,$.k,[[8,null],[8,null],[8,null],[8,null]],{model:[0,"model"]},{update:"ngModelChange"}),y["ɵprd"](2048,null,$.i,null,[$.k]),y["ɵdid"](10,16384,null,0,$.j,[$.i],null,null),y["ɵdid"](11,5423104,null,0,H.a,[G.a,Q.a,B.a,X.a,y.ElementRef,y.Renderer,[2,Y.a],[2,z.a],[2,$.i],nn.a],{placeholder:[0,"placeholder"]},null),(n()(),y["ɵted"](-1,2,["\n        "]))],function(n,l){n(l,8,0,l.component.user.new_email);n(l,11,0,"Correo electrónico")},function(n,l){n(l,7,0,y["ɵnov"](l,10).ngClassUntouched,y["ɵnov"](l,10).ngClassTouched,y["ɵnov"](l,10).ngClassPristine,y["ɵnov"](l,10).ngClassDirty,y["ɵnov"](l,10).ngClassValid,y["ɵnov"](l,10).ngClassInvalid,y["ɵnov"](l,10).ngClassPending)})}function g(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,37,{contentLabel:0}),y["ɵqud"](603979776,38,{_buttons:1}),y["ɵqud"](603979776,39,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Credencial: "])),(n()(),y["ɵted"](-1,2,["\n        "]))],null,null)}function m(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,0,"img",[],[[8,"src",4]],[[null,"click"]],function(n,l,e){var u=!0,t=n.component;if("click"===l){u=!1!==t.openImage(t.user.credencial)&&u}return u},null,null))],null,function(n,l){n(l,0,0,l.component.user.credencial)})}function h(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,12,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](1,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,40,{contentLabel:0}),y["ɵqud"](603979776,41,{_buttons:1}),y["ɵqud"](603979776,42,{_icons:1}),y["ɵdid"](5,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](7,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Credencial:"])),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](10,0,null,2,1,"file-upload",[],null,[[null,"onFinish"]],function(n,l,e){var u=!0;if("onFinish"===l){u=!1!==n.component.onFinish(e)&&u}return u},ln.b,ln.a)),y["ɵdid"](11,49152,null,0,en.a,[un.a,tn.a,I.a,an.a],null,{onFinish:"onFinish"}),(n()(),y["ɵted"](-1,2,["\n        "]))],null,null)}function b(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,66,"ion-card",[],null,null,null,null,null)),y["ɵdid"](1,16384,null,0,on.a,[G.a,y.ElementRef,y.Renderer],null,null),(n()(),y["ɵted"](-1,null,["\n      "])),(n()(),y["ɵeld"](3,0,null,null,62,"ion-list",[],null,null,null,null,null)),y["ɵdid"](4,16384,null,0,dn.a,[G.a,y.ElementRef,y.Renderer,Q.a,rn.l,nn.a],null,null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵeld"](6,0,null,null,6,"ion-list-header",[["class","item"]],null,null,null,A.b,A.a)),y["ɵdid"](7,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,1,{contentLabel:0}),y["ɵqud"](603979776,2,{_buttons:1}),y["ɵqud"](603979776,3,{_icons:1}),y["ɵdid"](11,16384,null,0,sn.a,[G.a,y.Renderer,y.ElementRef,[8,null]],null,null),(n()(),y["ɵted"](-1,2,["Información"])),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,t)),y["ɵdid"](15,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,i)),y["ɵdid"](18,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,a)),y["ɵdid"](22,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,o)),y["ɵdid"](25,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,d)),y["ɵdid"](28,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,r)),y["ɵdid"](31,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,s)),y["ɵdid"](34,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,c)),y["ɵdid"](37,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,f)),y["ɵdid"](40,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,p)),y["ɵdid"](43,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵeld"](45,0,null,null,9,"ion-item",[["class","item item-block"]],null,null,null,A.b,A.a)),y["ɵdid"](46,1097728,null,3,z.a,[B.a,G.a,y.ElementRef,y.Renderer,[2,J.a]],null,null),y["ɵqud"](335544320,34,{contentLabel:0}),y["ɵqud"](603979776,35,{_buttons:1}),y["ɵqud"](603979776,36,{_icons:1}),y["ɵdid"](50,16384,null,0,W.a,[],null,null),(n()(),y["ɵted"](-1,2,["\n          "])),(n()(),y["ɵeld"](52,0,null,2,1,"strong",[],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["Foto: "])),(n()(),y["ɵted"](54,2,[" ","\n        "])),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵted"](-1,null,["\n\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,g)),y["ɵdid"](58,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,m)),y["ɵdid"](61,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n        "])),(n()(),y["ɵand"](16777216,null,null,1,null,h)),y["ɵdid"](64,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n      "])),(n()(),y["ɵted"](-1,null,["\n    "]))],function(n,l){var e=l.component;n(l,15,0,!e.edit);n(l,18,0,e.edit);n(l,22,0,!e.edit);n(l,25,0,e.edit);n(l,28,0,!e.edit);n(l,31,0,e.edit);n(l,34,0,!e.edit);n(l,37,0,e.edit);n(l,40,0,!e.edit);n(l,43,0,e.edit);n(l,58,0,!e.edit);n(l,61,0,e.user.credencial);n(l,64,0,e.edit)},function(n,l){n(l,54,0,l.component.user.foto)})}function v(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,2,"button",[["clear",""],["ion-button",""]],null,[[null,"click"]],function(n,l,e){var u=!0;if("click"===l){u=!1!=(n.component.edit=!0)&&u}return u},fn.b,fn.a)),y["ɵdid"](1,1097728,null,0,pn.a,[[8,""],G.a,y.ElementRef,y.Renderer],{clear:[0,"clear"]},null),(n()(),y["ɵted"](-1,0,["Editar Información"]))],function(n,l){n(l,1,0,"")},null)}function R(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,5,"div",[["class","flex flex-col justify-center align-center"]],null,null,null,null,null)),(n()(),y["ɵted"](-1,null,["\n      "])),(n()(),y["ɵeld"](2,0,null,null,2,"button",[["ion-button",""]],null,[[null,"click"]],function(n,l,e){var u=!0;if("click"===l){u=!1!==n.component.saveChanges()&&u}return u},fn.b,fn.a)),y["ɵdid"](3,1097728,null,0,pn.a,[[8,""],G.a,y.ElementRef,y.Renderer],null,null),(n()(),y["ɵted"](-1,0,["Guardar cambios"])),(n()(),y["ɵted"](-1,null,["\n    "]))],null,null)}function C(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,10,"ion-header",[],null,null,null,null,null)),y["ɵdid"](1,16384,null,0,gn.a,[G.a,y.ElementRef,y.Renderer,[2,mn.a]],null,null),(n()(),y["ɵted"](-1,null,["\n\n  "])),(n()(),y["ɵeld"](3,0,null,null,6,"ion-navbar",[["class","toolbar"],["color","primary"]],[[8,"hidden",0],[2,"statusbar-padding",null]],null,null,hn.b,hn.a)),y["ɵdid"](4,49152,null,0,bn.a,[X.a,[2,mn.a],[2,vn.a],G.a,y.ElementRef,y.Renderer],{color:[0,"color"]},null),(n()(),y["ɵted"](-1,3,["\n    "])),(n()(),y["ɵeld"](6,0,null,3,2,"ion-title",[],null,null,null,Rn.b,Rn.a)),y["ɵdid"](7,49152,null,0,Cn.a,[G.a,y.ElementRef,y.Renderer,[2,yn.a],[2,bn.a]],null,null),(n()(),y["ɵted"](-1,0,["Perfil"])),(n()(),y["ɵted"](-1,3,["\n  "])),(n()(),y["ɵted"](-1,null,["\n\n"])),(n()(),y["ɵted"](-1,null,["\n\n\n"])),(n()(),y["ɵeld"](12,0,null,null,18,"ion-content",[["class","bg-eee"]],[[2,"statusbar-padding",null],[2,"has-refresher",null]],null,null,In.b,In.a)),y["ɵdid"](13,4374528,null,0,Y.a,[G.a,Q.a,nn.a,y.ElementRef,y.Renderer,X.a,kn.a,y.NgZone,[2,mn.a],[2,vn.a]],null,null),(n()(),y["ɵted"](-1,1,["\n\n  "])),(n()(),y["ɵeld"](15,0,null,1,14,"ion-grid",[["class","grid"],["fixed",""]],null,null,null,null,null)),y["ɵdid"](16,16384,null,0,wn.a,[],null,null),(n()(),y["ɵted"](-1,null,["\n\n    "])),(n()(),y["ɵand"](16777216,null,null,1,null,u)),y["ɵdid"](19,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n    "])),(n()(),y["ɵand"](16777216,null,null,1,null,b)),y["ɵdid"](22,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n    "])),(n()(),y["ɵand"](16777216,null,null,1,null,v)),y["ɵdid"](25,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n    "])),(n()(),y["ɵand"](16777216,null,null,1,null,R)),y["ɵdid"](28,16384,null,0,cn.NgIf,[y.ViewContainerRef,y.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),y["ɵted"](-1,null,["\n\n  "])),(n()(),y["ɵted"](-1,1,["\n\n"])),(n()(),y["ɵted"](-1,null,["\n"]))],function(n,l){var e=l.component;n(l,4,0,"primary");n(l,19,0,e.user&&e.user.photoURL);n(l,22,0,e.user);n(l,25,0,e.user&&!e.edit&&(e.auth.isAdmin||e.user.uid==e.auth.user.uid));n(l,28,0,e.edit)},function(n,l){n(l,3,0,y["ɵnov"](l,4)._hidden,y["ɵnov"](l,4)._sbPadding);n(l,12,0,y["ɵnov"](l,13).statusbarPadding,y["ɵnov"](l,13)._hasRefresher)})}Object.defineProperty(l,"__esModule",{value:!0});var y=e(0),I=(e(1),e(124),e(125)),k=e(192),w=e(434),_=e(126),E=e(28),x=this&&this.__awaiter||function(n,l,e,u){return new(e||(e=Promise))(function(t,i){function a(n){try{d(u.next(n))}catch(n){i(n)}}function o(n){try{d(u.throw(n))}catch(n){i(n)}}function d(n){n.done?t(n.value):new e(function(l){l(n.value)}).then(a,o)}d((u=u.apply(n,l||[])).next())})},q=this&&this.__generator||function(n,l){function e(e){return function(a){return function(e){if(u)throw new TypeError("Generator is already executing.");for(;o;)try{if(u=1,t&&(i=t[2&e[0]?"return":e[0]?"throw":"next"])&&!(i=i.call(t,e[1])).done)return i;switch(t=0,i&&(e=[0,i.value]),e[0]){case 0:case 1:i=e;break;case 4:return o.label++,{value:e[1],done:!1};case 5:o.label++,t=e[1],e=[0];continue;case 7:e=o.ops.pop(),o.trys.pop();continue;default:if(i=o.trys,!(i=i.length>0&&i[i.length-1])&&(6===e[0]||2===e[0])){o=0;continue}if(3===e[0]&&(!i||e[1]>i[0]&&e[1]<i[3])){o.label=e[1];break}if(6===e[0]&&o.label<i[1]){o.label=i[1],i=e;break}if(i&&o.label<i[2]){o.label=i[2],o.ops.push(e);break}i[2]&&o.ops.pop(),o.trys.pop();continue}e=l.call(n,o)}catch(n){e=[6,n],t=0}finally{u=i=0}if(5&e[0])throw e[1];return{value:e[0]?e[1]:void 0,done:!0}}([e,a])}}var u,t,i,a,o={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return a={next:e(0),throw:e(1),return:e(2)},"function"==typeof Symbol&&(a[Symbol.iterator]=function(){return this}),a},N=function(){function n(n,l,e,u,t,i,a){this.navCtrl=n,this.navParams=l,this.back=e,this.toast=u,this.load=t,this.auth=i,this.afs=a,this.uid=this.navParams.get("uid"),this.edit=!1}return n.prototype.ionViewDidLoad=function(){var n=this;if(!this.auth.user)return this.navCtrl.setRoot("LoginPage");this.uid?this.afs.collection(w.a.USER).doc(this.uid).valueChanges().subscribe(function(l){return n.user=l}):(this.user=this.auth.user,this.auth.user$.subscribe(function(l){l&&!n.user&&n.afs.collection(w.a.USER).doc(l.uid).valueChanges().subscribe(function(l){return n.user=l})}))},n.prototype.loadUser=function(n){return x(this,void 0,void 0,function(){var l;return q(this,function(e){switch(e.label){case 0:return[4,this.afs.collection(w.a.USER).doc(n).valueChanges().pipe(Object(E.take)(1)).toPromise()];case 1:return l=e.sent(),this.user=l,[2]}})})},n.prototype.onFinish=function(n){this.user.credencial=n.secure_url},n.prototype.saveChanges=function(){return x(this,void 0,void 0,function(){return q(this,function(n){switch(n.label){case 0:return this.load.create({content:"Guardando cambios..."}).present(),[4,this.afs.collection(w.a.USER).doc(this.user.uid).update(this.user)];case 1:return n.sent(),[2]}})})},n.prototype.openImage=function(n){if(this.auth.isAdmin){console.log(n);window.open(n,"_blank").focus()}},n}(),V=e(193),T=e(544),D=function(){return function(){}}(),L=e(424),P=e(425),F=e(426),M=e(427),U=e(428),S=e(429),j=e(430),K=e(431),O=e(432),A=e(433),z=e(27),B=e(22),G=e(3),J=e(70),W=e(128),Z=e(537),$=e(26),H=e(191),Q=e(6),X=e(13),Y=e(38),nn=e(14),ln=e(546),en=e(540),un=e(127),tn=e(129),an=e(195),on=e(197),dn=e(92),rn=e(9),sn=e(130),cn=e(18),fn=e(68),pn=e(33),gn=e(194),mn=e(7),hn=e(535),bn=e(67),vn=e(36),Rn=e(536),Cn=e(189),yn=e(91),In=e(534),kn=e(59),wn=e(196),_n=e(16),En=y["ɵcrt"]({encapsulation:2,styles:[],data:{}}),xn=y["ɵccf"]("page-profile",N,function(n){return y["ɵvid"](0,[(n()(),y["ɵeld"](0,0,null,null,1,"page-profile",[],null,null,null,C,En)),y["ɵdid"](1,49152,null,0,N,[vn.a,_n.a,I.a,un.a,tn.a,k.a,_.a],null,null)],null,null)},{},{},[]),qn=e(190),Nn=e(60);e.d(l,"ProfilePageModuleNgFactory",function(){return Vn});var Vn=y["ɵcmf"](D,[],function(n){return y["ɵmod"]([y["ɵmpd"](512,y.ComponentFactoryResolver,y["ɵCodegenComponentFactoryResolver"],[[8,[L.a,P.a,F.a,M.a,U.a,S.a,j.a,K.a,O.a,xn]],[3,y.ComponentFactoryResolver],y.NgModuleRef]),y["ɵmpd"](4608,cn.NgLocalization,cn.NgLocaleLocalization,[y.LOCALE_ID,[2,cn["ɵa"]]]),y["ɵmpd"](4608,$.n,$.n,[]),y["ɵmpd"](4608,$.c,$.c,[]),y["ɵmpd"](512,cn.CommonModule,cn.CommonModule,[]),y["ɵmpd"](512,$.m,$.m,[]),y["ɵmpd"](512,$.d,$.d,[]),y["ɵmpd"](512,$.l,$.l,[]),y["ɵmpd"](512,qn.a,qn.a,[]),y["ɵmpd"](512,qn.b,qn.b,[]),y["ɵmpd"](512,V.c,V.c,[]),y["ɵmpd"](512,T.a,T.a,[]),y["ɵmpd"](512,D,D,[]),y["ɵmpd"](256,Nn.a,N,[])])})},534:function(n,l,e){"use strict";function u(n){return t["ɵvid"](2,[t["ɵqud"](402653184,1,{_fixedContent:0}),t["ɵqud"](402653184,2,{_scrollContent:0}),(n()(),t["ɵeld"](2,0,[[1,0],["fixedContent",1]],null,1,"div",[["class","fixed-content"]],null,null,null,null,null)),t["ɵncd"](null,0),(n()(),t["ɵeld"](4,0,[[2,0],["scrollContent",1]],null,1,"div",[["class","scroll-content"]],null,null,null,null,null)),t["ɵncd"](null,1),t["ɵncd"](null,2)],null,null)}e.d(l,"a",function(){return i}),l.b=u;var t=e(0),i=(e(3),e(6),e(14),e(59),e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},535:function(n,l,e){"use strict";function u(n){return t["ɵvid"](0,[(n()(),t["ɵeld"](0,0,null,null,1,"div",[["class","toolbar-background"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(n()(),t["ɵeld"](2,0,null,null,8,"button",[["class","back-button"],["ion-button","bar-button"]],[[8,"hidden",0]],[[null,"click"]],function(n,l,e){var u=!0;if("click"===l){u=!1!==n.component.backButtonClick(e)&&u}return u},a.b,a.a)),t["ɵdid"](3,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](4,1097728,null,0,o.a,[[8,"bar-button"],d.a,t.ElementRef,t.Renderer],null,null),(n()(),t["ɵeld"](5,0,null,0,2,"ion-icon",[["class","back-button-icon"],["role","img"]],[[2,"hide",null]],null,null,null,null)),t["ɵdid"](6,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵdid"](7,147456,null,0,r.a,[d.a,t.ElementRef,t.Renderer],{name:[0,"name"]},null),(n()(),t["ɵeld"](8,0,null,0,2,"span",[["class","back-button-text"]],null,null,null,null,null)),t["ɵdid"](9,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),(n()(),t["ɵted"](10,null,["",""])),t["ɵncd"](null,0),t["ɵncd"](null,1),t["ɵncd"](null,2),(n()(),t["ɵeld"](14,0,null,null,2,"div",[["class","toolbar-content"]],null,null,null,null,null)),t["ɵdid"](15,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,3)],function(n,l){var e=l.component;n(l,1,0,"toolbar-background","toolbar-background-"+e._mode);n(l,3,0,"back-button","back-button-"+e._mode);n(l,6,0,"back-button-icon","back-button-icon-"+e._mode);n(l,7,0,e._bbIcon);n(l,9,0,"back-button-text","back-button-text-"+e._mode);n(l,15,0,"toolbar-content","toolbar-content-"+e._mode)},function(n,l){var e=l.component;n(l,2,0,e._hideBb);n(l,5,0,t["ɵnov"](l,7)._hidden);n(l,10,0,e._backText)})}e.d(l,"a",function(){return s}),l.b=u;var t=e(0),i=e(18),a=e(68),o=e(33),d=e(3),r=e(69),s=(e(7),e(36),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},536:function(n,l,e){"use strict";function u(n){return t["ɵvid"](2,[(n()(),t["ɵeld"](0,0,null,null,2,"div",[["class","toolbar-title"]],null,null,null,null,null)),t["ɵdid"](1,278528,null,0,i.NgClass,[t.IterableDiffers,t.KeyValueDiffers,t.ElementRef,t.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null),t["ɵncd"](null,0)],function(n,l){n(l,1,0,"toolbar-title","toolbar-title-"+l.component._mode)},null)}e.d(l,"a",function(){return a}),l.b=u;var t=e(0),i=e(18),a=(e(3),t["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},537:function(n,l,e){"use strict";function u(n){return d["ɵvid"](0,[(n()(),d["ɵeld"](0,0,[[1,0],["textInput",1]],null,1,"input",[["class","text-input"],["dir","auto"]],[[8,"type",0],[1,"aria-labelledby",0],[1,"min",0],[1,"max",0],[1,"step",0],[1,"autocomplete",0],[1,"autocorrect",0],[8,"placeholder",0],[8,"disabled",0],[8,"readOnly",0]],[[null,"input"],[null,"blur"],[null,"focus"],[null,"keydown"]],function(n,l,e){var u=!0,t=n.component;if("input"===l){u=!1!==t.onInput(e)&&u}if("blur"===l){u=!1!==t.onBlur(e)&&u}if("focus"===l){u=!1!==t.onFocus(e)&&u}if("keydown"===l){u=!1!==t.onKeydown(e)&&u}return u},null,null)),d["ɵdid"](1,278528,null,0,r.NgClass,[d.IterableDiffers,d.KeyValueDiffers,d.ElementRef,d.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null)],function(n,l){n(l,1,0,"text-input","text-input-"+l.component._mode)},function(n,l){var e=l.component;n(l,0,0,e._type,e._labelId,e.min,e.max,e.step,e.autocomplete,e.autocorrect,e.placeholder,e._disabled,e._readonly)})}function t(n){return d["ɵvid"](0,[(n()(),d["ɵeld"](0,0,[[1,0],["textInput",1]],null,1,"textarea",[["class","text-input"]],[[1,"aria-labelledby",0],[1,"autocomplete",0],[1,"autocorrect",0],[8,"placeholder",0],[8,"disabled",0],[8,"readOnly",0]],[[null,"input"],[null,"blur"],[null,"focus"],[null,"keydown"]],function(n,l,e){var u=!0,t=n.component;if("input"===l){u=!1!==t.onInput(e)&&u}if("blur"===l){u=!1!==t.onBlur(e)&&u}if("focus"===l){u=!1!==t.onFocus(e)&&u}if("keydown"===l){u=!1!==t.onKeydown(e)&&u}return u},null,null)),d["ɵdid"](1,278528,null,0,r.NgClass,[d.IterableDiffers,d.KeyValueDiffers,d.ElementRef,d.Renderer2],{klass:[0,"klass"],ngClass:[1,"ngClass"]},null)],function(n,l){n(l,1,0,"text-input","text-input-"+l.component._mode)},function(n,l){var e=l.component;n(l,0,0,e._labelId,e.autocomplete,e.autocorrect,e.placeholder,e._disabled,e._readonly)})}function i(n){return d["ɵvid"](0,[(n()(),d["ɵeld"](0,0,null,null,1,"button",[["class","text-input-clear-icon"],["clear",""],["ion-button",""],["tabindex","-1"],["type","button"]],null,[[null,"click"],[null,"mousedown"]],function(n,l,e){var u=!0,t=n.component;if("click"===l){u=!1!==t.clearTextInput(e)&&u}if("mousedown"===l){u=!1!==t.clearTextInput(e)&&u}return u},s.b,s.a)),d["ɵdid"](1,1097728,null,0,c.a,[[8,""],f.a,d.ElementRef,d.Renderer],{clear:[0,"clear"]},null)],function(n,l){n(l,1,0,"")},null)}function a(n){return d["ɵvid"](0,[(n()(),d["ɵeld"](0,0,null,null,0,"div",[["class","input-cover"]],null,[[null,"touchstart"],[null,"touchend"],[null,"mousedown"],[null,"mouseup"]],function(n,l,e){var u=!0,t=n.component;if("touchstart"===l){u=!1!==t._pointerStart(e)&&u}if("touchend"===l){u=!1!==t._pointerEnd(e)&&u}if("mousedown"===l){u=!1!==t._pointerStart(e)&&u}if("mouseup"===l){u=!1!==t._pointerEnd(e)&&u}return u},null,null))],null,null)}function o(n){return d["ɵvid"](2,[d["ɵqud"](671088640,1,{_native:0}),(n()(),d["ɵand"](16777216,null,null,1,null,u)),d["ɵdid"](2,16384,null,0,r.NgIf,[d.ViewContainerRef,d.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),d["ɵand"](16777216,null,null,1,null,t)),d["ɵdid"](4,16384,null,0,r.NgIf,[d.ViewContainerRef,d.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),d["ɵand"](16777216,null,null,1,null,i)),d["ɵdid"](6,16384,null,0,r.NgIf,[d.ViewContainerRef,d.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),d["ɵand"](16777216,null,null,1,null,a)),d["ɵdid"](8,16384,null,0,r.NgIf,[d.ViewContainerRef,d.TemplateRef],{ngIf:[0,"ngIf"]},null)],function(n,l){var e=l.component;n(l,2,0,!e._isTextarea);n(l,4,0,e._isTextarea);n(l,6,0,e._clearInput);n(l,8,0,e._useAssist)},null)}e.d(l,"a",function(){return p}),l.b=o;var d=e(0),r=e(18),s=e(68),c=e(33),f=e(3),p=(e(6),e(22),e(14),d["ɵcrt"]({encapsulation:2,styles:[],data:{}}))},538:function(n,l){var e="undefined"!=typeof crypto&&crypto.getRandomValues&&crypto.getRandomValues.bind(crypto)||"undefined"!=typeof msCrypto&&"function"==typeof window.msCrypto.getRandomValues&&msCrypto.getRandomValues.bind(msCrypto);if(e){var u=new Uint8Array(16);n.exports=function(){return e(u),u}}else{var t=new Array(16);n.exports=function(){for(var n,l=0;l<16;l++)0==(3&l)&&(n=4294967296*Math.random()),t[l]=n>>>((3&l)<<3)&255;return t}}},539:function(n,l){for(var e=[],u=0;u<256;++u)e[u]=(u+256).toString(16).substr(1);n.exports=function(n,l){var u=l||0;return[e[n[u++]],e[n[u++]],e[n[u++]],e[n[u++]],"-",e[n[u++]],e[n[u++]],"-",e[n[u++]],e[n[u++]],"-",e[n[u++]],e[n[u++]],"-",e[n[u++]],e[n[u++]],e[n[u++]],e[n[u++]],e[n[u++]],e[n[u++]]].join("")}},540:function(n,l,e){"use strict";e.d(l,"a",function(){return o});e(1),e(125),e(124);var u=e(0),t=e(28),i=this&&this.__awaiter||function(n,l,e,u){return new(e||(e=Promise))(function(t,i){function a(n){try{d(u.next(n))}catch(n){i(n)}}function o(n){try{d(u.throw(n))}catch(n){i(n)}}function d(n){n.done?t(n.value):new e(function(l){l(n.value)}).then(a,o)}d((u=u.apply(n,l||[])).next())})},a=this&&this.__generator||function(n,l){function e(e){return function(a){return function(e){if(u)throw new TypeError("Generator is already executing.");for(;o;)try{if(u=1,t&&(i=t[2&e[0]?"return":e[0]?"throw":"next"])&&!(i=i.call(t,e[1])).done)return i;switch(t=0,i&&(e=[0,i.value]),e[0]){case 0:case 1:i=e;break;case 4:return o.label++,{value:e[1],done:!1};case 5:o.label++,t=e[1],e=[0];continue;case 7:e=o.ops.pop(),o.trys.pop();continue;default:if(i=o.trys,!(i=i.length>0&&i[i.length-1])&&(6===e[0]||2===e[0])){o=0;continue}if(3===e[0]&&(!i||e[1]>i[0]&&e[1]<i[3])){o.label=e[1];break}if(6===e[0]&&o.label<i[1]){o.label=i[1],i=e;break}if(i&&o.label<i[2]){o.label=i[2],o.ops.push(e);break}i[2]&&o.ops.pop(),o.trys.pop();continue}e=l.call(n,o)}catch(n){e=[6,n],t=0}finally{u=i=0}if(5&e[0])throw e[1];return{value:e[0]?e[1]:void 0,done:!0}}([e,a])}}var u,t,i,a,o={label:0,sent:function(){if(1&i[0])throw i[1];return i[1]},trys:[],ops:[]};return a={next:e(0),throw:e(1),return:e(2)},"function"==typeof Symbol&&(a[Symbol.iterator]=function(){return this}),a},o=function(){function n(n,l,e,t){this.toast=n,this.load=l,this.back=e,this.storage=t,this.text="Selecciona una imágen",this.upload="Subiendo imágen...",this.error="Ocurrió un error al subir la imágen",this.success="Modificar o agregar otra foto del comprobante",this.clear=!0,this.showPreview=!0,this.imageWidth="40%",this.onFinish=new u.EventEmitter,this.loader=!1}return n.prototype.uploadFile=function(n,l){var e=this;return new Promise(function(u,i){var a=e.storage.ref("pagos/"+n);a.put(l).snapshotChanges().pipe(Object(t.finalize)(function(){a.getDownloadURL().subscribe(function(n){return u(n)})})).subscribe()})},n.prototype.onImageSelected=function(n){return i(this,void 0,void 0,function(){var l,e;return a(this,function(u){switch(u.label){case 0:return n?n.length<=0?[2]:((l=this.load.create({content:"Subiendo imágen..."})).present(),this.loader=!0,this.text=this.upload,[4,this.uploadFile(n[0].name,n[0])]):[2];case 1:return e=u.sent(),this.text=this.success,this.loader=!1,l.dismiss(),this.resImage=e,this.onFinish.emit(e),[2]}})})},n}()},541:function(n,l,e){var u=e(542),t=e(543),i=t;i.v1=u,i.v4=t,n.exports=i},542:function(n,l,e){var u,t,i=e(538),a=e(539),o=0,d=0;n.exports=function(n,l,e){var r=l&&e||0,s=l||[],c=(n=n||{}).node||u,f=void 0!==n.clockseq?n.clockseq:t;if(null==c||null==f){var p=i();null==c&&(c=u=[1|p[0],p[1],p[2],p[3],p[4],p[5]]),null==f&&(f=t=16383&(p[6]<<8|p[7]))}var g=void 0!==n.msecs?n.msecs:(new Date).getTime(),m=void 0!==n.nsecs?n.nsecs:d+1,h=g-o+(m-d)/1e4;if(h<0&&void 0===n.clockseq&&(f=f+1&16383),(h<0||g>o)&&void 0===n.nsecs&&(m=0),m>=1e4)throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");o=g,d=m,t=f;var b=(1e4*(268435455&(g+=122192928e5))+m)%4294967296;s[r++]=b>>>24&255,s[r++]=b>>>16&255,s[r++]=b>>>8&255,s[r++]=255&b;var v=g/4294967296*1e4&268435455;s[r++]=v>>>8&255,s[r++]=255&v,s[r++]=v>>>24&15|16,s[r++]=v>>>16&255,s[r++]=f>>>8|128,s[r++]=255&f;for(var R=0;R<6;++R)s[r+R]=c[R];return l||a(s)}},543:function(n,l,e){var u=e(538),t=e(539);n.exports=function(n,l,e){var i=l&&e||0;"string"==typeof n&&(l="binary"===n?new Array(16):null,n=null);var a=(n=n||{}).random||(n.rng||u)();if(a[6]=15&a[6]|64,a[8]=63&a[8]|128,l)for(var o=0;o<16;++o)l[i+o]=a[o];return l||t(a)}},544:function(n,l,e){"use strict";e.d(l,"a",function(){return u});e(1),e(124),e(540),e(545);var u=function(){return function(){}}()},545:function(n,l,e){"use strict";e.d(l,"a",function(){return o});e(1);var u=e(0),t=e(28),i=e(541),a=e.n(i),o=function(){function n(n){this.storage=n,this.loading=!1,this.percent=0,this.finished=!1,this.onFinish=new u.EventEmitter}return n.prototype.ngOnInit=function(){},n.prototype.onFileSelected=function(n){n&&n.item(0)&&(this.file=n.item(0),this.loading=!0,this.uploadFile(this.file))},n.prototype.onFinishUpload=function(n){var l=this;n.getDownloadURL().subscribe(function(n){l.finished=!1,l.loading=!1,l.file=null,l.urlResult=n,l.fileInput.nativeElement.value=null,l.onFinish.emit(n)})},n.prototype.uploadFile=function(n){var l=this,e=a.a.v4()+"-"+n.name,u=this.storage.ref(e);this.task=this.storage.upload(e,n),this.task.percentageChanges().subscribe(function(n){return l.percent=n}),this.task.snapshotChanges().pipe(Object(t.finalize)(function(){l.onFinishUpload(u)})).subscribe()},n}()},546:function(n,l,e){"use strict";function u(n){return i["ɵvid"](0,[(n()(),i["ɵeld"](0,0,null,null,0,"img",[["class","mtb-1"],["style","width:40%"]],[[8,"src",4]],null,null,null,null))],null,function(n,l){n(l,0,0,l.component.resImage)})}function t(n){return i["ɵvid"](0,[(n()(),i["ɵeld"](0,0,null,null,16,"div",[["class","flex-col"]],null,null,null,null,null)),(n()(),i["ɵted"](-1,null,["\n  "])),(n()(),i["ɵeld"](2,0,[["fileInput",1]],null,0,"input",[["hidden",""],["type","file"]],null,[[null,"change"]],function(n,l,e){var u=!0;if("change"===l){u=!1!==n.component.onImageSelected(i["ɵnov"](n,2).files)&&u}return u},null,null)),(n()(),i["ɵted"](-1,null,["\n  "])),(n()(),i["ɵeld"](4,0,null,null,5,"label",[],null,null,null,null,null)),(n()(),i["ɵted"](-1,null,["\n    "])),(n()(),i["ɵeld"](6,0,null,null,2,"button",[["ion-button",""]],[[8,"disabled",0]],[[null,"click"]],function(n,l,e){var u=!0;if("click"===l){u=!1!==i["ɵnov"](n,2).click()&&u}return u},a.b,a.a)),i["ɵdid"](7,1097728,null,0,o.a,[[8,""],d.a,i.ElementRef,i.Renderer],{clear:[0,"clear"]},null),(n()(),i["ɵted"](8,0,["",""])),(n()(),i["ɵted"](-1,null,["\n  "])),(n()(),i["ɵted"](-1,null,["\n  "])),(n()(),i["ɵeld"](11,0,null,null,4,"div",[["class","flex-col"]],null,null,null,null,null)),(n()(),i["ɵted"](-1,null,["\n    "])),(n()(),i["ɵand"](16777216,null,null,1,null,u)),i["ɵdid"](14,16384,null,0,r.NgIf,[i.ViewContainerRef,i.TemplateRef],{ngIf:[0,"ngIf"]},null),(n()(),i["ɵted"](-1,null,["\n  "])),(n()(),i["ɵted"](-1,null,["\n"])),(n()(),i["ɵted"](-1,null,["\n"]))],function(n,l){var e=l.component;n(l,7,0,e.clear);n(l,14,0,e.resImage&&e.showPreview)},function(n,l){var e=l.component;n(l,6,0,e.loader);n(l,8,0,e.text)})}e.d(l,"a",function(){return s}),l.b=t;var i=e(0),a=e(68),o=e(33),d=e(3),r=e(18),s=(e(125),i["ɵcrt"]({encapsulation:2,styles:[],data:{}}))}});
+webpackJsonp([0],{
+
+/***/ 720:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function() { return ProfilePageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__profile__ = __webpack_require__(744);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_moment__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(730);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+var ProfilePageModule = /** @class */ (function () {
+    function ProfilePageModule() {
+    }
+    ProfilePageModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__profile__["a" /* ProfilePage */]),
+                __WEBPACK_IMPORTED_MODULE_3_ngx_moment__["a" /* MomentModule */],
+                __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* ComponentsModule */],
+            ],
+        })
+    ], ProfilePageModule);
+    return ProfilePageModule;
+}());
+
+//# sourceMappingURL=profile.module.js.map
+
+/***/ }),
+
+/***/ 725:
+/***/ (function(module, exports) {
+
+// Unique ID creation requires a high quality random # generator.  In the
+// browser this is a little complicated due to unknown quality of Math.random()
+// and inconsistent support for the `crypto` API.  We do the best we can via
+// feature-detection
+
+// getRandomValues needs to be invoked in a context where "this" is a Crypto
+// implementation. Also, find the complete implementation of crypto on IE11.
+var getRandomValues = (typeof(crypto) != 'undefined' && crypto.getRandomValues && crypto.getRandomValues.bind(crypto)) ||
+                      (typeof(msCrypto) != 'undefined' && typeof window.msCrypto.getRandomValues == 'function' && msCrypto.getRandomValues.bind(msCrypto));
+
+if (getRandomValues) {
+  // WHATWG crypto RNG - http://wiki.whatwg.org/wiki/Crypto
+  var rnds8 = new Uint8Array(16); // eslint-disable-line no-undef
+
+  module.exports = function whatwgRNG() {
+    getRandomValues(rnds8);
+    return rnds8;
+  };
+} else {
+  // Math.random()-based (RNG)
+  //
+  // If all else fails, use Math.random().  It's fast, but is of unspecified
+  // quality.
+  var rnds = new Array(16);
+
+  module.exports = function mathRNG() {
+    for (var i = 0, r; i < 16; i++) {
+      if ((i & 0x03) === 0) r = Math.random() * 0x100000000;
+      rnds[i] = r >>> ((i & 0x03) << 3) & 0xff;
+    }
+
+    return rnds;
+  };
+}
+
+
+/***/ }),
+
+/***/ 726:
+/***/ (function(module, exports) {
+
+/**
+ * Convert array of 16 byte values to UUID string format of the form:
+ * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+ */
+var byteToHex = [];
+for (var i = 0; i < 256; ++i) {
+  byteToHex[i] = (i + 0x100).toString(16).substr(1);
+}
+
+function bytesToUuid(buf, offset) {
+  var i = offset || 0;
+  var bth = byteToHex;
+  // join used to fix memory issue caused by concatenation: https://bugs.chromium.org/p/v8/issues/detail?id=3175#c4
+  return ([bth[buf[i++]], bth[buf[i++]], 
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]], '-',
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]],
+	bth[buf[i++]], bth[buf[i++]]]).join('');
+}
+
+module.exports = bytesToUuid;
+
+
+/***/ }),
+
+/***/ 727:
+/***/ (function(module, exports, __webpack_require__) {
+
+var v1 = __webpack_require__(728);
+var v4 = __webpack_require__(729);
+
+var uuid = v4;
+uuid.v1 = v1;
+uuid.v4 = v4;
+
+module.exports = uuid;
+
+
+/***/ }),
+
+/***/ 728:
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(725);
+var bytesToUuid = __webpack_require__(726);
+
+// **`v1()` - Generate time-based UUID**
+//
+// Inspired by https://github.com/LiosK/UUID.js
+// and http://docs.python.org/library/uuid.html
+
+var _nodeId;
+var _clockseq;
+
+// Previous uuid creation time
+var _lastMSecs = 0;
+var _lastNSecs = 0;
+
+// See https://github.com/broofa/node-uuid for API details
+function v1(options, buf, offset) {
+  var i = buf && offset || 0;
+  var b = buf || [];
+
+  options = options || {};
+  var node = options.node || _nodeId;
+  var clockseq = options.clockseq !== undefined ? options.clockseq : _clockseq;
+
+  // node and clockseq need to be initialized to random values if they're not
+  // specified.  We do this lazily to minimize issues related to insufficient
+  // system entropy.  See #189
+  if (node == null || clockseq == null) {
+    var seedBytes = rng();
+    if (node == null) {
+      // Per 4.5, create and 48-bit node id, (47 random bits + multicast bit = 1)
+      node = _nodeId = [
+        seedBytes[0] | 0x01,
+        seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]
+      ];
+    }
+    if (clockseq == null) {
+      // Per 4.2.2, randomize (14 bit) clockseq
+      clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 0x3fff;
+    }
+  }
+
+  // UUID timestamps are 100 nano-second units since the Gregorian epoch,
+  // (1582-10-15 00:00).  JSNumbers aren't precise enough for this, so
+  // time is handled internally as 'msecs' (integer milliseconds) and 'nsecs'
+  // (100-nanoseconds offset from msecs) since unix epoch, 1970-01-01 00:00.
+  var msecs = options.msecs !== undefined ? options.msecs : new Date().getTime();
+
+  // Per 4.2.1.2, use count of uuid's generated during the current clock
+  // cycle to simulate higher resolution clock
+  var nsecs = options.nsecs !== undefined ? options.nsecs : _lastNSecs + 1;
+
+  // Time since last uuid creation (in msecs)
+  var dt = (msecs - _lastMSecs) + (nsecs - _lastNSecs)/10000;
+
+  // Per 4.2.1.2, Bump clockseq on clock regression
+  if (dt < 0 && options.clockseq === undefined) {
+    clockseq = clockseq + 1 & 0x3fff;
+  }
+
+  // Reset nsecs if clock regresses (new clockseq) or we've moved onto a new
+  // time interval
+  if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === undefined) {
+    nsecs = 0;
+  }
+
+  // Per 4.2.1.2 Throw error if too many uuids are requested
+  if (nsecs >= 10000) {
+    throw new Error('uuid.v1(): Can\'t create more than 10M uuids/sec');
+  }
+
+  _lastMSecs = msecs;
+  _lastNSecs = nsecs;
+  _clockseq = clockseq;
+
+  // Per 4.1.4 - Convert from unix epoch to Gregorian epoch
+  msecs += 12219292800000;
+
+  // `time_low`
+  var tl = ((msecs & 0xfffffff) * 10000 + nsecs) % 0x100000000;
+  b[i++] = tl >>> 24 & 0xff;
+  b[i++] = tl >>> 16 & 0xff;
+  b[i++] = tl >>> 8 & 0xff;
+  b[i++] = tl & 0xff;
+
+  // `time_mid`
+  var tmh = (msecs / 0x100000000 * 10000) & 0xfffffff;
+  b[i++] = tmh >>> 8 & 0xff;
+  b[i++] = tmh & 0xff;
+
+  // `time_high_and_version`
+  b[i++] = tmh >>> 24 & 0xf | 0x10; // include version
+  b[i++] = tmh >>> 16 & 0xff;
+
+  // `clock_seq_hi_and_reserved` (Per 4.2.2 - include variant)
+  b[i++] = clockseq >>> 8 | 0x80;
+
+  // `clock_seq_low`
+  b[i++] = clockseq & 0xff;
+
+  // `node`
+  for (var n = 0; n < 6; ++n) {
+    b[i + n] = node[n];
+  }
+
+  return buf ? buf : bytesToUuid(b);
+}
+
+module.exports = v1;
+
+
+/***/ }),
+
+/***/ 729:
+/***/ (function(module, exports, __webpack_require__) {
+
+var rng = __webpack_require__(725);
+var bytesToUuid = __webpack_require__(726);
+
+function v4(options, buf, offset) {
+  var i = buf && offset || 0;
+
+  if (typeof(options) == 'string') {
+    buf = options === 'binary' ? new Array(16) : null;
+    options = null;
+  }
+  options = options || {};
+
+  var rnds = options.random || (options.rng || rng)();
+
+  // Per 4.4, set bits for version and `clock_seq_hi_and_reserved`
+  rnds[6] = (rnds[6] & 0x0f) | 0x40;
+  rnds[8] = (rnds[8] & 0x3f) | 0x80;
+
+  // Copy bytes to buffer, if provided
+  if (buf) {
+    for (var ii = 0; ii < 16; ++ii) {
+      buf[i + ii] = rnds[ii];
+    }
+  }
+
+  return buf || bytesToUuid(rnds);
+}
+
+module.exports = v4;
+
+
+/***/ }),
+
+/***/ 730:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__file_upload_file_upload__ = __webpack_require__(731);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__storage_uploader_storage_uploader_component__ = __webpack_require__(732);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+var ComponentsModule = /** @class */ (function () {
+    function ComponentsModule() {
+    }
+    ComponentsModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
+            declarations: [__WEBPACK_IMPORTED_MODULE_2__file_upload_file_upload__["a" /* FileUploadComponent */], __WEBPACK_IMPORTED_MODULE_3__storage_uploader_storage_uploader_component__["a" /* StorageUploaderComponent */]],
+            imports: [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* IonicPageModule */]],
+            exports: [__WEBPACK_IMPORTED_MODULE_2__file_upload_file_upload__["a" /* FileUploadComponent */], __WEBPACK_IMPORTED_MODULE_3__storage_uploader_storage_uploader_component__["a" /* StorageUploaderComponent */]]
+        })
+    ], ComponentsModule);
+    return ComponentsModule;
+}());
+
+//# sourceMappingURL=components.module.js.map
+
+/***/ }),
+
+/***/ 731:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FileUploadComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_storage__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(22);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+var FileUploadComponent = /** @class */ (function () {
+    function FileUploadComponent(toast, load, back, storage) {
+        this.toast = toast;
+        this.load = load;
+        this.back = back;
+        this.storage = storage;
+        this.text = 'Selecciona una imágen';
+        this.upload = 'Subiendo imágen...';
+        this.error = 'Ocurrió un error al subir la imágen';
+        this.success = 'Modificar o agregar otra foto del comprobante';
+        this.clear = true;
+        this.showPreview = true;
+        this.imageWidth = '40%';
+        this.onFinish = new __WEBPACK_IMPORTED_MODULE_2__angular_core__["EventEmitter"]();
+        this.loader = false;
+    }
+    FileUploadComponent.prototype.uploadFile = function (filename, file) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var ref = _this.storage.ref("pagos/" + filename);
+            var task = ref.put(file);
+            task.snapshotChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["finalize"])(function () {
+                ref.getDownloadURL().subscribe(function (url) { return resolve(url); });
+            })).subscribe();
+        });
+    };
+    FileUploadComponent.prototype.onImageSelected = function (files) {
+        return __awaiter(this, void 0, void 0, function () {
+            var l, url;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!files)
+                            return [2 /*return*/];
+                        if (files.length <= 0)
+                            return [2 /*return*/];
+                        l = this.load.create({ content: 'Subiendo imágen...' });
+                        l.present();
+                        this.loader = true;
+                        this.text = this.upload;
+                        return [4 /*yield*/, this.uploadFile(files[0].name, files[0])];
+                    case 1:
+                        url = _a.sent();
+                        this.text = this.success;
+                        this.loader = false;
+                        l.dismiss();
+                        this.resImage = url;
+                        this.onFinish.emit(url);
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], FileUploadComponent.prototype, "text", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], FileUploadComponent.prototype, "upload", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], FileUploadComponent.prototype, "error", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], FileUploadComponent.prototype, "success", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], FileUploadComponent.prototype, "clear", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", Boolean)
+    ], FileUploadComponent.prototype, "showPreview", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], FileUploadComponent.prototype, "imageWidth", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Output"])(),
+        __metadata("design:type", Object)
+    ], FileUploadComponent.prototype, "onFinish", void 0);
+    FileUploadComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["Component"])({
+            selector: 'file-upload',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/components/file-upload/file-upload.html"*/'<div class="flex-col">\n  <input type="file" hidden #fileInput (change)="onImageSelected(fileInput.files)">\n  <label>\n    <button ion-button [disabled]="loader" (click)="fileInput.click()" [clear]="clear">{{text}}</button>\n  </label>\n  <div class="flex-col">\n    <img [src]="resImage" *ngIf="resImage && showPreview" style="width:40%" class="mtb-1">\n  </div>\n</div>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/components/file-upload/file-upload.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
+            __WEBPACK_IMPORTED_MODULE_3__angular_fire_storage__["a" /* AngularFireStorage */]])
+    ], FileUploadComponent);
+    return FileUploadComponent;
+}());
+
+//# sourceMappingURL=file-upload.js.map
+
+/***/ }),
+
+/***/ 732:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StorageUploaderComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_fire_storage__ = __webpack_require__(458);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_uuid__ = __webpack_require__(727);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_uuid___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_uuid__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var StorageUploaderComponent = /** @class */ (function () {
+    function StorageUploaderComponent(storage) {
+        this.storage = storage;
+        this.loading = false;
+        this.percent = 0;
+        this.finished = false;
+        this.onFinish = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+    }
+    StorageUploaderComponent.prototype.ngOnInit = function () {
+    };
+    StorageUploaderComponent.prototype.onFileSelected = function (files) {
+        if (!files)
+            return;
+        if (!files.item(0))
+            return;
+        this.file = files.item(0);
+        this.loading = true;
+        this.uploadFile(this.file);
+    };
+    StorageUploaderComponent.prototype.onFinishUpload = function (ref) {
+        var _this = this;
+        ref.getDownloadURL().subscribe(function (url) {
+            _this.finished = false;
+            _this.loading = false;
+            _this.file = null;
+            _this.urlResult = url;
+            _this.fileInput.nativeElement.value = null;
+            _this.onFinish.emit(url);
+        });
+    };
+    StorageUploaderComponent.prototype.uploadFile = function (file) {
+        var _this = this;
+        var path = __WEBPACK_IMPORTED_MODULE_3_uuid___default.a.v4() + "-" + file.name;
+        var ref = this.storage.ref(path);
+        this.task = this.storage.upload(path, file);
+        this.task.percentageChanges().subscribe(function (percent) { return _this.percent = percent; });
+        this.task.snapshotChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["finalize"])(function () {
+            _this.onFinishUpload(ref);
+        })).subscribe();
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"])
+    ], StorageUploaderComponent.prototype, "onFinish", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('fileUploader'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    ], StorageUploaderComponent.prototype, "fileInput", void 0);
+    StorageUploaderComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-storage-uploader',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/components/storage-uploader/storage-uploader.component.html"*/'<div class="app-storage-uploader">\n  <input type="file" id="fileUploader" (change)="onFileSelected(fileUploader.files)" hidden #fileUploader>\n  <label for="fileUploader">\n    <button type="button" class="btn" [ngClass]="{\'btn-primary\': !finished, \'btn-success\': finished}"  [disabled]="loading" (click)="fileUploader.click()" >\n      <span *ngIf="!file && !loading && !finished" >Seleccionar Archivo</span>\n      <span *ngIf="file && loading && !finished" >Subiendo...</span>\n      <span *ngIf="file && !loading && finished" >Subida finalizada</span>\n      <div class="barra-container" *ngIf="file && loading" >\n        <div class="barra" [style.width]="percent + \'%\'"></div>\n      </div>\n    </button>\n  </label>\n</div>'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/components/storage-uploader/storage-uploader.component.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_fire_storage__["a" /* AngularFireStorage */]])
+    ], StorageUploaderComponent);
+    return StorageUploaderComponent;
+}());
+
+//# sourceMappingURL=storage-uploader.component.js.map
+
+/***/ }),
+
+/***/ 744:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ProfilePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators__ = __webpack_require__(22);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var ProfilePage = /** @class */ (function () {
+    function ProfilePage(navCtrl, navParams, back, toast, load, auth, afs) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.back = back;
+        this.toast = toast;
+        this.load = load;
+        this.auth = auth;
+        this.afs = afs;
+        this.uid = this.navParams.get('uid');
+        this.edit = false;
+    }
+    ProfilePage.prototype.ionViewDidLoad = function () {
+        var _this = this;
+        if (!this.auth.user)
+            return this.navCtrl.setRoot('LoginPage');
+        if (!this.uid) {
+            this.user = this.auth.user;
+            this.auth.user$.subscribe(function (_user) {
+                if (_user && !_this.user) {
+                    _this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER).doc(_user.uid).valueChanges().subscribe(function (user) { return _this.user = user; });
+                }
+            });
+        }
+        else {
+            this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER).doc(this.uid).valueChanges().subscribe(function (user) { return _this.user = user; });
+        }
+    };
+    ProfilePage.prototype.loadUser = function (uid) {
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER).doc(uid).valueChanges().pipe(Object(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators__["take"])(1)).toPromise()];
+                    case 1:
+                        user = _a.sent();
+                        this.user = user;
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProfilePage.prototype.onFinish = function (data) {
+        this.user.credencial = data.secure_url;
+    };
+    ProfilePage.prototype.saveChanges = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var l;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        l = this.load.create({ content: 'Guardando cambios...' });
+                        l.present();
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER).doc(this.user.uid).update(this.user)];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ProfilePage.prototype.openImage = function (url) {
+        if (!this.auth.isAdmin)
+            return;
+        console.log(url);
+        var w = window.open(url, '_blank');
+        w.focus();
+    };
+    ProfilePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-profile',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/profile/profile.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Perfil</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <div class="flex flex-col justify-center align-center" *ngIf="user && user.photoURL">\n      <img [src]="user.photoURL" class="profile-avatar">\n    </div>\n\n    <ion-card *ngIf="user" >\n      <ion-list>\n        <ion-list-header>Información</ion-list-header>\n\n        <ion-item *ngIf="!edit" >\n          <strong>Nombre(s): </strong> {{user.displayName}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.displayName" placeholder="Nombre(s)"></ion-input>\n        </ion-item>\n\n        <!-- <ion-item *ngIf="!edit" >\n          <strong>Apellidos: </strong> {{user.lastName}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.lastName" placeholder="Apellidos"></ion-input>\n        </ion-item> -->\n\n        <ion-item *ngIf="!edit" >\n          <strong>Celular: </strong> {{user.celular}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.celular" placeholder="Celular"></ion-input>\n        </ion-item>\n\n        <ion-item *ngIf="!edit" >\n          <strong>Universidad: </strong> {{user.universidad}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.universidad" placeholder="Universidad"></ion-input>\n        </ion-item>\n\n        <ion-item *ngIf="!edit" >\n          <strong>Especialidad: </strong> {{user.especialidad}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.especialidad" placeholder="Especialidad"></ion-input>\n        </ion-item>\n\n        <ion-item *ngIf="!edit" >\n          <strong>Email: </strong> {{user.new_email}}\n        </ion-item>\n        <ion-item *ngIf="edit" >\n          <ion-input [(ngModel)]="user.new_email" placeholder="Correo electrónico"></ion-input>\n        </ion-item>\n\n        <ion-item>\n          <strong>Foto: </strong> {{user.foto}}\n        </ion-item>\n\n        <!-- <ion-item>\n          <strong>Fecha de inscripción: </strong> {{user.createdAt | amDateFormat:\'LL\'}}\n        </ion-item> -->\n\n        <ion-item *ngIf="!edit" >\n          <strong>Credencial: </strong>\n        </ion-item>\n        <img [src]="user.credencial" *ngIf="user.credencial" (click)="openImage(user.credencial)" >\n        <ion-item *ngIf="edit">\n          <strong>Credencial:</strong>\n          <file-upload (onFinish)="onFinish($event)"></file-upload>\n        </ion-item>\n\n      </ion-list>\n    </ion-card>\n\n    <button ion-button clear (click)="edit = true" *ngIf="user && !edit && (auth.isAdmin || user.uid == auth.user.uid)" >Editar Información</button>\n    <div class="flex flex-col justify-center align-center" *ngIf="edit" >\n      <button ion-button (click)="saveChanges()" >Guardar cambios</button>\n    </div>\n\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/profile/profile.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],
+            __WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__["a" /* AngularFirestore */]])
+    ], ProfilePage);
+    return ProfilePage;
+}());
+
+//# sourceMappingURL=profile.js.map
+
+/***/ })
+
+});
+//# sourceMappingURL=0.js.map

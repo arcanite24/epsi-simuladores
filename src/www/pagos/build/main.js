@@ -1,1 +1,1497 @@
-webpackJsonp([15],{125:function(e,t,o){"use strict";o.d(t,"a",function(){return a});o(1);var n=this&&this.__awaiter||function(e,t,o,n){return new(o||(o=Promise))(function(r,a){function i(e){try{u(n.next(e))}catch(e){a(e)}}function s(e){try{u(n.throw(e))}catch(e){a(e)}}function u(e){e.done?r(e.value):new o(function(t){t(e.value)}).then(i,s)}u((n=n.apply(e,t||[])).next())})},r=this&&this.__generator||function(e,t){function o(o){return function(i){return function(o){if(n)throw new TypeError("Generator is already executing.");for(;s;)try{if(n=1,r&&(a=r[2&o[0]?"return":o[0]?"throw":"next"])&&!(a=a.call(r,o[1])).done)return a;switch(r=0,a&&(o=[0,a.value]),o[0]){case 0:case 1:a=o;break;case 4:return s.label++,{value:o[1],done:!1};case 5:s.label++,r=o[1],o=[0];continue;case 7:o=s.ops.pop(),s.trys.pop();continue;default:if(a=s.trys,!(a=a.length>0&&a[a.length-1])&&(6===o[0]||2===o[0])){s=0;continue}if(3===o[0]&&(!a||o[1]>a[0]&&o[1]<a[3])){s.label=o[1];break}if(6===o[0]&&s.label<a[1]){s.label=a[1],a=o;break}if(a&&s.label<a[2]){s.label=a[2],s.ops.push(o);break}a[2]&&s.ops.pop(),s.trys.pop();continue}o=t.call(e,s)}catch(e){o=[6,e],r=0}finally{n=a=0}if(5&o[0])throw o[1];return{value:o[0]?o[1]:void 0,done:!0}}([o,i])}}var n,r,a,i,s={label:0,sent:function(){if(1&a[0])throw a[1];return a[1]},trys:[],ops:[]};return i={next:o(0),throw:o(1),return:o(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i},a=function(){function e(e){this.http=e,this.api="http://167.99.12.186:1337/api/v1",this.admin="5b69cb5d300d766aae22ac68"}return e.prototype.isRole=function(e){if(!e)return!1;var t=JSON.parse(localStorage.getItem("user"));return!!t&&(!!t.roles&&t.roles.indexOf(e)>=0)},e.prototype.isA=function(){return this.isRole("ROLE_ADMIN")},e.prototype.isU=function(){return this.isRole("ROLE_USER")},Object.defineProperty(e.prototype,"token",{get:function(){return localStorage.getItem("token")},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"uid",{get:function(){return localStorage.getItem("uid")},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"user",{get:function(){return JSON.parse(localStorage.getItem("user"))},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isAdmin",{get:function(){return this.isRole("ROLE_ADMIN")},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isViewPagos",{get:function(){return this.isRole("ROLE_VIEW_PAGOS")},enumerable:!0,configurable:!0}),e.prototype.login=function(e,t){return this.http.post(this.api+"/user/login",{email:e,password:t})},e.prototype.register=function(e){return this.http.post(this.api+"/user/register",e)},e.prototype.facebookApp=function(e){return this.http.post(this.api+"/user/facebookApp",{token:e})},e.prototype.googleApp=function(e){return this.http.post(this.api+"/user/googleApp",{profile:e})},e.prototype.socialAuthWeb=function(e){return this.http.post(this.api+"/user/socialAuthWeb",e)},e.prototype.reloadAuth=function(){return n(this,void 0,void 0,function(){var e;return r(this,function(t){switch(t.label){case 0:return[4,this.getUserDetail(this.uid).toPromise()];case 1:return e=t.sent(),console.log(e),localStorage.setItem("user",JSON.stringify(e)),[2]}})})},e.prototype.validate=function(e,t,o){if(!e)return o.create({message:"Los datos no pueden ser vacios...",duration:2e3}).present(),!1;for(var n=0,r=t;n<r.length;n++){var a=r[n];if(!e[a])return console.log(a),o.create({message:'El campo "'+a+'" no puede estar vacío...',duration:2e3}).present(),!1}return!0},e.prototype.getUserControlesPago=function(e){return this.http.get(this.api+"/ControlPago?user="+e)},e.prototype.getAllControles=function(){return this.http.get(this.api+"/ControlPago")},e.prototype.getControlDetail=function(e){return this.http.get(this.api+"/ControlPago/"+e)},e.prototype.addControlPago=function(e){return this.http.post(this.api+"/ControlPago",e)},e.prototype.updateControlPago=function(e,t){return this.http.put(this.api+"/ControlPago/"+e,t)},e.prototype.deleteControlPago=function(e){return this.http.delete(this.api+"/ControlPago/"+e)},e.prototype.createPagoZamna=function(e,t,o,n,r,a,i,s){return this.http.post(this.api+"/ControlPago/crearPagoZamna",{controlId:e,amount:t,cardId:o,userId:n,sess:r,method:a,payment:i,plan:s})},e.prototype.pagarPaynet=function(e,t,o,n,r){return this.http.post(this.api+"/ControlPago/pagarPaynet",{id:e,amount:t,desc:o,controlId:n,method:r})},e.prototype.restarAmount=function(e,t,o){return this.http.put(this.api+"/ControlPago/restarAmount/"+e,{amount:t,pagoId:o})},e.prototype.updateUser=function(e,t){return this.http.put(this.api+"/User/"+e,t)},e.prototype.getUserDetail=function(e){return this.http.get(this.api+"/User/"+e)},e.prototype.getUserTarjetas=function(e){return this.http.get(this.api+"/Tarjeta/getUserTarjetas/"+e)},e.prototype.addTarjeta=function(e){return this.http.post(this.api+"/Tarjeta/crearTarjeta",e)},e.prototype.uploadImage=function(e){var t=new FormData;return t.append("image",e),this.http.post(this.api+"/ControlPago/uploadImage",t)},e.prototype.updatePagoZamna=function(e,t){return this.http.put(this.api+"/PagoZamna/"+e,t)},e.prototype.getUserBecas=function(e){return this.http.get(this.api+"/BecaTeam/getUserTeams/"+e)},e.prototype.addBeca=function(e){return this.http.post(this.api+"/BecaTeam",e)},e.prototype.joinToTeam=function(e,t){return this.http.post(this.api+"/BecaTeam/joinToTeam",{userId:e,teamId:t})},e.prototype.joinTeamByCode=function(e,t){return this.http.post(this.api+"/BecaTeam/joinTeamByCode",{code:e,userId:t})},e.prototype.deleteBeca=function(e){return this.http.delete(this.api+"/BecaTeam/"+e)},e.prototype.getAllTeams=function(){return this.http.get(this.api+"/BecaTeam")},e.prototype.getTeamDetail=function(e){return this.http.get(this.api+"/BecaTeam/"+e)},e.prototype.sumarDeuda=function(e,t){return this.http.put(this.api+"/User/sumarDeuda",{id:e,amount:t})},e}()},192:function(e,t,o){"use strict";o.d(t,"a",function(){return l});o(1);var n=o(15),r=o(28),a=o(434),i=o(261),s=(o.n(i),this&&this.__awaiter||function(e,t,o,n){return new(o||(o=Promise))(function(r,a){function i(e){try{u(n.next(e))}catch(e){a(e)}}function s(e){try{u(n.throw(e))}catch(e){a(e)}}function u(e){e.done?r(e.value):new o(function(t){t(e.value)}).then(i,s)}u((n=n.apply(e,t||[])).next())})}),u=this&&this.__generator||function(e,t){function o(o){return function(i){return function(o){if(n)throw new TypeError("Generator is already executing.");for(;s;)try{if(n=1,r&&(a=r[2&o[0]?"return":o[0]?"throw":"next"])&&!(a=a.call(r,o[1])).done)return a;switch(r=0,a&&(o=[0,a.value]),o[0]){case 0:case 1:a=o;break;case 4:return s.label++,{value:o[1],done:!1};case 5:s.label++,r=o[1],o=[0];continue;case 7:o=s.ops.pop(),s.trys.pop();continue;default:if(a=s.trys,!(a=a.length>0&&a[a.length-1])&&(6===o[0]||2===o[0])){s=0;continue}if(3===o[0]&&(!a||o[1]>a[0]&&o[1]<a[3])){s.label=o[1];break}if(6===o[0]&&s.label<a[1]){s.label=a[1],a=o;break}if(a&&s.label<a[2]){s.label=a[2],s.ops.push(o);break}a[2]&&s.ops.pop(),s.trys.pop();continue}o=t.call(e,s)}catch(e){o=[6,e],r=0}finally{n=a=0}if(5&o[0])throw o[1];return{value:o[0]?o[1]:void 0,done:!0}}([o,i])}}var n,r,a,i,s={label:0,sent:function(){if(1&a[0])throw a[1];return a[1]},trys:[],ops:[]};return i={next:o(0),throw:o(1),return:o(2)},"function"==typeof Symbol&&(i[Symbol.iterator]=function(){return this}),i},l=function(){function e(e,t){var o=this;this.afAuth=e,this.afs=t,this.userSubject=new n.BehaviorSubject(null),this.afAuth.authState.pipe(Object(r.switchMap)(function(e){return e?o.afs.doc("user/"+e.uid).valueChanges():Object(n.of)(null)})).subscribe(function(e){o.userSubject.next(e)})}return Object.defineProperty(e.prototype,"user",{get:function(){return this.userSubject.value},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"loggedIn",{get:function(){return!!this.userSubject.value},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"user$",{get:function(){return this.userSubject.asObservable()},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isAdmin",{get:function(){return this.loggedIn&&this.user[a.d.Admin]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isEsencial",{get:function(){return this.loggedIn&&this.user[a.d.Esencial]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isPremium",{get:function(){return this.loggedIn&&this.user[a.d.Premium]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isViewPagos",{get:function(){return this.loggedIn&&this.user[a.d.ViewPagos]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isContent",{get:function(){return this.loggedIn&&this.user[a.d.Content]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isTemprano",{get:function(){return this.loggedIn&&this.user[a.d.Temprano]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isChecklist",{get:function(){return this.loggedIn&&this.user[a.d.Checklist]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isCalendar",{get:function(){return this.loggedIn&&this.user[a.d.Calendar]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isTopUsers",{get:function(){return this.loggedIn&&this.user[a.d.TopUsers]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isGalleries",{get:function(){return this.loggedIn&&this.user[a.d.Galleries]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isSimuladores",{get:function(){return this.loggedIn&&this.user[a.d.Simuladores]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isForum",{get:function(){return this.loggedIn&&this.user[a.d.Forum]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isStreaming",{get:function(){return this.loggedIn&&this.user[a.d.Streaming]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isMedia",{get:function(){return this.loggedIn&&this.user[a.d.Media]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isSlides",{get:function(){return this.loggedIn&&this.user[a.d.Slides]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isSimulacros",{get:function(){return this.loggedIn&&this.user[a.d.Simulacros]},enumerable:!0,configurable:!0}),Object.defineProperty(e.prototype,"isFeed",{get:function(){return this.loggedIn&&this.user[a.d.Feed]},enumerable:!0,configurable:!0}),e.prototype.setUser=function(e){if(console.log(e),e)return this.afs.doc("user/"+e.uid).set(Object.assign({},e),{merge:!0})},e.prototype.getUser=function(){return s(this,void 0,void 0,function(){return u(this,function(e){return[2,this.afs.doc(a.a.USER+"/"+this.user.uid).valueChanges().pipe(Object(r.take)(1)).toPromise()]})})},e.prototype.logout=function(){return this.afAuth.auth.signOut()},e.prototype.loginGoogle=function(e){var t=this;return void 0===e&&(e=!0),new Promise(function(o,n){return s(t,void 0,void 0,function(){var t,r,a,s;return u(this,function(u){switch(u.label){case 0:return u.trys.push([0,6,,7]),e?[3,3]:[4,this.afAuth.auth.signInWithRedirect(new i.auth.GoogleAuthProvider)];case 1:return u.sent(),[4,this.afAuth.auth.getRedirectResult()];case 2:return t=u.sent(),a=t.user,this.setUser({email:a.email,displayName:a.displayName,photoURL:a.photoURL,uid:a.uid}),[2,o(a)];case 3:return[4,this.afAuth.auth.signInWithPopup(new i.auth.GoogleAuthProvider)];case 4:return r=u.sent(),a=r.user,this.setUser({email:a.email,displayName:a.displayName,photoURL:a.photoURL,uid:a.uid}),[2,o(r.user)];case 5:return[3,7];case 6:return s=u.sent(),[2,n(s)];case 7:return[2]}})})})},e.prototype.loginFacebook=function(e){var t=this;return void 0===e&&(e=!0),new Promise(function(o,n){return s(t,void 0,void 0,function(){var t,r,a,s;return u(this,function(u){switch(u.label){case 0:return u.trys.push([0,6,,7]),e?[3,3]:[4,this.afAuth.auth.signInWithRedirect(new i.auth.FacebookAuthProvider)];case 1:return u.sent(),[4,this.afAuth.auth.getRedirectResult()];case 2:return t=u.sent(),a=t.user,this.setUser({email:a.email,displayName:a.displayName,photoURL:a.photoURL,uid:a.uid}),[2,o(a)];case 3:return[4,this.afAuth.auth.signInWithPopup(new i.auth.FacebookAuthProvider)];case 4:return r=u.sent(),a=r.user,this.setUser({email:a.email,displayName:a.displayName,photoURL:a.photoURL,uid:a.uid}),[2,o(r.user)];case 5:return[3,7];case 6:return s=u.sent(),[2,n(s)];case 7:return[2]}})})})},e.prototype.findUserByEmail=function(e){return this.afs.collection(a.a.USER,function(t){return t.where("email","==",e)}).valueChanges().pipe(Object(r.map)(function(e){return e[0]}))},e}()},203:function(e,t,o){"use strict";o.d(t,"a",function(){return r});o(1);var n=o(206),r=function(){function e(e){this.http=e}return e.prototype.generatePaymentUrl=function(e,t,o,r,a,i){return void 0===i&&(i=!1),this.http.post(n.a+"/pay/generate_payment",{model_id:e,request_id:t,title:o,amount:r,email:a,isProd:i}).toPromise()},e.prototype.generatePaymentUrlZamnaPagos=function(e,t,o,r,a,i){return void 0===i&&(i=!1),this.http.post(n.a+"/pay/generate_payment_zamna_pagos",{control_id:e,pago_id:t,title:o,amount:r,email:a,isProd:i}).toPromise()},e.prototype.generatePaypalButton=function(e,t,o){paypal.Button.render({env:n.d?"production":"sandbox",commit:!0,style:{color:"gold",size:"small"},client:{sandbox:n.c,production:n.b},payment:function(e,o){return o.payment.create({payment:{transactions:[{amount:{total:t,currency:"MXN"}}]}})},onAuthorize:function(e,t){return t.payment.execute().then(function(e){o(e)})}},e)},e}()},206:function(e,t,o){"use strict";o.d(t,"d",function(){return n}),o.d(t,"a",function(){return r}),o.d(t,"c",function(){return a}),o.d(t,"b",function(){return i});var n=!0,r="https://us-central1-epsi-simuladores.cloudfunctions.net",a="AXD_aOCopqUyduDmDGWXJ0HbBhquAANCu37LEt3yXn40T3gU0ns-12nDt-zdvB4tIUSYBembxZ84UcSC",i="AWHs7gj9JnaTbF9LIhZOjC7lQ_uH-adbN4zWhVfFzA_zy7EpLz091PjEsGzQSjaEaQuCDHOxe7GMvK5L"},231:function(e,t){function o(e){return Promise.resolve().then(function(){throw new Error("Cannot find module '"+e+"'.")})}o.keys=function(){return[]},o.resolve=o,e.exports=o,o.id=231},260:function(e,t,o){function n(e){var t=r[e];return t?o.e(t[1]).then(function(){return o(t[0])}):Promise.reject(new Error("Cannot find module '"+e+"'."))}var r={"../pages/admin-control-detail/admin-control-detail.module.ngfactory":[519,6],"../pages/admin-control-edit/admin-control-edit.module.ngfactory":[520,13],"../pages/admin/admin.module.ngfactory":[521,3],"../pages/becas/becas.module.ngfactory":[522,2],"../pages/home/home.module.ngfactory":[523,12],"../pages/howto/howto.module.ngfactory":[524,11],"../pages/login/login.module.ngfactory":[525,14],"../pages/pago-add/pago-add.module.ngfactory":[526,5],"../pages/pago-detail/pago-detail.module.ngfactory":[527,1],"../pages/paypal-checkout/paypal-checkout.module.ngfactory":[528,10],"../pages/profile-edit/profile-edit.module.ngfactory":[529,9],"../pages/profile/profile.module.ngfactory":[530,0],"../pages/tarjeta-add/tarjeta-add.module.ngfactory":[531,4],"../pages/team-detail/team-detail.module.ngfactory":[532,8],"../pages/teams/teams.module.ngfactory":[533,7]};n.keys=function(){return Object.keys(r)},n.id=260,e.exports=n},434:function(e,t,o){"use strict";o.d(t,"a",function(){return r}),o.d(t,"d",function(){return i}),o.d(t,"b",function(){return u}),o.d(t,"c",function(){return l}),o.d(t,"e",function(){return p});var n;!function(e){e.SimuladoresList="simuladores-list",e.SimulacrosList="simulacros-list"}(n||(n={}));var r;!function(e){e.USER="user",e.USER_STAT="user-stat",e.EXAM="exam",e.ASESORIA="livestream",e.SLIDE="slide",e.SLIDE_CATEGORY="slide-cat",e.TODO="todo",e.CONTENT="content",e.NOTE="note",e.COMMENT="comment",e.RATING="rating",e.SUGGESTION="suggestion",e.EVENT="event",e.GALLERY="gallery",e.GALLERY_CATEGORY="gallery-cat",e.THREAD_CATEGORY="thread-cat",e.THREAD="thread",e.THREAD_RESPONSE="thread-response",e.LIVESTREAM="livestream",e.MEDIA="media",e.MEDIA_CATEGORY="media-cat",e.QUESTION="question",e.ANSWER="answer",e.EXAM_RESULT="exam-result",e.POST="post",e.POST_COMMENT="post-comment",e.TAG="tag",e.STAT_VIEW="stat-view",e.PAYMENT_MODEL="payment-model",e.PAYMENT_REQUEST="payment-request",e.NOTIFICATION="notification",e.NOTIFICATION_COMMENT="notification-comment",e.COUPON="coupon",e.MERCADOPAGO_IPN="mercadopago-ipn",e.PROGRAMA="programa",e.STAT_COUNTER="stat-counter",e.LIST="list",e.CONTROL_PAGO="control-pago",e.ZAMNA_PAGO="zamna-pago"}(r||(r={}));var a;!function(e){e.Approved="approved",e.Failed="rejected",e.Pending="pending"}(a||(a={}));var i;!function(e){e.Admin="isAdmin",e.Esencial="isEsencial",e.Premium="isPremium",e.Content="isContent",e.Checklist="isChecklist",e.Calendar="isCalendar",e.TopUsers="isTopUsers",e.Galleries="isGalleries",e.Simuladores="isSimuladores",e.Forum="isForum",e.Streaming="isStreaming",e.Media="isMedia",e.Slides="isSlides",e.Simulacros="isSimulacros",e.Feed="isFeed",e.Temprano="isTemprano",e.ViewPagos="isViewPagos",e.Esencial360="isEsencial360",e.Premium360="isPremium360",e.Presencial="isPresencial",e.Programa="isPrograma",e.Pool="isPool",e.TagPool="isTagPool"}(i||(i={}));var s,u=[i.Esencial,i.Checklist,i.Calendar,i.TopUsers,i.Galleries,i.Feed,i.Simuladores,i.Forum,i.Streaming,i.Media,i.Slides,i.Simulacros],l=[i.Checklist,i.Calendar,i.TopUsers,i.Galleries,i.Feed,i.Simuladores,i.Forum,i.Streaming,i.Media,i.Slides,i.Simulacros,i.Premium,i.Content,i.Programa,i.Pool,i.TagPool],p=[i.Temprano];!function(e){e.SIMULADOR="simulador",e.SIMULACRO="simulacro",e.PRECLASE="preclase",e.CONTENIDO="contenido",e.POOL="pool",e.TAGS="tags",e.PRUEBA="demo"}(s||(s={}))},438:function(e,t,o){"use strict";function n(){return new f.AuthServiceConfig([{id:f.FacebookLoginProvider.PROVIDER_ID,provider:new f.FacebookLoginProvider("313911162748778")},{id:f.GoogleLoginProvider.PROVIDER_ID,provider:new f.GoogleLoginProvider("1090173504117-gacr5s85vp9q1v2mtlgml92ica25s1nl.apps.googleusercontent.com")}])}function r(e){return i["ɵvid"](0,[(e()(),i["ɵeld"](0,0,null,null,2,"ion-nav",[],null,null,null,U.b,U.a)),i["ɵprd"](6144,null,_.a,null,[D.a]),i["ɵdid"](2,4374528,null,0,D.a,[[2,F.a],[2,z.a],G.a,H.a,x.a,i.ElementRef,i.NgZone,i.Renderer,i.ComponentFactoryResolver,B.l,Z.a,[2,q.a],V.a,i.ErrorHandler],{root:[0,"root"]},null),(e()(),i["ɵted"](-1,null,["\n"]))],function(e,t){e(t,2,0,t.component.rootPage)},null)}Object.defineProperty(t,"__esModule",{value:!0});var a=o(50),i=o(0),s=(o(1),o(200)),u=(o(124),o(122)),l=o(123),p=o(202),d=o(2);o.n(d).a.locale("es");var c=function(){return function(e,t,o){this.rootPage="LoginPage",e.ready().then(function(){t.styleDefault(),o.hide()})}}(),m=o(125),g=o(85),f=o(423),h=(o(515),function(){function e(e){this.auth=e}return e.prototype.intercept=function(e,t){return e=e.clone({setHeaders:{"x-token":this.auth.token||""}}),t.handle(e)},e}()),y=o(193),b=o(54),j=o(132),P=o(126),A=(o(206),o(192)),v=o(203),C=o(195),O=function(){return function(){}}(),T=o(80),E=o(424),S=o(425),I=o(426),w=o(427),N=o(428),R=o(429),k=o(430),M=o(431),L=o(432),U=o(518),_=o(53),D=o(84),F=o(7),z=o(36),G=o(13),H=o(3),x=o(6),B=o(9),Z=o(46),q=o(20),V=o(14),W=i["ɵcrt"]({encapsulation:2,styles:[],data:{}}),Y=i["ɵccf"]("ng-component",c,function(e){return i["ɵvid"](0,[(e()(),i["ɵeld"](0,0,null,null,1,"ng-component",[],null,null,null,r,W)),i["ɵdid"](1,49152,null,0,c,[x.a,l.a,u.a],null,null)],null,null)},{},{},[]),X=o(18),J=o(172),K=o(26),Q=o(151),$=o(133),ee=o(171),te=o(22),oe=o(48),ne=o(59),re=o(129),ae=o(190),ie=o(82),se=o(60),ue=o(131),le=o(107),pe=o(178),de=o(174),ce=o(127),me=o(422),ge=o(173),fe=o(44),he=o(156),ye=o(175),be=i["ɵcmf"](O,[T.b],function(e){return i["ɵmod"]([i["ɵmpd"](512,i.ComponentFactoryResolver,i["ɵCodegenComponentFactoryResolver"],[[8,[E.a,S.a,I.a,w.a,N.a,R.a,k.a,M.a,L.a,Y]],[3,i.ComponentFactoryResolver],i.NgModuleRef]),i["ɵmpd"](5120,i.LOCALE_ID,i["ɵq"],[[3,i.LOCALE_ID]]),i["ɵmpd"](4608,X.NgLocalization,X.NgLocaleLocalization,[i.LOCALE_ID,[2,X["ɵa"]]]),i["ɵmpd"](5120,i.APP_ID,i["ɵi"],[]),i["ɵmpd"](5120,i.IterableDiffers,i["ɵn"],[]),i["ɵmpd"](5120,i.KeyValueDiffers,i["ɵo"],[]),i["ɵmpd"](4608,a.c,a.q,[X.DOCUMENT]),i["ɵmpd"](6144,i.Sanitizer,null,[a.c]),i["ɵmpd"](4608,a.f,J.a,[]),i["ɵmpd"](5120,a.d,function(e,t,o,n,r){return[new a.k(e,t),new a.o(o),new a.n(n,r)]},[X.DOCUMENT,i.NgZone,X.DOCUMENT,X.DOCUMENT,a.f]),i["ɵmpd"](4608,a.e,a.e,[a.d,i.NgZone]),i["ɵmpd"](135680,a.m,a.m,[X.DOCUMENT]),i["ɵmpd"](4608,a.l,a.l,[a.e,a.m]),i["ɵmpd"](6144,i.RendererFactory2,null,[a.l]),i["ɵmpd"](6144,a.p,null,[a.m]),i["ɵmpd"](4608,i.Testability,i.Testability,[i.NgZone]),i["ɵmpd"](4608,a.h,a.h,[X.DOCUMENT]),i["ɵmpd"](4608,a.i,a.i,[X.DOCUMENT]),i["ɵmpd"](4608,g.j,g.p,[X.DOCUMENT,i.PLATFORM_ID,g.n]),i["ɵmpd"](4608,g.q,g.q,[g.j,g.o]),i["ɵmpd"](4608,g.m,g.m,[]),i["ɵmpd"](6144,g.k,null,[g.m]),i["ɵmpd"](4608,g.i,g.i,[g.k]),i["ɵmpd"](6144,g.b,null,[g.i]),i["ɵmpd"](4608,g.g,g.l,[g.b,i.Injector]),i["ɵmpd"](4608,g.c,g.c,[g.g]),i["ɵmpd"](4608,m.a,m.a,[g.c]),i["ɵmpd"](5120,g.a,function(e,t){return[e,new h(t)]},[g.q,m.a]),i["ɵmpd"](5120,b.b,b.f,[b.d,[2,b.c]]),i["ɵmpd"](4608,j.a,j.a,[b.d,[2,b.c],i.PLATFORM_ID,i.NgZone]),i["ɵmpd"](4608,P.a,P.a,[b.d,[2,b.c],[2,P.c],[2,P.d],i.PLATFORM_ID,i.NgZone,[2,P.e]]),i["ɵmpd"](4608,C.a,C.a,[b.d,[2,b.c],[2,C.c],i.PLATFORM_ID,i.NgZone]),i["ɵmpd"](4608,K.n,K.n,[]),i["ɵmpd"](4608,K.c,K.c,[]),i["ɵmpd"](4608,Q.a,Q.a,[G.a,H.a]),i["ɵmpd"](4608,$.a,$.a,[G.a,H.a]),i["ɵmpd"](4608,ee.a,ee.a,[]),i["ɵmpd"](4608,te.a,te.a,[]),i["ɵmpd"](4608,oe.a,oe.a,[x.a]),i["ɵmpd"](4608,ne.a,ne.a,[H.a,x.a,i.NgZone,V.a]),i["ɵmpd"](4608,re.a,re.a,[G.a,H.a]),i["ɵmpd"](5120,X.LocationStrategy,ae.c,[X.PlatformLocation,[2,X.APP_BASE_HREF],H.a]),i["ɵmpd"](4608,X.Location,X.Location,[X.LocationStrategy]),i["ɵmpd"](5120,ie.b,ie.d,[G.a,ie.a]),i["ɵmpd"](5120,q.a,q.b,[G.a,ie.b,X.Location,se.b,i.ComponentFactoryResolver]),i["ɵmpd"](4608,ue.a,ue.a,[G.a,H.a,q.a]),i["ɵmpd"](4608,le.a,le.a,[G.a,H.a]),i["ɵmpd"](4608,pe.a,pe.a,[G.a,H.a,q.a]),i["ɵmpd"](4608,de.a,de.a,[H.a,x.a,V.a,G.a,B.l]),i["ɵmpd"](4608,ce.a,ce.a,[G.a,H.a]),i["ɵmpd"](4608,Z.a,Z.a,[x.a,H.a]),i["ɵmpd"](4608,l.a,l.a,[]),i["ɵmpd"](4608,u.a,u.a,[]),i["ɵmpd"](5120,f.AuthServiceConfig,n,[]),i["ɵmpd"](4608,f.AuthService,f.AuthService,[f.AuthServiceConfig]),i["ɵmpd"](4608,s.a,s.a,[]),i["ɵmpd"](4608,p.a,p.a,[]),i["ɵmpd"](4608,A.a,A.a,[j.a,P.a]),i["ɵmpd"](4608,v.a,v.a,[g.c]),i["ɵmpd"](512,X.CommonModule,X.CommonModule,[]),i["ɵmpd"](512,i.ErrorHandler,me.a,[]),i["ɵmpd"](256,H.b,{},[]),i["ɵmpd"](1024,ge.a,ge.b,[]),i["ɵmpd"](1024,x.a,x.b,[a.b,ge.a,i.NgZone]),i["ɵmpd"](1024,H.a,H.c,[H.b,x.a]),i["ɵmpd"](512,V.a,V.a,[x.a]),i["ɵmpd"](512,fe.a,fe.a,[]),i["ɵmpd"](512,G.a,G.a,[H.a,x.a,[2,fe.a]]),i["ɵmpd"](512,B.l,B.l,[G.a]),i["ɵmpd"](256,ie.a,{links:[{loadChildren:"../pages/admin-control-detail/admin-control-detail.module.ngfactory#AdminControlDetailPageModuleNgFactory",name:"AdminControlDetailPage",segment:"admin-control-detail",priority:"low",defaultHistory:[]},{loadChildren:"../pages/admin-control-edit/admin-control-edit.module.ngfactory#AdminControlEditPageModuleNgFactory",name:"AdminControlEditPage",segment:"admin-control-edit",priority:"low",defaultHistory:[]},{loadChildren:"../pages/admin/admin.module.ngfactory#AdminPageModuleNgFactory",name:"AdminPage",segment:"admin",priority:"low",defaultHistory:[]},{loadChildren:"../pages/becas/becas.module.ngfactory#BecasPageModuleNgFactory",name:"BecasPage",segment:"becas",priority:"low",defaultHistory:[]},{loadChildren:"../pages/home/home.module.ngfactory#HomePageModuleNgFactory",name:"HomePage",segment:"home",priority:"low",defaultHistory:[]},{loadChildren:"../pages/howto/howto.module.ngfactory#HowtoPageModuleNgFactory",name:"HowtoPage",segment:"howto",priority:"low",defaultHistory:[]},{loadChildren:"../pages/login/login.module.ngfactory#LoginPageModuleNgFactory",name:"LoginPage",segment:"login",priority:"low",defaultHistory:[]},{loadChildren:"../pages/pago-add/pago-add.module.ngfactory#PagoAddPageModuleNgFactory",name:"PagoAddPage",segment:"pago-add",priority:"low",defaultHistory:[]},{loadChildren:"../pages/pago-detail/pago-detail.module.ngfactory#PagoDetailPageModuleNgFactory",name:"PagoDetailPage",segment:"pago-detail",priority:"low",defaultHistory:[]},{loadChildren:"../pages/paypal-checkout/paypal-checkout.module.ngfactory#PaypalCheckoutPageModuleNgFactory",name:"PaypalCheckoutPage",segment:"paypal-checkout",priority:"low",defaultHistory:[]},{loadChildren:"../pages/profile-edit/profile-edit.module.ngfactory#ProfileEditPageModuleNgFactory",name:"ProfileEditPage",segment:"profile-edit",priority:"low",defaultHistory:[]},{loadChildren:"../pages/profile/profile.module.ngfactory#ProfilePageModuleNgFactory",name:"ProfilePage",segment:"profile",priority:"low",defaultHistory:[]},{loadChildren:"../pages/tarjeta-add/tarjeta-add.module.ngfactory#TarjetaAddPageModuleNgFactory",name:"TarjetaAddPage",segment:"tarjeta-add",priority:"low",defaultHistory:[]},{loadChildren:"../pages/team-detail/team-detail.module.ngfactory#TeamDetailPageModuleNgFactory",name:"TeamDetailPage",segment:"team-detail",priority:"low",defaultHistory:[]},{loadChildren:"../pages/teams/teams.module.ngfactory#TeamsPageModuleNgFactory",name:"TeamsPage",segment:"teams",priority:"low",defaultHistory:[]}]},[]),i["ɵmpd"](512,i.Compiler,i.Compiler,[]),i["ɵmpd"](512,he.a,he.a,[i.Compiler]),i["ɵmpd"](1024,se.b,se.c,[he.a,i.Injector]),i["ɵmpd"](1024,i.APP_INITIALIZER,function(e,t,o,n,r,i,s,u,l,p,d,c,m){return[a.s(e),ye.a(t),ee.b(o,n),de.b(r,i,s,u,l),se.d(p,d,c,m)]},[[2,i.NgProbeToken],H.a,x.a,V.a,H.a,x.a,V.a,G.a,B.l,H.a,ie.a,se.b,i.NgZone]),i["ɵmpd"](512,i.ApplicationInitStatus,i.ApplicationInitStatus,[[2,i.APP_INITIALIZER]]),i["ɵmpd"](131584,i.ApplicationRef,i.ApplicationRef,[i.NgZone,i["ɵConsole"],i.Injector,i.ErrorHandler,i.ComponentFactoryResolver,i.ApplicationInitStatus]),i["ɵmpd"](512,i.ApplicationModule,i.ApplicationModule,[i.ApplicationRef]),i["ɵmpd"](512,a.a,a.a,[[3,a.a]]),i["ɵmpd"](512,g.e,g.e,[]),i["ɵmpd"](512,g.d,g.d,[]),i["ɵmpd"](512,y.c,y.c,[]),i["ɵmpd"](512,b.a,b.a,[]),i["ɵmpd"](512,j.b,j.b,[]),i["ɵmpd"](512,P.b,P.b,[]),i["ɵmpd"](512,C.b,C.b,[]),i["ɵmpd"](512,K.m,K.m,[]),i["ɵmpd"](512,K.d,K.d,[]),i["ɵmpd"](512,K.l,K.l,[]),i["ɵmpd"](512,ae.a,ae.a,[]),i["ɵmpd"](512,O,O,[]),i["ɵmpd"](256,g.n,"XSRF-TOKEN",[]),i["ɵmpd"](256,g.o,"X-XSRF-TOKEN",[]),i["ɵmpd"](256,b.d,{apiKey:"AIzaSyAkRoZR2ihUIsS6Z7Dt8EF5LY5AgKdcS-I",authDomain:"epsi-simuladores.firebaseapp.com",databaseURL:"https://epsi-simuladores.firebaseio.com",projectId:"epsi-simuladores",storageBucket:"epsi-simuladores.appspot.com",messagingSenderId:"109307489918"},[]),i["ɵmpd"](256,b.c,void 0,[]),i["ɵmpd"](256,T.a,c,[]),i["ɵmpd"](256,X.APP_BASE_HREF,"/",[])])});Object(i.enableProdMode)(),Object(a.j)().bootstrapModuleFactory(be)},512:function(e,t,o){function n(e){return o(r(e))}function r(e){var t=a[e];if(!(t+1))throw new Error("Cannot find module '"+e+"'.");return t}var a={"./af":273,"./af.js":273,"./ar":274,"./ar-dz":275,"./ar-dz.js":275,"./ar-kw":276,"./ar-kw.js":276,"./ar-ly":277,"./ar-ly.js":277,"./ar-ma":278,"./ar-ma.js":278,"./ar-sa":279,"./ar-sa.js":279,"./ar-tn":280,"./ar-tn.js":280,"./ar.js":274,"./az":281,"./az.js":281,"./be":282,"./be.js":282,"./bg":283,"./bg.js":283,"./bm":284,"./bm.js":284,"./bn":285,"./bn.js":285,"./bo":286,"./bo.js":286,"./br":287,"./br.js":287,"./bs":288,"./bs.js":288,"./ca":289,"./ca.js":289,"./cs":290,"./cs.js":290,"./cv":291,"./cv.js":291,"./cy":292,"./cy.js":292,"./da":293,"./da.js":293,"./de":294,"./de-at":295,"./de-at.js":295,"./de-ch":296,"./de-ch.js":296,"./de.js":294,"./dv":297,"./dv.js":297,"./el":298,"./el.js":298,"./en-SG":299,"./en-SG.js":299,"./en-au":300,"./en-au.js":300,"./en-ca":301,"./en-ca.js":301,"./en-gb":302,"./en-gb.js":302,"./en-ie":303,"./en-ie.js":303,"./en-il":304,"./en-il.js":304,"./en-nz":305,"./en-nz.js":305,"./eo":306,"./eo.js":306,"./es":307,"./es-do":308,"./es-do.js":308,"./es-us":309,"./es-us.js":309,"./es.js":307,"./et":310,"./et.js":310,"./eu":311,"./eu.js":311,"./fa":312,"./fa.js":312,"./fi":313,"./fi.js":313,"./fo":314,"./fo.js":314,"./fr":315,"./fr-ca":316,"./fr-ca.js":316,"./fr-ch":317,"./fr-ch.js":317,"./fr.js":315,"./fy":318,"./fy.js":318,"./ga":319,"./ga.js":319,"./gd":320,"./gd.js":320,"./gl":321,"./gl.js":321,"./gom-latn":322,"./gom-latn.js":322,"./gu":323,"./gu.js":323,"./he":324,"./he.js":324,"./hi":325,"./hi.js":325,"./hr":326,"./hr.js":326,"./hu":327,"./hu.js":327,"./hy-am":328,"./hy-am.js":328,"./id":329,"./id.js":329,"./is":330,"./is.js":330,"./it":331,"./it-ch":332,"./it-ch.js":332,"./it.js":331,"./ja":333,"./ja.js":333,"./jv":334,"./jv.js":334,"./ka":335,"./ka.js":335,"./kk":336,"./kk.js":336,"./km":337,"./km.js":337,"./kn":338,"./kn.js":338,"./ko":339,"./ko.js":339,"./ku":340,"./ku.js":340,"./ky":341,"./ky.js":341,"./lb":342,"./lb.js":342,"./lo":343,"./lo.js":343,"./lt":344,"./lt.js":344,"./lv":345,"./lv.js":345,"./me":346,"./me.js":346,"./mi":347,"./mi.js":347,"./mk":348,"./mk.js":348,"./ml":349,"./ml.js":349,"./mn":350,"./mn.js":350,"./mr":351,"./mr.js":351,"./ms":352,"./ms-my":353,"./ms-my.js":353,"./ms.js":352,"./mt":354,"./mt.js":354,"./my":355,"./my.js":355,"./nb":356,"./nb.js":356,"./ne":357,"./ne.js":357,"./nl":358,"./nl-be":359,"./nl-be.js":359,"./nl.js":358,"./nn":360,"./nn.js":360,"./pa-in":361,"./pa-in.js":361,"./pl":362,"./pl.js":362,"./pt":363,"./pt-br":364,"./pt-br.js":364,"./pt.js":363,"./ro":365,"./ro.js":365,"./ru":366,"./ru.js":366,"./sd":367,"./sd.js":367,"./se":368,"./se.js":368,"./si":369,"./si.js":369,"./sk":370,"./sk.js":370,"./sl":371,"./sl.js":371,"./sq":372,"./sq.js":372,"./sr":373,"./sr-cyrl":374,"./sr-cyrl.js":374,"./sr.js":373,"./ss":375,"./ss.js":375,"./sv":376,"./sv.js":376,"./sw":377,"./sw.js":377,"./ta":378,"./ta.js":378,"./te":379,"./te.js":379,"./tet":380,"./tet.js":380,"./tg":381,"./tg.js":381,"./th":382,"./th.js":382,"./tl-ph":383,"./tl-ph.js":383,"./tlh":384,"./tlh.js":384,"./tr":385,"./tr.js":385,"./tzl":386,"./tzl.js":386,"./tzm":387,"./tzm-latn":388,"./tzm-latn.js":388,"./tzm.js":387,"./ug-cn":389,"./ug-cn.js":389,"./uk":390,"./uk.js":390,"./ur":391,"./ur.js":391,"./uz":392,"./uz-latn":393,"./uz-latn.js":393,"./uz.js":392,"./vi":394,"./vi.js":394,"./x-pseudo":395,"./x-pseudo.js":395,"./yo":396,"./yo.js":396,"./zh-cn":397,"./zh-cn.js":397,"./zh-hk":398,"./zh-hk.js":398,"./zh-tw":399,"./zh-tw.js":399};n.keys=function(){return Object.keys(a)},n.resolve=r,e.exports=n,n.id=512}},[438]);
+webpackJsonp([15],{
+
+/***/ 188:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BackProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+var BackProvider = /** @class */ (function () {
+    function BackProvider(http) {
+        this.http = http;
+        //public api: string = 'http://localhost:1337/api/v1'
+        /* public api: string = 'https://zamnademy.com/api/v1' */
+        this.api = 'http://167.99.12.186:1337/api/v1';
+        this.admin = '5b69cb5d300d766aae22ac68';
+    }
+    BackProvider.prototype.isRole = function (role) {
+        if (!role)
+            return false;
+        var user = JSON.parse(localStorage.getItem('user'));
+        if (!user)
+            return false;
+        if (!user.roles)
+            return false;
+        return user.roles.indexOf(role) >= 0;
+    };
+    // shorthands
+    BackProvider.prototype.isA = function () {
+        return this.isRole('ROLE_ADMIN');
+    };
+    BackProvider.prototype.isU = function () {
+        return this.isRole('ROLE_USER');
+    };
+    Object.defineProperty(BackProvider.prototype, "token", {
+        get: function () {
+            return localStorage.getItem('token');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BackProvider.prototype, "uid", {
+        get: function () {
+            return localStorage.getItem('uid');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BackProvider.prototype, "user", {
+        get: function () {
+            return JSON.parse(localStorage.getItem('user'));
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BackProvider.prototype, "isAdmin", {
+        get: function () {
+            return this.isRole('ROLE_ADMIN');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(BackProvider.prototype, "isViewPagos", {
+        get: function () {
+            return this.isRole('ROLE_VIEW_PAGOS');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    // auth
+    BackProvider.prototype.login = function (email, password) {
+        return this.http.post(this.api + "/user/login", {
+            email: email,
+            password: password
+        });
+    };
+    BackProvider.prototype.register = function (data) {
+        return this.http.post(this.api + "/user/register", data);
+    };
+    BackProvider.prototype.facebookApp = function (token) {
+        return this.http.post(this.api + "/user/facebookApp", {
+            token: token
+        });
+    };
+    BackProvider.prototype.googleApp = function (profile) {
+        return this.http.post(this.api + "/user/googleApp", {
+            profile: profile
+        });
+    };
+    BackProvider.prototype.socialAuthWeb = function (data) {
+        return this.http.post(this.api + "/user/socialAuthWeb", data);
+    };
+    BackProvider.prototype.reloadAuth = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            var user;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.getUserDetail(this.uid).toPromise()];
+                    case 1:
+                        user = _a.sent();
+                        console.log(user);
+                        localStorage.setItem('user', JSON.stringify(user));
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    BackProvider.prototype.validate = function (data, fields, toast) {
+        if (!data) {
+            toast.create({
+                message: 'Los datos no pueden ser vacios...',
+                duration: 2000
+            }).present();
+            return false;
+        }
+        for (var _i = 0, fields_1 = fields; _i < fields_1.length; _i++) {
+            var field = fields_1[_i];
+            if (!data[field]) {
+                console.log(field);
+                toast.create({
+                    message: "El campo \"" + field + "\" no puede estar vac\u00EDo...",
+                    duration: 2000
+                }).present();
+                return false;
+            }
+        }
+        return true;
+    };
+    // ControlPago
+    BackProvider.prototype.getUserControlesPago = function (uid) {
+        return this.http.get(this.api + "/ControlPago?user=" + uid);
+    };
+    BackProvider.prototype.getAllControles = function () {
+        return this.http.get(this.api + "/ControlPago");
+    };
+    BackProvider.prototype.getControlDetail = function (id) {
+        return this.http.get(this.api + "/ControlPago/" + id);
+    };
+    BackProvider.prototype.addControlPago = function (control) {
+        return this.http.post(this.api + "/ControlPago", control);
+    };
+    BackProvider.prototype.updateControlPago = function (id, data) {
+        return this.http.put(this.api + "/ControlPago/" + id, data);
+    };
+    BackProvider.prototype.deleteControlPago = function (id) {
+        return this.http.delete(this.api + "/ControlPago/" + id);
+    };
+    BackProvider.prototype.createPagoZamna = function (controlId, amount, cardId, userId, sess, method, payment, plan) {
+        return this.http.post(this.api + "/ControlPago/crearPagoZamna", {
+            controlId: controlId,
+            amount: amount,
+            cardId: cardId,
+            userId: userId,
+            sess: sess,
+            method: method,
+            payment: payment,
+            plan: plan
+        });
+    };
+    BackProvider.prototype.pagarPaynet = function (id, amount, desc, controlId, method) {
+        return this.http.post(this.api + "/ControlPago/pagarPaynet", { id: id, amount: amount, desc: desc, controlId: controlId, method: method });
+    };
+    BackProvider.prototype.restarAmount = function (id, amount, pago) {
+        return this.http.put(this.api + "/ControlPago/restarAmount/" + id, { amount: amount, pagoId: pago });
+    };
+    // User
+    BackProvider.prototype.updateUser = function (id, data) {
+        return this.http.put(this.api + "/User/" + id, data);
+    };
+    BackProvider.prototype.getUserDetail = function (id) {
+        return this.http.get(this.api + "/User/" + id);
+    };
+    // Cards
+    BackProvider.prototype.getUserTarjetas = function (user) {
+        return this.http.get(this.api + "/Tarjeta/getUserTarjetas/" + user);
+    };
+    BackProvider.prototype.addTarjeta = function (data) {
+        return this.http.post(this.api + "/Tarjeta/crearTarjeta", data);
+    };
+    BackProvider.prototype.uploadImage = function (archivo) {
+        var data = new FormData();
+        data.append('image', archivo);
+        return this.http.post(this.api + "/ControlPago/uploadImage", data);
+    };
+    // Pago Zamna
+    BackProvider.prototype.updatePagoZamna = function (id, data) {
+        return this.http.put(this.api + "/PagoZamna/" + id, data);
+    };
+    // Becas
+    BackProvider.prototype.getUserBecas = function (id) {
+        return this.http.get(this.api + "/BecaTeam/getUserTeams/" + id);
+    };
+    BackProvider.prototype.addBeca = function (data) {
+        return this.http.post(this.api + "/BecaTeam", data);
+    };
+    BackProvider.prototype.joinToTeam = function (userId, teamId) {
+        return this.http.post(this.api + "/BecaTeam/joinToTeam", { userId: userId, teamId: teamId });
+    };
+    BackProvider.prototype.joinTeamByCode = function (code, userId) {
+        return this.http.post(this.api + "/BecaTeam/joinTeamByCode", { code: code, userId: userId });
+    };
+    BackProvider.prototype.deleteBeca = function (id) {
+        return this.http.delete(this.api + "/BecaTeam/" + id);
+    };
+    BackProvider.prototype.getAllTeams = function () {
+        return this.http.get(this.api + "/BecaTeam");
+    };
+    BackProvider.prototype.getTeamDetail = function (id) {
+        return this.http.get(this.api + "/BecaTeam/" + id);
+    };
+    BackProvider.prototype.sumarDeuda = function (id, amount) {
+        return this.http.put(this.api + "/User/sumarDeuda", { id: id, amount: amount });
+    };
+    BackProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["b" /* HttpClient */]])
+    ], BackProvider);
+    return BackProvider;
+}());
+
+//# sourceMappingURL=back.js.map
+
+/***/ }),
+
+/***/ 191:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return production; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return firebaseConfig; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return functionsEndpoint; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return paypalSandbox; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return paypalProduction; });
+var production = true;
+var firebaseConfig = {
+    fire: {
+        apiKey: "AIzaSyAkRoZR2ihUIsS6Z7Dt8EF5LY5AgKdcS-I",
+        authDomain: "epsi-simuladores.firebaseapp.com",
+        databaseURL: "https://epsi-simuladores.firebaseio.com",
+        projectId: "epsi-simuladores",
+        storageBucket: "epsi-simuladores.appspot.com",
+        messagingSenderId: "109307489918"
+    }
+};
+var functionsEndpoint = 'https://us-central1-epsi-simuladores.cloudfunctions.net';
+var paypalSandbox = 'AXD_aOCopqUyduDmDGWXJ0HbBhquAANCu37LEt3yXn40T3gU0ns-12nDt-zdvB4tIUSYBembxZ84UcSC';
+var paypalProduction = 'AWHs7gj9JnaTbF9LIhZOjC7lQ_uH-adbN4zWhVfFzA_zy7EpLz091PjEsGzQSjaEaQuCDHOxe7GMvK5L';
+//# sourceMappingURL=app.config.js.map
+
+/***/ }),
+
+/***/ 225:
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 225;
+
+/***/ }),
+
+/***/ 268:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"../pages/admin-control-detail/admin-control-detail.module": [
+		710,
+		14
+	],
+	"../pages/admin-control-edit/admin-control-edit.module": [
+		711,
+		13
+	],
+	"../pages/admin/admin.module": [
+		712,
+		3
+	],
+	"../pages/becas/becas.module": [
+		713,
+		2
+	],
+	"../pages/home/home.module": [
+		714,
+		12
+	],
+	"../pages/howto/howto.module": [
+		715,
+		11
+	],
+	"../pages/login/login.module": [
+		716,
+		10
+	],
+	"../pages/pago-add/pago-add.module": [
+		717,
+		9
+	],
+	"../pages/pago-detail/pago-detail.module": [
+		718,
+		1
+	],
+	"../pages/paypal-checkout/paypal-checkout.module": [
+		719,
+		8
+	],
+	"../pages/profile-edit/profile-edit.module": [
+		721,
+		7
+	],
+	"../pages/profile/profile.module": [
+		720,
+		0
+	],
+	"../pages/tarjeta-add/tarjeta-add.module": [
+		722,
+		6
+	],
+	"../pages/team-detail/team-detail.module": [
+		723,
+		5
+	],
+	"../pages/teams/teams.module": [
+		724,
+		4
+	]
+};
+function webpackAsyncContext(req) {
+	var ids = map[req];
+	if(!ids)
+		return Promise.reject(new Error("Cannot find module '" + req + "'."));
+	return __webpack_require__.e(ids[1]).then(function() {
+		return __webpack_require__(ids[0]);
+	});
+};
+webpackAsyncContext.keys = function webpackAsyncContextKeys() {
+	return Object.keys(map);
+};
+webpackAsyncContext.id = 268;
+module.exports = webpackAsyncContext;
+
+/***/ }),
+
+/***/ 455:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_auth__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase_app__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase_app___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_firebase_app__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = y[op[0] & 2 ? "return" : op[0] ? "throw" : "next"]) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [0, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+
+
+
+var AuthProvider = /** @class */ (function () {
+    function AuthProvider(afAuth, afs) {
+        var _this = this;
+        this.afAuth = afAuth;
+        this.afs = afs;
+        this.userSubject = new __WEBPACK_IMPORTED_MODULE_1_rxjs__["BehaviorSubject"](null);
+        this.afAuth.authState.pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["switchMap"])(function (user) { return user ? _this.afs.doc("user/" + user.uid).valueChanges() : Object(__WEBPACK_IMPORTED_MODULE_1_rxjs__["of"])(null); })).subscribe(function (user) {
+            _this.userSubject.next(user);
+        });
+    }
+    Object.defineProperty(AuthProvider.prototype, "user", {
+        get: function () {
+            return this.userSubject.value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "loggedIn", {
+        get: function () {
+            return !!this.userSubject.value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "user$", {
+        get: function () {
+            return this.userSubject.asObservable();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isAdmin", {
+        // Role Shorthands
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Admin]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isEsencial", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Esencial]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isPremium", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Premium]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isViewPagos", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].ViewPagos]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isContent", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Content]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isTemprano", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Temprano]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isChecklist", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Checklist]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isCalendar", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Calendar]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isTopUsers", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].TopUsers]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isGalleries", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Galleries]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isSimuladores", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Simuladores]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isForum", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Forum]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isStreaming", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Streaming]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isMedia", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Media]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isSlides", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Slides]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isSimulacros", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Simulacros]; },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(AuthProvider.prototype, "isFeed", {
+        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].Feed]; },
+        enumerable: true,
+        configurable: true
+    });
+    AuthProvider.prototype.setUser = function (user) {
+        console.log(user);
+        if (user)
+            return this.afs.doc("user/" + user.uid).set(Object.assign({}, user), { merge: true });
+    };
+    AuthProvider.prototype.getUser = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.afs.doc(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER + "/" + this.user.uid)
+                        .valueChanges()
+                        .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["take"])(1))
+                        .toPromise()];
+            });
+        });
+    };
+    AuthProvider.prototype.logout = function () {
+        return this.afAuth.auth.signOut();
+    };
+    AuthProvider.prototype.loginGoogle = function (browser) {
+        var _this = this;
+        if (browser === void 0) { browser = true; }
+        return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+            var redirect, u, credentials, u, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 6, , 7]);
+                        if (!!browser) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.afAuth.auth.signInWithRedirect(new __WEBPACK_IMPORTED_MODULE_6_firebase_app__["auth"].GoogleAuthProvider())];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.afAuth.auth.getRedirectResult()];
+                    case 2:
+                        redirect = _a.sent();
+                        u = redirect.user;
+                        this.setUser({
+                            email: u.email,
+                            displayName: u.displayName,
+                            photoURL: u.photoURL,
+                            uid: u.uid,
+                        });
+                        return [2 /*return*/, resolve(u)];
+                    case 3: return [4 /*yield*/, this.afAuth.auth.signInWithPopup(new __WEBPACK_IMPORTED_MODULE_6_firebase_app__["auth"].GoogleAuthProvider())];
+                    case 4:
+                        credentials = _a.sent();
+                        u = credentials.user;
+                        this.setUser({
+                            email: u.email,
+                            displayName: u.displayName,
+                            photoURL: u.photoURL,
+                            uid: u.uid,
+                        });
+                        return [2 /*return*/, resolve(credentials.user)];
+                    case 5: return [3 /*break*/, 7];
+                    case 6:
+                        error_1 = _a.sent();
+                        return [2 /*return*/, reject(error_1)];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    AuthProvider.prototype.loginFacebook = function (browser) {
+        var _this = this;
+        if (browser === void 0) { browser = true; }
+        return new Promise(function (resolve, reject) { return __awaiter(_this, void 0, void 0, function () {
+            var redirect, u, credentials, u, error_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 6, , 7]);
+                        if (!!browser) return [3 /*break*/, 3];
+                        return [4 /*yield*/, this.afAuth.auth.signInWithRedirect(new __WEBPACK_IMPORTED_MODULE_6_firebase_app__["auth"].FacebookAuthProvider())];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.afAuth.auth.getRedirectResult()];
+                    case 2:
+                        redirect = _a.sent();
+                        u = redirect.user;
+                        this.setUser({
+                            email: u.email,
+                            displayName: u.displayName,
+                            photoURL: u.photoURL,
+                            uid: u.uid,
+                        });
+                        return [2 /*return*/, resolve(u)];
+                    case 3: return [4 /*yield*/, this.afAuth.auth.signInWithPopup(new __WEBPACK_IMPORTED_MODULE_6_firebase_app__["auth"].FacebookAuthProvider())];
+                    case 4:
+                        credentials = _a.sent();
+                        u = credentials.user;
+                        this.setUser({
+                            email: u.email,
+                            displayName: u.displayName,
+                            photoURL: u.photoURL,
+                            uid: u.uid,
+                        });
+                        return [2 /*return*/, resolve(credentials.user)];
+                    case 5: return [3 /*break*/, 7];
+                    case 6:
+                        error_2 = _a.sent();
+                        return [2 /*return*/, reject(error_2)];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        }); });
+    };
+    AuthProvider.prototype.findUserByEmail = function (email) {
+        return this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].USER, function (ref) { return ref
+            .where('email', '==', email); })
+            .valueChanges()
+            .pipe(Object(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators__["map"])(function (users) { return users[0]; }));
+    };
+    AuthProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__angular_fire_auth__["a" /* AngularFireAuth */],
+            __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__["a" /* AngularFirestore */]])
+    ], AuthProvider);
+    return AuthProvider;
+}());
+
+//# sourceMappingURL=auth.js.map
+
+/***/ }),
+
+/***/ 456:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export ContentTypes */
+/* unused harmony export HomeLists */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Collections; });
+/* unused harmony export PaymentStatus */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Roles; });
+/* unused harmony export User */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EsencialModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PremiumModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return TempranoModel; });
+/* unused harmony export ExamTypes */
+// TODO: Find a better way to enumerate globally the content types
+// Singletons
+var ContentTypes = [
+    'materia',
+    'bloque',
+    'tema',
+    'submtema'
+];
+var HomeLists;
+(function (HomeLists) {
+    HomeLists["SimuladoresList"] = "simuladores-list";
+    HomeLists["SimulacrosList"] = "simulacros-list";
+})(HomeLists || (HomeLists = {}));
+var Collections;
+(function (Collections) {
+    // TODO: Add remaining collections
+    Collections["USER"] = "user";
+    Collections["USER_STAT"] = "user-stat";
+    Collections["EXAM"] = "exam";
+    Collections["ASESORIA"] = "livestream";
+    Collections["SLIDE"] = "slide";
+    Collections["SLIDE_CATEGORY"] = "slide-cat";
+    Collections["TODO"] = "todo";
+    Collections["CONTENT"] = "content";
+    Collections["NOTE"] = "note";
+    Collections["COMMENT"] = "comment";
+    Collections["RATING"] = "rating";
+    Collections["SUGGESTION"] = "suggestion";
+    Collections["EVENT"] = "event";
+    Collections["GALLERY"] = "gallery";
+    Collections["GALLERY_CATEGORY"] = "gallery-cat";
+    Collections["THREAD_CATEGORY"] = "thread-cat";
+    Collections["THREAD"] = "thread";
+    Collections["THREAD_RESPONSE"] = "thread-response";
+    Collections["LIVESTREAM"] = "livestream";
+    Collections["MEDIA"] = "media";
+    Collections["MEDIA_CATEGORY"] = "media-cat";
+    Collections["QUESTION"] = "question";
+    Collections["ANSWER"] = "answer";
+    Collections["EXAM_RESULT"] = "exam-result";
+    Collections["POST"] = "post";
+    Collections["POST_COMMENT"] = "post-comment";
+    Collections["TAG"] = "tag";
+    Collections["STAT_VIEW"] = "stat-view";
+    Collections["PAYMENT_MODEL"] = "payment-model";
+    Collections["PAYMENT_REQUEST"] = "payment-request";
+    Collections["NOTIFICATION"] = "notification";
+    Collections["NOTIFICATION_COMMENT"] = "notification-comment";
+    Collections["COUPON"] = "coupon";
+    Collections["MERCADOPAGO_IPN"] = "mercadopago-ipn";
+    Collections["PROGRAMA"] = "programa";
+    Collections["STAT_COUNTER"] = "stat-counter";
+    Collections["LIST"] = "list";
+    Collections["CONTROL_PAGO"] = "control-pago";
+    Collections["ZAMNA_PAGO"] = "zamna-pago";
+})(Collections || (Collections = {}));
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["Approved"] = "approved";
+    PaymentStatus["Failed"] = "rejected";
+    PaymentStatus["Pending"] = "pending";
+})(PaymentStatus || (PaymentStatus = {}));
+var Roles;
+(function (Roles) {
+    Roles["Admin"] = "isAdmin";
+    Roles["Esencial"] = "isEsencial";
+    Roles["Premium"] = "isPremium";
+    Roles["Content"] = "isContent";
+    Roles["Checklist"] = "isChecklist";
+    Roles["Calendar"] = "isCalendar";
+    Roles["TopUsers"] = "isTopUsers";
+    Roles["Galleries"] = "isGalleries";
+    Roles["Simuladores"] = "isSimuladores";
+    Roles["Forum"] = "isForum";
+    Roles["Streaming"] = "isStreaming";
+    Roles["Media"] = "isMedia";
+    Roles["Slides"] = "isSlides";
+    Roles["Simulacros"] = "isSimulacros";
+    Roles["Feed"] = "isFeed";
+    Roles["Temprano"] = "isTemprano";
+    Roles["ViewPagos"] = "isViewPagos";
+    Roles["Esencial360"] = "isEsencial360";
+    Roles["Premium360"] = "isPremium360";
+    Roles["Presencial"] = "isPresencial";
+    Roles["Programa"] = "isPrograma";
+    Roles["Pool"] = "isPool";
+    Roles["TagPool"] = "isTagPool";
+})(Roles || (Roles = {}));
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
+}());
+
+var EsencialModel = [
+    Roles.Esencial,
+    Roles.Checklist,
+    Roles.Calendar,
+    Roles.TopUsers,
+    Roles.Galleries,
+    Roles.Feed,
+    Roles.Simuladores,
+    Roles.Forum,
+    Roles.Streaming,
+    Roles.Media,
+    Roles.Slides,
+    Roles.Simulacros,
+];
+var PremiumModel = [
+    Roles.Checklist,
+    Roles.Calendar,
+    Roles.TopUsers,
+    Roles.Galleries,
+    Roles.Feed,
+    Roles.Simuladores,
+    Roles.Forum,
+    Roles.Streaming,
+    Roles.Media,
+    Roles.Slides,
+    Roles.Simulacros,
+    Roles.Premium,
+    Roles.Content,
+    Roles.Programa,
+    Roles.Pool,
+    Roles.TagPool
+];
+var TempranoModel = [
+    Roles.Temprano
+];
+var ExamTypes;
+(function (ExamTypes) {
+    ExamTypes["SIMULADOR"] = "simulador";
+    ExamTypes["SIMULACRO"] = "simulacro";
+    ExamTypes["PRECLASE"] = "preclase";
+    ExamTypes["CONTENIDO"] = "contenido";
+    ExamTypes["POOL"] = "pool";
+    ExamTypes["TAGS"] = "tags";
+    ExamTypes["PRUEBA"] = "demo";
+})(ExamTypes || (ExamTypes = {}));
+//# sourceMappingURL=app.models.js.map
+
+/***/ }),
+
+/***/ 462:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_config__ = __webpack_require__(191);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var PayProvider = /** @class */ (function () {
+    function PayProvider(http) {
+        this.http = http;
+    }
+    PayProvider.prototype.generatePaymentUrl = function (model_id, request_id, title, amount, email, isProd) {
+        if (isProd === void 0) { isProd = false; }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["b" /* functionsEndpoint */] + "/pay/generate_payment", {
+            model_id: model_id,
+            request_id: request_id,
+            title: title,
+            amount: amount,
+            email: email,
+            isProd: isProd
+        }).toPromise();
+    };
+    PayProvider.prototype.generatePaymentUrlZamnaPagos = function (control_id, pago_id, title, amount, email, isProd) {
+        if (isProd === void 0) { isProd = false; }
+        return this.http.post(__WEBPACK_IMPORTED_MODULE_2__app_app_config__["b" /* functionsEndpoint */] + "/pay/generate_payment_zamna_pagos", {
+            control_id: control_id,
+            pago_id: pago_id,
+            title: title,
+            amount: amount,
+            email: email,
+            isProd: isProd
+        }).toPromise();
+    };
+    PayProvider.prototype.generatePaypalButton = function (el, amount, cb) {
+        paypal.Button.render({
+            env: __WEBPACK_IMPORTED_MODULE_2__app_app_config__["e" /* production */] ? 'production' : 'sandbox',
+            commit: true,
+            style: {
+                color: 'gold',
+                size: 'small'
+            },
+            client: {
+                sandbox: __WEBPACK_IMPORTED_MODULE_2__app_app_config__["d" /* paypalSandbox */],
+                production: __WEBPACK_IMPORTED_MODULE_2__app_app_config__["c" /* paypalProduction */]
+            },
+            payment: function (_, actions) {
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: amount, currency: 'MXN' }
+                            }
+                        ]
+                    }
+                });
+            },
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function (payment) {
+                    cb(payment);
+                });
+            },
+        }, el);
+    };
+    PayProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_common_http__["b" /* HttpClient */]])
+    ], PayProvider);
+    return PayProvider;
+}());
+
+//# sourceMappingURL=pay.js.map
+
+/***/ }),
+
+/***/ 463:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(464);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(584);
+
+
+Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
+//# sourceMappingURL=main.js.map
+
+/***/ }),
+
+/***/ 584:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export getAuthServiceConfigs */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ionic_native_facebook__ = __webpack_require__(459);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_plus__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_back_back__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_angular5_social_login___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_angular5_social_login__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_auth__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ngx_moment__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_fire__ = __webpack_require__(58);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_fire_auth__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_fire_firestore__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_config__ = __webpack_require__(191);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_pay_pay__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_fire_storage__ = __webpack_require__(458);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function getAuthServiceConfigs() {
+    var config = new __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["AuthServiceConfig"]([{
+            id: __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["FacebookLoginProvider"].PROVIDER_ID,
+            provider: new __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["FacebookLoginProvider"]("313911162748778")
+        },
+        {
+            id: __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["GoogleLoginProvider"].PROVIDER_ID,
+            provider: new __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["GoogleLoginProvider"]("1090173504117-gacr5s85vp9q1v2mtlgml92ica25s1nl.apps.googleusercontent.com")
+        },
+    ]);
+    return config;
+}
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_2__angular_core__["NgModule"])({
+            declarations: [
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+            ],
+            imports: [
+                __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["c" /* HttpClientModule */],
+                __WEBPACK_IMPORTED_MODULE_12_ngx_moment__["a" /* MomentModule */],
+                __WEBPACK_IMPORTED_MODULE_13__angular_fire__["a" /* AngularFireModule */].initializeApp(__WEBPACK_IMPORTED_MODULE_16__app_config__["a" /* firebaseConfig */].fire),
+                __WEBPACK_IMPORTED_MODULE_14__angular_fire_auth__["b" /* AngularFireAuthModule */],
+                __WEBPACK_IMPORTED_MODULE_15__angular_fire_firestore__["b" /* AngularFirestoreModule */],
+                __WEBPACK_IMPORTED_MODULE_19__angular_fire_storage__["b" /* AngularFireStorageModule */],
+                __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
+                    links: [
+                        { loadChildren: '../pages/admin-control-detail/admin-control-detail.module#AdminControlDetailPageModule', name: 'AdminControlDetailPage', segment: 'admin-control-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/admin-control-edit/admin-control-edit.module#AdminControlEditPageModule', name: 'AdminControlEditPage', segment: 'admin-control-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] }
+                    ]
+                })
+            ],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* IonicApp */]],
+            entryComponents: [
+                __WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */],
+            ],
+            providers: [
+                __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__["a" /* StatusBar */],
+                __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__["a" /* SplashScreen */],
+                {
+                    provide: __WEBPACK_IMPORTED_MODULE_2__angular_core__["ErrorHandler"],
+                    useClass: __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["c" /* IonicErrorHandler */]
+                },
+                {
+                    provide: __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["AuthServiceConfig"],
+                    useFactory: getAuthServiceConfigs
+                },
+                { provide: __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["a" /* HTTP_INTERCEPTORS */], useClass: __WEBPACK_IMPORTED_MODULE_11__app_auth__["a" /* TokenInterceptor */], multi: true },
+                __WEBPACK_IMPORTED_MODULE_10_angular5_social_login__["AuthService"],
+                __WEBPACK_IMPORTED_MODULE_8__providers_back_back__["a" /* BackProvider */],
+                __WEBPACK_IMPORTED_MODULE_0__ionic_native_facebook__["a" /* Facebook */],
+                __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_plus__["a" /* GooglePlus */],
+                __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__["a" /* AuthProvider */],
+                __WEBPACK_IMPORTED_MODULE_18__providers_pay_pay__["a" /* PayProvider */]
+            ]
+        })
+    ], AppModule);
+    return AppModule;
+}());
+
+//# sourceMappingURL=app.module.js.map
+
+/***/ }),
+
+/***/ 680:
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": 283,
+	"./af.js": 283,
+	"./ar": 284,
+	"./ar-dz": 285,
+	"./ar-dz.js": 285,
+	"./ar-kw": 286,
+	"./ar-kw.js": 286,
+	"./ar-ly": 287,
+	"./ar-ly.js": 287,
+	"./ar-ma": 288,
+	"./ar-ma.js": 288,
+	"./ar-sa": 289,
+	"./ar-sa.js": 289,
+	"./ar-tn": 290,
+	"./ar-tn.js": 290,
+	"./ar.js": 284,
+	"./az": 291,
+	"./az.js": 291,
+	"./be": 292,
+	"./be.js": 292,
+	"./bg": 293,
+	"./bg.js": 293,
+	"./bm": 294,
+	"./bm.js": 294,
+	"./bn": 295,
+	"./bn.js": 295,
+	"./bo": 296,
+	"./bo.js": 296,
+	"./br": 297,
+	"./br.js": 297,
+	"./bs": 298,
+	"./bs.js": 298,
+	"./ca": 299,
+	"./ca.js": 299,
+	"./cs": 300,
+	"./cs.js": 300,
+	"./cv": 301,
+	"./cv.js": 301,
+	"./cy": 302,
+	"./cy.js": 302,
+	"./da": 303,
+	"./da.js": 303,
+	"./de": 304,
+	"./de-at": 305,
+	"./de-at.js": 305,
+	"./de-ch": 306,
+	"./de-ch.js": 306,
+	"./de.js": 304,
+	"./dv": 307,
+	"./dv.js": 307,
+	"./el": 308,
+	"./el.js": 308,
+	"./en-SG": 309,
+	"./en-SG.js": 309,
+	"./en-au": 310,
+	"./en-au.js": 310,
+	"./en-ca": 311,
+	"./en-ca.js": 311,
+	"./en-gb": 312,
+	"./en-gb.js": 312,
+	"./en-ie": 313,
+	"./en-ie.js": 313,
+	"./en-il": 314,
+	"./en-il.js": 314,
+	"./en-nz": 315,
+	"./en-nz.js": 315,
+	"./eo": 316,
+	"./eo.js": 316,
+	"./es": 317,
+	"./es-do": 318,
+	"./es-do.js": 318,
+	"./es-us": 319,
+	"./es-us.js": 319,
+	"./es.js": 317,
+	"./et": 320,
+	"./et.js": 320,
+	"./eu": 321,
+	"./eu.js": 321,
+	"./fa": 322,
+	"./fa.js": 322,
+	"./fi": 323,
+	"./fi.js": 323,
+	"./fo": 324,
+	"./fo.js": 324,
+	"./fr": 325,
+	"./fr-ca": 326,
+	"./fr-ca.js": 326,
+	"./fr-ch": 327,
+	"./fr-ch.js": 327,
+	"./fr.js": 325,
+	"./fy": 328,
+	"./fy.js": 328,
+	"./ga": 329,
+	"./ga.js": 329,
+	"./gd": 330,
+	"./gd.js": 330,
+	"./gl": 331,
+	"./gl.js": 331,
+	"./gom-latn": 332,
+	"./gom-latn.js": 332,
+	"./gu": 333,
+	"./gu.js": 333,
+	"./he": 334,
+	"./he.js": 334,
+	"./hi": 335,
+	"./hi.js": 335,
+	"./hr": 336,
+	"./hr.js": 336,
+	"./hu": 337,
+	"./hu.js": 337,
+	"./hy-am": 338,
+	"./hy-am.js": 338,
+	"./id": 339,
+	"./id.js": 339,
+	"./is": 340,
+	"./is.js": 340,
+	"./it": 341,
+	"./it-ch": 342,
+	"./it-ch.js": 342,
+	"./it.js": 341,
+	"./ja": 343,
+	"./ja.js": 343,
+	"./jv": 344,
+	"./jv.js": 344,
+	"./ka": 345,
+	"./ka.js": 345,
+	"./kk": 346,
+	"./kk.js": 346,
+	"./km": 347,
+	"./km.js": 347,
+	"./kn": 348,
+	"./kn.js": 348,
+	"./ko": 349,
+	"./ko.js": 349,
+	"./ku": 350,
+	"./ku.js": 350,
+	"./ky": 351,
+	"./ky.js": 351,
+	"./lb": 352,
+	"./lb.js": 352,
+	"./lo": 353,
+	"./lo.js": 353,
+	"./lt": 354,
+	"./lt.js": 354,
+	"./lv": 355,
+	"./lv.js": 355,
+	"./me": 356,
+	"./me.js": 356,
+	"./mi": 357,
+	"./mi.js": 357,
+	"./mk": 358,
+	"./mk.js": 358,
+	"./ml": 359,
+	"./ml.js": 359,
+	"./mn": 360,
+	"./mn.js": 360,
+	"./mr": 361,
+	"./mr.js": 361,
+	"./ms": 362,
+	"./ms-my": 363,
+	"./ms-my.js": 363,
+	"./ms.js": 362,
+	"./mt": 364,
+	"./mt.js": 364,
+	"./my": 365,
+	"./my.js": 365,
+	"./nb": 366,
+	"./nb.js": 366,
+	"./ne": 367,
+	"./ne.js": 367,
+	"./nl": 368,
+	"./nl-be": 369,
+	"./nl-be.js": 369,
+	"./nl.js": 368,
+	"./nn": 370,
+	"./nn.js": 370,
+	"./pa-in": 371,
+	"./pa-in.js": 371,
+	"./pl": 372,
+	"./pl.js": 372,
+	"./pt": 373,
+	"./pt-br": 374,
+	"./pt-br.js": 374,
+	"./pt.js": 373,
+	"./ro": 375,
+	"./ro.js": 375,
+	"./ru": 376,
+	"./ru.js": 376,
+	"./sd": 377,
+	"./sd.js": 377,
+	"./se": 378,
+	"./se.js": 378,
+	"./si": 379,
+	"./si.js": 379,
+	"./sk": 380,
+	"./sk.js": 380,
+	"./sl": 381,
+	"./sl.js": 381,
+	"./sq": 382,
+	"./sq.js": 382,
+	"./sr": 383,
+	"./sr-cyrl": 384,
+	"./sr-cyrl.js": 384,
+	"./sr.js": 383,
+	"./ss": 385,
+	"./ss.js": 385,
+	"./sv": 386,
+	"./sv.js": 386,
+	"./sw": 387,
+	"./sw.js": 387,
+	"./ta": 388,
+	"./ta.js": 388,
+	"./te": 389,
+	"./te.js": 389,
+	"./tet": 390,
+	"./tet.js": 390,
+	"./tg": 391,
+	"./tg.js": 391,
+	"./th": 392,
+	"./th.js": 392,
+	"./tl-ph": 393,
+	"./tl-ph.js": 393,
+	"./tlh": 394,
+	"./tlh.js": 394,
+	"./tr": 395,
+	"./tr.js": 395,
+	"./tzl": 396,
+	"./tzl.js": 396,
+	"./tzm": 397,
+	"./tzm-latn": 398,
+	"./tzm-latn.js": 398,
+	"./tzm.js": 397,
+	"./ug-cn": 399,
+	"./ug-cn.js": 399,
+	"./uk": 400,
+	"./uk.js": 400,
+	"./ur": 401,
+	"./ur.js": 401,
+	"./uz": 402,
+	"./uz-latn": 403,
+	"./uz-latn.js": 403,
+	"./uz.js": 402,
+	"./vi": 404,
+	"./vi.js": 404,
+	"./x-pseudo": 405,
+	"./x-pseudo.js": 405,
+	"./yo": 406,
+	"./yo.js": 406,
+	"./zh-cn": 407,
+	"./zh-cn.js": 407,
+	"./zh-hk": 408,
+	"./zh-hk.js": 408,
+	"./zh-tw": 409,
+	"./zh-tw.js": 409
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = 680;
+
+/***/ }),
+
+/***/ 702:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(454);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+__WEBPACK_IMPORTED_MODULE_4_moment___default.a.locale('es');
+var MyApp = /** @class */ (function () {
+    function MyApp(platform, statusBar, splashScreen) {
+        this.rootPage = 'LoginPage';
+        platform.ready().then(function () {
+            statusBar.styleDefault();
+            splashScreen.hide();
+        });
+    }
+    MyApp = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/app/app.html"*/
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+    ], MyApp);
+    return MyApp;
+}());
+
+//# sourceMappingURL=app.component.js.map
+
+/***/ }),
+
+/***/ 706:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TokenInterceptor; });
+/* unused harmony export JwtInterceptor */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_back_back__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__ = __webpack_require__(707);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_do__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(109);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var TokenInterceptor = /** @class */ (function () {
+    function TokenInterceptor(auth) {
+        this.auth = auth;
+    }
+    TokenInterceptor.prototype.intercept = function (request, next) {
+        request = request.clone({
+            setHeaders: {
+                'x-token': this.auth.token || ''
+            }
+        });
+        return next.handle(request);
+    };
+    TokenInterceptor = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */]])
+    ], TokenInterceptor);
+    return TokenInterceptor;
+}());
+
+var JwtInterceptor = /** @class */ (function () {
+    function JwtInterceptor(auth, navCtrl, toast) {
+        this.auth = auth;
+        this.navCtrl = navCtrl;
+        this.toast = toast;
+    }
+    JwtInterceptor.prototype.intercept = function (request, next) {
+        var _this = this;
+        return next.handle(request).do(function (event) {
+            if (event instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["e" /* HttpResponse */]) {
+                console.log(request);
+            }
+        }, function (err) {
+            if (err instanceof __WEBPACK_IMPORTED_MODULE_1__angular_common_http__["d" /* HttpErrorResponse */]) {
+                if (err.status === 401) {
+                    console.log(err);
+                    localStorage.removeItem('uid');
+                    localStorage.removeItem('user');
+                    localStorage.removeItem('token');
+                    _this.toast.create({ message: 'Necesitas iniciar sesión para ver éste contenido...', duration: 2000 }).present();
+                    _this.navCtrl.setRoot('LoginPage');
+                }
+            }
+        });
+    };
+    JwtInterceptor = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__providers_back_back__["a" /* BackProvider */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["k" /* ToastController */]])
+    ], JwtInterceptor);
+    return JwtInterceptor;
+}());
+
+//# sourceMappingURL=app.auth.js.map
+
+/***/ })
+
+},[463]);
+//# sourceMappingURL=main.js.map
