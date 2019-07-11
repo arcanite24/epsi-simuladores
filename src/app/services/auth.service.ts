@@ -44,6 +44,15 @@ export class AuthService {
   }
 
   // Role Shorthands
+  get isFull() {
+    if (!this.isMatematicas) { return false; }
+    if (!this.isCienciasExperimentales) { return false; }
+    if (!this.isComunicacion) { return false; }
+    if (!this.isRh) { return false; }
+    if (!this.isInformatica) { return false; }
+    if (!this.isContabilidad) { return false; }
+    return true;
+  }
   get isAdmin() { return this.loggedIn && this.user[Roles.Admin]; }
   get isEsencial() { return this.loggedIn && this.user[Roles.Esencial]; }
   get isPremium() { return this.loggedIn && this.user[Roles.Premium]; }
@@ -72,6 +81,13 @@ export class AuthService {
   get isPremium360() { return this.loggedIn && this.user[Roles.Premium360]; }
   get isPremium2019() { return this.loggedIn && this.user[Roles.Premium2019]; }
   get isZamna360_2019() { return this.loggedIn && this.user[Roles.Zamna360_2019]; }
+
+  get isMatematicas() { return this.loggedIn && this.user[Roles.isMatematicas]; }
+  get isCienciasExperimentales() { return this.loggedIn && this.user[Roles.isCienciasExperimentales]; }
+  get isComunicacion() { return this.loggedIn && this.user[Roles.isComunicacion]; }
+  get isRh() { return this.loggedIn && this.user[Roles.isRh]; }
+  get isInformatica() { return this.loggedIn && this.user[Roles.isInformatica]; }
+  get isContabilidad() { return this.loggedIn && this.user[Roles.isContabilidad]; }
 
   setUser(user: any) {
     /* console.log(user) */

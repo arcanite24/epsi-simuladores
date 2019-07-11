@@ -7,10 +7,10 @@ import * as admin from 'firebase-admin'
 const app = express()
 const firestore = admin.firestore()
 
-const RETURN_URL_PROD = 'https://2guia.com.mx/pago/status'
+const RETURN_URL_PROD = 'https://2guia.com.mx/app/pago/status'
 const RETURN_URL_DEV = 'http://localhost:4200/pago/status'
 
-const RETURN_URL_PROD_PAGOS = 'https://2guia.com.mx/pagos'
+const RETURN_URL_PROD_PAGOS = 'https://2guia.com.mx/app/pagos'
 const RETURN_URL_DEV_PAGOS = 'http://localhost:8100'
 
 export enum Roles {

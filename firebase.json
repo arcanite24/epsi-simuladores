@@ -4,6 +4,12 @@
     "source": "functions"
   },
   "hosting": {
+    "redirect": [
+      {
+        "source": "/app/*",
+        "destination": "/app"
+      }
+    ],
     "public": "public",
     "ignore": [
       "firebase.json",

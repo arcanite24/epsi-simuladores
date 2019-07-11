@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { sortBy } from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'epsi-materias-panel',
@@ -17,6 +18,7 @@ export class MateriasPanelComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    public router: Router,
     private afs: AngularFirestore,
   ) { }
 
