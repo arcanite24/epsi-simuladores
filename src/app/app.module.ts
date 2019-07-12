@@ -214,6 +214,7 @@ import { UserMateriasPromediosComponent } from './shared/user-materias-promedios
 import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exam-questions-import.component';
 import { CompleteProfileComponent } from './shared/complete-profile/complete-profile.component';
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
+import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 
 @NgModule({
   declarations: [
@@ -388,6 +389,7 @@ import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-pa
     ExamQuestionsImportComponent,
     CompleteProfileComponent,
     AdminPagosPageComponent,
+    AdminHelpRequestComponent,
   ],
   imports: [
     BrowserAnimationsModule,

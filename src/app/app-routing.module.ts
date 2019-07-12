@@ -65,6 +65,7 @@ import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions
 import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-page.component';
 import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
+import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 
 const routes: Routes = [
 
@@ -148,6 +149,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/daily', component: AdminDailyComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam/results/:id', component: AdminExamResultsComponent},
   {canActivate: [AuthGuard], path: 'admin/pagos', component: AdminPagosPageComponent},
+  {canActivate: [AuthGuard], path: 'admin/help-request', component: AdminHelpRequestComponent},
 
 ];
 
