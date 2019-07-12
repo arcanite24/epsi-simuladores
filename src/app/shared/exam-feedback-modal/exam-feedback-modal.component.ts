@@ -12,33 +12,35 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class ExamFeedbackModalComponent implements OnInit {
 
-  public q: Question
-  public stats: {q: Question, stat$: Observable<QuestionStat>}[] = []
+  public q: Question;
+  public stats: {q: Question, stat$: Observable<QuestionStat>}[] = [];
 
   @Input()
   public set lastQuestion(qs: Question[]) {
 
-    this.stats = []
+    this.stats = [];
 
     for (const q of qs) {
-      
-      let payload = {
+
+      const payload = {
         q,
         stat$: this.afs.collection(Collections.QUESTION_STAT).doc<QuestionStat>(q.id)
           .valueChanges()
           .pipe(
-            map(stat => stat ? ({...stat, stat: Object.entries(stat.stat)}) : ({id: `${Collections.QUESTION_STAT}/${q.id}`, question: q, stat: [], total: 0}))
+            map(stat => stat ?
+              ({...stat, stat: Object.entries(stat.stat)}) :
+              ({id: `${Collections.QUESTION_STAT}/${q.id}`, question: q, stat: [], total: 0}))
           )
-      }
+      };
 
-      this.stats.push(payload)
+      this.stats.push(payload);
 
     }
 
   }
-  public get lastQuestion(): Question[] { return [] }
+  public get lastQuestion(): Question[] { return []; }
 
-  @Input() lastSelected: string
+  @Input() lastSelected: string;
 
   constructor(
     private afs: AngularFirestore,
@@ -49,12 +51,17 @@ export class ExamFeedbackModalComponent implements OnInit {
   }
 
   closeModal() {
-    this.modal.getModal('examFeedbackModal').close()
+    this.modal.getModal('examFeedbackModal').close();
   }
 
   filterStats(question: Question, stats: any[]) {
-    const ans = question && question.respuestas ? question.respuestas.map(r => r.text) : []
-    return stats ? stats.filter(s => ans.includes(s[0])) : []
+    const ans = question && question.respuestas ? question.respuestas.map(r => r.text) : [];
+    return stats ? stats.filter(s => ans.includes(s[0])) : [];
+  }
+
+  getPercent(total: number, n: number, stats: any[]) {
+    const percentTotal = stats.map(s => s[1]).reduce((a, b) => a + b, 0);
+    return n * 100 / percentTotal;
   }
 
 }
