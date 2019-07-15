@@ -2,6 +2,35 @@
   <epsi-terminos-modal></epsi-terminos-modal>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="helpModal" #helpModal>
+  <div class="row p-4">
+
+    <div class="col-md-12">
+      <h5>Llena el siguiente formulario y nos pondremos en contacto contigo.</h5>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Nombre Completo</label>
+      <input type="text" class="form-control" [(ngModel)]="helpForm.name">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Email</label>
+      <input type="text" class="form-control" [(ngModel)]="helpForm.email">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Comentario</label>
+      <textarea class="form-control" [(ngModel)]="helpForm.text"></textarea>
+    </div>
+
+    <div class="col-md-12">
+      <button class="btn btn-primary" (click)="sendHelpRequest()">Enviar</button>
+    </div>
+
+  </div>
+</ngx-smart-modal>
+
 <div class="global-loader" *ngIf="!hideLoader">
   <img style="width: 30%" src="assets/logo-white.svg" class="mb-4">
   <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
@@ -32,33 +61,34 @@
         </div>
 
         <div class="col-md-12 mt-4 p-4">
-          <epsi-panel title="¿Tienes alguna duda?">
-            <div class="row p-4">
-
-              <div class="col-md-12">
-                <h5>Llena el siguiente formulario y nos pondremos en contacto contigo.</h5>
-              </div>
+          <epsi-panel title="Crea tu cuenta">
+            <form class="row p-4" [formGroup]="registerForm" (ngSubmit)="onRegister()">
 
               <div class="col-md-12 form-group">
                 <label for="">Nombre Completo</label>
-                <input type="text" class="form-control" [(ngModel)]="helpForm.name">
+                <input type="text" class="form-control" formControlName="displayName">
               </div>
 
               <div class="col-md-12 form-group">
                 <label for="">Email</label>
-                <input type="text" class="form-control" [(ngModel)]="helpForm.email">
+                <input type="text" class="form-control" formControlName="email">
               </div>
 
               <div class="col-md-12 form-group">
-                <label for="">Comentario</label>
-                <textarea class="form-control" [(ngModel)]="helpForm.text"></textarea>
+                <label for="">Contraseña</label>
+                <input type="password" class="form-control" formControlName="password">
+              </div>
+
+              <div class="col-md-12 form-group">
+                <label for="">Confirmar Contraseña</label>
+                <input type="password" class="form-control" formControlName="repassword">
               </div>
 
               <div class="col-md-12">
-                <button class="btn btn-primary" (click)="sendHelpRequest()">Enviar</button>
+                <button class="btn btn-primary" type="submit" [disabled]="loading">{{loading ? 'Cargando...' : 'Registrarse'}}</button>
               </div>
 
-            </div>
+            </form>
           </epsi-panel>
         </div>
 
@@ -90,6 +120,8 @@
           <p class="m-0 mt-4 c-white" style="text-transform: uppercase">Página exclusiva para inscripciones e ingreso a Zamnademy.</p> -->
           <small class="c-white" (click)="terminosModal.open()">Términos y Condiciones</small>
           <!-- <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2019, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p> -->
+          <br>
+          <button class="btn btn-danger" (click)="helpModal.open()">NECESITO AYUDA</button>
         </div>
 
         <form class="auth-login-container w-100" [formGroup]="loginForm" (ngSubmit)="onLogin()" *ngIf="mode == 'admin'">

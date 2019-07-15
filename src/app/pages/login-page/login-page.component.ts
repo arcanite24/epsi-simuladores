@@ -93,7 +93,7 @@ export class LoginPageComponent implements OnInit {
 
     if (this.registerForm.valid) {
 
-      if (this.registerForm.value.password != this.registerForm.value.repassword) {
+      if (this.registerForm.value.password !== this.registerForm.value.repassword) {
         return this.toastr.error('Las contraeñas no coinciden...');
       }
 
