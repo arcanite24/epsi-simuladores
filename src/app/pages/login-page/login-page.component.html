@@ -100,6 +100,32 @@
       <div class="auth-controls flex flex-col flex-center p-4">
         <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">Ingresa para empezar a resolver exámenes</h4>
 
+        <epsi-panel class="p-4">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="container-fluid">
+            <div class="row p-4">
+
+              <div class="form-group mt-2 col-md-12">
+                <label class="label">Email</label>
+                <div class="control">
+                  <input class="form-control" type="email" placeholder="Ingresa tu correo electrónico" formControlName="email">
+                </div>
+              </div>
+
+              <div class="form-group mt-2 col-md-12">
+                <label class="label">Contraseña</label>
+                <div class="control">
+                  <input class="form-control" type="password" placeholder="Tu contraseña" formControlName="password">
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <button class="mt-2 btn btn-primary w-100" type="submit" [disabled]="loading">Iniciar Sesión</button>
+              </div>
+
+            </div>
+          </form>
+        </epsi-panel>
+
         <div class="social-buttons mt-3 w-100 flex flex-col flex-center" *ngIf="mode == 'login'">
           <button class="btn-social w-100 btn-google" type="button" (click)="loginGoogle()">
             <div class="social-icon-container">
