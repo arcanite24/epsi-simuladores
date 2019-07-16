@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core'
-import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models'
-import json2csv from 'json2csv'
-import { AngularFirestore } from '@angular/fire/firestore'
-import {Collections, User, Roles, MoodRate, Question} from 'src/app/app.models'
-import { take } from 'rxjs/operators'
+import { Component, OnInit } from '@angular/core';
+import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { Collections, User, Roles, MoodRate } from 'src/app/app.models';
+import { take } from 'rxjs/operators';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Router } from '@angular/router';
 import { DataService } from 'src/app/services/data.service';
-import {StatsService} from "../../services/stats.service";
+import { StatsService } from '../../services/stats.service';
 import { flattenDeep, uniq } from 'lodash';
-import {from, of} from "rxjs";
+import { from } from 'rxjs';
+import json2csv from 'json2csv';
 
 @Component({
   selector: 'epsi-admin-users-page',
@@ -18,8 +18,10 @@ import {from, of} from "rxjs";
 })
 export class AdminUsersPageComponent implements OnInit {
 
-  public tempUser: User
-  public tempRates: MoodRate[]
+  private roleStrings = Object.values(Roles);
+
+  public tempUser: User;
+  public tempRates: MoodRate[];
 
   private fields: string[] = [
     'uid',
@@ -33,7 +35,7 @@ export class AdminUsersPageComponent implements OnInit {
     Roles.Admin,
     Roles.Esencial,
     Roles.Premium,
-  ]
+  ];
 
   public config: CrudTableConfig<User> = {
     collection: Collections.USER,
@@ -46,21 +48,20 @@ export class AdminUsersPageComponent implements OnInit {
       {field: 'email', type: 'email', label: 'Email', noEdit: true},
       {field: 'universidad', type: 'text', label: 'Universidad'},
       {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => {
-        if (!row.photoURL) return '-'
-        if (row.photoURL.includes('api.zamna')) return '-'
-        return `<img src="${row.photoURL}" style="width:32px">`
+        if (!row.photoURL) { return '-'; }
+        if (row.photoURL.includes('api.zamna')) { return '-'; }
+        return `<img src="${row.photoURL}" style="width:32px">`;
       }, noEdit: true},
       {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
-      {field: 'roles', type: 'text', noEdit: true, customRender: row => `
-        ${row.isAdmin ? 'isAdmin ' : ''}
-        ${row.isEsencial ? 'isEsencial ' : ''}
-        ${row.isTemprano ? 'isTemprano ' : ''}
-        ${row.isPresencial? 'isPresencial ' : ''}
-        ${row.isEsencial360? 'isEsencial360 ' : ''}
-        ${row.isPremium360? 'isPremium360 ' : ''}
-        ${row.isPremium2019? 'isPremium2019 ' : ''}
-        ${row.is3602019? 'is3602019 ' : ''}
-      `},
+      {field: 'roles', type: 'text', noEdit: true, customRender: row => {
+        const roles = [];
+        for (const key in row) {
+          if (this.roleStrings.indexOf(key) >= 0) {
+            roles.push(this.roleStrings[this.roleStrings.indexOf(key)]);
+          }
+        }
+        return roles.join(', ');
+      }},
       {field: 'isAdmin', type: 'checkbox', hideOnTable: true},
       {field: 'isEsencial', type: 'checkbox', hideOnTable: true},
       {field: 'isPremium', type: 'checkbox', hideOnTable: true},
@@ -94,7 +95,7 @@ export class AdminUsersPageComponent implements OnInit {
       {iconClasses: 'fa fa-smile-o', handler: user => this.openMoodModal(user)},
       {iconClasses: 'fa fa-bell', handler: user => this.openNotiAddModal(user)},
     ]
-  }
+  };
 
   constructor(
     private afs: AngularFirestore,
@@ -127,36 +128,36 @@ export class AdminUsersPageComponent implements OnInit {
 
   async exportUsers() {
 
-    const Json2csvParser = json2csv.Parser
-    const parser = new Json2csvParser({ fields: this.fields })
+    const Json2csvParser = json2csv.Parser;
+    const parser = new Json2csvParser({ fields: this.fields });
 
     const users = await this.afs.collection<User>(Collections.USER)
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
     const csv = parser.parse(users.map(user => {
       return {
         ...user,
 
-      }
-    }))
-    const exportedFilenmae = `zamnademy-users-${Date.now()}.csv`
+      };
+    }));
+    const exportedFilenmae = `zamnademy-users-${Date.now()}.csv`;
 
-    var blob = new Blob([csv], { type: 'text/csvcharset=utf-8' })
+    const blob = new Blob([csv], { type: 'text/csvcharset=utf-8' });
     if (navigator.msSaveBlob) {
-        navigator.msSaveBlob(blob, exportedFilenmae)
+        navigator.msSaveBlob(blob, exportedFilenmae);
     } else {
-        const link = document.createElement("a")
+        const link = document.createElement('a');
         if (link.download !== undefined) {
-            var url = URL.createObjectURL(blob)
-            link.setAttribute("href", url)
-            link.setAttribute("download", exportedFilenmae)
-            link.style.visibility = 'hidden'
-            document.body.appendChild(link)
-            link.click()
-            document.body.removeChild(link)
+            const url = URL.createObjectURL(blob);
+            link.setAttribute('href', url);
+            link.setAttribute('download', exportedFilenmae);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     }
 
@@ -169,23 +170,23 @@ export class AdminUsersPageComponent implements OnInit {
   }
 
   openEditRoles(user: User) {
-    this.tempUser = user
-    this.modal.getModal('userRolesModal').open()
+    this.tempUser = user;
+    this.modal.getModal('userRolesModal').open();
   }
 
   openUserStat(user: User) {
-    this.router.navigate(['/admin/user/stats', user.uid])
+    this.router.navigate(['/admin/user/stats', user.uid]);
   }
 
   async openMoodModal(user: User) {
-    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', user.uid))
-    this.tempRates = rates
-    this.modal.getModal('userMoodModal').open()
+    const rates = await this.data.getCollectionQuery<MoodRate>(Collections.MOOD_RATE, ref => ref.where('user', '==', user.uid));
+    this.tempRates = rates;
+    this.modal.getModal('userMoodModal').open();
   }
 
   openNotiAddModal(user: User) {
-    this.tempUser = user
-    this.modal.getModal('userNotiAdd').open()
+    this.tempUser = user;
+    this.modal.getModal('userNotiAdd').open();
   }
 
 }
