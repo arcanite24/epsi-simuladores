@@ -139,13 +139,19 @@ var AdminControlDetailPage = /** @class */ (function () {
     };
     Object.defineProperty(AdminControlDetailPage.prototype, "totalPagado", {
         get: function () {
+            if (!this.pagos)
+                return 0;
             if (!this.control)
                 return 0;
             if (!this.control.pagos)
                 return 0;
             if (this.control.pagos.length <= 0)
                 return 0;
-            return this.control.pagos.map(function (p) { return parseFloat(p.amount); }).reduce(function (a, b) { return a + b; });
+            console.log(this.pagos);
+            return this.pagos
+                .filter(function (p) { return p.status === 'approved' || p.pago.status === 'approved' || p.pago.status === 'completed'; })
+                .map(function (p) { return parseInt(p.amount.toString()); })
+                .reduce(function (a, b) { return a + b; }, 0);
         },
         enumerable: true,
         configurable: true
