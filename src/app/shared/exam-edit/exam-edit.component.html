@@ -9,7 +9,7 @@
 <ngx-smart-modal identifier="importExamModal" #importExamModal id="importExamModal">
   <div class="container-fluid">
     <div class="row">
-      
+
       <div class="col-md-12">
         <h4>Importar Exámen</h4>
       </div>
@@ -39,6 +39,11 @@
   <div class="form-group">
     <label for="">Nombre</label>
     <input type="text" class="form-control" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="">Tag que lo Desbloquea</label>
+    <input type="text" class="form-control" formControlName="unlockedBy">
   </div>
 
   <div class="form-group" *ngIf="editForm.value.type == 'demo'">
@@ -193,7 +198,7 @@
         </button>
 
       </div>
-      
+
       <div class="form-group w-100">
         <label for="">{{q.text}}</label>
         <input type="text" class="form-control" [(ngModel)]="q.group" [ngModelOptions]="{standalone: true}" placeholder="Agrupador">

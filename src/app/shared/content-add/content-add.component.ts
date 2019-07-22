@@ -5,6 +5,7 @@ import { ContentTypes, Content } from 'src/app/app.models';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs';
+import { ConvertService } from 'src/app/services/convert.service';
 
 @Component({
   selector: 'epsi-content-add',
@@ -30,7 +31,8 @@ export class ContentAddComponent implements OnInit {
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private toastr: ToastrService,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private convert: ConvertService,
   ) { }
 
   ngOnInit() {
@@ -65,6 +67,17 @@ export class ContentAddComponent implements OnInit {
       this.contents$ = this.afs.collection<Content>('content', ref => ref.where('isPdf', '==', true)).valueChanges();
     } else {
       this.contents$ = this.afs.collection<Content>('content').valueChanges();
+    }
+  }
+
+  async convertPDF(list: FileList) {
+    try {
+      const urls = await this.convert.convertPDF(list);
+      this.addForm.patchValue({ pdf: urls });
+      this.toastr.success('PDF subido correctamente');
+    } catch (error) {
+      console.log(error);
+      this.toastr.error('Ocurrió un error al subir el pdf');
     }
   }
 

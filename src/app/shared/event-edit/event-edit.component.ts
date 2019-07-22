@@ -4,7 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Collections, EventTask, EventLink } from 'src/app/app.models';
-import uuid from 'uuid'
+import uuid from 'uuid';
 
 @Component({
   selector: 'epsi-event-edit',
@@ -13,13 +13,13 @@ import uuid from 'uuid'
 })
 export class EventEditComponent implements OnInit {
 
-  private _event: Event
+  private _event: Event;
 
   @Input()
-  public set event(event: Event) { this.eventChanged(event) }
-  public get event(): Event { return this._event }
+  public set event(event: Event) { this.eventChanged(event); }
+  public get event(): Event { return this._event; }
 
-  public editForm: FormGroup
+  public editForm: FormGroup;
 
   constructor(
     private afs: AngularFirestore,
@@ -33,16 +33,17 @@ export class EventEditComponent implements OnInit {
       desc: ['', Validators.required],
       date: [null],
       tasks: [[]],
-      links: [[]]
-    })
+      links: [[]],
+      unlockedBy: [null],
+    });
   }
 
   ngOnInit() {
   }
 
   eventChanged(m: Event) {
-    this._event = m
-    if (this.editForm && m) this.editForm.patchValue(this._event)
+    this._event = m;
+    if (this.editForm && m) { this.editForm.patchValue(this._event); }
   }
 
   async submitForm() {
@@ -50,41 +51,41 @@ export class EventEditComponent implements OnInit {
     if (this.editForm.valid) {
 
       try {
-        await this.afs.doc(`${Collections.EVENT}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true})
-        this.toastr.success('Evento editado correctamente.')
-        this.modal.getModal('eventEditModal').close()
-        this.editForm.reset()
+        await this.afs.doc(`${Collections.EVENT}/${this.editForm.value.id}`).set(this.editForm.value, {merge: true});
+        this.toastr.success('Evento editado correctamente.');
+        this.modal.getModal('eventEditModal').close();
+        this.editForm.reset();
       } catch (error) {
-        console.log(error)
-        this.toastr.error('Ocurrió un error al editar...')
+        console.log(error);
+        this.toastr.error('Ocurrió un error al editar...');
       }
 
     } else {
-      this.toastr.error('La información que ingresaste no es válida.')
+      this.toastr.error('La información que ingresaste no es válida.');
     }
 
   }
 
   addTask(tasks: EventTask[] = []) {
-    if (!tasks) tasks = []
-    const id = uuid.v4()
-    tasks.push({id, label: 'Nueva Tarea', users: [], completed: 0})
-    this.editForm.patchValue({tasks})
+    if (!tasks) { tasks = []; }
+    const id = uuid.v4();
+    tasks.push({id, label: 'Nueva Tarea', users: [], completed: 0});
+    this.editForm.patchValue({tasks});
   }
 
   removeTask(tasks: EventTask[], task: EventTask) {
-    this.editForm.patchValue({ tasks: tasks.filter(e => e.id != task.id) })
+    this.editForm.patchValue({ tasks: tasks.filter(e => e.id != task.id) });
   }
 
   addLink(links: EventLink[] = []) {
-    if (!links) links = []
-    const id = uuid.v4()
-    links.push({id, label: 'Nueva Link', url: '/home'})
-    this.editForm.patchValue({links})
+    if (!links) { links = []; }
+    const id = uuid.v4();
+    links.push({id, label: 'Nueva Link', url: '/home'});
+    this.editForm.patchValue({links});
   }
 
   removeLink(links: EventLink[], link: EventLink) {
-    this.editForm.patchValue({ links: links.filter(e => e.id != link.id) })
+    this.editForm.patchValue({ links: links.filter(e => e.id != link.id) });
   }
 
 }

@@ -37,7 +37,9 @@
 
   <div class="form-group" *ngIf="isPdf">
     <label for="">Subir PDF</label>
-    <app-storage-uploader (onFinish)="addForm.patchValue({ pdf: $event })"></app-storage-uploader>
+    <!-- <app-storage-uploader (onFinish)="addForm.patchValue({ pdf: $event })"></app-storage-uploader> -->
+    <input type="file" #pdfInput id="pdf" (change)="convertPDF(pdfInput.files)">
+    <label for="pdf" class="btn btn-primary">Seleccionar PDF</label>
   </div>
 
   <!-- TODO: Add nesting forms -->

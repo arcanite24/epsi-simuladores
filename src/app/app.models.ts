@@ -249,7 +249,7 @@ export interface Content {
   temas?: Content[];
   liberadoInPrograma?: boolean;
   isPdf?: boolean;
-  pdf?: string;
+  pdf?: string[];
   children?: Content[];
 }
 
@@ -339,6 +339,7 @@ export interface Exam {
   isPresencial?: boolean;
   extraTags?: string;
   tags_structure?: any[];
+  unlockedBy?: string;
 }
 
 export interface ExamTagColor {
@@ -439,6 +440,7 @@ export interface Event {
   color?: {primary: string, secondary: string};
   tasks: EventTask[];
   links: EventLink[];
+  unlockedBy?: string;
 }
 
 export interface EventTask {
