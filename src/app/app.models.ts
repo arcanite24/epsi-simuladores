@@ -109,6 +109,9 @@ export enum Roles {
   isInformatica = 'isInformatica',
   isContabilidad = 'isContabilidad',
 
+  // 2Guia paquetes
+  isFullSim = 'isFullSim',
+
   Content = 'isContent',
   Checklist = 'isChecklist',
   Calendar = 'isCalendar',

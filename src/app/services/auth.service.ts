@@ -89,6 +89,8 @@ export class AuthService {
   get isInformatica() { return this.loggedIn && this.user[Roles.isInformatica]; }
   get isContabilidad() { return this.loggedIn && this.user[Roles.isContabilidad]; }
 
+  get isFullSim() { return this.loggedIn && this.user[Roles.isFullSim]; }
+
   setUser(user: any) {
     /* console.log(user) */
     if (user) { return this.afs.doc(`user/${user.uid}`).set(Object.assign({}, user), {merge: true}); }
