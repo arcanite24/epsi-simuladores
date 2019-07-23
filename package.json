@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "echo \"RECUERDA ACTIVAS LOS SCRIPTS DE TWAK Y PAYPAL WEOOOOOOON\nRECUERDA ACTIVAS LOS SCRIPTS DE TWAK Y PAYPAL WEOOOOOOON\nRECUERDA ACTIVAS LOS SCRIPTS DE TWAK Y PAYPAL WEOOOOOOON\nRECUERDA ACTIVAS LOS SCRIPTS DE TWAK Y PAYPAL WEOOOOOOON\nRECUERDA ACTIVAS LOS SCRIPTS DE TWAK Y PAYPAL WEOOOOOOON\n\" && git add . && git commit -m \"EpsiDev Galaxy Automatic Deploy\" && git push origin zamnademy && ng build --prod && firebase deploy --only hosting",
+    "deploy": "git add . && git commit -m \"EpsiDev Galaxy Automatic Deploy\" && git push origin zamnademy && ng build --prod && firebase deploy --only hosting",
     "deploy:fun": "firebase deploy --only functions"
   },
   "private": true,
