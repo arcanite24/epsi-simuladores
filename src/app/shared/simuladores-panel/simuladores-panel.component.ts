@@ -30,11 +30,11 @@ export class SimuladoresPanelComponent implements OnInit {
     this.auth.user$.subscribe(async user => {
 
       let isPresencial = false;
-      if (user.is3602019) { isPresencial = true }
-      if (user.isPresencial) { isPresencial = true }
-      if (user.isPremium2019) { isPresencial = false }
+      if (user.is3602019) { isPresencial = true; }
+      if (user.isPresencial) { isPresencial = true; }
+      if (user.isPremium2019) { isPresencial = false; }
 
-      if (user && !this.exams$) { this.loadExams(isPresencial); }
+      if (user && !this.exams$) { this.loadExams(isPresencial, user); }
 
       if (user) {
         const _user = await this.data.getDoc<User>(Collections.USER, user.uid);
@@ -52,7 +52,7 @@ export class SimuladoresPanelComponent implements OnInit {
 
   }
 
-  loadExams(isPresencial: boolean = false) {
+  loadExams(isPresencial: boolean = false, user: User) {
 
     /*if (isPresencial) {*/
     if (isPresencial) {
@@ -64,6 +64,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
           map(list => list.reverse()),
+          map(exams => this.filterWithRoles(exams, user)),
         );
     } else {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
@@ -73,16 +74,27 @@ export class SimuladoresPanelComponent implements OnInit {
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
           map(list => list.filter(e => !e.isPresencial).reverse()),
+          map(exams => this.filterWithRoles(exams, user)),
         );
     }
 
   }
 
   isBlur(): boolean {
-    if (this.auth.isAdmin) { return false }
-    if (this.auth.isPremium2019) { return false }
-    if (this.auth.isZamna360_2019) { return false }
+    if (this.auth.isAdmin) { return false; }
+    if (this.auth.isPremium2019) { return false; }
+    if (this.auth.isZamna360_2019) { return false; }
     return !this.auth.isTemprano && !this.auth.isPresencial;
+  }
+
+  private filterWithRoles(exams: Exam[] = [], user: User) {
+    return exams.filter(e => {
+      if (e.unlockedBy) {
+        return user[e.unlockedBy];
+      } else {
+        return e;
+      }
+    });
   }
 
 }
