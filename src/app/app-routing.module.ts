@@ -66,6 +66,7 @@ import { MateriaAltPageComponent } from './pages/materia-alt-page/materia-alt-pa
 import { UserMateriasPromediosComponent } from './shared/user-materias-promedios/user-materias-promedios.component';
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
+import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
 
 const routes: Routes = [
 
@@ -78,6 +79,7 @@ const routes: Routes = [
 
   // Core
   {path: '', component: LoginPageComponent},
+  { path: 'cuestionario', component: CuestionarioPageComponent },
   {path: 'home', component: HomePageComponent, canActivate: [AuthGuard]},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'notes', component: NotesPageComponent, canActivate: [AuthGuard]},

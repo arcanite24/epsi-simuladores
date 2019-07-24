@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12 form-group">
+      <label for="">Nombre Completo</label>
+      <input type="text" class="form-control" [(ngModel)]="data.name">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Correo Electrónico</label>
+      <input type="text" class="form-control" [(ngModel)]="data.email">
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Edad</label>
+      <select class="form-control" [(ngModel)]="data.edad">
+        <option value="18-25">18-25</option>
+        <option value="25-35">25-35</option>
+        <option value="+35">+35</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Trabajas?</label>
+      <select class="form-control" [(ngModel)]="data.trabajas">
+        <option value="Si">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Planeas entrar a la universidad?</label>
+      <select class="form-control" [(ngModel)]="data.entrarUniversidad">
+        <option value="Si">Sí</option>
+        <option value="No">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">Sede de tu exámen</label>
+      <select class="form-control" [(ngModel)]="data.sede">
+        <option value="CDMX">CDMX</option>
+        <option value="Cancún">Cancún</option>
+        <option value="León">León</option>
+        <option value="Guadalajara">Guadalajara</option>
+        <option value="Monterrey">Monterrey</option>
+        <option value="Tampico">Tampico</option>
+        <option value="Tijuana">Tijuana</option>
+        <option value="Tuxtla">Tuxtla</option>
+        <option value="Xalapa">Xalapa</option>
+        <option value="Zacatecas">Zacatecas</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label for="">¿Tomarás Curso?</label>
+      <select class="form-control" [(ngModel)]="data.curso">
+        <option value="Estoy inscrito en uno">Estoy inscrito en uno</option>
+        <option value="Estoy por inscribirme">Estoy por inscribirme</option>
+        <option value="No">No</option>
+        <option value="No lo sé">No lo sé</option>
+      </select>
+    </div>
+
+  </div>
+</div>

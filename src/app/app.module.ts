@@ -215,6 +215,7 @@ import { ExamQuestionsImportComponent } from './shared/exam-questions-import/exa
 import { CompleteProfileComponent } from './shared/complete-profile/complete-profile.component';
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
+import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
 
 @NgModule({
   declarations: [
@@ -390,6 +391,7 @@ import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help
     CompleteProfileComponent,
     AdminPagosPageComponent,
     AdminHelpRequestComponent,
+    CuestionarioPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

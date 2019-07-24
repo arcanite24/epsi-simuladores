@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Collections, Exam, ExamTypes } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
-import moment from 'moment'
+import moment from 'moment';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -13,8 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class SimuladoresPanelComponent implements OnInit {
 
-  @Input() public showContent: boolean = false
-  public exams$: Observable<any[]>
+  @Input() public showContent = false;
+  public exams$: Observable<any[]>;
 
   constructor(
     private afs: AngularFirestore,
@@ -25,13 +25,13 @@ export class SimuladoresPanelComponent implements OnInit {
 
     this.auth.user$.subscribe(user => {
 
-      let isPresencial = false
-      if (user.is3602019) isPresencial = true
-      if (user.isPresencial) isPresencial = true
-      if (user.isPremium2019) isPresencial = false
+      let isPresencial = false;
+      if (user.is3602019) { isPresencial = true; }
+      if (user.isPresencial) { isPresencial = true; }
+      if (user.isPremium2019) { isPresencial = false; }
 
-      if (user && !this.exams$) this.loadExams(isPresencial)
-    })
+      if (user && !this.exams$) { this.loadExams(isPresencial); }
+    });
 
     /* this.exams$ = this.afs.doc<List>(`${Collections.LIST}/${HomeLists.SimuladoresList}`)
       .valueChanges()
@@ -54,7 +54,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
           map(list => list.reverse()),
-        )
+        );
     } else {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('type', '==', ExamTypes.SIMULADOR)
@@ -63,16 +63,16 @@ export class SimuladoresPanelComponent implements OnInit {
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
           map(list => list.filter(e => !e.isPresencial).reverse()),
-        )
+        );
     }
 
   }
 
   isBlur(): boolean {
-    if (this.auth.isAdmin) return false
-    if (this.auth.isPremium2019) return false
-    if (this.auth.isZamna360_2019) return false
-    return !this.auth.isTemprano && !this.auth.isPresencial
+    if (this.auth.isAdmin) { return false; }
+    if (this.auth.isPremium2019) { return false; }
+    if (this.auth.isZamna360_2019) { return false; }
+    return !this.auth.isTemprano && !this.auth.isPresencial;
   }
 
 }
