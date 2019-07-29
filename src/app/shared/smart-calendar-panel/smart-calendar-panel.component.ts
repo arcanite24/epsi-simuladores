@@ -76,10 +76,12 @@ export class SmartCalendarPanelComponent implements OnInit, OnDestroy {
         if (this.events.length > 0) { return; }
 
         for (const e of events) {
+
+          console.log(e);
+
           if (e.event && !this.loadedEvents.includes(e.event)) {
 
             const eventDoc = await this.data.getDocAlt<Event>(Collections.EVENT, e.event);
-
             if (eventDoc.unlockedBy) {
               if (!user[eventDoc.unlockedBy]) { return; }
             }

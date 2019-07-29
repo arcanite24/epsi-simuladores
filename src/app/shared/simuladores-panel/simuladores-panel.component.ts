@@ -63,8 +63,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .valueChanges()
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => list.reverse()),
-          map(exams => this.filterWithRoles(exams, user)),
+          map(list => this.filterWithRoles(list.reverse(), user)),
         );
     } else {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
@@ -73,8 +72,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .valueChanges()
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => list.filter(e => !e.isPresencial).reverse()),
-          map(exams => this.filterWithRoles(exams, user)),
+          map(list => this.filterWithRoles(list.filter(e => !e.isPresencial).reverse(), user)),
         );
     }
 
@@ -90,9 +88,10 @@ export class SimuladoresPanelComponent implements OnInit {
   private filterWithRoles(exams: Exam[] = [], user: User) {
     return exams.filter(e => {
       if (e.unlockedBy) {
-        return user[e.unlockedBy];
+        console.log(e.unlockedBy, user[e.unlockedBy]);
+        return !!user[e.unlockedBy];
       } else {
-        return e;
+        return true;
       }
     });
   }
