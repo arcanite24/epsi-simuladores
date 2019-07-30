@@ -46,8 +46,11 @@
         <vg-fullscreen></vg-fullscreen>
       </vg-controls>
 
-      <video [vgMedia]="media" #media preload="auto">
+      <!-- <video [vgMedia]="media" #media preload="auto">
         <source [src]="content.video">
+      </video> -->
+
+      <video [vgMedia]="media" #media preload="auto" type="video/mp4" [vgHls]="content.video">
       </video>
 
     </vg-player>
