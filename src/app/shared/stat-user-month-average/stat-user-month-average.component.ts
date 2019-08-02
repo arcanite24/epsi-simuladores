@@ -27,11 +27,13 @@ export class StatUserMonthAverageComponent implements OnInit {
 
   ngOnInit() {
     if (this.uid) {
-      this.loadInfo(this.uid);
+      /* this.loadInfo(this.uid); */
+      this.loadInfo('DK5bKDAWwJerIKkH0o0MSF9RY3f2');
     } else {
       this.auth.user$.subscribe(async user => {
         if (!user) { return; }
-        this.loadInfo(user.uid);
+        /* this.loadInfo(user.uid); */
+        this.loadInfo('DK5bKDAWwJerIKkH0o0MSF9RY3f2');
       });
     }
   }
@@ -70,6 +72,7 @@ export class StatUserMonthAverageComponent implements OnInit {
       .pipe(
         map(results => {
           const total = results.length;
+          console.log(uid, start, end, results)
           return results.map((r: ExamResults) => r.promedio).filter(n => !isNaN(n)).reduce((a, b) => a + b, 0) / total * averageMultiplier;
         }),
         tap(async (average: number) => {

@@ -10,6 +10,7 @@ admin.initializeApp()
 
 // Custom HTTP Functions
 import MercadoPagoFunctions from './mercadopago'
+import ZamnademyFunctions from './zamnademy'
 
 // Initialize the Algolia Client
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey)
@@ -30,3 +31,6 @@ exports.syncQuestions = functions.firestore
 
 // MercadoPago
 exports.pay = functions.https.onRequest(MercadoPagoFunctions)
+
+// Zamnademy
+exports.zamna = functions.https.onRequest(ZamnademyFunctions)

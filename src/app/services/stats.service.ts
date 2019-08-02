@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ExamResults, Collections, StatView, User, Tag, StatCounter, List, Question, Answer, QuestionStat, Exam } from '../app.models';
 import { take, map, tap } from 'rxjs/operators';
-import groupBy from 'lodash/groupBy'
-import sortBy from 'lodash/sortBy'
-import { flattenDeep, uniq } from 'lodash'
-import moment, {months} from 'moment'
-import { averageMultiplier } from '../app.config';
+import groupBy from 'lodash/groupBy';
+import sortBy from 'lodash/sortBy';
+import { flattenDeep, uniq } from 'lodash';
+import moment, {months} from 'moment';
+import { averageMultiplier, functionsEndpoint } from '../app.config';
 import { Observable } from 'rxjs';
 import { DataService } from './data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -28,18 +29,23 @@ export class StatsService {
     {key: '10', label: 'Octubre'},
     {key: '11', label: 'Noviembre'},
     {key: '12', label: 'Diciembre'},
-  ]
+  ];
 
-  private results: ExamResults[]
+  private results: ExamResults[];
 
   constructor(
     private afs: AngularFirestore,
-    private data: DataService
+    private data: DataService,
+    private http: HttpClient,
   ) { }
+
+  cloudComputeUserAverage(user: string, month: boolean = false) {
+    return this.http.post<{promedio: number}>(`${functionsEndpoint}/zamna/computeUserAverage`, { user, month }).toPromise();
+  }
 
   async modifyCustomCounter(key: string, label: string, delta: number) {
 
-    const counter = await this.data.getDoc<StatCounter>(Collections.STAT_COUNTER, key)
+    const counter = await this.data.getDoc<StatCounter>(Collections.STAT_COUNTER, key);
 
     if (!counter) {
 
@@ -49,14 +55,14 @@ export class StatsService {
         label,
         value: 1,
         lastModified: new Date().toISOString(),
-      })
+      });
 
     } else {
 
       await this.afs.collection(Collections.STAT_COUNTER).doc(key).update({
         value: counter.value += delta,
         lastModified: new Date().toISOString(),
-      })
+      });
 
     }
 
@@ -72,89 +78,89 @@ export class StatsService {
         take(1),
         map(counters => counters[0])
       )
-      .toPromise()
+      .toPromise();
 
-    if (!counter) counter = {id: key, key, label: exam ? exam.name : key, value: 0, lastModified: new Date().toISOString()}
-    if (counter.value != null) counter.value += delta
+    if (!counter) { counter = {id: key, key, label: exam ? exam.name : key, value: 0, lastModified: new Date().toISOString()} }
+    if (counter.value != null) { counter.value += delta }
 
     await this.afs.doc(`${Collections.STAT_COUNTER}/${counter.id}`).set({
-      value: counter.value, 
-      lastModified: new Date().toISOString(), 
+      value: counter.value,
+      lastModified: new Date().toISOString(),
       exam: exam ? exam.name : null,
       id: counter.id,
       label: counter.label,
       key: counter.key
-    }, {merge: true})
+    }, {merge: true});
 
   }
 
   // Timeline
   async computeTimeline(tag: string, uid: string) {
 
-    const year = moment().year()
-    let cache = {
+    const year = moment().year();
+    const cache = {
       timeline: {},
       total: 0,
-    }
+    };
 
     const results: ExamResults[] = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
       .where('tags', 'array-contains', tag)
       .where('user', '==', uid))
       .valueChanges()
       .pipe(take(1))
-      .toPromise()
+      .toPromise();
 
     console.log('results timeline:', tag, results);
 
-    const grouped = groupBy(results, r => r.date.substr(0, 7))
+    const grouped = groupBy(results, r => r.date.substr(0, 7));
 
     console.log('grouped timeline:', tag, grouped);
 
     for (const m of this.months) {
-      const key = `${year}-${m.key}`
+      const key = `${year}-${m.key}`;
 
       cache.timeline[m.label] = {
         mes: m,
         promedio: grouped[key] ? await this.computeUserTagAverageWithData(tag, uid, grouped[key]) : 0
-      }
+      };
 
-      console.log('month', m, cache.timeline[m.label])
+      console.log('month', m, cache.timeline[m.label]);
     }
 
-    console.log('timeline', cache.timeline)
+    console.log('timeline', cache.timeline);
 
-    cache.total = results.length
+    cache.total = results.length;
     const final = {
       total: cache.total,
       timeline: sortBy(cache.timeline, (m: any) => m.mes.key)
     };
 
-    console.log(final)
+    console.log(final);
 
     return final;
 
   }
 
   async computeUserAverageList(user: User) {
-    
-    const tags: string[] = await this.getAllTags()
-    let list = []
+
+    const tags: string[] = await this.getAllTags();
+    const list = [];
 
     for (const tag of tags) {
-      const tempAverage = await this.computeUserTagAverage(tag, user.uid)
-      list.push({tag, promedio: tempAverage})
+      const tempAverage = await this.computeUserTagAverage(tag, user.uid);
+      list.push({tag, promedio: tempAverage});
     }
 
-    return list.filter(tag => !isNaN(tag.promedio) && tag.promedio <= 7)
+    return list.filter(tag => !isNaN(tag.promedio) && tag.promedio <= 7);
 
   }
 
   async computeUserTagAverage(tag: string, uid: string, start?: string, end?: string): Promise<number> {
 
-    if (!tag) return 0
-    if (!uid) return 0
+    if (!tag) { return 0 }
+    if (!uid) { return 0 }
 
-    if (!this.results) this.results = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
+    if (!this.results) { this.results = await this.afs.collection<ExamResults>(Collections.EXAM_RESULT, ref => ref
       .where('user', '==', uid))
     .valueChanges()
     .pipe(
@@ -173,55 +179,56 @@ export class StatsService {
       }),
       take(1),
     ).toPromise()
+    }
 
     /* console.log(this.results.map(r => r.tags)) */
 
     const total = flattenDeep(this.results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
-      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
-    })).filter((q: any) => q.tags.includes(tag))
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}));
+    })).filter((q: any) => q.tags.includes(tag));
 
     /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
 
-    return total.filter((q: any) => q.correcta).length / total.length
+    return total.filter((q: any) => q.correcta).length / total.length;
 
   }
 
   async computeUserTagAverageWithData(tag: string, uid: string, results: ExamResults[]): Promise<number> {
-   
-    if (!tag) return 0
-    if (!uid) return 0
+
+    if (!tag) { return 0 }
+    if (!uid) { return 0 }
 
     results = results.map(r => ({
-      ...r, 
+      ...r,
       tags: r.tags ? r.tags.map((tag: any) => {
-        return tag ? typeof tag === 'object' ? tag.text : tag : null
+        return tag ? typeof tag === 'object' ? tag.text : tag : null;
       }).filter(t => t) : []
-    }))
+    }));
 
     const total = flattenDeep(results.filter(r => r.tags && r.tags.includes(tag)).map(r => {
-      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}))
-    })).filter((q: any) => q.tags.includes(tag))
+      return Object.values(r.questions).map((q: any) => ({tags: this.formatTags(q.raw.tags), correcta: q.correcta}));
+    })).filter((q: any) => q.tags.includes(tag));
 
     /* console.log(tag, total.length, total.filter((q: any) => q.correcta).length, total) */
 
-    return total.filter((q: any) => q.correcta).length / total.length
+    return total.filter((q: any) => q.correcta).length / total.length;
 
   }
 
   formatTags(tags: any): string[] {
-    return tags ? tags.map(tag => tag ? (typeof tag === 'object' ? tag.text : tag) : null).filter(t => t) : []
+    return tags ? tags.map(tag => tag ? (typeof tag === 'object' ? tag.text : tag) : null).filter(t => t) : [];
   }
 
   async computeUserTagListAverage(tags: string[], uid: string): Promise<number> {
 
-    let promedios: number[] = []
+    const promedios: number[] = [];
 
     for (const tag of tags) {
-      const average = await this.computeUserTagAverage(tag, uid)
-      promedios.push(average)
+      const average = await this.computeUserTagAverage(tag, uid);
+      promedios.push(average);
     }
 
-    return promedios.reduce((a, b) => a + b, 0) / promedios.length
+    return promedios.reduce((a, b) => a + b, 0) / promedios.length;
 
   }
 
@@ -233,28 +240,31 @@ export class StatsService {
         take(1),
         map(results => {
 
-          const total = results.length
+          const total = results.length;
+
+          console.log(uid, total);
 
           if (month) {
             return results
-              .filter(r => moment(r.date).isSameOrAfter(moment().startOf('month')) && moment(r.date).isSameOrBefore(moment().endOf('month')))
+              .filter(r => moment(r.date).isSameOrAfter(moment().startOf('month')) && moment(r.date)
+                .isSameOrBefore(moment().endOf('month')))
               .map((r: ExamResults) => r.promedio)
-              .reduce((a, b) => a + b, 0) / total * averageMultiplier
+              .reduce((a, b) => a + b, 0) / total * averageMultiplier;
           } else {
-            return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier
+            return results.map((r: ExamResults) => r.promedio).reduce((a, b) => a + b, 0) / total * averageMultiplier;
           }
 
         }),
         tap(async (average: number) => {
-          this.afs.doc(`${Collections.USER}/${uid}`).update({promedio: average})
+          this.afs.doc(`${Collections.USER}/${uid}`).update({promedio: average});
         })
-      ).toPromise()
+      ).toPromise();
 
   }
 
   // Helpers
   calculateAverage(results: ExamResults[]) {
-    return results.map(r => r.promedio).reduce((a, b) => a + b, 0) * averageMultiplier
+    return results.map(r => r.promedio).reduce((a, b) => a + b, 0) * averageMultiplier;
   }
 
   async getAllTags(): Promise<string[]> {
@@ -263,7 +273,7 @@ export class StatsService {
     .pipe(
       map(tags => tags.map(t => t.value) as string[]),
       take(1)
-    ).toPromise()
+    ).toPromise();
   }
 
   async getAllTagPresenciales() {
@@ -276,64 +286,64 @@ export class StatsService {
 
   // Optimization Helpers
   async addToList<I>(list_id: string, item: I) {
-    
-    const key = `${Collections.LIST}/${list_id}`
+
+    const key = `${Collections.LIST}/${list_id}`;
     const list = await this.afs.doc<List>(key)
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
-    list.list.push(item)
+    list.list.push(item);
 
-    await this.afs.doc(key).update(list)
+    await this.afs.doc(key).update(list);
 
   }
 
   async updateListEntry(list_id: string, item: any, old_list_id: string, old_item: any) {
 
-    this.removeFromList(old_list_id, old_item)
+    this.removeFromList(old_list_id, old_item);
 
-    const key = `${Collections.LIST}/${list_id}`
+    const key = `${Collections.LIST}/${list_id}`;
     const list = await this.afs.doc<List>(key)
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
     list.list = list.list.map(i => {
-      if (item.id == i.id) return item
-      return i
-    })
+      if (item.id == i.id) { return item }
+      return i;
+    });
 
-    await this.afs.doc(key).update(list)
+    await this.afs.doc(key).update(list);
 
   }
 
   async removeFromList(list_id: string, item: any) {
 
-    const key = `${Collections.LIST}/${list_id}`
+    const key = `${Collections.LIST}/${list_id}`;
     const list = await this.afs.doc<List>(key)
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
-    list.list = list.list.filter(i => i.id != item.id)
+    list.list = list.list.filter(i => i.id != item.id);
 
-    await this.afs.doc(key).update(list)
+    await this.afs.doc(key).update(list);
 
   }
 
   async updateQuestionStat(questions: Question[], answer: Answer) {
 
     for (const question of questions) {
-      const key = `${Collections.QUESTION_STAT}/${question.id}`
+      const key = `${Collections.QUESTION_STAT}/${question.id}`;
       const stat = await this.afs.doc<QuestionStat>(key)
       .valueChanges()
       .pipe(
         take(1)
-      ).toPromise()
+      ).toPromise();
 
       if (!stat) {
         await this.afs.doc<QuestionStat>(key).set({
@@ -341,32 +351,32 @@ export class StatsService {
           question,
           stat: { [answer.text]: 1 },
           total: 1
-        })
+        });
       } else {
 
-        let _stat = {...stat.stat}
+        const _stat = {...stat.stat};
 
         if (!_stat[answer.text]) {
-          _stat[answer.text] = 1
+          _stat[answer.text] = 1;
         } else {
-          _stat[answer.text] += 1
+          _stat[answer.text] += 1;
         }
 
         await this.afs.doc<QuestionStat>(key).update({
           stat: _stat,
           total: stat.total + 1
-        })
+        });
 
-      } 
+      }
     }
 
-    return true
+    return true;
 
   }
 
   async registerRanking(exam: Exam, user: Partial<User>, promedio: number = 0) {
 
-    const id = this.afs.createId()
+    const id = this.afs.createId();
 
     this.afs.collection(Collections.EXAM_RANKING).doc(id).set({
       id,
@@ -380,9 +390,9 @@ export class StatsService {
       },
       promedio,
       date: new Date().toISOString()
-    })
+    });
 
-    return id
+    return id;
 
   }
 
