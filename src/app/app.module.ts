@@ -216,6 +216,7 @@ import { CompleteProfileComponent } from './shared/complete-profile/complete-pro
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
+import { RecoverPasswordComponent } from './shared/recover-password/recover-password.component';
 
 @NgModule({
   declarations: [
@@ -392,6 +393,7 @@ import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionari
     AdminPagosPageComponent,
     AdminHelpRequestComponent,
     CuestionarioPageComponent,
+    RecoverPasswordComponent,
   ],
   imports: [
     BrowserAnimationsModule,

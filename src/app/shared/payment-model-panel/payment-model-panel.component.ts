@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack } from 'src/app/app.models';
+import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack, TuGuiaStats, TuGuiaStatsText } from 'src/app/app.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { take, map } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'epsi-payment-model-panel',
@@ -27,6 +28,10 @@ export class PaymentModelPanelComponent implements OnInit {
   public pack: PaymentPack;
 
   public showPaypal = false;
+
+  public stats: string[] = Object.values(TuGuiaStats);
+  public statsText = TuGuiaStatsText;
+  public selectedStat: string;
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -55,6 +60,10 @@ export class PaymentModelPanelComponent implements OnInit {
     const email = environment.production === true ? user.email : 'test_user_41665327@testuser.com';
 
     try {
+
+      if (this.selectedStat) {
+        await this.afs.collection(Collections.Stat).doc(this.selectedStat).update({ counter: firebase.firestore.FieldValue.increment(1) });
+      }
 
       const request_payload = {
         coupon: null,

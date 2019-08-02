@@ -178,6 +178,9 @@
 
         <div class="col-md-12" *ngIf="rates">
           <ul class="list-group">
+            <li *ngFor="let stat of stats | async" class="list-group-item">
+              <strong>{{stat.label}}</strong> {{stat.counter}}
+            </li>
             <li class="list-group-item">
               <strong>Estádistica general de mood de usuarios</strong>
             </li>

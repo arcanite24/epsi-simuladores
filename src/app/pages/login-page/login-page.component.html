@@ -2,6 +2,10 @@
   <epsi-terminos-modal></epsi-terminos-modal>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="recoverPass" #recoverPass>
+  <epsi-recover-password></epsi-recover-password>
+</ngx-smart-modal>
+
 <ngx-smart-modal identifier="helpModal" #helpModal>
   <div class="row p-4">
 
@@ -86,6 +90,7 @@
 
               <div class="col-md-12">
                 <button class="btn btn-primary" type="submit" [disabled]="loading">{{loading ? 'Cargando...' : 'Registrarse'}}</button>
+                <button class="btn btn-danger" (click)="recoverPass.open()" type="button">Olvidé mi contraseña</button>
               </div>
 
             </form>

@@ -16,6 +16,13 @@
           <h2 class="text-bolder">$ {{model.amount | number}}</h2>
         </div>
 
+        <div class="col-md-12 form-group">
+          <label for="">¿Qué te atrajo para adquirir TuGuia?</label>
+          <select class="form-control" [(ngModel)]="selectedStat">
+            <option [value]="s" *ngFor="let s of stats">{{statsText[s]}}</option>
+          </select>
+        </div>
+
         <div class="col-md-12 form-group" *ngIf="model.canDiscount">
           <label for="">Cupón</label>
           <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
@@ -45,7 +52,7 @@
         <div class="col-md-12" [id]="'paypal-container-' + model.id" [ngClass]="{'p-4': showPaypal}">
           <button class="btn btn-secondary mt-2 w-100" type="button" (click)="loadPaypalButton(model)" *ngIf="!showPaypal" [disabled]="loading || disabled">Pagar con Paypal</button>
         </div>
-  
+
       </div>
     </div>
   </epsi-panel>

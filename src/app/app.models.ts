@@ -79,6 +79,7 @@ export enum Collections {
   DAILY = 'daily-noti',
   DAILY_REGISTER = 'daily-register',
   HelpRequest = 'help-request',
+  Stat = 'stat',
 }
 
 export enum PaymentStatus {
@@ -717,4 +718,21 @@ export interface DailyRegister {
   user: string;
   daily: Daily;
   date: string;
+}
+
+export enum TuGuiaStats {
+  AtrajoFacebook = 'atrajo_facebook',
+  AtrajoMails = 'atrajo_mails',
+  AtrajoOtro = 'atrajo_otro',
+}
+
+export const TuGuiaStatsText = {
+  [TuGuiaStats.AtrajoFacebook]: 'Las infografías de Facebook',
+  [TuGuiaStats.AtrajoMails]: 'Los mails',
+  [TuGuiaStats.AtrajoOtro]: 'Otro',
+};
+
+export interface Stat {
+  label: string;
+  counter: number;
 }
