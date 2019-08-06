@@ -1,5 +1,8 @@
 <ngx-smart-modal identifier="examFeedbackModal" customClass="max-w-75" [closable]="false">
-  <epsi-exam-feedback-modal *ngIf="lastQuestion" [lastQuestion]="lastQuestion" [lastSelected]="lastSelected"></epsi-exam-feedback-modal>
+  <epsi-exam-feedback-modal *ngIf="lastQuestion"
+    [results]="results"
+    [lastQuestion]="lastQuestion"
+    [lastSelected]="lastSelected"></epsi-exam-feedback-modal>
 </ngx-smart-modal>
 
 <ngx-smart-modal identifier="examRankingAdd">

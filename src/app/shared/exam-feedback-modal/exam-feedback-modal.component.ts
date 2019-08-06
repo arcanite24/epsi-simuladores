@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Question, QuestionStat, Collections } from 'src/app/app.models';
+import { Question, QuestionStat, Collections, ExamResults } from 'src/app/app.models';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
@@ -41,6 +41,7 @@ export class ExamFeedbackModalComponent implements OnInit {
   public get lastQuestion(): Question[] { return []; }
 
   @Input() lastSelected: string;
+  @Input() results: ExamResults;
 
   constructor(
     private afs: AngularFirestore,
