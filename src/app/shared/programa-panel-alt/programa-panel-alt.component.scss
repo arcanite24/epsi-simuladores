@@ -2,9 +2,11 @@
 
   width: 100%;
   overflow-x: auto;
+  flex-wrap: wrap;
 
   .content-carousel-item {
     width: 192px;
+    margin-bottom: 1rem;
   }
-  
+
 }
