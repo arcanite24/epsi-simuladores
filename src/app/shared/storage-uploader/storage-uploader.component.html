@@ -1,7 +1,7 @@
 <div class="app-storage-uploader">
   <input type="file" id="fileUploader" (change)="onFileSelected(fileUploader.files)" hidden #fileUploader>
   <label for="fileUploader">
-    <button type="button" class="btn" [ngClass]="{'btn-primary': !finished, 'btn-success': finished}"  [disabled]="loading" (click)="fileUploader.click()" >
+    <button type="button" class="btn" [ngClass]="{'btn-zamna-hollow btn-zamna-hollow-primary': !finished, 'btn-success': finished}"  [disabled]="loading" (click)="fileUploader.click()" >
       <span *ngIf="!file && !loading && !finished" >Seleccionar Archivo</span>
       <span *ngIf="file && loading && !finished" >Subiendo...</span>
       <span *ngIf="file && !loading && finished" >Subida finalizada</span>

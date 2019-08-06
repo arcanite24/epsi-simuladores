@@ -117,6 +117,33 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 __WEBPACK_IMPORTED_MODULE_3_moment___default.a.locale('es');
 var HomePage = /** @class */ (function () {
+    /* {
+    tag: 'isEsencial360',
+      price: 18399,
+        priceTag: '$17,480 + $919',
+          name: 'Zamná 360 esencial',
+            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
+            limitDate: new Date('06-30-2018').toISOString()
+    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
+  },
+  {
+    tag: 'isPresencial',
+      price: 17480,
+        priceTag: '$17,480',
+          name: 'Zamná Presencial',
+            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
+            limitDate: new Date('06-30-2018').toISOString()
+    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
+  },
+  {
+    tag: 'isPremium360',
+      price: 20239,
+        priceTag: '$17,480 + $2,759',
+          name: 'Zamná 360 Premium',
+            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
+            limitDate: new Date('06-30-2018').toISOString()
+    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
+  } */
     function HomePage(navCtrl, navParams, back, toast, load, modal, alert, auth, afs) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
@@ -131,31 +158,18 @@ var HomePage = /** @class */ (function () {
         this.controles = [];
         this.templates = [
             {
-                tag: 'isEsencial360',
-                price: 18399,
-                priceTag: '$17,480 + $919',
-                name: 'Zamná 360 esencial',
-                //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-                limitDate: new Date('06-30-2018').toISOString()
-                //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
+                tag: 'isPresencial2020',
+                price: 16350,
+                priceTag: '$ 16,350',
+                name: 'Curso Presencial',
+                limitDate: new Date('04-30-2020').toISOString()
             },
             {
-                tag: 'isPresencial',
-                price: 17480,
-                priceTag: '$17,480',
-                name: 'Zamná Presencial',
-                //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-                limitDate: new Date('06-30-2018').toISOString()
-                //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
-            },
-            {
-                tag: 'isPremium360',
-                price: 20239,
-                priceTag: '$17,480 + $2,759',
-                name: 'Zamná 360 Premium',
-                //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-                limitDate: new Date('06-30-2018').toISOString()
-                //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
+                tag: 'isPresencial360_2020',
+                price: 18600,
+                priceTag: '$16,350 + $2,250',
+                name: 'Curso Presencial 360',
+                limitDate: new Date('04-30-2020').toISOString()
             }
         ];
     }
