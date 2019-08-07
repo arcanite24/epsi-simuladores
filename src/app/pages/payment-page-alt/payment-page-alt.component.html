@@ -1,0 +1,9 @@
+<div class="epsi-payment-page container mt-retro">
+
+  <epsi-payment-model-alt [model]="model" *ngIf="model$ | async as model else loader"></epsi-payment-model-alt>
+
+  <ng-template #loader>
+    <epsi-loader></epsi-loader>
+  </ng-template>
+
+</div>

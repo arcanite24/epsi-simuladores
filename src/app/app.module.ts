@@ -211,6 +211,9 @@ import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
 import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
 import { ZamnaContigoPanelComponent } from './shared/zamna-contigo-panel/zamna-contigo-panel.component';
 import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
+import { PaymentModelAltComponent } from './shared/payment-model-alt/payment-model-alt.component';
+import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-alt.component';
+import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.component';
 
 @NgModule({
   declarations: [
@@ -382,6 +385,9 @@ import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.compon
     PdfDetailPageComponent,
     ZamnaContigoPanelComponent,
     PdfListPageComponent,
+    PaymentModelAltComponent,
+    PaymentPageAltComponent,
+    ZamnaToggleComponent,
   ],
   imports: [
     BrowserAnimationsModule,

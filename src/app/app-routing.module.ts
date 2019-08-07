@@ -64,6 +64,7 @@ import {AdminExamsQuestionsAverageComponent} from "./pages/admin-exams-questions
 import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
 import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
 import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
+import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-alt.component';
 
 const routes: Routes = [
 
@@ -99,6 +100,7 @@ const routes: Routes = [
 
   // Payment
   {path: 'pagar/:slug', component: PaymentPageComponent},
+  { path: 'pagar-alt/:slug', component: PaymentPageAltComponent },
   {path: 'pago/status/:id', component: PaymentRequestDetailPageComponent},
 
   // Programa Alt
