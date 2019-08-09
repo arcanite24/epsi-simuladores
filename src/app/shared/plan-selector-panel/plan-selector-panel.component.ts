@@ -18,7 +18,7 @@ const twix = require('twix');
 })
 export class PlanSelectorPanelComponent implements OnInit {
 
-  public step = 'mode_selector';
+  public step: string = 'mode_selector';
   public mode: string;
   public finishDate: NgbDate;
 
