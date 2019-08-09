@@ -1,11 +1,11 @@
-<div class="content-item w-100" [ngClass]="{'blur': blur}">
+<div class="content-item w-100" [ngClass]="{'blur': blur}" (click)="unlocked ? isPrograma ? router.navigate(['/programa/materia', item.id]) : router.navigate(['/content', item.id]) : null">
 
   <img [src]="item.cover" [alt]="item.name">
   <!-- <h4>{{item.name}}</h4>
   <small>{{item.description}}</small> -->
 
   <div class="content-carousel-item-actions flex flex-row flex-center w-100 mt-1" *ngIf="auth.loggedIn">
-    <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" type="button" (click)="isPrograma ? router.navigate(['/programa/materia', item.id]) : router.navigate(['/content', item.id])" *ngIf="unlocked">Entrar</button>
+    <!-- <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" type="button" *ngIf="unlocked">Entrar</button> -->
     <button class="btn btn-success" type="button" (click)="router.navigate(['/pagar', item.model_slug])" *ngIf="!unlocked">Comprar</button>
 
     <button class="btn btn-success" type="button" (click)="updateItem({ liberadoInPrograma: true })" *ngIf="auth.isAdmin && !item.liberadoInPrograma">Liberar</button>

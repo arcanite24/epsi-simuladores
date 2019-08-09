@@ -3,9 +3,9 @@
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
-  
-  <div class="epsi-content-carousel p-2 flex flex-row flex-start" *ngIf="content$ | async as content else loader">
-    
+
+  <div class="epsi-content-carousel flex flex-row" *ngIf="content$ | async as content else loader">
+
     <div class="content-carousel-item" *ngFor="let item of content">
       <epsi-content-item *ngIf="isLiberado(item)" [isPrograma]="true" [item]="item" [blur]="isBlur(item.name)"></epsi-content-item>
     </div>
