@@ -120,6 +120,7 @@ var AdminPage = /** @class */ (function () {
         this.controles = [];
         this.original = [];
         this.filtering = false;
+        this.currentFilter = '';
     }
     AdminPage.prototype.ionViewDidLoad = function () {
         if (!this.auth.isAdmin && !this.auth.isViewPagos)
@@ -129,16 +130,17 @@ var AdminPage = /** @class */ (function () {
     Object.defineProperty(AdminPage.prototype, "totalPagadoFilter", {
         get: function () {
             var _this = this;
-            console.log(this.currentFilter, __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.flattenDeep(this.controles
+            console.log(__WEBPACK_IMPORTED_MODULE_3_lodash___default.a.flattenDeep(this.controles
                 .map(function (c) { return c.pagos; }))
-                .filter(function (p) { return p.method === _this.currentFilter; }));
+                .filter(function (p) { return _this.currentFilter === 'aprobados' ? true : p.method === _this.currentFilter; })
+                .filter(function (p) { return p.status === 'approved' || (p.pago && (p.pago.status === 'completed' || p.pago.status === 'approved')); })
+                .map(function (p) { return parseInt(p.amount.toString()); }));
             return this.controles.length > 0 ? __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.flattenDeep(this.controles
                 .map(function (c) { return c.pagos; }))
-                .filter(function (p) { return p.method === _this.currentFilter; })
-                .filter(function (p) { return p.status === 'approved' || (p.pago && p.pago.status === 'completed'); })
+                .filter(function (p) { return _this.currentFilter === 'aprobados' ? true : p.method === _this.currentFilter; })
+                .filter(function (p) { return p.status === 'approved' || (p.pago && (p.pago.status === 'completed' || p.pago.status === 'approved')); })
                 .map(function (p) { return parseInt(p.amount.toString()); })
                 .reduce(function (a, b) { return a + b; }, 0) : 0;
-            /* return this.controles.length > 0 ? this.controles.map(p => p.price - parseFloat(p.amountLeft.toString())).reduce((a, b) => a + b) : 0 */
         },
         enumerable: true,
         configurable: true
@@ -179,7 +181,7 @@ var AdminPage = /** @class */ (function () {
     };
     AdminPage.prototype.filter = function (mode, method, payload) {
         if (payload === void 0) { payload = []; }
-        this.currentFilter = method;
+        this.currentFilter = method ? method : mode;
         switch (mode) {
             case 'limpiar':
                 this.controles = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.clone(this.original);
@@ -217,7 +219,12 @@ var AdminPage = /** @class */ (function () {
             case 'aprobados':
                 this.controles = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.clone(this.controles).filter(function (c) {
                     var status = c.pagos.map(function (p) { return p.pago.status; });
-                    return status.indexOf('completed') >= 0;
+                    console.log(status);
+                    if (status.includes('completed'))
+                        return true;
+                    if (status.includes('approved'))
+                        return true;
+                    return false;
                 });
                 this.filtering = true;
                 break;
@@ -257,7 +264,7 @@ var AdminPage = /** @class */ (function () {
     };
     AdminPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-admin',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/admin/admin.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Panel de Administración</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <div class="flex flex-row flex-wrap justify-center align-center mb-1">\n      <button ion-button clear (click)="filter(\'roles\', null, [\'isEsencial360\', \'isPresencial\', \'isPremium360\'])">Alumnos 2019</button>\n      <button ion-button clear (click)="filter(\'roles\', null, [\'isPresencial2020\', \'isPresencial360_2020\'])">Alumnos 2020</button>\n      <button ion-button clear (click)="filter(\'pagados\')" >Mostrar pagados al 100%</button>\n      <button ion-button clear (click)="filter(\'fecha\')" >Ordenar por fecha</button>\n      <button ion-button clear (click)="filter(\'comprobante\')" >Esperando comprobante</button>\n      <button ion-button clear (click)="filter(\'aprobacion\')" >Esperando aprobación</button>\n      <button ion-button clear (click)="filter(\'rechazados\')" >Rechazados</button>\n      <button ion-button clear (click)="filter(\'aprobados\')" >Aprobados</button>\n      <button ion-button clear (click)="filter(\'presencial\')" >Tipo: Presencial</button>\n      <button ion-button clear (click)="filter(\'360_normal\')" >Tipo: 360 Esencial</button>\n      <button ion-button clear (click)="filter(\'360_premium\')" >Tipo: 360 Premium</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'card\')" >Método: Tarjeta</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'deposito\')" >Método: Depósito</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'efectivo_cu\')" >Método: Efectivo CU</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'efectivo_centromedico\')" >Método: Efectivo Centro Médico</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'transferencia\')" >Método: Transferencia</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'paypal\')" >Método: Paypal</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'tienda\')" >Método: Tienda</button>\n    </div>\n\n    <div class="flex flex-row justify-center align-center mb-1" *ngIf="filtering" >\n      <button ion-button clear (click)="filter(\'limpiar\')" >Quitar Filtros</button>\n    </div>\n\n    <div class="flex flex-row justify-center align-center mb-1" *ngIf="filtering && totalPagado" >\n      <p><strong>Total pagado: </strong> ${{totalPagadoFilter | number}}</p>\n    </div>\n\n    <ion-list>\n      <ion-list-header>Controles de Pago</ion-list-header>\n      <ion-item *ngFor="let control of controles" (click)="openDetail(control)" >\n        <h2><strong>{{control.user ? (control.user.name ? control.user.name : control.user.displayName) : \'-\'}} {{control.user ? control.user.lastName : \'\'}}</strong> | Monto restante: <strong style="color:red">$ {{control.amountLeft | number}}</strong></h2>\n        <p>Fecha límite: {{control.limitDate | amDateFormat:\'LL\'}} | <strong>{{control.name}}</strong></p>\n      </ion-item>\n    </ion-list>\n\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/admin/admin.html"*/,
+            selector: 'page-admin',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/admin/admin.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Panel de Administración</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <div class="flex flex-row flex-wrap justify-center align-center mb-1">\n      <button ion-button clear (click)="filter(\'roles\', null, [\'isEsencial360\', \'isPresencial\', \'isPremium360\'])">Alumnos 2019</button>\n      <button ion-button clear (click)="filter(\'roles\', null, [\'isPresencial2020\', \'isPresencial360_2020\'])">Alumnos 2020</button>\n      <button ion-button clear (click)="filter(\'pagados\')" >Mostrar pagados al 100%</button>\n      <button ion-button clear (click)="filter(\'fecha\')" >Ordenar por fecha</button>\n      <button ion-button clear (click)="filter(\'comprobante\')" >Esperando comprobante</button>\n      <button ion-button clear (click)="filter(\'aprobacion\')" >Esperando aprobación</button>\n      <button ion-button clear (click)="filter(\'rechazados\')" >Rechazados</button>\n      <button ion-button clear (click)="filter(\'aprobados\')" >Aprobados</button>\n      <button ion-button clear (click)="filter(\'presencial\')" >Tipo: Presencial</button>\n      <button ion-button clear (click)="filter(\'360_normal\')" >Tipo: 360 Esencial</button>\n      <button ion-button clear (click)="filter(\'360_premium\')" >Tipo: 360 Premium</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'card\')" >Método: Tarjeta</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'deposito\')" >Método: Depósito</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'efectivo_cu\')" >Método: Efectivo CU</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'efectivo_centromedico\')" >Método: Efectivo Centro Médico</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'transferencia\')" >Método: Transferencia</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'paypal\')" >Método: Paypal</button>\n      <button ion-button clear (click)="filter(\'metodo\', \'tienda\')" >Método: Tienda</button>\n    </div>\n\n    <div class="flex flex-row justify-center align-center mb-1" *ngIf="filtering" >\n      <button ion-button clear (click)="filter(\'limpiar\')" >Quitar Filtros</button>\n    </div>\n\n    <div class="flex flex-row justify-center align-center mb-1" *ngIf="filtering" >\n      <p><strong>Total pagado: </strong> ${{totalPagadoFilter | number}}</p>\n    </div>\n\n    <ion-list>\n      <ion-list-header>Controles de Pago</ion-list-header>\n      <ion-item *ngFor="let control of controles" (click)="openDetail(control)" >\n        <h2><strong>{{control.user ? (control.user.name ? control.user.name : control.user.displayName) : \'-\'}} {{control.user ? control.user.lastName : \'\'}}</strong> | Monto restante: <strong style="color:red">$ {{control.amountLeft | number}}</strong></h2>\n        <p>Fecha límite: {{control.limitDate | amDateFormat:\'LL\'}} | <strong>{{control.name}}</strong></p>\n      </ion-item>\n    </ion-list>\n\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/admin/admin.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
