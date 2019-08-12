@@ -90,7 +90,6 @@
 
               <div class="col-md-12">
                 <button class="btn btn-primary" type="submit" [disabled]="loading">{{loading ? 'Cargando...' : 'Registrarse'}}</button>
-                <button class="btn btn-danger" (click)="recoverPass.open()" type="button">Olvidé mi contraseña</button>
               </div>
 
             </form>
@@ -127,6 +126,10 @@
                 <button class="mt-2 btn btn-primary w-100" type="submit" [disabled]="loading">Iniciar Sesión</button>
               </div>
 
+              <div class="col-md-12 mt-2">
+                <button class="btn btn-danger w-100" (click)="recoverPass.open()" type="button">Olvidé mi contraseña</button>
+              </div>
+
             </div>
           </form>
         </epsi-panel>
@@ -136,13 +139,13 @@
             <div class="social-icon-container">
               <i class="fa fa-google"></i>
             </div>
-            <span>Iniciar sesión Usando Google</span>
+            <span>Registrarse / Iniciar sesión Usando Google</span>
           </button>
           <button class="btn-social w-100 btn-facebook" type="button" (click)="loginFacebook()">
             <div class="social-icon-container">
               <i class="fa fa-facebook"></i>
             </div>
-            <span>Iniciar sesión Usando Facebook</span>
+            <span>Registrarse / Iniciar sesión Usando Facebook</span>
           </button>
         </div>
 
