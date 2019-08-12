@@ -28,6 +28,11 @@ $zamna-accent: #323B41;
   color: $zamna-primary !important;
 }
 
+.btn-zamna-hollow-danger {
+  border-color: #a94442 !important;
+  color: #a94442 !important;
+}
+
 .btn-zamna-hollow-primary:disabled {
   border-color: rgba($color: #000000, $alpha: 0.325) !important;
   color: rgba($color: #000000, $alpha: 0.325) !important;

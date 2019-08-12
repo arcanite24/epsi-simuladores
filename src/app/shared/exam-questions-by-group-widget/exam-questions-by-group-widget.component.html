@@ -51,9 +51,10 @@
 
       <div class="question-actions flex flex-row flex-start">
         <!--<pre>{{group | json}}</pre>-->
-        <button class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary exam-button-action" type="button" *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button>
+        <!-- <button class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary exam-button-action" type="button" *ngIf="canGoBack" (click)="prevQuestion(state.index, state.selectedAnswer)">Anterior</button> -->
         <button class="btn btn-secondary btn-zamna-hollow btn-zamna-hollow-primary exam-button-action" [disabled]="canGoNext(group)" type="button" *ngIf="questionsLeft && !isLastQuestion" (click)="nextQuestion(state.index, state.selectedAnswer)">Siguiente</button>
-        <button class="btn btn-primary ml-2 btn-zamna-hollow btn-zamna-hollow-primary exam-button-action" type="button" *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
+        <button class="btn btn-danger ml-2 btn-zamna-hollow btn-zamna-hollow-danger exam-button-action" type="button" *ngIf="isLastQuestion" (click)="finishExam()">Finalizar</button>
+        <small *ngIf="isLastQuestion" class="text-danger ml-2">Asegúrate de contestar todo antes de finalizar</small>
       </div>
 
       <ng-template #loaderQuestions>
