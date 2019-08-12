@@ -257,10 +257,8 @@ var AdminPage = /** @class */ (function () {
         this.loadTotal();
     };
     AdminPage.prototype.openDetail = function (control) {
-        var _this = this;
         var m = this.modal.create('AdminControlDetailPage', { control: control });
         m.present();
-        m.onDidDismiss(function () { return _this.ionViewDidLoad(); });
     };
     AdminPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
