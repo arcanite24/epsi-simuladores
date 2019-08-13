@@ -71,6 +71,7 @@ export enum Collections {
   TUTORIAL = 'tutorial',
   DAILY = 'daily-noti',
   DAILY_REGISTER = 'daily-register',
+  UserTimer = 'user-timer',
 }
 
 export enum PaymentStatus {
@@ -698,4 +699,10 @@ export interface DailyRegister {
   user: string;
   daily: Daily;
   date: string;
+}
+
+export interface UserTimer {
+  id: string;
+  date: string;
+  user: string;
 }

@@ -2,11 +2,28 @@
   <epsi-notifications-modal></epsi-notifications-modal>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="userTimeSelector">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Cuando es tu examen?</h4>
+    </div>
+    <div class="col-md-12 form-group">
+      <input type="date" class="form-control" [(ngModel)]="userTimerDate">
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-success" (click)="setUserTimer(userTimerDate)">Seleccionar Fecha</button>
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="epsi-navbar flex flex-row flex-start align-center flex-wrap" [hidden]="hideNavbar">
 
   <img src="assets/zamnademy/logo-morado.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
-  <!--<div class="ml-2 navbar-timer" [innerHTML]="timerLabel"></div>-->
+  <div class="ml-2 navbar-timer" *ngIf="userTimer" [innerHTML]="timerLabel"></div>
+  <div class="ml-2 navbar-timer" *ngIf="!userTimer">
+    <input type="text" class="form-control" placeholder="Cuando es tu examen?" (focus)="openTimerSelector()">
+  </div>
 
   <div class="navbar-user-info flex-center" *ngIf="auth.loggedIn">
 
