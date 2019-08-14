@@ -18,15 +18,18 @@ export class AdminPageComponent implements OnInit {
 
   public stats: Observable<Stat[]> = this.afs.collection<Stat>(Collections.Stat).valueChanges();
 
+  public userStats = {
+    uni: '',
+  };
+
   constructor(
     private data: DataService,
     private afs: AngularFirestore
   ) { }
 
   ngOnInit() {
-
     this.loadRates();
-
+    this.loadUserProfiles();
   }
 
   async loadRates() {
@@ -46,6 +49,12 @@ export class AdminPageComponent implements OnInit {
 
   }
 
+  async loadUserProfiles() {
+    const users = await this.data.getCollectionAlt<User>(Collections.USER);
+    const uni = users.filter(u => u.entrar_uni).map(u => u.entrar_uni);
+    this.userStats.uni = `Entrar a la uni: si:${uni.filter(tag => tag === 'si').length} no:${uni.filter(tag => tag === 'no').length}`;
+  }
+
   async setEsencialToPresenciales() {
 
     const payload = {};
@@ -56,7 +65,8 @@ export class AdminPageComponent implements OnInit {
 
     console.log(payload);
 
-    const sub = this.afs.collection<User>(Collections.USER, ref => ref.where(Roles.Presencial, '==', true)).valueChanges().subscribe(async users => {
+    const sub = this.afs.collection<User>(Collections.USER, ref => ref.where(Roles.Presencial, '==', true))
+      .valueChanges().subscribe(async users => {
       if (users.length > 3 && !this.loading) {
 
         this.loading = true;

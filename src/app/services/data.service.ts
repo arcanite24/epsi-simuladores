@@ -36,14 +36,14 @@ export class DataService {
       .toPromise()
   }
 
-  getCollectionAlt<T>(collection: string): Promise<any[]> {
+  getCollectionAlt<T>(collection: string): Promise<T[]> {
     return new Promise<any[]>(async (resolve, reject) => {
-      const data = await this.afs.firestore.collection(collection).get()
+      const data = await this.afs.firestore.collection(collection).get();
       resolve(data.docs.map(doc => ({
         id: doc.id,
         ...doc.data()
-      })))
-    })
+      })));
+    });
   }
 
   getCollectionQuery<T>(collection: string, query: (ref: firebase.firestore.CollectionReference) => any): Promise<T[]> {

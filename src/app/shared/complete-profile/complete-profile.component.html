@@ -32,18 +32,22 @@
 
     <div class="col-md-12 form-group">
       <label for="">¿Piensas entrar a la universidad?</label>
-      <select formControlName="entrar_uni" class="form-control">
-        <option value="si">Sí</option>
-        <option value="no">No</option>
-      </select>
+      <label class="ml-2 mb-0" for="unisi">Si</label>
+      <input type="radio" formControlName="entrar_uni" value="si" id="unisi">
+      <label class="ml-2 mb-0" for="unino">No</label>
+      <input type="radio" formControlName="entrar_uni" value="no" id="unino">
     </div>
 
     <div class="col-md-12 form-group">
       <label for="">¿Es tu primer intento?</label>
-      <select formControlName="primer_intento" class="form-control">
+      <!-- <select formControlName="primer_intento" class="form-control">
         <option value="si">Sí</option>
         <option value="no">No</option>
-      </select>
+      </select> -->
+      <label class="ml-2 mb-0" for="primersi">Si</label>
+      <input type="radio" formControlName="primer_intento" value="si" id="primersi">
+      <label class="ml-2 mb-0" for="primerno">No</label>
+      <input type="radio" formControlName="primer_intento" value="no" id="primerno">
     </div>
 
     <div class="col-md-12 form-group">

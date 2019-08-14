@@ -178,6 +178,7 @@
 
         <div class="col-md-12" *ngIf="rates">
           <ul class="list-group">
+            <li class="list-group-item">{{userStats.uni}}</li>
             <li *ngFor="let stat of stats | async" class="list-group-item">
               <strong>{{stat.label}}</strong> {{stat.counter}}
             </li>

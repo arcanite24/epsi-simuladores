@@ -110,6 +110,7 @@ export class ExamQuestionsByGroupWidgetComponent implements OnInit, OnDestroy {
   }
 
   private checkIfProfileCompleted() {
+
     this.userSub = this.auth.user$.subscribe(async user => {
       if (user && !this.modalOpened) {
 
