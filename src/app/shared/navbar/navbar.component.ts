@@ -52,11 +52,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.loadNotis();
 
-    this.auth.user$.subscribe(user => {
+    this.loadTimer();
+
+    /* this.auth.user$.subscribe(user => {
       if (user && !this.userTimer) {
         this.loadUserTimer(user);
       }
-    });
+    }); */
 
     /* setInterval(
       () =>
@@ -83,6 +85,22 @@ export class NavbarComponent implements OnInit {
     return this.hiddenOn.indexOf(this.currentUrl) >= 0;
   }
 
+  loadTimer() {
+    setInterval(
+        () =>
+          (this.timerLabel = `
+            <div class="navbar-timer-label">
+              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Finaliza tu suscripcion el:</small></div>
+              ${countdown(
+                moment('10/1/2019').toDate(),
+                null,
+                ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
+              ).toHTML('strong')}
+            </div>`),
+        1000
+      );
+  }
+
   async loadUserTimer(user: User) {
     const timer = await this.data.getDocAlt<UserTimer>(Collections.UserTimer, user.uid);
     if (timer.date) {
@@ -90,14 +108,14 @@ export class NavbarComponent implements OnInit {
       setInterval(
         () =>
           (this.timerLabel = `
-    <div class="navbar-timer-label">
-      <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Fecha de tu examen</small></div>
-      ${countdown(
-        moment(timer.date).toDate(),
-        null,
-        ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
-      ).toHTML('strong')}
-    </div>`),
+            <div class="navbar-timer-label">
+              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Fecha de tu examen</small></div>
+              ${countdown(
+                moment(timer.date).toDate(),
+                null,
+                ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
+              ).toHTML('strong')}
+            </div>`),
         1000
       );
     }

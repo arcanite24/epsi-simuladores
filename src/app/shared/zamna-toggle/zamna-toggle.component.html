@@ -1,4 +1,4 @@
 <div class="zamna-toggle manita" (click)="mode = !mode">
-  <div class="toggle-chip" [ngClass]="{'zamna-toggle-active': !mode}">No</div>
-  <div class="toggle-chip" [ngClass]="{'zamna-toggle-active': mode}">Si</div>
+  <div class="toggle-chip" [ngClass]="{'zamna-toggle-active': !mode}">{{leftText}}</div>
+  <div class="toggle-chip" [ngClass]="{'zamna-toggle-active': mode}">{{rightText}}</div>
 </div>

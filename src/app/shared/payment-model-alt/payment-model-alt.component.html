@@ -27,14 +27,20 @@
 
               <div class="col-md-12 mt-2 form-group mt-2">
                 <div class="una-container">
-                  <label for="" class="text-primary">Necesitas estudiar solo una especialidad?</label>
-                  <epsi-zamna-toggle></epsi-zamna-toggle>
+                  <label for="" class="text-primary">Quieres tener todas o solo necesitas alguna especialidad?</label>
+                  <epsi-zamna-toggle leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
                 </div>
                 <select name="" id="" class="form-control">
                   <option value="">Selecciona</option>
                 </select>
               </div>
 
+              <div class="col-md-12 mt-2 form-group mt-2">
+                <label for="" class="text-primary">Estudiaras solo o en equipo?</label>
+                <select name="" id="" class="form-control">
+                  <option value="" selected>Solo yo</option>
+                </select>
+              </div>
 
             </div>
           </div>
@@ -46,8 +52,6 @@
                 <img src="assets/payment.png" class="w-100">
               </div>
 
-              <div class="col-md-12"></div>
-
             </div>
           </div>
 
@@ -58,14 +62,19 @@
         <div class="w-100 flex flex-row align-center">
 
           <div class="flex flex-col">
-            <h1 class="text-primary">$ 1,270 <small> / 1 Persona / Al Mes</small> </h1>
+            <h1 class="text-primary">$ 1,270</h1>
+            <small class="text-primary">1 Persona / Al Mes</small>
+          </div>
+
+          <div class="flex flex-col ml-4">
+            <h4 class="text-primary">Especialidades</h4>
             <small class="text-primary">Especialidad 1 / Especialidad 2 / Especialidad 3</small>
           </div>
 
-          <div class="flex flex-row align-center">
-            <input type="text" class="form-control" placeholder="Codigo de descuento">
-            <button class="btn btn-secondary">Pagar Ahora</button>
-            <button class="btn btn-primary">Pagar en Oxxo / Deposito bancario</button>
+          <div class="flex flex-row align-center ml-auto">
+            <!-- <input type="text" class="form-control" placeholder="Codigo de descuento">
+            <button class="btn btn-secondary">Pagar Ahora</button> -->
+            <button class="btn btn-primary">Continuar</button>
           </div>
 
         </div>
