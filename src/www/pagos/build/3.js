@@ -160,7 +160,7 @@ var AdminPage = /** @class */ (function () {
             _this.controles = [];
             _this.original = [];
             data.forEach(function (control) { return __awaiter(_this, void 0, void 0, function () {
-                var pagos;
+                var pagos, mode;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_6__app_app_models__["a" /* Collections */].ZAMNA_PAGO, function (ref) { return ref
@@ -173,6 +173,10 @@ var AdminPage = /** @class */ (function () {
                             control.pagos = pagos;
                             this.controles.push(control);
                             this.original.push(control);
+                            mode = this.navParams.get('mode');
+                            if (mode) {
+                                this.filter(mode, this.navParams.get('method'), this.navParams.get('payload'));
+                            }
                             return [2 /*return*/];
                     }
                 });
