@@ -131,11 +131,7 @@ export class AdminUsersPageComponent implements OnInit {
     const Json2csvParser = json2csv.Parser;
     const parser = new Json2csvParser({ fields: this.fields });
 
-    const users = await this.afs.collection<User>(Collections.USER)
-      .valueChanges()
-      .pipe(
-        take(1)
-      ).toPromise();
+    const users = await this.data.getCollectionAlt(Collections.USER);
 
     const csv = parser.parse(users.map(user => {
       return {
