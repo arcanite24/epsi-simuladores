@@ -1,13 +1,13 @@
 <div class="epsi-stat-structure-item" *ngIf="view else loader">
 
   <button type="button" (click)="showChildren = true" *ngIf="haveChildren && !showChildren">
-    <i class="fa fa-plus"></i>
+    <i [style.color]="showChildren ? 'red' : 'green'" class="fa fa-plus"></i>
   </button>
   <button type="button" (click)="showChildren = false" *ngIf="haveChildren && showChildren">
-    <i class="fa fa-minus"></i>
+    <i [style.color]="showChildren ? 'red' : 'green'" class="fa fa-minus"></i>
   </button>
 
-  <span>{{view.name}}</span>
+  <span [style.color]="showChildren ? 'red' : 'green'">{{view.name}}</span>
   <strong class="ml-2">{{promedio * 100 | number}}%</strong>
 
   <ul *ngIf="showChildren">

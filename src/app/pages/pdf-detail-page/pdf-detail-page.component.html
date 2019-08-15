@@ -1,5 +1,6 @@
 <ng-container *ngIf="pdf$ | async as pdf">
   <epsi-panel [title]="pdf.name">
+    <pre>{{pdf | json}}</pre>
     <img *ngFor="let img of urls" [src]="img" alt="" class="w-100">
   </epsi-panel>
 </ng-container>
