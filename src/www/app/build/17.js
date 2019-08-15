@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 1166:
+/***/ 1207:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SmartCalendarPageModule", function() { return SmartCalendarPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(1244);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__smart_calendar__ = __webpack_require__(1287);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,19 +35,19 @@ SmartCalendarPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1244:
+/***/ 1287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SmartCalendarPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_data_data__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__ = __webpack_require__(602);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(590);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_auth_auth__ = __webpack_require__(603);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(591);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(604);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_moment__);
@@ -118,6 +118,11 @@ let SmartCalendarPage = class SmartCalendarPage {
             for (let e of events) {
                 if (e.event && !this.loadedEvents.includes(e.event)) {
                     const eventDoc = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].EVENT, e.event);
+                    if (eventDoc.unlockedBy) {
+                        if (!user[eventDoc.unlockedBy]) {
+                            return;
+                        }
+                    }
                     setTimeout(() => {
                         this.events.push(Object.assign({}, e, { id: eventDoc.id, start: new Date(e.start), title: e.content_name, desc: eventDoc.desc, date: new Date().toISOString(), tasks: eventDoc.tasks, links: eventDoc.links, color: this.completedTasks.indexOf(eventDoc.id) >= 0
                                 ? { primary: '#5e4b8b', secondary: '#5e4b8b' }
@@ -159,7 +164,7 @@ let SmartCalendarPage = class SmartCalendarPage {
 };
 SmartCalendarPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_3__angular_core__["Component"])({
-        selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item class="item-termine" text-wrap>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links" class="item-center">\n        <button (click)="openLink(link.url)" ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
+        selector: 'page-smart-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Smart Calendar</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content  class="bg-eee">\n\n  <ion-card *ngFor="let e of events">\n\n    <ion-card-header>{{e.title}}</ion-card-header>\n\n    <ion-card-content>\n      <p>{{e.desc}}</p>\n    </ion-card-content>\n\n    <ion-list>\n\n      <ion-item *ngFor="let task of e.tasks">\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(task.id)" [checked]="completedTasks.includes(task.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item class="item-termine" text-wrap>\n        <ion-label>Terminé de estudiar éste tema</ion-label>\n        <ion-checkbox (click)="toggleCompleted(e.id)" [checked]="completedTasks.includes(e.id)"></ion-checkbox>\n      </ion-item>\n\n      <ion-item-divider></ion-item-divider>\n\n      <ion-item *ngFor="let link of e.links" class="item-center">\n        <button class="btn-gordo" (click)="openLink(link.url)" ion-button>{{link.label}}</button>\n      </ion-item>\n\n    </ion-list>\n\n  </ion-card>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/smart-calendar/smart-calendar.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_4_ionic_angular__["r" /* NavParams */],

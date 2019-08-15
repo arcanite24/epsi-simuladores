@@ -1,14 +1,14 @@
 webpackJsonp([38],{
 
-/***/ 1138:
+/***/ 1215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GaleriaDetailPageModule", function() { return GaleriaDetailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__galeria_detail__ = __webpack_require__(1216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(1295);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,35 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let GaleriaDetailPageModule = class GaleriaDetailPageModule {
+let LoginPageModule = class LoginPageModule {
 };
-GaleriaDetailPageModule = __decorate([
+LoginPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__galeria_detail__["a" /* GaleriaDetailPage */],
+            __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__galeria_detail__["a" /* GaleriaDetailPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
         ],
     })
-], GaleriaDetailPageModule);
+], LoginPageModule);
 
-//# sourceMappingURL=galeria-detail.module.js.map
+//# sourceMappingURL=login.module.js.map
 
 /***/ }),
 
-/***/ 1216:
+/***/ 1295:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GaleriaDetailPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__ = __webpack_require__(601);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(590);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__ = __webpack_require__(615);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_back_back__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__ = __webpack_require__(606);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -70,72 +70,81 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-let GaleriaDetailPage = class GaleriaDetailPage {
-    constructor(navCtrl, navParams, toast, imgCtrl, afs, load, auth) {
+let LoginPage = class LoginPage {
+    constructor(navCtrl, navParams, back, afAuth, auth, platform, iap) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.toast = toast;
-        this.imgCtrl = imgCtrl;
-        this.afs = afs;
-        this.load = load;
+        this.back = back;
+        this.afAuth = afAuth;
         this.auth = auth;
-        this.id = this.navParams.get('id');
-        this.uid = localStorage.getItem('uid');
-        this.newNota = { text: '', title: '' };
-        this.lc = false;
-    }
-    ionViewDidLoad() {
-        this.gallery$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].GALLERY).doc(this.id).valueChanges();
+        this.platform = platform;
+        this.iap = iap;
+        this.email = '';
+        this.password = '';
+        this.admin = false;
+        this.isBrowser = !this.platform.is('cordova');
+        this.loaded = false;
+        this.error = '';
         this.auth.user$.subscribe(user => {
-            if (user && !this.notas$) {
-                this.notas$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE, ref => ref
-                    .where('parent_id', '==', this.id)
-                    .where('user', '==', user.uid))
-                    .valueChanges();
+            this.user = true;
+            if (user && !this.loaded) {
+                this.loaded = true;
+                this.navCtrl.setRoot("HomePage");
             }
         });
     }
-    openImg(img) {
-        this.imgCtrl.create(img).present();
-    }
-    addNota(title, text) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!title)
-                return this.toast.create({ message: 'Ingresa un titulo', duration: 2000 }).present();
-            if (!text)
-                return this.toast.create({ message: 'Ingresa un text', duration: 2000 }).present();
-            const l = this.load.create({ content: 'Agregando...' });
-            l.present();
-            const id = this.afs.createId();
-            yield this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].NOTE).doc(id).set({
-                id,
-                title,
-                text,
-                parent_id: this.id,
-                user: this.auth.user.uid,
+    ionViewDidLoad() {
+        const uid = localStorage.getItem('uid');
+        if (uid) {
+            this.back.saveFcmToken(uid, localStorage.getItem('fcm_token')).then(data => {
+                this.navCtrl.setRoot('HomePage');
+            }).catch(err => {
+                const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'));
+                if (list)
+                    this.navCtrl.setRoot('SimuladoresPage');
             });
-            l.dismiss();
-            /* this.back.addNota(title, text, this.type, this.id).subscribe(data => {}, err => {
-              this.toast.create({message: 'No se pudo agregar tu nota...', duration: 2000}).present()
-              l.dismiss()
-            }) */
+        }
+    }
+    loginGoogleFirebase() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const res = yield this.auth.loginGoogle(this.isBrowser);
+                this.error = JSON.stringify(res);
+            }
+            catch (error) {
+                this.error = JSON.stringify(error);
+            }
         });
     }
+    loginFacebookFirebase() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const res = yield this.auth.loginFacebook(this.isBrowser);
+                this.error = JSON.stringify(res);
+            }
+            catch (error) {
+                this.error = JSON.stringify(error);
+            }
+        });
+    }
+    loginEmailFirebase(email, password) {
+        this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    }
 };
-GaleriaDetailPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-galeria-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/galeria-detail/galeria-detail.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Galería</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ng-template #loader>\n    <div class="flex-col" *ngIf="!g">\n      <img src="assets/imgs/rings.svg">\n      </div>\n  </ng-template>\n\n  <div *ngIf="gallery$ | async as g else loader">\n\n    <ion-slides>\n      <ion-slide *ngFor="let img of g.fotos">\n        <img [src]="img" #imagen (click)="openImg(imagen)">\n      </ion-slide>\n    </ion-slides>\n\n    <ion-item style="margin-bottom:2rem">\n      <h2>{{g.name}}</h2>\n      <p>{{g.desc}}</p>\n    </ion-item>\n\n    <ion-list>\n      <ion-list-header><strong>Notas</strong></ion-list-header>\n      <ion-item>\n        <ion-input placeholder="Titulo de la nota" [(ngModel)]="newNota.title" [disabled]="lc"></ion-input>\n        <button ion-button clear item-end (click)="addNota(newNota.title, newNota.text)" [disabled]="(newNota.title.length <= 0 && newNota.text.length <= 0) || newNota.title.length <= 0 || newNota.text.length <= 0">\n          <ion-icon name="send"></ion-icon>\n        </button>\n      </ion-item>\n      <ion-item>\n        <ion-textarea placeholder="Texto de la nota" [(ngModel)]="newNota.text"></ion-textarea>\n      </ion-item>\n      <ion-item *ngFor="let n of notas$ | async" text-wrap>\n        <h2>{{n.title}}</h2>\n        <p>{{n.text}}</p>\n      </ion-item>\n    </ion-list>\n\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/galeria-detail/galeria-detail.html"*/,
+LoginPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/'<!--<div class="login-loader">\n  <img src="assets/imgs/update-cover.png" (click)="iap.create(\'https://zamnademy.com\', \'_system\').show()">\n</div>-->\n\n<div class="login-loader" *ngIf="!user">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-content class="login-bg">\n\n  <div class="h100 flex-col login-col" padding *ngIf="admin" >\n    <div class="login-inputs flex-col w100" padding>\n      <input placeholder="Email" type="text" class="mb-1 w100 login-input" [(ngModel)]="email" >\n      <input placeholder="Contraseña" type="password" class="w100 login-input" [(ngModel)]="password">\n    </div>\n    <div class="flex-col">\n      <button ion-button color="secondary" (click)="loginEmailFirebase(email, password)">Iniciar Sesión</button>\n      <button clear ion-button color="secondary" (click)="admin = false">Regresar</button>\n    </div>\n  </div>\n\n  <div class="h100 flex-col login-col" padding *ngIf="!admin" >\n    <div class="flex-col" style="color:white; text-align:center">\n      <h1 style="font-size:2rem">Curso ENARM Online 2019</h1>\n    </div>\n    <div class="flex-col" style="color:white; text-align:center;font-size:2rem">\n      <img src="assets/imgs/texto.png" style="width:90%">\n      <h3>¿Ya eres alumno?</h3>\n      <h4>Ingresa tu cuenta:</h4>\n    </div>\n\n      <div class="social-buttons mt-3 w-100 flex flex-col flex-center">\n        <button class="btn-social w-100 btn-google" type="button" (click)="loginGoogleFirebase()">\n          <div class="social-icon-container">\n            <ion-icon name="logo-google"></ion-icon>\n          </div>\n          <span>Iniciar sesión Usando Google</span>\n        </button>\n        <button class="btn-social w-100 btn-facebook" type="button" (click)="loginFacebookFirebase()">\n          <div class="social-icon-container">\n            <ion-icon name="logo-facebook"></ion-icon>\n          </div>\n          <span>Iniciar sesión Usando Facebook</span>\n        </button>\n      </div>\n\n       <!-- <div class="login-buttons flex-col">\n        <div class="flex-col social-buttons">\n          <button class="btn-facebook" (click)="loginFacebookFirebase()">\n            <ion-icon name="logo-facebook"></ion-icon>\n            <span>Iniciar sesión con Facebook</span>\n          </button>\n          <button class="btn-google" (click)="loginGoogleFirebase()">\n            <ion-icon name="logo-google"></ion-icon>\n            <span>Iniciar sesión con Google</span>\n          </button>\n        </div>\n\n      </div> -->\n\n      <div class="flex-row-no-wrap w100">\n        <img src="assets/imgs/weon.png" style="margin-left:auto;width:64px" (click)="admin = true">\n      </div>\n\n      <!-- <pre style="width:100%; background-color: white; color: black;">\n        {{user | json}}\n      </pre> -->\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/login/login.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_img_viewer__["a" /* ImageViewerController */],
-        __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */]])
-], GaleriaDetailPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_0_angularfire2_auth__["AngularFireAuth"],
+        __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["t" /* Platform */],
+        __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+], LoginPage);
 
-//# sourceMappingURL=galeria-detail.js.map
+//# sourceMappingURL=login.js.map
 
 /***/ })
 

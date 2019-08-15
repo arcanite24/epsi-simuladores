@@ -1,14 +1,14 @@
 webpackJsonp([22],{
 
-/***/ 1161:
+/***/ 1202:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SimulacrosPageModule", function() { return SimulacrosPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simulacros__ = __webpack_require__(1239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__simulacros__ = __webpack_require__(1282);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,17 +35,18 @@ SimulacrosPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1239:
+/***/ 1282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SimulacrosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(602);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(603);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,25 +61,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 let SimulacrosPage = class SimulacrosPage {
-    constructor(navCtrl, navParams, afs) {
+    constructor(navCtrl, navParams, afs, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.afs = afs;
+        this.auth = auth;
         this.isOffline = false;
     }
     ionViewDidLoad() {
-        this.exams$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM, ref => ref
-            .where('type', '==', __WEBPACK_IMPORTED_MODULE_3__app_app_models__["b" /* ExamTypes */].SIMULACRO))
-            .valueChanges()
-            .pipe(
-        /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-        Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(list => list.filter(e => e.liberado).reverse()));
+        this.auth.user$.subscribe(user => {
+            if (user && !this.exams$) {
+                this.exams$ = this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EXAM, ref => ref
+                    .where('type', '==', __WEBPACK_IMPORTED_MODULE_3__app_app_models__["b" /* ExamTypes */].SIMULACRO))
+                    .valueChanges()
+                    .pipe(
+                /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
+                Object(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators__["map"])(list => this.filterWithRoles(list.filter(e => e.liberado).reverse(), user)));
+            }
+        });
         /* this.back.getSimuladoresHome().subscribe(data => this.sims = data.reverse(), err => {
           const list = JSON.parse(localStorage.getItem('zamnademy-cache-list'))
           this.downloadList = list ? list : []
           this.isOffline = true
         }) */
+    }
+    filterWithRoles(exams = [], user) {
+        return exams.filter(e => {
+            if (e.unlockedBy) {
+                console.log(e.unlockedBy, user[e.unlockedBy]);
+                return !!user[e.unlockedBy];
+            }
+            else {
+                return true;
+            }
+        });
     }
 };
 SimulacrosPage = __decorate([
@@ -87,7 +105,8 @@ SimulacrosPage = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
+        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */]])
 ], SimulacrosPage);
 
 //# sourceMappingURL=simulacros.js.map

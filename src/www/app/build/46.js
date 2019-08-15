@@ -1,14 +1,14 @@
 webpackJsonp([46],{
 
-/***/ 1128:
+/***/ 1169:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CalendarPageModule", function() { return CalendarPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChecklistPageModule", function() { return ChecklistPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__calendar__ = __webpack_require__(1206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__checklist__ = __webpack_require__(1249);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,35 +18,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let CalendarPageModule = class CalendarPageModule {
+let ChecklistPageModule = class ChecklistPageModule {
 };
-CalendarPageModule = __decorate([
+ChecklistPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__calendar__["a" /* CalendarPage */],
+            __WEBPACK_IMPORTED_MODULE_2__checklist__["a" /* ChecklistPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__calendar__["a" /* CalendarPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__checklist__["a" /* ChecklistPage */]),
         ],
     })
-], CalendarPageModule);
+], ChecklistPageModule);
 
-//# sourceMappingURL=calendar.module.js.map
+//# sourceMappingURL=checklist.module.js.map
 
 /***/ }),
 
-/***/ 1206:
+/***/ 1249:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CalendarPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__ = __webpack_require__(589);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_moment__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChecklistPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(158);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(602);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__ = __webpack_require__(603);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -56,73 +57,91 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 
 
 
-let CalendarPage = class CalendarPage {
-    constructor(navCtrl, navParams, load, afs) {
+
+
+let ChecklistPage = class ChecklistPage {
+    constructor(navCtrl, navParams, toast, back, load, afs, data, auth) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
+        this.toast = toast;
+        this.back = back;
         this.load = load;
         this.afs = afs;
-        this.calendar = [];
+        this.data = data;
+        this.auth = auth;
         this.uid = localStorage.getItem('uid');
     }
     ionViewDidLoad() {
-        const l = this.load.create({ content: 'Cargando calendario...' });
+        const l = this.load.create({ content: 'Cargando checklist...' });
         l.present();
-        this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].EVENT)
+        this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].TODO)
             .valueChanges()
-            .subscribe(events => {
+            .subscribe(data => {
+            this.checklist = data;
             l.dismiss();
-            this.calendar = events.filter((e) => __WEBPACK_IMPORTED_MODULE_4_moment___default()(e.date).startOf('day').format('DD-MM-YYYY') == __WEBPACK_IMPORTED_MODULE_4_moment___default()().startOf('day').format('DD-MM-YYYY'));
-            console.log(this.calendar);
         });
-        /* this.back.getEventosDay().subscribe(data => {
-          const c = data.map(day => {
-            day.tareas = day.tareas.map(task => {
-              if (localStorage.getItem(`evento-${day.id}-${task.id}-${this.uid}`)) task.completed = true
-              return task
-            })
-            return day
-          })
-          this.calendar = c
+        this.auth.user$.subscribe(user => {
+            if (user && user.completedTasks && !this.completed)
+                this.completed = user.completedTasks;
+        });
+        /* this.back.getAllTodos().subscribe(data => {
+          this.checklist = data.map(t => t.users ? t : ({users: {}, ...t}))
           l.dismiss()
         }, err => {
-          this.toast.create({message: 'No se pudo cargar el calendario...', duration: 2000}).present()
+          this.toast.create({message: 'No se pudo cargar el checklist...', duration: 2000}).present()
           l.dismiss()
+          this.navCtrl.setRoot('HomePage')
         }) */
     }
-    onChangeTask(completed, id, i, ii, evento) {
-        if (completed) {
-            localStorage.setItem(`evento-${evento}-${id}-${this.uid}`, `${completed}`);
-        }
-        else {
-            localStorage.removeItem(`evento-${evento}-${id}-${this.uid}`);
-        }
-        this.calendar[ii].tareas[i].completed = completed;
-    }
-    openVideo(c) {
-        console.log(c);
-        this.navCtrl.push('ClaseDetailPage', { id: c.link_video_1, type: c.type_video_1 });
-    }
-    openSlide(c) {
-        this.navCtrl.push('SlideDetailPage', { id: c.link_slide_1 });
+    toggleCompleted(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log(id);
+            const userKey = `${__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER}/${this.auth.user.uid}`;
+            const _user = yield this.data.getDocAlt(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].USER, this.auth.user.uid);
+            const completedTasks = _user.completedTasks || [];
+            if (completedTasks.indexOf(id) < 0) {
+                completedTasks.push(id);
+                yield this.afs.doc(userKey).update({ completedTasks });
+                /* this.checkChanged.next({ id, added: true }); */
+            }
+            else {
+                if (completedTasks.length > 0)
+                    completedTasks.splice(completedTasks.indexOf(id), 1);
+                yield this.afs.doc(userKey).update({ completedTasks });
+                /* this.checkChanged.next({ id, added: false }); */
+            }
+            // this.stats.modifyCustomCounter(`event-${id}`, this.event.title, 1)
+        });
     }
 };
-CalendarPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-calendar',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/calendar/calendar.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Programa paso a paso</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list *ngFor="let c of calendar; let ii = index" class="mt-3">\n    <ion-list-header class="calendar-header" text-wrap>{{c.title}}</ion-list-header>\n    <div class="calendar-item" *ngFor="let task of c.tasks; let i = index">\n      <ion-item>\n        <ion-label>{{task.label}}</ion-label>\n        <ion-checkbox [(ngModel)]="task.completed" (ionChange)="onChangeTask(task.completed, task.id, i, ii, c.id)"></ion-checkbox>\n      </ion-item>\n    </div>\n    <!-- <ion-item>\n      <button ion-button *ngIf="c.link_video_1" (click)="openVideo(c)">Ver VideoClase</button>\n      <button ion-button *ngIf="c.link_slide_1" (click)="openSlide(c)">Ver Presentación</button>\n    </ion-item> -->\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/calendar/calendar.html"*/,
+ChecklistPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
+        selector: 'page-checklist',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mi checklist diario</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <div *ngFor="let c of checklist" class="checklist-item">\n      <ion-item text-wrap>\n        <ion-label>{{c.text}}</ion-label>\n        <ion-checkbox (click)="toggleCompleted(c.id)" [checked]="completed && completed.includes(c.id)"></ion-checkbox>\n      </ion-item>\n    </div>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/checklist/checklist.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["n" /* LoadingController */],
-        __WEBPACK_IMPORTED_MODULE_2_angularfire2_firestore__["AngularFirestore"]])
-], CalendarPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
+        __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* LoadingController */],
+        __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */],
+        __WEBPACK_IMPORTED_MODULE_6__providers_auth_auth__["a" /* AuthProvider */]])
+], ChecklistPage);
 
-//# sourceMappingURL=calendar.js.map
+//# sourceMappingURL=checklist.js.map
 
 /***/ })
 

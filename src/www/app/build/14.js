@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 1169:
+/***/ 1210:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ThreadAddPageModule", function() { return ThreadAddPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thread_add__ = __webpack_require__(1247);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__thread_add__ = __webpack_require__(1290);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -35,17 +35,17 @@ ThreadAddPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1247:
+/***/ 1290:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ThreadAddPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(146);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(589);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__ = __webpack_require__(602);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angularfire2_firestore__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_data_data__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_data_data__ = __webpack_require__(273);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -92,7 +92,7 @@ let ThreadAddPage = class ThreadAddPage {
 };
 ThreadAddPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-thread-add',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Hacer una pregunta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Tema de la publicación" [(ngModel)]="thread.title"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Pregunta de la publicación" [(ngModel)]="thread.text"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button (click)="addThread()">Agregar</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/,
+        selector: 'page-thread-add',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/'<ion-header>\n\n  <ion-navbar>\n    <ion-title>Hacer una pregunta</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Tema de la pregunta" [(ngModel)]="thread.title"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-textarea placeholder="Pregunta" [(ngModel)]="thread.text"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button (click)="addThread()">Agregar</button>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/thread-add/thread-add.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
