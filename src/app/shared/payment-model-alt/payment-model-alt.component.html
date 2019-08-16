@@ -1,9 +1,47 @@
-<div class="p-4">
-  <div class="container-fluid">
+<ngx-smart-modal identifier="payModal" #payModal>
+  <div class="container">
     <div class="row">
 
       <div class="col-md-12">
-        <h1 class="c-epsi-primary w-100 text-center">{{model.name}}</h1>
+        <div class="w-100 flex flex-row">
+          <div class="flex flex-col">
+            <h2 class="text-primary">$ 1,279</h2>
+            <small class="text-primary">1 Persona / Al Mes</small>
+          </div>
+          <input type="text" class="form-control ml-auto" placeholder="Codigo de Descuento" style="width: 60%">
+        </div>
+      </div>
+
+      <div class="col-md-12 mt-2">
+        <h5 class="text-primary">Especialidad 1 / Especialidad 2 / Especialidad 3</h5>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-info w-100">Pagar con Paypal</button>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary w-100">Pagar en OXXO / Deposito Bancario</button>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn btn-primary w-100">Pagar con tarjeta Debito/Credito</button>
+      </div>
+
+      <div class="col-md-6">
+        <button class="btn text-primary w-100" (click)="payModal.close()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<div class="p-1">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-12 mt-1">
+        <h1 class="c-epsi-primary w-100 text-center model-name">{{model.name}}</h1>
       </div>
 
       <div class="col-md-12">
@@ -18,7 +56,7 @@
               </div>
 
               <div class="col-md-12 mt-2 form-group mt-2">
-                <label for="" class="text-primary">Cuanto tiempo necesitas estudiar?</label>
+                <label for="" class="text-primary">¿Cuánto tiempo necesitas estudiar?</label>
                 <select name="" id="" class="form-control">
                   <option value="">1 Mes</option>
                   <option value="">1 Ano</option>
@@ -28,15 +66,17 @@
               <div class="col-md-12 mt-2 form-group mt-2">
                 <div class="una-container">
                   <label for="" class="text-primary">Quieres tener todas o solo necesitas alguna especialidad?</label>
-                  <epsi-zamna-toggle leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
                 </div>
-                <select name="" id="" class="form-control">
-                  <option value="">Selecciona</option>
-                </select>
+                <div class="flex flex-row align-center">
+                  <epsi-zamna-toggle leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
+                  <select name="" id="" class="form-control">
+                    <option value="">Selecciona</option>
+                  </select>
+                </div>
               </div>
 
               <div class="col-md-12 mt-2 form-group mt-2">
-                <label for="" class="text-primary">Estudiaras solo o en equipo?</label>
+                <label for="" class="text-primary">¿Estudiarás solo o en equipo?</label>
                 <select name="" id="" class="form-control">
                   <option value="" selected>Solo yo</option>
                 </select>
@@ -74,7 +114,7 @@
           <div class="flex flex-row align-center ml-auto">
             <!-- <input type="text" class="form-control" placeholder="Codigo de descuento">
             <button class="btn btn-secondary">Pagar Ahora</button> -->
-            <button class="btn btn-primary">Continuar</button>
+            <button class="btn btn-primary" (click)="payModal.open()">Continuar</button>
           </div>
 
         </div>

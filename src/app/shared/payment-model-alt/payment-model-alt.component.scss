@@ -43,9 +43,21 @@ label {
 .actions-container {
 
   margin-top: 3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #ddd;
 
   h1 small {
     font-size: 0.75rem;
   }
 
+}
+
+@media only screen and (max-width: 768px) {
+  .model-name { font-size: 1.75rem; }
+  h2 { font-size: 2rem; }
+  .mode-container { margin: 1rem !important; }
+  label { font-size: 1rem; }
+  img { display: none; }
+  h1 { font-size: 1.25rem; }
+  .actions-container { margin-top: 1rem;}
 }
