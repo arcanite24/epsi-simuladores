@@ -22,6 +22,7 @@ export class ContentAddComponent implements OnInit {
 
   public addForm: FormGroup;
   public contentTypes: string[] = ContentTypes;
+  public loading = false;
 
   public tempParent: Content;
 
@@ -72,9 +73,11 @@ export class ContentAddComponent implements OnInit {
 
   async convertPDF(list: FileList) {
     try {
+      this.loading = true;
       const urls = await this.convert.convertPDF(list);
       this.addForm.patchValue({ pdf: urls });
       this.toastr.success('PDF subido correctamente');
+      this.loading = false;
     } catch (error) {
       console.log(error);
       this.toastr.error('Ocurrió un error al subir el pdf');

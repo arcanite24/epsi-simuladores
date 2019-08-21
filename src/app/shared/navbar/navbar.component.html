@@ -20,11 +20,11 @@
 
   <img src="assets/zamnademy/logo-morado.png" alt="Zamnademy">
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
-  <!-- <div class="ml-2 navbar-timer" *ngIf="userTimer" [innerHTML]="timerLabel"></div> -->
+  <div class="ml-2 navbar-timer" *ngIf="userTimer" [innerHTML]="timerLabel"></div>
   <div class="ml-2 navbar-timer" *ngIf="timerLabel" [innerHTML]="timerLabel"></div>
-  <!-- <div class="ml-2 navbar-timer" *ngIf="!userTimer">
+  <div class="ml-2 navbar-timer" *ngIf="!userTimer">
     <input type="text" class="form-control" placeholder="Cuando es tu examen?" (focus)="openTimerSelector()">
-  </div> -->
+  </div>
 
   <div class="navbar-user-info flex-center" *ngIf="auth.loggedIn">
 
