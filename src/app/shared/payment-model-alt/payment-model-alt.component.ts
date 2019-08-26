@@ -30,6 +30,8 @@ export class PaymentModelAltComponent implements OnInit {
 
   public mode = 'premium';
 
+  public showTooltip = false;
+
   constructor(
     private sanitizer: DomSanitizer,
     private afs: AngularFirestore,

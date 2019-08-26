@@ -28,6 +28,7 @@ export class NavbarComponent implements OnInit {
 
   public timerDate = '2019-04-15T12:30';
   public timerLabel = '';
+  public userTimerLabel = '';
 
   private hiddenOn: string[] = ['/'];
 
@@ -54,11 +55,11 @@ export class NavbarComponent implements OnInit {
 
     this.loadTimer();
 
-    /* this.auth.user$.subscribe(user => {
+    this.auth.user$.subscribe(user => {
       if (user && !this.userTimer) {
         this.loadUserTimer(user);
       }
-    }); */
+    });
 
     /* setInterval(
       () =>
@@ -107,7 +108,7 @@ export class NavbarComponent implements OnInit {
       this.userTimer = timer;
       setInterval(
         () =>
-          (this.timerLabel = `
+          (this.userTimerLabel = `
             <div class="navbar-timer-label">
               <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Fecha de tu examen</small></div>
               ${countdown(

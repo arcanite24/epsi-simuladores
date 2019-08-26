@@ -88,8 +88,12 @@
           <div class="col-md-6">
             <div class="row">
 
-              <div class="col-md-12">
-                <img src="assets/payment.png" class="w-100">
+              <div class="col-md-12 flex flex-col align-center justify-center">
+                <img src="assets/payment.png" class="w-100" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
+                <div class="payment-popup flex flex-col align-center justify-center" *ngIf="showTooltip" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
+                  <h4>Quieres conocer el sistema con una seleccion de temas a una fraccion del precio?</h4>
+                  <button class="btn btn-primary">Probar version light</button>
+                </div>
               </div>
 
             </div>

@@ -61,3 +61,17 @@ label {
   h1 { font-size: 1.25rem; }
   .actions-container { margin-top: 1rem;}
 }
+
+.payment-popup {
+
+  position: absolute;
+  background-color: white;
+  border-radius: 10px;
+  width: 200px;
+  padding: 1rem;
+
+  h4 {
+    font-size: 1rem;
+  }
+
+}
