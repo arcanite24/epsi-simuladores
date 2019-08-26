@@ -1,4 +1,4 @@
-<epsi-panel title="Materias">
+<epsi-panel [title]="title" [titleHref]="adSlug" [titleButtonText]="adButtonText">
   <div class="contanier-fluid">
     <div class="row" *ngIf="auth.user">
 
@@ -10,13 +10,13 @@
         <img src="assets/img/tile-minisim.png" class="w-100">
       </div> -->
 
-      <div class="col-xs-12 col-sm-6 col-md-4 manita" (click)="router.navigate(['/pagar/simuladorEXACER'])" *ngIf="!auth.isFullSim">
+      <!-- <div class="col-xs-12 col-sm-6 col-md-4 manita" (click)="router.navigate(['/pagar/simuladorEXACER'])" *ngIf="!auth.isFullSim">
         <img src="assets/img/oferta-fullsim.png" class="w-100">
       </div>
 
       <div class="col-xs-12 col-sm-6 col-md-4 manita" *ngIf="!auth.isFull" (click)="router.navigate(['/pagar/curso-completo-exacer'])">
         <img src="assets/img/oferta.png" class="w-100">
-      </div>
+      </div> -->
 
       <div
         class="col-xs-12 col-sm-6 col-md-4"

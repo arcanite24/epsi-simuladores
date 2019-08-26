@@ -56,6 +56,9 @@ export class ContentEditComponent implements OnInit {
       is360: false,
       ignoreOnSmartCalendar: false,
       exam: null,
+      buyButtonText: null,
+      blur: false,
+      canBuy: false,
     });
 
   }

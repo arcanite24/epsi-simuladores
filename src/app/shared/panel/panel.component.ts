@@ -12,16 +12,19 @@ import { tap } from 'rxjs/operators';
 })
 export class PanelComponent implements OnInit {
 
-  @Input() public title: string
-  @Input() public desc: string
-  @Input() public showContent: boolean = true
-  @Input() public blur: boolean = false
-  @Input() public img: string
-  @Input() public height: string
-  @Input() public tutorial: string
-  @Input() public toggleText: string
+  @Input() public title: string;
+  @Input() public desc: string;
+  @Input() public showContent: boolean = true;
+  @Input() public blur: boolean = false;
+  @Input() public img: string;
+  @Input() public height: string;
+  @Input() public tutorial: string;
+  @Input() public toggleText: string;
 
-  public tutorial$: Observable<Tutorial>
+  @Input() public titleHref: string;
+  @Input() public titleButtonText: string;
+
+  public tutorial$: Observable<Tutorial>;
 
   constructor(
     private afs: AngularFirestore,
@@ -33,7 +36,7 @@ export class PanelComponent implements OnInit {
       .collection(Collections.TUTORIAL)
       .doc<Tutorial>(this.tutorial)
       .valueChanges()
-      .pipe(tap(null))
+      .pipe(tap(null));
   }
 
 }

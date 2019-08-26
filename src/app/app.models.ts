@@ -273,6 +273,9 @@ export interface Content {
   temas?: Content[];
   liberadoInPrograma?: boolean;
   exam?: string;
+  buyButtonText?: string;
+  blur?: boolean;
+  canBuy?: boolean;
 }
 
 export interface Marker {

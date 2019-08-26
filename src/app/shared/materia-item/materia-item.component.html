@@ -1,7 +1,7 @@
 <div class="materia-item" (click)="openMateria()">
   <div class="row flex flex-col align-center justify-center">
 
-    <div class="col-md-12" [ngClass]="{blur: locked}">
+    <div class="col-md-12" [ngClass]="{blur: materia.blur}">
       <img [src]="materia.cover" alt="" class="w-100">
     </div>
 
@@ -17,7 +17,7 @@
     <div class="lock-container flex flex-col flex-center" *ngIf="locked">
       <img src="assets/img/lock.svg" alt="Bloqueado" *ngIf="locked" class="lock-icon">
 
-      <button class="btn btn-success btn-comprar mt-2" ngif>Comprar</button>
+      <button class="btn btn-success btn-comprar mt-2" ngif>{{ materia.buyButtonText ? materia.buyButtonText : 'Comprar' }}</button>
     </div>
 
   </div>
