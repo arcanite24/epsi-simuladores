@@ -3,7 +3,7 @@ import { Collections, ContentTypesEnum, Content } from './../../app.models';
 import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { sortBy } from 'lodash';
 import { Router } from '@angular/router';
 
@@ -34,9 +34,13 @@ export class MateriasPanelComponent implements OnInit {
 
   loadMaterias() {
     this.materias$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
-      .where('type', '==', ContentTypesEnum.Materia))
+      .where('type', '==', this.type))
       .valueChanges()
-      .pipe(map(materias => sortBy(materias, 'sortIndex').filter(item => item.type === this.type)));
+      .pipe(
+        tap(console.log),
+        map(materias => sortBy(materias, 'sortIndex')),
+        tap(console.log),
+      );
   }
 
 }
