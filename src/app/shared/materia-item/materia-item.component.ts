@@ -24,10 +24,8 @@ export class MateriaItemComponent implements OnInit {
     }
 
     for (const role of this.materia.roles) {
-      if (!user[role]) { return; }
+      if (user[role]) { this.locked = false; }
     }
-
-    this.locked = false;
 
   }
 
