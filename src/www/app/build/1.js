@@ -8,8 +8,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MiAnaliticaPageModule", function() { return MiAnaliticaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_analitica__ = __webpack_require__(1267);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mi_analitica__ = __webpack_require__(1268);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1233);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__swimlane_ngx_charts__ = __webpack_require__(611);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ MiAnaliticaPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1216:
+/***/ 1217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -75,7 +75,7 @@ exports.AddPipe = AddPipe;
 
 /***/ }),
 
-/***/ 1217:
+/***/ 1218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -186,7 +186,7 @@ exports.CalendarPipe = CalendarPipe;
 
 /***/ }),
 
-/***/ 1218:
+/***/ 1219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -225,7 +225,7 @@ exports.DateFormatPipe = DateFormatPipe;
 
 /***/ }),
 
-/***/ 1219:
+/***/ 1220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -260,7 +260,7 @@ exports.DifferencePipe = DifferencePipe;
 
 /***/ }),
 
-/***/ 1220:
+/***/ 1221:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -297,7 +297,7 @@ exports.DurationPipe = DurationPipe;
 
 /***/ }),
 
-/***/ 1221:
+/***/ 1222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -335,7 +335,7 @@ exports.FromUnixPipe = FromUnixPipe;
 
 /***/ }),
 
-/***/ 1222:
+/***/ 1223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -367,7 +367,7 @@ exports.ParsePipe = ParsePipe;
 
 /***/ }),
 
-/***/ 1223:
+/***/ 1224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -401,7 +401,7 @@ exports.SubtractPipe = SubtractPipe;
 
 /***/ }),
 
-/***/ 1224:
+/***/ 1225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -512,7 +512,7 @@ exports.TimeAgoPipe = TimeAgoPipe;
 
 /***/ }),
 
-/***/ 1225:
+/***/ 1226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -544,7 +544,7 @@ exports.UtcPipe = UtcPipe;
 
 /***/ }),
 
-/***/ 1226:
+/***/ 1227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -579,7 +579,7 @@ exports.FromUtcPipe = FromUtcPipe;
 
 /***/ }),
 
-/***/ 1227:
+/***/ 1228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -611,7 +611,7 @@ exports.LocalTimePipe = LocalTimePipe;
 
 /***/ }),
 
-/***/ 1228:
+/***/ 1229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -643,45 +643,45 @@ exports.LocalePipe = LocalePipe;
 
 /***/ }),
 
-/***/ 1229:
+/***/ 1230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var add_pipe_1 = __webpack_require__(1216);
+var add_pipe_1 = __webpack_require__(1217);
 exports.AddPipe = add_pipe_1.AddPipe;
-var calendar_pipe_1 = __webpack_require__(1217);
+var calendar_pipe_1 = __webpack_require__(1218);
 exports.CalendarPipe = calendar_pipe_1.CalendarPipe;
-var date_format_pipe_1 = __webpack_require__(1218);
+var date_format_pipe_1 = __webpack_require__(1219);
 exports.DateFormatPipe = date_format_pipe_1.DateFormatPipe;
-var difference_pipe_1 = __webpack_require__(1219);
+var difference_pipe_1 = __webpack_require__(1220);
 exports.DifferencePipe = difference_pipe_1.DifferencePipe;
-var duration_pipe_1 = __webpack_require__(1220);
+var duration_pipe_1 = __webpack_require__(1221);
 exports.DurationPipe = duration_pipe_1.DurationPipe;
-var from_unix_pipe_1 = __webpack_require__(1221);
+var from_unix_pipe_1 = __webpack_require__(1222);
 exports.FromUnixPipe = from_unix_pipe_1.FromUnixPipe;
-var parse_pipe_1 = __webpack_require__(1222);
+var parse_pipe_1 = __webpack_require__(1223);
 exports.ParsePipe = parse_pipe_1.ParsePipe;
-var moment_module_1 = __webpack_require__(1230);
+var moment_module_1 = __webpack_require__(1231);
 exports.MomentModule = moment_module_1.MomentModule;
-var subtract_pipe_1 = __webpack_require__(1223);
+var subtract_pipe_1 = __webpack_require__(1224);
 exports.SubtractPipe = subtract_pipe_1.SubtractPipe;
-var time_ago_pipe_1 = __webpack_require__(1224);
+var time_ago_pipe_1 = __webpack_require__(1225);
 exports.TimeAgoPipe = time_ago_pipe_1.TimeAgoPipe;
-var utc_pipe_1 = __webpack_require__(1225);
+var utc_pipe_1 = __webpack_require__(1226);
 exports.UtcPipe = utc_pipe_1.UtcPipe;
-var from_utc_pipe_1 = __webpack_require__(1226);
+var from_utc_pipe_1 = __webpack_require__(1227);
 exports.FromUtcPipe = from_utc_pipe_1.FromUtcPipe;
-var local_pipe_1 = __webpack_require__(1227);
+var local_pipe_1 = __webpack_require__(1228);
 exports.LocalTimePipe = local_pipe_1.LocalTimePipe;
-var locale_pipe_1 = __webpack_require__(1228);
+var locale_pipe_1 = __webpack_require__(1229);
 exports.LocalePipe = locale_pipe_1.LocalePipe;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 1230:
+/***/ 1231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -694,19 +694,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var add_pipe_1 = __webpack_require__(1216);
-var calendar_pipe_1 = __webpack_require__(1217);
-var date_format_pipe_1 = __webpack_require__(1218);
-var difference_pipe_1 = __webpack_require__(1219);
-var duration_pipe_1 = __webpack_require__(1220);
-var from_unix_pipe_1 = __webpack_require__(1221);
-var parse_pipe_1 = __webpack_require__(1222);
-var subtract_pipe_1 = __webpack_require__(1223);
-var time_ago_pipe_1 = __webpack_require__(1224);
-var utc_pipe_1 = __webpack_require__(1225);
-var from_utc_pipe_1 = __webpack_require__(1226);
-var local_pipe_1 = __webpack_require__(1227);
-var locale_pipe_1 = __webpack_require__(1228);
+var add_pipe_1 = __webpack_require__(1217);
+var calendar_pipe_1 = __webpack_require__(1218);
+var date_format_pipe_1 = __webpack_require__(1219);
+var difference_pipe_1 = __webpack_require__(1220);
+var duration_pipe_1 = __webpack_require__(1221);
+var from_unix_pipe_1 = __webpack_require__(1222);
+var parse_pipe_1 = __webpack_require__(1223);
+var subtract_pipe_1 = __webpack_require__(1224);
+var time_ago_pipe_1 = __webpack_require__(1225);
+var utc_pipe_1 = __webpack_require__(1226);
+var from_utc_pipe_1 = __webpack_require__(1227);
+var local_pipe_1 = __webpack_require__(1228);
+var locale_pipe_1 = __webpack_require__(1229);
 var ANGULAR_MOMENT_PIPES = [
     add_pipe_1.AddPipe,
     calendar_pipe_1.CalendarPipe,
@@ -738,7 +738,7 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 1231:
+/***/ 1232:
 /***/ (function(module, exports) {
 
 /*global window */
@@ -2111,26 +2111,26 @@ function(module) {
 
 /***/ }),
 
-/***/ 1232:
+/***/ 1233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__zamna_radio_zamna_radio__ = __webpack_require__(1242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__zamna_radio_zamna_radio__ = __webpack_require__(1243);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2187,7 +2187,7 @@ ComponentsModule = __decorate([
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2236,7 +2236,7 @@ AccordionListComponent = __decorate([
 
 /***/ }),
 
-/***/ 1234:
+/***/ 1235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2326,7 +2326,7 @@ TimerComponent = __decorate([
 
 /***/ }),
 
-/***/ 1235:
+/***/ 1236:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2438,7 +2438,7 @@ ZamnaFeedComponent = __decorate([
 
 /***/ }),
 
-/***/ 1236:
+/***/ 1237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2509,7 +2509,7 @@ GalleryItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1237:
+/***/ 1238:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2582,7 +2582,7 @@ MediaItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1238:
+/***/ 1239:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2672,7 +2672,7 @@ ExamFeedbackModalComponent = __decorate([
 
 /***/ }),
 
-/***/ 1239:
+/***/ 1240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2770,7 +2770,7 @@ StatStructureItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1240:
+/***/ 1241:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2824,7 +2824,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-const countdown = __webpack_require__(1231);
+const countdown = __webpack_require__(1232);
 countdown.setLabels(' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
     constructor(afs, auth, store, toast, stat, data, navCtrl, modal, alert, load, network, http, viewCtrl) {
@@ -3246,7 +3246,7 @@ var ConnectionStatusEnum;
 
 /***/ }),
 
-/***/ 1241:
+/***/ 1242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3355,7 +3355,7 @@ ExamResultsTagStructureComponent = __decorate([
 
 /***/ }),
 
-/***/ 1242:
+/***/ 1243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3397,7 +3397,7 @@ ZamnaRadioComponent = __decorate([
 
 /***/ }),
 
-/***/ 1267:
+/***/ 1268:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

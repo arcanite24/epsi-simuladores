@@ -1,14 +1,14 @@
 webpackJsonp([32],{
 
-/***/ 1194:
+/***/ 1193:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotasGlobalPageModule", function() { return NotasGlobalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NotasPageModule", function() { return NotasPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notas_global__ = __webpack_require__(1274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__notas__ = __webpack_require__(1274);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,20 +18,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let NotasGlobalPageModule = class NotasGlobalPageModule {
+let NotasPageModule = class NotasPageModule {
 };
-NotasGlobalPageModule = __decorate([
+NotasPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__notas_global__["a" /* NotasGlobalPage */],
+            __WEBPACK_IMPORTED_MODULE_2__notas__["a" /* NotasPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notas_global__["a" /* NotasGlobalPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__notas__["a" /* NotasPage */]),
         ],
     })
-], NotasGlobalPageModule);
+], NotasPageModule);
 
-//# sourceMappingURL=notas-global.module.js.map
+//# sourceMappingURL=notas.module.js.map
 
 /***/ }),
 
@@ -39,12 +39,17 @@ NotasGlobalPageModule = __decorate([
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotasGlobalPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(604);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotasPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_app_models__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__ = __webpack_require__(603);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__ = __webpack_require__(602);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_data_data__ = __webpack_require__(273);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash__ = __webpack_require__(604);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(7);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -54,53 +59,86 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 
 
 
 
-let NotasGlobalPage = class NotasGlobalPage {
-    constructor(navCtrl, navParams, back, toast, load) {
+
+
+
+
+let NotasPage = class NotasPage {
+    constructor(navCtrl, navParams, modal, viewCtrl, auth, afs, data) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.back = back;
-        this.toast = toast;
-        this.load = load;
-        this.nTema = [];
-        this.nSubtema = [];
-        this.nGaleria = [];
-        this.nAsesoria = [];
-        this.nSlide = [];
+        this.modal = modal;
+        this.viewCtrl = viewCtrl;
+        this.auth = auth;
+        this.afs = afs;
+        this.data = data;
+        this.id = this.navParams.get('id');
     }
     ionViewDidLoad() {
-        const l = this.load.create({ content: 'Cargando notas...' });
-        l.present();
-        this.back.getMyNotas(localStorage.getItem('uid')).subscribe(data => {
-            this.nTema = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniqBy(data.filter(n => n.tema), n => n.tema.id);
-            this.nSubtema = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniqBy(data.filter(n => n.subtema), n => n.subtema.id);
-            this.nGaleria = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniqBy(data.filter(n => n.galeria), n => n.galeria.id);
-            this.nAsesoria = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniqBy(data.filter(n => n.asesoria), n => n.asesoria.id);
-            this.nSlide = __WEBPACK_IMPORTED_MODULE_3_lodash___default.a.uniqBy(data.filter(n => n.slide), n => n.slide.id);
-            console.log(this.nTema);
-            l.dismiss();
+        this.auth.user$.subscribe(user => {
+            if (user && !this.notas)
+                this.loadNotas(user.uid, true);
+            if (this.id && user)
+                this.loadNotas(this.id, false, user.uid);
+        });
+        /* this.back.getNotas(this.id, this.type).subscribe(data => {
+          this.notas = data
         }, err => {
-            l.dismiss();
-            this.toast.create({ message: 'No se pudieron cargar las notas...', duration: 2000 }).present();
-            /* this.navCtrl.setRoot('HomePage') */
+          this.toast.create({message: 'No se pudieron cargar tus notas...', duration: 2000}).present()
+          if (this.navCtrl.canGoBack()) this.navCtrl.pop()
+        }) */
+    }
+    loadNotas(id, user, uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            if (user) {
+                const notas = yield this.data.getCollectionQuery(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].NOTE, ref => ref
+                    .where('user', '==', id));
+                this.sortNotas = Object.values(Object(__WEBPACK_IMPORTED_MODULE_6_lodash__["groupBy"])(notas.filter(n => n.parent_type), 'parent_type'));
+                this.noCatNotas = notas.filter(n => !n.parent_type);
+            }
+            else {
+                this.notas = this.afs.collection(__WEBPACK_IMPORTED_MODULE_2__app_app_models__["a" /* Collections */].NOTE, ref => ref
+                    .where('parent_id', '==', id)).valueChanges()
+                    .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["map"])(notes => notes.filter(n => n.user === uid)));
+            }
+        });
+    }
+    openAdd(id, type) {
+        const m = this.modal.create('NotasAddPage', { id, type });
+        m.present();
+        m.onDidDismiss(data => {
+            if (!data)
+                return;
+            this.ionViewDidLoad();
         });
     }
 };
-NotasGlobalPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-notas-global',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notas-global/notas-global.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Mis Notas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <ion-list-header>Temas</ion-list-header>\n    <ion-item *ngFor="let t of nTema" (click)="navCtrl.push(\'NotasGlobalDetailPage\', {rest: \'tema\', id: t.tema.id})" >{{t.tema ? t.tema.name : \'Sin Tema\'}}</ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3">\n    <ion-list-header>Subtemas</ion-list-header>\n    <ion-item *ngFor="let t of nSubtema" (click)="navCtrl.push(\'NotasGlobalDetailPage\', {rest: \'subtema\', id: t.subtema.id})" >{{t.subtema ? t.subtema.name : \'Sin Subtema\'}}</ion-item>\n    <ion-item *ngIf="nSubtema.length <= 0" >No hay notas que mostrar</ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3">\n    <ion-list-header>Galerías</ion-list-header>\n    <ion-item *ngFor="let t of nGaleria" (click)="navCtrl.push(\'NotasGlobalDetailPage\', {rest: \'galeria\', id: t.galeria.id})" >{{t.galeria ? t.galeria.name : \'Sin Galería\'}}</ion-item>\n    <ion-item *ngIf="nGaleria.length <= 0" >No hay notas que mostrar</ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3">\n    <ion-list-header>Asesorías</ion-list-header>\n    <ion-item *ngFor="let t of nAsesoria" (click)="navCtrl.push(\'NotasGlobalDetailPage\', {rest: \'asesoria\', id: t.asesoria.id})" >{{t.asesoria ? t.asesoria.name : \'Sin Asesoría\'}}</ion-item>\n    <ion-item *ngIf="nAsesoria.length <= 0" >No hay notas que mostrar</ion-item>\n  </ion-list>\n\n  <ion-list class="mt-3">\n    <ion-list-header>Presentaciones</ion-list-header>\n    <ion-item *ngFor="let t of nSlide" (click)="navCtrl.push(\'NotasGlobalDetailPage\', {rest: \'slide\', id: t.slide.id})" >{{t.slide ? t.slide.name : \'Sin Presentación\'}}</ion-item>\n    <ion-item *ngIf="nSlide.length <= 0" >No hay notas que mostrar</ion-item>\n  </ion-list>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notas-global/notas-global.html"*/,
+NotasPage = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+        selector: 'page-notas',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/notas/notas.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Notas</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <div class="flex-col" *ngIf="!notas && !sortNotas">\n    <img src="assets/imgs/rings.svg">\n  </div>\n\n  <ng-container *ngIf="sortNotas">\n    <!-- <pre>{{ sortNotas | json }}</pre> -->\n    <ion-list *ngFor="let cat of sortNotas" style="margin-bottom: 4rem">\n      <ion-list-header>\n        <strong>{{cat[0].parent_type == \'content\' ? cat[0].content_type : cat[0].parent_type}}</strong>\n      </ion-list-header>\n      <ion-item *ngFor="let note of cat" text-wrap>\n        <h2>{{note.title}}</h2>\n        <p>{{note.text}}</p>\n      </ion-item>\n    </ion-list>\n  </ng-container>\n\n  <ng-container *ngIf="notas">\n    <ion-card *ngFor="let nota of notas | async">\n      <ion-card-header>{{nota.title}}</ion-card-header>\n      <ion-card-content>{{nota.text}}</ion-card-content>\n    </ion-card>\n  </ng-container>\n\n  <ion-card *ngIf="noCatNotas">\n    <ion-list>\n      <ion-list-header>Sin Categoría</ion-list-header>\n      <ion-item *ngFor="let note of noCatNotas" text-wrap>\n        <h2>{{note.title}}</h2>\n        <p>{{note.text}}</p>\n      </ion-item>\n    </ion-list>\n  </ion-card>\n\n  <!-- <ion-fab right bottom>\n    <button (click)="openAdd(id, \'\')" ion-fab color="rojito"><ion-icon name="add"></ion-icon></button>\n  </ion-fab> -->\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/notas/notas.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["v" /* ToastController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* LoadingController */]])
-], NotasGlobalPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* ModalController */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["x" /* ViewController */],
+        __WEBPACK_IMPORTED_MODULE_3__providers_auth_auth__["a" /* AuthProvider */],
+        __WEBPACK_IMPORTED_MODULE_4_angularfire2_firestore__["AngularFirestore"],
+        __WEBPACK_IMPORTED_MODULE_5__providers_data_data__["a" /* DataProvider */]])
+], NotasPage);
 
-//# sourceMappingURL=notas-global.js.map
+//# sourceMappingURL=notas.js.map
 
 /***/ })
 

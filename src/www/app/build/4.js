@@ -1,6 +1,6 @@
 webpackJsonp([4],{
 
-/***/ 1183:
+/***/ 1182:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,7 +9,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(1263);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1232);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(1233);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ HomePageModule = __decorate([
 
 /***/ }),
 
-/***/ 1216:
+/***/ 1217:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72,7 +72,7 @@ exports.AddPipe = AddPipe;
 
 /***/ }),
 
-/***/ 1217:
+/***/ 1218:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -183,7 +183,7 @@ exports.CalendarPipe = CalendarPipe;
 
 /***/ }),
 
-/***/ 1218:
+/***/ 1219:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -222,7 +222,7 @@ exports.DateFormatPipe = DateFormatPipe;
 
 /***/ }),
 
-/***/ 1219:
+/***/ 1220:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -257,7 +257,7 @@ exports.DifferencePipe = DifferencePipe;
 
 /***/ }),
 
-/***/ 1220:
+/***/ 1221:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -294,7 +294,7 @@ exports.DurationPipe = DurationPipe;
 
 /***/ }),
 
-/***/ 1221:
+/***/ 1222:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -332,7 +332,7 @@ exports.FromUnixPipe = FromUnixPipe;
 
 /***/ }),
 
-/***/ 1222:
+/***/ 1223:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -364,7 +364,7 @@ exports.ParsePipe = ParsePipe;
 
 /***/ }),
 
-/***/ 1223:
+/***/ 1224:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -398,7 +398,7 @@ exports.SubtractPipe = SubtractPipe;
 
 /***/ }),
 
-/***/ 1224:
+/***/ 1225:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -509,7 +509,7 @@ exports.TimeAgoPipe = TimeAgoPipe;
 
 /***/ }),
 
-/***/ 1225:
+/***/ 1226:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,7 +541,7 @@ exports.UtcPipe = UtcPipe;
 
 /***/ }),
 
-/***/ 1226:
+/***/ 1227:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -576,7 +576,7 @@ exports.FromUtcPipe = FromUtcPipe;
 
 /***/ }),
 
-/***/ 1227:
+/***/ 1228:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -608,7 +608,7 @@ exports.LocalTimePipe = LocalTimePipe;
 
 /***/ }),
 
-/***/ 1228:
+/***/ 1229:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -640,45 +640,45 @@ exports.LocalePipe = LocalePipe;
 
 /***/ }),
 
-/***/ 1229:
+/***/ 1230:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var add_pipe_1 = __webpack_require__(1216);
+var add_pipe_1 = __webpack_require__(1217);
 exports.AddPipe = add_pipe_1.AddPipe;
-var calendar_pipe_1 = __webpack_require__(1217);
+var calendar_pipe_1 = __webpack_require__(1218);
 exports.CalendarPipe = calendar_pipe_1.CalendarPipe;
-var date_format_pipe_1 = __webpack_require__(1218);
+var date_format_pipe_1 = __webpack_require__(1219);
 exports.DateFormatPipe = date_format_pipe_1.DateFormatPipe;
-var difference_pipe_1 = __webpack_require__(1219);
+var difference_pipe_1 = __webpack_require__(1220);
 exports.DifferencePipe = difference_pipe_1.DifferencePipe;
-var duration_pipe_1 = __webpack_require__(1220);
+var duration_pipe_1 = __webpack_require__(1221);
 exports.DurationPipe = duration_pipe_1.DurationPipe;
-var from_unix_pipe_1 = __webpack_require__(1221);
+var from_unix_pipe_1 = __webpack_require__(1222);
 exports.FromUnixPipe = from_unix_pipe_1.FromUnixPipe;
-var parse_pipe_1 = __webpack_require__(1222);
+var parse_pipe_1 = __webpack_require__(1223);
 exports.ParsePipe = parse_pipe_1.ParsePipe;
-var moment_module_1 = __webpack_require__(1230);
+var moment_module_1 = __webpack_require__(1231);
 exports.MomentModule = moment_module_1.MomentModule;
-var subtract_pipe_1 = __webpack_require__(1223);
+var subtract_pipe_1 = __webpack_require__(1224);
 exports.SubtractPipe = subtract_pipe_1.SubtractPipe;
-var time_ago_pipe_1 = __webpack_require__(1224);
+var time_ago_pipe_1 = __webpack_require__(1225);
 exports.TimeAgoPipe = time_ago_pipe_1.TimeAgoPipe;
-var utc_pipe_1 = __webpack_require__(1225);
+var utc_pipe_1 = __webpack_require__(1226);
 exports.UtcPipe = utc_pipe_1.UtcPipe;
-var from_utc_pipe_1 = __webpack_require__(1226);
+var from_utc_pipe_1 = __webpack_require__(1227);
 exports.FromUtcPipe = from_utc_pipe_1.FromUtcPipe;
-var local_pipe_1 = __webpack_require__(1227);
+var local_pipe_1 = __webpack_require__(1228);
 exports.LocalTimePipe = local_pipe_1.LocalTimePipe;
-var locale_pipe_1 = __webpack_require__(1228);
+var locale_pipe_1 = __webpack_require__(1229);
 exports.LocalePipe = locale_pipe_1.LocalePipe;
 //# sourceMappingURL=index.js.map
 
 /***/ }),
 
-/***/ 1230:
+/***/ 1231:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -691,19 +691,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var add_pipe_1 = __webpack_require__(1216);
-var calendar_pipe_1 = __webpack_require__(1217);
-var date_format_pipe_1 = __webpack_require__(1218);
-var difference_pipe_1 = __webpack_require__(1219);
-var duration_pipe_1 = __webpack_require__(1220);
-var from_unix_pipe_1 = __webpack_require__(1221);
-var parse_pipe_1 = __webpack_require__(1222);
-var subtract_pipe_1 = __webpack_require__(1223);
-var time_ago_pipe_1 = __webpack_require__(1224);
-var utc_pipe_1 = __webpack_require__(1225);
-var from_utc_pipe_1 = __webpack_require__(1226);
-var local_pipe_1 = __webpack_require__(1227);
-var locale_pipe_1 = __webpack_require__(1228);
+var add_pipe_1 = __webpack_require__(1217);
+var calendar_pipe_1 = __webpack_require__(1218);
+var date_format_pipe_1 = __webpack_require__(1219);
+var difference_pipe_1 = __webpack_require__(1220);
+var duration_pipe_1 = __webpack_require__(1221);
+var from_unix_pipe_1 = __webpack_require__(1222);
+var parse_pipe_1 = __webpack_require__(1223);
+var subtract_pipe_1 = __webpack_require__(1224);
+var time_ago_pipe_1 = __webpack_require__(1225);
+var utc_pipe_1 = __webpack_require__(1226);
+var from_utc_pipe_1 = __webpack_require__(1227);
+var local_pipe_1 = __webpack_require__(1228);
+var locale_pipe_1 = __webpack_require__(1229);
 var ANGULAR_MOMENT_PIPES = [
     add_pipe_1.AddPipe,
     calendar_pipe_1.CalendarPipe,
@@ -735,7 +735,7 @@ exports.MomentModule = MomentModule;
 
 /***/ }),
 
-/***/ 1231:
+/***/ 1232:
 /***/ (function(module, exports) {
 
 /*global window */
@@ -2108,26 +2108,26 @@ function(module) {
 
 /***/ }),
 
-/***/ 1232:
+/***/ 1233:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1233);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__accordion_list_accordion_list__ = __webpack_require__(1234);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1234);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1235);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1229);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timer_timer__ = __webpack_require__(1235);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__zamna_feed_zamna_feed__ = __webpack_require__(1236);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__(1230);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1236);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1237);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1238);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1239);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1240);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1241);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__zamna_radio_zamna_radio__ = __webpack_require__(1242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__gallery_item_gallery_item__ = __webpack_require__(1237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__media_item_media_item__ = __webpack_require__(1238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__exam_feedback_modal_exam_feedback_modal__ = __webpack_require__(1239);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__stat_structure_item_stat_structure_item_component__ = __webpack_require__(1240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__exam_questions_widget_exam_questions_widget__ = __webpack_require__(1241);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__exam_results_tag_structure_exam_results_tag_structure__ = __webpack_require__(1242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__zamna_radio_zamna_radio__ = __webpack_require__(1243);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -2184,7 +2184,7 @@ ComponentsModule = __decorate([
 
 /***/ }),
 
-/***/ 1233:
+/***/ 1234:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2233,7 +2233,7 @@ AccordionListComponent = __decorate([
 
 /***/ }),
 
-/***/ 1234:
+/***/ 1235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2323,7 +2323,7 @@ TimerComponent = __decorate([
 
 /***/ }),
 
-/***/ 1235:
+/***/ 1236:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2435,7 +2435,7 @@ ZamnaFeedComponent = __decorate([
 
 /***/ }),
 
-/***/ 1236:
+/***/ 1237:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2506,7 +2506,7 @@ GalleryItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1237:
+/***/ 1238:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2579,7 +2579,7 @@ MediaItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1238:
+/***/ 1239:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2669,7 +2669,7 @@ ExamFeedbackModalComponent = __decorate([
 
 /***/ }),
 
-/***/ 1239:
+/***/ 1240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2767,7 +2767,7 @@ StatStructureItemComponent = __decorate([
 
 /***/ }),
 
-/***/ 1240:
+/***/ 1241:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2821,7 +2821,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 
 
 
-const countdown = __webpack_require__(1231);
+const countdown = __webpack_require__(1232);
 countdown.setLabels(' milissegundo| segundo| minuto| hora| día| semana| mes| año| decada| siglo| milenio', ' milisegundos| segundos| minutos| horas| días| semanas| meses| años| décadas| siglos| milenios', ' ', ' ', 'ahora');
 let ExamQuestionsWidgetComponent = class ExamQuestionsWidgetComponent {
     constructor(afs, auth, store, toast, stat, data, navCtrl, modal, alert, load, network, http, viewCtrl) {
@@ -3243,7 +3243,7 @@ var ConnectionStatusEnum;
 
 /***/ }),
 
-/***/ 1241:
+/***/ 1242:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3352,7 +3352,7 @@ ExamResultsTagStructureComponent = __decorate([
 
 /***/ }),
 
-/***/ 1242:
+/***/ 1243:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3576,7 +3576,7 @@ let HomePage = class HomePage {
 };
 HomePage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-home',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/'<div class="home-loader" *ngIf="!auth.loggedIn">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zamnademy</ion-title>\n    <ion-buttons end hidden>\n      <button ion-button icon-only (click)="openNotis()">\n        <ion-icon name="notifications"></ion-icon>\n        <ion-badge color="danger" class="noti-badge" *ngIf="notRead > 0" >{{notRead | number}}</ion-badge>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!--<ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>-->\n\n  <!--\n    6.-All Your Recorded Songs Are Stuffed Animals - The Yu-Yi Band\n    9.-Phanerozoic I: Paleozoic - The Ocean\n    2-.Postcards from St. Evenage - The Yu-Yi Band\n    1.- Alba, les ombres errantes - A Backward Glance on a Travel Road\n    3.-From the gallery of Sleep - Night Verses\n    7.-Vector - Haken\n    4.-Sonder - TesseracT\n    5.-Hago - Hago\n    8.-Applause Of A Distant Crowd - VOLA\n    10.-Time Will Die and Love Will Bury It - Rolo Tomassi\n  -->\n\n  <!-- <pre class="w100" *ngIf="auth.loggedIn">\n    <pre>{{ auth.user$ | async | json }}</pre>\n  </pre> -->\n\n  <!-- <zamna-feed *ngIf="auth.isComprado" class="w100"></zamna-feed> -->\n\n   <div class="flex flex-col text-center" padding (click)="openZamna()" *ngIf="!auth.isComprado">\n    <h2>No tienes ningún curso comprado, puedes adquirir el <strong>Curso ENARM Esencial</strong> o <strong>Curso ENARM Premium</strong> en:</h2>\n    <h3 class="c54">zamnademy.com</h3>\n  </div>\n\n  <div class="home-grid" *ngIf="auth.isComprado">\n\n    <!-- <div class="home-tile" (click)="openVideos()">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Streaming</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="openVideos(true)" *ngIf="auth.isAdmin">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Programa</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'MiCursoPage\')" *ngIf="!auth.isPresencial">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/youtube.png">\n        <span>Mi Curso</span>\n      </ion-card>\n    </div>\n\n\n\n    <!-- <div class="home-tile" (click)="goto(\'MediaPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/media.svg">\n        <span>GPC</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'AsesoriasPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/ase.svg">\n        <span>Asesorías en vivo</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'ForosPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Foro.png">\n        <span>Asesor</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'SlidesPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/presentaciones.svg">\n        <span>Presentaciones</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'SimuladoresPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulador.svg">\n        <span>Mi simulador diario ENARM</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'lock\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Simulacro de examen real</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'ZonaEnarmPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Zona Enarm</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="openCalendar()">\n      <ion-card class="flex-col">\n        <img src="https://zamnademy.com/site/images/clients/calendario.png">\n        <span>Mi Calendario Personalizado</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'ZamnaContigoPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/contigo.svg">\n        <span>Zamná Contigo</span>\n      </ion-card>\n    </div>\n\n  </div>\n\n  <div class="flex-col" *ngIf="auth.isComprado" padding>\n    <button ion-button (click)="navCtrl.push(\'DownloadsPage\')">Videoclases Descargadas</button>\n  </div>\n  <!-- <zamna-feed *ngIf="feed"></zamna-feed> -->\n\n  <ng-container *ngIf="auth.isComprado">\n    <ion-list *ngIf="users$ | async as users">\n      <ion-item *ngFor="let user of users">\n        <ion-avatar item-start>\n          <img [src]="user.photoURL">\n        </ion-avatar>\n        <h2>{{user.displayName}}</h2>\n        <p>\n          <strong>{{user.promedio | number}}</strong>\n        </p>\n      </ion-item>\n    </ion-list>\n  </ng-container>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito"><ion-icon name="menu"></ion-icon></button>\n    <ion-fab-list side="top">\n\n      <button ion-fab (click)="logout()">\n        <ion-label>Cerrar Sesión</ion-label>\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="openChecklist()" *ngIf="auth.isComprado">\n        <ion-label>Instrucciones antes de iniciar</ion-label>\n        <ion-icon name="checkbox"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="openCalendar()" *ngIf="auth.isComprado">\n        <ion-label>Programa paso a paso</ion-label>\n        <ion-icon name="calendar"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'NotasPage\')" *ngIf="auth.isComprado">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="paper"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="goto(\'TopUsersPage\')" *ngIf="auth.isComprado">\n        <ion-label>Cuadro de Honor</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'MisResultadosPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mis Resultados</ion-label>\n        <ion-icon name="copy"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="goto(\'DownloadsPage\')" *ngIf="auth.isComprado">\n        <ion-label>Videoclases descargadas</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'MiAnaliticaPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mi Estadística</ion-label>\n        <ion-icon name="analytics"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'FeedPage\')" *ngIf="auth.isComprado">\n        <ion-label>Feed</ion-label>\n        <ion-icon name="paper-plane"></ion-icon>\n      </button>\n\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/,
+        selector: 'page-home',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/'<div class="home-loader" *ngIf="!auth.loggedIn">\n  <img src="assets/imgs/weon.png">\n</div>\n\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zamnademy</ion-title>\n    <ion-buttons end hidden>\n      <button ion-button icon-only (click)="openNotis()">\n        <ion-icon name="notifications"></ion-icon>\n        <ion-badge color="danger" class="noti-badge" *ngIf="notRead > 0" >{{notRead | number}}</ion-badge>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <!--<ion-refresher (ionRefresh)="reload($event)">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>-->\n\n  <!--\n    6.-All Your Recorded Songs Are Stuffed Animals - The Yu-Yi Band\n    9.-Phanerozoic I: Paleozoic - The Ocean\n    2-.Postcards from St. Evenage - The Yu-Yi Band\n    1.- Alba, les ombres errantes - A Backward Glance on a Travel Road\n    3.-From the gallery of Sleep - Night Verses\n    7.-Vector - Haken\n    4.-Sonder - TesseracT\n    5.-Hago - Hago\n    8.-Applause Of A Distant Crowd - VOLA\n    10.-Time Will Die and Love Will Bury It - Rolo Tomassi\n  -->\n\n  <!-- <pre class="w100" *ngIf="auth.loggedIn">\n    <pre>{{ auth.user$ | async | json }}</pre>\n  </pre> -->\n\n  <!-- <zamna-feed *ngIf="auth.isComprado" class="w100"></zamna-feed> -->\n\n   <div class="flex flex-col text-center" padding (click)="openZamna()" *ngIf="!auth.isComprado">\n    <h2>No tienes ningún curso comprado, puedes adquirir el <strong>Curso ENARM Esencial</strong> o <strong>Curso ENARM Premium</strong> en:</h2>\n    <h3 class="c54">zamnademy.com</h3>\n  </div>\n\n  <div class="home-grid" *ngIf="auth.isComprado">\n\n    <!-- <div class="home-tile" (click)="openVideos()">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Streaming</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="openVideos(true)" *ngIf="auth.isAdmin">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Especialidades.svg">\n        <span>Programa</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'MiCursoPage\')" *ngIf="!auth.isPresencial">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/youtube.png">\n        <span>Mi Curso</span>\n      </ion-card>\n    </div>\n\n\n\n    <!-- <div class="home-tile" (click)="goto(\'MediaPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/media.svg">\n        <span>GPC</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'AsesoriasPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/ase.svg">\n        <span>Asesorías en vivo</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'ForosPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/Foro.png">\n        <span>Asesor</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'SlidesPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/presentaciones.svg">\n        <span>Presentaciones</span>\n      </ion-card>\n    </div> -->\n\n    <!-- <div class="home-tile" (click)="goto(\'SimuladoresPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulador.svg">\n        <span>Mi simulador diario ENARM</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'lock\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Simulacro de examen real</span>\n      </ion-card>\n    </div> -->\n\n    <div class="home-tile" (click)="goto(\'ZonaEnarmPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/simulacro.png">\n        <span>Zona Enarm</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="openCalendar()">\n      <ion-card class="flex-col">\n        <img src="https://zamnademy.com/site/images/clients/calendario.png">\n        <span>Mi Calendario Personalizado</span>\n      </ion-card>\n    </div>\n\n    <div class="home-tile" (click)="goto(\'ZamnaContigoPage\')">\n      <ion-card class="flex-col">\n        <img src="assets/imgs/contigo.svg">\n        <span>Zamná Contigo</span>\n      </ion-card>\n    </div>\n\n  </div>\n\n  <div class="flex-col" *ngIf="auth.isComprado && !auth.isPresencial" padding>\n    <button ion-button (click)="navCtrl.push(\'DownloadsPage\')">Videoclases Descargadas</button>\n  </div>\n  <!-- <zamna-feed *ngIf="feed"></zamna-feed> -->\n\n  <ng-container *ngIf="auth.isComprado">\n    <ion-list *ngIf="users$ | async as users">\n      <ion-item *ngFor="let user of users">\n        <ion-avatar item-start>\n          <img [src]="user.photoURL">\n        </ion-avatar>\n        <h2>{{user.displayName}}</h2>\n        <p>\n          <strong>{{user.promedio | number}}</strong>\n        </p>\n      </ion-item>\n    </ion-list>\n  </ng-container>\n\n  <ion-fab right bottom>\n    <button ion-fab color="rojito"><ion-icon name="menu"></ion-icon></button>\n    <ion-fab-list side="top">\n\n      <button ion-fab (click)="logout()">\n        <ion-label>Cerrar Sesión</ion-label>\n        <ion-icon name="log-out"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="openChecklist()" *ngIf="auth.isComprado">\n        <ion-label>Instrucciones antes de iniciar</ion-label>\n        <ion-icon name="checkbox"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="openCalendar()" *ngIf="auth.isComprado">\n        <ion-label>Programa paso a paso</ion-label>\n        <ion-icon name="calendar"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'NotasPage\')" *ngIf="auth.isComprado">\n        <ion-label>Notas</ion-label>\n        <ion-icon name="paper"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="goto(\'TopUsersPage\')" *ngIf="auth.isComprado">\n        <ion-label>Cuadro de Honor</ion-label>\n        <ion-icon name="star"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'MisResultadosPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mis Resultados</ion-label>\n        <ion-icon name="copy"></ion-icon>\n      </button>\n\n      <!-- <button ion-fab (click)="goto(\'DownloadsPage\')" *ngIf="auth.isComprado">\n        <ion-label>Videoclases descargadas</ion-label>\n        <ion-icon name="cloud-download"></ion-icon>\n      </button> -->\n\n      <button ion-fab (click)="goto(\'MiAnaliticaPage\')" *ngIf="auth.isComprado">\n        <ion-label>Mi Estadística</ion-label>\n        <ion-icon name="analytics"></ion-icon>\n      </button>\n\n      <button ion-fab (click)="goto(\'FeedPage\')" *ngIf="auth.isComprado">\n        <ion-label>Feed</ion-label>\n        <ion-icon name="paper-plane"></ion-icon>\n      </button>\n\n    </ion-fab-list>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/home/home.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["q" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["r" /* NavParams */],

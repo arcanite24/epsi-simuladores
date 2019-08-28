@@ -31,6 +31,43 @@ export class PaymentModelAltComponent implements OnInit {
   public mode = 'premium';
 
   public showTooltip = false;
+  public tooltipTeam = false;
+
+  public meses = 1;
+  public team = 1;
+  public materia: string;
+
+  public preciosLight = {
+    1: 150,
+    2: 250,
+    3: 300
+  };
+
+  public multipliers = {
+    1: 1,
+    2: 0.9,
+    3: 0.85,
+    4: 0.80,
+    5: 0.70,
+    6: 0.50,
+  };
+
+  public preciosPremium = {
+    1: 1400,
+    3: 2700,
+    6: 3800,
+    9: 4700,
+    12: 5400,
+  };
+
+  public materiaMultiplier = {
+    'all': 1,
+    'Medicina Interna': 0.9,
+    'Pediatria': 0.25,
+    'Gineco': 0.25,
+    'Cirugia': 0.25,
+    'Urgencias': 0.1,
+  };
 
   constructor(
     private sanitizer: DomSanitizer,
@@ -48,6 +85,16 @@ export class PaymentModelAltComponent implements OnInit {
   get modelBody() {
     if (!this.model) { return '...' }
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
+  }
+
+  get precio(): number {
+
+    if (this.mode === 'light') {
+      return this.preciosLight[this.meses] * this.multipliers[this.team] * this.team;
+    } else {
+      return this.preciosPremium[this.meses] * this.multipliers[this.team] * (this.materia ? this.materiaMultiplier[this.materia] : 1) * this.team;
+    }
+
   }
 
   async generatePayment(model: PaymentModel) {

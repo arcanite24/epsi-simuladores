@@ -57,28 +57,45 @@
 
               <div class="col-md-12 mt-2 form-group mt-2">
                 <label for="" class="text-primary">¿Cuánto tiempo necesitas estudiar?</label>
-                <select name="" id="" class="form-control">
-                  <option value="">1 Mes</option>
-                  <option value="">1 Ano</option>
+                <select class="form-control" [(ngModel)]="meses">
+                  <option [value]="1">1 Mes</option>
+                  <option [value]="2" *ngIf="mode !== 'premium'">2 Meses</option>
+                  <option [value]="3">3 Meses</option>
+                  <option [value]="6" *ngIf="mode === 'premium'">6 Meses</option>
+                  <option [value]="9" *ngIf="mode === 'premium'">9 Meses</option>
+                  <option [value]="12" *ngIf="mode === 'premium'">12 Meses</option>
                 </select>
               </div>
 
-              <div class="col-md-12 mt-2 form-group mt-2">
+              <div class="col-md-12 mt-2 form-group mt-2" *ngIf="mode === 'premium'">
                 <div class="una-container">
-                  <label for="" class="text-primary">Quieres tener todas o solo necesitas alguna especialidad?</label>
+                  <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad?</label>
                 </div>
                 <div class="flex flex-row align-center">
                   <epsi-zamna-toggle leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
-                  <select name="" id="" class="form-control">
-                    <option value="">Selecciona</option>
+                  <select [(ngModel)]="materia" class="form-control">
+                    <option [value]="null">Selecciona</option>
+                    <option value="Medicina Interna">Medicina Interna</option>
+                    <option value="Pediatria">Pediatria</option>
+                    <option value="Gineco">Gineco</option>
+                    <option value="Cirugia">Cirugia</option>
+                    <option value="Urgencias">Urgencias</option>
                   </select>
                 </div>
               </div>
 
               <div class="col-md-12 mt-2 form-group mt-2">
-                <label for="" class="text-primary">¿Estudiarás solo o en equipo?</label>
-                <select name="" id="" class="form-control">
-                  <option value="" selected>Solo yo</option>
+                <div class="payment-popup flex flex-col align-center justify-center" *ngIf="tooltipTeam">
+                  <h4>Seleccionar ésta opción significa que estarás contratando el numero de cuentas que aquí se pone. Te daremos códigos de acceso para que los amigos con los que estudiarás desbloqueen su curso.</h4>
+                </div>
+                <label for="" class="text-primary" (mouseover)="tooltipTeam = true" (mouseleave)="tooltipTeam = false">¿Estudiarás solo o en equipo? <i class="fa fa-question-circle"></i></label>
+                <select [(ngModel)]="team" class="form-control">
+                  <option [value]="1" selected>Solo yo</option>
+                  <option [value]="2">2</option>
+                  <option [value]="3">3</option>
+                  <option [value]="4">4</option>
+                  <option [value]="5">5</option>
+                  <option [value]="6">6</option>
                 </select>
               </div>
 
@@ -106,7 +123,7 @@
         <div class="w-100 flex flex-row align-center">
 
           <div class="flex flex-col">
-            <h1 class="text-primary">$ 1,270</h1>
+            <h1 class="text-primary">$ {{ precio | number }}</h1>
             <small class="text-primary">1 Persona / Al Mes</small>
           </div>
 

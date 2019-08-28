@@ -1,14 +1,14 @@
 webpackJsonp([29],{
 
-/***/ 1195:
+/***/ 1196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OfflineVideoPageModule", function() { return OfflineVideoPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PdfDetailPageModule", function() { return PdfDetailPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__offline_video__ = __webpack_require__(1275);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pdf_detail__ = __webpack_require__(1277);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,28 +18,28 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-let OfflineVideoPageModule = class OfflineVideoPageModule {
+let PdfDetailPageModule = class PdfDetailPageModule {
 };
-OfflineVideoPageModule = __decorate([
+PdfDetailPageModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
         declarations: [
-            __WEBPACK_IMPORTED_MODULE_2__offline_video__["a" /* OfflineVideoPage */],
+            __WEBPACK_IMPORTED_MODULE_2__pdf_detail__["a" /* PdfDetailPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__offline_video__["a" /* OfflineVideoPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["m" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pdf_detail__["a" /* PdfDetailPage */]),
         ],
     })
-], OfflineVideoPageModule);
+], PdfDetailPageModule);
 
-//# sourceMappingURL=offline-video.module.js.map
+//# sourceMappingURL=pdf-detail.module.js.map
 
 /***/ }),
 
-/***/ 1275:
+/***/ 1277:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OfflineVideoPage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PdfDetailPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -53,24 +53,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-let OfflineVideoPage = class OfflineVideoPage {
+let PdfDetailPage = class PdfDetailPage {
     constructor(navCtrl, navParams) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.clase = this.navParams.get('clase');
+        this.pdf = this.navParams.get('pdf');
     }
     ionViewDidLoad() {
+        console.log('ionViewDidLoad PdfDetailPage');
     }
 };
-OfflineVideoPage = __decorate([
+PdfDetailPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-offline-video',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/offline-video/offline-video.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>{{clase ? clase.name : \'...\'}}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <video *ngIf="clase" controls controlsList="nodownload" class="zamna-player" #zamnaPlayer>\n    <source [src]="clase.path">\n  </video>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/offline-video/offline-video.html"*/,
+        selector: 'page-pdf-detail',template:/*ion-inline-start:"/home/neri/code/zamnademy-app-v1/src/pages/pdf-detail/pdf-detail.html"*/'<ion-header>\n  <ion-navbar color="primary">\n    <ion-title>{{ pdf ? pdf.name : \'PDF\' }}</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <img [src]="img" alt="" class="w-100" *ngFor="let img of pdf.pdf">\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamnademy-app-v1/src/pages/pdf-detail/pdf-detail.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
-], OfflineVideoPage);
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavParams */]])
+], PdfDetailPage);
 
-//# sourceMappingURL=offline-video.js.map
+//# sourceMappingURL=pdf-detail.js.map
 
 /***/ })
 
