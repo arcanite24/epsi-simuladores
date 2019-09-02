@@ -37,7 +37,7 @@
 </ngx-smart-modal>
 
 <div class="p-1">
-  <div class="container-fluid">
+  <div class="container">
     <div class="row">
 
       <div class="col-md-12 mt-1">
@@ -57,14 +57,25 @@
 
               <div class="col-md-12 mt-2 form-group mt-2">
                 <label for="" class="text-primary">¿Cuánto tiempo necesitas estudiar?</label>
-                <select class="form-control" [(ngModel)]="meses">
+                <div ngbDropdown>
+                  <button class="btn btn-outline-primary w-100" id="selectMeses" ngbDropdownToggle>{{ meses }} Meses</button>
+                  <div class="pay-select" ngbDropdownMenu aria-labelledby="selectMeses">
+                    <button (click)="meses = 1">1 Mes</button>
+                    <button (click)="meses = 2" *ngIf="mode !== 'premium'">2 Meses</button>
+                    <button (click)="meses = 3">3 Meses</button>
+                    <button (click)="meses = 6" *ngIf="mode === 'premium'">6 Meses</button>
+                    <button (click)="meses = 9" *ngIf="mode === 'premium'">9 Meses</button>
+                    <button (click)="meses = 12" *ngIf="mode === 'premium'">12 Meses</button>
+                  </div>
+                </div>
+                <!-- <select class="form-control" [(ngModel)]="meses">
                   <option [value]="1">1 Mes</option>
                   <option [value]="2" *ngIf="mode !== 'premium'">2 Meses</option>
                   <option [value]="3">3 Meses</option>
                   <option [value]="6" *ngIf="mode === 'premium'">6 Meses</option>
                   <option [value]="9" *ngIf="mode === 'premium'">9 Meses</option>
                   <option [value]="12" *ngIf="mode === 'premium'">12 Meses</option>
-                </select>
+                </select> -->
               </div>
 
               <div class="col-md-12 mt-2 form-group mt-2" *ngIf="mode === 'premium'">
@@ -72,15 +83,26 @@
                   <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad?</label>
                 </div>
                 <div class="flex flex-row align-center">
-                  <epsi-zamna-toggle leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
-                  <select [(ngModel)]="materia" class="form-control">
+                  <epsi-zamna-toggle class="mr-4" leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
+                  <div ngbDropdown class="w-100">
+                    <button class="btn btn-outline-primary" style="width: 100% !important" id="selectMateria" ngbDropdownToggle>{{ materia || 'Selecciona' }}</button>
+                    <div class="pay-select" ngbDropdownMenu aria-labelledby="selectMateria">
+                      <button (click)="materia = null">Selecciona</button>
+                      <button (click)="materia = 'Medicina Interna'">Medicina Interna</button>
+                      <button (click)="materia = 'Pediatria'">Pediatria</button>
+                      <button (click)="materia = 'Gineco'">Gineco</button>
+                      <button (click)="materia = 'Cirugia'">Cirugia</button>
+                      <button (click)="materia = 'Urgencias'">Urgencias</button>
+                    </div>
+                  </div>
+                  <!-- <select [(ngModel)]="materia" class="form-control">
                     <option [value]="null">Selecciona</option>
                     <option value="Medicina Interna">Medicina Interna</option>
                     <option value="Pediatria">Pediatria</option>
                     <option value="Gineco">Gineco</option>
                     <option value="Cirugia">Cirugia</option>
                     <option value="Urgencias">Urgencias</option>
-                  </select>
+                  </select> -->
                 </div>
               </div>
 
@@ -89,14 +111,25 @@
                   <h4>Seleccionar ésta opción significa que estarás contratando el numero de cuentas que aquí se pone. Te daremos códigos de acceso para que los amigos con los que estudiarás desbloqueen su curso.</h4>
                 </div>
                 <label for="" class="text-primary" (mouseover)="tooltipTeam = true" (mouseleave)="tooltipTeam = false">¿Estudiarás solo o en equipo? <i class="fa fa-question-circle"></i></label>
-                <select [(ngModel)]="team" class="form-control">
+                <div ngbDropdown class="w-100">
+                  <button class="btn btn-outline-primary" style="width: 100% !important" id="selectTeam" ngbDropdownToggle>{{ team > 1 ? team : 'Solo yo' }}</button>
+                  <div class="pay-select" ngbDropdownMenu aria-labelledby="selectTeam">
+                    <button (click)="team = 1">Solo Yo</button>
+                    <button (click)="team = 2">2</button>
+                    <button (click)="team = 3">3</button>
+                    <button (click)="team = 4">4</button>
+                    <button (click)="team = 5">5</button>
+                    <button (click)="team = 6">6</button>
+                  </div>
+                </div>
+                <!-- <select [(ngModel)]="team" class="form-control">
                   <option [value]="1" selected>Solo yo</option>
                   <option [value]="2">2</option>
                   <option [value]="3">3</option>
                   <option [value]="4">4</option>
                   <option [value]="5">5</option>
                   <option [value]="6">6</option>
-                </select>
+                </select> -->
               </div>
 
             </div>
@@ -106,9 +139,9 @@
             <div class="row">
 
               <div class="col-md-12 flex flex-col align-center justify-center">
-                <img src="assets/payment.png" class="w-100" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
-                <div class="payment-popup flex flex-col align-center justify-center" *ngIf="showTooltip" (mouseover)="showTooltip = true" (mouseleave)="showTooltip = false">
-                  <h4>Quieres conocer el sistema con una seleccion de temas a una fraccion del precio?</h4>
+                <img src="assets/payment.png" class="w-100" (mouseover)="showTooltip = true">
+                <div class="payment-popup flex flex-col align-center justify-center" *ngIf="showTooltip" (mouseover)="showTooltip = true">
+                  <h4><i class="fa fa-times c54 manita" (click)="showTooltip = false"></i> Quieres conocer el sistema con una seleccion de temas a una fraccion del precio?</h4>
                   <button class="btn btn-primary">Probar version light</button>
                 </div>
               </div>

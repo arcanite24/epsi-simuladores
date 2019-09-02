@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { NgAisModule } from 'angular-instantsearch';
-import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadModule, NgbDatepickerModule, NgbDropdownModule, NgbButtonsModule } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
@@ -408,6 +408,8 @@ import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.compone
     NgbCarouselModule,
     NgbTypeaheadModule,
     NgbDatepickerModule,
+    NgbDropdownModule,
+    NgbButtonsModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
