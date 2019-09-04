@@ -6,14 +6,14 @@
         <div class="w-100 flex flex-row">
           <div class="flex flex-col">
             <h2 class="text-primary">$ 1,279</h2>
-            <small class="text-primary">1 Persona / Al Mes</small>
+            <small class="text-primary">{{ team | number }} Persona / Al Mes</small>
           </div>
           <input type="text" class="form-control ml-auto" placeholder="Codigo de Descuento" style="width: 60%">
         </div>
       </div>
 
       <div class="col-md-12 mt-2">
-        <h5 class="text-primary">Especialidad 1 / Especialidad 2 / Especialidad 3</h5>
+        <h5 class="text-primary">{{ selectedMaterias }}</h5>
       </div>
 
       <div class="col-md-6">
@@ -83,16 +83,16 @@
                   <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad?</label>
                 </div>
                 <div class="flex flex-row align-center">
-                  <epsi-zamna-toggle class="mr-4" leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
+                  <epsi-zamna-toggle (change)="materia = $event" class="mr-4" leftText="Algunas" rightText="Todas"></epsi-zamna-toggle>
                   <div ngbDropdown class="w-100">
-                    <button class="btn btn-outline-primary" style="width: 100% !important" id="selectMateria" ngbDropdownToggle>{{ materia || 'Selecciona' }}</button>
+                    <button [disabled]="materia" class="btn btn-outline-primary" style="width: 100% !important" id="selectMateria" ngbDropdownToggle>Selecciona</button>
                     <div class="pay-select" ngbDropdownMenu aria-labelledby="selectMateria">
-                      <button (click)="materia = null">Selecciona</button>
-                      <button (click)="materia = 'Medicina Interna'">Medicina Interna</button>
-                      <button (click)="materia = 'Pediatria'">Pediatria</button>
-                      <button (click)="materia = 'Gineco'">Gineco</button>
-                      <button (click)="materia = 'Cirugia'">Cirugia</button>
-                      <button (click)="materia = 'Urgencias'">Urgencias</button>
+                      <!-- <button>Selecciona</button> -->
+                      <button (click)="materias['Medicina Interna'] = !materias['Medicina Interna']"> <i *ngIf="materias['Medicina Interna']" class="fa fa-check"></i> Medicina Interna</button>
+                      <button (click)="materias['Pediatria'] = !materias['Pediatria']"> <i *ngIf="materias['Pediatria']" class="fa fa-check"></i> Pediatria</button>
+                      <button (click)="materias['Gineco'] = !materias['Gineco']"> <i *ngIf="materias['Gineco']" class="fa fa-check"></i> Gineco</button>
+                      <button (click)="materias['Cirugia'] = !materias['Cirugia']"> <i *ngIf="materias['Cirugia']" class="fa fa-check"></i> Cirugia</button>
+                      <button (click)="materias['Urgencias'] = !materias['Urgencias']"> <i *ngIf="materias['Urgencias']" class="fa fa-check"></i> Urgencias</button>
                     </div>
                   </div>
                   <!-- <select [(ngModel)]="materia" class="form-control">
@@ -157,12 +157,12 @@
 
           <div class="flex flex-col">
             <h1 class="text-primary">$ {{ precio | number }}</h1>
-            <small class="text-primary">1 Persona / Al Mes</small>
+            <small class="text-primary">{{ team | number }} Persona / Al Mes</small>
           </div>
 
           <div class="flex flex-col ml-4">
             <h4 class="text-primary">Especialidades</h4>
-            <small class="text-primary">Especialidad 1 / Especialidad 2 / Especialidad 3</small>
+            <small class="text-primary">{{ selectedMaterias }}</small>
           </div>
 
           <div class="flex flex-row align-center ml-auto">

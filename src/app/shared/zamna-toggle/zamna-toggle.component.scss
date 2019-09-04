@@ -1,6 +1,6 @@
 .zamna-toggle {
 
-  background-color: #eee;
+  background-color: rgb(255, 255, 255);
   border: 1px solid #5e4b8b;
   display: flex;
   flex-direction: row;
@@ -10,7 +10,7 @@
   .toggle-chip {
     text-align: center;
     font-size: 1.15rem;
-    color: #ddd;
+    color: #c99aff;
     font-weight: bolder;
     padding: 0.5rem;
   }
@@ -19,5 +19,5 @@
 
 .zamna-toggle-active {
   background-color: #5e4b8b;
-  color: white;
+  color: #ebebeb;
 }

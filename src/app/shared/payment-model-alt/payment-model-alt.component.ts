@@ -35,7 +35,7 @@ export class PaymentModelAltComponent implements OnInit {
 
   public meses = 1;
   public team = 1;
-  public materia: string;
+  public materia: boolean = true;
 
   public preciosLight = {
     1: 150,
@@ -60,9 +60,18 @@ export class PaymentModelAltComponent implements OnInit {
     12: 5400,
   };
 
+  public materias = {
+    'all': false,
+    'Medicina Interna': false,
+    'Pediatria': false,
+    'Gineco': false,
+    'Cirugia': false,
+    'Urgencias': false,
+  };
+
   public materiaMultiplier = {
     'all': 1,
-    'Medicina Interna': 0.9,
+    'Medicina Interna': 0.6,
     'Pediatria': 0.25,
     'Gineco': 0.25,
     'Cirugia': 0.25,
@@ -82,6 +91,20 @@ export class PaymentModelAltComponent implements OnInit {
   ngOnInit() {
   }
 
+  get selectedMaterias(): string {
+
+    let result = '';
+
+    for (const [key, value] of Object.entries(this.materias)) {
+      if (value) {
+        result += `${key} / `;
+      }
+    }
+
+    return result;
+
+  }
+
   get modelBody() {
     if (!this.model) { return '...' }
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
@@ -92,7 +115,28 @@ export class PaymentModelAltComponent implements OnInit {
     if (this.mode === 'light') {
       return this.preciosLight[this.meses] * this.multipliers[this.team] * this.team;
     } else {
-      return this.preciosPremium[this.meses] * this.multipliers[this.team] * (this.materia ? this.materiaMultiplier[this.materia] : 1) * this.team;
+
+      if (this.materia) {
+        return this.preciosPremium[this.meses] *
+          this.multipliers[this.team] *
+          this.team;
+      } else {
+
+        let total =  0;
+
+        for (const [materia, value] of Object.entries(this.materias)) {
+          if (value) {
+            total += this.preciosPremium[this.meses] *
+              this.multipliers[this.team] *
+              this.team *
+              this.materiaMultiplier[materia];
+          }
+        }
+
+        return total;
+
+      }
+
     }
 
   }
