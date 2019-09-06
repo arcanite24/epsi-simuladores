@@ -35,7 +35,7 @@ export class PaymentModelAltComponent implements OnInit {
 
   public meses = 1;
   public team = 1;
-  public materia: boolean = true;
+  public materia: boolean = false;
 
   public preciosLight = {
     1: 150,
