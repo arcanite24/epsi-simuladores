@@ -58,7 +58,13 @@
 
         <div class="container" >
           <div class="row">
-            
+
+            <div class="col-md-12">
+              <h4>¿Te gustaría conocer los complementos de estudio que te pueden ayudar a aprobar el examen?</h4>
+              <button class="btn btn-success" type="button">Si</button>
+              <a class="btn btn-danger ml-1" href="https://2guia.com.mx/" type="button">Por ahora no</a>
+            </div>
+
             <div class="result-header col-md-12">
               <h2 class="c-epsi-primary">Promedio: <strong>{{promedio.toFixed(2)}}/100.00</strong></h2>
               <p>Correctas {{correctas}} de {{questions.length}}</p>
@@ -100,7 +106,7 @@
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
-          
+
                 <div class="col-md-12" *ngIf="promedio >= 75 && promedio < 85">
                   <div *ngIf="adEsencial$ | async as ad">
                     <p>{{ad.value}}</p>
@@ -108,7 +114,7 @@
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
-          
+
                 <div class="col-md-12" *ngIf="promedio >= 85">
                   <div *ngIf="adResidente$ | async as ad">
                     <p>{{ad.value}}</p>
@@ -116,7 +122,7 @@
                     <a href="https://enarmzamna.com" class="mt-2 btn btn-primary ml-2" style="background-color: #886ec4">Conocer grupo presencial (CDMX)</a>
                   </div>
                 </div>
-          
+
               </div>
             </div>
 
@@ -137,9 +143,9 @@
                 </ul>
               </epsi-panel>
             </div>
-            
+
             <hr>
-      
+
             <div class="result-questions col-md-12" *ngFor="let q of questions; let i = index">
               <small>Pregunta {{i + 1}} de {{questions.length}} <!--{{q.index}}--></small>
               <div class="flex flex-row flex-start align-center">
@@ -164,10 +170,10 @@
                 </li>
               </ul>
             </div>-->
-      
+
           </div>
         </div>
-      
+
       </epsi-panel>
     </div>
 

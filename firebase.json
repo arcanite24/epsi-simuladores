@@ -10,6 +10,12 @@
         "destination": "/app"
       }
     ],
+    "rewrites": [
+      {
+        "source": "/app/*",
+        "destination": "/app"
+      }
+    ],
     "public": "public",
     "ignore": [
       "firebase.json",
