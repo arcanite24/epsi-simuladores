@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack, TuGuiaStats, TuGuiaStatsText } from 'src/app/app.models';
+import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack, TuGuiaStats, TuGuiaStatsText, PaymentModelType } from 'src/app/app.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -7,9 +7,11 @@ import { PaymentService } from 'src/app/services/payment.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { take, map } from 'rxjs/operators';
+import { take, map, tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import * as firebase from 'firebase/app';
+import { Observable } from 'rxjs';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-payment-model-panel',
@@ -33,6 +35,19 @@ export class PaymentModelPanelComponent implements OnInit {
   public statsText = TuGuiaStatsText;
   public selectedStat: string;
 
+  public step = 1;
+
+  public guias$: Observable<PaymentModel[]>;
+  public apuntes$: Observable<PaymentModel[]>;
+
+  public guias: PaymentModel[];
+  public apuntes: PaymentModel[];
+
+  public guiaSelection: any = {};
+  public apunteSelection: any = {};
+
+  public extraSelector = false;
+
   constructor(
     private sanitizer: DomSanitizer,
     private afs: AngularFirestore,
@@ -40,15 +55,50 @@ export class PaymentModelPanelComponent implements OnInit {
     private toastr: ToastrService,
     private afAuth: AngularFireAuth,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private modal: NgxSmartModalService,
   ) { }
 
   ngOnInit() {
+
+    this.guias$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
+      .where('type', '==', PaymentModelType.Guia))
+      .valueChanges()
+      .pipe(tap(models => this.guias = models));
+
+    this.apuntes$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
+      .where('type', '==', PaymentModelType.Apunte))
+      .valueChanges()
+      .pipe(tap(models => this.apuntes = models));
+
   }
 
   get modelBody() {
-    if (!this.model) { return '...' }
+    if (!this.model) { return '...'; }
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
+  }
+
+  get total(): number {
+    return parseFloat(this.model.amount.toString()) +
+      this.getGuiasTotal(this.guias, this.guiaSelection) +
+      this.getApuntesTotal(this.apuntes, this.apunteSelection);
+  }
+
+  getGuiasTotal(guias: PaymentModel[] = [], selected: any = {}) {
+    return parseFloat(guias.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+  }
+
+  getApuntesTotal(apuntes: PaymentModel[] = [], selected: any = {}) {
+    return parseFloat(apuntes.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+  }
+
+  loadGuiaAd(modal: string) {
+    this.extraSelector = false;
+    this.modal.getModal(modal).close();
+  }
+
+  loadApunteAd() {
+    this.modal.getModal('apunteModal').close();
   }
 
   async generatePayment(model: PaymentModel) {
@@ -138,7 +188,7 @@ export class PaymentModelPanelComponent implements OnInit {
 
       }
 
-      amount = this.pack ? this.pack.price : model.amount;
+      amount = this.pack ? this.pack.price : this.total;
       if (request_payload.coupon) { amount -= amount * request_payload.coupon_value }
 
       const paymentInfo = await this.payment

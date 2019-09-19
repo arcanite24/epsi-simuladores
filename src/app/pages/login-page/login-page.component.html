@@ -79,7 +79,7 @@
               </div>
 
               <div class="col-md-12 form-group">
-                <label for="">Contraseña</label>
+                <label for="">Contraseña <small class="text-danger">mínimo 6 caracteres</small></label>
                 <input type="password" class="form-control" formControlName="password">
               </div>
 
@@ -90,6 +90,19 @@
 
               <div class="col-md-12">
                 <button class="btn btn-primary" type="submit" [disabled]="loading">{{loading ? 'Cargando...' : 'Registrarse'}}</button>
+              </div>
+
+              <div class="w-100 flex-loader" *ngIf="loading">
+                <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
+                  <circle cx="50%" cy="50%" r="3.8414" fill="none" stroke="#fff" stroke-width="2">
+                    <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+                    <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+                  </circle>
+                  <circle cx="50%" cy="50%" r="14.669" fill="none" stroke="#fff" stroke-width="2">
+                    <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+                    <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+                  </circle>
+                </svg>
               </div>
 
             </form>
@@ -156,6 +169,13 @@
           <!-- <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2019, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p> -->
           <br>
           <button class="btn btn-danger" (click)="helpModal.open()">NECESITO AYUDA</button>
+          <a href="https://2guia.com.mx" class="btn btn-primary">Más info sobre la plataforma</a>
+          <a href="https://2guia.com.mx" class="btn btn-primary btn-clear">¿Cómo resuelvo las guías</a>
+
+          <div class="flex-loader">
+            <p>También puedes solicitar ayuda a través del inbox en nuestra página de facebook y la atención es más eficaz de ésta forma</p>
+            <a href="https://facebook.com/2guiamx" class="btn btn-info">Ir a Facebook</a>
+          </div>
         </div>
 
         <form class="auth-login-container w-100" [formGroup]="loginForm" (ngSubmit)="onLogin()" *ngIf="mode == 'admin'">
@@ -211,6 +231,19 @@
             <button class="btn btn-secondary" (click)="mode = 'login'">
               <small>Regresar</small>
             </button>
+          </div>
+
+          <div class="w-100 flex-loader" *ngIf="loading">
+            <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
+              <circle cx="50%" cy="50%" r="3.8414" fill="none" stroke="#fff" stroke-width="2">
+                <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+                <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+              </circle>
+              <circle cx="50%" cy="50%" r="14.669" fill="none" stroke="#fff" stroke-width="2">
+                <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+                <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+              </circle>
+            </svg>
           </div>
 
         </div>

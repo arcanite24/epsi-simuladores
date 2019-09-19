@@ -276,6 +276,7 @@ export interface Content {
   buyButtonText?: string;
   blur?: boolean;
   canBuy?: boolean;
+  openButtonText?: string;
 }
 
 export interface Marker {
@@ -576,6 +577,13 @@ export interface PaymentModel {
   canDiscount: boolean;
   packs?: {quantity: number, label: string, price: number}[];
   roles?: string[];
+  type: PaymentModelType;
+}
+
+export enum PaymentModelType {
+  Simulador = 'simulador',
+  Guia = 'guia',
+  Apunte = 'apunte',
 }
 
 export interface PaymentRequest {

@@ -42,7 +42,7 @@
         <!-- Single item select (Works like shit m8) -->
         <select class="form-control w-100" [(ngModel)]="cacheEdit[field.field]" *ngIf="field.type == 'select' && field.selectData | async as options">
           <option *ngFor="let option of options; let i = index" [selected]="cacheEdit[field.field] == field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
-            [ngValue]="field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]">{{option[field.selectLabel]}}</option>
+            [ngValue]="field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]">{{ field.selectLabel ? option[field.selectLabel] : option }}</option>
         </select>
 
         <!-- Workaround para el tipo select, esta vez con radio -->

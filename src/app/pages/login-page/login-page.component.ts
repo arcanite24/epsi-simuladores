@@ -98,6 +98,7 @@ export class LoginPageComponent implements OnInit {
       }
 
       this.loading = true;
+      this.hideLoader = false;
 
       try {
         const user = await this.afAuth.auth.createUserWithEmailAndPassword(this.registerForm.value.email, this.registerForm.value.password);
@@ -118,9 +119,11 @@ export class LoginPageComponent implements OnInit {
         this.mode = 'login';
         this.registerForm.reset();
         this.loading = false;
+        this.hideLoader = true;
       } catch (error) {
         this.toastr.error(error.message);
         this.loading = false;
+        this.hideLoader = true;
       }
 
     } else {

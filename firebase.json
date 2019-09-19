@@ -4,16 +4,10 @@
     "source": "functions"
   },
   "hosting": {
-    "redirect": [
-      {
-        "source": "/app/*",
-        "destination": "/app"
-      }
-    ],
     "rewrites": [
       {
-        "source": "/app/*",
-        "destination": "/app"
+        "source": "/app/**",
+        "destination": "/app/index.html"
       }
     ],
     "public": "public",

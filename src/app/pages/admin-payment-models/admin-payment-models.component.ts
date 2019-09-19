@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudTableConfig } from 'src/app/shared/crud-table/crud-table-models';
-import { Collections } from 'src/app/app.models';
+import { Collections, PaymentModelType } from 'src/app/app.models';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'epsi-admin-payment-models',
@@ -24,7 +25,14 @@ export class AdminPaymentModelsComponent implements OnInit {
       {field: 'canMeses', type: 'checkbox', label: 'Meses sin Interéses', hideOnTable: true},
       {field: 'canDiscount', type: 'checkbox', label: 'Código de Descuento', hideOnTable: true},
       {field: 'unlocks', type: 'array', label: 'Roles que Desbloquea', hideOnTable: true, arrayDefault: 'ROLE_TEST', arrayType: 'text'},
-      {field: 'tags', type: 'array', label: 'Tags que Desbloquea', hideOnTable: true, arrayDefault: 'tag-test', arrayType: 'text'}
+      {field: 'tags', type: 'array', label: 'Tags que Desbloquea', hideOnTable: true, arrayDefault: 'tag-test', arrayType: 'text'},
+      {
+        field: 'type',
+        type: 'select', label: 'type',
+        selectData: of(Object.values(PaymentModelType)),
+        selectLabel: null,
+        selectCustomValue: (_, __, value) => value
+      }
     ],
     documentDefaults: {
       name: 'Nuevo Modelo de Pago',

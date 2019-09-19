@@ -8,6 +8,12 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="guiasModal" #guiasModal>
+  <p>
+      Tenemos 3 guías gratuitas para ti que corresponden a las materias de ciencias sociales, humanidades y aplicación para el trabajo. La finalidad de éstas es que puedas conocer el funcionamiento de la plataforma, además que solo contienen 40 preguntas cada una, por el contrario de las guías de pago que contienen al menos 100 preguntas
+  </p>
+</ngx-smart-modal>
+
 <div class="epsi-panel">
 
   <!-- <small class="ml-2" *ngIf="!showContent && !toggleText">Dar click para ver sección</small> -->
@@ -19,6 +25,7 @@
     <div class="flex flex-col flex-sart">
       <span (click)="showContent = !showContent">{{title}}</span>
       <small class="m-0 panel-desc" *ngIf="desc">{{desc}}</small>
+      <a *ngIf="title === 'Guias'" (click)="guiasModal.open()"><small>Por qué hay guías gratis y guías de pago</small></a>
     </div>
     <button class="btn ml-2" (click)="modal.getModal(tutorial).open()" *ngIf="tutorial">
       <i class="fa fa-info-circle tutorial-button-icon"></i>
