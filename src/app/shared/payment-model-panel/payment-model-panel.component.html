@@ -1,106 +1,105 @@
 <div class="epsi-payment-model-panel">
 
+  <ngx-smart-modal identifier="guiaModal" #guiaModal>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+
+    <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
+      <button class="btn btn-success" (click)="extraSelector = true">Si Quiero</button>
+      <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
+    </div>
+
+    <div class="flex flex-row align-center justify-center w-100" *ngIf="extraSelector">
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">ARH</button>
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Informatica</button>
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Contabilidad</button>
+    </div>
+
+  </ngx-smart-modal>
+
+  <ngx-smart-modal identifier="apunteModal" #apunteModal>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+
+    <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
+      <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
+      <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
+    </div>
+
+  </ngx-smart-modal>
+
+  <ngx-smart-modal identifier="simuladorModal" #simuladorModal>
+
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+
+      <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
+        <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
+        <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
+      </div>
+
+    </ngx-smart-modal>
+
   <epsi-panel *ngIf="model else loader" [title]="model.name">
     <div class="container-fluid p-4 pt-0">
       <div class="row">
 
-        <div class="col-xs-12 col-md-12 p-2"  *ngIf="step === 1" [innerHTML]="modelBody"></div>
+        <div class="col-xs-12 col-md-12 p-2" [innerHTML]="modelBody"></div>
 
         <div class="col-md-12" *ngIf="model.discountPrice">
-          <h3 class="text-danger" *ngIf="step === 1">
+          <h3 class="text-danger">
             <del>$ {{model.discountPrice | number}}</del>
           </h3>
         </div>
 
-        <div class="col-md-12" *ngIf="step === 1">
+        <div class="col-md-12">
           <h2 class="text-bolder">$ {{model.amount | number}}</h2>
         </div>
 
-        <div class="col-md-12 form-group" *ngIf="step === 3">
-          <label for="">¿Qué te atrajo para adquirir TuGuia?</label>
-          <select class="form-control" [(ngModel)]="selectedStat">
-            <option [value]="s" *ngFor="let s of stats">{{statsText[s]}}</option>
-          </select>
+        <div class="col-md-12 flex flex-row align-center justify-center">
+          <a class="btn btn-primary" href="#pagarReal">{{disabled ? 'No Disponible' : 'Pagar'}}</a>
+          <img src="assets/tarjetas.png">
         </div>
 
-        <ng-container *ngIf="step === 3">
-          <div class="col-md-12 form-group" *ngIf="model.canDiscount">
-            <label for="">Cupón</label>
-            <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
-          </div>
-        </ng-container>
-
-        <div class="col-md-12 form-group" *ngIf="model.packs">
-          <label for="">Plan Familiar</label>
-          <select [(ngModel)]="pack" class="form-control">
-            <option [ngValue]="null">-</option>
-            <option *ngFor="let pack of model.packs" [ngValue]="pack">{{pack.label}} ${{pack.price | number}}</option>
-          </select>
+        <div class="col-md-12">
+          <p>
+            <strong>¿Te gustaría adquirir algún otro complemento de estudio para asegurarte de aprobar el examen?</strong>
+          </p>
+          <p>Selecciona lo que desees</p>
         </div>
 
-        <div class="col-md-12" *ngIf="step === 1">
-          <img src="assets/tarjetas.png" alt="" class="w-100">
+        <div class="col-md-4" *ngIf="guias$ | async as guias">
+          <h4 class="w-100 text-center manita" (click)="guiaModal.open()">
+            Guias
+            <i class="fa fa-info text-primary animated tada infinite"></i>
+          </h4>
+          <!-- <pre>{{ guiaSelection | json }}</pre> -->
+          <div class="checkbox" *ngFor="let g of guias">
+            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
+          </div>
         </div>
 
-        <ng-container *ngIf="step === 3">
-
-          <div class="col-md-6" *ngIf="guias$ | async as guias">
-            <h4 class="w-100 text-center manita" (click)="guiaModal.open()">
-              Guias
-              <i class="fa fa-info text-primary animated tada infinite"></i>
-            </h4>
-            <!-- <pre>{{ guiaSelection | json }}</pre> -->
-            <div class="checkbox" *ngFor="let g of guias">
-              <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
-            </div>
+        <div class="col-md-4" *ngIf="apuntes$ | async as apuntes">
+          <h4 class="w-100 text-center manita" (click)="apunteModal.open()">
+            Apuntes
+            <i class="fa fa-info text-primary animated tada infinite"></i>
+          </h4>
+          <div class="checkbox" *ngFor="let g of apuntes">
+            <label><input type="checkbox" [(ngModel)]="apunteSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
           </div>
+        </div>
 
-          <div class="col-md-6" *ngIf="apuntes$ | async as apuntes">
-            <h4 class="w-100 text-center manita" (click)="apunteModal.open()">
-              Apuntes
-              <i class="fa fa-info text-primary animated tada infinite"></i>
-            </h4>
-            <div class="checkbox" *ngFor="let g of apuntes">
-              <label><input type="checkbox" [(ngModel)]="apunteSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
-            </div>
+        <div class="col-md-4" *ngIf="simuladores$ | async as simuladores">
+          <h4 class="w-100 text-center manita" (click)="simuladorModal.open()">
+            Simulador
+            <i class="fa fa-info text-primary animated tada infinite"></i>
+          </h4>
+          <div class="checkbox" *ngFor="let g of simuladores">
+            <label><input type="checkbox" [(ngModel)]="simuladorSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
           </div>
+        </div>
 
-          <ngx-smart-modal identifier="guiaModal" #guiaModal>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
-
-            <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
-              <button class="btn btn-success" (click)="extraSelector = true">Si Quiero</button>
-              <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
-            </div>
-
-            <div class="flex flex-row align-center justify-center w-100" *ngIf="extraSelector">
-              <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">ARH</button>
-              <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Informatica</button>
-              <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Contabilidad</button>
-            </div>
-
-          </ngx-smart-modal>
-
-          <ngx-smart-modal identifier="apunteModal" #apunteModal>
-
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
-
-            <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
-              <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
-              <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
-            </div>
-
-          </ngx-smart-modal>
-
-          <div class="col-md-12">
-            <h2 class="w-100 text-center">$ {{ total | number }}</h2>
-          </div>
-
-        </ng-container>
-
-        <div class="col-md-12" *ngIf="step === 3">
-          <button class="btn btn-primary w-100" type="button" (click)="generatePayment(model)" [disabled]="loading || disabled">{{disabled ? 'No Disponible' : 'Pagar'}}</button>
+        <div class="col-md-12">
+          <h2 class="w-100 text-center">$ {{ total | number }}</h2>
         </div>
 
         <div class="col-md-12 p-2" *ngIf="loading">
@@ -108,41 +107,45 @@
           <epsi-loader type="svg"></epsi-loader>
         </div>
 
-        <!-- <div class="col-md-12" [id]="'paypal-container-' + model.id" [ngClass]="{'p-4': showPaypal}" *ngIf="step === 3">
-          <button class="btn btn-secondary mt-2 w-100" type="button" (click)="loadPaypalButton(model)" *ngIf="!showPaypal" [disabled]="loading || disabled">Pagar con Paypal</button>
-        </div> -->
-
-        <div class="col-md-12" *ngIf="step === 1">
-          <button class="btn btn-primary" (click)="step = step + 1">Siguiente</button>
+        <div class="col-md-12">
+          <p>Estas a punto de adquirir el {{ model.type }}</p>
+          <p>Ya conoces nuestros complementos de estudio y como te podrian ayudar a aprobar el examen?</p>
         </div>
 
-        <ng-container *ngIf="step === 2">
+        <div class="col-md-6">
+          <h4 class="w-100 text-center">Guias</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
+        </div>
 
-          <div class="col-md-12">
-            <p>Estas a punto de adquirir el {{ model.type }}</p>
-            <p>Ya conoces nuestros complementos de estudio y como te podrian ayudar a aprobar el examen?</p>
-          </div>
+        <div class="col-md-6">
+          <h4 class="w-100 text-center">Apuntes</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
+        </div>
 
-          <div class="col-md-6">
-            <h4 class="w-100 text-center">Guias</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
-          </div>
+        <div class="col-md-12">
+          <p>Te gustaria adquirir las guias y apuntes?</p>
+        </div>
 
-          <div class="col-md-6">
-            <h4 class="w-100 text-center">Apuntes</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
-          </div>
+        <div class="col-md-12 flex-row align-center justify-center">
+          <button class="btn btn-success" (click)="step = 3">Si</button>
+          <button class="btn btn-secondary" (click)="step = 3">Ahora no</button>
+        </div>
 
-          <div class="col-md-12">
-            <p>Te gustaria adquirir las guias y apuntes?</p>
-          </div>
+        <div class="col-md-12 form-group">
+          <label for="">¿Qué te atrajo para adquirir TuGuia?</label>
+          <select class="form-control" [(ngModel)]="selectedStat">
+            <option [value]="s" *ngFor="let s of stats">{{statsText[s]}}</option>
+          </select>
+        </div>
 
-          <div class="col-md-12 flex-row align-center justify-center">
-            <button class="btn btn-success" (click)="step = 3">Si</button>
-            <button class="btn btn-secondary" (click)="step = 3">Ahora no</button>
-          </div>
+        <div class="col-md-12 form-group" *ngIf="model.canDiscount">
+          <label for="">Cupón</label>
+          <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
+        </div>
 
-        </ng-container>
+        <div class="col-md-12" id="pagarReal">
+          <button class="btn btn-primary w-100">Pagar</button>
+        </div>
 
       </div>
     </div>

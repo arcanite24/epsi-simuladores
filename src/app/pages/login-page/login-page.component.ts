@@ -43,12 +43,6 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
 
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-
-    if (isSafari) {
-      this.modal.getModal('safariModal').open();
-    }
-
     this.checkForAuth();
 
     this.loginForm = this.fb.group({
@@ -62,6 +56,12 @@ export class LoginPageComponent implements OnInit {
       repassword: ['', [Validators.required]],
       displayName: ['', Validators.required],
     });
+
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari) {
+      this.modal.getModal('safariModal').open();
+    }
 
   }
 

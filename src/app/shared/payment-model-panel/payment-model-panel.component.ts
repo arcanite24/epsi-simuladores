@@ -39,12 +39,15 @@ export class PaymentModelPanelComponent implements OnInit {
 
   public guias$: Observable<PaymentModel[]>;
   public apuntes$: Observable<PaymentModel[]>;
+  public simuladores$: Observable<PaymentModel[]>;
 
   public guias: PaymentModel[];
   public apuntes: PaymentModel[];
+  public simuladores: PaymentModel[];
 
   public guiaSelection: any = {};
   public apunteSelection: any = {};
+  public simuladorSelection: any = {};
 
   public extraSelector = false;
 
@@ -61,6 +64,18 @@ export class PaymentModelPanelComponent implements OnInit {
 
   ngOnInit() {
 
+    if (this.model.type === PaymentModelType.Apunte) {
+      this.apunteSelection[this.model.id] = true;
+    }
+
+    if (this.model.type === PaymentModelType.Guia) {
+      this.guiaSelection[this.model.id] = true;
+    }
+
+    if (this.model.type === PaymentModelType.Simulador) {
+      this.simuladorSelection[this.model.id] = true;
+    }
+
     this.guias$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
       .where('type', '==', PaymentModelType.Guia))
       .valueChanges()
@@ -71,6 +86,11 @@ export class PaymentModelPanelComponent implements OnInit {
       .valueChanges()
       .pipe(tap(models => this.apuntes = models));
 
+    this.simuladores$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
+      .where('type', '==', PaymentModelType.Simulador))
+      .valueChanges()
+      .pipe(tap(models => this.simuladores = models));
+
   }
 
   get modelBody() {
@@ -79,9 +99,9 @@ export class PaymentModelPanelComponent implements OnInit {
   }
 
   get total(): number {
-    return parseFloat(this.model.amount.toString()) +
-      this.getGuiasTotal(this.guias, this.guiaSelection) +
-      this.getApuntesTotal(this.apuntes, this.apunteSelection);
+    return this.getGuiasTotal(this.guias, this.guiaSelection) +
+      this.getApuntesTotal(this.apuntes, this.apunteSelection) +
+      this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
   }
 
   getGuiasTotal(guias: PaymentModel[] = [], selected: any = {}) {
@@ -90,6 +110,10 @@ export class PaymentModelPanelComponent implements OnInit {
 
   getApuntesTotal(apuntes: PaymentModel[] = [], selected: any = {}) {
     return parseFloat(apuntes.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+  }
+
+  getSimuladorTotal(simuladores: PaymentModel[] = [], selected: any = {}) {
+    return parseFloat(simuladores.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
   }
 
   loadGuiaAd(modal: string) {
