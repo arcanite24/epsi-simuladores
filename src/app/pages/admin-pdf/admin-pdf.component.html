@@ -1,0 +1,79 @@
+<ngx-smart-modal identifier="addContentModal">
+  <epsi-content-add [isPdf]="true" [extraPayload]="{isPdf: true}"></epsi-content-add>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="editContentModal" customClass="max-w-50">
+  <epsi-content-edit [isPdf]="true" [content]="tempContent"></epsi-content-edit>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="deleteContentModal" #deleteContentModal>
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h4>¿Estás seguro de eliminar el contenido?</h4>
+      </div>
+
+      <div class="col-md-12">
+        <button type="button" class="btn btn-danger" (click)="removeContent(tempId)">Eliminar</button>
+        <button type="button" class="btn btn-secondary" (click)="deleteContentModal.close()">Cancelar</button>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="treeContentModal">
+  <epsi-content-tree></epsi-content-tree>
+</ngx-smart-modal>
+
+<div class="epsi-admin-content-page container mt-retro">
+  <epsi-panel title="Administrar PDF's">
+
+    <ng-template #loader>
+      <epsi-loader></epsi-loader>
+    </ng-template>
+
+    <div class="admin-content-actions p-4">
+      <button class="btn btn-primary" (click)="addContent()">Agregar</button>
+      <!-- <button class="btn btn-secondary ml-2" (click)="openTree()">Vista Jerárquica</button> -->
+    </div>
+
+    <div class="admin-content-table" *ngIf="content$ | async as content else loader">
+
+      <!-- <button class="btn btn-secondary my-2" (click)="resetSortIndexes(content)">Rebuild Sort Indexes</button> -->
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Imágen</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <!-- <th>Descripción</th> -->
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of content">
+            <td>
+              <img [src]="c.cover" [alt]="c.name" style="width:32px" *ngIf="c.cover">
+              <span *ngIf="!c.cover">-</span>
+            </td>
+            <td>{{c.name}}</td>
+            <td>{{c.type}}</td>
+            <!-- <td>{{c.description}}</td> -->
+            <td class="flex flex-row flex-start align-center">
+              <button class="btn btn-secondary" (click)="openEdit(c)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger ml-1" (click)="openRemoveModal(c.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </epsi-panel>
+</div>

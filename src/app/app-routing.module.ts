@@ -67,6 +67,7 @@ import { UserMateriasPromediosComponent } from './shared/user-materias-promedios
 import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-page.component';
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
+import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
 
 const routes: Routes = [
 
@@ -116,6 +117,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/user/stats/:id', component: AdminUserStatsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content', component: AdminContentPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/pdf', component: AdminPdfComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/galleries', component: AdminGalleriesComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/media', component: AdminMediaComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/questions', component: AdminQuestionsComponent},

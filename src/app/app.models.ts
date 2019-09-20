@@ -277,6 +277,9 @@ export interface Content {
   blur?: boolean;
   canBuy?: boolean;
   openButtonText?: string;
+  isPdf?: boolean;
+  pdf?: string[];
+  children?: Content[];
 }
 
 export interface Marker {

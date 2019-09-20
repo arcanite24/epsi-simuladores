@@ -13,6 +13,8 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class ContentEditComponent implements OnInit {
 
+  @Input() public isPdf = false;
+
   @Input()
   set content(c: Content) { this.contentChanged(c); }
   get content(): Content { return this._content; }
@@ -27,7 +29,7 @@ export class ContentEditComponent implements OnInit {
 
   public tempParent: Content;
 
-  public contents$: Observable<Content[]> = this.afs.collection<Content>('content').valueChanges();
+  public contents$: Observable<Content[]>;
 
   constructor(
     private fb: FormBuilder,
@@ -60,8 +62,20 @@ export class ContentEditComponent implements OnInit {
       blur: false,
       canBuy: false,
       enterButtonText: null,
+      isPdf: [false],
+      pdf: [null],
     });
 
+    this.loadContent();
+
+  }
+
+  loadContent() {
+    if (this.isPdf) {
+      this.contents$ = this.afs.collection<Content>('content', ref => ref.where('isPdf', '==', true)).valueChanges();
+    } else {
+      this.contents$ = this.afs.collection<Content>('content').valueChanges();
+    }
   }
 
   public get content_url(): string {

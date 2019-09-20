@@ -32,7 +32,15 @@
     </select>
   </div>
 
-  <app-storage-uploader (onFinish)="coverUploaded($event)"></app-storage-uploader>
+  <app-storage-uploader (onFinish)="coverUploaded($event)" *ngIf="!isPdf"></app-storage-uploader>
+
+  <div class="form-group" *ngIf="isPdf">
+    <img src="assets/imgs/loader.svg" alt="" style="width: 128px;">
+    <label for="">Subir PDF</label>
+    <!-- <app-storage-uploader (onFinish)="addForm.patchValue({ pdf: $event })"></app-storage-uploader> -->
+    <input type="file" #pdfInput id="pdf" (change)="convertPDF(pdfInput.files)">
+    <label for="pdf" class="btn btn-primary">Seleccionar PDF</label>
+  </div>
 
   <!-- TODO: Add nesting forms -->
 

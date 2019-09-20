@@ -217,6 +217,9 @@ import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-pa
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
 import { RecoverPasswordComponent } from './shared/recover-password/recover-password.component';
+import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
+import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
+import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
 
 @NgModule({
   declarations: [
@@ -394,6 +397,9 @@ import { RecoverPasswordComponent } from './shared/recover-password/recover-pass
     AdminHelpRequestComponent,
     CuestionarioPageComponent,
     RecoverPasswordComponent,
+    AdminPdfComponent,
+    PdfDetailPageComponent,
+    PdfListPageComponent,
   ],
   imports: [
     BrowserAnimationsModule,

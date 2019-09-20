@@ -1,0 +1,33 @@
+<epsi-panel title="Manual Zamná">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <ul class="list-group">
+
+          <!-- Parents -->
+          <li class="list-group-item" *ngFor="let parent of list">
+
+            <button class="btn btn-primary mr-2" (click)="parent.showChildren = !parent.showChildren" *ngIf="parent.children">
+                <i class="fa fa-plus" *ngIf="!parent.showChildren"></i>
+                <i class="fa fa-minus" *ngIf="parent.showChildren"></i>
+            </button>
+
+            <ng-container *ngIf="!parent.pdf">{{parent.name}}</ng-container>
+            <a [routerLink]="[ '/pdf', parent.id ]" *ngIf="parent.pdf">{{parent.name}}</a>
+
+            <ul *ngIf="parent.showChildren && parent.children" class="mt-1">
+              <li class="list-group-item" *ngFor="let child of parent.children">
+                <ng-container *ngIf="!child.pdf">{{child.name}}</ng-container>
+                <a [routerLink]="[ '/pdf', child.id ]" *ngIf="child.pdf">{{child.name}}</a>
+              </li>
+            </ul>
+
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</epsi-panel>

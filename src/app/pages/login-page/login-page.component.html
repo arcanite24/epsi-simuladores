@@ -64,7 +64,14 @@
           </div>
         </div>
 
-        <div class="col-md-12 mt-4 p-4">
+        <div class="col-md-12 mt-4">
+          <div class="flex flex-row align-center justify-center">
+            <a href="https://2guia.com.mx" class="mr-2 btn btn-light btn-lg">Más info sobre la plataforma</a>
+            <a href="https://2guia.com.mx" class="btn btn-light btn-lg">¿Cómo resuelvo las guías</a>
+          </div>
+        </div>
+
+        <div class="col-md-12 mt-3 p-4">
           <epsi-panel title="Crea tu cuenta">
             <form class="row p-4" [formGroup]="registerForm" (ngSubmit)="onRegister()">
 
@@ -107,6 +114,11 @@
 
             </form>
           </epsi-panel>
+
+          <div class="flex-loader">
+            <small class="c-white manita" (click)="terminosModal.open()">Términos y Condiciones</small>
+          </div>
+
         </div>
 
       </div>
@@ -115,7 +127,7 @@
     <!-- Right login col -->
     <div class="col-xs-12 col-md-6">
       <div class="auth-controls flex flex-col flex-center p-4">
-        <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">Ingresa para empezar a resolver exámenes</h4>
+        <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">Registrate o ingresa para acceder a las guías, apuntes y simulador</h4>
 
         <epsi-panel class="p-4">
           <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="container-fluid">
@@ -140,7 +152,7 @@
               </div>
 
               <div class="col-md-12 mt-2">
-                <button class="btn btn-danger w-100" (click)="recoverPass.open()" type="button">Olvidé mi contraseña</button>
+                <button class="btn btn-link w-100" (click)="recoverPass.open()" type="button">Olvidé mi contraseña</button>
               </div>
 
             </div>
@@ -165,16 +177,14 @@
         <div class="mt-4 text-center w-100" *ngIf="mode == 'login'" style="width: 300px">
           <!-- <button class="btn btn-secondary w-100 register-button" (click)="mode = 'register'">¿Quieres Inscribirte?</button>
           <p class="m-0 mt-4 c-white" style="text-transform: uppercase">Página exclusiva para inscripciones e ingreso a Zamnademy.</p> -->
-          <small class="c-white" (click)="terminosModal.open()">Términos y Condiciones</small>
+
           <!-- <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2019, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p> -->
           <br>
-          <button class="btn btn-danger" (click)="helpModal.open()">NECESITO AYUDA</button>
-          <a href="https://2guia.com.mx" class="btn btn-primary">Más info sobre la plataforma</a>
-          <a href="https://2guia.com.mx" class="btn btn-primary btn-clear">¿Cómo resuelvo las guías</a>
+          <button class="btn btn-warning" (click)="helpModal.open()">NECESITO AYUDA</button>
 
-          <div class="flex-loader">
-            <p>También puedes solicitar ayuda a través del inbox en nuestra página de facebook y la atención es más eficaz de ésta forma</p>
-            <a href="https://facebook.com/2guiamx" class="btn btn-info">Ir a Facebook</a>
+          <div class="flex-loader mt-3">
+            <p class="c-white">También puedes solicitar ayuda a través del inbox en nuestra página de facebook y la atención es más eficaz de ésta forma</p>
+            <a href="https://facebook.com/2guiamx" class="btn btn-dark">Ir a Facebook</a>
           </div>
         </div>
 

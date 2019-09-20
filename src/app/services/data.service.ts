@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, FieldPath } from '@angular/fire/firestore';
 import { take } from 'rxjs/operators';
 import {Collections, Roles, User} from "../app.models";
 
@@ -51,6 +51,27 @@ export class DataService {
       .valueChanges()
       .pipe(take(1))
       .toPromise()
+  }
+
+  public getCollectionQueryAlt<T extends { id?: any, uid?: any }>(
+    collection: string,
+    fieldPath: string | FieldPath,
+    opStr: '<' | '<=' | '==' | '>=' | '>' | 'array-contains',
+    value: any
+  ) {
+    return new Promise<T[]>(async (resolve, reject) => {
+
+      const data = await this.afs.firestore
+        .collection(collection)
+        .where(fieldPath, opStr, value)
+        .get();
+
+      resolve(data.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as T[]);
+
+    });
   }
 
   async updateUserByEmail(email: string, payload: Partial<User>) {
