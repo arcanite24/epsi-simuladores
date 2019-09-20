@@ -35,6 +35,22 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="safariModal" [closable]="false" [dismissable]="false" [escapable]="false">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-12">
+        <h2>Si tienes problema llenando los campos de texto intenta hacerlo desde el navegador <strong>Google Chrome</strong></h2>
+      </div>
+
+      <div class="col-md-12">
+        <p>No lo hagas desde Safari, Internet Explorer o Chrome</p>
+      </div>
+
+    </div>
+  </div>
+</ngx-smart-modal>
+
 <div class="global-loader" *ngIf="!hideLoader">
   <img style="width: 30%" src="assets/logo-white.svg" class="mb-4">
   <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">

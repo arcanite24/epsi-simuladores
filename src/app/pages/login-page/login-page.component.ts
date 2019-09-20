@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-login-page',
@@ -37,9 +38,16 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private afs: AngularFirestore,
+    private modal: NgxSmartModalService,
   ) { }
 
   ngOnInit() {
+
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+    if (isSafari) {
+      this.modal.getModal('safariModal').open();
+    }
 
     this.checkForAuth();
 
