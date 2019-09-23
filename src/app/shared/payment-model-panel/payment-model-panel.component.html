@@ -93,8 +93,8 @@
             Simulador
             <i class="fa fa-info text-primary animated tada infinite"></i>
           </h4>
-          <div class="checkbox" *ngFor="let g of simuladores">
-            <label><input type="checkbox" [(ngModel)]="simuladorSelection[g.id]">{{ g.name }} $ {{ g.amount | number }}</label>
+          <div class="radio" *ngFor="let g of simuladores">
+            <label><input type="radio" [(ngModel)]="simuladorSelection" [value]="g.id">{{ g.name }} $ {{ g.amount | number }}</label>
           </div>
         </div>
 
@@ -102,33 +102,17 @@
           <h2 class="w-100 text-center">$ {{ total | number }}</h2>
         </div>
 
+        <div class="col-md-12" *ngIf="totalSelectedGuias >= 4">
+          <p class="text-danger">Obtén un <strong>descuento del 10%</strong> sobre el precio final comprando todas las guias</p>
+        </div>
+
+        <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
+          <p class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
+        </div>
+
         <div class="col-md-12 p-2" *ngIf="loading">
           <p class="text-center w-100">Generando pago</p>
           <epsi-loader type="svg"></epsi-loader>
-        </div>
-
-        <div class="col-md-12">
-          <p>Estas a punto de adquirir el {{ model.type }}</p>
-          <p>Ya conoces nuestros complementos de estudio y como te podrian ayudar a aprobar el examen?</p>
-        </div>
-
-        <div class="col-md-6">
-          <h4 class="w-100 text-center">Guias</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
-        </div>
-
-        <div class="col-md-6">
-          <h4 class="w-100 text-center">Apuntes</h4>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus quasi aspernatur eveniet consequatur soluta officiis illum magnam accusantium velit recusandae? Laboriosam expedita obcaecati, consequatur natus excepturi voluptate nemo est pariatur.</p>
-        </div>
-
-        <div class="col-md-12">
-          <p>Te gustaria adquirir las guias y apuntes?</p>
-        </div>
-
-        <div class="col-md-12 flex-row align-center justify-center">
-          <button class="btn btn-success" (click)="step = 3">Si</button>
-          <button class="btn btn-secondary" (click)="step = 3">Ahora no</button>
         </div>
 
         <div class="col-md-12 form-group">
@@ -145,6 +129,10 @@
 
         <div class="col-md-12" id="pagarReal">
           <button class="btn btn-primary w-100">Pagar</button>
+        </div>
+
+        <div class="col-md-12">
+          <p>Puedes pagar con efectivo o tarjeta, conoce todos los <strong>métodos de pago</strong> haciendo click en "Pagar"</p>
         </div>
 
       </div>

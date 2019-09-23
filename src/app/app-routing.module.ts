@@ -68,6 +68,7 @@ import { AdminPagosPageComponent } from './pages/admin-pagos-page/admin-pagos-pa
 import { AdminHelpRequestComponent } from './pages/admin-help-request/admin-help-request.component';
 import { CuestionarioPageComponent } from './pages/cuestionario-page/cuestionario-page.component';
 import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
+import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
 
 const routes: Routes = [
 
@@ -101,6 +102,7 @@ const routes: Routes = [
   {path: 'subir-archivos', component: ToolUploaderComponent},
 
   // Content
+  {path: 'pdf/:id', component: PdfDetailPageComponent, canActivate: [AuthGuard]},
   {path: 'content/:id', component: ContentPageComponent, canActivate: [AuthGuard]},
   {path: 'content/:type/:id', component: ContentDetailPageComponent, canActivate: [AuthGuard]},
 

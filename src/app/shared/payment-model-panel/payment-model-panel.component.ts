@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { findIndex } from 'lodash';
 
 @Component({
   selector: 'epsi-payment-model-panel',
@@ -47,7 +48,7 @@ export class PaymentModelPanelComponent implements OnInit {
 
   public guiaSelection: any = {};
   public apunteSelection: any = {};
-  public simuladorSelection: any = {};
+  public simuladorSelection: any;
 
   public extraSelector = false;
 
@@ -73,7 +74,7 @@ export class PaymentModelPanelComponent implements OnInit {
     }
 
     if (this.model.type === PaymentModelType.Simulador) {
-      this.simuladorSelection[this.model.id] = true;
+      this.simuladorSelection = this.model.id;
     }
 
     this.guias$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
@@ -104,6 +105,14 @@ export class PaymentModelPanelComponent implements OnInit {
       this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
   }
 
+  get totalSelectedGuias(): number {
+    return Object.values(this.guiaSelection).filter(guia => guia).length;
+  }
+
+  get totalSelectedApuntes(): number {
+    return Object.values(this.guiaSelection).filter(guia => guia).length;
+  }
+
   getGuiasTotal(guias: PaymentModel[] = [], selected: any = {}) {
     return parseFloat(guias.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
   }
@@ -112,8 +121,18 @@ export class PaymentModelPanelComponent implements OnInit {
     return parseFloat(apuntes.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
   }
 
-  getSimuladorTotal(simuladores: PaymentModel[] = [], selected: any = {}) {
-    return parseFloat(simuladores.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+  getSimuladorTotal(simuladores: PaymentModel[] = [], selected: string) {
+    if (!selected) {
+      return 0;
+    }
+
+    const index = findIndex(simuladores, sim => sim.id === selected);
+
+    if (index > -1) {
+      return +simuladores[index].amount;
+    } else {
+      return 0;
+    }
   }
 
   loadGuiaAd(modal: string) {

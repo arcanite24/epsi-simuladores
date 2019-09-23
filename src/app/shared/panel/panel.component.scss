@@ -46,3 +46,15 @@
   font-size: 0.75rem !important;
   color: red;
 }
+
+
+a small {
+
+  font-size: 0.65rem;
+  text-decoration: underline;
+
+  &:hover {
+    color: lighten($color: #4582EC, $amount: 10%);
+  }
+
+}
