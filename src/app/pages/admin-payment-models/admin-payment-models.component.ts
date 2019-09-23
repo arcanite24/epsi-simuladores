@@ -15,6 +15,7 @@ export class AdminPaymentModelsComponent implements OnInit {
     fullEdit: true,
     headers: [
       {field: 'name', type: 'text', label: 'Nombre'},
+      {field: 'shortName', type: 'text', label: 'Nombre Corto'},
       {field: 'desc', type: 'textarea', label: 'Descripción'},
       {field: 'amount', type: 'number', label: 'Cantidad'},
       {field: 'discountPrice', type: 'number', label: 'Precio Anterior'},
@@ -28,7 +29,7 @@ export class AdminPaymentModelsComponent implements OnInit {
       {field: 'tags', type: 'array', label: 'Tags que Desbloquea', hideOnTable: true, arrayDefault: 'tag-test', arrayType: 'text'},
       {
         field: 'type',
-        type: 'select', label: 'type',
+        type: 'select', label: 'Tipo de metodo',
         selectData: of(Object.values(PaymentModelType)),
         selectLabel: null,
         selectCustomValue: (_, __, value) => value

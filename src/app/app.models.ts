@@ -567,6 +567,7 @@ export interface StatView {
 export interface PaymentModel {
   id: string;
   name: string;
+  shortName: string;
   desc: string;
   amount: number;
   discountPrice?: number;

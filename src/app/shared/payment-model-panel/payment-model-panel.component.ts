@@ -99,10 +99,28 @@ export class PaymentModelPanelComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
   }
 
-  get total(): number {
+  get subtotal() {
     return this.getGuiasTotal(this.guias, this.guiaSelection) +
       this.getApuntesTotal(this.apuntes, this.apunteSelection) +
       this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
+  }
+
+  get total(): number {
+
+    let total = this.getGuiasTotal(this.guias, this.guiaSelection) +
+      this.getApuntesTotal(this.apuntes, this.apunteSelection) +
+      this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
+
+    if (this.totalSelectedGuias >= 4) {
+      total *= 0.9;
+    }
+
+    if (this.totalSelectedApuntes === this.apuntes.length) {
+      total *= 0.9;
+    }
+
+    return total;
+
   }
 
   get totalSelectedGuias(): number {
@@ -110,7 +128,12 @@ export class PaymentModelPanelComponent implements OnInit {
   }
 
   get totalSelectedApuntes(): number {
-    return Object.values(this.guiaSelection).filter(guia => guia).length;
+    return Object.values(this.apunteSelection).filter(guia => guia).length;
+  }
+
+  get haveDiscount(): boolean {
+    if (this.totalSelectedGuias >= 4) { return true; }
+    if (this.totalSelectedApuntes === this.apuntes.length) { return true; }
   }
 
   getGuiasTotal(guias: PaymentModel[] = [], selected: any = {}) {
@@ -146,7 +169,7 @@ export class PaymentModelPanelComponent implements OnInit {
 
   async generatePayment(model: PaymentModel) {
 
-    if (this.loading) { return this.toastr.error('No puedes generar otra solicitud de pago...') }
+    if (this.loading) { return this.toastr.error('No puedes generar otra solicitud de pago...'); }
     this.loading = true;
 
     const user = this.afAuth.auth.currentUser;
@@ -232,7 +255,7 @@ export class PaymentModelPanelComponent implements OnInit {
       }
 
       amount = this.pack ? this.pack.price : this.total;
-      if (request_payload.coupon) { amount -= amount * request_payload.coupon_value }
+      if (request_payload.coupon) { amount -= amount * request_payload.coupon_value; }
 
       const paymentInfo = await this.payment
         .generatePaymentUrl(model.id, request_id, model.name, amount, email, environment.production === true);

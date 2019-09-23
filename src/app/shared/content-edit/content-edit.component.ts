@@ -61,7 +61,7 @@ export class ContentEditComponent implements OnInit {
       buyButtonText: null,
       blur: false,
       canBuy: false,
-      enterButtonText: null,
+      openButtonText: null,
       isPdf: [false],
       pdf: [null],
     });

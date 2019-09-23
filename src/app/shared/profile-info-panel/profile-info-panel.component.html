@@ -1,5 +1,5 @@
 <epsi-panel [showContent]="true">
-  
+
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
@@ -14,6 +14,7 @@
     <div class="form-group">
       <label>Nombre Completo</label>
       <input type="text" class="form-control" [(ngModel)]="user.displayName">
+      <small class="text-danger">Los campos de texto no funcionan en safari, internet explorer ni microsoft edge, solo funcionan en google chrome</small>
     </div>
 
     <div class="form-group">
