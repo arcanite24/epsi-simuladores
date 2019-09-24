@@ -99,23 +99,23 @@ export class PaymentModelPanelComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
   }
 
-  get subtotal() {
-    return this.getGuiasTotal(this.guias, this.guiaSelection) +
-      this.getApuntesTotal(this.apuntes, this.apunteSelection) +
-      this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
+  get subtotal(): number {
+    return +this.getGuiasTotal(this.guias, this.guiaSelection) +
+      +this.getApuntesTotal(this.apuntes, this.apunteSelection) +
+      +this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
   }
 
   get total(): number {
 
-    let total = this.getGuiasTotal(this.guias, this.guiaSelection) +
-      this.getApuntesTotal(this.apuntes, this.apunteSelection) +
-      this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
+    let total = +this.getGuiasTotal(this.guias, this.guiaSelection) +
+      +this.getApuntesTotal(this.apuntes, this.apunteSelection) +
+      +this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
 
     if (this.totalSelectedGuias >= 4) {
       total *= 0.9;
     }
 
-    if (this.totalSelectedApuntes === this.apuntes.length) {
+    if (this.apuntes && this.totalSelectedApuntes === this.apuntes.length) {
       total *= 0.9;
     }
 
@@ -133,15 +133,16 @@ export class PaymentModelPanelComponent implements OnInit {
 
   get haveDiscount(): boolean {
     if (this.totalSelectedGuias >= 4) { return true; }
-    if (this.totalSelectedApuntes === this.apuntes.length) { return true; }
+    if (this.apuntes && this.totalSelectedApuntes === this.apuntes.length) { return true; }
+    return false;
   }
 
   getGuiasTotal(guias: PaymentModel[] = [], selected: any = {}) {
-    return parseFloat(guias.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+    return +parseFloat(guias.filter(guia => selected[guia.id]).map(guia => +guia.amount).reduce((a, b) => a + b, 0).toString());
   }
 
   getApuntesTotal(apuntes: PaymentModel[] = [], selected: any = {}) {
-    return parseFloat(apuntes.filter(guia => selected[guia.id]).map(guia => guia.amount).reduce((a, b) => a + b, 0).toString());
+    return +parseFloat(apuntes.filter(guia => selected[guia.id]).map(guia => +guia.amount).reduce((a, b) => a + b, 0).toString());
   }
 
   getSimuladorTotal(simuladores: PaymentModel[] = [], selected: string) {

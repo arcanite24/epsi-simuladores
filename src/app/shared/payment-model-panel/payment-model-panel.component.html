@@ -56,7 +56,7 @@
         </div>
 
         <div class="col-md-12">
-          <a class="btn btn-primary" routerLink="." fragment="pagarReal">{{disabled ? 'No Disponible' : 'Pagar'}}</a>
+          <button class="btn btn-primary" [ngx-scroll-to]="'#pagarReal'">{{disabled ? 'No Disponible' : 'Pagar'}}</button>
           <!-- <img src="assets/tarjetas.png"> -->
         </div>
 
@@ -104,13 +104,25 @@
           <h2 class="w-100 text-center" *ngIf="haveDiscount">$ {{ total | number }}</h2>
         </div>
 
-        <div class="col-md-12">
-          <p *ngIf="totalSelectedGuias <= 4">Obtén un <strong>descuento del 10%</strong> sobre el precio final comprando todas las guias</p>
-          <p *ngIf="totalSelectedGuias >= 4" class="text-danger">-10% por adquirir todas las guías</p>
+        <div class="col-md-12 text-center">
+          <p *ngIf="totalSelectedGuias <= 4" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 4 guías</p>
+          <p *ngIf="totalSelectedGuias >= 4" class="text-danger text-center">-10% por adquirir todas las guías</p>
         </div>
 
         <div class="col-md-12">
           <p *ngIf="totalSelectedApuntes === apuntes?.length" class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
+        </div>
+
+        <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
+          <p class="w-100 text-center text-danger">
+            Te damos un 10% de descuento adicional en el precio final si adquieres todos los apuntes
+          </p>
+        </div>
+
+        <div class="col-md-12" *ngIf="totalSelectedApuntes !== apuntes?.length">
+          <p class="w-100 text-center text-danger">
+            -10% por adquirir todos los apuntes disponibles
+          </p>
         </div>
 
         <div class="col-md-12 p-2" *ngIf="loading">

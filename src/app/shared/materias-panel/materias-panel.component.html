@@ -19,7 +19,8 @@
       </div> -->
 
       <div
-        class="col-xs-12 col-sm-6 col-md-4"
+        [ngClass]="{'col-md-4': !title.includes('Simuladores'), 'col-md-3': title.includes('Simuladores')}"
+        class="col-xs-12 col-sm-6"
         *ngFor="let materia of materias$ | async">
         <epsi-materia-item [user]="auth.user" [materia]="materia"></epsi-materia-item>
       </div>
