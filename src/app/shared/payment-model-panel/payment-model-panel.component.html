@@ -105,12 +105,12 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedGuias <= 4" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 4 guías</p>
-          <p *ngIf="totalSelectedGuias >= 4" class="text-danger text-center">-10% por adquirir todas las guías</p>
+          <p *ngIf="totalSelectedGuias <= 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
+          <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">-10% por adquirir todas las guías</p>
         </div>
 
         <div class="col-md-12">
-          <p *ngIf="totalSelectedApuntes === apuntes?.length" class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
+          <p *ngIf="totalSelectedApuntes !== apuntes?.length" class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
         </div>
 
         <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
@@ -143,7 +143,7 @@
         </div>
 
         <div class="col-md-12" id="pagarReal">
-          <button class="btn btn-primary w-100">Pagar</button>
+          <button class="btn btn-primary w-100" (click)="generatePayment(model)">Pagar</button>
         </div>
 
         <div class="col-md-12">

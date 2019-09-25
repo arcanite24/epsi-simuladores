@@ -111,7 +111,7 @@ export class PaymentModelPanelComponent implements OnInit {
       +this.getApuntesTotal(this.apuntes, this.apunteSelection) +
       +this.getSimuladorTotal(this.simuladores, this.simuladorSelection);
 
-    if (this.totalSelectedGuias >= 4) {
+    if (this.totalSelectedGuias >= 7) {
       total *= 0.9;
     }
 
@@ -132,7 +132,7 @@ export class PaymentModelPanelComponent implements OnInit {
   }
 
   get haveDiscount(): boolean {
-    if (this.totalSelectedGuias >= 4) { return true; }
+    if (this.totalSelectedGuias >= 7) { return true; }
     if (this.apuntes && this.totalSelectedApuntes === this.apuntes.length) { return true; }
     return false;
   }
