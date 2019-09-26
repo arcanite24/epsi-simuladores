@@ -2,7 +2,12 @@
 
   <ngx-smart-modal identifier="guiaModal" #guiaModal>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+    <p><strong>¡Felicidades!</strong> Si has llegado hasta aquí es por que en verdad deseas aprobar el EXACER y tenemos una promoción exclusiva para ti.
+      <br><strong>Solo por hoy</strong> si adquieres las 7 guías haremos un descuento del 10% sobre el precio final.
+      <br>
+      ¿Te gustaría adquirir las 7 guías?
+      <br>
+      Elige tu área de capacitación:</p>
 
     <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
       <button class="btn btn-success" (click)="extraSelector = true">Si Quiero</button>
@@ -19,7 +24,12 @@
 
   <ngx-smart-modal identifier="apunteModal" #apunteModal>
 
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+    <p>
+      ¡WOW! en verdad quieres aprobar éste examen, no es así? <br>
+      El interés es claro, por ello, si adquieres todos los apuntes disponibles el día de hoy, haremos un descuento del 10% sobre el precio final <br>
+      <br>
+      ¿Quieres adquirir los apuntes?
+    </p>
 
     <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
       <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
@@ -91,7 +101,6 @@
         <div class="col-md-4" *ngIf="simuladores$ | async as simuladores">
           <h4 class="w-100 text-center manita" (click)="simuladorModal.open()">
             Simulador
-            <i class="fa fa-info-circle text-primary animated tada infinite"></i>
           </h4>
           <div class="radio" *ngFor="let g of simuladores">
             <label><input type="radio" [(ngModel)]="simuladorSelection" [value]="g.id">{{ g.shortName }} $ {{ g.amount | number }}</label>
@@ -105,8 +114,8 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedGuias <= 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
-          <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">-10% por adquirir todas las guías</p>
+          <p *ngIf="totalSelectedGuias <= 6" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
+          <p *ngIf="totalSelectedGuias >= 6" class="text-danger text-center">-10% por adquirir todas las guías</p>
         </div>
 
         <div class="col-md-12">
@@ -114,9 +123,7 @@
         </div>
 
         <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
-          <p class="w-100 text-center text-danger">
-            Te damos un 10% de descuento adicional en el precio final si adquieres todos los apuntes
-          </p>
+          <p class="w-100 text-center text-danger">-10% por adquirir todos los apuntes disponibles</p>
         </div>
 
         <div class="col-md-12" *ngIf="totalSelectedApuntes !== apuntes?.length">

@@ -139,4 +139,29 @@ export class AdminPageComponent implements OnInit {
 
   }
 
+  async exportEntrarUni() {
+
+    const users = await this.data.getCollectionQueryAlt<User>(Collections.USER, 'entrar_uni', '==', 'si');
+    const csvData = users.map(user => `${user.email},${user.displayName}`).join('\n');
+
+    const exportedFilenmae = `2guia-users-entrar-uni-si-${Date.now()}.csv`;
+
+    const blob = new Blob([csvData], { type: 'text/csvcharset=utf-8' });
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(blob, exportedFilenmae);
+    } else {
+      const link = document.createElement('a');
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', exportedFilenmae);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+  }
+
 }

@@ -25,7 +25,7 @@
     <div class="flex flex-col flex-sart">
       <span (click)="showContent = !showContent">{{title}}</span>
       <small class="m-0 panel-desc" *ngIf="desc">{{desc}}</small>
-      <a *ngIf="title === 'Guias'" (click)="guiasModal.open()"><small>¿Por qué hay guías gratis y guías de pago?</small></a>
+      <!-- <a *ngIf="title === 'Guias'" (click)="guiasModal.open()"><small>¿Por qué hay guías gratis y guías de pago?</small></a> -->
     </div>
     <button class="btn ml-2" (click)="modal.getModal(tutorial).open()" *ngIf="tutorial">
       <i class="fa fa-info-circle tutorial-button-icon"></i>
