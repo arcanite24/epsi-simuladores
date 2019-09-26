@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Sanitizer } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Content, Collections } from 'src/app/app.models';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'epsi-pdf-detail-page',
@@ -14,12 +15,13 @@ export class PdfDetailPageComponent implements OnInit {
   public id: string = this.route.snapshot.paramMap.get('id');
   public pdf$: Promise<Content>;
 
-  public urls: string[];
+  public urls: any;
 
   constructor(
     private route: ActivatedRoute,
     private data: DataService,
     private modal: NgxSmartModalService,
+    private sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class PdfDetailPageComponent implements OnInit {
   async loadContent(id: string) {
     this.pdf$ = this.data.getDocAlt<Content>(Collections.CONTENT, id);
     const { pdf } = await this.pdf$;
-    this.urls = pdf;
+    this.urls = this.sanitizer.bypassSecurityTrustResourceUrl(pdf);
   }
 
 }

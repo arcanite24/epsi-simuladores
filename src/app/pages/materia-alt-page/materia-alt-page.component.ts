@@ -23,14 +23,24 @@ export class MateriaAltPageComponent implements OnInit {
     public auth: AuthService,
     private route: ActivatedRoute,
     private afs: AngularFirestore,
+    private data: DataService,
   ) { }
 
   ngOnInit() {
     this.loadMateria(this.id);
   }
 
-  loadMateria(id: string) {
+  async loadMateria(id: string) {
+
     this.materia$ = this.afs.collection(Collections.CONTENT).doc<Content>(id).valueChanges();
+
+    const content = await this.data.getDocAlt<Content>(Collections.CONTENT, id);
+    console.log(content);
+
+    if (content.type === 'pdf') {
+      this.router.navigate(['/pdf', content.id]);
+    }
+
   }
 
 }

@@ -100,7 +100,8 @@ app.post('/generate_payment', async (req: any, res: any) => {
     title,
     amount,
     email,
-    isProd
+    isProd,
+    extraUnlock,
   } = req.body
 
   console.log('GENERATE PAYMENT', req.body, new Date().toISOString())

@@ -12,7 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import { NgxSmartModalService } from 'ngx-smart-modal';
-import { findIndex } from 'lodash';
+import { findIndex, flattenDeep } from 'lodash';
 
 @Component({
   selector: 'epsi-payment-model-panel',
@@ -257,6 +257,12 @@ export class PaymentModelPanelComponent implements OnInit {
 
       amount = this.pack ? this.pack.price : this.total;
       if (request_payload.coupon) { amount -= amount * request_payload.coupon_value; }
+
+      const extraUnlock = [
+        ...this.guias.filter(guia => this.guiaSelection[guia.id]).map(g => g.unlocks),
+        ...this.apuntes.filter(apunte => this.apunteSelection[apunte.id]).map(g => g.unlocks),
+        ...this.simuladores.filter(s => s.id === this.simuladorSelection)[0].unlocks,
+      ];
 
       const paymentInfo = await this.payment
         .generatePaymentUrl(model.id, request_id, model.name, amount, email, environment.production === true);

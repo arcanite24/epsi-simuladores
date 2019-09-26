@@ -278,7 +278,7 @@ export interface Content {
   canBuy?: boolean;
   openButtonText?: string;
   isPdf?: boolean;
-  pdf?: string[];
+  pdf?: string;
   children?: Content[];
 }
 

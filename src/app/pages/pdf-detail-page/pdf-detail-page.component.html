@@ -13,6 +13,7 @@
 <ng-container *ngIf="pdf$ | async as pdf">
   <epsi-panel [title]="pdf.name">
     <!-- <pre>{{pdf | json}}</pre> -->
-    <img *ngFor="let img of urls" [src]="img" alt="" class="w-100">
+    <!-- <img *ngFor="let img of urls" [src]="img" alt="" class="w-100"> -->
+    <iframe [src]="urls" frameborder="0" style="width: 100%"></iframe>
   </epsi-panel>
 </ng-container>
