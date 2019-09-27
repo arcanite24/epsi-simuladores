@@ -11,13 +11,12 @@
 
     <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
       <button class="btn btn-success" (click)="extraSelector = true">Si Quiero</button>
-      <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
     </div>
 
     <div class="flex flex-row align-center justify-center w-100" *ngIf="extraSelector">
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">ARH</button>
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Informatica</button>
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal')">Contabilidad</button>
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', 'E1ffV2bqzBakOVWUVjm2')">ARH</button>
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', 'IcxPNUrEnfgreTwrNQvs')">Informatica</button>
+      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', '0C7lH8Hd0niEbCX0587u')">Contabilidad</button>
     </div>
 
   </ngx-smart-modal>
@@ -33,7 +32,6 @@
 
     <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
       <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
-      <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
     </div>
 
   </ngx-smart-modal>
@@ -84,7 +82,7 @@
           </h4>
           <!-- <pre>{{ guiaSelection | json }}</pre> -->
           <div class="checkbox" *ngFor="let g of guias">
-            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.shortName }} $ {{ g.amount | number }}</label>
+            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.id }} {{ g.shortName }} $ {{ g.amount | number }}</label>
           </div>
         </div>
 
@@ -114,22 +112,16 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedGuias <= 6" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
-          <p *ngIf="totalSelectedGuias >= 6" class="text-danger text-center">-10% por adquirir todas las guías</p>
+          <p *ngIf="totalSelectedGuias <= 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
+          <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">-10% por adquirir todas las guías</p>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12 text-center">
           <p *ngIf="totalSelectedApuntes !== apuntes?.length" class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
         </div>
 
         <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
           <p class="w-100 text-center text-danger">-10% por adquirir todos los apuntes disponibles</p>
-        </div>
-
-        <div class="col-md-12" *ngIf="totalSelectedApuntes !== apuntes?.length">
-          <p class="w-100 text-center text-danger">
-            -10% por adquirir todos los apuntes disponibles
-          </p>
         </div>
 
         <div class="col-md-12 p-2" *ngIf="loading">

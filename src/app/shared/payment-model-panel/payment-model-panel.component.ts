@@ -159,13 +159,24 @@ export class PaymentModelPanelComponent implements OnInit {
     }
   }
 
-  loadGuiaAd(modal: string) {
+  loadGuiaAd(modal: string, guia: string) {
     this.extraSelector = false;
+    this.guiaSelection[guia] = true;
+    this.guiaSelection['27B61yUUWl1LclcAOX6s'] = true;
+    this.guiaSelection['2CzOTpyqGdmloV5ErsVw'] = true;
+    this.guiaSelection['JtNUDnZC4ZnH0vMkPjgv'] = true;
+    this.guiaSelection['RllNakz2MyDYsFLCnCpJ'] = true;
+    this.guiaSelection['cb2h4zllQozflSFvrZrU'] = true;
+    this.guiaSelection['gYgbU8ga13W4bAqzUP5K'] = true;
     this.modal.getModal(modal).close();
   }
 
   loadApunteAd() {
     this.modal.getModal('apunteModal').close();
+    const apuntes = this.apuntes.map(apunte => apunte.id);
+    for (const apunte of apuntes) {
+      this.apunteSelection[apunte] = true;
+    }
   }
 
   async generatePayment(model: PaymentModel) {
@@ -231,7 +242,22 @@ export class PaymentModelPanelComponent implements OnInit {
         pack: this.pack ? this.pack : null
       });
 
+      const extraUnlock = flattenDeep([
+        ...this.guias.filter(guia => this.guiaSelection[guia.id]).map(g => g.unlocks),
+        ...this.apuntes.filter(apunte => this.apunteSelection[apunte.id]).map(g => g.unlocks),
+        ...this.simuladores.filter(s => s.id === this.simuladorSelection)[0].unlocks,
+      ]);
+
       if (isFullCoupon) {
+
+        // give extra unlock
+        const extraPayload = {};
+
+        for (const role of extraUnlock as string[]) {
+          extraPayload[role] = true;
+        }
+
+        await this.afs.collection(Collections.USER).doc(user.uid).update({ ...extraPayload });
 
         console.log({...user});
         const _user = await this.afs.doc(`${Collections.USER}/${user.uid}`)
@@ -257,12 +283,6 @@ export class PaymentModelPanelComponent implements OnInit {
 
       amount = this.pack ? this.pack.price : this.total;
       if (request_payload.coupon) { amount -= amount * request_payload.coupon_value; }
-
-      const extraUnlock = [
-        ...this.guias.filter(guia => this.guiaSelection[guia.id]).map(g => g.unlocks),
-        ...this.apuntes.filter(apunte => this.apunteSelection[apunte.id]).map(g => g.unlocks),
-        ...this.simuladores.filter(s => s.id === this.simuladorSelection)[0].unlocks,
-      ];
 
       const paymentInfo = await this.payment
         .generatePaymentUrl(model.id, request_id, model.name, amount, email, environment.production === true);
