@@ -245,10 +245,16 @@ export class PaymentModelPanelComponent implements OnInit {
       const selectedSim = this.simuladores.filter(s => s.id === this.simuladorSelection)[0];
 
       const extraUnlock = flattenDeep([
-        ...this.guias.filter(guia => this.guiaSelection[guia.id]).map(g => g.unlocks),
-        ...this.apuntes.filter(apunte => this.apunteSelection[apunte.id]).map(g => g.unlocks),
+        ...this.guias.filter(guia => this.guiaSelection[guia.id] === true).map(g => g.unlocks),
+        ...this.apuntes.filter(apunte => this.apunteSelection[apunte.id] === true).map(g => g.unlocks),
         ...selectedSim ? selectedSim.unlocks : [],
       ]);
+
+      console.log(extraUnlock);
+
+      if (!environment.production) {
+        return;
+      }
 
       if (isFullCoupon) {
 
