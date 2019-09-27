@@ -82,7 +82,7 @@
           </h4>
           <!-- <pre>{{ guiaSelection | json }}</pre> -->
           <div class="checkbox" *ngFor="let g of guias">
-            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.id }} {{ g.shortName }} $ {{ g.amount | number }}</label>
+            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.shortName }} $ {{ g.amount | number }}</label>
           </div>
         </div>
 
@@ -112,7 +112,7 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedGuias <= 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
+          <p *ngIf="totalSelectedGuias < 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
           <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">-10% por adquirir todas las guías</p>
         </div>
 
