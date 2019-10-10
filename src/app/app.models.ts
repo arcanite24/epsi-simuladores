@@ -80,6 +80,7 @@ export enum Collections {
   DAILY_REGISTER = 'daily-register',
   HelpRequest = 'help-request',
   Stat = 'stat',
+  ExtraUnlock = 'extra-unlock',
 }
 
 export enum PaymentStatus {
@@ -750,4 +751,11 @@ export const TuGuiaStatsText = {
 export interface Stat {
   label: string;
   counter: number;
+}
+
+export interface ExtraUnlock {
+  id: string;
+  user: string;
+  delivered: boolean;
+  unlocks: string[];
 }

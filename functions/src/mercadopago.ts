@@ -101,7 +101,6 @@ app.post('/generate_payment', async (req: any, res: any) => {
     amount,
     email,
     isProd,
-    extraUnlock,
   } = req.body
 
   console.log('GENERATE PAYMENT', req.body, new Date().toISOString())
@@ -219,10 +218,25 @@ app.post('/webhook', async (req: any, res: any) => {
         const request$ = await firestore.doc(`payment-request/${data.external_reference}`).get()
         const r = request$.data()
 
+        // Find extra unlocks
+        const extras$ = await firestore.collection('extra-unlock')
+          .where('user', '==', r ? r.user : 'NULL')
+          .get()
+
+        const extras: any[] = extras$.docs.map(doc => ({ id: doc.id, ...doc.data() })).filter((doc: any) => !doc.delivered);
+        const role_payload: any = {}
+
+        for (const extra of extras) {
+          if (extra.unlocks) {
+            for (const role of extra.unlocks) {
+              role_payload[role] = true;
+            }
+          }
+        }
+
         const user$: any = await firestore.doc(`user/${r ? r.user : 'NADA'}`).get()
         const user = user$.data()
 
-        const role_payload: any = {}
 
         if (r && r.model && r.model.unlocks) {
           for (const role of r.model.unlocks) {

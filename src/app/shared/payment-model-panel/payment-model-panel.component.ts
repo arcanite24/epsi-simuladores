@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack, TuGuiaStats, TuGuiaStatsText, PaymentModelType } from 'src/app/app.models';
+import { PaymentModel, Collections, PaymentStatus, Coupon, PaymentPack, TuGuiaStats, TuGuiaStatsText, PaymentModelType, ExtraUnlock } from 'src/app/app.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ToastrService } from 'ngx-toastr';
@@ -250,7 +250,16 @@ export class PaymentModelPanelComponent implements OnInit {
         ...selectedSim ? selectedSim.unlocks : [],
       ]);
 
-      console.log(extraUnlock);
+      const extraUnlockPayload: ExtraUnlock = {
+        id: this.afs.createId(),
+        user: user.uid,
+        delivered: false,
+        unlocks: extraUnlock as string[],
+      };
+
+      await this.afs.collection(Collections.ExtraUnlock).doc(extraUnlockPayload.id).set({ ...extraUnlockPayload });
+
+      console.log(extraUnlock, extraUnlockPayload);
 
       if (!environment.production) {
         return;
