@@ -91,7 +91,9 @@ export class NavbarComponent implements OnInit {
         () =>
           (this.timerLabel = `
             <div class="navbar-timer-label">
-              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Finaliza tu suscripcion el:</small></div>
+              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;">
+                <small class="m-0 p-0">Finaliza tu suscripcion el:</small>
+              </div>
               ${countdown(
                 moment('10/1/2019').toDate(),
                 null,

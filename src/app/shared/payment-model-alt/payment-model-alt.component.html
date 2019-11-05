@@ -80,7 +80,7 @@
 
               <div class="col-md-12 mt-2 form-group mt-2" *ngIf="mode === 'premium'">
                 <div class="una-container">
-                  <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad?</label>
+                  <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad? {{ materia }}</label>
                 </div>
                 <div class="flex flex-row align-center">
                   <epsi-zamna-toggle (change)="materia = $event" class="mr-4" leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>

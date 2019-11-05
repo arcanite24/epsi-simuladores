@@ -116,7 +116,7 @@ export class PaymentModelAltComponent implements OnInit {
       return this.preciosLight[this.meses] * this.multipliers[this.team] * this.team;
     } else {
 
-      if (this.materia) {
+      if (!this.materia) {
         return this.preciosPremium[this.meses] *
           this.multipliers[this.team] *
           this.team;
