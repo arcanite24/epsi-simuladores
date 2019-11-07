@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PaymentModel, PaymentPack, Coupon, Collections, PaymentStatus } from 'src/app/app.models';
+import { PaymentModel, PaymentPack, Coupon, Collections, PaymentStatus, Roles } from 'src/app/app.models';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { take, map } from 'rxjs/operators';
+import { flattenDeep } from 'lodash';
 
 @Component({
   selector: 'epsi-payment-model-alt',
@@ -35,7 +36,7 @@ export class PaymentModelAltComponent implements OnInit {
 
   public meses = 1;
   public team = 1;
-  public materia: boolean = false;
+  public materia = false;
 
   public preciosLight = {
     1: 150,
@@ -78,6 +79,14 @@ export class PaymentModelAltComponent implements OnInit {
     'Urgencias': 0.1,
   };
 
+  public unlocks = {
+    'Medicina Interna': [Roles.isMedicinaInterna2020],
+    'Pediatria': [Roles.isPediatria2020],
+    'Gineco': [Roles.isGineco2020],
+    'Cirugia': [Roles.isCirugia2020],
+    'Urgencias': [Roles.isUrgencias2020],
+  };
+
   constructor(
     private sanitizer: DomSanitizer,
     private afs: AngularFirestore,
@@ -106,7 +115,7 @@ export class PaymentModelAltComponent implements OnInit {
   }
 
   get modelBody() {
-    if (!this.model) { return '...' }
+    if (!this.model) { return '...'; }
     return this.sanitizer.bypassSecurityTrustHtml(this.model.desc);
   }
 
@@ -143,17 +152,39 @@ export class PaymentModelAltComponent implements OnInit {
 
   async generatePayment(model: PaymentModel) {
 
-    if (this.loading) { return this.toastr.error('No puedes generar otra solicitud de pago...') }
+    if (this.loading) { return this.toastr.error('No puedes generar otra solicitud de pago...'); }
     this.loading = true;
 
     const user = this.afAuth.auth.currentUser;
     const email = environment.production === true ? user.email : 'test_user_41665327@testuser.com';
 
+    let unlocks: string[] = [this.mode === 'premium' ? Roles.isPremium2020 as string : Roles.isLight2020 as string];
+
+    if (this.mode === 'premium') {
+      if (this.materia) {
+
+        for (const [materia,  val] of Object.entries(this.materias)) {
+          if (val) {
+            unlocks.push(...this.unlocks[materia]);
+          }
+        }
+
+      } else {
+        unlocks = [
+          ...unlocks as string[],
+          ...flattenDeep(Object.values(this.unlocks)) as string[],
+        ];
+      }
+    }
+
+    console.log(unlocks);
+
     try {
 
       const request_payload = {
         coupon: null,
-        coupon_value: null
+        coupon_value: null,
+        unlocks,
       };
 
       let isFullCoupon = false;
@@ -216,6 +247,15 @@ export class PaymentModelAltComponent implements OnInit {
           used: true
         });
 
+        // Unlock roles
+        const rolePayload = [];
+
+        for (const role of unlocks) {
+          rolePayload[role] = true;
+        }
+
+        await this.afs.collection(Collections.USER).doc(user.uid).update(rolePayload);
+
         // If pack is selected generate coupons
         // TODO: Actually implement this, soooo boring and probably none will gonna use EVER
 
@@ -224,11 +264,11 @@ export class PaymentModelAltComponent implements OnInit {
 
       }
 
-      amount = this.pack ? this.pack.price : model.amount;
-      if (request_payload.coupon) { amount -= amount * request_payload.coupon_value }
+      amount = this.pack ? this.pack.price : this.precio;
+      if (request_payload.coupon) { amount -= amount * request_payload.coupon_value; }
 
       const paymentInfo = await this.payment.generatePaymentUrl
-        (model.id, request_id, model.name, amount, email, environment.production === true);
+        ('ZAMNADEMy_MODULAR_2020', request_id, 'Zamnademy Modular 2020', amount, email, environment.production === true);
       this.payment_url = paymentInfo.init_point;
       console.log(paymentInfo);
       window.location.href = this.payment_url;
@@ -282,21 +322,44 @@ export class PaymentModelAltComponent implements OnInit {
       return this.toastr.error('El cupón es del 100%, no uses PayPal para redimir el cupón.');
     }
 
-    const amount = request_payload.coupon_value ? model.amount - model.amount * request_payload.coupon_value : model.amount;
+    const amount = request_payload.coupon_value ? this.precio - this.precio * request_payload.coupon_value : this.precio;
 
-    this.payment.generatePaypalButton(`paypal-container-${model.id}`, amount, async payment => {
-      console.log(model);
-      if (payment.state == 'approved') {
+    this.payment.generatePaypalButton(`paypal-container-modular`, amount, async payment => {
+
+      if (payment.state === 'approved') {
 
         console.log('pago de paypal aprobado');
         const uid = this.auth.user.uid;
-        const payload = {};
 
-        for (const role of model.unlocks) {
-          payload[role] = true;
+        let unlocks: string[] = [this.mode === 'premium' ? Roles.isPremium2020 as string : Roles.isLight2020 as string];
+
+        if (this.mode === 'premium') {
+          if (this.materia) {
+
+            for (const [materia,  val] of Object.entries(this.materias)) {
+              if (val) {
+                unlocks.push(...this.unlocks[materia]);
+              }
+            }
+
+          } else {
+            unlocks = [
+              ...unlocks as string[],
+              ...flattenDeep(Object.values(this.unlocks)) as string[],
+            ];
+          }
         }
 
-        await this.afs.collection(Collections.USER).doc(uid).update(payload);
+        console.log(unlocks);
+
+        // Unlock roles
+        const rolePayload = [];
+
+        for (const role of unlocks) {
+          rolePayload[role] = true;
+        }
+
+        await this.afs.collection(Collections.USER).doc(uid).update(rolePayload);
         this.router.navigate(['/home']);
 
       } else {

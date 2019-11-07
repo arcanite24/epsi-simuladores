@@ -8,7 +8,7 @@
             <h2 class="text-primary">$ {{ precio | number }}</h2>
             <small class="text-primary">{{ team | number }} Persona / Al Mes</small>
           </div>
-          <input type="text" class="form-control ml-auto" placeholder="Codigo de Descuento" style="width: 60%">
+          <input type="text" class="form-control ml-auto" placeholder="Codigo de Descuento" style="width: 60%" [(ngModel)]="coupon">
         </div>
       </div>
 
@@ -18,13 +18,14 @@
 
       <div class="col-md-6">
         <button class="btn btn-info w-100">Pagar con Paypal</button>
+        <div id="paypal-container-modular"></div>
       </div>
 
       <div class="col-md-6">
         <button class="btn btn-primary w-100">Pagar en OXXO / Deposito Bancario</button>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6" (click)="generatePayment(model)">
         <button class="btn btn-primary w-100">Pagar con tarjeta Debito/Credito</button>
       </div>
 

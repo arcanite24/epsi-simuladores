@@ -276,8 +276,16 @@ app.post('/webhook', async (req, res) => {
 
           const role_payload = {}
 
-          for (const role of r.model.unlocks) {
-            role_payload[role] = true
+          if (r.model) {
+            for (const role of r.model.unlocks) {
+              role_payload[role] = true
+            }
+          }
+
+          if (r.unlocks) {
+            for (const role of r.unlocks) {
+              role_payload[role] = true;
+            }
           }
 
           console.log('DECIDE IF WE GRANT COUPONS', r.pack, r)
@@ -328,7 +336,7 @@ async function grantUserRoles(uid: string, price: number, amountLeft: number, ta
     if (tag === 'isPremium360') {
       for (const role of Premium2019Model) {
         payload[role] = true
-      } 
+      }
     }
 
     if (tag === 'isEsencial360') {
@@ -346,11 +354,11 @@ async function grantUserRoles(uid: string, price: number, amountLeft: number, ta
       console.log(error)
       return false
     }
-    
+
   } else {
     return false
   }
-  
+
 }
 
 export default app

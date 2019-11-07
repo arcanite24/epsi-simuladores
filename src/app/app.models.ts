@@ -111,6 +111,18 @@ export enum Roles {
   Pool = 'isPool',
   TagPool = 'isTagPool',
   ZonaEnarm = 'isZonaEnarm',
+
+  // Zamnademy 2020
+  isLight2020 = 'isLight2020',
+  isPremium2020 = 'isPremium2020',
+
+  // Curso Modular 2020
+  isMedicinaInterna2020 = 'isMedicinaInterna2020',
+  isPediatria2020 = 'isPediatria2020',
+  isGineco2020 = 'isGineco2020',
+  isCirugia2020 = 'isCirugia2020',
+  isUrgencias2020 = 'isUrgencias2020',
+
 }
 
 export const EsencialModel: string[] = [
