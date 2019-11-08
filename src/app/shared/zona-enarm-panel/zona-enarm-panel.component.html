@@ -30,14 +30,14 @@
         <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="simulacrosModal.open()">SIMULACRO REAL</button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial && !auth.isZamna360_2019">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isPremium2020">
         <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">Disponible el...</h4>
         <img src="assets/zamnademy/zona-portema.svg" class="zona-enarm-image mb-2" [ngClass]="{blur: isBlur()}">
         <epsi-tutorial-button tutorial="BQ5uDzkeJhdnq9E35LPX" [ngClass]="{blur: isBlur()}"></epsi-tutorial-button>
         <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="poolModal.open()" [ngClass]="{blur: isBlur()}">RANDOM</button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="!auth.isPresencial && !auth.isZamna360_2019">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isPremium2020">
         <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">Disponible el...</h4>
         <img src="assets/zamnademy/zona-pool.svg" class="zona-enarm-image mb-2" [ngClass]="{blur: isBlur()}">
         <epsi-tutorial-button tutorial="i4yxcWHMSmKtwJLol4aI" [ngClass]="{blur: isBlur()}"></epsi-tutorial-button>

@@ -232,6 +232,17 @@ export class User {
   isPremium2019?: boolean;
   is3602019?: boolean;
 
+  // Zamnademy 2020
+  isLight2020: boolean;
+  isPremium2020: boolean;
+
+  // Curso Modular 2020
+  isMedicinaInterna2020: boolean;
+  isPediatria2020: boolean;
+  isGineco2020: boolean;
+  isCirugia2020: boolean;
+  isUrgencias2020: boolean;
+
 }
 
 export interface Content {

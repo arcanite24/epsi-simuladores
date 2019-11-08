@@ -137,9 +137,9 @@
       <epsi-content-panel *ngIf="auth.isAdmin"></epsi-content-panel>
 
       <!-- Zona ENARM Panel -->
-      <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isZonaEnarm || auth.isPremium2019"></epsi-zona-enarm-panel>
+      <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isPremium2020 || auth.isLight2020"></epsi-zona-enarm-panel>
 
-      <epsi-zamna-contigo-panel *ngIf="auth.isAdmin || auth.isZonaEnarm"></epsi-zamna-contigo-panel>
+      <epsi-zamna-contigo-panel *ngIf="auth.isAdmin || auth.isPremium2020 || auth.isLight2020"></epsi-zamna-contigo-panel>
 
     </div>
 

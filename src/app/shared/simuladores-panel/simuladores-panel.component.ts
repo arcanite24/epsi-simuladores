@@ -30,9 +30,10 @@ export class SimuladoresPanelComponent implements OnInit {
     this.auth.user$.subscribe(async user => {
 
       let isPresencial = false;
-      if (user.is3602019) { isPresencial = true; }
-      if (user.isPresencial) { isPresencial = true; }
-      if (user.isPremium2019) { isPresencial = false; }
+      // if (user.is3602019) { isPresencial = true; }
+      // if (user.isPresencial) { isPresencial = true; }
+      if (user.isLight2020) { isPresencial = true; }
+      if (user.isPremium2020) { isPresencial = false; }
 
       if (user && !this.exams$) { this.loadExams(isPresencial, user); }
 
@@ -57,7 +58,7 @@ export class SimuladoresPanelComponent implements OnInit {
     /*if (isPresencial) {*/
     if (isPresencial) {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
-        .where('isPresencial', '==', true)
+        .where('isLight', '==', true)
         .where('type', '==', ExamTypes.SIMULADOR)
         .where('date', '<=', moment().endOf('day').toISOString()))
         .valueChanges()
@@ -72,7 +73,7 @@ export class SimuladoresPanelComponent implements OnInit {
         .valueChanges()
         .pipe(
           /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => this.filterWithRoles(list.filter(e => !e.isPresencial).reverse(), user)),
+          map(list => this.filterWithRoles(list.filter(e => !e.isLight).reverse(), user)),
         );
     }
 
