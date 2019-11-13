@@ -17,12 +17,12 @@
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-info w-100">Pagar con Paypal</button>
+        <button class="btn btn-info w-100" (click)="loadPaypalButton()">Pagar con Paypal</button>
         <div id="paypal-container-modular"></div>
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-primary w-100">Pagar en OXXO / Deposito Bancario</button>
+        <button class="btn btn-primary w-100" (click)="generatePayment(model)">Pagar en OXXO / Deposito Bancario</button>
       </div>
 
       <div class="col-md-6" (click)="generatePayment(model)">
@@ -81,7 +81,7 @@
 
               <div class="col-md-12 mt-2 form-group mt-2" *ngIf="mode === 'premium'">
                 <div class="una-container">
-                  <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad? {{ materia }}</label>
+                  <label for="" class="text-primary">¿Quieres tener todas o solo alguna especialidad?</label>
                 </div>
                 <div class="flex flex-row align-center">
                   <epsi-zamna-toggle (change)="materia = $event" class="mr-4" leftText="Todas" rightText="Algunas"></epsi-zamna-toggle>
@@ -143,7 +143,7 @@
                 <img src="assets/payment.png" class="w-100" (mouseover)="showTooltip = true">
                 <div class="payment-popup flex flex-col align-center justify-center" *ngIf="showTooltip" (mouseover)="showTooltip = true">
                   <h4><i class="fa fa-times c54 manita" (click)="showTooltip = false"></i> Quieres conocer el sistema con una seleccion de temas a una fraccion del precio?</h4>
-                  <button class="btn btn-primary">Probar version light</button>
+                  <button class="btn btn-primary" (click)="mode = 'light'">Probar version light</button>
                 </div>
               </div>
 

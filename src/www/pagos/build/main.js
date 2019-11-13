@@ -329,11 +329,11 @@ var map = {
 		3
 	],
 	"../pages/becas/becas.module": [
-		713,
+		714,
 		2
 	],
 	"../pages/home/home.module": [
-		714,
+		713,
 		12
 	],
 	"../pages/howto/howto.module": [
@@ -349,23 +349,23 @@ var map = {
 		9
 	],
 	"../pages/pago-detail/pago-detail.module": [
-		719,
+		718,
 		1
 	],
 	"../pages/paypal-checkout/paypal-checkout.module": [
-		720,
+		719,
 		8
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		718,
+		724,
 		7
 	],
 	"../pages/profile/profile.module": [
-		721,
+		720,
 		0
 	],
 	"../pages/tarjeta-add/tarjeta-add.module": [
-		724,
+		721,
 		6
 	],
 	"../pages/team-detail/team-detail.module": [
@@ -767,6 +767,7 @@ var Collections;
     Collections["LIST"] = "list";
     Collections["CONTROL_PAGO"] = "control-pago";
     Collections["ZAMNA_PAGO"] = "zamna-pago";
+    Collections["PayTemplate"] = "pay-template";
 })(Collections || (Collections = {}));
 var PaymentStatus;
 (function (PaymentStatus) {
@@ -1042,18 +1043,18 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/admin-control-detail/admin-control-detail.module#AdminControlDetailPageModule', name: 'AdminControlDetailPage', segment: 'admin-control-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-control-edit/admin-control-edit.module#AdminControlEditPageModule', name: 'AdminControlEditPage', segment: 'admin-control-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],

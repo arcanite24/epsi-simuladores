@@ -39,9 +39,9 @@ export class PaymentModelAltComponent implements OnInit {
   public materia = false;
 
   public preciosLight = {
-    1: 150,
-    2: 250,
-    3: 300
+    1: 290,
+    2: 370,
+    3: 440,
   };
 
   public multipliers = {
@@ -248,7 +248,7 @@ export class PaymentModelAltComponent implements OnInit {
         });
 
         // Unlock roles
-        const rolePayload = [];
+        const rolePayload = {};
 
         for (const role of unlocks) {
           rolePayload[role] = true;
@@ -282,7 +282,7 @@ export class PaymentModelAltComponent implements OnInit {
 
   }
 
-  async loadPaypalButton(model: PaymentModel) {
+  async loadPaypalButton() {
 
     const request_payload = {
       coupon: null,
@@ -353,7 +353,7 @@ export class PaymentModelAltComponent implements OnInit {
         console.log(unlocks);
 
         // Unlock roles
-        const rolePayload = [];
+        const rolePayload = {};
 
         for (const role of unlocks) {
           rolePayload[role] = true;
