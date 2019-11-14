@@ -243,6 +243,9 @@ export class User {
   isCirugia2020: boolean;
   isUrgencias2020: boolean;
 
+  // Modular 2020
+  subscription?: string; // Fecha de cuanto dura su suscripcion
+
 }
 
 export interface Content {
@@ -590,6 +593,7 @@ export interface PaymentRequest {
   ipn: string;
   coupon?: string;
   pack?: PaymentPack;
+  subscription?: string;
 }
 
 export interface PaymentPack {

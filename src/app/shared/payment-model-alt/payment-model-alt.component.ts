@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { environment } from 'src/environments/environment';
 import { take, map } from 'rxjs/operators';
 import { flattenDeep } from 'lodash';
+import moment from 'moment';
 
 @Component({
   selector: 'epsi-payment-model-alt',
@@ -187,6 +188,7 @@ export class PaymentModelAltComponent implements OnInit {
         coupon: null,
         coupon_value: null,
         unlocks,
+        subscription: moment().add(this.meses, 'months').toISOString(),
       };
 
       let isFullCoupon = false;
@@ -258,6 +260,9 @@ export class PaymentModelAltComponent implements OnInit {
 
         await this.afs.collection(Collections.USER).doc(user.uid).update(rolePayload);
 
+        // Set user sub
+        await this.setUserSubscription(request_payload.subscription, user.uid);
+
         // If pack is selected generate coupons
         // TODO: Actually implement this, soooo boring and probably none will gonna use EVER
 
@@ -293,6 +298,7 @@ export class PaymentModelAltComponent implements OnInit {
     const request_payload = {
       coupon: null,
       coupon_value: null,
+      subscription: moment().add(this.meses, 'months').toISOString(),
     };
 
     let isFullCoupon = false;
@@ -367,6 +373,8 @@ export class PaymentModelAltComponent implements OnInit {
           rolePayload[role] = true;
         }
 
+        await this.setUserSubscription(request_payload.subscription, uid);
+
         await this.afs.collection(Collections.USER).doc(uid).update(rolePayload);
         this.router.navigate(['/home']);
 
@@ -377,6 +385,10 @@ export class PaymentModelAltComponent implements OnInit {
 
     this.showPaypal = true;
 
+  }
+
+  async setUserSubscription(subscription: string, user: string) {
+    return await this.afs.collection(Collections.USER).doc(user).update({ subscription });
   }
 
 }

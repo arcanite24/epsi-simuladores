@@ -53,11 +53,10 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.loadNotis();
 
-    this.loadTimer();
-
     this.auth.user$.subscribe(user => {
       if (user && !this.userTimer) {
         this.loadUserTimer(user);
+        this.loadTimer(user.uid);
       }
     });
 
@@ -86,8 +85,12 @@ export class NavbarComponent implements OnInit {
     return this.hiddenOn.indexOf(this.currentUrl) >= 0;
   }
 
-  loadTimer() {
-    setInterval(
+  async loadTimer(uid: string) {
+
+    const user = await this.data.getDocAlt<User>(Collections.USER, uid);
+
+    if (user.subscription) {
+      setInterval(
         () =>
           (this.timerLabel = `
             <div class="navbar-timer-label">
@@ -95,13 +98,15 @@ export class NavbarComponent implements OnInit {
                 <small class="m-0 p-0">Finaliza tu suscripcion el:</small>
               </div>
               ${countdown(
-                moment('10/1/2019').toDate(),
+                moment(user.subscription).toDate(),
                 null,
                 ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
               ).toHTML('strong')}
             </div>`),
         1000
       );
+    }
+
   }
 
   async loadUserTimer(user: User) {

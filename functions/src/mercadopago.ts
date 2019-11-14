@@ -288,6 +288,10 @@ app.post('/webhook', async (req, res) => {
             }
           }
 
+          if (r.subscription) {
+            role_payload['subscription'] = r.subscription;
+          }
+
           console.log('DECIDE IF WE GRANT COUPONS', r.pack, r)
           if (r.pack) {
             for (let index = 0; index < r.pack.quantity - 1; index++) {
