@@ -38,6 +38,8 @@ export class PaymentModelAltComponent implements OnInit {
   public team = 1;
   public materia = false;
 
+  public paypalGenerated = false;
+
   public preciosLight = {
     1: 290,
     2: 370,
@@ -284,6 +286,10 @@ export class PaymentModelAltComponent implements OnInit {
 
   async loadPaypalButton() {
 
+    if (this.paypalGenerated) {
+      return;
+    }
+
     const request_payload = {
       coupon: null,
       coupon_value: null,
@@ -323,6 +329,8 @@ export class PaymentModelAltComponent implements OnInit {
     }
 
     const amount = request_payload.coupon_value ? this.precio - this.precio * request_payload.coupon_value : this.precio;
+
+    this.paypalGenerated = true;
 
     this.payment.generatePaypalButton(`paypal-container-modular`, amount, async payment => {
 

@@ -17,7 +17,7 @@
       </div>
 
       <div class="col-md-6">
-        <button class="btn btn-info w-100" (click)="loadPaypalButton()">Pagar con Paypal</button>
+        <button class="btn btn-info w-100" (click)="loadPaypalButton()" *ngIf="!paypalGenerated">Pagar con Paypal</button>
         <div id="paypal-container-modular"></div>
       </div>
 

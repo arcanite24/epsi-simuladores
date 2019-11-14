@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'epsi-zona-enarm-panel',
@@ -16,9 +16,9 @@ export class ZonaEnarmPanelComponent implements OnInit {
   }
 
   isBlur() {
-    if (this.auth.isAdmin) return false
-    if (this.auth.isZamna360_2019) return true
-    return true
+    if (this.auth.isAdmin) { return false; }
+    if (this.auth.isPremium2020) { return false; }
+    return true;
   }
 
 }
