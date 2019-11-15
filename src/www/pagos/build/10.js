@@ -1,14 +1,14 @@
 webpackJsonp([10],{
 
-/***/ 716:
+/***/ 727:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayTemplateEditPageModule", function() { return PayTemplateEditPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(740);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay_template_edit__ = __webpack_require__(754);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,39 +18,43 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var LoginPageModule = /** @class */ (function () {
-    function LoginPageModule() {
+var PayTemplateEditPageModule = /** @class */ (function () {
+    function PayTemplateEditPageModule() {
     }
-    LoginPageModule = __decorate([
+    PayTemplateEditPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */],
+                __WEBPACK_IMPORTED_MODULE_2__pay_template_edit__["a" /* PayTemplateEditPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__login__["a" /* LoginPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pay_template_edit__["a" /* PayTemplateEditPage */]),
             ],
         })
-    ], LoginPageModule);
-    return LoginPageModule;
+    ], PayTemplateEditPageModule);
+    return PayTemplateEditPageModule;
 }());
 
-//# sourceMappingURL=login.module.js.map
+//# sourceMappingURL=pay-template-edit.module.js.map
 
 /***/ }),
 
-/***/ 740:
+/***/ 754:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_plus__ = __webpack_require__(461);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(190);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(22);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PayTemplateEditPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_fire_firestore__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(455);
+var __assign = (this && this.__assign) || Object.assign || function(t) {
+    for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+            t[p] = s[p];
+    }
+    return t;
+};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -99,237 +103,49 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-
-
-
-
-var LoginPage = /** @class */ (function () {
-    function LoginPage(navCtrl, navParams, back, load, fb, toast, google, platform, 
-        //private auth: AuthService,
-        auth, modal, afAuth) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.back = back;
-        this.load = load;
-        this.fb = fb;
-        this.toast = toast;
-        this.google = google;
-        this.platform = platform;
-        this.auth = auth;
+var PayTemplateEditPage = /** @class */ (function () {
+    function PayTemplateEditPage(modal, view, afs, toast, navParams) {
         this.modal = modal;
-        this.afAuth = afAuth;
-        this.showAdmin = false;
-        this.loginData = { email: '', password: '' };
+        this.view = view;
+        this.afs = afs;
+        this.toast = toast;
+        this.navParams = navParams;
+        this.template = {};
     }
-    /* async loginFacebook() {
-  
-      const l = this.load.create({content: 'Iniciando sesión con Facebook...'})
-      l.present()
-  
-      if (this.platform.is('cordova')) {
-  
-        try {
-          const res: FacebookLoginResponse = await this.fb.login(['public_profile', 'email'])
-          this.back.facebookApp(res.authResponse.accessToken).subscribe(data => {
-            if (data.err) return this.toast.create({message: data.err, duration: 2000}).present()
-            localStorage.setItem('user', JSON.stringify(data.user))
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('uid', data.user.id)
-            //this.back.saveFcmToken(data.user.id, localStorage.getItem('fcm_token')).then(data => console.log(data)).catch(err => this.toast.create({message: 'No se pudo registrar tu dispositivo...', duration: 2000}).present())
-            this.navCtrl.setRoot('HomePage')
-            l.dismiss()
-          }, err => {
-            this.toast.create({message: 'No pudimos inicar sesión con tu Facebook', duration: 2000}).present()
-            l.dismiss()
-          })
-        } catch (error) {
-          l.dismiss()
-          this.toast.create({message: 'No pudimos inicar sesión con tu Facebook', duration: 2000}).present()
-        }
-  
-      } else {
-  
-        this.auth.signIn(FacebookLoginProvider.PROVIDER_ID)
-          .then((data: SocialUser) => {
-            this.handleSocial(data)
-            l.dismiss()
-          })
-          .catch(err => {
-            this.toast.create({message: 'Ocurrío un error al iniciar sesión con Facebook...', duration: 2000}).present()
-            l.dismiss()
-          })
-  
-      }
-  
-    }
-  
-    async loginGoogle() {
-  
-      const l = this.load.create({content: 'Iniciando sesión con Google...'})
-      l.present()
-  
-      if (this.platform.is('cordova')) {
-  
-        try {
-          const res = await this.google.login({})
-          this.back.googleApp(res).subscribe(data => {
-            if (data.err) return this.toast.create({message: data.err, duration: 2000}).present()
-            localStorage.setItem('user', JSON.stringify(data.user))
-            localStorage.setItem('token', data.token)
-            localStorage.setItem('uid', data.user.id)
-            //this.back.saveFcmToken(data.user.id, localStorage.getItem('fcm_token')).then(data => console.log(data)).catch(err => this.toast.create({message: 'No se pudo registrar tu dispositivo...', duration: 2000}).present())
-            this.navCtrl.setRoot('HomePage')
-            l.dismiss()
-          }, err => {
-            this.toast.create({message: 'No pudimos inicar sesión con tu cuenta de Google', duration: 2000}).present()
-            l.dismiss()
-          })
-        } catch (error) {
-          this.toast.create({message: 'No pudimos inicar sesión con tu cuenta de Google', duration: 2000}).present()
-          l.dismiss()
-        }
-  
-      } else {
-  
-        this.auth.signIn(GoogleLoginProvider.PROVIDER_ID)
-          .then(data => {
-            this.handleSocial(data)
-            l.dismiss()
-          })
-          .catch(err => {
-            this.toast.create({message: 'Ocurrío un error al iniciar sesión con Google...', duration: 2000}).present()
-            l.dismiss()
-          })
-  
-      }
-  
-    } */
-    LoginPage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.auth.user$.subscribe(function (user) {
-            if (user)
-                _this.navCtrl.setRoot('HomePage');
-        });
+    PayTemplateEditPage.prototype.ionViewDidLoad = function () {
+        this.template = this.navParams.get('template');
     };
-    LoginPage.prototype.handleSocial = function (data) {
-        var _this = this;
-        this.back.socialAuthWeb(data).subscribe(function (authInfo) {
-            if (authInfo.err)
-                return _this.toast.create({ message: authInfo.err, duration: 2000 }).present();
-            localStorage.setItem('uid', authInfo.user.id);
-            localStorage.setItem('user', JSON.stringify(authInfo.user));
-            localStorage.setItem('token', authInfo.token);
-            _this.navCtrl.setRoot('HomePage');
-        }, function (err) {
-            _this.toast.create({ message: 'Ocurrió un error al iniciar sesión...', duration: 2000 }).present();
-        });
-    };
-    LoginPage.prototype.login = function () {
+    PayTemplateEditPage.prototype.editTemplate = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var l, user, _user, error_1;
+            var id;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        l = this.load.create({ content: 'Iniciando Sesión...' });
-                        l.present();
-                        _a.label = 1;
+                        id = this.template.id;
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_3__app_app_models__["a" /* Collections */].PayTemplate).doc(id).update(__assign({}, this.template, { id: id }))];
                     case 1:
-                        _a.trys.push([1, 4, , 5]);
-                        return [4 /*yield*/, this.afAuth.auth.signInWithEmailAndPassword(this.loginData.email, this.loginData.password)];
-                    case 2:
-                        user = _a.sent();
-                        return [4 /*yield*/, this.afAuth.user.pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["take"])(1)).toPromise()];
-                    case 3:
-                        _user = _a.sent();
-                        this.auth.setUser({
-                            email: _user.email,
-                            displayName: _user.displayName,
-                            photoURL: _user.photoURL,
-                            uid: _user.uid,
-                        });
-                        this.navCtrl.setRoot('HomePage');
-                        this.toast.create({ message: "Bienvenido " + user.user.displayName, duration: 2000 }).present();
-                        l.dismiss();
-                        return [3 /*break*/, 5];
-                    case 4:
-                        error_1 = _a.sent();
-                        this.toast.create({ message: error_1.message, duration: 2000 }).present();
-                        l.dismiss();
-                        return [3 /*break*/, 5];
-                    case 5: return [2 /*return*/];
+                        _a.sent();
+                        this.toast.create({ message: 'Costo editado correctamente', duration: 4000 }).present();
+                        this.view.dismiss();
+                        return [2 /*return*/];
                 }
             });
         });
     };
-    LoginPage.prototype.openHowto = function () {
-        this.modal.create('HowtoPage').present();
-    };
-    LoginPage.prototype.loginGoogleFire = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var user, error_2;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.auth.loginGoogle()];
-                    case 1:
-                        user = _a.sent();
-                        this.toast.create({ message: "Bienvenido de nuevo " + user.displayName, duration: 2000 }).present();
-                        this.navCtrl.setRoot('HomePage');
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_2 = _a.sent();
-                        console.log(error_2);
-                        this.toast.create({ message: 'Algo ocurrió al iniciar sesión con tu cuenta de Google. Contacta con un administrador.', duration: 2000 }).present();
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    LoginPage.prototype.loginFacebookFire = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            var user, error_3;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, this.auth.loginFacebook()];
-                    case 1:
-                        user = _a.sent();
-                        this.toast.create({ message: "Bienvenido de nuevo " + user.displayName, duration: 2000 }).present();
-                        this.navCtrl.setRoot('HomePage');
-                        return [3 /*break*/, 3];
-                    case 2:
-                        error_3 = _a.sent();
-                        console.log(error_3);
-                        this.toast.create({ message: 'Algo ocurrió al iniciar sesión con tu cuenta de Facebook. Contacta con un administrador.', duration: 2000 }).present();
-                        return [3 /*break*/, 3];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    LoginPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/login/login.html"*/'<ion-content class="bg-eee login-container">\n  <div class="flex flex-col login-container">\n\n    <h4 class="w-100 text-center" style="color:#2fb7ec">Plataforma de Pagos para el curso PRESENCIAL ENARM 2019</h4>\n\n    <img src="assets/imgs/weon_azul.png" style="width:12%">\n    <img src="assets/imgs/letras_azul.png" style="width:25%">\n\n    <div class="social-buttons mt-2 flex flex-col justify-center align-center" *ngIf="!showAdmin" >\n      <button ion-button (click)="loginFacebookFire()">\n        <ion-icon name="logo-facebook" class="mr-1"></ion-icon>\n        Iniciar Sesión con Facebook\n      </button>\n      <button ion-button (click)="loginGoogleFire()">\n        <ion-icon name="logo-google" class="mr-1"></ion-icon>\n        Iniciar Sesión con Google\n      </button>\n    </div>\n\n    <ion-list *ngIf="showAdmin" class="w-100">\n      <ion-item>\n        <ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-input placeholder="Password" type="password" [(ngModel)]="loginData.password"></ion-input>\n      </ion-item>\n      <div class="flex flex-col justify-center align-center mt-1">\n        <button ion-button (click)="login()" >Iniciar Sesión</button>\n      </div>\n    </ion-list>\n\n    <button ion-button clear (click)="openHowto()" >¿Cómo me inscribo?</button>\n\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="!showAdmin" >Admin</small>\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="showAdmin" >Alumno</small>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/login/login.html"*/,
+    PayTemplateEditPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-pay-template-edit',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/pay-template-edit/pay-template-edit.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Editar Costo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item>\n      <ion-input placeholder="ID" [(ngModel)]="template.id"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Tag" [(ngModel)]="template.tag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Precio" [(ngModel)]="template.price" type="number"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Etiqueta Precio" [(ngModel)]="template.priceTag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Nombre" [(ngModel)]="template.name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Fecha Limite" [(ngModel)]="template.limitDate"></ion-input>\n    </ion-item>\n\n    <div class="flex-loader">\n        <button ion-button  (click)="editTemplate()">Editar</button>\n      <button ion-button clear color="danger" (click)="view.dismiss()">Cerrar</button>\n    </div>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/pay-template-edit/pay-template-edit.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_0__providers_back_back__["a" /* BackProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__["a" /* Facebook */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_plus__["a" /* GooglePlus */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* Platform */],
-            __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__["a" /* AngularFireAuth */]])
-    ], LoginPage);
-    return LoginPage;
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
+            __WEBPACK_IMPORTED_MODULE_2__angular_fire_firestore__["a" /* AngularFirestore */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
+    ], PayTemplateEditPage);
+    return PayTemplateEditPage;
 }());
 
-//# sourceMappingURL=login.js.map
+//# sourceMappingURL=pay-template-edit.js.map
 
 /***/ })
 

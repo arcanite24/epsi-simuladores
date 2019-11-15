@@ -1,15 +1,14 @@
 webpackJsonp([12],{
 
-/***/ 713:
+/***/ 717:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomePageModule", function() { return HomePageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PagoAddPageModule", function() { return PagoAddPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__home__ = __webpack_require__(737);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_moment__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pago_add__ = __webpack_require__(744);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,42 +18,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-
-var HomePageModule = /** @class */ (function () {
-    function HomePageModule() {
+var PagoAddPageModule = /** @class */ (function () {
+    function PagoAddPageModule() {
     }
-    HomePageModule = __decorate([
+    PagoAddPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_2__pago_add__["a" /* PagoAddPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_3_ngx_moment__["a" /* MomentModule */],
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__home__["a" /* HomePage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__pago_add__["a" /* PagoAddPage */]),
             ],
         })
-    ], HomePageModule);
-    return HomePageModule;
+    ], PagoAddPageModule);
+    return PagoAddPageModule;
 }());
 
-//# sourceMappingURL=home.module.js.map
+//# sourceMappingURL=pago-add.module.js.map
 
 /***/ }),
 
-/***/ 737:
+/***/ 744:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PagoAddPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__providers_back_back__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__ = __webpack_require__(455);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_app_models__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_firestore__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_models__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_pay_pay__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_app_config__ = __webpack_require__(191);
 var __assign = (this && this.__assign) || Object.assign || function(t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
         s = arguments[i];
@@ -115,227 +111,180 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 
 
 
-__WEBPACK_IMPORTED_MODULE_3_moment___default.a.locale('es');
-var HomePage = /** @class */ (function () {
-    /* {
-    tag: 'isEsencial360',
-      price: 18399,
-        priceTag: '$17,480 + $919',
-          name: 'Zamná 360 esencial',
-            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-            limitDate: new Date('06-30-2018').toISOString()
-    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
-  },
-  {
-    tag: 'isPresencial',
-      price: 17480,
-        priceTag: '$17,480',
-          name: 'Zamná Presencial',
-            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-            limitDate: new Date('06-30-2018').toISOString()
-    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
-  },
-  {
-    tag: 'isPremium360',
-      price: 20239,
-        priceTag: '$17,480 + $2,759',
-          name: 'Zamná 360 Premium',
-            //limitDate: moment("20183006", "YYYYMMDD").toISOString()
-            limitDate: new Date('06-30-2018').toISOString()
-    //limitDate: moment('Tue Apr 30 2019 23:59:58 GMT-0500 (hora de verano central)').toISOString(),
-  } */
-    function HomePage(navCtrl, navParams, back, toast, load, modal, alert, auth, afs) {
+var PagoAddPage = /** @class */ (function () {
+    function PagoAddPage(navCtrl, navParams, back, toast, load, modal, afs, auth, pay) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.back = back;
         this.toast = toast;
         this.load = load;
         this.modal = modal;
-        this.alert = alert;
-        this.auth = auth;
         this.afs = afs;
-        this.alertShown = false;
-        this.controles = [];
-        this.templates = [
-            {
-                tag: 'isPresencial2020',
-                price: 16350,
-                priceTag: '$ 16,350',
-                name: 'Curso Presencial',
-                limitDate: new Date('04-30-2020').toISOString()
-            },
-            {
-                tag: 'isPresencial360_2020',
-                price: 18600,
-                priceTag: '$16,350 + $2,250',
-                name: 'Curso Presencial 360',
-                limitDate: new Date('04-30-2020').toISOString()
-            }
-        ];
+        this.auth = auth;
+        this.pay = pay;
+        this.control = this.navParams.get('control');
+        this.Math = Math;
+        this.cards = [];
+        this.method = 'card';
+        this.isPlan = false;
+        this.sess_id = OpenPay.deviceData.setup();
     }
-    Object.defineProperty(HomePage.prototype, "uid", {
-        get: function () {
-            return localStorage.getItem('uid');
-        },
-        enumerable: true,
-        configurable: true
-    });
-    HomePage.prototype.ionViewDidLoad = function () {
-        var _this = this;
-        this.auth.user$.subscribe(function (user) {
-            if (user && _this.auth.isViewPagos)
-                return _this.navCtrl.setRoot('AdminPage');
-            if (user) {
-                _this.checkForUserInfo(user);
-                _this.loadControles(user.email);
-            }
-        });
+    PagoAddPage.prototype.ionViewDidLoad = function () {
+        if (!this.control)
+            return this.navCtrl.setRoot('HomePage');
+        /* this.loadCards() */
     };
-    HomePage.prototype.loadControles = function (email) {
-        var _this = this;
-        /* this.back.getUserControlesPago(this.back.uid).subscribe(data => this.controles = data) */
-        this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTROL_PAGO, function (ref) { return ref
-            .where('user.email', '==', email); })
-            .valueChanges()
-            .pipe(Object(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators__["tap"])(console.log))
-            .subscribe(function (data) { return _this.controles = data.map(function (c) { return (__assign({}, c, { pagos$: _this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].ZAMNA_PAGO, function (ref) { return ref.where('control', '==', c.id); }).valueChanges() })); }); });
+    /* loadCards() {
+      this.back.getUserTarjetas(this.back.uid).subscribe(data => this.cards = data, err => this.toast.create({message: 'No se pudieron cargar las tarjetas...', duration: 2000}).present())
+    } */
+    PagoAddPage.prototype.enableButton = function () {
+        if (this.method == 'card') {
+            /* if (!this.selectedCard) return false */
+            if (this.amount < 5)
+                return false;
+            if (this.amount > this.control.amountLeft)
+                return false;
+            return true;
+        }
+        return true;
     };
-    HomePage.prototype.formatDate = function (date) { return __WEBPACK_IMPORTED_MODULE_3_moment___default()(date).calendar(); };
-    HomePage.prototype.gotoPagar = function (control) {
-        this.navCtrl.push('PagoAddPage', { control: control });
-    };
-    HomePage.prototype.createControlPago = function (control_tag) {
-        return __awaiter(this, void 0, void 0, function () {
-            var l, control, deudaTotal, deuda, _a;
-            return __generator(this, function (_b) {
-                switch (_b.label) {
-                    case 0:
-                        l = this.load.create({ content: 'Creando solicitud de pago...' });
-                        l.present();
-                        control = this.templates.filter(function (t) { return t.tag == control_tag; })[0];
-                        control.id = this.afs.createId();
-                        control.user = this.auth.user;
-                        control.amountLeft = control.price;
-                        deudaTotal = this.auth.user.deudaTotal ? this.auth.user.deudaTotal : 0;
-                        deuda = this.auth.user.deuda ? this.auth.user.deuda : 0;
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update({ deudaTotal: deudaTotal + control.price })];
-                    case 1:
-                        _b.sent();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update({ deuda: deuda + control.price })];
-                    case 2:
-                        _b.sent();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTROL_PAGO).doc(control.id).set(control)];
-                    case 3:
-                        _b.sent();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update((_a = {}, _a[control_tag] = true, _a))];
-                    case 4:
-                        _b.sent();
-                        this.toast.create({ message: 'Control de pago creado correctamente.', duration: 2000 }).present();
-                        l.dismiss();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    HomePage.prototype.removeControlPago = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].CONTROL_PAGO).doc(id).delete()];
-                    case 1:
-                        _a.sent();
-                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_5__app_app_models__["a" /* Collections */].USER).doc(this.auth.user.uid).update({ deuda: 0, deudaTotal: 0 })];
-                    case 2:
-                        _a.sent();
-                        this.toast.create({ message: 'Control de Pago eliminado correctamente, deuda y deudaTotal seteados a 0', duration: 2000 }).present();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    HomePage.prototype.logout = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.auth.logout()];
-                    case 1:
-                        _a.sent();
-                        this.navCtrl.setRoot('LoginPage');
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    HomePage.prototype.openPagoDetail = function (pago) {
-        var m = this.modal.create('PagoDetailPage', { pago: pago });
-        m.present();
-    };
-    HomePage.prototype.checkForUserInfo = function (user) {
+    PagoAddPage.prototype.pagar = function () {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
-            var alert_1;
+            var m, l, id, _control, pagoPayload, mercado, id, _control, pagoPayload;
             return __generator(this, function (_a) {
-                // const user = await this.back.getUserDetail(this.back.uid).toPromise()
-                if (!user.celular && !this.alertShown) {
-                    alert_1 = this.alert.create({
-                        title: 'Número de Celular',
-                        subTitle: 'Parece que no haz llenado tu número de celular en tu perfil',
-                        buttons: [
-                            {
-                                text: 'Ir a Perfil',
-                                handler: function () {
-                                    _this.navCtrl.push('ProfilePage');
-                                }
-                            },
-                            {
-                                text: 'Cerrar',
-                                role: 'cancel'
+                switch (_a.label) {
+                    case 0:
+                        if (!this.amount)
+                            return [2 /*return*/, this.toast.create({ message: 'Recuerda ingresar un monto para pagar...', duration: 2000 }).present()];
+                        if (this.method == 'paypal') {
+                            m = this.modal.create('PaypalCheckoutPage', { amount: this.amount });
+                            m.present();
+                            m.onDidDismiss(function (data) { return _this.handlePaypal(data); });
+                            return [2 /*return*/];
+                        }
+                        l = this.load.create({ content: 'Generando pago...' });
+                        l.present();
+                        if (!(this.method == 'tienda')) return [3 /*break*/, 1];
+                        this.back.pagarPaynet(this.back.uid, this.amount, 'Pago Zamná', this.control.id, this.method).subscribe(function (data) {
+                            console.log(data);
+                            l.dismiss();
+                            _this.recibo = data.recibo;
+                        }, function (err) {
+                            _this.toast.create({ message: 'No se pudo generar tu pago de Zamná', duration: 2000 }).present();
+                            l.dismiss();
+                        });
+                        return [3 /*break*/, 6];
+                    case 1:
+                        if (!(this.method == 'card')) return [3 /*break*/, 4];
+                        id = this.afs.createId();
+                        _control = __assign({}, this.control);
+                        delete _control.pagos$;
+                        pagoPayload = {
+                            id: id,
+                            user: this.auth.user.uid,
+                            control: _control.id,
+                            amount: parseFloat(this.amount.toString()),
+                            method: this.method,
+                            plan: this.plan ? this.plan : null,
+                            status: 'waiting',
+                            createdAt: new Date().toISOString(),
+                            pago: {
+                                status: 'waiting',
+                                restado: false
                             }
-                        ]
-                    });
-                    alert_1.present();
-                    this.alertShown = true;
+                        };
+                        console.log(pagoPayload);
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].ZAMNA_PAGO).doc(id).set(pagoPayload)];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.pay.generatePaymentUrlZamnaPagos(this.control.id, id, this.control.name, parseFloat(this.amount.toString()), __WEBPACK_IMPORTED_MODULE_7__app_app_config__["e" /* production */] ? this.auth.user.email : 'test@test.com', __WEBPACK_IMPORTED_MODULE_7__app_app_config__["e" /* production */])];
+                    case 3:
+                        mercado = _a.sent();
+                        console.log(mercado.init_point);
+                        window.location.href = mercado.init_point;
+                        l.dismiss();
+                        return [3 /*break*/, 6];
+                    case 4:
+                        id = this.afs.createId();
+                        _control = __assign({}, this.control);
+                        delete _control.pagos$;
+                        pagoPayload = {
+                            id: id,
+                            user: this.auth.user.uid,
+                            control: _control.id,
+                            amount: parseFloat(this.amount.toString()),
+                            method: this.method,
+                            plan: this.plan ? this.plan : null,
+                            status: 'uploading',
+                            pago: {
+                                status: 'uploading',
+                                restado: false
+                            }
+                        };
+                        console.log(pagoPayload);
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].ZAMNA_PAGO).doc(id).set(pagoPayload)];
+                    case 5:
+                        _a.sent();
+                        this.navCtrl.pop();
+                        l.dismiss();
+                        _a.label = 6;
+                    case 6: return [2 /*return*/];
                 }
-                return [2 /*return*/];
             });
         });
     };
-    HomePage.prototype.openAdmin = function () {
-        var _this = this;
-        var alert = this.alert.create({
-            title: 'Selecciona alumnos',
-            buttons: [
-                {
-                    text: 'Alumnos 2019',
-                    handler: function () {
-                        _this.navCtrl.push('AdminPage', {
-                            mode: 'roles',
-                            method: null,
-                            payload: ['isEsencial360', 'isPresencial', 'isPremium360'],
-                        });
-                    },
-                },
-                {
-                    text: 'Alumnos 2020',
-                    handler: function () {
-                        _this.navCtrl.push('AdminPage', {
-                            mode: 'roles',
-                            method: null,
-                            payload: ['isPresencial2020', 'isPresencial360_2020'],
-                        });
-                    },
-                },
-                {
-                    text: 'Cerrar',
-                    role: 'cancel',
-                },
-            ],
+    /* openTarjetaAdd() {
+  
+      const m = this.modal.create('TarjetaAddPage')
+      m.present()
+  
+      m.onDidDismiss(data => this.loadCards())
+  
+    } */
+    PagoAddPage.prototype.handlePaypal = function (payment) {
+        return __awaiter(this, void 0, void 0, function () {
+            var l, id, _control, pagoPayload;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!payment)
+                            return [2 /*return*/];
+                        l = this.load.create({ content: 'Generando pago...' });
+                        l.present();
+                        id = this.afs.createId();
+                        _control = __assign({}, this.control);
+                        delete _control.pagos$;
+                        pagoPayload = {
+                            id: id,
+                            user: this.auth.user.uid,
+                            control: _control.id,
+                            amount: parseFloat(this.amount.toString()),
+                            method: this.method,
+                            plan: this.plan ? this.plan : null,
+                            status: 'approved',
+                            pago: {
+                                status: 'approved',
+                                restado: true
+                            }
+                        };
+                        console.log(pagoPayload);
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].ZAMNA_PAGO).doc(id).set(pagoPayload)];
+                    case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.afs.collection(__WEBPACK_IMPORTED_MODULE_4__app_app_models__["a" /* Collections */].CONTROL_PAGO).doc(this.control.id).update({
+                                amountLeft: this.control.amountLeft - pagoPayload.amount
+                            })];
+                    case 2:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
         });
-        alert.present();
     };
-    HomePage = __decorate([
+    PagoAddPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/home/home.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Zamná Pagos</ion-title>\n    <ion-buttons end>\n      <a ion-button icon-only  href="https://wa.me/525575717513" target="_blank" color="success-claro">\n        <ion-icon name="logo-whatsapp"></ion-icon>\n      </a>\n      <a ion-button icon-only href="https://enarmzamna.com/inscripcion.html" target="_blank">\n        ¿Tienes preguntas de cómo pagar?\n      </a>\n    </ion-buttons>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <ion-card *ngFor="let control of controles; let i = index">\n\n      <ion-card-content>\n        <h2 text-center>Saldo pendiente: <strong>${{control.amountLeft | number}}</strong></h2>\n        <p>Estás inscrito en: <strong *ngIf="control.tag == \'isEsencial360\'">Zamná 360 esencial</strong> <strong *ngIf="control.tag == \'isPresencial\'">Zamná Presencial</strong> <strong *ngIf="control.tag == \'isPremium360\'">Zamná 360 Premium</strong></p>\n        <p>Fecha limite para liquidar el 100%: {{control.limitDate | amDateFormat:\'LL\'}}</p>\n        <p class="c54">\n          <small>Recuerda actualizar tus datos en la sección "Mi Perfil"</small>\n        </p>\n        <button ion-button (click)="gotoPagar(control)">Hacer nuevo pago</button>\n        <button ion-button color="danger"  (click)="removeControlPago(control.id, i)" *ngIf="auth.isAdmin" >Quitar</button>\n        <!--<a href="https://zamnademy.com" ion-button color="secondary" *ngIf="control.tag == \'CURSO_ESENCIAL_360\' || control.tag == \'CURSO_PREMIUM_360\'">Zamnademy</a>-->\n        <hr>\n        <p *ngIf="control.amountLeft <= control.price * 0.7" >\n          Felicidades ya eres parte del equipo Zamná 2019, con el 30% que completaste ya tienes tu lugar asegurado. <br>\n          Y si eres miembro de Zamná 360, puedes acceder ya en este momento a tu plataforma tocando este link:  <a href="https://zamnademy.com" target="_blank">zamnademy</a> o este botón\n        </p>\n        <a ion-button href="https://zamnademy.com" target="_blank" *ngIf="control.amountLeft <= control.price * 0.7">Zamnademy</a>\n      </ion-card-content>\n\n      <ion-list>\n        <ion-list-header>Pagos realizados</ion-list-header>\n        <ion-item *ngFor="let pago of control.pagos$ | async" >\n          <button ion-button item-start icon-only clear *ngIf="pago.method != \'card\'" (click)="openPagoDetail(pago)" >\n            <ion-icon name="information-circle"></ion-icon>\n          </button>\n          <h2><strong>$ {{pago.amount | number}}</strong> pagados {{pago.createdAt | amCalendar}}</h2>\n          <p>\n            Status:\n            <span *ngIf="pago.pago.status == \'completed\'" style="color:green">Completado</span>\n            <span *ngIf="pago.pago.status == \'waiting\'" style="color:rgb(255, 208, 0)">Esperando Aprobación</span>\n            <span *ngIf="pago.pago.status == \'uploading\'" style="color:rgb(0, 183, 255)">Subir comprobante</span>\n            <span *ngIf="pago.pago.status == \'in_progress\'" style="color:rgb(0, 183, 255)">Esperando pago en tienda</span>\n            <span *ngIf="pago.pago.status == \'failed\'" style="color:red">Rechazado</span>\n          </p>\n          <button *ngIf="pago.pago.status == \'uploading\'" (click)="openPagoDetail(pago)" ion-button clear>Subir foto del comprobante para aprobación</button>\n        </ion-item>\n      </ion-list>\n\n    </ion-card>\n\n    <ion-list *ngIf="!controles || controles.length <= 0" radio-group [(ngModel)]="selectedTemplate">\n      <ion-list-header>Seleccionar plan a pagar</ion-list-header>\n      <ion-item *ngFor="let template of templates">\n        <ion-radio [value]="template.tag"></ion-radio>\n        <ion-label>\n          <h2><strong>{{template.priceTag}}</strong> {{template.name}}</h2>\n          <p>Pagar antes del {{formatDate(template.limitDate)}}</p>\n        </ion-label>\n      </ion-item>\n    </ion-list>\n\n    <div class="flex flex-col justify-center align-center" *ngIf="!controles || controles.length <= 0">\n      <button ion-button *ngIf="selectedTemplate" (click)="createControlPago(selectedTemplate)" >Seleccionar plan</button>\n    </div>\n\n    <div class="flex flex-row justify-center align-center">\n      <button ion-button (click)="navCtrl.push(\'ProfilePage\')" >Ver Perfil</button>\n      <button ion-button (click)="navCtrl.push(\'BecasPage\')" >Becas Grupales</button>\n    </div>\n    <button ion-button clear (click)="logout()">Cerrar Sesión</button>\n    <button ion-button clear (click)="openAdmin()" *ngIf="auth.isAdmin" >Panel de Administración</button>\n    <button ion-button clear (click)="navCtrl.push(\'TeamsPage\')" *ngIf="auth.isAdmin" >Equipos de Beca</button>\n\n  </ion-grid>\n\n  <!-- <pre>{{ auth.user$ | async | json }}</pre> -->\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/home/home.html"*/,
+            selector: 'page-pago-add',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/pago-add/pago-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Pagar</ion-title>\n    <ion-buttons end>\n      <a ion-button icon-only  href="https://wa.me/525575717513" target="_blank">\n        <ion-icon name="logo-whatsapp"></ion-icon>\n      </a>\n      <a ion-button icon-only href="https://enarmzamna.com/inscripcion.html" target="_blank">\n        ¿Tienes preguntas de cómo pagar?\n      </a>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-grid fixed>\n\n    <ion-card *ngIf="control" >\n\n      <ion-list>\n        <ion-item>\n          <strong>Saldo pendiente: $ {{control.amountLeft | number}} </strong>\n        </ion-item>\n        <ion-item>\n          <ion-input placeholder="Ingresa aquí la cantidad que quieras pagar hoy, evita ingresar $ , o . Solo ingresa numeros" type="number" [(ngModel)]="amount"></ion-input>\n        </ion-item>\n        <ion-item text-wrap>\n          <small class="text-center c54 w-100">El 30% del costo total es: $ {{Math.ceil(control.price * 0.3) | number}} que es la cantidad mínima que deberás ingresar en tu primer pago, para poder Inscribirte y asegurar tu lugar</small>\n        </ion-item>\n      </ion-list>\n\n      <ion-list radio-group [(ngModel)]="method" class="mt-2">\n        <ion-list-header>Método de Pago</ion-list-header>\n        <!-- <ion-item>\n          <ion-radio value="card"></ion-radio>\n          <ion-label>Tarjeta de Crédito/Débito ó Pago en Tienda</ion-label>\n        </ion-item> -->\n        <ion-item>\n          <ion-radio value="deposito"></ion-radio>\n          <ion-label>Depósito Bancario</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-radio value="efectivo_cu"></ion-radio>\n          <ion-label>Pago en efectivo en CU</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-radio value="efectivo_centromedico"></ion-radio>\n          <ion-label>Pago en efectivo en Centro Médico</ion-label>\n        </ion-item>\n        <ion-item>\n          <ion-radio value="transferencia"></ion-radio>\n          <ion-label>Transferencia</ion-label>\n        </ion-item>\n        <!-- <ion-item>\n          <ion-radio value="paypal"></ion-radio>\n          <ion-label>PayPal</ion-label>\n        </ion-item> -->\n        <!-- <ion-item>\n          <ion-radio value="tienda"></ion-radio>\n          <ion-label>Pago en tienda</ion-label>\n        </ion-item> -->\n      </ion-list>\n\n    </ion-card>\n\n    <!-- <ion-card *ngIf="method == \'card\'" >\n      <ion-list radio-group [(ngModel)]="selectedCard">\n        <ion-list-header>Mis Tarjetas</ion-list-header>\n        <ion-item *ngFor="let card of cards" >\n          <ion-radio [value]="card.id"></ion-radio>\n          <ion-label>\n            <h2><strong>{{card.card_openpay.bank_name}}</strong> {{card.card_openpay.card_number}}</h2>\n            <p>{{card.card_openpay.holder_name}} | {{card.card_openpay.brand}}</p>\n          </ion-label>\n        </ion-item>\n        <ion-item>\n          <button ion-button (click)="openTarjetaAdd()" >Agregar Tarjeta</button>\n        </ion-item>\n      </ion-list>\n    </ion-card> -->\n\n    <ion-card *ngIf="method == \'tienda\'" >\n      <img src="https://www.zamnademy.com/static/marcas.png" alt="">\n    </ion-card>\n\n    <!-- <ion-card *ngIf="method == \'card\'" >\n      <ion-card-content>\n        <div class="col-xs-12">\n          <strong>MSI:</strong>\n          <div class="checkbox">\n            <label><input type="checkbox" [(ngModel)]="isPlan">¿Requiere facilidades de pago?</label>\n          </div>\n        </div>\n        <div class="col-xs-12" *ngIf="isPlan" >\n          <div class="radio">\n            <label><input type="radio" [(ngModel)]="plan" [value]="3">3 meses | Tasa: Visa/MasterCard - 4.80% | Amex - 3.80%</label>\n          </div>\n          <div class="radio">\n            <label><input type="radio" [(ngModel)]="plan" [value]="6">6 meses | Tasa: Visa/MasterCard - 7.80% | Amex - 5.80%</label>\n          </div>\n          <div class="radio">\n            <label><input type="radio" [(ngModel)]="plan" [value]="9">9 meses | Tasa: Visa/MasterCard - 10.80% | Amex - 7.80%</label>\n          </div>\n          <div class="radio">\n            <label><input type="radio" [(ngModel)]="plan" [value]="12">12 meses | Tasa: Visa/MasterCard - 13.80% | Amex - 9.80%</label>\n          </div>\n        </div>\n      </ion-card-content>\n    </ion-card> -->\n\n    <ion-card *ngIf="method == \'deposito\'" >\n      <ion-card-content>\n        <ion-item>\n          <strong>Número de Cuenta: </strong> 0465048958\n        </ion-item>\n        Depósito a la cuenta de Bancomer número: 0465048958. Sucursal: 3544 (a veces la preguntan)\n        A nombre de <strong>Constantino Hernández</strong>\n        Haz click en el botón "Pagar" para crear un pago pendiente. Cuando hayas realizado tu depósito sube una foto de tu comprobante para que sea aceptado tu pago.\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf="method == \'transferencia\'" >\n      <ion-card-content>\n        <ion-item>\n          <strong>Transferencia con CLABE Interbancaria: </strong> 012180004650489587\n        </ion-item>\n        A nombre de <strong>Constantino Hernández</strong> <br>\n        Haz click en el botón "Pagar" para crear un pago pendiente. Cuando hayas realizado tu depósito sube una foto de tu comprobante para que sea aceptado tu pago.\n      </ion-card-content>\n    </ion-card>\n\n    <ion-card *ngIf="method == \'efectivo_cu\' || method == \'efectivo_centromedico\'" >\n      <ion-card-content>\n        Para pagar en efectivo directamente con los coordinadores, solo envianos un mensaje por WhatsApp a nuestro nùmero de atención: +52 55 7571 7513, para coordinar una cita y te entregaremos un comprobante de pago, que será tan válido como el del depósito bancario, con el que podrás actualizar tu pago en el sistema. <br>\n        Haz click en el botón "Pagar" para crear un pago pendiente. Cuando hayas realizado el pago directamente con nosotros, sube una foto de tu comprobante para que sea aceptado tu pago.\n      </ion-card-content>\n    </ion-card>\n\n     <div class="flex flex-col justify-center align-center" *ngIf="control" >\n      <p class="c-error" *ngIf="amount < 5" >El monto a pagar debe ser mayor a $ 5</p>\n      <p class="c-error" *ngIf="amount > control.amountLeft" >El monto a pagar NO PUEDE ser mayor a $ {{control.amountLeft | number}}</p>\n      <button ion-button (click)="pagar()" [disabled]="!enableButton()">\n        <span *ngIf="method != \'tienda\'" >Pagar</span>\n        <span *ngIf="method == \'tienda\'" >Obtener recibo para cualquier tienda</span>\n      </button>\n      <a [href]="recibo" target="_blank" ion-button *ngIf="recibo" >Descargar comprobante para pagar</a>\n    </div>\n\n  </ion-grid>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/pago-add/pago-add.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
@@ -343,14 +292,14 @@ var HomePage = /** @class */ (function () {
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* LoadingController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* ModalController */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["a" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_auth_auth__["a" /* AuthProvider */],
-            __WEBPACK_IMPORTED_MODULE_6__angular_fire_firestore__["a" /* AngularFirestore */]])
-    ], HomePage);
-    return HomePage;
+            __WEBPACK_IMPORTED_MODULE_3__angular_fire_firestore__["a" /* AngularFirestore */],
+            __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__["a" /* AuthProvider */],
+            __WEBPACK_IMPORTED_MODULE_6__providers_pay_pay__["a" /* PayProvider */]])
+    ], PagoAddPage);
+    return PagoAddPage;
 }());
 
-//# sourceMappingURL=home.js.map
+//# sourceMappingURL=pago-add.js.map
 
 /***/ })
 

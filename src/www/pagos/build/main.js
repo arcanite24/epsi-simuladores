@@ -1,4 +1,4 @@
-webpackJsonp([15],{
+webpackJsonp([18],{
 
 /***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -318,62 +318,74 @@ webpackEmptyAsyncContext.id = 225;
 var map = {
 	"../pages/admin-control-detail/admin-control-detail.module": [
 		710,
-		14
+		17
 	],
 	"../pages/admin-control-edit/admin-control-edit.module": [
 		711,
-		13
+		16
 	],
 	"../pages/admin/admin.module": [
 		712,
 		3
 	],
 	"../pages/becas/becas.module": [
-		714,
+		713,
 		2
 	],
 	"../pages/home/home.module": [
-		713,
-		12
+		714,
+		15
 	],
 	"../pages/howto/howto.module": [
 		715,
-		11
+		14
 	],
 	"../pages/login/login.module": [
 		716,
-		10
+		13
 	],
 	"../pages/pago-add/pago-add.module": [
 		717,
-		9
+		12
 	],
 	"../pages/pago-detail/pago-detail.module": [
 		718,
 		1
 	],
-	"../pages/paypal-checkout/paypal-checkout.module": [
+	"../pages/pay-template-add/pay-template-add.module": [
+		720,
+		11
+	],
+	"../pages/pay-template-edit/pay-template-edit.module": [
+		727,
+		10
+	],
+	"../pages/pay-templates/pay-templates.module": [
 		719,
+		9
+	],
+	"../pages/paypal-checkout/paypal-checkout.module": [
+		721,
 		8
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		724,
+		722,
 		7
 	],
 	"../pages/profile/profile.module": [
-		720,
+		723,
 		0
 	],
 	"../pages/tarjeta-add/tarjeta-add.module": [
-		721,
+		724,
 		6
 	],
 	"../pages/team-detail/team-detail.module": [
-		722,
+		725,
 		5
 	],
 	"../pages/teams/teams.module": [
-		723,
+		726,
 		4
 	]
 };
@@ -397,11 +409,169 @@ module.exports = webpackAsyncContext;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export ContentTypes */
+/* unused harmony export HomeLists */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Collections; });
+/* unused harmony export PaymentStatus */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Roles; });
+/* unused harmony export User */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EsencialModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PremiumModel; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return TempranoModel; });
+/* unused harmony export ExamTypes */
+// TODO: Find a better way to enumerate globally the content types
+// Singletons
+var ContentTypes = [
+    'materia',
+    'bloque',
+    'tema',
+    'submtema'
+];
+var HomeLists;
+(function (HomeLists) {
+    HomeLists["SimuladoresList"] = "simuladores-list";
+    HomeLists["SimulacrosList"] = "simulacros-list";
+})(HomeLists || (HomeLists = {}));
+var Collections;
+(function (Collections) {
+    // TODO: Add remaining collections
+    Collections["USER"] = "user";
+    Collections["USER_STAT"] = "user-stat";
+    Collections["EXAM"] = "exam";
+    Collections["ASESORIA"] = "livestream";
+    Collections["SLIDE"] = "slide";
+    Collections["SLIDE_CATEGORY"] = "slide-cat";
+    Collections["TODO"] = "todo";
+    Collections["CONTENT"] = "content";
+    Collections["NOTE"] = "note";
+    Collections["COMMENT"] = "comment";
+    Collections["RATING"] = "rating";
+    Collections["SUGGESTION"] = "suggestion";
+    Collections["EVENT"] = "event";
+    Collections["GALLERY"] = "gallery";
+    Collections["GALLERY_CATEGORY"] = "gallery-cat";
+    Collections["THREAD_CATEGORY"] = "thread-cat";
+    Collections["THREAD"] = "thread";
+    Collections["THREAD_RESPONSE"] = "thread-response";
+    Collections["LIVESTREAM"] = "livestream";
+    Collections["MEDIA"] = "media";
+    Collections["MEDIA_CATEGORY"] = "media-cat";
+    Collections["QUESTION"] = "question";
+    Collections["ANSWER"] = "answer";
+    Collections["EXAM_RESULT"] = "exam-result";
+    Collections["POST"] = "post";
+    Collections["POST_COMMENT"] = "post-comment";
+    Collections["TAG"] = "tag";
+    Collections["STAT_VIEW"] = "stat-view";
+    Collections["PAYMENT_MODEL"] = "payment-model";
+    Collections["PAYMENT_REQUEST"] = "payment-request";
+    Collections["NOTIFICATION"] = "notification";
+    Collections["NOTIFICATION_COMMENT"] = "notification-comment";
+    Collections["COUPON"] = "coupon";
+    Collections["MERCADOPAGO_IPN"] = "mercadopago-ipn";
+    Collections["PROGRAMA"] = "programa";
+    Collections["STAT_COUNTER"] = "stat-counter";
+    Collections["LIST"] = "list";
+    Collections["CONTROL_PAGO"] = "control-pago";
+    Collections["ZAMNA_PAGO"] = "zamna-pago";
+    Collections["PayTemplate"] = "pay-template";
+})(Collections || (Collections = {}));
+var PaymentStatus;
+(function (PaymentStatus) {
+    PaymentStatus["Approved"] = "approved";
+    PaymentStatus["Failed"] = "rejected";
+    PaymentStatus["Pending"] = "pending";
+})(PaymentStatus || (PaymentStatus = {}));
+var Roles;
+(function (Roles) {
+    Roles["Admin"] = "isAdmin";
+    Roles["Esencial"] = "isEsencial";
+    Roles["Premium"] = "isPremium";
+    Roles["Content"] = "isContent";
+    Roles["Checklist"] = "isChecklist";
+    Roles["Calendar"] = "isCalendar";
+    Roles["TopUsers"] = "isTopUsers";
+    Roles["Galleries"] = "isGalleries";
+    Roles["Simuladores"] = "isSimuladores";
+    Roles["Forum"] = "isForum";
+    Roles["Streaming"] = "isStreaming";
+    Roles["Media"] = "isMedia";
+    Roles["Slides"] = "isSlides";
+    Roles["Simulacros"] = "isSimulacros";
+    Roles["Feed"] = "isFeed";
+    Roles["Temprano"] = "isTemprano";
+    Roles["ViewPagos"] = "isViewPagos";
+    Roles["Esencial360"] = "isEsencial360";
+    Roles["Premium360"] = "isPremium360";
+    Roles["Presencial"] = "isPresencial";
+    Roles["Programa"] = "isPrograma";
+    Roles["Pool"] = "isPool";
+    Roles["TagPool"] = "isTagPool";
+})(Roles || (Roles = {}));
+var User = /** @class */ (function () {
+    function User() {
+    }
+    return User;
+}());
+
+var EsencialModel = [
+    Roles.Esencial,
+    Roles.Checklist,
+    Roles.Calendar,
+    Roles.TopUsers,
+    Roles.Galleries,
+    Roles.Feed,
+    Roles.Simuladores,
+    Roles.Forum,
+    Roles.Streaming,
+    Roles.Media,
+    Roles.Slides,
+    Roles.Simulacros,
+];
+var PremiumModel = [
+    Roles.Checklist,
+    Roles.Calendar,
+    Roles.TopUsers,
+    Roles.Galleries,
+    Roles.Feed,
+    Roles.Simuladores,
+    Roles.Forum,
+    Roles.Streaming,
+    Roles.Media,
+    Roles.Slides,
+    Roles.Simulacros,
+    Roles.Premium,
+    Roles.Content,
+    Roles.Programa,
+    Roles.Pool,
+    Roles.TagPool
+];
+var TempranoModel = [
+    Roles.Temprano
+];
+var ExamTypes;
+(function (ExamTypes) {
+    ExamTypes["SIMULADOR"] = "simulador";
+    ExamTypes["SIMULACRO"] = "simulacro";
+    ExamTypes["PRECLASE"] = "preclase";
+    ExamTypes["CONTENIDO"] = "contenido";
+    ExamTypes["POOL"] = "pool";
+    ExamTypes["TAGS"] = "tags";
+    ExamTypes["PRUEBA"] = "demo";
+})(ExamTypes || (ExamTypes = {}));
+//# sourceMappingURL=app.models.js.map
+
+/***/ }),
+
+/***/ 456:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(456);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_models__ = __webpack_require__(455);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_fire_auth__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_fire_firestore__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_firebase_app__ = __webpack_require__(270);
@@ -698,164 +868,6 @@ var AuthProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 456:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export ContentTypes */
-/* unused harmony export HomeLists */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Collections; });
-/* unused harmony export PaymentStatus */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return Roles; });
-/* unused harmony export User */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return EsencialModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return PremiumModel; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return TempranoModel; });
-/* unused harmony export ExamTypes */
-// TODO: Find a better way to enumerate globally the content types
-// Singletons
-var ContentTypes = [
-    'materia',
-    'bloque',
-    'tema',
-    'submtema'
-];
-var HomeLists;
-(function (HomeLists) {
-    HomeLists["SimuladoresList"] = "simuladores-list";
-    HomeLists["SimulacrosList"] = "simulacros-list";
-})(HomeLists || (HomeLists = {}));
-var Collections;
-(function (Collections) {
-    // TODO: Add remaining collections
-    Collections["USER"] = "user";
-    Collections["USER_STAT"] = "user-stat";
-    Collections["EXAM"] = "exam";
-    Collections["ASESORIA"] = "livestream";
-    Collections["SLIDE"] = "slide";
-    Collections["SLIDE_CATEGORY"] = "slide-cat";
-    Collections["TODO"] = "todo";
-    Collections["CONTENT"] = "content";
-    Collections["NOTE"] = "note";
-    Collections["COMMENT"] = "comment";
-    Collections["RATING"] = "rating";
-    Collections["SUGGESTION"] = "suggestion";
-    Collections["EVENT"] = "event";
-    Collections["GALLERY"] = "gallery";
-    Collections["GALLERY_CATEGORY"] = "gallery-cat";
-    Collections["THREAD_CATEGORY"] = "thread-cat";
-    Collections["THREAD"] = "thread";
-    Collections["THREAD_RESPONSE"] = "thread-response";
-    Collections["LIVESTREAM"] = "livestream";
-    Collections["MEDIA"] = "media";
-    Collections["MEDIA_CATEGORY"] = "media-cat";
-    Collections["QUESTION"] = "question";
-    Collections["ANSWER"] = "answer";
-    Collections["EXAM_RESULT"] = "exam-result";
-    Collections["POST"] = "post";
-    Collections["POST_COMMENT"] = "post-comment";
-    Collections["TAG"] = "tag";
-    Collections["STAT_VIEW"] = "stat-view";
-    Collections["PAYMENT_MODEL"] = "payment-model";
-    Collections["PAYMENT_REQUEST"] = "payment-request";
-    Collections["NOTIFICATION"] = "notification";
-    Collections["NOTIFICATION_COMMENT"] = "notification-comment";
-    Collections["COUPON"] = "coupon";
-    Collections["MERCADOPAGO_IPN"] = "mercadopago-ipn";
-    Collections["PROGRAMA"] = "programa";
-    Collections["STAT_COUNTER"] = "stat-counter";
-    Collections["LIST"] = "list";
-    Collections["CONTROL_PAGO"] = "control-pago";
-    Collections["ZAMNA_PAGO"] = "zamna-pago";
-    Collections["PayTemplate"] = "pay-template";
-})(Collections || (Collections = {}));
-var PaymentStatus;
-(function (PaymentStatus) {
-    PaymentStatus["Approved"] = "approved";
-    PaymentStatus["Failed"] = "rejected";
-    PaymentStatus["Pending"] = "pending";
-})(PaymentStatus || (PaymentStatus = {}));
-var Roles;
-(function (Roles) {
-    Roles["Admin"] = "isAdmin";
-    Roles["Esencial"] = "isEsencial";
-    Roles["Premium"] = "isPremium";
-    Roles["Content"] = "isContent";
-    Roles["Checklist"] = "isChecklist";
-    Roles["Calendar"] = "isCalendar";
-    Roles["TopUsers"] = "isTopUsers";
-    Roles["Galleries"] = "isGalleries";
-    Roles["Simuladores"] = "isSimuladores";
-    Roles["Forum"] = "isForum";
-    Roles["Streaming"] = "isStreaming";
-    Roles["Media"] = "isMedia";
-    Roles["Slides"] = "isSlides";
-    Roles["Simulacros"] = "isSimulacros";
-    Roles["Feed"] = "isFeed";
-    Roles["Temprano"] = "isTemprano";
-    Roles["ViewPagos"] = "isViewPagos";
-    Roles["Esencial360"] = "isEsencial360";
-    Roles["Premium360"] = "isPremium360";
-    Roles["Presencial"] = "isPresencial";
-    Roles["Programa"] = "isPrograma";
-    Roles["Pool"] = "isPool";
-    Roles["TagPool"] = "isTagPool";
-})(Roles || (Roles = {}));
-var User = /** @class */ (function () {
-    function User() {
-    }
-    return User;
-}());
-
-var EsencialModel = [
-    Roles.Esencial,
-    Roles.Checklist,
-    Roles.Calendar,
-    Roles.TopUsers,
-    Roles.Galleries,
-    Roles.Feed,
-    Roles.Simuladores,
-    Roles.Forum,
-    Roles.Streaming,
-    Roles.Media,
-    Roles.Slides,
-    Roles.Simulacros,
-];
-var PremiumModel = [
-    Roles.Checklist,
-    Roles.Calendar,
-    Roles.TopUsers,
-    Roles.Galleries,
-    Roles.Feed,
-    Roles.Simuladores,
-    Roles.Forum,
-    Roles.Streaming,
-    Roles.Media,
-    Roles.Slides,
-    Roles.Simulacros,
-    Roles.Premium,
-    Roles.Content,
-    Roles.Programa,
-    Roles.Pool,
-    Roles.TagPool
-];
-var TempranoModel = [
-    Roles.Temprano
-];
-var ExamTypes;
-(function (ExamTypes) {
-    ExamTypes["SIMULADOR"] = "simulador";
-    ExamTypes["SIMULACRO"] = "simulacro";
-    ExamTypes["PRECLASE"] = "preclase";
-    ExamTypes["CONTENIDO"] = "contenido";
-    ExamTypes["POOL"] = "pool";
-    ExamTypes["TAGS"] = "tags";
-    ExamTypes["PRUEBA"] = "demo";
-})(ExamTypes || (ExamTypes = {}));
-//# sourceMappingURL=app.models.js.map
-
-/***/ }),
-
 /***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -981,7 +993,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__angular_fire_auth__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_fire_firestore__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_config__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_pay_pay__ = __webpack_require__(462);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_fire_storage__ = __webpack_require__(458);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1043,18 +1055,21 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/admin-control-detail/admin-control-detail.module#AdminControlDetailPageModule', name: 'AdminControlDetailPage', segment: 'admin-control-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-control-edit/admin-control-edit.module#AdminControlEditPageModule', name: 'AdminControlEditPage', segment: 'admin-control-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-template-add/pay-template-add.module#PayTemplateAddPageModule', name: 'PayTemplateAddPage', segment: 'pay-template-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
