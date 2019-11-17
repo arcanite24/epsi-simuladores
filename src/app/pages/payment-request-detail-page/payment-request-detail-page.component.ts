@@ -13,10 +13,10 @@ import { take } from 'rxjs/operators';
 })
 export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
 
-  private id: string = this.route.snapshot.paramMap.get('id')
-  public request$: Observable<PaymentRequest> = this.afs.doc<PaymentRequest>(`${Collections.PAYMENT_REQUEST}/${this.id}`).valueChanges()
+  private id: string = this.route.snapshot.paramMap.get('id');
+  public request$: Observable<PaymentRequest> = this.afs.doc<PaymentRequest>(`${Collections.PAYMENT_REQUEST}/${this.id}`).valueChanges();
 
-  private _request: Subscription
+  private _request: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,46 +27,46 @@ export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._request = this.request$.subscribe(r => {
-      console.log('new status', r.status)
-      this.onRequestChange(r)
-    })
+      console.log('new status', r.status);
+      this.onRequestChange(r);
+    });
   }
 
   ngOnDestroy(): void {
-    this._request.unsubscribe()
+    this._request.unsubscribe();
   }
 
   async onRequestChange(r: PaymentRequest) {
 
-    console.log(r.status)
-    
-    // Check if roles are delivered
-    if (r.status == PaymentStatus.Approved) {
+    console.log(r.status);
 
-      let role_payload = {}
+    // Check if roles are delivered
+    if (r.status === PaymentStatus.Approved) {
+
+      const role_payload = {};
 
       for (const role of r.model.unlocks) {
-        role_payload[role] = true
+        role_payload[role] = true;
       }
 
-      console.log('Updating role_payload', role_payload)
-      console.log('PaymentRequest', r)
+      console.log('Updating role_payload', role_payload);
+      console.log('PaymentRequest', r);
 
       const user = await this.afs.doc<User>(`${Collections.USER}/${r.user}`)
         .valueChanges()
         .pipe(
           take(1)
-        ).toPromise()
+        ).toPromise();
 
-      await this.afs.doc(`${Collections.USER}/${r.user}`).update(role_payload)
-      await this.afs.doc(`${Collections.PAYMENT_REQUEST}/${r.id}`).update({delivered: true})
-      if(r.coupon) await this.afs.doc(`${Collections.COUPON}/${r.coupon}`).update({used: true, date: new Date().toISOString(), user})
-      this.toastr.success('Tu pago ha sido verificado con éxito. Ya puedes acceder al contenido de la plataforma.')
-      this.router.navigate(['/home'])
-      
+      await this.afs.doc(`${Collections.USER}/${r.user}`).update(role_payload);
+      await this.afs.doc(`${Collections.PAYMENT_REQUEST}/${r.id}`).update({delivered: true});
+      if (r.coupon) { await this.afs.doc(`${Collections.COUPON}/${r.coupon}`).update({used: true, date: new Date().toISOString(), user}); }
+      this.toastr.success('Tu pago ha sido verificado con éxito. Ya puedes acceder al contenido de la plataforma.');
+      // this.router.navigate(['/home']);
+      location.reload();
+
     } else {
-      //this.toastr.error('Tu pago ya ha sido validado correctamente. Si aún no puede accesar al contenido de la plataforma, contacta con un administrador.')
-      //setTimeout(() => this.router.navigate(['/home']), 4000)
+
     }
 
   }

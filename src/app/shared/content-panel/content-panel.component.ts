@@ -14,8 +14,8 @@ import { Router } from '@angular/router';
 })
 export class ContentPanelComponent implements OnInit {
 
-  private mainContent: string = [...contentHierarchy].shift()
-  public content$: Observable<Content[]>
+  private mainContent: string = [...contentHierarchy].shift();
+  public content$: Observable<Content[]>;
 
   constructor(
     private afs: AngularFirestore,
@@ -24,17 +24,18 @@ export class ContentPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('type', '==', this.mainContent)).valueChanges()
+    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('type', '==', this.mainContent)).valueChanges();
   }
 
   public isBlur(name: string): boolean {
-    if (!this.auth.user) return true
-    if (!name) return true
-    if (this.auth.isAdmin) return false
+    if (!this.auth.user) { return true; }
+    if (!name) { return true; }
+    if (this.auth.isAdmin) { return false; }
     if (name.toLowerCase().includes('temprano')) {
-      return !this.auth.isTemprano
+      if (this.auth.isLight2020) { return true; }
+      if (this.auth.isPremium2020) { return true; }
     }
-    return true
+    return true;
   }
 
 }

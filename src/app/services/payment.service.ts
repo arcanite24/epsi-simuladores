@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { functionsEndpoint } from '../app.config';
+import { functionsEndpoint, modularUrl } from '../app.config';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
 declare var paypal
 
 @Injectable({
@@ -10,7 +12,9 @@ declare var paypal
 export class PaymentService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService,
+    private router: Router,
   ) { }
 
   generatePaymentUrl(model_id: string, request_id: string, title: string, amount: number, email: string, isProd: boolean = false) {
@@ -54,6 +58,12 @@ export class PaymentService {
         });
       },
     }, el)
+  }
+
+  checkIfLightRedirect() {
+    if (!this.auth.isLight2020) {
+      return this.router.navigate([modularUrl]);
+    }
   }
 
 }

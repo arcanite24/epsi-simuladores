@@ -12,6 +12,11 @@
   </svg>
 </div>
 
+<div class="global-loader" *ngIf="showGlobalWarn">
+  <img src="assets/zamnademy/logo.png" class="mb-4">
+  <h1 style="color: white">Plataforma bajo mantenimiento</h1>
+</div>
+
 <ngx-smart-modal identifier="moodAddModal" #moodAddModal [closable]="false">
   <div class="container">
     <div class="row">
@@ -104,10 +109,10 @@
     <div class="col-xs-12 col-md-4">
 
         <!-- Todo Panel  -->
-      <epsi-checklist-panel *ngIf="auth.isChecklist"></epsi-checklist-panel>
+      <epsi-checklist-panel></epsi-checklist-panel>
 
       <!-- Top Users Panel -->
-      <epsi-top-users-panel *ngIf="auth.isTopUsers"></epsi-top-users-panel>
+      <epsi-top-users-panel></epsi-top-users-panel>
 
     </div>
 
@@ -121,8 +126,8 @@
       <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel *ngIf="(auth.isCalendar || auth.isPresencial || auth.isEsencial360 || auth.isPremium360) && !auth.isAdmin"></epsi-calendar-panel>
-      <epsi-smart-calendar-panel *ngIf="(auth.isAdmin || auth.isSmartCalendar) && !auth.user.noCalendar"></epsi-smart-calendar-panel>
+      <epsi-calendar-panel *ngIf="!auth.isAdmin"></epsi-calendar-panel>
+      <epsi-smart-calendar-panel *ngIf="!auth.user.noCalendar"></epsi-smart-calendar-panel>
       <epsi-panel *ngIf="auth.user && auth.user.noCalendar">
         <div class="container">
           <div class="row">
@@ -134,12 +139,12 @@
       </epsi-panel>
 
       <!-- Content Panel -->
-      <epsi-content-panel *ngIf="auth.isAdmin"></epsi-content-panel>
+      <!-- <epsi-content-panel *ngIf="auth.isAdmin"></epsi-content-panel> -->
 
       <!-- Zona ENARM Panel -->
-      <epsi-zona-enarm-panel *ngIf="auth.isAdmin || auth.isPremium2020 || auth.isLight2020"></epsi-zona-enarm-panel>
+      <epsi-zona-enarm-panel></epsi-zona-enarm-panel>
 
-      <epsi-zamna-contigo-panel *ngIf="auth.isAdmin || auth.isPremium2020 || auth.isLight2020"></epsi-zamna-contigo-panel>
+      <epsi-zamna-contigo-panel></epsi-zamna-contigo-panel>
 
     </div>
 
@@ -148,17 +153,17 @@
       <div class="row">
 
         <!-- Galleries Panel -->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isGalleries">
+        <div class="col-xs-12 col-md-3">
           <epsi-galleries-panel></epsi-galleries-panel>
         </div>
 
         <!-- Simuladores Panel -->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isSimuladores && !auth.isPresencial">
+        <div class="col-xs-12 col-md-3">
           <epsi-simuladores-panel></epsi-simuladores-panel>
         </div>
 
         <!-- Foro Panel -->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isForum">
+        <div class="col-xs-12 col-md-3">
           <epsi-forum-panel></epsi-forum-panel>
         </div>
 
@@ -168,18 +173,18 @@
         </div> -->
 
         <!-- Descagables/Media Panel -->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isMedia">
+        <div class="col-xs-12 col-md-3">
           <epsi-media-panel></epsi-media-panel>
         </div>
 
         <!-- Slides Panel -->
         <!--<div class="col-xs-12 col-md-4" *ngIf="auth.isEsencial || auth.isPremium || auth.isPremium2019">-->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isSlides">
+        <div class="col-xs-12 col-md-3">
           <epsi-slides-panel></epsi-slides-panel>
         </div>
 
         <!-- Simulacros Panel -->
-        <div class="col-xs-12 col-md-3" *ngIf="auth.isSimulacros && !auth.isPresencial">
+        <div class="col-xs-12 col-md-3">
           <epsi-simulacros-panel></epsi-simulacros-panel>
         </div>
 
@@ -207,7 +212,7 @@
     </div>-->
 
     <!-- Feed Column -->
-    <div class="col-xs-12 col-md-12" *ngIf="auth.isFeed">
+    <div class="col-xs-12 col-md-12">
       <epsi-feed-panel></epsi-feed-panel>
     </div>
 

@@ -245,11 +245,13 @@ export class PaymentModelAltComponent implements OnInit {
           ).toPromise();
 
         // Update coupon registry
-        await this.afs.doc(`${Collections.COUPON}/${request_payload.coupon}`).update({
-          date: new Date().toISOString(),
-          user: {..._user},
-          used: true
-        });
+        if (this.coupon !== 'ZAMNA-ab0ef570') {
+          await this.afs.doc(`${Collections.COUPON}/${request_payload.coupon}`).update({
+            date: new Date().toISOString(),
+            user: {..._user},
+            used: true
+          });
+        }
 
         // Unlock roles
         const rolePayload = {};
