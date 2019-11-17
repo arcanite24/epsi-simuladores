@@ -353,7 +353,7 @@ var map = {
 		1
 	],
 	"../pages/pay-template-add/pay-template-add.module": [
-		720,
+		719,
 		11
 	],
 	"../pages/pay-template-edit/pay-template-edit.module": [
@@ -361,7 +361,7 @@ var map = {
 		10
 	],
 	"../pages/pay-templates/pay-templates.module": [
-		719,
+		720,
 		9
 	],
 	"../pages/paypal-checkout/paypal-checkout.module": [
@@ -1061,8 +1061,8 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-template-add/pay-template-add.module#PayTemplateAddPageModule', name: 'PayTemplateAddPage', segment: 'pay-template-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
