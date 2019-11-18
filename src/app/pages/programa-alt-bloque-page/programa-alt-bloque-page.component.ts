@@ -61,11 +61,6 @@ export class ProgramaAltBloquePageComponent implements OnInit {
               this.contentIds = sortBy(temas, 'sortIndex').map(t => t.event || 'NULL');
             }), map(temas => sortBy(temas, 'sortIndex')
               .filter(t => !t.ignoreOnSmartCalendar)
-              .filter(t => {
-                if (this.auth.isPresencial) { return false; }
-                if (this.auth.isPremium2019) { return true; }
-                return t.liberadoInPrograma;
-              })
             ));
         })
       );

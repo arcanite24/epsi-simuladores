@@ -120,14 +120,14 @@
     <div class="col-xs-12 col-md-8">
 
       <!-- Programa Panel Alt -->
-      <epsi-programa-panel-alt *ngIf="auth.isPremium2020"></epsi-programa-panel-alt>
+      <epsi-programa-panel-alt></epsi-programa-panel-alt>
 
       <!-- Programa Panel -->
       <!-- <epsi-programa-panel *ngIf="auth.isAdmin"></epsi-programa-panel> -->
 
       <!-- Calendar Panel -->
-      <epsi-calendar-panel *ngIf="!auth.isAdmin"></epsi-calendar-panel>
-      <epsi-smart-calendar-panel *ngIf="!auth.user.noCalendar"></epsi-smart-calendar-panel>
+      <!-- <epsi-calendar-panel *ngIf="!auth.isAdmin"></epsi-calendar-panel> -->
+      <epsi-smart-calendar-panel *ngIf="auth.user && !auth.user.noCalendar"></epsi-smart-calendar-panel>
       <epsi-panel *ngIf="auth.user && auth.user.noCalendar">
         <div class="container">
           <div class="row">

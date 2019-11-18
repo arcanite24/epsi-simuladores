@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 import { Post, Collections } from 'src/app/app.models';
 import { ToastrService } from 'ngx-toastr';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-feed-panel',
@@ -20,11 +21,12 @@ export class FeedPanelComponent implements OnInit {
     user: null,
     image: null,
     likes: [[]]
-  })
+  });
 
-  public posts$: Observable<Post[]>
+  public posts$: Observable<Post[]>;
 
   constructor(
+    public pay: PaymentService,
     private fb: FormBuilder,
     private afs: AngularFirestore,
     private auth: AuthService,
@@ -34,28 +36,28 @@ export class FeedPanelComponent implements OnInit {
   ngOnInit() {
 
     this.auth.user$.subscribe(user => {
-      if (!user) return
-      this.postForm.patchValue({user})
-    })
+      if (!user) { return; }
+      this.postForm.patchValue({user});
+    });
 
-    this.posts$ = this.afs.collection<Post>(Collections.POST, ref => ref.orderBy('date', 'desc')).valueChanges()
+    this.posts$ = this.afs.collection<Post>(Collections.POST, ref => ref.orderBy('date', 'desc')).valueChanges();
 
   }
 
   imageUploaded(url: string) {
-    this.postForm.patchValue({image: url})
+    this.postForm.patchValue({image: url});
   }
 
   async submitForm(post: Post) {
 
-    this.postForm.patchValue({date: new Date().toISOString()})
+    this.postForm.patchValue({date: new Date().toISOString()});
 
     if (this.postForm.valid) {
-      await this.afs.doc(`${Collections.POST}/${post.id}`).set({...post})
-      this.toastr.success('Post creado correctamente.')
-      this.postForm.reset()
+      await this.afs.doc(`${Collections.POST}/${post.id}`).set({...post});
+      this.toastr.success('Post creado correctamente.');
+      this.postForm.reset();
     } else {
-      this.toastr.error('Por favor ingresa infromación válida...')
+      this.toastr.error('Por favor ingresa infromación válida...');
     }
 
   }

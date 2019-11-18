@@ -8,78 +8,35 @@
     <div class="col-md-12">
       <h5 class="m-0 mb-1">¿Es Premium?</h5>
       <button [disabled]="l" (click)="modifyUserRoles(premiumModel, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isPremium">Dar Premium
+              *ngIf="!user.isPremium2020">Dar Premium 2020
       </button>
       <button [disabled]="l" (click)="modifyUserRoles(premiumModel, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isPremium">Quitar Premium
+              *ngIf="user.isPremium2020">Quitar Premium 2020
       </button>
       <hr>
     </div>
 
     <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es Esencial?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isEsencial">Dar Esencial
+      <h5 class="m-0 mb-1">¿Es Light?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles(lightModel, true)" class="btn btn-success" type="button"
+              *ngIf="!user.isLight2020">Dar Light 2020
       </button>
-      <button [disabled]="l" (click)="modifyUserRoles(esencialModel, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isEsencial">Quitar Esencial
-      </button>
-      <hr>
-    </div>
-
-    <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es Admin?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(adminModel, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isAdmin">Dar Admin
-      </button>
-      <button [disabled]="l" (click)="modifyUserRoles(adminModel, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isAdmin">Quitar Admin
+      <button [disabled]="l" (click)="modifyUserRoles(lightModel, false)" class="btn btn-danger" type="button"
+              *ngIf="user.isLight2020">Quitar Light 2020
       </button>
       <hr>
     </div>
 
-    <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es Presencial?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(presencialModel, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isPresencial">Dar Presencial
-      </button>
-      <button [disabled]="l" (click)="modifyUserRoles(presencialModel, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isPresencial">Quitar Presencial
-      </button>
-      <hr>
-    </div>
+    <hr>
 
-    <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es PIT?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isTemprano">Dar PIT
+    <div class="col-md-12" *ngFor="let role of roles">
+      <h5 class="m-0 mb-1">¿Es {{ role[0] }}?</h5>
+      <button [disabled]="l" (click)="modifyUserRoles([roles[1]], true)" class="btn btn-success" type="button"
+              *ngIf="!user[role[1]]">Dar {{ role[0] }}
       </button>
-      <button [disabled]="l" (click)="modifyUserRoles(tempranoModel, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isTemprano">Quitar PIT
+      <button [disabled]="l" (click)="modifyUserRoles([roles[1]], false)" class="btn btn-danger" type="button"
+              *ngIf="user[role[1]]">Quitar {{ role[0] }}
       </button>
-      <hr>
-    </div>
-
-    <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es Premium 2019?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(premium2019Model, true)" class="btn btn-success" type="button"
-              *ngIf="!user.isPremium2019">Dar Premium 2019
-      </button>
-      <button [disabled]="l" (click)="modifyUserRoles(premium2019Model, false)" class="btn btn-danger" type="button"
-              *ngIf="user.isPremium2019">Quitar Premium 2019
-      </button>
-      <hr>
-    </div>
-
-    <div class="col-md-12">
-      <h5 class="m-0 mb-1">¿Es Zamna 360 2019?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles(zamna360_2019Model, true)" class="btn btn-success" type="button"
-              *ngIf="!user.is3602019">Dar Zamná 360 2019
-      </button>
-      <button [disabled]="l" (click)="modifyUserRoles(zamna360_2019Model, false)" class="btn btn-danger" type="button"
-              *ngIf="user.is3602019">Quitar Zamná 360 2019
-      </button>
-      <hr>
     </div>
 
     <div class="col-md-12">

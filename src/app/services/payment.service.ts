@@ -4,7 +4,7 @@ import { functionsEndpoint, modularUrl } from '../app.config';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-declare var paypal
+declare var paypal;
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class PaymentService {
       amount,
       email,
       isProd
-    }).toPromise()
+    }).toPromise();
   }
 
   generatePaypalButton(el: string, amount: number, cb: (payment) => any) {
@@ -50,20 +50,45 @@ export class PaymentService {
               }
             ]
           }
-        })
+        });
       },
       onAuthorize: function(data, actions) {
         return actions.payment.execute().then(function(payment) {
-          cb(payment)
+          cb(payment);
         });
       },
-    }, el)
+    }, el);
   }
 
   checkIfLightRedirect() {
     if (!this.auth.isLight2020) {
       return this.router.navigate([modularUrl]);
     }
+  }
+
+  ifNotCompleteRedirect() {
+    if (!this.isComplete()) {
+      return this.redirectToPayment();
+    }
+  }
+
+  redirectToPayment() {
+    this.router.navigate([modularUrl]);
+  }
+
+  isComprado(): boolean {
+    if (this.auth.isLight2020) { return true; }
+    if (this.isComplete()) { return true; }
+    return false;
+  }
+
+  isComplete(): boolean {
+    if (this.auth.isPremium2020) { return true; }
+    if (this.auth.isMedicinaInterna2020) { return true; }
+    if (this.auth.isPediatria2020) { return true; }
+    if (this.auth.isGineco2020) { return true; }
+    if (this.auth.isUrgencias2020) { return true; }
+    return false;
   }
 
 }

@@ -19,17 +19,21 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 })
 export class UserRolesComponent implements OnInit {
 
-  @Input() public user: User
-  
-  public premiumModel: string[] = [ Roles.isPremium2020 ]
-  public esencialModel: string[] = EsencialModel
-  public adminModel: string[] = [ Roles.Admin ]
-  public tempranoModel: string[] = TempranoModel
-  public presencialModel: string[] = [ ...EsencialModel, Roles.Presencial, Roles.ZonaEnarm ]
-  public premium2019Model: string[] = Premium2019Model
-  public zamna360_2019Model: string[] = Zamna360_2019Model
+  @Input() public user: User;
 
-  public l: boolean = false
+  public premiumModel: string[] = [ Roles.isPremium2020 ];
+  public lightModel: string[] = [ Roles.isLight2020 ];
+
+  public esencialModel: string[] = EsencialModel;
+  public adminModel: string[] = [ Roles.Admin ];
+  public tempranoModel: string[] = TempranoModel;
+  public presencialModel: string[] = [ ...EsencialModel, Roles.Presencial, Roles.ZonaEnarm ];
+  public premium2019Model: string[] = Premium2019Model;
+  public zamna360_2019Model: string[] = Zamna360_2019Model;
+
+  public l = false;
+
+  public roles = Object.entries(Roles);
 
   constructor(
     private afs: AngularFirestore,
@@ -42,18 +46,18 @@ export class UserRolesComponent implements OnInit {
 
   async modifyUserRoles(roles: string[], newValue: boolean) {
 
-    if (!this.user) return
-    this.l = true
-    
+    if (!this.user) { return; }
+    this.l = true;
+
     // Build payload
-    let payload = {}
+    const payload = {};
     for (const role of roles) {
-      payload[role] = newValue
+      payload[role] = newValue;
     }
 
-    await this.afs.collection(Collections.USER).doc(this.user.uid).update(payload)
-    this.toastr.success('Roles cambios correctamente')
-    this.l = false
+    await this.afs.collection(Collections.USER).doc(this.user.uid).update(payload);
+    this.toastr.success('Roles cambios correctamente');
+    this.l = false;
 
   }
 

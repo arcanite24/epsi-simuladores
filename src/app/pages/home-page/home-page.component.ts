@@ -18,6 +18,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { DataService } from 'src/app/services/data.service';
 import moment from 'moment';
 import { environment } from 'src/environments/environment';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-home-page',
@@ -62,13 +63,18 @@ export class HomePageComponent implements OnInit {
     public auth: AuthService,
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
-    private data: DataService
+    private data: DataService,
+    private pay: PaymentService,
   ) { }
 
   ngOnInit() {
 
     /*this.buildModels();*/
     /* this.buildLists() */
+
+    if (!this.pay.isComprado()) {
+      return this.pay.redirectToPayment();
+    }
 
     this.auth.user$.subscribe(user => {
       if (user) {

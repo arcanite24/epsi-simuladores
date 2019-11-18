@@ -7,10 +7,13 @@ import { take, map } from 'rxjs/operators';
 import { combineLatest } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { PaymentService } from 'src/app/services/payment.service';
 const moment = require('moment');
 const countdown = require('countdown');
 countdown.setLabels(
+  // tslint:disable-next-line: max-line-length
 	' <small>milissegundo</small>| <small>segundo</small>| <small>minuto</small>| <small>hora</small>| <small>día</small>| <small>semana</small>| <small>mes</small>| <small>año</small>| <small>decada</small>| <small>siglo</small>| <small>milenio</small>',
+	// tslint:disable-next-line: max-line-length
 	' <small>milisegundos</small>| <small>segundos</small>| <small>minutos</small>| <small>horas</small>| <small>días</small>| <small>semanas</small>| <small>meses</small>| <small>años</small>| <small>décadas</small>| <small>siglos</small>| <small>milenios</small>',
 	' ',
 	' ',
@@ -41,6 +44,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     public auth: AuthService,
     public router: Router,
+    public payment: PaymentService,
     private afs: AngularFirestore,
     private data: DataService,
     private modal: NgxSmartModalService,
@@ -121,6 +125,7 @@ export class NavbarComponent implements OnInit {
               ${countdown(
                 moment(timer.date).toDate(),
                 null,
+                // tslint:disable-next-line: no-bitwise
                 ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
               ).toHTML('strong')}
             </div>`),
@@ -131,6 +136,14 @@ export class NavbarComponent implements OnInit {
 
   openTimerSelector() {
     this.modal.getModal('userTimeSelector').open();
+  }
+
+  openProfile() {
+    if (this.payment.isComprado()) {
+      this.router.navigate(['/profile']);
+    } else {
+      this.payment.redirectToPayment();
+    }
   }
 
   async setUserTimer(date: string) {

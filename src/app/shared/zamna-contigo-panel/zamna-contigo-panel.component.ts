@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-zamna-contigo-panel',
@@ -10,6 +11,7 @@ export class ZamnaContigoPanelComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    public pay: PaymentService,
   ) { }
 
   ngOnInit() {

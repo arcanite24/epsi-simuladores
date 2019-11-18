@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-feed-post-comments',
@@ -13,16 +14,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class FeedPostCommentsComponent implements OnInit {
 
-  @Input() public post: Post
-  @Output() public loaded: EventEmitter<number> = new EventEmitter()
+  @Input() public post: Post;
+  @Output() public loaded: EventEmitter<number> = new EventEmitter();
 
-  public comments$: Observable<PostComment[]>
-  public addForm: FormGroup
+  public comments$: Observable<PostComment[]>;
+  public addForm: FormGroup;
 
   constructor(
     private afs: AngularFirestore,
     public auth: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public pay: PaymentService,
   ) { }
 
   ngOnInit() {
@@ -31,7 +33,7 @@ export class FeedPostCommentsComponent implements OnInit {
       .valueChanges()
       .pipe(
         tap(comments => this.loaded.next(comments.length))
-      )
+      );
 
       this.addForm = this.fb.group({
         id: this.afs.createId(),
@@ -40,17 +42,21 @@ export class FeedPostCommentsComponent implements OnInit {
         date: new Date().toISOString(),
         user: null,
         likes: [[]]
-      })
+      });
 
   }
 
   async submitForm(comment: PostComment) {
 
-    this.addForm.patchValue({date: new Date().toISOString(), user: this.auth.user})
+    if (!this.pay.isComprado()) {
+      return;
+    }
+
+    this.addForm.patchValue({date: new Date().toISOString(), user: this.auth.user});
 
     if (this.addForm.valid) {
-      await this.afs.doc(`${Collections.POST_COMMENT}/${comment.id}`).set({...this.addForm.value})
-      this.addForm.reset({...comment, text: '', id: this.afs.createId()})
+      await this.afs.doc(`${Collections.POST_COMMENT}/${comment.id}`).set({...this.addForm.value});
+      this.addForm.reset({...comment, text: '', id: this.afs.createId()});
     }
 
   }

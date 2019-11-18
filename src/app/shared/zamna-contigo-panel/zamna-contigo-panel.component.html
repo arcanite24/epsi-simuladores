@@ -18,10 +18,10 @@
   <div class="container-fluid">
     <div class="row">
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isGalleries">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <img src="https://zamnademy.com/site/images/clients/infografia.png" class="zona-enarm-image mb-2">
         <epsi-tutorial-button tutorial="aAJhqc44b26QNbICJwCT"></epsi-tutorial-button>
-        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="infografiasModal.open()">Infografía</button>
+        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="pay.isComplete() ? infografiasModal.open() : null">Infografía</button>
       </div>
 
       <!-- <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isForum">
@@ -30,16 +30,16 @@
         <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="forumPanel.open()">Asesor</button>
       </div> -->
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isMedia">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <img src="assets/zamnademy/media.svg" class="zona-enarm-image mb-2">
         <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
-        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="mediaPanel.open()">GPC</button>
+        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="pay.isComplete() ? mediaPanel.open() : null">GPC</button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isSlides">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <img src="https://zamnademy.com/site/images/clients/presentacione.png" class="zona-enarm-image mb-2">
         <epsi-tutorial-button tutorial="8ZMWEmboGDjYyhR6Fmq1"></epsi-tutorial-button>
-        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="slidesModal.open()">Presentaciones</button>
+        <button class="btn btn-zamna-hollow btn-zamna-hollow-primary" (click)="pay.isComplete() ? slidesModal.open() : null">Presentaciones</button>
       </div>
 
       <div class="col-xs-12 col-md-3 manita flex flex-loader">

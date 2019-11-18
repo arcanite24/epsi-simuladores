@@ -19,5 +19,21 @@
       <epsi-user-coupons-panel></epsi-user-coupons-panel>
     </div>
 
+    <div class="col-xs-12" *ngIf="!isProd">
+      <ul *ngIf="auth.user as user">
+        <li>
+          <strong>isComprado: {{ pay.isComprado() }}</strong>
+        </li>
+        <li>
+          <strong>isComplete: {{ pay.isComplete() }}</strong>
+        </li>
+        <li *ngFor="let role of roles">
+          {{ role[0] }}: {{ user[role[1]] }}
+          <button class="btn btn-success" *ngIf="!user[role[1]]" (click)="setRole(user.uid, role[1], true)">Grant</button>
+          <button class="btn btn-danger" *ngIf="user[role[1]]" (click)="setRole(user.uid, role[1], false)">Revoke</button>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </div>

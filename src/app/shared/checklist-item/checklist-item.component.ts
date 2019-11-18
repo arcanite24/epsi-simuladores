@@ -3,6 +3,7 @@ import { Todo, User, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { take } from 'rxjs/operators';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-checklist-item',
@@ -18,13 +19,18 @@ export class ChecklistItemComponent implements OnInit {
 
   constructor(
     private afs: AngularFirestore,
-    private auth: AuthService
+    private auth: AuthService,
+    private payment: PaymentService,
   ) { }
 
   ngOnInit() {
   }
 
   async toggleCompleted(id: string) {
+
+    if (!this.payment.isComplete()) {
+      return this.payment.redirectToPayment();
+    }
 
     const userKey = `${Collections.USER}/${this.auth.user.uid}`;
     const _user = await this.afs.doc<User>(userKey).valueChanges().pipe(take(1)).toPromise();
@@ -42,7 +48,7 @@ export class ChecklistItemComponent implements OnInit {
       await this.afs.doc<Todo>(TODO_KEY).update({completed: todo.completed ? todo.completed + 1 : 1});
 
     } else {
-      if (completedTasks.length > 0) { completedTasks.splice(completedTasks.indexOf(id), 1) }
+      if (completedTasks.length > 0) { completedTasks.splice(completedTasks.indexOf(id), 1); }
       await this.afs.doc(userKey).update({completedTasks});
       this.toggled.next({id, oldValue: true});
     }

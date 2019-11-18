@@ -29,18 +29,22 @@ export class ContentItemComponent implements OnInit {
 
   get unlocked() {
 
-    if (!this.auth.loggedIn) { return false }
-    if (!this.item.roles) { return true }
-    if (this.item.roles.length <= 0) { return true }
+    if (!this.auth.loggedIn) { return false; }
+    // if (!this.item.roles) { return true; }
+    // if (this.item.roles.length <= 0) { return true; }
 
     const user = this.auth.user;
 
-    for (const role of this.item.roles) {
-      if (!user[role]) { return false }
-      if (user[role] === false) { return false }
+    if (this.item.name.includes('Temprano')) {
+      if (user.isLight2020) {  return true; }
+      if (user.isPremium2020) {  return true; }
     }
 
-    return true;
+    for (const role of this.item.roles) {
+      if (user[role]) { return true; }
+    }
+
+    return false;
 
   }
 

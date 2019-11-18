@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-zona-enarm-panel',
@@ -9,16 +10,18 @@ import {AuthService} from '../../services/auth.service';
 export class ZonaEnarmPanelComponent implements OnInit {
 
   constructor(
-    public auth: AuthService
+    public auth: AuthService,
+    public pay: PaymentService,
   ) { }
 
   ngOnInit() {
   }
 
   isBlur() {
-    if (this.auth.isAdmin) { return false; }
-    if (this.auth.isPremium2020) { return false; }
-    return true;
+    return false;
+    // if (this.auth.isAdmin) { return false; }
+    // if (this.auth.isPremium2020) { return false; }
+    // return true;
   }
 
 }

@@ -29,6 +29,10 @@ export class SimuladoresPanelComponent implements OnInit {
 
     this.auth.user$.subscribe(async user => {
 
+      if (!user) {
+        return;
+      }
+
       let isPresencial = false;
       // if (user.is3602019) { isPresencial = true; }
       // if (user.isPresencial) { isPresencial = true; }

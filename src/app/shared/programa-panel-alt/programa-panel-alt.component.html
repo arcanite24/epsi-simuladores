@@ -1,15 +1,24 @@
-<epsi-panel title="Mi Curso" img="assets/zamnademy/Especialidades2.png" tutorial="HGjl35AJyhv0vMGf0grL" [showContent]="false">
-
+<epsi-panel
+  title="Mi Curso"
+  img="assets/zamnademy/Especialidades2.png"
+  tutorial="HGjl35AJyhv0vMGf0grL"
+  [showContent]="false"
+>
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
 
-  <div class="epsi-content-carousel flex flex-row" *ngIf="content$ | async as content else loader">
-
+  <div
+    class="epsi-content-carousel flex flex-row"
+    *ngIf="content else loader"
+  >
     <div class="content-carousel-item" *ngFor="let item of content">
-      <epsi-content-item *ngIf="isLiberado(item)" [isPrograma]="true" [item]="item" [blur]="isBlur(item.name)"></epsi-content-item>
+      <epsi-content-item
+        *ngIf="isLiberado(item)"
+        [isPrograma]="true"
+        [item]="item"
+        [blur]="isBlur(item.name)"
+      ></epsi-content-item>
     </div>
-
   </div>
-
 </epsi-panel>

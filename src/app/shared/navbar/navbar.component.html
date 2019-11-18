@@ -22,26 +22,26 @@
   <span (click)="router.navigate(['/home'])"><strong>ZAMNA</strong>demy</span>
   <div class="ml-2 navbar-timer" *ngIf="userTimer" [innerHTML]="userTimerLabel"></div>
   <div class="ml-2 navbar-timer" *ngIf="timerLabel" [innerHTML]="timerLabel"></div>
-  <div class="ml-2 navbar-timer" *ngIf="!userTimer">
+  <div class="ml-2 navbar-timer" *ngIf="!userTimer && payment.isComplete()">
     <input type="text" class="form-control" placeholder="Cuando es tu examen?" (focus)="openTimerSelector()">
   </div>
 
   <div class="navbar-user-info flex-center" *ngIf="auth.loggedIn">
 
     <div class="w-100 flex flex-row flex-start align-center mb-3">
-      <span (click)="router.navigate(['/profile'])" class="manita">{{auth.user.displayName}}</span>
-      <img [src]="auth.user.photoURL" (click)="router.navigate(['/profile'])" class="manita">
+      <span (click)="openProfile()" class="manita">{{auth.user.displayName}}</span>
+      <img [src]="auth.user.photoURL" (click)="openProfile()" class="manita">
       <button (click)="router.navigate(['/admin'])" class="navbar-action flex-loader" *ngIf="auth.isAdmin">
         <i class="fa fa-unlock"></i>
       </button>
 
-      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019"
+      <button *ngIf="payment.isComplete()"
         (click)="notisModal.open()" class="navbar-action">
         <i class="fa fa-bell"></i>
         <span class="badge badge-danger" *ngIf="notReadCount > 0">{{notReadCount | number}}</span>
       </button>
 
-      <button *ngIf="auth.isEsencial || auth.isPremium|| auth.isZamna360_2019 || auth.isPremium2019"
+      <button *ngIf="payment.isComplete()"
         (click)="router.navigate(['/notes'])" class="navbar-action">
         <i class="fa fa-sticky-note"></i>
       </button>
@@ -52,8 +52,8 @@
     </div>
 
     <div class="navbar-actions flex flex-row flex-center">
-      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/results' ]">Mis Resultados</a>
-      <a *ngIf="auth.isEsencial || auth.isPremium || auth.isZamna360_2019 || auth.isPremium2019" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/profile' ]">Mi Estadística</a>
+      <a *ngIf="payment.isComplete()" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/results' ]">Mis Resultados</a>
+      <a *ngIf="payment.isComplete()" class="btn btn-secondary mr-2 btn-zamna-hollow btn-zamna-hollow-primary w-100" [routerLink]="[ '/profile' ]">Mi Estadística</a>
     </div>
 
   </div>

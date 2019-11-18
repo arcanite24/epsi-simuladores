@@ -9,6 +9,7 @@ import { LoadingBarService } from '@ngx-loading-bar/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { PaymentService } from 'src/app/services/payment.service';
 const twix = require('twix');
 
 @Component({
@@ -18,7 +19,7 @@ const twix = require('twix');
 })
 export class PlanSelectorPanelComponent implements OnInit {
 
-  public step: string = 'mode_selector';
+  public step = 'mode_selector';
   public mode: string;
   public finishDate: NgbDate;
 
@@ -38,17 +39,23 @@ export class PlanSelectorPanelComponent implements OnInit {
     private loadingBar: LoadingBarService,
     private afs: AngularFirestore,
     private auth: AuthService,
-    private modal: NgxSmartModalService
+    private modal: NgxSmartModalService,
+    private pay: PaymentService,
   ) { }
 
   ngOnInit() {
   }
 
   setMode(mode: string) {
+
+    if (!this.pay.isComplete()) {
+      this.pay.redirectToPayment();
+    }
+
     this.mode = mode;
-    if (mode == 'ignore') { return this.setIgnoreMode(); }
-    if (mode == 'date_order') { this.modal.getModal('dateSelector').open() }
-    if (mode == 'only_date') { this.modal.getModal('dateSelector').open() }
+    if (mode === 'ignore') { return this.setIgnoreMode(); }
+    if (mode === 'date_order') { this.modal.getModal('dateSelector').open(); }
+    if (mode === 'only_date') { this.modal.getModal('dateSelector').open(); }
   }
 
   async setIgnoreMode() {
@@ -64,8 +71,8 @@ export class PlanSelectorPanelComponent implements OnInit {
     const range = (moment() as any).twix(finish);
     console.log(finish);
 
-    if (!range.isValid()) { return this.toastr.error('Selecciona una fecha válida') }
-    if (range.isPast()) { return this.toastr.error('Selecciona una fecha válida') }
+    if (!range.isValid()) { return this.toastr.error('Selecciona una fecha válida'); }
+    if (range.isPast()) { return this.toastr.error('Selecciona una fecha válida'); }
     const dias = range.count('days');
     console.log('repartiendo contenido en', dias, 'dias');
 
