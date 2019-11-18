@@ -63,7 +63,7 @@ export class PaymentRequestDetailPageComponent implements OnInit, OnDestroy {
       if (r.coupon) { await this.afs.doc(`${Collections.COUPON}/${r.coupon}`).update({used: true, date: new Date().toISOString(), user}); }
       this.toastr.success('Tu pago ha sido verificado con éxito. Ya puedes acceder al contenido de la plataforma.');
       // this.router.navigate(['/home']);
-      location.reload();
+      location.href = '/home';
 
     } else {
 

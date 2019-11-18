@@ -209,9 +209,11 @@ export class PaymentModelAltComponent implements OnInit {
           return this.toastr.error('El cupón no es válido...');
         }
 
-        if (discount.used) {
-          this.loading = false;
-          return this.toastr.error('El cupón ya ha sido usado...');
+        if (environment.production) {
+          if (discount.used) {
+            this.loading = false;
+            return this.toastr.error('El cupón ya ha sido usado...');
+          }
         }
 
         request_payload.coupon = discount.id;
