@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 import { take, map } from 'rxjs/operators';
 import { flattenDeep } from 'lodash';
 import moment from 'moment';
+import uuid from 'uuid';
 
 @Component({
   selector: 'epsi-payment-model-alt',
@@ -263,6 +264,25 @@ export class PaymentModelAltComponent implements OnInit {
         }
 
         await this.afs.collection(Collections.USER).doc(user.uid).update(rolePayload);
+
+        // Grante user coupons
+        if (this.team > 1) {
+          const teamArr = new Array(this.team);
+          for (const i of teamArr) {
+
+            const coupon_payload = {
+              code: `ZAMNA-${uuid.v4()}`,
+              date: new Date().toISOString(),
+              used: false,
+              value: 100,
+              owner: user.uid,
+              id: this.afs.createId(),
+            };
+
+            await this.afs.collection(Collections.COUPON).doc(coupon_payload.id).set({ ...coupon_payload });
+
+          }
+        }
 
         // Set user sub
         await this.setUserSubscription(request_payload.subscription, user.uid);
