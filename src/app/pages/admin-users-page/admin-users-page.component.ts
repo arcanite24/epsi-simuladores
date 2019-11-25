@@ -37,7 +37,7 @@ export class AdminUsersPageComponent implements OnInit {
 
   public config: CrudTableConfig<User> = {
     collection: Collections.USER,
-    dataSource: from(this.data.getCollectionAlt<User>(Collections.USER)),
+    // dataSource: from(this.data.getCollectionAlt<User>(Collections.USER)),
     disableAdd: true,
     pk: 'uid',
     fullEdit: true,
@@ -45,47 +45,42 @@ export class AdminUsersPageComponent implements OnInit {
       {field: 'displayName', type: 'text', label: 'Nombre', noEdit: true},
       {field: 'email', type: 'email', label: 'Email', noEdit: true},
       {field: 'universidad', type: 'text', label: 'Universidad'},
-      {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => {
-        if (!row.photoURL) { return '-' }
-        if (row.photoURL.includes('api.zamna')) { return '-' }
-        return `<img src="${row.photoURL}" style="width:32px">`;
-      }, noEdit: true},
-      {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
+      // {field: 'photoURL', type: 'text', label: 'Foto', customHTML: (row, i) => {
+      //   if (!row.photoURL) { return '-'; }
+      //   if (row.photoURL.includes('api.zamna')) { return '-'; }
+      //   return `<img src="${row.photoURL}" style="width:32px">`;
+      // }, noEdit: true},
+      // {field: 'check', type: 'checkbox', customHTML: row => row.check ? '<i class="fa fa-check" style="color:green"><i>' : ''},
       {field: 'roles', type: 'text', noEdit: true, customRender: row => `
         ${row.isAdmin ? 'isAdmin ' : ''}
-        ${row.isEsencial ? 'isEsencial ' : ''}
-        ${row.isTemprano ? 'isTemprano ' : ''}
-        ${row.isPresencial ? 'isPresencial ' : ''}
-        ${row.isEsencial360 ? 'isEsencial360 ' : ''}
-        ${row.isPremium360 ? 'isPremium360 ' : ''}
-        ${row.isPremium2019 ? 'isPremium2019 ' : ''}
-        ${row.is3602019 ? 'is3602019 ' : ''}
+        ${row.isPremium2020 ? 'isPremium2020 ' : ''}
+        ${row.isLight2020 ? 'isLight2020 ' : ''}
       `},
-      {field: 'isAdmin', type: 'checkbox', hideOnTable: true},
-      {field: 'isEsencial', type: 'checkbox', hideOnTable: true},
-      {field: 'isPremium', type: 'checkbox', hideOnTable: true},
-      {field: 'isTemprano', type: 'checkbox', hideOnTable: true},
-      {field: 'isPremium2019', type: 'checkbox', hideOnTable: true},
-      {field: 'is3602019', type: 'checkbox', hideOnTable: true},
-      {field: 'isEsencial360', type: 'checkbox', hideOnTable: true},
-      {field: 'isPresencial', type: 'checkbox', hideOnTable: true},
-      {field: 'isContent', type: 'checkbox', hideOnTable: true},
-      {field: 'isChecklist', type: 'checkbox', hideOnTable: true},
-      {field: 'isCalendar', type: 'checkbox', hideOnTable: true},
-      {field: 'isSmartCalendar', type: 'checkbox', hideOnTable: true},
-      {field: 'isTopUsers', type: 'checkbox', hideOnTable: true},
-      {field: 'isGalleries', type: 'checkbox', hideOnTable: true},
-      {field: 'isSimuladores', type: 'checkbox', hideOnTable: true},
-      {field: 'isForum', type: 'checkbox', hideOnTable: true},
-      {field: 'isStreaming', type: 'checkbox', hideOnTable: true},
-      {field: 'isMedia', type: 'checkbox', hideOnTable: true},
-      {field: 'isSlides', type: 'checkbox', hideOnTable: true},
-      {field: 'isSimulacros', type: 'checkbox', hideOnTable: true},
-      {field: 'isFeed', type: 'checkbox', hideOnTable: true},
-      {field: 'isPrograma', type: 'checkbox', hideOnTable: true},
-      {field: 'isPool', type: 'checkbox', hideOnTable: true},
-      {field: 'isTagPool', type: 'checkbox', hideOnTable: true},
-      {field: 'isZonaEnarm', type: 'checkbox', hideOnTable: true},
+      // {field: 'isAdmin', type: 'checkbox', hideOnTable: true},
+      // {field: 'isEsencial', type: 'checkbox', hideOnTable: true},
+      // {field: 'isPremium', type: 'checkbox', hideOnTable: true},
+      // {field: 'isTemprano', type: 'checkbox', hideOnTable: true},
+      // {field: 'isPremium2019', type: 'checkbox', hideOnTable: true},
+      // {field: 'is3602019', type: 'checkbox', hideOnTable: true},
+      // {field: 'isEsencial360', type: 'checkbox', hideOnTable: true},
+      // {field: 'isPresencial', type: 'checkbox', hideOnTable: true},
+      // {field: 'isContent', type: 'checkbox', hideOnTable: true},
+      // {field: 'isChecklist', type: 'checkbox', hideOnTable: true},
+      // {field: 'isCalendar', type: 'checkbox', hideOnTable: true},
+      // {field: 'isSmartCalendar', type: 'checkbox', hideOnTable: true},
+      // {field: 'isTopUsers', type: 'checkbox', hideOnTable: true},
+      // {field: 'isGalleries', type: 'checkbox', hideOnTable: true},
+      // {field: 'isSimuladores', type: 'checkbox', hideOnTable: true},
+      // {field: 'isForum', type: 'checkbox', hideOnTable: true},
+      // {field: 'isStreaming', type: 'checkbox', hideOnTable: true},
+      // {field: 'isMedia', type: 'checkbox', hideOnTable: true},
+      // {field: 'isSlides', type: 'checkbox', hideOnTable: true},
+      // {field: 'isSimulacros', type: 'checkbox', hideOnTable: true},
+      // {field: 'isFeed', type: 'checkbox', hideOnTable: true},
+      // {field: 'isPrograma', type: 'checkbox', hideOnTable: true},
+      // {field: 'isPool', type: 'checkbox', hideOnTable: true},
+      // {field: 'isTagPool', type: 'checkbox', hideOnTable: true},
+      // {field: 'isZonaEnarm', type: 'checkbox', hideOnTable: true},
 
     ],
     customActions: [
@@ -140,13 +135,13 @@ export class AdminUsersPageComponent implements OnInit {
     }));
     const exportedFilenmae = `zamnademy-users-${Date.now()}.csv`;
 
-    let blob = new Blob([csv], { type: 'text/csvcharset=utf-8' });
+    const blob = new Blob([csv], { type: 'text/csvcharset=utf-8' });
     if (navigator.msSaveBlob) {
         navigator.msSaveBlob(blob, exportedFilenmae);
     } else {
         const link = document.createElement('a');
         if (link.download !== undefined) {
-            let url = URL.createObjectURL(blob);
+            const url = URL.createObjectURL(blob);
             link.setAttribute('href', url);
             link.setAttribute('download', exportedFilenmae);
             link.style.visibility = 'hidden';

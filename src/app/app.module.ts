@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
@@ -17,16 +17,16 @@ import { NgbRatingModule, NgbTimepickerModule, NgbCarouselModule, NgbTypeaheadMo
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgxGalleryModule } from 'ngx-gallery';
-import { TagInputModule } from 'ngx-chips'
-import { NgxChartsModule } from '@swimlane/ngx-charts'
-import { MomentModule } from 'ngx-moment'
-import { SelectDropDownModule } from 'ngx-select-dropdown'
+import { TagInputModule } from 'ngx-chips';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MomentModule } from 'ngx-moment';
+import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import localeEs from '@angular/common/locales/es';
 import { Angular2CsvModule } from 'angular2-csv';
 
-registerLocaleData(localeEs)
+registerLocaleData(localeEs);
 
 // Store
 import {ActionReducer, MetaReducer, StoreModule} from '@ngrx/store';
@@ -214,6 +214,8 @@ import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.compon
 import { PaymentModelAltComponent } from './shared/payment-model-alt/payment-model-alt.component';
 import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-alt.component';
 import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.component';
+import { AdminDatabaseComponent } from './pages/admin-database/admin-database.component';
+import { zamnaReducer } from './reducers/zamnademy.reducer';
 
 @NgModule({
   declarations: [
@@ -388,6 +390,7 @@ import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.compone
     PaymentModelAltComponent,
     PaymentPageAltComponent,
     ZamnaToggleComponent,
+    AdminDatabaseComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -421,7 +424,8 @@ import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.compone
     }),
     NgxGalleryModule,
     StoreModule.forRoot({
-      exam: examReducer
+      exam: examReducer,
+      zamna: zamnaReducer,
     }/*, {
       metaReducers
     }*/),

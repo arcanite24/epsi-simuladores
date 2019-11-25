@@ -11,24 +11,26 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CrudTableFullEditComponent implements OnInit {
 
-  @Input() public edit: boolean = false
-  @Input() public config: CrudTableFullEditConfig
-  @Input() public row: any
-  @Input() public i: number = -1
+  @Input() public edit = false;
+  @Input() public config: CrudTableFullEditConfig;
+  @Input() public row: any;
+  @Input() public i = -1;
 
   @Input()
-  public set newRow(row) { 
-    this.cacheEdit = { ...row }; 
-    this.row = { ...row }
-    this.oldItem = {...row}
+  public set newRow(row) {
+    this.cacheEdit = { ...row };
+    this.row = { ...row };
+    this.oldItem = {...row};
     console.log(row);
-    
-  }
-  public get newRow() { return this.cacheEdit }
 
-  public cacheEdit: any = {}
-  public radioCache: any = {}
-  public oldItem: any
+  }
+  public get newRow() { return this.cacheEdit; }
+
+  public cacheEdit: any = {};
+  public radioCache: any = {};
+  public oldItem: any;
+
+  public showJson = false;
 
   public customEdits: string[] = [
     'checkbox',
@@ -38,7 +40,7 @@ export class CrudTableFullEditComponent implements OnInit {
     'select_multiple',
     'textarea',
     'array'
-  ]
+  ];
 
   constructor(
     public sanitizer: DomSanitizer,
@@ -47,64 +49,64 @@ export class CrudTableFullEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //this.cacheEdit = {...this.row}
+    // this.cacheEdit = {...this.row}
   }
 
   public get instructions() {
-    if (!this.config) return ''
-    if (!this.config.modelConfig) return ''
-    if (!this.config.modelConfig.instructions) return ''
-    return this.sanitizer.bypassSecurityTrustHtml(this.config.modelConfig.instructions)
+    if (!this.config) { return ''; }
+    if (!this.config.modelConfig) { return ''; }
+    if (!this.config.modelConfig.instructions) { return ''; }
+    return this.sanitizer.bypassSecurityTrustHtml(this.config.modelConfig.instructions);
   }
 
   saveChanges() {
 
-    const pk = this.config.modelConfig.pk ? this.config.modelConfig.pk : 'id'
+    const pk = this.config.modelConfig.pk ? this.config.modelConfig.pk : 'id';
 
     // select_multiple formatting
     this.config.modelConfig.headers.filter(h => h.type == 'select_multiple').forEach(field => {
 
-    })
+    });
 
     this.afs.collection(this.config.modelConfig.collection).doc(this.row[pk]).set(this.cacheEdit, {merge: true}).then(() => {
 
       // Callback
-      if (this.config.modelConfig.postEdit) this.config.modelConfig.postEdit(this.cacheEdit, this.oldItem)
+      if (this.config.modelConfig.postEdit) { this.config.modelConfig.postEdit(this.cacheEdit, this.oldItem); }
 
       // Clean cache
-      this.cacheEdit = {}
+      this.cacheEdit = {};
 
       // Close modal
-      this.modal.getModal('fullEditModal').close()
+      this.modal.getModal('fullEditModal').close();
 
-    })
+    });
   }
 
   onChangeCheckbox(field: CrudTableHeader, options: any[]) {
-    this.cacheEdit[field.field] = options.filter(opt => opt.selected)
+    this.cacheEdit[field.field] = options.filter(opt => opt.selected);
   }
 
   // TODO: Checar si funciona bien esta wea, al parecer hay bugs cuando hay solo 1 elemento
   isChecked(option: any, values: any[]): boolean {
 
-    if (!values) return false
-    if (option.selected) return true
+    if (!values) { return false; }
+    if (option.selected) { return true; }
 
     // string
     if (typeof option == 'string') {
-      return values.indexOf(option) >= 0
+      return values.indexOf(option) >= 0;
     } else if (typeof option == 'object') {
       // TODO: Implementar que se pueda escoger otra primary key que no sea 'id'
-      return values.map(v => v.id).indexOf(option.id) >= 0
+      return values.map(v => v.id).indexOf(option.id) >= 0;
     } else {
-      return false
+      return false;
     }
 
   }
 
   isCheckedRadio(option: any, value: any): boolean {
-    if (!value) return false
-    return typeof option == 'string' ? option == value : option.id == value.id
+    if (!value) { return false; }
+    return typeof option == 'string' ? option == value : option.id == value.id;
   }
 
 }

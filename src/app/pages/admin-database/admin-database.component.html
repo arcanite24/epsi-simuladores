@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-3">
+      <epsi-panel title="Collections">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let c of Collections">
+            <strong>{{ c[0] }}: </strong>{{ c[1] }} <br>
+            <button class="btn btn-primary" (click)="syncCollection(c[0], c[1])" [disabled]="l">Sync</button>
+          </li>
+        </ul>
+      </epsi-panel>
+    </div>
+
+    <div class="col-md-3">
+      <epsi-panel title="DB Sync">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let sync of dbSync$ | async">
+            <strong>{{ sync.collection }}: </strong><br>
+            <span>Total: {{ sync.total }}</span>
+          </li>
+        </ul>
+      </epsi-panel>
+    </div>
+
+    <div class="col-md-3">
+      <epsi-panel title="Config">
+        <div class="row">
+
+          <div class="col-md-12">
+            <p>{{ message }}</p>
+          </div>
+
+          <div class="col-md-12">
+            <button class="btn btn-primary" (click)="setDefaultSync()" [disabled]="l">Set Default DB Sync</button>
+          </div>
+
+        </div>
+      </epsi-panel>
+    </div>
+
+  </div>
+</div>

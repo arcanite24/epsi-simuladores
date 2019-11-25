@@ -19,7 +19,8 @@
     "firebase-functions": "^2.1.0",
     "mercadopago": "^1.0.22",
     "moment": "^2.24.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.2",
+    "@google-cloud/firestore": "^1.2.0"
   },
   "devDependencies": {
     "tslint": "~5.8.0",

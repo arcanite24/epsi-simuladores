@@ -4,6 +4,10 @@ import { Todo, Collections, User } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.state';
+import { take } from 'rxjs/operators';
+import { LoadChecklist } from 'src/app/reducers/zamnademy.reducer';
 
 @Component({
   selector: 'epsi-checklist-panel',
@@ -12,23 +16,54 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class ChecklistPanelComponent implements OnInit {
 
-  public checklist$: Observable<Todo[]> = this.afs.collection<Todo>(Collections.TODO, ref => ref.orderBy('sortIndex')).valueChanges()
-  public completedTasks: string[] = []
+  public checklist: Todo[];
+  public completedTasks: string[] = [];
 
   constructor(
     private afs: AngularFirestore,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private store: Store<AppState>,
   ) { }
 
   ngOnInit() {
+
+    this.loadCheckList();
 
     this.afAuth.user.subscribe(user => {
       if (user) {
         this.afs.doc<User>(`${Collections.USER}/${user.uid}`)
           .valueChanges()
-          .subscribe(user => this.completedTasks = user.completedTasks ? user.completedTasks : [])
+          .subscribe(u => this.completedTasks = u.completedTasks ? u.completedTasks : []);
       }
-    })
+    });
+
+  }
+
+  async loadCheckList() {
+
+    const checklist = await this.store.select(store => store.zamna.checklist)
+      .pipe(take(1))
+      .toPromise();
+
+    if (!checklist) {
+      const todos = await this.getChecklist();
+      this.store.dispatch(new LoadChecklist(todos));
+      this.checklist = todos;
+    } else {
+      this.checklist = checklist;
+    }
+
+  }
+
+  async getChecklist() {
+
+    const checklist = await this.afs.collection<Todo>(Collections.TODO, ref => ref
+      .orderBy('sortIndex'))
+      .valueChanges()
+      .pipe(take(1))
+      .toPromise();
+
+    return checklist;
 
   }
 

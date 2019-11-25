@@ -4,7 +4,7 @@
     <epsi-loader type="checklist"></epsi-loader>
   </ng-template>
 
-  <div class="todo-list p-4" *ngIf="checklist$ | async as checklist else loader">
+  <div class="todo-list p-4" *ngIf="checklist else loader">
     <epsi-checklist-item *ngFor="let task of checklist" [todo]="task" [completed]="completedTasks.indexOf(task.id) >= 0"></epsi-checklist-item>
   </div>
 

@@ -65,6 +65,7 @@ import { AdminPdfComponent } from './pages/admin-pdf/admin-pdf.component';
 import { PdfDetailPageComponent } from './pages/pdf-detail-page/pdf-detail-page.component';
 import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.component';
 import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-alt.component';
+import { AdminDatabaseComponent } from './pages/admin-database/admin-database.component';
 
 const routes: Routes = [
 
@@ -109,6 +110,7 @@ const routes: Routes = [
 
   // Admin
   {canActivate: [AuthGuard, AdminGuard], path: 'admin', component: AdminPageComponent},
+  {canActivate: [AuthGuard, AdminGuard], path: 'admin/db', component: AdminDatabaseComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/users', component: AdminUsersPageComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/user/stats/:id', component: AdminUserStatsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content', component: AdminContentPageComponent},

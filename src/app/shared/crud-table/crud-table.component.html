@@ -63,16 +63,16 @@
           <app-storage-uploader *ngIf="field.type == 'image'"  (onFinish)="cacheEdit[field.field] = $event"></app-storage-uploader>
 
           <select class="form-control w-100" [(ngModel)]="cacheEdit[field.field]" *ngIf="(field.type == 'select' || field.type == 'select_alt') && field.selectData | async as options">
-            <option 
+            <option
               *ngFor="let option of options; let i = index"
               [selected]="cacheEdit[field.field] == field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
               [ngValue]="field.selectCustomValue ? field.selectCustomValue(row, i, option) : option[field.selectKey]"
             >{{option[field.selectLabel]}}</option>
           </select>
         </div>
-        
+
       </td>
-      
+
       <!-- Controls cell -->
       <td [hidden]="config.showControls == false" class="flex flex-row justify-end align-center">
         <button class="crud-table-button crud-table-button-clear crud-table-button-icon" *ngIf="!row.edit && !config.disableEdit" (click)="editRow(row)">
@@ -97,5 +97,20 @@
   </tbody>
 
 </table>
+
+<nav aria-label="Pagination" *ngIf="pages">
+  <small>Mostrando <strong>{{ perPage | number }}</strong> de <strong>{{ total }}</strong></small>
+  <ul class="pagination">
+    <li class="page-item">
+        <button class="page-link" [disabled]="currentPage <= 1" (click)="prevPage()">Anterior</button>
+    </li>
+    <li class="page-item active">
+      <a class="page-link">{{ currentPage }} / {{ pages.length }}</a>
+    </li>
+    <li class="page-item">
+      <button class="page-link" [disabled]="currentPage >= pages.length" (click)="nextPage()">Siguiente</button>
+    </li>
+  </ul>
+</nav>
 
 <!-- TODO: Fix el puto centrado del loadaer -->

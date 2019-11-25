@@ -22,6 +22,7 @@ export enum UnlockTags {
 }
 
 export enum Collections {
+  DatabaseSync = 'db-sync',
   // TODO: Add remaining collections
   USER = 'user',
   USER_STAT = 'user-stat',
@@ -732,4 +733,14 @@ export interface UserTimer {
   id: string;
   date: string;
   user: string;
+}
+
+export interface DatabaseSync {
+  id: string;
+  collection: string;
+  total: number;
+  last: string;
+  lastUpdate?: any;
+  lastCreate?: any;
+  lastDelete?: any;
 }

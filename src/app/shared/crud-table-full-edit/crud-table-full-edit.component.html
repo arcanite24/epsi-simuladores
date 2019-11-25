@@ -6,7 +6,9 @@
     </div>
 
     <div class="col-md-12" *ngIf="cacheEdit">
-      <pre>{{cacheEdit | json}}</pre>
+      <button class="btn btn-primary" *ngIf="!showJson" (click)="showJson = true">Show JSON</button>
+      <button class="btn btn-primary" *ngIf="showJson" (click)="showJson = false">Hide JSON</button>
+      <pre *ngIf="showJson">{{cacheEdit | json}}</pre>
     </div>
 
     <div class="col-md-12" *ngFor="let field of config.modelConfig.headers; let ii = index">
