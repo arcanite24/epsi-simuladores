@@ -17,6 +17,9 @@ export class AdminPageComponent implements OnInit {
   public rates: any[];
   public loading = false;
 
+  public l = false;
+  public usersConCompra = localStorage.getItem('usersConCompra');
+
   constructor(
     private data: DataService,
     private afs: AngularFirestore,
@@ -134,6 +137,31 @@ export class AdminPageComponent implements OnInit {
 
     this.loading = false;
     console.log(JSON.stringify(filteredUsers.map(u => u.email)));
+
+  }
+
+  async loadUserConCompra() {
+
+    this.l = true;
+
+    const users = await this.data.getCollectionAlt<User>(Collections.USER);
+    const conCompra = users.filter(user => {
+      if (user[Roles.Premium]) { return true; }
+      if (user[Roles.Premium2019]) { return true; }
+      if (user[Roles.isPremium2020]) { return true; }
+      if (user[Roles.isLight2020]) { return true; }
+      if (user[Roles.Esencial]) { return true; }
+      if (user[Roles.Temprano]) { return true; }
+      if (user[Roles.Zamna360_2019]) { return true; }
+      if (user[Roles.Esencial360]) { return true; }
+      if (user[Roles.Premium360]) { return true; }
+      if (user[Roles.Presencial]) { return true; }
+      return false;
+    });
+
+    this.usersConCompra = conCompra.length.toString();
+    localStorage.setItem('usersConCompra', this.usersConCompra);
+    this.l = false;
 
   }
 

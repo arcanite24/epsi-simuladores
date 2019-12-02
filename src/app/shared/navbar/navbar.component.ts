@@ -11,13 +11,11 @@ import { PaymentService } from 'src/app/services/payment.service';
 const moment = require('moment');
 const countdown = require('countdown');
 countdown.setLabels(
-  // tslint:disable-next-line: max-line-length
 	' <small>milissegundo</small>| <small>segundo</small>| <small>minuto</small>| <small>hora</small>| <small>día</small>| <small>semana</small>| <small>mes</small>| <small>año</small>| <small>decada</small>| <small>siglo</small>| <small>milenio</small>',
-	// tslint:disable-next-line: max-line-length
 	' <small>milisegundos</small>| <small>segundos</small>| <small>minutos</small>| <small>horas</small>| <small>días</small>| <small>semanas</small>| <small>meses</small>| <small>años</small>| <small>décadas</small>| <small>siglos</small>| <small>milenios</small>',
 	' ',
 	' ',
-	'ahora');
+  'ahora');
 moment.locale('es');
 require('moment-countdown');
 
@@ -95,18 +93,25 @@ export class NavbarComponent implements OnInit {
 
     if (user.subscription) {
       setInterval(
-        () =>
-          (this.timerLabel = `
+        () => {
+
+          const down = countdown(
+            moment(user.subscription).toDate(),
+            null,
+            // tslint:disable-next-line: no-bitwise
+            countdown.MONTHS | countdown.DAYS
+          );
+
+          this.timerLabel = `
             <div class="navbar-timer-label">
               <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;">
                 <small class="m-0 p-0">Finaliza tu suscripcion el:</small>
               </div>
-              ${countdown(
-                moment(user.subscription).toDate(),
-                null,
-                ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
-              ).toHTML('strong')}
-            </div>`),
+              ${down.months > 0 ? `<span>${down.months} <small>meses</small></span>` : null}
+              ${down.days > 0 ? `<span>${down.days} <small>días</small></span>` : null}
+            </div>`;
+
+        },
         1000
       );
     }
@@ -118,17 +123,25 @@ export class NavbarComponent implements OnInit {
     if (timer.date) {
       this.userTimer = timer;
       setInterval(
-        () =>
-          (this.userTimerLabel = `
+        () => {
+
+          const down = countdown(
+            moment(timer.date).toDate(),
+            null,
+            // tslint:disable-next-line: no-bitwise
+            countdown.MONTHS | countdown.DAYS
+          );
+
+          this.userTimerLabel = `
             <div class="navbar-timer-label">
-              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;"><small class="m-0 p-0">Fecha de tu examen</small></div>
-              ${countdown(
-                moment(timer.date).toDate(),
-                null,
-                // tslint:disable-next-line: no-bitwise
-                ~countdown.WEEKS & ~countdown.MILLISECONDS & ~countdown.SECONDS
-              ).toHTML('strong')}
-            </div>`),
+              <div class="flex-center" style="margin-bottom:-1rem;margin-top:-1rem;">
+                <small class="m-0 p-0">Fecha de tu examen:</small>
+              </div>
+              ${down.months > 0 ? `<span>${down.months} <small>meses</small></span>` : null}
+              ${down.days > 0 ? `<span>${down.days} <small>días</small></span>` : null}
+            </div>`;
+
+        },
         1000
       );
     }

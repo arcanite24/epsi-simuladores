@@ -39,21 +39,21 @@ export class AdminExamsComponent implements OnInit {
     postCreate: <Exam>(exam) => {
       // Register entity to HomeList
       console.log('adding new exam', exam.name, exam.type);
-      if (exam.type == ExamTypes.SIMULADOR) { this.stats
+      if (exam.type === ExamTypes.SIMULADOR) { this.stats
         .addToList(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}); }
-      if (exam.type == ExamTypes.SIMULACRO) { this.stats
+      if (exam.type === ExamTypes.SIMULACRO) { this.stats
         .addToList(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}); }
       this.openEdit(exam);
     },
     postEdit: (exam: Exam, oldItem: Exam) => {
 
       let old_list_id = HomeLists.SimuladoresList;
-      if (oldItem.type == ExamTypes.SIMULADOR) { old_list_id = HomeLists.SimuladoresList; }
-      if (oldItem.type == ExamTypes.SIMULACRO) { old_list_id = HomeLists.SimulacrosList; }
+      if (oldItem.type === ExamTypes.SIMULADOR) { old_list_id = HomeLists.SimuladoresList; }
+      if (oldItem.type === ExamTypes.SIMULACRO) { old_list_id = HomeLists.SimulacrosList; }
 
-      if (exam.type == ExamTypes.SIMULADOR) { this.stats
+      if (exam.type === ExamTypes.SIMULADOR) { this.stats
         .updateListEntry(HomeLists.SimuladoresList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem); }
-      if (exam.type == ExamTypes.SIMULACRO) { this.stats
+      if (exam.type === ExamTypes.SIMULACRO) { this.stats
         .updateListEntry(HomeLists.SimulacrosList, {id: exam.id, name: exam.name, type: exam.type}, old_list_id, oldItem); }
     },
     postDelete: (id: string) => {

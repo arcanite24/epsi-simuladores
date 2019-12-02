@@ -14,6 +14,7 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class SimuladoresPanelComponent implements OnInit {
 
+  @Input() public mode: 'all' | 'presencial' | 'light' = 'all';
   @Input() public showContent = false;
   public exams$: Observable<any[]>;
 
@@ -39,7 +40,7 @@ export class SimuladoresPanelComponent implements OnInit {
       if (user.isLight2020) { isPresencial = true; }
       if (user.isPremium2020) { isPresencial = false; }
 
-      if (user && !this.exams$) { this.loadExams(isPresencial, user); }
+      if (user && !this.exams$) { this.loadExams(isPresencial, user, this.mode); }
 
       if (user) {
         const _user = await this.data.getDoc<User>(Collections.USER, user.uid);
@@ -57,28 +58,41 @@ export class SimuladoresPanelComponent implements OnInit {
 
   }
 
-  loadExams(isPresencial: boolean = false, user: User) {
+  loadExams(isPresencial: boolean = false, user: User, mode: string) {
 
-    /*if (isPresencial) {*/
-    if (isPresencial) {
+    if (mode === 'all') {
+      if (isPresencial) {
+        this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+          .where('isLight', '==', true)
+          .where('type', '==', ExamTypes.SIMULADOR)
+          .where('date', '<=', moment().endOf('day').toISOString()))
+          .valueChanges()
+          .pipe(
+            /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
+            map(list => this.filterWithRoles(list.reverse(), user)),
+          );
+      } else {
+        this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+          .where('type', '==', ExamTypes.SIMULADOR)
+          .where('date', '<=', moment().endOf('day').toISOString()))
+          .valueChanges()
+          .pipe(
+            /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
+            map(list => this.filterWithRoles(list.filter(e => !e.isLight).reverse(), user)),
+          );
+      }
+    } else if (mode === 'presencial') {
+      this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+        .where('isPresencial', '==', true)
+        .where('type', '==', ExamTypes.SIMULADOR)
+        .where('date', '<=', moment().endOf('day').toISOString()))
+        .valueChanges();
+    } else if (mode === 'light') {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('isLight', '==', true)
         .where('type', '==', ExamTypes.SIMULADOR)
         .where('date', '<=', moment().endOf('day').toISOString()))
-        .valueChanges()
-        .pipe(
-          /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => this.filterWithRoles(list.reverse(), user)),
-        );
-    } else {
-      this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
-        .where('type', '==', ExamTypes.SIMULADOR)
-        .where('date', '<=', moment().endOf('day').toISOString()))
-        .valueChanges()
-        .pipe(
-          /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-          map(list => this.filterWithRoles(list.filter(e => !e.isLight).reverse(), user)),
-        );
+        .valueChanges();
     }
 
   }

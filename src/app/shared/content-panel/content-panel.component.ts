@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { Collections } from 'src/app/app.models';
+import { Collections, Content } from 'src/app/app.models';
 import { Observable } from 'rxjs';
 import { contentHierarchy } from 'src/app/app.config';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-content-panel',
@@ -18,13 +19,23 @@ export class ContentPanelComponent implements OnInit {
   public content$: Observable<Content[]>;
 
   constructor(
-    private afs: AngularFirestore,
     public auth: AuthService,
     public router: Router,
+    private afs: AngularFirestore,
+    private pay: PaymentService,
   ) { }
 
   ngOnInit() {
-    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref.where('type', '==', this.mainContent)).valueChanges();
+    this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
+      .where('type', '==', this.mainContent))
+      .valueChanges()
+      .pipe(map(content => content.filter(materia => {
+        if (materia.name.includes('Temprano')) {
+          return this.pay.isLight();
+        } else {
+          return true;
+        }
+      })));
   }
 
   public isBlur(name: string): boolean {

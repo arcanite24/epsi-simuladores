@@ -53,6 +53,7 @@ export class UserRolesComponent implements OnInit {
     const payload = {};
     for (const role of roles) {
       payload[role] = newValue;
+      this.user[role] = newValue;
     }
 
     await this.afs.collection(Collections.USER).doc(this.user.uid).update(payload);

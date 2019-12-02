@@ -2,6 +2,14 @@
   <epsi-simuladores-panel [showContent]="true"></epsi-simuladores-panel>
 </ngx-smart-modal>
 
+<ngx-smart-modal identifier="lightModal" #lightModal>
+  <epsi-simuladores-panel [showContent]="true" [mode]="'light'"></epsi-simuladores-panel>
+</ngx-smart-modal>
+
+<ngx-smart-modal identifier="presencialModal" #presencialModal>
+  <epsi-simuladores-panel [showContent]="true" [mode]="'presencial'"></epsi-simuladores-panel>
+</ngx-smart-modal>
+
 <ngx-smart-modal identifier="poolModal" #poolModal>
   <epsi-question-pool-panel [showContent]="true"></epsi-question-pool-panel>
 </ngx-smart-modal>
@@ -22,7 +30,7 @@
 >
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isPremium2020">
         <img
           src="https://zamnademy.com/site/images/clients/simuladordiario.png"
           class="zona-enarm-image mb-2"
@@ -34,7 +42,39 @@
           class="btn btn-zamna-hollow btn-zamna-hollow-primary"
           (click)="pay.isComplete() ? simuladoresModal.open() : null"
         >
-          MODO PRESENCIAL
+          EXAMENES
+        </button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isLight2020 && !auth.isPremium2020">
+        <img
+          src="https://zamnademy.com/site/images/clients/simuladordiario.png"
+          class="zona-enarm-image mb-2"
+        />
+        <epsi-tutorial-button
+          tutorial="aAJhqc44b26QNbICJwCT"
+        ></epsi-tutorial-button>
+        <button
+          class="btn btn-zamna-hollow btn-zamna-hollow-primary"
+          (click)="lightModal.open()"
+        >
+          EXAMENES LIGHT
+        </button>
+      </div>
+
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="auth.isPresencial">
+        <img
+          src="https://zamnademy.com/site/images/clients/simuladordiario.png"
+          class="zona-enarm-image mb-2"
+        />
+        <epsi-tutorial-button
+          tutorial="aAJhqc44b26QNbICJwCT"
+        ></epsi-tutorial-button>
+        <button
+          class="btn btn-zamna-hollow btn-zamna-hollow-primary"
+          (click)="presencialModal.open()"
+        >
+          EXAMENES PRESENCIALES
         </button>
       </div>
 
@@ -54,9 +94,7 @@
         </button>
       </div>
 
-      <div
-        class="col-xs-12 col-md-3 manita flex flex-loader"
-      >
+      <div class="col-xs-12 col-md-3 manita flex flex-loader">
         <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">
           Disponible el...
         </h4>

@@ -193,6 +193,8 @@ export class PaymentModelAltComponent implements OnInit {
       };
 
       let isFullCoupon = false;
+      let isTeam = false;
+      let cuponDoc: Coupon;
       let amount = 0;
 
       // Coupon validation
@@ -204,6 +206,12 @@ export class PaymentModelAltComponent implements OnInit {
             take(1),
             map(coupons => coupons[0])
           ).toPromise();
+
+        cuponDoc = discount;
+
+        if (discount.isTeam) {
+          isTeam = true;
+        }
 
         if (!discount) {
           this.loading = false;
@@ -238,6 +246,18 @@ export class PaymentModelAltComponent implements OnInit {
         pack: this.pack ? this.pack : null
       });
 
+      if (isTeam) {
+        if (this.meses !== cuponDoc.meses) {
+          return this.toastr.error(`Este cupon solo es valido para ${cuponDoc.meses}`);
+        }
+        if (this.mode !== cuponDoc.mode) {
+          return this.toastr.error(`Este cupon solo es valido para curso ${cuponDoc.mode}`);
+        }
+        if (this.team > 1) {
+          return this.toastr.error(`Este cupon solo es valido para curso individual`);
+        }
+      }
+
       if (isFullCoupon) {
 
         console.log({...user});
@@ -267,7 +287,7 @@ export class PaymentModelAltComponent implements OnInit {
 
         // Grante user coupons
         if (this.team > 1) {
-          const teamArr = new Array(this.team);
+          const teamArr = new Array(this.team - 1);
           for (const i of teamArr) {
 
             const coupon_payload = {
@@ -277,6 +297,10 @@ export class PaymentModelAltComponent implements OnInit {
               value: 100,
               owner: user.uid,
               id: this.afs.createId(),
+              meses: this.meses,
+              isTeam: true,
+              materias: this.materias,
+              mode: this.mode,
             };
 
             await this.afs.collection(Collections.COUPON).doc(coupon_payload.id).set({ ...coupon_payload });

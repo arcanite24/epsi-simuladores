@@ -91,4 +91,13 @@ export class PaymentService {
     return false;
   }
 
+  isLight(): boolean {
+    if (this.auth.isPremium2020) { return false; }
+    if (this.auth.isMedicinaInterna2020) { return false; }
+    if (this.auth.isPediatria2020) { return false; }
+    if (this.auth.isGineco2020) { return false; }
+    if (this.auth.isUrgencias2020) { return false; }
+    return this.auth.isLight2020;
+  }
+
 }

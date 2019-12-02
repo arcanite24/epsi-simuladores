@@ -164,7 +164,21 @@ export class PlanSelectorPanelComponent implements OnInit {
     let content = [];
 
     const _materias = await this.data.getCollectionQuery<Content>(Collections.CONTENT, ref => ref.where('type', '==', 'materia'));
-    const materias = _materias.filter(m => !m.name.includes('Temprano'));
+    let materias = [];
+
+    if (!this.auth.isPremium2020) {
+      if (this.auth.isLight2020) {
+        materias = _materias.filter(m => m.name.includes('Temprano'));
+      } else {
+        materias = _materias.filter(c => {
+          for (const role of c.roles) {
+            if (this.auth.user[role]) { return true; }
+          }
+        });
+      }
+    } else {
+      materias = _materias;
+    }
 
     for (const materia of materias) {
 

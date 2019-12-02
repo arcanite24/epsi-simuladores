@@ -640,6 +640,10 @@ export interface Coupon {
   used: boolean;
   value: number;
   owner?: string;
+  meses?: number;
+  isTeam?: boolean;
+  materias?: any;
+  mode?: string;
 }
 
 export interface Programa {

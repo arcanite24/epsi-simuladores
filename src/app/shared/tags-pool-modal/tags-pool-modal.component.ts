@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Tag, Collections, Question, Exam, ExamTypes, TagPool } from 'src/app/app.models';
+import { Tag, Collections, Question, Exam, ExamTypes, TagPool, Roles } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { DataService } from 'src/app/services/data.service';
+import { flattenDeep } from 'lodash';
 
 @Component({
   selector: 'epsi-tags-pool-modal',
@@ -12,57 +15,90 @@ import { Router } from '@angular/router';
 })
 export class TagsPoolModalComponent implements OnInit {
 
-  public loading: boolean = false
-  public tags$: Observable<Tag[]>
-  public pools$: Observable<TagPool[]> = this.afs.collection<TagPool>(Collections.TAG_POOL).valueChanges()
+  public loading = false;
+  public tags$: Observable<Tag[]>;
+  public pools$: Observable<TagPool[]> = this.afs.collection<TagPool>(Collections.TAG_POOL).valueChanges();
 
   constructor(
     private afs: AngularFirestore,
-    private router: Router
+    private router: Router,
+    private auth: AuthService,
+    private data: DataService,
   ) { }
 
   ngOnInit() {
-    this.tags$ = this.afs.collection<Tag>(Collections.TAG).valueChanges()
+    this.tags$ = this.afs.collection<Tag>(Collections.TAG).valueChanges();
   }
 
   async generateExam(allTags: Tag[]) {
 
-    if (this.loading) return
-    this.loading = true
+    if (this.loading) { return; }
+    this.loading = true;
 
-    const tags: string[] = allTags.filter(t => t.selected).map(t => t.value)
-    const questions: Question[] = await this.afs.collection<Question>(Collections.QUESTION)
-      .valueChanges()
-      .pipe(
-        take(1),
-        map(questions => {
-          return questions.filter(q => {
+    const tags: string[] = allTags.filter(t => t.selected).map(t => t.value);
 
-            if (!q.tags) return false
+    let exams: Exam[] = [];
 
-            for (const tag of q.tags) {
-              if (tags.indexOf(tag) >= 0) return true
-            }
-  
-            return false
+    if (this.auth.isPremium2020) {
+      exams = await this.data.getCollectionAlt<Exam>(Collections.EXAM);
+    } else {
+      if (this.auth.isLight2020) {
+        exams = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'isLight', '==', true);
+      } else {
+        if (this.auth.isMedicinaInterna2020) {
+          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isMedicinaInterna2020);
+          exams = [...exams, ...cache];
+        }
 
-          })
-        })
-      )
-      .toPromise()
+        if (this.auth.isPediatria2020) {
+          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isPediatria2020);
+          exams = [...exams, ...cache];
+        }
 
-      let exam: Exam = {
-        id: this.afs.createId(),
-        name: `Tags - ${Date.now()}`,
-        desc: '.',
-        type: ExamTypes.TAGS,
-        isTags: true,
-        questions
+        if (this.auth.isGineco2020) {
+          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isGineco2020);
+          exams = [...exams, ...cache];
+        }
+
+        if (this.auth.isCirugia2020) {
+          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isCirugia2020);
+          exams = [...exams, ...cache];
+        }
+
+        if (this.auth.isUrgencias2020) {
+          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isUrgencias2020);
+          exams = [...exams, ...cache];
+        }
       }
-  
-      await this.afs.doc(`${Collections.EXAM}/${exam.id}`).set({...exam})
-      await this.router.navigate(['/exam', exam.type, exam.id])
-      this.loading = false
+    }
+
+    let questions: Question[] = flattenDeep(exams
+      .map(e => e.questions)) as Question[];
+
+    questions = questions.filter(q => {
+
+      if (!q.tags) { return false; }
+
+      for (const tag of q.tags) {
+        if (tags.indexOf(tag) >= 0) { return true; }
+      }
+
+      return false;
+
+    });
+
+    const exam: Exam = {
+      id: this.afs.createId(),
+      name: `Tags - ${Date.now()}`,
+      desc: '.',
+      type: ExamTypes.TAGS,
+      isTags: true,
+      questions
+    };
+
+    await this.afs.doc(`${Collections.EXAM}/${exam.id}`).set({...exam});
+    await this.router.navigate(['/exam', exam.type, exam.id]);
+    this.loading = false;
 
   }
 
