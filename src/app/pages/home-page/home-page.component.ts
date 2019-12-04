@@ -57,7 +57,7 @@ export class HomePageComponent implements OnInit {
 
   public daily: Daily;
 
-  public showGlobalWarn = environment.production;
+  public showGlobalWarn = false;
 
   constructor(
     public auth: AuthService,
