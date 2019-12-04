@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { User, Collections, Roles } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
+import moment from 'moment';
 
 @Component({
   selector: 'epsi-admin-migration2020',
@@ -38,6 +39,7 @@ export class AdminMigration2020Component implements OnInit {
   async grantPremium() {
 
     const start = Date.now();
+    const subscription = moment().add(1, 'year').toISOString();
     this.loader = true;
 
     this.log.push({ date: new Date().toISOString(), text: 'Loading all users...' });
@@ -45,10 +47,12 @@ export class AdminMigration2020Component implements OnInit {
     this.log.push({ date: new Date().toISOString(), text: `Loaded ${users.length} users` });
 
     for (const user of users) {
-      await this.afs.collection(Collections.USER).doc(user.uid).update({
+      await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
         [Roles.isPremium2020]: true,
+        subscription,
       });
-      this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}` });
+      this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}
+        and subscription set to ${subscription}` });
     }
 
     const end = Date.now() - start;
