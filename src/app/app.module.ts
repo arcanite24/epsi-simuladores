@@ -216,6 +216,7 @@ import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-a
 import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.component';
 import { AdminDatabaseComponent } from './pages/admin-database/admin-database.component';
 import { zamnaReducer } from './reducers/zamnademy.reducer';
+import { AdminMigration2020Component } from './pages/admin-migration2020/admin-migration2020.component';
 
 @NgModule({
   declarations: [
@@ -391,6 +392,7 @@ import { zamnaReducer } from './reducers/zamnademy.reducer';
     PaymentPageAltComponent,
     ZamnaToggleComponent,
     AdminDatabaseComponent,
+    AdminMigration2020Component,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-12">
+      <div class="row">
+
+        <div class="col-md-4">
+          <epsi-panel title="Premium 2020">
+            <ul class="list-group" *ngIf="premium2020 as users">
+              <li class="list-group-item" *ngFor="let user of users">
+                <strong>{{ user.displayName }}</strong> <br>
+                <span>{{ user.email }}</span>
+              </li>
+            </ul>
+          </epsi-panel>
+        </div>
+
+        <div class="col-md-4">
+          <epsi-panel title="Log">
+            <ul class="list-group" *ngIf="log">
+              <li class="list-group-item" *ngFor="let l of log">
+                <span>{{ l.text }}</span> <br>
+                <small>{{ l.date | amCalendar }}</small>
+              </li>
+            </ul>
+          </epsi-panel>
+        </div>
+
+        <div class="col-md-4">
+          <epsi-panel title="Actions">
+            <div class="row">
+
+              <div class="col-md-12">
+                <button class="btn btn-primary w-100" [disabled]="loader" (click)="grantPremium()">Grant Premium2020 to all Users</button>
+              </div>
+
+            </div>
+          </epsi-panel>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
