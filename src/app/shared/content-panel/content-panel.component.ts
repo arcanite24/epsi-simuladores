@@ -28,14 +28,7 @@ export class ContentPanelComponent implements OnInit {
   ngOnInit() {
     this.content$ = this.afs.collection<Content>(Collections.CONTENT, ref => ref
       .where('type', '==', this.mainContent))
-      .valueChanges()
-      .pipe(map(content => content.filter(materia => {
-        if (materia.name.includes('Temprano')) {
-          return this.pay.isLight();
-        } else {
-          return true;
-        }
-      })));
+      .valueChanges();
   }
 
   public isBlur(name: string): boolean {
