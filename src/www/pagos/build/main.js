@@ -345,11 +345,11 @@ var map = {
 		13
 	],
 	"../pages/pago-add/pago-add.module": [
-		717,
+		718,
 		12
 	],
 	"../pages/pago-detail/pago-detail.module": [
-		718,
+		717,
 		1
 	],
 	"../pages/pay-template-add/pay-template-add.module": [
@@ -357,7 +357,7 @@ var map = {
 		11
 	],
 	"../pages/pay-template-edit/pay-template-edit.module": [
-		727,
+		722,
 		10
 	],
 	"../pages/pay-templates/pay-templates.module": [
@@ -369,23 +369,23 @@ var map = {
 		8
 	],
 	"../pages/profile-edit/profile-edit.module": [
-		722,
+		723,
 		7
 	],
 	"../pages/profile/profile.module": [
-		723,
+		724,
 		0
 	],
 	"../pages/tarjeta-add/tarjeta-add.module": [
-		724,
+		725,
 		6
 	],
 	"../pages/team-detail/team-detail.module": [
-		725,
+		726,
 		5
 	],
 	"../pages/teams/teams.module": [
-		726,
+		727,
 		4
 	]
 };
@@ -487,9 +487,16 @@ var Roles;
     Roles["Admin"] = "isAdmin";
     Roles["Esencial"] = "isEsencial";
     Roles["Premium"] = "isPremium";
+    Roles["Temprano"] = "isTemprano";
+    Roles["Premium2019"] = "isPremium2019";
+    Roles["Zamna360_2019"] = "is3602019";
+    Roles["Esencial360"] = "isEsencial360";
+    Roles["Premium360"] = "isPremium360";
+    Roles["Presencial"] = "isPresencial";
     Roles["Content"] = "isContent";
     Roles["Checklist"] = "isChecklist";
     Roles["Calendar"] = "isCalendar";
+    Roles["SmartCalendar"] = "isSmartCalendar";
     Roles["TopUsers"] = "isTopUsers";
     Roles["Galleries"] = "isGalleries";
     Roles["Simuladores"] = "isSimuladores";
@@ -499,14 +506,19 @@ var Roles;
     Roles["Slides"] = "isSlides";
     Roles["Simulacros"] = "isSimulacros";
     Roles["Feed"] = "isFeed";
-    Roles["Temprano"] = "isTemprano";
-    Roles["ViewPagos"] = "isViewPagos";
-    Roles["Esencial360"] = "isEsencial360";
-    Roles["Premium360"] = "isPremium360";
-    Roles["Presencial"] = "isPresencial";
     Roles["Programa"] = "isPrograma";
     Roles["Pool"] = "isPool";
     Roles["TagPool"] = "isTagPool";
+    Roles["ZonaEnarm"] = "isZonaEnarm";
+    // Zamnademy 2020
+    Roles["isLight2020"] = "isLight2020";
+    Roles["isPremium2020"] = "isPremium2020";
+    // Curso Modular 2020
+    Roles["isMedicinaInterna2020"] = "isMedicinaInterna2020";
+    Roles["isPediatria2020"] = "isPediatria2020";
+    Roles["isGineco2020"] = "isGineco2020";
+    Roles["isCirugia2020"] = "isCirugia2020";
+    Roles["isUrgencias2020"] = "isUrgencias2020";
 })(Roles || (Roles = {}));
 var User = /** @class */ (function () {
     function User() {
@@ -515,36 +527,15 @@ var User = /** @class */ (function () {
 }());
 
 var EsencialModel = [
-    Roles.Esencial,
-    Roles.Checklist,
-    Roles.Calendar,
-    Roles.TopUsers,
-    Roles.Galleries,
-    Roles.Feed,
-    Roles.Simuladores,
-    Roles.Forum,
-    Roles.Streaming,
-    Roles.Media,
-    Roles.Slides,
-    Roles.Simulacros,
+    Roles.isLight2020
 ];
 var PremiumModel = [
-    Roles.Checklist,
-    Roles.Calendar,
-    Roles.TopUsers,
-    Roles.Galleries,
-    Roles.Feed,
-    Roles.Simuladores,
-    Roles.Forum,
-    Roles.Streaming,
-    Roles.Media,
-    Roles.Slides,
-    Roles.Simulacros,
-    Roles.Premium,
-    Roles.Content,
-    Roles.Programa,
-    Roles.Pool,
-    Roles.TagPool
+    Roles.isPremium2020,
+    Roles.isMedicinaInterna2020,
+    Roles.isPediatria2020,
+    Roles.isGineco2020,
+    Roles.isCirugia2020,
+    Roles.isUrgencias2020,
 ];
 var TempranoModel = [
     Roles.Temprano
@@ -675,7 +666,7 @@ var AuthProvider = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(AuthProvider.prototype, "isViewPagos", {
-        get: function () { return this.loggedIn && this.user[__WEBPACK_IMPORTED_MODULE_3__app_app_models__["d" /* Roles */].ViewPagos]; },
+        get: function () { return true; },
         enumerable: true,
         configurable: true
     });
@@ -1059,17 +1050,17 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-template-add/pay-template-add.module#PayTemplateAddPageModule', name: 'PayTemplateAddPage', segment: 'pay-template-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
