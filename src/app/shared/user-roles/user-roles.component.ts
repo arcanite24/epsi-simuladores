@@ -46,6 +46,8 @@ export class UserRolesComponent implements OnInit {
 
   async modifyUserRoles(roles: string[], newValue: boolean) {
 
+    console.log(roles, newValue);
+
     if (!this.user) { return; }
     this.l = true;
 

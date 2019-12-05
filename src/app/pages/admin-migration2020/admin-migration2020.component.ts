@@ -49,6 +49,11 @@ export class AdminMigration2020Component implements OnInit {
     for (const user of users) {
       await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
         [Roles.isPremium2020]: true,
+        [Roles.isMedicinaInterna2020]: true,
+        [Roles.isPediatria2020]: true,
+        [Roles.isGineco2020]: true,
+        [Roles.isCirugia2020]: true,
+        [Roles.isUrgencias2020]: true,
         subscription,
       });
       this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}

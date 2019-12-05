@@ -31,10 +31,10 @@
 
     <div class="col-md-12" *ngFor="let role of roles">
       <h5 class="m-0 mb-1">¿Es {{ role[0] }}?</h5>
-      <button [disabled]="l" (click)="modifyUserRoles([roles[1]], true)" class="btn btn-success" type="button"
+      <button [disabled]="l" (click)="modifyUserRoles([role[1]], true)" class="btn btn-success" type="button"
               *ngIf="!user[role[1]]">Dar {{ role[0] }}
       </button>
-      <button [disabled]="l" (click)="modifyUserRoles([roles[1]], false)" class="btn btn-danger" type="button"
+      <button [disabled]="l" (click)="modifyUserRoles([role[1]], false)" class="btn btn-danger" type="button"
               *ngIf="user[role[1]]">Quitar {{ role[0] }}
       </button>
     </div>
