@@ -142,7 +142,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/programa', component: AdminProgramaComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats/counters', component: AdminStatCountersComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration', component: AdminMigrationComponent},
-  {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration/2020', component: AdminMigration2020Component},
+  {canActivate: [AuthGuard], path: 'admin/migration/2020', component: AdminMigration2020Component},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content-error', component: AdminContentErrorComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},
