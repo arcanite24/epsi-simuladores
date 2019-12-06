@@ -4,6 +4,7 @@ import { Content, Collections } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { ToastrService } from 'ngx-toastr';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-admin-content-page',
@@ -25,7 +26,11 @@ export class AdminContentPageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.content$ = this.afs.collection<Content>('content').valueChanges();
+    this.content$ = this.afs.collection<Content>('content')
+      .valueChanges()
+      .pipe(
+        map(content => content.map(c => c.roles ? c : ({ ...c, roles: [] })))
+      );
 
   }
 

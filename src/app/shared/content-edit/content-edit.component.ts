@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'epsi-content-edit',
@@ -77,7 +78,12 @@ export class ContentEditComponent implements OnInit {
     if (this.isPdf) {
       this.contents$ = this.afs.collection<Content>('content', ref => ref.where('isPdf', '==', true)).valueChanges();
     } else {
-      this.contents$ = this.afs.collection<Content>('content').valueChanges();
+      this.contents$ = this.afs
+        .collection<Content>('content')
+        .valueChanges()
+        .pipe(
+          map(content => content.map(c => c.roles ? c : ({ ...c, roles: [] })))
+        );
     }
   }
 
