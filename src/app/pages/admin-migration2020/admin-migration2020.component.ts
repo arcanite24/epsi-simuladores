@@ -47,17 +47,19 @@ export class AdminMigration2020Component implements OnInit {
     this.log.push({ date: new Date().toISOString(), text: `Loaded ${users.length} users` });
 
     for (const user of users) {
-      await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
-        [Roles.isPremium2020]: true,
-        [Roles.isMedicinaInterna2020]: true,
-        [Roles.isPediatria2020]: true,
-        [Roles.isGineco2020]: true,
-        [Roles.isCirugia2020]: true,
-        [Roles.isUrgencias2020]: true,
-        subscription,
-      });
-      this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}
-        and subscription set to ${subscription}` });
+      if (user && user.uid) {
+        await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
+          [Roles.isPremium2020]: true,
+          [Roles.isMedicinaInterna2020]: true,
+          [Roles.isPediatria2020]: true,
+          [Roles.isGineco2020]: true,
+          [Roles.isCirugia2020]: true,
+          [Roles.isUrgencias2020]: true,
+          subscription,
+        });
+        this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}
+          and subscription set to ${subscription}` });
+      }
     }
 
     const end = Date.now() - start;

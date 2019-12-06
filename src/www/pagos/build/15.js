@@ -184,8 +184,7 @@ var HomePage = /** @class */ (function () {
         var _this = this;
         this.loadTemplates();
         this.auth.user$.subscribe(function (user) {
-            if (user && _this.auth.isViewPagos)
-                return _this.navCtrl.setRoot('AdminPage');
+            // if (user && this.auth.isViewPagos) return this.navCtrl.setRoot('AdminPage')
             if (user) {
                 _this.checkForUserInfo(user);
                 _this.loadControles(user.email);
