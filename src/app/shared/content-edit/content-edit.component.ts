@@ -41,8 +41,6 @@ export class ContentEditComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log(this.roles);
-
     this.editForm = this.fb.group({
       id: ['', Validators.required],
       name: ['', Validators.required],
