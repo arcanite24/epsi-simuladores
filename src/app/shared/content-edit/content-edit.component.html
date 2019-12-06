@@ -115,6 +115,13 @@
   <hr />
 
   <div class="form-group" *ngIf="editForm.value.roles as roles">
+
+    <ul class="list-group">
+      <li *ngFor="let role of rolesRef" class="list-group-item">
+        {{ role[1] }}
+      </li>
+    </ul>
+
     <div class="flex flex-row flex-start align-center mb-2">
       <label style="text-transform: capitalize"
         >Roles requeridos para desbloquear</label

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Content, ContentTypes, Marker } from 'src/app/app.models';
+import { Content, ContentTypes, Marker, Roles } from 'src/app/app.models';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -28,6 +28,7 @@ export class ContentEditComponent implements OnInit {
   public contentTypes: string[] = ContentTypes;
 
   public tempParent: Content;
+  public rolesRef = Object.entries(Roles);
 
   public contents$: Observable<Content[]>;
 
@@ -39,6 +40,8 @@ export class ContentEditComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    console.log(this.roles);
 
     this.editForm = this.fb.group({
       id: ['', Validators.required],
