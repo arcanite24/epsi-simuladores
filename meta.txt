@@ -16,6 +16,9 @@ firebase functions:config:set mercadopago.id="6468884827378087" mercadopago.secr
 // mercadopago production
 firebase functions:config:set mercadopago.id="5488935858280855" mercadopago.secret="tM9FCbMjSMEp8W334ZgoyeHKoKtsolc3"
 
+// mercadopago production v2
+firebase functions:config:set mercadopago.id="316881887497463" mercadopago.secret="eJNm0LOVnT9Bt6c4CezPwCoZ039sEkbK"
+
 // mercado pago gmail
 zamnademy.mercadopago@gmail.com
 zamnademy2019
