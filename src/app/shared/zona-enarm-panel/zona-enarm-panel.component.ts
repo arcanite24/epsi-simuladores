@@ -18,7 +18,7 @@ export class ZonaEnarmPanelComponent implements OnInit {
   }
 
   isBlur() {
-    return false;
+    return !this.pay.isComplete();
     // if (this.auth.isAdmin) { return false; }
     // if (this.auth.isPremium2020) { return false; }
     // return true;

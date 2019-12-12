@@ -61,10 +61,10 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    public pay: PaymentService,
     private afs: AngularFirestore,
     private modal: NgxSmartModalService,
     private data: DataService,
-    private pay: PaymentService,
   ) { }
 
   ngOnInit() {

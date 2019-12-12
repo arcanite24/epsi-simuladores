@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 import { User, Collections } from 'src/app/app.models';
 import { take } from 'rxjs/operators';
 import { StatsService } from 'src/app/services/stats.service';
@@ -9,6 +8,7 @@ import { DataService } from 'src/app/services/data.service';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { LoadTopUsers } from 'src/app/reducers/zamnademy.reducer';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-top-users-panel',
@@ -21,6 +21,7 @@ export class TopUsersPanelComponent implements OnInit {
 
   constructor(
     public auth: AuthService,
+    public pay: PaymentService,
     private afs: AngularFirestore,
     private stats: StatsService,
     private data: DataService,

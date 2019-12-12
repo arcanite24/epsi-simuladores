@@ -108,7 +108,7 @@
     <!-- Home Left Column -->
     <div class="col-xs-12 col-md-4">
 
-        <!-- Todo Panel  -->
+      <!-- Todo Panel  -->
       <epsi-checklist-panel></epsi-checklist-panel>
 
       <!-- Top Users Panel -->
@@ -128,7 +128,7 @@
       <!-- Calendar Panel -->
       <!-- <epsi-calendar-panel *ngIf="!auth.isAdmin"></epsi-calendar-panel> -->
       <epsi-smart-calendar-panel *ngIf="auth.user && !auth.user.noCalendar"></epsi-smart-calendar-panel>
-      <epsi-panel *ngIf="auth.user && auth.user.noCalendar">
+      <epsi-panel *ngIf="auth.user && auth.user.noCalendar && (pay.isComplete())">
         <div class="container">
           <div class="row">
             <div class="col-md-12">

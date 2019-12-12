@@ -1,4 +1,10 @@
-<epsi-panel title="Cuadro de Honor" [showContent]="true" img="assets/zamnademy/team.svg" class="p-2" tutorial="omlTZgbLbWRdm6SDMRvw">
+<epsi-panel
+  [showContent]="true"
+  [blur]="!pay.isComplete()"
+  title="Cuadro de Honor"
+  img="assets/zamnademy/team.svg"
+  class="p-2"
+  tutorial="omlTZgbLbWRdm6SDMRvw">
 
   <ng-template #loader>
     <epsi-loader></epsi-loader>

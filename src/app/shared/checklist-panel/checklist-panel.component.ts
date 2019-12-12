@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 import { take } from 'rxjs/operators';
 import { LoadChecklist } from 'src/app/reducers/zamnademy.reducer';
+import { PaymentService } from 'src/app/services/payment.service';
 
 @Component({
   selector: 'epsi-checklist-panel',
@@ -20,6 +21,7 @@ export class ChecklistPanelComponent implements OnInit {
   public completedTasks: string[] = [];
 
   constructor(
+    public pay: PaymentService,
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
     private store: Store<AppState>,
