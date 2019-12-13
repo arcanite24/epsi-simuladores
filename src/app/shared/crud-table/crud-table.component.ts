@@ -74,8 +74,8 @@ export class CrudTableComponent implements OnInit {
     this.data$ = this.config.dataSource ?
       this.config.dataSource :
       this.afs.collection(this.config.collection, ref => ref
-        .orderBy(this.pk)
-        .limit(this.total ? this.perPage : null))
+        .orderBy(this.pk))
+        // .limit(this.total ? this.perPage : null))
         .valueChanges()
         .pipe(
           map(data => sortBy(data, 'createdAt')),
