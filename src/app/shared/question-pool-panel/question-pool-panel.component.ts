@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { flattenDeep } from 'lodash';
+import { TagsByRole } from 'src/app/app.config';
 
 @Component({
   selector: 'epsi-question-pool-panel',
@@ -29,6 +30,18 @@ export class QuestionPoolPanelComponent implements OnInit {
   ngOnInit() {
   }
 
+  async getQuestionsByTags(tags: string[]): Promise<Question[]> {
+
+    let cache = [];
+
+    for (const tag of tags) {
+      const q = await this.data.getCollectionQueryAlt(Collections.QUESTION, 'tags', 'array-contains', tag);
+      cache = [...cache, ...q];
+    }
+
+    return cache;
+  }
+
   async generatePool() {
 
     this.loader = true;
@@ -37,6 +50,7 @@ export class QuestionPoolPanelComponent implements OnInit {
     if (this.quantity < 2) { return this.toastr.error('Ingresa una cantidad mayor a 3 preguntas'); }
 
     let exams: Exam[] = [];
+    let questions: Question[] = [];
 
     if (this.auth.isPremium2020) {
       exams = await this.data.getCollectionAlt<Exam>(Collections.EXAM);
@@ -45,34 +59,34 @@ export class QuestionPoolPanelComponent implements OnInit {
         exams = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'isLight', '==', true);
       } else {
         if (this.auth.isMedicinaInterna2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isMedicinaInterna2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isMedicinaInterna2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isPediatria2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isPediatria2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isPediatria2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isGineco2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isGineco2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isGineco2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isCirugia2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isCirugia2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isCirugia2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isUrgencias2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isUrgencias2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isUrgencias2020]);
+          questions = [...questions, ...cache];
         }
       }
     }
 
-    const questions: Question[] = flattenDeep(exams
-      .map(e => e.questions)) as Question[];
+    questions = [...questions, ...flattenDeep(exams
+      .map(e => e.questions)) as Question[]];
 
     const exam: Exam = {
       id: this.afs.createId(),

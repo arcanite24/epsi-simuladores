@@ -90,8 +90,7 @@ export class SimuladoresPanelComponent implements OnInit {
     } else if (mode === 'light') {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('isLight', '==', true)
-        .where('type', '==', ExamTypes.SIMULADOR)
-        .where('date', '<=', moment().endOf('day').toISOString()))
+        .where('type', '==', ExamTypes.SIMULADOR))
         .valueChanges();
     }
 

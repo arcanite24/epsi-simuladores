@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
 import { flattenDeep } from 'lodash';
+import { TagsByRole } from 'src/app/app.config';
+import { ContentVideoSuggestionAddComponent } from '../content-video-suggestion-add/content-video-suggestion-add.component';
 
 @Component({
   selector: 'epsi-tags-pool-modal',
@@ -30,6 +32,19 @@ export class TagsPoolModalComponent implements OnInit {
     this.tags$ = this.afs.collection<Tag>(Collections.TAG).valueChanges();
   }
 
+  async getQuestionsByTags(tags: string[]): Promise<Question[]> {
+
+    let cache = [];
+
+    for (const tag of tags) {
+      const q = await this.data.getCollectionQueryAlt(Collections.QUESTION, 'tags', 'array-contains', tag);
+      cache = [...cache, ...q];
+      console.log(q);
+    }
+
+    return cache;
+  }
+
   async generateExam(allTags: Tag[]) {
 
     if (this.loading) { return; }
@@ -38,6 +53,7 @@ export class TagsPoolModalComponent implements OnInit {
     const tags: string[] = allTags.filter(t => t.selected).map(t => t.value);
 
     let exams: Exam[] = [];
+    let questions: Question[] = [];
 
     if (this.auth.isPremium2020) {
       exams = await this.data.getCollectionAlt<Exam>(Collections.EXAM);
@@ -46,34 +62,34 @@ export class TagsPoolModalComponent implements OnInit {
         exams = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'isLight', '==', true);
       } else {
         if (this.auth.isMedicinaInterna2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isMedicinaInterna2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isMedicinaInterna2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isPediatria2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isPediatria2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isPediatria2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isGineco2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isGineco2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isGineco2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isCirugia2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isCirugia2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isCirugia2020]);
+          questions = [...questions, ...cache];
         }
 
         if (this.auth.isUrgencias2020) {
-          const cache = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'unlockedBy', '==', Roles.isUrgencias2020);
-          exams = [...exams, ...cache];
+          const cache = await this.getQuestionsByTags(TagsByRole[Roles.isUrgencias2020]);
+          questions = [...questions, ...cache];
         }
       }
     }
 
-    let questions: Question[] = flattenDeep(exams
-      .map(e => e.questions)) as Question[];
+    questions = [...questions, ...flattenDeep(exams
+      .map(e => e.questions)) as Question[]];
 
     questions = questions.filter(q => {
 
