@@ -5,7 +5,7 @@ import { Question, Collections, Exam, ExamTypes, Roles } from 'src/app/app.model
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataService } from 'src/app/services/data.service';
-import { flattenDeep } from 'lodash';
+import { flattenDeep, shuffle } from 'lodash';
 import { TagsByRole } from 'src/app/app.config';
 
 @Component({
@@ -35,7 +35,8 @@ export class QuestionPoolPanelComponent implements OnInit {
     let cache = [];
 
     for (const tag of tags) {
-      const q = await this.data.getCollectionQueryAlt(Collections.QUESTION, 'tags', 'array-contains', tag);
+      const q = await this.data
+        .getCollectionQueryAltLimit(Collections.QUESTION, 'tags', 'array-contains', tag, 10);
       cache = [...cache, ...q];
     }
 
@@ -53,7 +54,7 @@ export class QuestionPoolPanelComponent implements OnInit {
     let questions: Question[] = [];
 
     if (this.auth.isPremium2020) {
-      exams = await this.data.getCollectionAlt<Exam>(Collections.EXAM);
+      exams = await this.data.getCollectionQueryAltLimit<Exam>(Collections.EXAM, 'type', '==', ExamTypes.SIMULADOR, 30);
     } else {
       if (this.auth.isLight2020) {
         exams = await this.data.getCollectionQueryAlt<Exam>(Collections.EXAM, 'isLight', '==', true);
@@ -87,6 +88,8 @@ export class QuestionPoolPanelComponent implements OnInit {
 
     questions = [...questions, ...flattenDeep(exams
       .map(e => e.questions)) as Question[]];
+
+    questions = shuffle(questions).slice(0, this.quantity);
 
     const exam: Exam = {
       id: this.afs.createId(),

@@ -35,6 +35,7 @@ export class PaymentModelAltComponent implements OnInit {
 
   public showTooltip = false;
   public tooltipTeam = false;
+  public tooltipLight = false;
 
   public meses = 1;
   public team = 1;
@@ -152,6 +153,16 @@ export class PaymentModelAltComponent implements OnInit {
 
     }
 
+  }
+
+  changeMode(mode: string) {
+    this.mode = mode;
+    if (mode === 'light') {
+      this.tooltipLight = true;
+    }
+    if (mode === 'light' && this.meses > 4) {
+      this.meses = 4;
+    }
   }
 
   async generatePayment(model: PaymentModel) {

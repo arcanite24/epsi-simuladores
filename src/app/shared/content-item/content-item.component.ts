@@ -37,7 +37,6 @@ export class ContentItemComponent implements OnInit {
 
     if (this.item.name.includes('Temprano')) {
       if (user.isLight2020) {  return true; }
-      if (user.isPremium2020) {  return false; }
     }
 
     for (const role of this.item.roles) {

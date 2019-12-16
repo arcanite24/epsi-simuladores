@@ -74,6 +74,29 @@ export class DataService {
     });
   }
 
+  public getCollectionQueryAltLimit<T extends { id?: any, uid?: any }>(
+    collection: string,
+    fieldPath: string | FieldPath,
+    opStr: '<' | '<=' | '==' | '>=' | '>' | 'array-contains',
+    value: any,
+    limit: number,
+  ) {
+    return new Promise<T[]>(async (resolve, reject) => {
+
+      const data = await this.afs.firestore
+        .collection(collection)
+        .where(fieldPath, opStr, value)
+        .limit(limit)
+        .get();
+
+      resolve(data.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) as T[]);
+
+    });
+  }
+
   async updateUserByEmail(email: string, payload: Partial<User>) {
 
     const users = await this.getCollectionQuery<User>(Collections.USER, ref => ref.where('email', '==', email));

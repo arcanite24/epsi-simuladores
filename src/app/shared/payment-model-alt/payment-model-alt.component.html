@@ -52,8 +52,16 @@
             <div class="row">
 
               <div class="col-md-12 mode-container">
-                <h2 [ngClass]="{'model-selected': mode === 'premium'}" (click)="mode = 'premium'">Premium</h2>
-                <h2 [ngClass]="{'model-selected': mode === 'light'}" (click)="mode = 'light'">Light</h2>
+
+                <div class="payment-popup flex flex-col align-center justify-center light-tooltip" *ngIf="tooltipLight" (mouseover)="tooltipLight = true">
+                  <h4>
+                    <i class="fa fa-times c54 manita" (click)="tooltipLight = false"></i>
+                    Light es una selección de 65 temas exclusivos, pero si quieres estudiar los más de 500 videos, puedes elegir la opción PREMIUM</h4>
+                </div>
+
+                <h2 [ngClass]="{'model-selected': mode === 'premium'}" (click)="changeMode('premium')">Premium</h2>
+                <h2 [ngClass]="{'model-selected': mode === 'light'}" (click)="changeMode('light')">Light</h2>
+
               </div>
 
               <div class="col-md-12 mt-2 form-group mt-2">
