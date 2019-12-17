@@ -13,6 +13,7 @@ import { flattenDeep } from 'lodash';
 import moment from 'moment';
 import uuid from 'uuid';
 import { MAX_PURCHASABLE_LIGHT_MONTHS } from 'src/app/app.config';
+import { Subscription } from '../../app.models';
 
 @Component({
   selector: 'epsi-payment-model-alt',
@@ -321,7 +322,7 @@ export class PaymentModelAltComponent implements OnInit {
         }
 
         // Set user sub
-        await this.setUserSubscription(request_payload.subscription, user.uid);
+        await this.setUserSubscription(request_payload.subscription, user.uid, unlocks);
 
         // If pack is selected generate coupons
         // TODO: Actually implement this, soooo boring and probably none will gonna use EVER
@@ -433,7 +434,7 @@ export class PaymentModelAltComponent implements OnInit {
           rolePayload[role] = true;
         }
 
-        await this.setUserSubscription(request_payload.subscription, uid);
+        await this.setUserSubscription(request_payload.subscription, uid, unlocks);
 
         await this.afs.collection(Collections.USER).doc(uid).update(rolePayload);
         this.router.navigate(['/home']);
@@ -447,8 +448,17 @@ export class PaymentModelAltComponent implements OnInit {
 
   }
 
-  async setUserSubscription(subscription: string, user: string) {
-    return await this.afs.collection(Collections.USER).doc(user).update({ subscription });
+  async setUserSubscription(limit: string, user: string, roles: string[] = []) {
+
+    const sub: Subscription = {
+      id: this.afs.createId(),
+      user,
+      roles,
+      limit,
+      date: new Date().toISOString(),
+    };
+
+    return await this.afs.collection(Collections.Subscription).doc(sub.id).set({ ...sub });
   }
 
 }

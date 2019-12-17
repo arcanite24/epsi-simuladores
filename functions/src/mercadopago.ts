@@ -289,7 +289,19 @@ app.post('/webhook', async (req, res) => {
           }
 
           if (r.subscription) {
+
             role_payload['subscription'] = r.subscription;
+
+            const sub = {
+              id: `${r.user}-sub-${r.model.unlocks.join('|')}`,
+              user,
+              roles: r.model.unlocks,
+              limit: r.subscription,
+              date: new Date().toISOString(),
+            };
+
+            await firestore.collection('subscription').doc(sub.id).set({ ...sub });
+
           }
 
           console.log('DECIDE IF WE GRANT COUPONS', r.pack, r)

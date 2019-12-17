@@ -8,6 +8,8 @@ import { combineLatest } from 'rxjs';
 import { DataService } from 'src/app/services/data.service';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { PaymentService } from 'src/app/services/payment.service';
+import { Subscription } from '../../app.models';
+import { orderBy } from 'lodash';
 const moment = require('moment');
 const countdown = require('countdown');
 countdown.setLabels(
@@ -89,14 +91,19 @@ export class NavbarComponent implements OnInit {
 
   async loadTimer(uid: string) {
 
-    const user = await this.data.getDocAlt<User>(Collections.USER, uid);
+    const subs = await this.data.getCollectionQueryAlt<Subscription>(Collections.Subscription, 'user', '==', uid);
+    console.log(subs);
 
-    if (user.subscription) {
+    if (subs && subs.length > 0) {
+
+      const sub = orderBy(subs, 'limit')[0];
+      console.log(sub)
+
       setInterval(
         () => {
 
           const down = countdown(
-            moment(user.subscription).toDate(),
+            moment(sub.limit).toDate(),
             null,
             // tslint:disable-next-line: no-bitwise
             countdown.MONTHS | countdown.DAYS

@@ -1,7 +1,7 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
-import {Observable} from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 export const ContentTypes: string[] = [
   'materia',
@@ -73,6 +73,7 @@ export enum Collections {
   DAILY = 'daily-noti',
   DAILY_REGISTER = 'daily-register',
   UserTimer = 'user-timer',
+  Subscription = 'subscription',
 }
 
 export enum PaymentStatus {
@@ -747,4 +748,12 @@ export interface DatabaseSync {
   lastUpdate?: any;
   lastCreate?: any;
   lastDelete?: any;
+}
+
+export interface Subscription {
+  id: string;
+  user: string;
+  limit: string;
+  roles: string[];
+  date: string;
 }
