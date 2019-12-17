@@ -158,8 +158,8 @@ export class PlanSelectorPanelComponent implements OnInit {
 
   async getFormattedContent(): Promise<Content[]> {
 
-    const cache = localStorage.getItem('zamna-content-cache');
-    if (cache && this.auth.isAdmin) { return JSON.parse(cache); }
+    // const cache = localStorage.getItem('zamna-content-cache');
+    // if (cache && this.auth.isAdmin) { return JSON.parse(cache); }
 
     let content = [];
 

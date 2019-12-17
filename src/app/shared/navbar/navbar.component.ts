@@ -96,7 +96,7 @@ export class NavbarComponent implements OnInit {
 
     if (subs && subs.length > 0) {
 
-      const sub = orderBy(subs, 'limit')[0];
+      const sub = orderBy(subs, 'limit').reverse()[0];
       console.log(sub)
 
       setInterval(
