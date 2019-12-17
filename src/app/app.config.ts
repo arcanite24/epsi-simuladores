@@ -101,3 +101,6 @@ export const TagsByRole = {
     'Medicina Crítica',
   ]
 };
+
+// Light Package
+export const MAX_PURCHASABLE_LIGHT_MONTHS = 3; // Cuantos meses maximo se pueden comprar de Light

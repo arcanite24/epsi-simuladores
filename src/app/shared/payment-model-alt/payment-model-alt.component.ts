@@ -12,6 +12,7 @@ import { take, map } from 'rxjs/operators';
 import { flattenDeep } from 'lodash';
 import moment from 'moment';
 import uuid from 'uuid';
+import { MAX_PURCHASABLE_LIGHT_MONTHS } from 'src/app/app.config';
 
 @Component({
   selector: 'epsi-payment-model-alt',
@@ -160,8 +161,8 @@ export class PaymentModelAltComponent implements OnInit {
     if (mode === 'light') {
       this.tooltipLight = true;
     }
-    if (mode === 'light' && this.meses > 4) {
-      this.meses = 4;
+    if (mode === 'light' && this.meses > MAX_PURCHASABLE_LIGHT_MONTHS) {
+      this.meses = MAX_PURCHASABLE_LIGHT_MONTHS;
     }
   }
 
