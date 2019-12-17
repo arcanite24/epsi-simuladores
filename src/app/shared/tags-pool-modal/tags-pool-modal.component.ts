@@ -38,7 +38,7 @@ export class TagsPoolModalComponent implements OnInit {
 
     for (const tag of tags) {
       const q = await this.data.getCollectionQueryAlt(Collections.QUESTION, 'tags', 'array-contains', tag);
-      cache = [...cache, ...q];
+      cache = [...cache, ...q.filter((question: any) => !question.group)];
       console.log(q);
     }
 
