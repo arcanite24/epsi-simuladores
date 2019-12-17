@@ -73,7 +73,7 @@ export class PaymentService {
   }
 
   redirectToPayment() {
-
+    this.router.navigate([modularUrl]);
   }
 
   isComprado(): boolean {

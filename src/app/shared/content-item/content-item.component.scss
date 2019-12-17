@@ -1,6 +1,11 @@
 .content-item {
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+
   img {
-    width: 100%;
+    min-width: 128px;
+    width: 100% !important;
   }
 
   h4 {
@@ -17,9 +22,4 @@
   h4, small {
     text-align: left;
   }
-}
-
-.blur {
-  filter: blur(10px);
-  pointer-events: none;
 }

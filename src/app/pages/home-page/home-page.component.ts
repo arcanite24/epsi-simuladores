@@ -72,12 +72,11 @@ export class HomePageComponent implements OnInit {
     /*this.buildModels();*/
     /* this.buildLists() */
 
-    if (!this.pay.isComprado()) {
-      return this.pay.redirectToPayment();
-    }
-
     this.auth.user$.subscribe(user => {
       if (user) {
+        if (!this.pay.isComprado()) {
+          return this.pay.redirectToPayment();
+        }
         this.loadMoodRates(user.uid);
       }
     });

@@ -31,7 +31,7 @@ export class ProgramaPanelAltComponent implements OnInit {
   async loadContent() {
     this.content = await this.data
       .getCollectionQueryAlt<Content>(Collections.CONTENT, 'type', '==', this.mainContent);
-    // console.log(this.content.map(item => item.name));
+    console.log(this.content);
   }
 
   public isBlur(name: string): boolean {
