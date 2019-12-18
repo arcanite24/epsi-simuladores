@@ -73,7 +73,7 @@ var HowtoPage = /** @class */ (function () {
     };
     HowtoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-howto',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/howto/howto.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo me inscribo?</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" padding>\n\n  <p class="w-100 c87 text-center">\n    Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción\n  </p>\n\n  <button ion-button clear (click)="viewCtrl.dismiss()" >Cerrar</button>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/howto/howto.html"*/,
+            selector: 'page-howto',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\howto\howto.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo me inscribo?</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" padding>\n\n  <p class="w-100 c87 text-center">\n    Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción\n  </p>\n\n  <button ion-button clear (click)="viewCtrl.dismiss()" >Cerrar</button>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\howto\howto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
     ], HowtoPage);

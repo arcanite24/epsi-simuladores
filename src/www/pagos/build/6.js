@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 726:
+/***/ 725:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TarjetaAddPageModule", function() { return TarjetaAddPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tarjeta_add__ = __webpack_require__(753);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tarjeta_add__ = __webpack_require__(752);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var TarjetaAddPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 753:
+/***/ 752:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -178,7 +178,7 @@ var TarjetaAddPage = /** @class */ (function () {
     };
     TarjetaAddPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-tarjeta-add',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/tarjeta-add/tarjeta-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Agregar Tarjeta</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Nombre Completo" [(ngModel)]="addData.holder_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder="Número de Tarjeta" type="number" [(ngModel)]="addData.card_number"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder="Código de Seguridad" [(ngModel)]="addData.cvv2" minlength="3" maxlength="4"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Mes de Expiración</ion-label>\n      <ion-select [(ngModel)]="addData.expiration_month">\n        <ion-option value="01">Enero</ion-option>\n        <ion-option value="02">Febrero</ion-option>\n        <ion-option value="03">Marzo</ion-option>\n        <ion-option value="04">Abril</ion-option>\n        <ion-option value="05">Mayo</ion-option>\n        <ion-option value="06">Junio</ion-option>\n        <ion-option value="07">Julio</ion-option>\n        <ion-option value="08">Agosto</ion-option>\n        <ion-option value="09">Septiembre</ion-option>\n        <ion-option value="10">Octubre</ion-option>\n        <ion-option value="11">Noviembre</ion-option>\n        <ion-option value="12">Diciembre</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label>Año de Expiración</ion-label>\n      <ion-select [(ngModel)]="addData.expiration_year">\n        <ion-option value="18">2018</ion-option>\n        <ion-option value="19">2019</ion-option>\n        <ion-option value="20">2020</ion-option>\n        <ion-option value="21">2021</ion-option>\n        <ion-option value="22">2022</ion-option>\n        <ion-option value="23">2023</ion-option>\n        <ion-option value="24">2024</ion-option>\n        <ion-option value="25">2025</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n\n  <div class="flex-col" padding>\n    <button ion-button block (click)="addCard(addData)">\n      <ion-icon name="add" class="mr-1"></ion-icon>\n      Agregar Tarjeta\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/tarjeta-add/tarjeta-add.html"*/,
+            selector: 'page-tarjeta-add',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\tarjeta-add\tarjeta-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Agregar Tarjeta</ion-title>\n    <ion-buttons end>\n      <button ion-button icon-only (click)="viewCtrl.dismiss()">\n        <ion-icon name="close"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <ion-list>\n    <ion-item>\n      <ion-input placeholder="Nombre Completo" [(ngModel)]="addData.holder_name"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder="Número de Tarjeta" type="number" [(ngModel)]="addData.card_number"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-input placeholder="Código de Seguridad" [(ngModel)]="addData.cvv2" minlength="3" maxlength="4"></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label>Mes de Expiración</ion-label>\n      <ion-select [(ngModel)]="addData.expiration_month">\n        <ion-option value="01">Enero</ion-option>\n        <ion-option value="02">Febrero</ion-option>\n        <ion-option value="03">Marzo</ion-option>\n        <ion-option value="04">Abril</ion-option>\n        <ion-option value="05">Mayo</ion-option>\n        <ion-option value="06">Junio</ion-option>\n        <ion-option value="07">Julio</ion-option>\n        <ion-option value="08">Agosto</ion-option>\n        <ion-option value="09">Septiembre</ion-option>\n        <ion-option value="10">Octubre</ion-option>\n        <ion-option value="11">Noviembre</ion-option>\n        <ion-option value="12">Diciembre</ion-option>\n      </ion-select>\n    </ion-item>\n    <ion-item>\n      <ion-label>Año de Expiración</ion-label>\n      <ion-select [(ngModel)]="addData.expiration_year">\n        <ion-option value="18">2018</ion-option>\n        <ion-option value="19">2019</ion-option>\n        <ion-option value="20">2020</ion-option>\n        <ion-option value="21">2021</ion-option>\n        <ion-option value="22">2022</ion-option>\n        <ion-option value="23">2023</ion-option>\n        <ion-option value="24">2024</ion-option>\n        <ion-option value="25">2025</ion-option>\n      </ion-select>\n    </ion-item>\n  </ion-list>\n\n  <div class="flex-col" padding>\n    <button ion-button block (click)="addCard(addData)">\n      <ion-icon name="add" class="mr-1"></ion-icon>\n      Agregar Tarjeta\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\tarjeta-add\tarjeta-add.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],

@@ -329,11 +329,11 @@ var map = {
 		3
 	],
 	"../pages/becas/becas.module": [
-		713,
+		714,
 		2
 	],
 	"../pages/home/home.module": [
-		714,
+		713,
 		15
 	],
 	"../pages/howto/howto.module": [
@@ -341,11 +341,11 @@ var map = {
 		14
 	],
 	"../pages/login/login.module": [
-		717,
+		716,
 		13
 	],
 	"../pages/pago-add/pago-add.module": [
-		716,
+		717,
 		12
 	],
 	"../pages/pago-detail/pago-detail.module": [
@@ -357,15 +357,15 @@ var map = {
 		11
 	],
 	"../pages/pay-template-edit/pay-template-edit.module": [
-		722,
+		720,
 		10
 	],
 	"../pages/pay-templates/pay-templates.module": [
-		720,
+		721,
 		9
 	],
 	"../pages/paypal-checkout/paypal-checkout.module": [
-		721,
+		722,
 		8
 	],
 	"../pages/profile-edit/profile-edit.module": [
@@ -377,11 +377,11 @@ var map = {
 		0
 	],
 	"../pages/tarjeta-add/tarjeta-add.module": [
-		726,
+		725,
 		6
 	],
 	"../pages/team-detail/team-detail.module": [
-		725,
+		726,
 		5
 	],
 	"../pages/teams/teams.module": [
@@ -859,7 +859,7 @@ var AuthProvider = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 461:
+/***/ 462:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -972,7 +972,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_splash_screen__ = __webpack_require__(453);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_status_bar__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_plus__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_google_plus__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__app_component__ = __webpack_require__(702);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__providers_back_back__ = __webpack_require__(188);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(97);
@@ -985,7 +985,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_fire_firestore__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__app_config__ = __webpack_require__(191);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_auth_auth__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_pay_pay__ = __webpack_require__(461);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__providers_pay_pay__ = __webpack_require__(462);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__angular_fire_storage__ = __webpack_require__(458);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1046,20 +1046,20 @@ var AppModule = /** @class */ (function () {
                         { loadChildren: '../pages/admin-control-detail/admin-control-detail.module#AdminControlDetailPageModule', name: 'AdminControlDetailPage', segment: 'admin-control-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-control-edit/admin-control-edit.module#AdminControlEditPageModule', name: 'AdminControlEditPage', segment: 'admin-control-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-template-add/pay-template-add.module#PayTemplateAddPageModule', name: 'PayTemplateAddPage', segment: 'pay-template-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] }
                     ]
                 })
@@ -1408,7 +1408,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\app\app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

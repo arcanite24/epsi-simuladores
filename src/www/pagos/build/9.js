@@ -1,6 +1,6 @@
 webpackJsonp([9],{
 
-/***/ 720:
+/***/ 721:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayTemplatesPageModule", function() { return PayTemplatesPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay_templates__ = __webpack_require__(747);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay_templates__ = __webpack_require__(748);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var PayTemplatesPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 747:
+/***/ 748:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -160,7 +160,7 @@ var PayTemplatesPage = /** @class */ (function () {
     };
     PayTemplatesPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-pay-templates',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/pay-templates/pay-templates.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Administrador de Costos</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list *ngIf="templates$ | async as templates">\n    <ion-item *ngFor="let t of templates">\n      <h2>{{ t.name }}</h2>\n      <p>{{ t.priceTag }} {{ t.limitDate }}</p>\n      <button ion-button item-end color="primary" (click)="editTemplate(t.id)">\n        Editar\n      </button>\n      <button ion-button item-end color="danger" (click)="removeTemplate(t.id)">\n        Borrar\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="openAdd()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/pay-templates/pay-templates.html"*/,
+            selector: 'page-pay-templates',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\pay-templates\pay-templates.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Administrador de Costos</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n\n  <ion-list *ngIf="templates$ | async as templates">\n    <ion-item *ngFor="let t of templates">\n      <h2>{{ t.name }}</h2>\n      <p>{{ t.priceTag }} {{ t.limitDate }}</p>\n      <button ion-button item-end color="primary" (click)="editTemplate(t.id)">\n        Editar\n      </button>\n      <button ion-button item-end color="danger" (click)="removeTemplate(t.id)">\n        Borrar\n      </button>\n    </ion-item>\n  </ion-list>\n\n  <ion-fab right bottom>\n    <button ion-fab color="primary" (click)="openAdd()">\n      <ion-icon name="add"></ion-icon>\n    </button>\n  </ion-fab>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\pay-templates\pay-templates.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],

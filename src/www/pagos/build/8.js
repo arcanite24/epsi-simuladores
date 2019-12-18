@@ -1,6 +1,6 @@
 webpackJsonp([8],{
 
-/***/ 721:
+/***/ 722:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PaypalCheckoutPageModule", function() { return PaypalCheckoutPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__paypal_checkout__ = __webpack_require__(748);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__paypal_checkout__ = __webpack_require__(749);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var PaypalCheckoutPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 749:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -147,7 +147,7 @@ var PaypalCheckoutPage = /** @class */ (function () {
     };
     PaypalCheckoutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-paypal-checkout',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/paypal-checkout/paypal-checkout.html"*/'<!--\n  Generated template for the PaypalCheckoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Pagar con PayPal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <h4 class="c87 text-center w-100">Pago con PayPal</h4>\n  <div class="flex flex-col justify-center align-center">\n    <div id="paypal-button"></div>\n  </div>\n\n  <div class="flex flex-col justify-center align-center">\n    <button ion-button clear (click)="viewCtrl.dismiss()" >Regresar</button>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/paypal-checkout/paypal-checkout.html"*/,
+            selector: 'page-paypal-checkout',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\paypal-checkout\paypal-checkout.html"*/'<!--\n  Generated template for the PaypalCheckoutPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Pagar con PayPal</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee">\n\n  <h4 class="c87 text-center w-100">Pago con PayPal</h4>\n  <div class="flex flex-col justify-center align-center">\n    <div id="paypal-button"></div>\n  </div>\n\n  <div class="flex flex-col justify-center align-center">\n    <button ion-button clear (click)="viewCtrl.dismiss()" >Regresar</button>\n  </div>\n  \n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\paypal-checkout\paypal-checkout.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */],

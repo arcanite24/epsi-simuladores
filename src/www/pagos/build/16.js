@@ -72,7 +72,7 @@ var AdminControlEditPage = /** @class */ (function () {
     };
     AdminControlEditPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-admin-control-edit',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/admin-control-edit/admin-control-edit.html"*/'<!--\n  Generated template for the AdminControlEditPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>AdminControlEdit</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/admin-control-edit/admin-control-edit.html"*/,
+            selector: 'page-admin-control-edit',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\admin-control-edit\admin-control-edit.html"*/'<!--\n  Generated template for the AdminControlEditPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>AdminControlEdit</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\admin-control-edit\admin-control-edit.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */]])
     ], AdminControlEditPage);

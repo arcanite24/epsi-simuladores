@@ -1,6 +1,6 @@
 webpackJsonp([13],{
 
-/***/ 717:
+/***/ 716:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoginPageModule", function() { return LoginPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(744);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__login__ = __webpack_require__(743);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var LoginPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 744:
+/***/ 743:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47,7 +47,7 @@ var LoginPageModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_facebook__ = __webpack_require__(459);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_plus__ = __webpack_require__(462);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_google_plus__ = __webpack_require__(461);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_auth_auth__ = __webpack_require__(456);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_fire_auth__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators__ = __webpack_require__(22);
@@ -312,7 +312,7 @@ var LoginPage = /** @class */ (function () {
     };
     LoginPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-            selector: 'page-login',template:/*ion-inline-start:"/home/neri/code/zamna-pagos/src/pages/login/login.html"*/'<ion-content class="bg-eee login-container">\n  <div class="flex flex-col login-container">\n\n    <h4 class="w-100 text-center" style="color:#2fb7ec">Plataforma de Pagos para el curso PRESENCIAL ENARM 2019</h4>\n\n    <img src="assets/imgs/weon_azul.png" style="width:12%">\n    <img src="assets/imgs/letras_azul.png" style="width:25%">\n\n    <div class="social-buttons mt-2 flex flex-col justify-center align-center" *ngIf="!showAdmin" >\n      <button ion-button (click)="loginFacebookFire()">\n        <ion-icon name="logo-facebook" class="mr-1"></ion-icon>\n        Iniciar Sesión con Facebook\n      </button>\n      <button ion-button (click)="loginGoogleFire()">\n        <ion-icon name="logo-google" class="mr-1"></ion-icon>\n        Iniciar Sesión con Google\n      </button>\n    </div>\n\n    <ion-list *ngIf="showAdmin" class="w-100">\n      <ion-item>\n        <ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-input placeholder="Password" type="password" [(ngModel)]="loginData.password"></ion-input>\n      </ion-item>\n      <div class="flex flex-col justify-center align-center mt-1">\n        <button ion-button (click)="login()" >Iniciar Sesión</button>\n      </div>\n    </ion-list>\n\n    <button ion-button clear (click)="openHowto()" >¿Cómo me inscribo?</button>\n\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="!showAdmin" >Admin</small>\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="showAdmin" >Alumno</small>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"/home/neri/code/zamna-pagos/src/pages/login/login.html"*/,
+            selector: 'page-login',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\login\login.html"*/'<ion-content class="bg-eee login-container">\n  <div class="flex flex-col login-container">\n\n    <h4 class="w-100 text-center" style="color:#2fb7ec">Plataforma de Pagos para el curso PRESENCIAL ENARM 2019</h4>\n\n    <img src="assets/imgs/weon_azul.png" style="width:12%">\n    <img src="assets/imgs/letras_azul.png" style="width:25%">\n\n    <div class="social-buttons mt-2 flex flex-col justify-center align-center" *ngIf="!showAdmin" >\n      <button ion-button (click)="loginFacebookFire()">\n        <ion-icon name="logo-facebook" class="mr-1"></ion-icon>\n        Iniciar Sesión con Facebook\n      </button>\n      <button ion-button (click)="loginGoogleFire()">\n        <ion-icon name="logo-google" class="mr-1"></ion-icon>\n        Iniciar Sesión con Google\n      </button>\n    </div>\n\n    <ion-list *ngIf="showAdmin" class="w-100">\n      <ion-item>\n        <ion-input placeholder="Email" [(ngModel)]="loginData.email"></ion-input>\n      </ion-item>\n      <ion-item>\n        <ion-input placeholder="Password" type="password" [(ngModel)]="loginData.password"></ion-input>\n      </ion-item>\n      <div class="flex flex-col justify-center align-center mt-1">\n        <button ion-button (click)="login()" >Iniciar Sesión</button>\n      </div>\n    </ion-list>\n\n    <button ion-button clear (click)="openHowto()" >¿Cómo me inscribo?</button>\n\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="!showAdmin" >Admin</small>\n    <small class="c54 mt-1" (click)="showAdmin = !showAdmin" *ngIf="showAdmin" >Alumno</small>\n\n  </div>\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\login\login.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavController */],
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* NavParams */],
