@@ -61,26 +61,17 @@ export class SimuladoresPanelComponent implements OnInit {
   loadExams(isPresencial: boolean = false, user: User, mode: string) {
 
     if (mode === 'all') {
-      if (isPresencial) {
-        this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
-          .where('isLight', '==', true)
-          .where('type', '==', ExamTypes.SIMULADOR)
-          .where('date', '<=', moment().endOf('day').toISOString()))
-          .valueChanges()
-          .pipe(
-            /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-            map(list => this.filterWithRoles(list.reverse(), user)),
-          );
-      } else {
-        this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
-          .where('type', '==', ExamTypes.SIMULADOR)
-          .where('date', '<=', moment().endOf('day').toISOString()))
-          .valueChanges()
-          .pipe(
-            /* map(list => list.filter(exam => moment(exam.date).isSameOrBefore(moment().endOf('day'))).reverse()), */
-            map(list => this.filterWithRoles(list.filter(e => !e.isLight).reverse(), user)),
-          );
-      }
+      this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
+        .where('type', '==', ExamTypes.SIMULADOR))
+        .valueChanges()
+        .pipe(
+          map(exams => exams.filter(exam => {
+            if (exam.isLight) return false;
+            if (exam.isPresencial) return false;
+            return true;
+          })),
+          map(list => this.filterWithRoles(list.filter(e => !e.isLight).reverse(), user)),
+        );
     } else if (mode === 'presencial') {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('isPresencial', '==', true)
