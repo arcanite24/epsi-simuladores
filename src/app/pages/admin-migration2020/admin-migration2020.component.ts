@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
-import { User, Collections, Roles } from 'src/app/app.models';
+import { User, Collections, Roles, Subscription } from 'src/app/app.models';
 import { AngularFirestore } from '@angular/fire/firestore';
 import moment from 'moment';
 
@@ -39,7 +39,7 @@ export class AdminMigration2020Component implements OnInit {
   async grantPremium() {
 
     const start = Date.now();
-    const subscription = moment().add(1, 'year').toISOString();
+    const subscription = moment().add(1, 'year').subtract(2, 'weeks').toISOString();
     this.loader = true;
 
     this.log.push({ date: new Date().toISOString(), text: 'Loading all users...' });
@@ -48,6 +48,7 @@ export class AdminMigration2020Component implements OnInit {
 
     for (const user of users) {
       if (user && user.uid) {
+
         await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
           [Roles.isPremium2020]: true,
           [Roles.isMedicinaInterna2020]: true,
@@ -57,8 +58,33 @@ export class AdminMigration2020Component implements OnInit {
           [Roles.isUrgencias2020]: true,
           subscription,
         });
+
         this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} to ${user.displayName}
           and subscription set to ${subscription}` });
+
+        const sub: Subscription = {
+          id: this.afs.createId(),
+          user,
+          roles: [
+            Roles.isPremium2020,
+            Roles.isMedicinaInterna2020,
+            Roles.isPediatria2020,
+            Roles.isGineco2020,
+            Roles.isCirugia2020,
+            Roles.isUrgencias2020,
+          ],
+          limit: subscription,
+          date: new Date().toISOString(),
+          isManual: true,
+        };
+
+        await this.afs.collection(Collections.Subscription).doc(sub.id).set({ ...sub });
+
+        this.log.push({
+          date: new Date().toISOString(), text: `Added subscription model to ${user.displayName}
+          and set to ${subscription}`
+        });
+
       }
     }
 

@@ -756,4 +756,5 @@ export interface Subscription {
   limit: string;
   roles: string[];
   date: string;
+  isManual?: boolean;
 }

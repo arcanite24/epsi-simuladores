@@ -84,8 +84,7 @@ export class SimuladoresPanelComponent implements OnInit {
     } else if (mode === 'presencial') {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref
         .where('isPresencial', '==', true)
-        .where('type', '==', ExamTypes.SIMULADOR)
-        .where('date', '<=', moment().endOf('day').toISOString()))
+        .where('type', '==', ExamTypes.SIMULADOR))
         .valueChanges();
     } else if (mode === 'light') {
       this.exams$ = this.afs.collection<Exam>(Collections.EXAM, ref => ref

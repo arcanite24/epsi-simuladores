@@ -56,7 +56,8 @@
                 <div class="payment-popup flex flex-col align-center justify-center light-tooltip" *ngIf="tooltipLight" (mouseover)="tooltipLight = true">
                   <h4>
                     <i class="fa fa-times c54 manita" (click)="tooltipLight = false"></i>
-                    Light es una selección de 65 temas exclusivos, pero si quieres estudiar los más de 500 videos, puedes elegir la opción PREMIUM</h4>
+                    Light es una selección de 65 temas exclusivos, pero si quieres estudiar los más de 500 videos, puedes elegir la opción PREMIUM
+                  </h4>
                 </div>
 
                 <h2 [ngClass]="{'model-selected': mode === 'premium'}" (click)="changeMode('premium')">Premium</h2>
@@ -150,7 +151,12 @@
               <div class="col-md-12 flex flex-col align-center justify-center">
                 <img src="assets/payment.png" class="w-100" (mouseover)="showTooltip = true">
                 <div class="payment-popup flex flex-col align-center justify-center" *ngIf="showTooltip" (mouseover)="showTooltip = true">
-                  <h4><i class="fa fa-times c54 manita" (click)="showTooltip = false"></i> Quieres conocer el sistema con una seleccion de temas a una fraccion del precio?</h4>
+                  <h4>
+                    <i class="fa fa-times c54 manita" (click)="showTooltip = false"></i>
+                    Quieres conocer el sistema con una seleccion de temas a una fraccion del precio? <br>
+                    Light es una selección de 65 temas exclusivos, pero si quieres estudiar los más de 500 videos, puedes elegir la opción
+                    PREMIUM
+                  </h4>
                   <button class="btn btn-primary" (click)="mode = 'light'">Probar version light</button>
                 </div>
               </div>
