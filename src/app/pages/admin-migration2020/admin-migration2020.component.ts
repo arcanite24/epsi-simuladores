@@ -95,4 +95,75 @@ export class AdminMigration2020Component implements OnInit {
 
   }
 
+  async removePremiumForNew() {
+
+    const start = Date.now();
+    const subscription = moment().add(1, 'year').subtract(2, 'weeks').toISOString();
+    this.loader = true;
+
+    const oldRoles = [
+      Roles.Esencial,
+      Roles.Premium,
+      Roles.Temprano,
+      Roles.Premium2019,
+      Roles.Zamna360_2019,
+      Roles.Esencial360,
+      Roles.Premium360,
+      Roles.Presencial,
+      Roles.isLight2020,
+    ];
+
+    this.log.push({ date: new Date().toISOString(), text: 'Loading all users...' });
+    let users = await this.loadUsers();
+    users = users.filter(user => {
+      for (const role of oldRoles) {
+        if (user[role]) {
+          return false;
+        }
+        return true;
+      }
+    });
+    this.log.push({ date: new Date().toISOString(), text: `Loaded ${users.length} users` });
+
+    for (const user of users) {
+      if (user && user.uid) {
+
+        await this.afs.collection(Collections.USER).doc<User>(user.uid).update({
+          [Roles.isPremium2020]: false,
+          [Roles.isMedicinaInterna2020]: false,
+          [Roles.isPediatria2020]: false,
+          [Roles.isGineco2020]: false,
+          [Roles.isCirugia2020]: false,
+          [Roles.isUrgencias2020]: false,
+          subscription: null,
+        });
+
+        this.log.push({
+          date: new Date().toISOString(), text: `Removed ${Roles.isPremium2020} to ${user.displayName}
+          and subscription set to NULL`
+        });
+
+        const subs = await this.data.getCollectionQueryAlt<Subscription>(Collections.Subscription, 'user', '==', user.uid);
+
+        for (const sub of subs) {
+          await this.afs.collection(Collections.Subscription).doc(sub.id).delete();
+          this.log.push({
+            date: new Date().toISOString(), text: `Deleted sub "${sub.id}" from ${user.displayName}`
+          });
+        }
+
+        this.log.push({
+          date: new Date().toISOString(), text: `Deleted all subscriptions from ${user.displayName}`
+        });
+
+      }
+    }
+
+    const end = Date.now() - start;
+
+    this.log.push({ date: new Date().toISOString(), text: `Granted ${Roles.isPremium2020} in ${end / 1000}s` });
+    this.loader = false;
+
+  }
+
 }
