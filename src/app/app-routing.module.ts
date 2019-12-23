@@ -67,6 +67,7 @@ import { PdfListPageComponent } from './pages/pdf-list-page/pdf-list-page.compon
 import { PaymentPageAltComponent } from './pages/payment-page-alt/payment-page-alt.component';
 import { AdminDatabaseComponent } from './pages/admin-database/admin-database.component';
 import { AdminMigration2020Component } from './pages/admin-migration2020/admin-migration2020.component';
+import { AdminSubsComponent } from './page/admin-subs/admin-subs.component';
 
 const routes: Routes = [
 
@@ -143,6 +144,7 @@ const routes: Routes = [
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/stats/counters', component: AdminStatCountersComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/migration', component: AdminMigrationComponent},
   {canActivate: [AuthGuard], path: 'admin/migration/2020', component: AdminMigration2020Component},
+  { canActivate: [AuthGuard], path: 'admin/subs', component: AdminSubsComponent },
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/content-error', component: AdminContentErrorComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/exam-rankings', component: AdminExamRankingsComponent},
   {canActivate: [AuthGuard, AdminGuard], path: 'admin/landing-fields', component: AdminLandingFieldsComponent},

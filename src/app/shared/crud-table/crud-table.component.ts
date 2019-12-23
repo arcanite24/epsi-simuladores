@@ -68,19 +68,14 @@ export class CrudTableComponent implements OnInit {
   async setupTable() {
 
     // Load sync
-    await this.loadSync();
+    // await this.loadSync();
+    console.log(this.config);
 
     // Load the collection data
     this.data$ = this.config.dataSource ?
       this.config.dataSource :
-      this.afs.collection(this.config.collection, ref => ref
-        .orderBy(this.pk))
-        // .limit(this.total ? this.perPage : null))
-        .valueChanges()
-        .pipe(
-          map(data => sortBy(data, 'createdAt')),
-          tap(items => this.lastItem = items[items.length - 1]),
-        );
+      this.afs.collection(this.config.collection)
+        .valueChanges();
 
     // Load fullEditConfig
     this.fullEditConfig.modelConfig = this.config;

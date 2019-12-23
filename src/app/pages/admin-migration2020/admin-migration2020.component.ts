@@ -42,8 +42,28 @@ export class AdminMigration2020Component implements OnInit {
     const subscription = moment().add(1, 'year').subtract(2, 'weeks').toISOString();
     this.loader = true;
 
+    const oldRoles = [
+      Roles.Esencial,
+      Roles.Premium,
+      Roles.Temprano,
+      Roles.Premium2019,
+      Roles.Zamna360_2019,
+      Roles.Esencial360,
+      Roles.Premium360,
+      Roles.Presencial,
+      Roles.isLight2020,
+    ];
+
     this.log.push({ date: new Date().toISOString(), text: 'Loading all users...' });
-    const users = await this.loadUsers();
+    let users = await this.loadUsers();
+    users = users.filter(user => {
+      for (const role of oldRoles) {
+        if (user[role]) {
+          return true;
+        }
+      }
+      return false;
+    });
     this.log.push({ date: new Date().toISOString(), text: `Loaded ${users.length} users` });
 
     for (const user of users) {
@@ -120,8 +140,8 @@ export class AdminMigration2020Component implements OnInit {
         if (user[role]) {
           return false;
         }
-        return true;
       }
+      return true;
     });
     this.log.push({ date: new Date().toISOString(), text: `Loaded ${users.length} users` });
 

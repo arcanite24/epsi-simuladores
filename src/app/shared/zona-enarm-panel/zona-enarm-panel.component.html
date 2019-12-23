@@ -79,7 +79,7 @@
         </button>
       </div>
 
-      <div class="col-xs-12 col-md-3 manita flex flex-loader">
+      <div class="col-xs-12 col-md-3 manita flex flex-loader" *ngIf="roles.isSimulacrosUnlocked()">
         <img
           src="assets/zamnademy/zona-simulacro.svg"
           class="zona-enarm-image mb-2"
@@ -117,7 +117,7 @@
         </button>
       </div> -->
 
-      <div
+      <!-- <div
         class="col-xs-12 col-md-3 manita flex flex-loader"
       >
         <h4 class="soon-text c-epsi-primary" *ngIf="isBlur()">
@@ -139,7 +139,7 @@
         >
           CUSTOM
         </button>
-      </div>
+      </div> -->
     </div>
   </div>
 </epsi-panel>

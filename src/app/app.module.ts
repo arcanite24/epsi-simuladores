@@ -217,6 +217,7 @@ import { ZamnaToggleComponent } from './shared/zamna-toggle/zamna-toggle.compone
 import { AdminDatabaseComponent } from './pages/admin-database/admin-database.component';
 import { zamnaReducer } from './reducers/zamnademy.reducer';
 import { AdminMigration2020Component } from './pages/admin-migration2020/admin-migration2020.component';
+import { AdminSubsComponent } from './page/admin-subs/admin-subs.component';
 
 @NgModule({
   declarations: [
@@ -393,6 +394,7 @@ import { AdminMigration2020Component } from './pages/admin-migration2020/admin-m
     ZamnaToggleComponent,
     AdminDatabaseComponent,
     AdminMigration2020Component,
+    AdminSubsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

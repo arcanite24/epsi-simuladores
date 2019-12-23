@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import { PaymentService } from 'src/app/services/payment.service';
+import { RolesService } from '../../services/roles.service';
 
 @Component({
   selector: 'epsi-zona-enarm-panel',
@@ -12,6 +13,7 @@ export class ZonaEnarmPanelComponent implements OnInit {
   constructor(
     public auth: AuthService,
     public pay: PaymentService,
+    public roles: RolesService,
   ) { }
 
   ngOnInit() {

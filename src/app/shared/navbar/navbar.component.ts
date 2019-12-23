@@ -91,7 +91,7 @@ export class NavbarComponent implements OnInit {
 
   async loadTimer(uid: string) {
 
-    const subs = await this.data.getCollectionQueryAlt<Subscription>(Collections.Subscription, 'user', '==', uid);
+    const subs = await this.data.getCollectionQueryAlt<Subscription>(Collections.Subscription, 'user.uid', '==', uid);
     console.log(subs);
 
     if (subs && subs.length > 0) {

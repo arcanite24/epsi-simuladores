@@ -127,7 +127,7 @@
 
       <!-- Calendar Panel -->
       <!-- <epsi-calendar-panel *ngIf="!auth.isAdmin"></epsi-calendar-panel> -->
-      <epsi-smart-calendar-panel *ngIf="(auth.user && !auth.user.noCalendar) && !auth.isLight2020"></epsi-smart-calendar-panel>
+      <epsi-smart-calendar-panel *ngIf="(auth.user && !auth.user.noCalendar) && roles.isCalendarUnlocked()"></epsi-smart-calendar-panel>
       <epsi-panel *ngIf="auth.user && auth.user.noCalendar && (pay.isComplete())">
         <div class="container">
           <div class="row">
