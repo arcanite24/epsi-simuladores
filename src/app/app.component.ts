@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'epsi-root',
@@ -14,8 +15,13 @@ export class AppComponent {
   
   constructor(
     public router: Router,
+    private modal: NgxSmartModalService,
   ) {
-    if (window.location.hash) window.location.href = `https://zamnademy.com/exam/demo/${window.location.hash.replace('#/simulador/prueba/', '')}`
+
+    if (window.location.hash) window.location.href = `https://zamnademy.com/exam/demo/${window.location.hash.replace('#/simulador/prueba/', '')}`;
+
+    this.modal
+
   }
 
 }
