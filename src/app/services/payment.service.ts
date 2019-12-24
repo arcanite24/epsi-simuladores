@@ -88,6 +88,7 @@ export class PaymentService {
     if (this.auth.isPediatria2020) { return true; }
     if (this.auth.isGineco2020) { return true; }
     if (this.auth.isUrgencias2020) { return true; }
+    if (this.auth.isCirugia2020) { return true; }
     return false;
   }
 
