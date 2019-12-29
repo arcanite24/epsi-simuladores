@@ -1,5 +1,6 @@
 // Epsi Simuladores
-ZAMNA-46103460
+ZAMNA-46103460 100
+ZAMNA-37f22d30 99
 
 // Structure
 
@@ -18,6 +19,8 @@ firebase functions:config:set mercadopago.id="5488935858280855" mercadopago.secr
 
 // mercadopago production v2
 firebase functions:config:set mercadopago.id="316881887497463" mercadopago.secret="eJNm0LOVnT9Bt6c4CezPwCoZ039sEkbK"
+
+https://us-central1-epsi-simuladores.cloudfunctions.net/pay/webhook
 
 // mercado pago gmail
 zamnademy.mercadopago@gmail.com

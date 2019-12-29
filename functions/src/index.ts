@@ -11,7 +11,7 @@ admin.initializeApp()
 // Custom HTTP Functions
 import MercadoPagoFunctions from './mercadopago'
 import ZamnademyFunctions from './zamnademy'
-import { triggers } from './database';
+// import { triggers } from './database';
 
 // Initialize the Algolia Client
 const client = algoliasearch(env.algolia.appid, env.algolia.apikey)
@@ -37,6 +37,6 @@ exports.pay = functions.https.onRequest(MercadoPagoFunctions)
 exports.zamna = functions.https.onRequest(ZamnademyFunctions)
 
 // Database triggers
-for (const [name, trigger] of Object.entries(triggers)) {
-  exports[name] = trigger;
-}
+// for (const [name, trigger] of Object.entries(triggers)) {
+//   exports[name] = trigger;
+// }
