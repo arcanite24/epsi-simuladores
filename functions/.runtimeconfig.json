@@ -1,0 +1,10 @@
+{
+  "algolia": {
+    "apikey": "ab7f0ca42c97adcfeceb58bca5a9749f",
+    "appid": "M30SUGBQKI"
+  },
+  "mercadopago": {
+    "id": "316881887497463",
+    "secret": "eJNm0LOVnT9Bt6c4CezPwCoZ039sEkbK"
+  }
+}
