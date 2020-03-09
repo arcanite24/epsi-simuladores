@@ -4,14 +4,19 @@
 
 <div class="global-loader" *ngIf="!hideLoader">
   <img src="assets/zamnademy/logo.png" class="mb-4">
-  <svg width="100px"  height="100px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
+  <svg width="100px" height="100px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"
+    preserveAspectRatio="xMidYMid" class="lds-ripple" style="background: none;">
     <circle cx="50%" cy="50%" r="3.8414" fill="none" stroke="#fff" stroke-width="2">
-      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
-      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="-0.9s" repeatCount="indefinite"></animate>
+      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1"
+        begin="-0.9s" repeatCount="indefinite"></animate>
+      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1"
+        begin="-0.9s" repeatCount="indefinite"></animate>
     </circle>
     <circle cx="50%" cy="50%" r="14.669" fill="none" stroke="#fff" stroke-width="2">
-      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"></animate>
-      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"></animate>
+      <animate attributeName="r" calcMode="spline" values="0;20" keyTimes="0;1" dur="1.8" keySplines="0 0.2 0.8 1"
+        begin="0s" repeatCount="indefinite"></animate>
+      <animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="1.8" keySplines="0.2 0 0.8 1"
+        begin="0s" repeatCount="indefinite"></animate>
     </circle>
   </svg>
 </div>
@@ -25,8 +30,9 @@
       <div class="row">
         <div class="col-md-12">
           <div class="flex flex-col flex-center pt-xs-4" style="margin-top:5rem">
-            <h2 *ngIf="mode == 'login'" class="main-login-title mt-xs-4">Curso ENARM Online 2019</h2>
-            <img *ngIf="mode == 'login'" (click)="mode = 'admin'" src="assets/zamnademy/login.png" alt="zamnademy" style="width: 300px" class="mt-2">
+            <h2 *ngIf="mode == 'login'" class="main-login-title mt-xs-4">Curso ENARM Online 2020</h2>
+            <img *ngIf="mode == 'login'" (click)="mode = 'admin'" src="assets/zamnademy/login.png" alt="zamnademy"
+              style="width: 300px" class="mt-2">
           </div>
         </div>
       </div>
@@ -35,7 +41,8 @@
     <!-- Right login col -->
     <div class="col-xs-12 col-md-6">
       <div class="auth-controls flex flex-col flex-center p-4">
-        <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">¿Ya eres alumno? <hr>Ingresa tu cuenta:</h4>
+        <h4 *ngIf="mode == 'login'" class="c-white text-center mt-3">¿Ya eres alumno?
+          <hr>Ingresa tu cuenta:</h4>
 
         <div class="social-buttons mt-3 w-100 flex flex-col flex-center" *ngIf="mode == 'login'">
           <button class="btn-social w-100 btn-google" type="button" (click)="loginGoogle()">
@@ -53,10 +60,11 @@
         </div>
 
         <div class="flex-loader mt-4 text-center w-100" *ngIf="mode == 'login'" style="width: 300px">
-          <button class="btn btn-secondary w-100 register-button zamna-c-primary" (click)="mode = 'register'">¿Quieres Inscribirte? TOCA AQUÍ</button>
+          <button class="btn btn-secondary w-100 register-button zamna-c-primary" (click)="mode = 'register'">¿Quieres
+            Inscribirte? TOCA AQUÍ</button>
           <!-- <p class="m-0 mt-4 c-white" style="text-transform: uppercase">Página exclusiva para inscripciones e ingreso a Zamnademy.</p> -->
           <small class="c-white mt-4" (click)="terminosModal.open()">Términos y Condiciones</small>
-          <!-- <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2019, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p> -->
+          <!-- <p class="m-0 mt-4 c-white">Si quieres conocer más acerca del curso Enarm Online 2020, puedes visitar la página informativa: <a class="c-white" href="https://zamnademy.com/site">zamnademy.com/site</a></p> -->
           <a class="btn btn-primary mt-4" href="/site">
             <i class="fa fa-user-md mr-2"></i>
             ¿Qué obtendré con el curso?
@@ -72,7 +80,8 @@
                 <div class="form-group mt-2 col-md-12">
                   <label class="label">Email</label>
                   <div class="control">
-                    <input class="form-control" type="email" placeholder="Ingresa tu correo electrónico" formControlName="email">
+                    <input class="form-control" type="email" placeholder="Ingresa tu correo electrónico"
+                      formControlName="email">
                   </div>
                 </div>
 
@@ -84,7 +93,9 @@
                 </div>
 
                 <div class="col-md-12">
-                  <button class="button is-primary epsi-button mt-2 btn btn-primary w-100" [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar Sesión</button>
+                  <button class="button is-primary epsi-button mt-2 btn btn-primary w-100"
+                    [ngClass]="{'is-loading': loading}" type="submit" [disabled]="loginForm.invalid">Iniciar
+                    Sesión</button>
                 </div>
 
               </div>
@@ -112,7 +123,8 @@
 
           <div class="register-info text-center">
             <h5 class="c-white">¿Aún no eres alumno?</h5>
-            <p class="c-white">Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción</p>
+            <p class="c-white">Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te
+              llevaremos a la sección de inscripción</p>
             <button class="btn btn-secondary" (click)="mode = 'login'">
               <small>Regresar</small>
             </button>
