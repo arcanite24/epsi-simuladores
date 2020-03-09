@@ -321,11 +321,11 @@ var map = {
 		17
 	],
 	"../pages/admin-control-edit/admin-control-edit.module": [
-		712,
+		711,
 		16
 	],
 	"../pages/admin/admin.module": [
-		711,
+		712,
 		3
 	],
 	"../pages/becas/becas.module": [
@@ -333,11 +333,11 @@ var map = {
 		2
 	],
 	"../pages/home/home.module": [
-		715,
+		714,
 		15
 	],
 	"../pages/howto/howto.module": [
-		714,
+		715,
 		14
 	],
 	"../pages/login/login.module": [
@@ -349,11 +349,11 @@ var map = {
 		12
 	],
 	"../pages/pago-detail/pago-detail.module": [
-		718,
+		720,
 		1
 	],
 	"../pages/pay-template-add/pay-template-add.module": [
-		721,
+		718,
 		11
 	],
 	"../pages/pay-template-edit/pay-template-edit.module": [
@@ -361,7 +361,7 @@ var map = {
 		10
 	],
 	"../pages/pay-templates/pay-templates.module": [
-		720,
+		721,
 		9
 	],
 	"../pages/paypal-checkout/paypal-checkout.module": [
@@ -377,11 +377,11 @@ var map = {
 		0
 	],
 	"../pages/tarjeta-add/tarjeta-add.module": [
-		726,
+		725,
 		6
 	],
 	"../pages/team-detail/team-detail.module": [
-		725,
+		726,
 		5
 	],
 	"../pages/teams/teams.module": [
@@ -1044,22 +1044,22 @@ var AppModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_3_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_7__app_component__["a" /* MyApp */], {}, {
                     links: [
                         { loadChildren: '../pages/admin-control-detail/admin-control-detail.module#AdminControlDetailPageModule', name: 'AdminControlDetailPage', segment: 'admin-control-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/admin-control-edit/admin-control-edit.module#AdminControlEditPageModule', name: 'AdminControlEditPage', segment: 'admin-control-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/admin/admin.module#AdminPageModule', name: 'AdminPage', segment: 'admin', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/becas/becas.module#BecasPageModule', name: 'BecasPage', segment: 'becas', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/home/home.module#HomePageModule', name: 'HomePage', segment: 'home', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/howto/howto.module#HowtoPageModule', name: 'HowtoPage', segment: 'howto', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/login/login.module#LoginPageModule', name: 'LoginPage', segment: 'login', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pago-add/pago-add.module#PagoAddPageModule', name: 'PagoAddPage', segment: 'pago-add', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/pay-template-add/pay-template-add.module#PayTemplateAddPageModule', name: 'PayTemplateAddPage', segment: 'pay-template-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-template-edit/pay-template-edit.module#PayTemplateEditPageModule', name: 'PayTemplateEditPage', segment: 'pay-template-edit', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pago-detail/pago-detail.module#PagoDetailPageModule', name: 'PagoDetailPage', segment: 'pago-detail', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/pay-templates/pay-templates.module#PayTemplatesPageModule', name: 'PayTemplatesPage', segment: 'pay-templates', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile-edit/profile-edit.module#ProfileEditPageModule', name: 'ProfileEditPage', segment: 'profile-edit', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/paypal-checkout/paypal-checkout.module#PaypalCheckoutPageModule', name: 'PaypalCheckoutPage', segment: 'paypal-checkout', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/profile/profile.module#ProfilePageModule', name: 'ProfilePage', segment: 'profile', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/tarjeta-add/tarjeta-add.module#TarjetaAddPageModule', name: 'TarjetaAddPage', segment: 'tarjeta-add', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/team-detail/team-detail.module#TeamDetailPageModule', name: 'TeamDetailPage', segment: 'team-detail', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/teams/teams.module#TeamsPageModule', name: 'TeamsPage', segment: 'teams', priority: 'low', defaultHistory: [] }
                     ]
                 })
@@ -1408,7 +1408,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\app\app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({template:/*ion-inline-start:"/Users/elzombieisra/Documents/development/zamna-pagos/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/elzombieisra/Documents/development/zamna-pagos/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

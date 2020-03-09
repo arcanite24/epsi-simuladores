@@ -1,6 +1,6 @@
 webpackJsonp([14],{
 
-/***/ 714:
+/***/ 715:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HowtoPageModule", function() { return HowtoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__howto__ = __webpack_require__(741);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__howto__ = __webpack_require__(742);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var HowtoPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 741:
+/***/ 742:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -73,7 +73,7 @@ var HowtoPage = /** @class */ (function () {
     };
     HowtoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-howto',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\howto\howto.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo me inscribo?</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" padding>\n\n  <p class="w-100 c87 text-center">\n    Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción\n  </p>\n\n  <button ion-button clear (click)="viewCtrl.dismiss()" >Cerrar</button>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\howto\howto.html"*/,
+            selector: 'page-howto',template:/*ion-inline-start:"/Users/elzombieisra/Documents/development/zamna-pagos/src/pages/howto/howto.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>¿Cómo me inscribo?</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content class="bg-eee" padding>\n\n  <p class="w-100 c87 text-center">\n    Para inscribirte solo necesitas elegir tu cuenta con que quieres registrarte y te llevaremos a la sección de inscripción\n  </p>\n\n  <button ion-button clear (click)="viewCtrl.dismiss()" >Cerrar</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/elzombieisra/Documents/development/zamna-pagos/src/pages/howto/howto.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */]])
     ], HowtoPage);

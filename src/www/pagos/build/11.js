@@ -1,6 +1,6 @@
 webpackJsonp([11],{
 
-/***/ 721:
+/***/ 718:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8,7 +8,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PayTemplateAddPageModule", function() { return PayTemplateAddPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(109);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay_template_add__ = __webpack_require__(748);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pay_template_add__ = __webpack_require__(745);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -38,7 +38,7 @@ var PayTemplateAddPageModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 748:
+/***/ 745:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -133,7 +133,7 @@ var PayTemplateAddPage = /** @class */ (function () {
     };
     PayTemplateAddPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-pay-template-add',template:/*ion-inline-start:"C:\Users\arcan\code\zamna-pagos\src\pages\pay-template-add\pay-template-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Agregar Costo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item>\n      <ion-input placeholder="ID" [(ngModel)]="template.id"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Tag" [(ngModel)]="template.tag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Precio" [(ngModel)]="template.price" type="number"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Etiqueta Precio" [(ngModel)]="template.priceTag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Nombre" [(ngModel)]="template.name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Fecha Limite" [(ngModel)]="template.limitDate"></ion-input>\n    </ion-item>\n\n    <div class="flex-loader">\n        <button ion-button  (click)="addTemplate()">Agregar</button>\n      <button ion-button clear color="danger" (click)="view.dismiss()">Cerrar</button>\n    </div>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\arcan\code\zamna-pagos\src\pages\pay-template-add\pay-template-add.html"*/,
+            selector: 'page-pay-template-add',template:/*ion-inline-start:"/Users/elzombieisra/Documents/development/zamna-pagos/src/pages/pay-template-add/pay-template-add.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Agregar Costo</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content>\n  <ion-list>\n\n    <ion-item>\n      <ion-input placeholder="ID" [(ngModel)]="template.id"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Tag" [(ngModel)]="template.tag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Precio" [(ngModel)]="template.price" type="number"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Etiqueta Precio" [(ngModel)]="template.priceTag"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Nombre" [(ngModel)]="template.name"></ion-input>\n    </ion-item>\n\n    <ion-item>\n      <ion-input placeholder="Fecha Limite" [(ngModel)]="template.limitDate"></ion-input>\n    </ion-item>\n\n    <div class="flex-loader">\n        <button ion-button  (click)="addTemplate()">Agregar</button>\n      <button ion-button clear color="danger" (click)="view.dismiss()">Cerrar</button>\n    </div>\n\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/elzombieisra/Documents/development/zamna-pagos/src/pages/pay-template-add/pay-template-add.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* ModalController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* ViewController */],
