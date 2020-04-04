@@ -1,7 +1,7 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 export const ContentTypes: string[] = [
   'materia',
@@ -14,7 +14,7 @@ export enum ContentTypesEnum {
   Materia = 'materia',
   Bloque = 'bloque',
   Tema = 'tema',
-  Subtema ='submtema'
+  Subtema = 'submtema'
 }
 
 export enum HomeLists {
@@ -229,7 +229,7 @@ export class User {
   smartCalendarCreated?: boolean;
 
   // Stats
-  average_list?: {tag: string, promedio: number}[];
+  average_list?: { tag: string, promedio: number }[];
   structure?: {};
   promedio?: number;
 
@@ -467,7 +467,7 @@ export interface Event {
   start?: Date;
   end?: string;
   fullDay?: boolean;
-  color?: {primary: string, secondary: string};
+  color?: { primary: string, secondary: string };
   tasks: EventTask[];
   links: EventLink[];
 }
@@ -580,9 +580,10 @@ export interface PaymentModel {
   canStore: boolean;
   canMeses: boolean;
   canDiscount: boolean;
-  packs?: {quantity: number, label: string, price: number}[];
+  packs?: { quantity: number, label: string, price: number }[];
   roles?: string[];
   type: PaymentModelType;
+  canBuyIndividual?: boolean;
 }
 
 export enum PaymentModelType {
@@ -653,7 +654,7 @@ export interface Programa {
   id: string;
   name: string;
   text: string;
-  links: {label: string, url: string}[];
+  links: { label: string, url: string }[];
   parent: Programa;
   unlockedBy: string;
 }
@@ -676,7 +677,7 @@ export interface List {
 export interface QuestionStat {
   id: string;
   question: Question;
-  stat: {} | [];
+  stat: {} | [];
   total: number;
 }
 
@@ -712,7 +713,7 @@ export interface TagPool {
 export interface MoodRate {
   id: string;
   user: string;
-  mood: 1 | 2 | 3 | 4 | 5 | 6;
+  mood: 1 | 2 | 3 | 4 | 5 | 6;
   date: string;
   text: string;
 }

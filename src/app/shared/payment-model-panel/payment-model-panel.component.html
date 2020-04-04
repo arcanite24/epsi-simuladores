@@ -1,127 +1,213 @@
 <div class="epsi-payment-model-panel">
-
   <ngx-smart-modal identifier="guiaModal" #guiaModal>
-
-    <p><strong>¡Felicidades!</strong> Si has llegado hasta aquí es por que en verdad deseas aprobar el EXACER y tenemos una promoción exclusiva para ti.
-      <br><strong>Solo por hoy</strong> si adquieres las 7 guías haremos un descuento del 10% sobre el precio final.
-      <br>
+    <p>
+      <strong>¡Felicidades!</strong> Si has llegado hasta aquí es por que en
+      verdad deseas aprobar el EXACER y tenemos una promoción exclusiva para ti.
+      <br /><strong>Solo por hoy</strong> si adquieres las 7 guías haremos un
+      descuento del 10% sobre el precio final.
+      <br />
       ¿Te gustaría adquirir las 7 guías?
-      <br>
-      Elige tu área de capacitación:</p>
+      <br />
+      Elige tu área de capacitación:
+    </p>
 
-    <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
-      <button class="btn btn-success" (click)="extraSelector = true">Si Quiero</button>
+    <div
+      class="flex flex-row align-center justify-center w-100"
+      *ngIf="!extraSelector"
+    >
+      <button class="btn btn-success" (click)="extraSelector = true">
+        Si Quiero
+      </button>
     </div>
 
-    <div class="flex flex-row align-center justify-center w-100" *ngIf="extraSelector">
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', 'E1ffV2bqzBakOVWUVjm2')">ARH</button>
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', 'IcxPNUrEnfgreTwrNQvs')">Informatica</button>
-      <button class="btn btn-primary" (click)="loadGuiaAd('guiaModal', '0C7lH8Hd0niEbCX0587u')">Contabilidad</button>
+    <div
+      class="flex flex-row align-center justify-center w-100"
+      *ngIf="extraSelector"
+    >
+      <button
+        class="btn btn-primary"
+        (click)="loadGuiaAd('guiaModal', 'E1ffV2bqzBakOVWUVjm2')"
+      >
+        ARH
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="loadGuiaAd('guiaModal', 'IcxPNUrEnfgreTwrNQvs')"
+      >
+        Informatica
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="loadGuiaAd('guiaModal', '0C7lH8Hd0niEbCX0587u')"
+      >
+        Contabilidad
+      </button>
     </div>
-
   </ngx-smart-modal>
 
   <ngx-smart-modal identifier="apunteModal" #apunteModal>
-
     <p>
-      ¡WOW! en verdad quieres aprobar éste examen, no es así? <br>
-      El interés es claro, por ello, si adquieres todos los apuntes disponibles el día de hoy, haremos un descuento del 10% sobre el precio final <br>
-      <br>
+      ¡WOW! en verdad quieres aprobar éste examen, no es así? <br />
+      El interés es claro, por ello, si adquieres todos los apuntes disponibles
+      el día de hoy, haremos un descuento del 10% sobre el precio final <br />
+      <br />
       ¿Quieres adquirir los apuntes?
     </p>
 
-    <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
-      <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
+    <div
+      class="flex flex-row align-center justify-center w-100"
+      *ngIf="!extraSelector"
+    >
+      <button class="btn btn-success" (click)="loadApunteAd()">
+        Si Quiero
+      </button>
     </div>
-
   </ngx-smart-modal>
 
   <ngx-smart-modal identifier="simuladorModal" #simuladorModal>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio
+      natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum
+      magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!
+    </p>
 
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, optio natus iusto repellat nam debitis voluptas. Iste voluptates veniam earum magnam obcaecati modi? Non dolore quasi quo nihil autem soluta!</p>
+    <div
+      class="flex flex-row align-center justify-center w-100"
+      *ngIf="!extraSelector"
+    >
+      <button class="btn btn-success" (click)="loadApunteAd()">
+        Si Quiero
+      </button>
+      <button class="btn btn-danger" (click)="guiaModal.close()">
+        No por ahora
+      </button>
+    </div>
+  </ngx-smart-modal>
 
-      <div class="flex flex-row align-center justify-center w-100" *ngIf="!extraSelector">
-        <button class="btn btn-success" (click)="loadApunteAd()">Si Quiero</button>
-        <button class="btn btn-danger" (click)="guiaModal.close()">No por ahora</button>
-      </div>
-
-    </ngx-smart-modal>
-
-  <epsi-panel *ngIf="model else loader" [title]="model.name">
+  <epsi-panel *ngIf="model; else loader" [title]="model.name">
     <div class="container-fluid p-4 pt-0">
       <div class="row">
-
         <div class="col-xs-12 col-md-12 p-2" [innerHTML]="modelBody"></div>
 
         <div class="col-md-12" *ngIf="model.discountPrice">
           <h3 class="text-danger">
-            <del>$ {{model.discountPrice | number}}</del>
+            <del>$ {{ model.discountPrice | number }}</del>
           </h3>
         </div>
 
         <div class="col-md-12">
-          <h2 class="text-bolder">$ {{model.amount | number}}</h2>
+          <h2 class="text-bolder">$ {{ model.amount | number }}</h2>
         </div>
 
         <div class="col-md-12">
-          <button class="btn btn-primary" [ngx-scroll-to]="'#pagarReal'">{{disabled ? 'No Disponible' : 'Pagar'}}</button>
+          <button class="btn btn-primary" [ngx-scroll-to]="'#pagarReal'">
+            {{ disabled ? "No Disponible" : "Pagar" }}
+          </button>
           <!-- <img src="assets/tarjetas.png"> -->
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="model.canBuyIndividual">
           <p>
-            <strong>¿Te gustaría adquirir algún otro complemento de estudio para asegurarte de aprobar el examen?</strong>
+            <strong
+              >¿Te gustaría adquirir algún otro complemento de estudio para
+              asegurarte de aprobar el examen?</strong
+            >
           </p>
           <p>Selecciona lo que desees</p>
         </div>
 
-        <div class="col-md-4" *ngIf="guias$ | async as guias">
-          <h4 class="w-100 text-center manita" (click)="guiaModal.open()">
-            Guias
-            <i class="fa fa-info-circle text-primary animated tada infinite"></i>
-          </h4>
-          <!-- <pre>{{ guiaSelection | json }}</pre> -->
-          <div class="checkbox" *ngFor="let g of guias">
-            <label><input type="checkbox" [(ngModel)]="guiaSelection[g.id]">{{ g.shortName }} $ {{ g.amount | number }}</label>
+        <ng-container *ngIf="model.canBuyIndividual">
+          <div class="col-md-4" *ngIf="guias$ | async as guias">
+            <h4 class="w-100 text-center manita" (click)="guiaModal.open()">
+              Guias
+              <i
+                class="fa fa-info-circle text-primary animated tada infinite"
+              ></i>
+            </h4>
+            <!-- <pre>{{ guiaSelection | json }}</pre> -->
+            <div class="checkbox" *ngFor="let g of guias">
+              <label
+                ><input type="checkbox" [(ngModel)]="guiaSelection[g.id]" />{{
+                  g.shortName
+                }}
+                $ {{ g.amount | number }}</label
+              >
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4" *ngIf="apuntes$ | async as apuntes">
-          <h4 class="w-100 text-center manita" (click)="apunteModal.open()">
-            Apuntes
-            <i class="fa fa-info-circle text-primary animated tada infinite"></i>
-          </h4>
-          <div class="checkbox" *ngFor="let g of apuntes">
-            <label><input type="checkbox" [(ngModel)]="apunteSelection[g.id]">{{ g.shortName }} $ {{ g.amount | number }}</label>
+          <div class="col-md-4" *ngIf="apuntes$ | async as apuntes">
+            <h4 class="w-100 text-center manita" (click)="apunteModal.open()">
+              Apuntes
+              <i
+                class="fa fa-info-circle text-primary animated tada infinite"
+              ></i>
+            </h4>
+            <div class="checkbox" *ngFor="let g of apuntes">
+              <label
+                ><input type="checkbox" [(ngModel)]="apunteSelection[g.id]" />{{
+                  g.shortName
+                }}
+                $ {{ g.amount | number }}</label
+              >
+            </div>
           </div>
-        </div>
 
-        <div class="col-md-4" *ngIf="simuladores$ | async as simuladores">
-          <h4 class="w-100 text-center manita" (click)="simuladorModal.open()">
-            Simulador
-          </h4>
-          <div class="radio" *ngFor="let g of simuladores">
-            <label><input type="radio" [(ngModel)]="simuladorSelection" [value]="g.id">{{ g.shortName }} $ {{ g.amount | number }}</label>
+          <div class="col-md-4" *ngIf="simuladores$ | async as simuladores">
+            <h4
+              class="w-100 text-center manita"
+              (click)="simuladorModal.open()"
+            >
+              Simulador
+            </h4>
+            <div class="radio" *ngFor="let g of simuladores">
+              <label
+                ><input
+                  type="radio"
+                  [(ngModel)]="simuladorSelection"
+                  [value]="g.id"
+                />{{ g.shortName }} $ {{ g.amount | number }}</label
+              >
+            </div>
           </div>
-        </div>
+        </ng-container>
 
         <div class="col-md-12">
-          <h2 class="w-100 text-center" *ngIf="!haveDiscount">$ {{ total | number }}</h2>
-          <h2 class="w-100 text-center text-danger" *ngIf="haveDiscount"><del>$ {{ subtotal | number }}</del></h2>
-          <h2 class="w-100 text-center" *ngIf="haveDiscount">$ {{ total | number }}</h2>
+          <h2 class="w-100 text-center" *ngIf="!haveDiscount">
+            $ {{ total | number }}
+          </h2>
+          <h2 class="w-100 text-center text-danger" *ngIf="haveDiscount">
+            <del>$ {{ subtotal | number }}</del>
+          </h2>
+          <h2 class="w-100 text-center" *ngIf="haveDiscount">
+            $ {{ total | number }}
+          </h2>
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedGuias < 7" class="text-danger text-center">Obtén un descuento del 10% sobre el precio final comprando al menos 7 guías</p>
-          <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">-10% por adquirir todas las guías</p>
+          <p *ngIf="totalSelectedGuias < 7" class="text-danger text-center">
+            Obtén un descuento del 10% sobre el precio final comprando al menos
+            7 guías
+          </p>
+          <p *ngIf="totalSelectedGuias >= 7" class="text-danger text-center">
+            -10% por adquirir todas las guías
+          </p>
         </div>
 
         <div class="col-md-12 text-center">
-          <p *ngIf="totalSelectedApuntes !== apuntes?.length" class="text-danger">Te damos un <strong>10% de descuento adicional en el precio final</strong> si adquieress todos los apuntes</p>
+          <p
+            *ngIf="totalSelectedApuntes !== apuntes?.length"
+            class="text-danger"
+          >
+            Te damos un
+            <strong>10% de descuento adicional en el precio final</strong> si
+            adquieress todos los apuntes
+          </p>
         </div>
 
         <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
-          <p class="w-100 text-center text-danger">-10% por adquirir todos los apuntes disponibles</p>
+          <p class="w-100 text-center text-danger">
+            -10% por adquirir todos los apuntes disponibles
+          </p>
         </div>
 
         <div class="col-md-12 p-2" *ngIf="loading">
@@ -132,23 +218,38 @@
         <div class="col-md-12 form-group">
           <label for="">¿Qué te atrajo para adquirir TuGuia?</label>
           <select class="form-control" [(ngModel)]="selectedStat">
-            <option [value]="s" *ngFor="let s of stats">{{statsText[s]}}</option>
+            <option [value]="s" *ngFor="let s of stats">{{
+              statsText[s]
+            }}</option>
           </select>
         </div>
 
         <div class="col-md-12 form-group" *ngIf="model.canDiscount">
           <label for="">Cupón</label>
-          <input class="form-control" type="text" placeholder="Código de Descuento" [(ngModel)]="coupon" [ngModelOptions]="{standalone: true}">
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Código de Descuento"
+            [(ngModel)]="coupon"
+            [ngModelOptions]="{ standalone: true }"
+          />
         </div>
 
         <div class="col-md-12" id="pagarReal">
-          <button class="btn btn-primary w-100" (click)="generatePayment(model)">Pagar</button>
+          <button
+            class="btn btn-primary w-100"
+            (click)="generatePayment(model)"
+          >
+            Pagar
+          </button>
         </div>
 
         <div class="col-md-12">
-          <p>Puedes pagar con efectivo o tarjeta, conoce todos los <strong>métodos de pago</strong> haciendo click en "Pagar"</p>
+          <p>
+            Puedes pagar con efectivo o tarjeta, conoce todos los
+            <strong>métodos de pago</strong> haciendo click en "Pagar"
+          </p>
         </div>
-
       </div>
     </div>
   </epsi-panel>
@@ -156,5 +257,4 @@
   <ng-template #loader>
     <epsi-loader></epsi-loader>
   </ng-template>
-
 </div>

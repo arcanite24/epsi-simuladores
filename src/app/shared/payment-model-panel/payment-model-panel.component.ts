@@ -80,17 +80,32 @@ export class PaymentModelPanelComponent implements OnInit {
     this.guias$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
       .where('type', '==', PaymentModelType.Guia))
       .valueChanges()
-      .pipe(tap(models => this.guias = models));
+      .pipe(tap(models => {
+        this.guias = models;
+        if (!this.model.canBuyIndividual) {
+          models.forEach(m => this.guiaSelection[m.id] = true);
+        }
+      }));
 
     this.apuntes$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
       .where('type', '==', PaymentModelType.Apunte))
       .valueChanges()
-      .pipe(tap(models => this.apuntes = models));
+      .pipe(tap(models => {
+        this.apuntes = models;
+        if (!this.model.canBuyIndividual) {
+          models.forEach(m => this.apunteSelection[m.id] = true);
+        }
+      }));
 
     this.simuladores$ = this.afs.collection<PaymentModel>(Collections.PAYMENT_MODEL, ref => ref
       .where('type', '==', PaymentModelType.Simulador))
       .valueChanges()
-      .pipe(tap(models => this.simuladores = models));
+      .pipe(tap(models => {
+        this.simuladores = models;
+        if (!this.model.canBuyIndividual) {
+          models.forEach(m => this.simuladorSelection[m.id] = true);
+        }
+      }));
 
   }
 
@@ -276,7 +291,7 @@ export class PaymentModelPanelComponent implements OnInit {
 
         await this.afs.collection(Collections.USER).doc(user.uid).update({ ...extraPayload });
 
-        console.log({...user});
+        console.log({ ...user });
         const _user = await this.afs.doc(`${Collections.USER}/${user.uid}`)
           .valueChanges()
           .pipe(
@@ -286,7 +301,7 @@ export class PaymentModelPanelComponent implements OnInit {
         // Update coupon registry
         await this.afs.doc(`${Collections.COUPON}/${request_payload.coupon}`).update({
           date: new Date().toISOString(),
-          user: {..._user},
+          user: { ..._user },
           used: true
         });
 

@@ -1,3 +1,4 @@
+import { LandingField } from './../../app.models';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import {
@@ -40,6 +41,8 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent implements OnInit {
 
+  public fields = {};
+
   public modelEsencial$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/L1x4106YUC0BZoARRkib`).valueChanges();
   public modelPremium$: Observable<PaymentModel> = this.afs.doc<PaymentModel>(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).valueChanges();
 
@@ -62,6 +65,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
 
+    this.loadFields();
 
     /*this.buildModels();*/
     /* this.buildLists() */
@@ -72,6 +76,13 @@ export class HomePageComponent implements OnInit {
       }
     }) */
 
+  }
+
+  async loadFields() {
+    const fields = await this.data.getCollectionAlt<LandingField>(Collections.LANDING_FIELD);
+    for (const f of fields) {
+      this.fields[f.key] = f.value;
+    }
   }
 
   async loadMoodRates(uid: string) {
@@ -109,7 +120,7 @@ export class HomePageComponent implements OnInit {
       id,
       user: uid,
       date,
-      daily: {...this.daily}
+      daily: { ...this.daily }
     });
   }
 
@@ -203,11 +214,11 @@ export class HomePageComponent implements OnInit {
     this.afs.doc(`${Collections.PAYMENT_MODEL}/nnnkMH5WadVMXTNN0AFu`).update({
       unlocks: premium2019Roles,
       packs: [
-        {quantity: 2, label: '2 Personas', price: 10198},
-        {quantity: 3, label: '3 Personas', price: 13261},
-        {quantity: 4, label: '4 Personas', price: 15859},
-        {quantity: 5, label: '5 Personas', price: 17306},
-        {quantity: 10, label: '10 Personas', price: 22161},
+        { quantity: 2, label: '2 Personas', price: 10198 },
+        { quantity: 3, label: '3 Personas', price: 13261 },
+        { quantity: 4, label: '4 Personas', price: 15859 },
+        { quantity: 5, label: '5 Personas', price: 17306 },
+        { quantity: 10, label: '10 Personas', price: 22161 },
       ]
     });
 
@@ -222,7 +233,7 @@ export class HomePageComponent implements OnInit {
   }
 
   removeNoCalendar() {
-    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({noCalendar: false});
+    this.afs.collection(Collections.USER).doc(this.auth.user.uid).update({ noCalendar: false });
   }
 
 }
