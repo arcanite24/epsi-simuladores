@@ -89,17 +89,21 @@
       <div class="row">
         <div class="col-xs-12 col-md-12 p-2" [innerHTML]="modelBody"></div>
 
-        <div class="col-md-12" *ngIf="model.discountPrice">
+        <div
+          class="col-md-12"
+          *ngIf="model.discountPrice"
+          [hidden]="!model.canBuyIndividual"
+        >
           <h3 class="text-danger">
             <del>$ {{ model.discountPrice | number }}</del>
           </h3>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" [hidden]="!model.canBuyIndividual">
           <h2 class="text-bolder">$ {{ model.amount | number }}</h2>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" [hidden]="!model.canBuyIndividual">
           <button class="btn btn-primary" [ngx-scroll-to]="'#pagarReal'">
             {{ disabled ? "No Disponible" : "Pagar" }}
           </button>
@@ -116,8 +120,12 @@
           <p>Selecciona lo que desees</p>
         </div>
 
-        <ng-container *ngIf="model.canBuyIndividual">
-          <div class="col-md-4" *ngIf="guias$ | async as guias">
+        <ng-container>
+          <div
+            class="col-md-4"
+            *ngIf="guias$ | async as guias"
+            [hidden]="!model.canBuyIndividual"
+          >
             <h4 class="w-100 text-center manita" (click)="guiaModal.open()">
               Guias
               <i
@@ -135,7 +143,11 @@
             </div>
           </div>
 
-          <div class="col-md-4" *ngIf="apuntes$ | async as apuntes">
+          <div
+            class="col-md-4"
+            *ngIf="apuntes$ | async as apuntes"
+            [hidden]="!model.canBuyIndividual"
+          >
             <h4 class="w-100 text-center manita" (click)="apunteModal.open()">
               Apuntes
               <i
@@ -152,7 +164,11 @@
             </div>
           </div>
 
-          <div class="col-md-4" *ngIf="simuladores$ | async as simuladores">
+          <div
+            class="col-md-4"
+            *ngIf="simuladores$ | async as simuladores"
+            [hidden]="!model.canBuyIndividual"
+          >
             <h4
               class="w-100 text-center manita"
               (click)="simuladorModal.open()"

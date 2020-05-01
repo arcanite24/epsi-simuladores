@@ -48,7 +48,7 @@ export class PaymentModelPanelComponent implements OnInit {
 
   public guiaSelection: any = {};
   public apunteSelection: any = {};
-  public simuladorSelection: any;
+  public simuladorSelection: any = {};
 
   public extraSelector = false;
 
@@ -64,6 +64,8 @@ export class PaymentModelPanelComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    console.log(this.model)
 
     if (this.model.type === PaymentModelType.Apunte) {
       this.apunteSelection[this.model.id] = true;
@@ -83,6 +85,7 @@ export class PaymentModelPanelComponent implements OnInit {
       .pipe(tap(models => {
         this.guias = models;
         if (!this.model.canBuyIndividual) {
+          console.log(models)
           models.forEach(m => this.guiaSelection[m.id] = true);
         }
       }));
