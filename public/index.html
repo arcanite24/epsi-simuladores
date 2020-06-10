@@ -1,511 +1,473 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="js">
 
 <head>
-        <!-- Required meta tags always come first -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-56041902-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-        <title> 2Guia.com.mx</title>
+  gtag('config', 'UA-56041902-3');
+</script>
+	<meta charset="utf-8">
+	<meta name="author" content="EpsiDev">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Termina la prepa en un examen con 2guia">
+	<link rel="shortcut icon" href="images/fav-icon.png">
+	<title>TuGuia™ te prepara para el EXACER</title>
+	<link rel="stylesheet" href="assets/css/vendor.bundled751.css?ver=100">
+	<link rel="stylesheet" href="assets/css/styled751.css?ver=100">
+	<link rel="stylesheet" href="assets/css/themed751.css?ver=100" id="layoutstyle">
+</head>
 
-        <!--Core CSS -->
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        <link rel="stylesheet" href="assets/css/bulma.css">
-        <link rel="stylesheet" href="assets/css/app.css">
-        <link rel="stylesheet" href="assets/css/core.css">
-        <link rel="stylesheet" href="assets/css/core1.css">
-        <link rel="stylesheet" href="assets/css/core_blue.css">
+<body data-spy="scroll" data-target="#mainnav" data-offset="80" class="aster">
 
-    </head>
-    <body>
-        <div class="pageloader"></div>
-        <div class="infraloader is-active"></div>        <!-- Side navigation -->
+	<!-- HEADER AREA STARTS -->
 
-        <!-- /Side navigation -->
-        <nav class="navbar is-transparent is-fixed-top is-faded">
-            <div class="container">
+	<div class="header-area" id="home">
 
+		<header class="site-header is-sticky">
 
-                <div class="navbar-menu">
-                    <div class="navbar-start">
+			<!-- Navbar -->
+			<nav class="navbar navbar-expand-lg navbar-light is-transparent" id="mainnav">
+				<div class="container">
+					<a class="navbar-brand" href="index-aster-v1.html">
+						<img class="logo logo-dark" alt="logo" src="images/logo2guia.png">
+					</a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-icon">
+							<i class="fas fa-bars"></i>
+						</span>
+					</button>
 
-                        <a href="#main-features" class="navbar-item has-hover">
-                            Beneficios
-                        </a>
+					<div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo01">
 
-                        <a href="#contenido-1" class="navbar-item has-hover">
-                            Guías, apuntes y simulador
-                        </a>
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link" href="index-aster-v1.html">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="feature-aster.html#guias">Guías</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="feature-aster.html#apuntes">Apuntes</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="feature-aster.html#simulador">Simulador</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#precio">Precio</a>
+							</li>
+							<li class="nav-item">
+								<a class="btn-menu" href="#registro">Registro / LogIn</a>
+							</li>
+						</ul> <!-- navbar -->
 
-                        <a href="#simulador-1" class="navbar-item has-hover">
-                            Simulador GRATIS
-                        </a>
+					</div>
+				</div> <!-- Container -->
+			</nav>
+			<!-- End Navbar -->
 
-                        <a href="#testimonios-1" class="navbar-item has-hover">
-                            Testimonios
-                        </a>
+		</header>
 
-                        <a href="#infografias-1" class="navbar-item has-hover">
-                            Infografías
-                        </a>
+		<div class="header-content">
+			<div class="container">
+				<div class="row align-items-center justify-content-between">
 
-                    </div>
+					<div class="col-lg-5 text-center text-lg-left order-last order-lg-first">
+						<div class="header-text">
+							<h1 class="sec-title-xl">Aprende a tu ritmo DESDE CASA</h1>
+							<p class="lead">Conoce la manera más sencilla y económica del mercado para prepararte para el EXACER
+							<br>
+						Todo desde la comodidad de tu hogar y sin exponerte al virus allá afuera</p>
 
-                    <div class="navbar-end has-hover">
-                        <a href="#register-1" class="navbar-item has-border-right">
-                            ¿Cómo registrarme?
-                        </a>
-                        <div class="separator"></div>
-                        <div class="navbar-item">
-                            <a href="https://2guia.com.mx/app/" class="button cta-button is-rounded accent-button">Registrarme / Iniciar sesión</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        <!-- Hero -->
-        <div id="header-1" class="hero">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns has-text-centered">
-                        <!-- Caption -->
-                        <div class="column is-8 is-offset-2 is-hero-caption">
-                            <h1 class="title is-1">
-                                <span id="landing-title">TuGuia™ te ayuda a Aprobar el EXACER</span>
-                            </h1>
-                            <h2 class="subtitle is-5">
-                                Con guías, apuntes y simuladores TuGuia™ te ayudará a estudiar y prepararte para el examen
-                            </h2>
+						</div>
+					</div> <!-- col -->
 
-                            <div class="button-wrap">
-                                <a href="#simulador-1" class="button cta-button primary-button is-raised is-rounded">Simulador GRATIS</a>
-                            </div>
-                            <!-- Hero Mockup -->
-                            <img class="hero-mockup" src="assets/images/illustrations/clay-app.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<div class="col-lg-6">
+						<div class="header-img sec-img">
+							<img src="images/fear.png" class="img-fluid" alt="header-img">
+						</div>
+					</div> <!-- col -->
 
+				</div> <!-- row -->
+			</div> <!-- Container -->
+		</div>	<!-- header-content -->
 
-
-
-
-        <!--Features-->
-        <div class="section is-medium">
-            <div id="main-features" class="container">
-                <div class="columns is-flex-tablet">
-                    <!--Feature-->
-                    <div class="column is-3">
-                        <div class="box-wrap is-box-reveal">
-                            <div class="icon-box">
-                                <img src="assets/images/icons/header/online.png" alt="">
-                                <h4 class="box-title">100% en línea</h4>
-                                <p>Resuelve y visita guías, apuntes y simuladores cuando y desde donde quieras con un dispositivo conectado a internet</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Feature-->
-                    <div class="column is-3">
-                        <div class="box-wrap is-box-reveal">
-                            <div class="icon-box">
-                                <img src="assets/images/icons/header/exercise.png" alt="">
-                                <h4 class="box-title">Cientos de ejercicios</h4>
-                                <p>Muchísimos ejercicios y preguntas de cada materia para asegurarte una calificación aprobatoria</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Feature-->
-                    <div class="column is-3">
-                        <div class="box-wrap is-box-reveal">
-                            <div class="icon-box">
-                                <img src="assets/images/icons/header/lifetime.svg" alt="">
-                                <h4 class="box-title">Acceso de por vida</h4>
-                                <p>No te preocupes por perder el acceso a la plataforma si requieres presentar el examen una segunda ocasión</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Feature-->
-                    <div class="column is-3">
-                        <div class="box-wrap is-box-reveal">
-                            <div class="icon-box">
-                                <img src="assets/images/icons/header/actualization.svg" alt="">
-                                <h4 class="box-title">Actualización de contenido</h4>
-                                <p>Constantemente añadimos nuevo contenido a la plataforma. Agregamos nuevas opciones de compra y más contenido a lo que podrías ya haber adquirido</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Subscribe box-->
-                <br>
-                <br>
-                <br>
-
-                <!--Counters-->
-                <div class="columns stat-boxes-wrapper">
-                    <!--Counter-->
-                    <div class="column is-4">
-                        <div class="stat-box">
-                            <div class="stat-icon is-icon-reveal">
-                                <img src="assets/images/icons/stats/guide.svg" alt="">
-                            </div>
-                            <div class="stat-count">
-                                <span class="counter">9</span>
-                            </div>
-                            <p>Guías</p>
-                        </div>
-                    </div>
-                    <!--Counter-->
-                    <div class="column is-4">
-                        <div class="stat-box">
-                            <div class="stat-icon is-icon-reveal">
-                                <img src="assets/images/icons/stats/notes.svg" alt="">
-                            </div>
-                            <div class="stat-count">
-                                <span class="counter">2</span>
-                            </div>
-                            <p>Apuntes</p>
-                        </div>
-                    </div>
-                    <!--Counter-->
-                    <div class="column is-4">
-                        <div class="stat-box">
-                            <div class="stat-icon is-icon-reveal">
-                                <img src="assets/images/icons/stats/simulador.svg" alt="">
-                            </div>
-                            <div class="stat-count">
-                                <span class="counter">1</span>
-                            </div>
-                            <p>Simulador</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	</div>
+	<!-- HEADER AREA ENDS -->
 
 
 
+	<!-- WHY XIOM STARTS -->
+	<div class="why-xiom section-pad-sm" id="about">
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="sec-heading-s3">
+						<h2 class="sec-title-lg">Cosas que no sabías del EXACER y de TuGuia™</h2>
+						<p class="lead">Si no sabes por dónde comenzar a estudiar, o no tienes suficiente tiempo para hacerlo, continúa leyendo y descubre la forma más fácil de prepararte para el EXACER</p>
+					</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
+
+			<div class="row justify-content-between">
+
+				<div class="col-lg-6 col-md-12">
+					<div class="why-xiom-img sec-img">
+						<img src="images/estudiando2.png" alt="why-us">
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-lg-5 col-md-12">
+					<div class="row mtn-x2">
+
+						<div class="col-lg-12">
+							<div class="why-xiom-item">
+								<div class="why-xiom-icon">
+									<img src="images/stayhome2.png" alt="feature-icon">
+								</div>
+								<h2>Aprende desde casa</h2>
+								<p>TuGuia™ te muestra la manera de aprender, estudiar y prepararte para el EXACER haciéndolo desde casa para que no tengas que salir y exponerte al COVID-19</p>
+							</div>
+						</div> <!-- col -->
+
+						<div class="col-lg-12">
+							<div class="why-xiom-item">
+								<div class="why-xiom-icon">
+									<img src="images/limitedtime.png" alt="feature-icon">
+								</div>
+								<h2>Tiempo límite</h2>
+								<p>Solo tienes 1 minuto con 5 segundo para contestar cada pregunta del examen</p>
+							</div>
+						</div> <!-- col -->
+
+						<div class="col-lg-12">
+							<div class="why-xiom-item">
+								<div class="why-xiom-icon">
+									<img src="images/number5.png" alt="feature-icon">
+								</div>
+								<h2>5 horas de estrés puro</h2>
+								<p>El EXACER se desarrolla en 3 periodos de 1 hora con 20 minutos cada uno, probablemente el primer periodo lo acabes sin problema pero el segundo va a ser más cansado y para el tercero estarás estresado y afectará tu concentración, preparate con TuGuia™ y no permitas que ésto te suceda a ti</p>
+							</div>
+						</div> <!-- col -->
+
+						<div class="col-lg-12">
+							<div class="why-xiom-item">
+								<div class="why-xiom-icon">
+									<img src="images/secure-icon.png" alt="feature-icon">
+								</div>
+								<h2>No malgastes tu tiempo</h2>
+								<p>No pierdas tu tiempo estudiando lo que ya sabes, concéntrate en aprender lo que no sabes, pero sobre todo en entender como se debe resolver un examen con un temario tan extenso y en tan poco tiempo como el EXACER</p>
+							</div>
+						</div> <!-- col -->
+					</div> <!-- row -->
+				</div> <!-- col -->
+
+			</div> <!-- row -->
+		</div>
+	</div>
+	<!-- WHY XIOM ENDS -->
+
+	<!--   TEXT BLOCK-1 STARTS -->
+
+	<div class="text-block-1 section-pad-sm section-pad nopb">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-4">
+					<h2 class="sec-title-xxl">Por suerte existe la manera de prepararte.</h2>
+				</div> <!-- col -->
+
+				<div class="col-lg-7">
+					<p class="lead">Podrás lograr resolver cada pregunta en menos de 1 minuto</p>
+					<p class="lead">Vas a aprender a mantener tu concentración durante periodos prolongados</p>
+					<p class="lead">Depende de ti generar la habilidad para detectar respuestas correctas en exámenes del tipo respuestas de opción múltiple</p>
+        </div> <!-- col -->
+
+			</div> <!-- row -->
+		</div>
+	</div>
+	<!--   TEXT BLOCK-1 ENDS -->
+
+	<!-- TESTIMONIAL STARTS -->
+
+	<div class="testimonial section-pad-lg section-pad nopb mtn-x2">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="sec-heading">
+						<h2 class="sec-title-lg">Testimonios</h2>
+						</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
+
+			<div class="testimonial-content">
+				<div class="row justify-content-center text-center">
+
+					<div class="col-lg-4 col-md-6">
+						<div class="testimonial-item">
+							<div class="testimonial-box">
+								<blockquote>Gracias a lo que aprendí con el método de preparación de TuGuia™ pude pasar el examen y me ayudó muchísimo en mi examen de ingreso a la universidad  </blockquote>
+							</div>
+							<div class="testimonial-client">
+								<div class="testimonial-client-details">
+									<h6>Ronaldo López</h6>
+								</div>
+							</div>
+						</div>
+					</div> <!-- col -->
+
+					<div class="col-lg-4 col-md-6">
+						<div class="testimonial-item">
+							<div class="testimonial-box">
+								<blockquote>En mi primer intento yo sabía todos los temas que vendrían en el examen, los había estudiado completamente, pero lamentablemente no pasé porque a mitad del examen no podía más, estaba muy estresado y cansado, ver preguntas de tantísimos temas es abrumador, pero en mi segundo intento me preparé como TuGuia™ lo suguiere y aprobé el examen </blockquote>
+							</div>
+							<div class="testimonial-client">
+							  <div class="testimonial-client-details">
+									<h6>Pablo Sánchez</h6>
+								</div>
+							</div>
+						</div>
+					</div> <!-- col -->
+
+					<div class="col-lg-4 col-md-6">
+						<div class="testimonial-item">
+							<div class="testimonial-box">
+								<blockquote>Ya había presentado el examen y lo reprobé porque se me acabó el tiempo, pero con el simulador pude medir mis tiempos fácilmente y logré resolver los ejercicios aún con la presión del tiempo</blockquote>
+							</div>
+							<div class="testimonial-client">
+								<div class="testimonial-client-details">
+									<h6>Diana Orozco</h6>
+								</div>
+							</div>
+						</div>
+					</div> <!-- col -->
+
+				</div> <!-- row -->
+			</div> <!-- testimonial-content -->
+		</div> <!-- Container -->
+	</div>
+	<!-- TESTIMONIAL ENDS -->
+
+	<!-- TESTIMONIAL STARTS -->
+
+	<div class="testimonial section-pad-lg section-pad nopb mtn-x2">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="sec-heading">
+						<h2 class="sec-title-lg">Aquí está la manera más fácil de prepararte</h2>
+						</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
 
 
+		</div> <!-- Container -->
+	</div>
+	<!-- TESTIMONIAL ENDS -->
 
+	<!--  CONFIG STARTS  -->
+	<div class="config section-pad-xl section-pad nopb">
+			<div class="container">
+					<div class="row justify-content-between align-items-center">
 
-			<div id="testimonios-1"  class="content-wrapper">
-                    <div class="columns is-vcentered">
-                        <div class="column is-hidden-mobile"></div>
-                        <div class="column is-10">
-                            <div class="columns is-vcentered">
-                                <div class="column is-6">
-                                    <!-- Testimonial -->
-                                    <div class="flex-card testimonial-card light-raised padding-20">
-                                        <div class="testimonial-title">
-                                            Guías 100% recomendadas
-                                        </div>
-                                        <div class="testimonial-text">
-                                            Los ejercicios que vienen son muy parecidos a los que tenía el examen real y los apuntes me ayudaron a resolver los ejercicios con los que me atoraba.
-                                        </div>
-                                        <div class="user-id">
-                                            <img class="" src="assets/images/avatars/dan.png" alt="" data-demo-src="assets/images/avatars/dan.png">
-                                            <div class="info">
-                                                <div class="name">Ronaldo López</div>
+							<div class="col-md-6">
+									<div class="config-img sec-img">
+											<img src="images/sparring.png" alt="config">
+									</div>
+							</div> <!-- col -->
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Testimonial -->
-                                    <div class="flex-card testimonial-card light-raised padding-20">
-                                        <div class="testimonial-title">
-                                            "Si quieres pasar, el simulador ayuda"
-                                        </div>
-                                        <div class="testimonial-text">
-                                            Ya había presentado el examen y lo reprobé porque me quede corto de tiempo, pero con el simulador pude medir mis tiempos fácilmente y logré resolver los ejercicios aún con la presión del tiempo
-                                        </div>
-                                        <div class="user-id">
-                                            <img class="" src="assets/images/avatars/jane.jpg" alt="" data-demo-src="assets/images/avatars/jane.jpg">
-                                            <div class="info">
-                                                <div class="name">Diego Guzman</div>
+							<div class="col-md-5 5 text-center text-md-left">
+									<div class="text-block">
+											<h2 class="sec-title-lg sec-title-md">Aprende lo necesario</h2>
+											<p class="lead">Imagina que un boxeador se preparará para la pelea más importante de su vida estudiando la teoría y técnicas del boxeo, analizando los movimientos de su oponente y aprendiendo las reglas de una pelea, al momento de subirse al ring lo noquearían instantáneamente. Un buen boxeador además de conocer las reglas de una pelea, los movimientos de su oponente y las técnicas y teorías del boxeo, debe haberse subido previamente al ring, debe haber practicado sus movimientos y haber llevado un entrenamiento físico exhaustivo que incluya recibir golpes, pues es a lo que se enfrentará en la pelea real. </p>
+									</div>
+							</div> <!-- col -->
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="column is-6">
-                                    <!-- Testimonial -->
-                                    <div class="flex-card testimonial-card light-raised padding-20">
-                                        <div class="testimonial-title">
-                                            Super recomendable
-                                        </div>
-                                        <div class="testimonial-text">
-                                            Recomiendo ampliamente las guías, el simulador y los apuntes, se complementan perfectamente y te garantizan aprobar
-                                        </div>
-                                        <div class="user-id">
-                                            <img class="" src="assets/images/avatars/helen.jpg" alt="" data-demo-src="assets/images/avatars/helen.jpg">
-                                            <div class="info">
-                                                <div class="name">Diana Estrada</div>
+					</div> <!-- row -->
+			</div> <!-- Container -->
+	</div>
+	<!--  CONFIG ENDS  -->
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Testimonial -->
-                                    <div class="flex-card testimonial-card light-raised padding-20">
-                                        <div class="testimonial-title">
-                                            Excelentes apuntes de matemáticas
-                                        </div>
-                                        <div class="testimonial-text">
-                                            Ufff los apuntes de mate, los entendí perfecto. Ya tenía las bases pero los apuntes me recordaron como resolver operaciones que ya había olvidado
-                                        </div>
-                                        <div class="user-id">
-                                            <img class="" src="assets/images/avatars/anthony.jpg" alt="" data-demo-src="assets/images/avatars/anthony.jpg">
-                                            <div class="info">
-                                                <div class="name">Pablo Sánchez</div>
+	<!--  TOOLS STARTS -->
+	<div class="tools section-pad-md section-pad nopb">
+			<div class="container">
+					<div class="row justify-content-between align-items-center">
 
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column is-hidden-mobile"></div>
-                    </div>
-                </div>
+							<div class="col-md-6">
+									<div class="sec-img">
+											<img src="images/examen.png" alt="tools">
+									</div>
+							</div> <!-- col -->
 
-        <!--Feature Section 1-->
-        <div class="section is-medium is-grey has-triangle-right">
-            <img class="triangle-right" src="assets/images/shapes/triangle-right.svg" alt="">
-            <div  class="container">
-                <!--Title-->
-                <div class="section-title has-text-centered">
-                    <img src="assets/images/icons/heading-icon.svg" alt="">
-                    <h2 class="title is-spaced">Para aprobar necesitas practicar</h2>
-                    <h3 class="subtitle">En ésta plataforma educativa online tenemos para ti:  </h3>
-                </div>
-
-                <!--Wrapper-->
-                <div id="contenido-1" class="content-wrapper">
-                    <div class="columns is-vcentered">
-                        <!--Stacked phones-->
-                        <div class="column is-6 is-relative is-centered-portrait">
-                            <img class="side-image is-tablet" src="assets/images/illustrations/phone-1.png" alt="">
-                            <img class="shadow-side-image" src="assets/images/illustrations/phone-2.png" alt="">
-                        </div>
-                        <!--Feature text-->
-                        <div class="column is-6">
-                            <div class="side-title">
-                                <h3 class="title">Guías</h3>
-                                <div class="title-number is-single-reveal">1</div>
-                            </div>
-                            <p class="side-paragraph">
-                                Las guías constan de preguntas de opción múltiple de los temas evaluados en el EXACER y que con estadísticas te facilitarán saber cuáles son tus debilidades y cuáles tus fortalezas, para que puedas enfocar tus estudios en aquellos temas que más se te dificultan
-                                <br>
-                                <a class="read-more low-padding" href="#buy-1">Quiero resolver las guías <i class="im im-icon-Right"></i></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-        <!--Feature Section 2-->
-        <div id="features-2" class="section has-circles is-medium">
-            <div class="container">
-                <!--Wrapper-->
-                <div id="contenido-2" class="content-wrapper has-margin-bottom">
-                    <div class="columns is-vcentered">
-                        <!--Content-->
-                        <div class="column is-5 is-offset-1">
-                            <div class="side-title">
-                                <h3 class="title">Apuntes</h3>
-                                <div class="title-number is-single-reveal">2</div>
-                            </div>
-                            <p class="side-paragraph">
-                                En formato PDF y que puedes ver incluso desde tu celular, éstos apuntes de las dos materias más difíciles del EXACER te ayudarán a reforzar tus conocimientos y te prepararán para el examen
-                                <br>
-                                <a class="read-more low-padding" href="#buy-1">Quiero estudiar los apuntes <i class="im im-icon-Right"></i></a>
-                            </p>
-                        </div>
-                        <!--Laptop-->
-                        <div class="column is-9">
-                            <img class="side-image" src="assets/images/illustrations/laptop.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Colored circles-->
-            <div class="primary-circle"></div>
-            <div class="primary-bold-circle"></div>
-            <div class="accent-circle"></div>
-        </div>
-
-        <!--Feature Section 3-->
-        <div id="features-3" class="section is-grey is-medium is-reversed has-triangle-left">
-            <img class="triangle-left" src="assets/images/shapes/triangle-left.svg" alt="">
-            <div class="container">
-                <!--Wrapper-->
-                <div id="contenido-3" class="content-wrapper has-margin-bottom">
-                    <div class="columns is-vcentered">
-                        <!--Content-->
-                        <div class="column is-5 is-offset-1">
-                            <div class="side-title">
-                                <h3 class="title">Simulador</h3>
-                                <div class="title-number is-single-reveal">3</div>
-                            </div>
-                            <p class="side-paragraph">
-                                Cientos de alumnos reprueban el examen no por falta de conocimiento sino por falta de preparación. El EXACER se resuelve con tiempo límite y es un examen muy largo. Prepararte para resolver cientos de preguntas de opción múltiple de las materias evaluadas, bajo tiempo límite con el simulador.
-                                <br>
-								Mejora tu habilidad de comprensión de preguntas
-								<br>
-								Mejora el tiempo en que resuelves cada inciso
-								<br>
-								Obtén estadísticas detalladas para enfocar tus estudios
-								<br>
-								<a class="read-more low-padding" href="#buy-1">Quiero resolver el simulador <i class="im im-icon-Right"></i></a>
-
-                            </p>
-                        </div>
-                        <!--Mockup-->
-                        <div class="column is-9">
-                            <img class="side-image is-pulled" src="assets/images/illustrations/ui.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-        <!-- Process section -->
-        <div id="simulador-1" class="section is-medium">
-            <div class="container">
-                <div class="title-wrap has-text-centered">
-                    <h2 class="title is-spaced is-3">Simulador gratis</h2>
-                    <h3 class="subtitle">Para resolver el simulador gratis debes registrarte en la plataforma TuGuia™ y a continuación te decimos como hacerlo:</h3>
-                    <img src="assets/images/icons/divider.svg" class="special-divider">
-                </div>
-                <!-- Wrapper -->
-                <div id="register-1" class="content-wrapper">
-                    <div class="columns is-vcentered">
-                        <div class="column is-4 is-offset-1">
-                            <div class="vertical-process">
-                                <div class="vertical-block">
-                                    <div class="process-icon">
-                                        <i class="im im-icon-Approved-Window
-"></i>
-                                    </div>
-                                    <div class="vertical-text">
-                                        <h4>Visita la plataforma</h4>
-                                        <p>Dirígete a<a class="read-more low-padding" href="https://2guia.com.mx/app/"> 2guia.com.mx/app <i class="im im-icon-Right"></i></a> </p>
-                                    </div>
-                                </div>
-                                <div class="vertical-block">
-                                    <div class="process-icon">
-                                        <i class="im im-icon-Checked-User"></i>
-                                    </div>
-                                    <div class="vertical-text">
-                                        <h4>Regístrate</h4>
-                                        <p>Una vez ahí, simplemente haz click sobre cualquiera de los botones "Registrarse usando facebook" o "Registrarse usando google" y automáticamente te dará acceso a la plataforma donde encuentras el simulador GRATUITO</p>
-                                    </div>
-                                </div>
-                                <div class="vertical-block">
-                                    <div class="process-icon">
-                                        <i class="im im-icon-Email
-"></i>
-                                    </div>
-                                    <div class="vertical-text">
-                                        <h4>Otra opción de registro</h4>
-                                        <p>En el formulario que encontrarás deberás ingresar tu nombre, tu email y una contraseña, al hacer click en "Registrarse" automáticamente te dará acceso a la plataforma y ahí encontrarás el simulador GRATUITO.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="column is-6">
-                            <img class="process-illustration" src="assets/images/illustrations/drawings/process-woman.svg">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-
-
-
-
-         <!-- Process section -->
-        <div id="buy-1" class="section is-theme-grey is-medium">
-            <div class="container">
-                <div class="title-wrap has-text-centered">
-                    <h2 class="title is-spaced is-3">¿Cómo accedo a las guías, apuntes y simulador?</h2>
-                    <h3 class="subtitle">Sigue los 4 sencillos pasos descritos a continuación para adquirir contenido de TuGuia™ y así asegurarte de aprobar el EXACER.</h3>
-                    <img src="assets/images/icons/divider.svg" class="special-divider" alt="">
-                </div>
-                <!-- Wrapper -->
-                <div class="content-wrapper">
-                    <div class="process-wrap">
-                        <!-- Process step -->
-                        <div class="process-block has-text-centered">
-                            <div class="process-icon">
-                                <img src="assets/images/icons/signin.svg" alt="">
-                            </div>
-                            <div class="text-block">
-                                <h4 class="title is-5 no-margin">Una vez registrado</h4>
-                                <p>Ya que te hayas registrado... Haz click en "Comprar" en la guía, simulador o apunte que desees y te redirigirá a la siguiente pantalla automáticamente
-                                	<br>
-                                	<a class="read-more low-padding" href="#register-1">¿Cómo me registro?<i class="im im-icon-Right"></i></a>
-                                </p>
-                            </div>
-                        </div>
-                        <!-- Process step -->
-                        <div class="process-block has-text-centered">
-                            <div class="process-icon">
-                                <img src="assets/images/icons/discount.svg" alt="">
-                            </div>
-                            <div class="text-block">
-                                <h4 class="title is-5 no-margin">Obtén descuentos</h4>
-                                <p>En la siguiente pantalla, checa si hay otra guía, apunte o simulador de tu interés, si lo hay, seleccionalo, recuerda que si compras todas las guías o todos los apuntes se te hacen hasta dos descuentos en el precio final</p>
-                            </div>
-                        </div>
-                        <!-- Process step -->
-
-                    </div>
-                </div>
-                <div class="content-wrapper">
-                    <div class="process-wrap">
-                        <!-- Process step -->
-                        <div class="process-block has-text-centered">
-                            <div class="process-icon">
-                                <img src="assets/images/icons/coupon.svg" alt="">
-                            </div>
-                            <div class="text-block">
-                                <h4 class="title is-5 no-margin">Un descuento más</h4>
-                                <p>Si cuentas con un cupón de descuento ingresalo en el campo de “Código de descuento”. Recuerda que regalamos cupones de descuento a través de dinámicas en nuestra página de Facebook cada semana
-                                	<br>
-                                	<a class="read-more low-padding" href="https://www.facebook.com/2guiamx/">Página de FB de TuGuia™ <i class="im im-icon-Right"></i></a>
+							<div class="col-md-5 text-center text-md-right order-last order-md-first">
+									<div class="text-block">
+											<h2 class="sec-title-lg sec-title-md">Práctica lo aprendido</h2>
+											<p class="lead">Lo mismo sucede para una persona que está a punto de enfrentarse con un examen como el EXACER. Es obligatorio que esa persona haya estudiado los temas de las preguntas del examen hasta el cansancio, pero también es vital que se prepare para el resto de golpes que le tiene preparados el examen, como lo es hacerlo con tiempo límite, aprender a responder preguntas aunque no conozcas la respuesta correcta y un sin fin de aspectos más
 </p>
-                            </div>
-                        </div>
-                        <div class="process-block has-text-centered">
-                            <div class="process-icon">
-                                <img src="assets/images/icons/payment.svg" alt="">
-                            </div>
-                            <div class="text-block">
-                                <h4 class="title is-5 no-margin">Realiza el pago</h4>
-                                <p>Haz click en “Pagar” y a continuación te redigiremos a la pantalla de pago donde puedes seleccionar el método de pago, ya sea efectivo en oxxo y sucursales bancarias o en esa misma pantalla con tarjeta de débito y crédito.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /Process section -->
+									</div>
+							</div> <!-- col -->
+
+					</div> <!-- row -->
+			</div> <!-- Container -->
+	</div>
+	<!--  TOOLS ENDS -->
+
+	<!-- ABOUT US STARTS -->
+	<div class="about-us section-pad">
+		<div class="container">
+
+			<div class="row justify-content-start">
+				<div class="col-md-6">
+					<div class="about-us-heading">
+						<h2 class="sec-title-lg">Pierde el miedo</h2>
+						<p class="lead">La única manera de estar completamente listo para el examen es haber entrenado como el boxeador del ejemplo, ¿cómo?</p>
+						<p class="lead">Debes:</p>
+					</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
+
+			<div class="row">
+				<div class="col-md-3">
+					<div class="about-us-content">
+						<h2>Tiempo</h2>
+						<P>Responder muchísimas preguntas y ejercicios y saber manejar el poco tiempo que tendrás en el examen real</P>
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-md-3">
+					<div class="about-us-content">
+						<h2>Concentración</h2>
+						<P>Prepararte para estar concentrado durante mucho tiempo</P>
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-md-3">
+					<div class="about-us-content">
+						<h2>Complétalo</h2>
+						<P>Saber que nunca debes dejar una pregunta sin respuesta en el EXACER</P>
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-md-3">
+					<div class="about-us-content">
+						<h2>Intuición</h2>
+						<P>Ser capaz de detectar respuestas ridículas e ilógicas para poder responder correctamente</P>
+					</div>
+				</div> <!-- col -->
+
+				<div class="row justify-content-start">
+					<divdiv class="col-md-12">
+						<div class="about-us-heading">
+							<p class="lead">Y hay muchísimas cosas más que debes saber, pero cada persona es distinta y solo dependerá de ti mismo descubrir tus capacidades y habilidades y mejorarlas, pero, ¿cómo puedo hacerlo? Solo hay una manera y es respondiendo cientos de preguntas con tiempo límite, porque al final de eso se trata el EXACER</p>
+							</div>
+					</div> <!-- col -->
+				</div> <!-- row -->
+
+				<div class="row justify-content-start">
+					<div class="col-md-6">
+						<div class="about-us-heading">
+						<p class="lead">Para poder pasar el EXACER y cualquier examen de más de 2 horas y con distintas materias es necesario ejercitar tu mente, debes ser capaz de concentrarte y recordar todo lo que estudiaste, no debes ceder ante la ansiedad y el estrés y debes saber controlarlos a tu favor.</p>
+						</div>
+					</div> <!-- col -->
+				</div> <!-- row -->
+
+			</div> <!-- row -->
+		</div> <!-- Container -->
+	</div>
+	<!-- ABOUT US ENDS -->
+
+
+	<!-- TOOLS STARTS -->
+	<div class="tools-s3 section-pad-sm">
+		<div class="container">
+			<div class="row justify-content-between align-items-center">
+
+				<div class="col-md-6">
+					<div class="tools-img-s3 sec-img">
+						<img src="images/test1.png" alt="tools">
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-md-5 text-center text-md-right order-last order-md-first">
+					<div class="text-block-3">
+						<div class="tools-icon-s3">
+							<img src="images/q&a.png" alt="tools">
+						</div>
+						<div class="tools-text-s3">
+							<h2 class="sec-title-lg">La forma más fácil de hacerlo</h2>
+							<p class="lead">Te estarás preguntando ¿Cuál es la manera más sencilla para poder resolver cientos de preguntas de los temas del EXACER?
+							</p>
+							<p class="lead">La respuesta: Bancos de preguntas y guías de ejercicios</p>
+							<p class="lead">
+								En internet vas a encontrar una variedad de bancos de preguntas y guías, pero poco o casi nulo enfocado al EXACER, pero no te preocupes, hay una buena noticia. TuGuia™ tiene guías enfocadas al EXACER y que podrás resolver desde nuestra plataforma web al adquirir tu paquete.
+							</p>
+<a href="feature-aster.html" class="btn-link">Saber más</a>
+						</div>
+					</div>
+				</div> <!-- col -->
+
+			</div> <!-- row -->
+		</div> <!--Container -->
+	</div>
+	<!-- TOOLS ENDS -->
+
+	<!-- WHY XIOM STARTS -->
+	<div class="why-xiom why-xiom-s4 section-pad-sm">
+		<div class="container">
+
+			<div class="row justify-content-center">
+				<div class="col-lg-6 text-center">
+					<div class="sec-heading-s3">
+						<h2 class="sec-title-lg">Pero aún no acaban las buenas noticias</h2>
+						<p class="lead">TuGuia™ también desarrolló y tiene para ti:</p>
+					</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
+
+			<div class="row text-center">
+				<div class="col-md-4">
+					<div class="why-xiom-item-s2 ">
+						<div class="why-xiom-icon-s2">
+							<img src="images/why-xiom-icon-a.png" alt="why-us">
+						</div>
+						<h2>Apuntes de todas las materias</h2>
+						<p>Tenemos los apuntes de cada una de las áreas evaluadas en el examen. En total son 9 apuntes con más de 200 hojas de información valiosa por cada uno.<br>Podrás consultar los apuntes en nuestra plataforma web desde tu celular y computadora desde donde quieras y cuando sea.</p>
+						<a href="feature-aster.html#apuntes" class="btn-link">Ver más</a>
+					</div>
+				</div> <!-- col -->
+
+				<div class="col-md-4">
+					<div class="why-xiom-item-s2">
+						<div class="why-xiom-icon-s2">
+							<img src="images/why-xiom-icon-c.png" alt="why-us">
+						</div>
+						<h2>Simulador</h2>
+						<p>El simulador es vital para tu preparación, será como si estuvieras resolviendo el examen real mucho antes, ¿para que esperar hasta hacer el examen real para darte cuenta que es muy difícil resolver una pregunta en 1 minuto con 5 segundo, o para darse cuenta de lo difícil que es mantener la concentración en el examen por más de 2 horas.</p>
+						<a href="feature-aster.html#simulador" class="btn-link">Ver más</a>
+					</div>
+				</div> <!-- col -->
+
+
+				<div class="col-md-4">
+					<div class="why-xiom-item-s2">
+						<div class="why-xiom-icon-s2">
+							<img src="images/why-xiom-icon-b.png" alt="why-us">
+						</div>
+						<h2>Infografías</h2>
+						<p>Aprende de manera visual y divertida los temas más importantes del examen. Día a día publicamos en nuestra página de facebook infografías super padres que te sugerimos checar.</p>
+						<a href="feature-aster.html" class="btn-link">Ver más</a>
+					</div>
+				</div> <!-- col -->
+
+
+			</div> <!-- row -->
+		</div> <!-- container -->
+	</div>
+	<!-- WHY XIOM ENDS -->
 
 
 
@@ -513,227 +475,162 @@
 
 
 
-        <!--Pricing Section-->
-        <div class="section is-pricing is-medium">
-            <div class="container">
-                <!--Title-->
-                <div id="pricing" class="section-title has-text-centered">
-                    <img src="assets/images/icons/heading-icon.svg" alt="">
-                    <h2 class="title is-spaced">Precios</h2>
-                    <h3 class="subtitle">Nos hemos esforzado por mantener bajos nuestros precios y que nadie tenga pretexto para no prepararse para el examen</h3>
-                </div>
+	<!--   BEST PRICING STARTS  -->
 
-                <!--Wrapper-->
-                <div class="pricing-wrap">
-                    <div class="columns">
-                        <!--Pricing card-->
-                        <div class="column is-4">
-                            <div class="pricing-card">
-                                <div class="pricing-overlay is-accent"></div>
-                                <a href="#buy-1" class="button pricing-button cta-button is-rounded">Comprar Guías</a>
-                                <div class="pricing-head">
-                                    <div class="price">30</div>y
-                                    <div class="price">50</div>
-                                    <div class="meta">
-                                        <span>Guías</span>
-                                        <span>Para prácticar</span>
-                                    </div>
-                                </div>
-                                <div class="pricing-desc">
-                                    <p>Con distintos precios según el numero de preguntas de la guía, pero todas cuentan en tu estudio.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Pricing card-->
-                        <div class="column is-4">
-                            <div class="pricing-card">
-                                <div class="pricing-overlay"></div>
-                                <a href="#buy-1" class="button pricing-button cta-button is-rounded">Comprar Apuntes</a>
-                                <div class="pricing-head">
-                                    <div class="price">50</div>
-                                    <div class="meta">
-                                        <span>Apuntes</span>
-                                        <span>Para estudiar</span>
-                                    </div>
-                                </div>
-                                <div class="pricing-desc">
-                                    <p>Apuntes de las dos materias más complejas del examen que te permitirán prepararte para el examen.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <!--Pricing card-->
-                        <div class="column is-4">
-                            <div class="pricing-card">
-                                <div class="pricing-overlay is-bold"></div>
-                                <a href="#buy-1" class="button pricing-button cta-button is-rounded">Comprar simulador</a>
-                                <div class="pricing-head">
-                                    <div class="price">199</div>
-                                    <div class="meta">
-                                        <span>Simulador</span>
-                                        <span>Para aprobar</span>
-                                    </div>
-                                </div>
-                                <div class="pricing-desc">
-                                    <p>Con preguntas de todos los temas evaluados, el simulador te prepara para tan importante evaluación.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+	<div class="pricing section-pad nopb">
+		<div class="container">
+
+			<div class="row justify-content-center" id="precio">
+				<div class="col-lg-6 text-center">
+					<div class="sec-heading">
+						<h2 class="sec-title-lg">¿Estás listo para la mejor noticia de todas?</h2>
+						<p class="sec-text-pad lead">El precio del paquete TuGuia™ que incluye 7 guías, 7 apuntes y 1 simulador es de tan solo:</p>
+					</div>
+				</div> <!-- col -->
+			</div> <!-- row -->
+
+			<div class="row justify-content-center text-center">
 
 
 
-			<div id="faq-1" class="columns is-vcentered">
-
-                    <div class="column is-6 is-offset-3">
-                    	<h2 class="title section-subtitle clean-text color-primary has-text-centered is-2">
-                    Preguntas frecuentes
-                </h2>
-                        <div class="multi-toggle-wrapper">
-                            <div class="mt-item">
-                                <input id="mt-item-1" class="mt-item-input" type="checkbox" name="mt1">
-                                <label for="mt-item-1" class="mt-item-label"><span>1. ¿Como se relaciona TuGuia™ con el EXACER / COLBACH??</span></label>
-                                <div class="mt-item-content">
-                                    <p>TuGuia™ no guarda relación con el EXACER / COLBACH ni cualquier institución relacionada, siendo TuGuia™ meramente una plataforma educativa online.</p>
-                                </div>
-                            </div>
-                            <div class="mt-item">
-                                <input id="mt-item-2" class="mt-item-input" type="checkbox" name="mt2">
-                                <label for="mt-item-2" class="mt-item-label"><span>2. ¿TuGuia puede ayudarme en el proceso de registro del EXACER?</span></label>
-                                <div class="mt-item-content">
-                                    <p>Desafortunadamente TuGuia™ no puede ayudarte en ningún proceso relacionado con la inscripción o presentación del EXACER. TuGuia™ solo puede ayudarte a estudiar para el examen con guías, apuntes y simuladores.</p>
-                                </div>
-                            </div>
-                            <div class="mt-item">
-                                <input id="mt-item-3" class="mt-item-input" type="checkbox" name="mt3">
-                                <label for="mt-item-3" class="mt-item-label"><span>3. ¿TuGuia puede darme la sede para mi examen?</span></label>
-                                <div class="mt-item-content">
-                                    <p>Lamentablemente TuGuia™ no tiene manera de proporcionarte la sede para tu examen, pero podemos proporcionarte guías, apuntes y simuladores para que te prepares.</p>
-                                </div>
-                            </div>
-                            <div class="mt-item">
-                                <input id="mt-item-4" class="mt-item-input" type="checkbox" name="mt4">
-                                <label for="mt-item-4" class="mt-item-label"><span>4. ¿Puedo imprimir las guías, los apuntes o el simulador?</span></label>
-                                <div class="mt-item-content">
-                                    <p>No. La plataforma en línea tiene todo para que visites y resuelvas desde ella guías, apuntes y simuladores. Cuidemos el planeta, no usemos más papel ni desechables.</p>
-                                </div>
-                            </div>
-                            <div class="mt-item">
-                                <input id="mt-item-5" class="mt-item-input" type="checkbox" name="mt5">
-                                <label for="mt-item-5" class="mt-item-label"><span>5. No puedo registrarme / comprar</span></label>
-                                <div class="mt-item-content">
-                                    <p>Si tienes problemas para registrarte o comprar el contenido de TuGuia™ envíanos un mensaje a través de nuestra página de facebook, búscanos como @2guiamx.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-        <!--FAQ-->
+				<div class="col-lg-4 col-md-6">
+					<div class="pricing-box" >
+						<h2 class="pricing-title">Premium</h2>
+						<p class="sec-text-pad lead">Consulta ofertas y promociones en nuestra página de facebook</p>
+						<span class="pricing-price"> <sup>$</sup> 1,549 </span>
+						<span class="pricing-note">Pago único</span>
+						<ul class="pricing-list">
+							<li>7 Guías</li>
+							<li>7 Apuntes</li>
+							<li>1 Simulador</li>
+						</ul>
+						<a href="#registro" class="btn-lg btn-price">Comprar</a>
+					</div>
+				</div> <!-- col -->
 
 
 
-        <div class="section is-medium">
-            <div id="infografias-1" class="container">
-                <!--Title-->
-                <div class="section-title has-text-centered">
-                    <img src="assets/images/icons/heading-icon.svg" alt="">
-                    <h2 class="title is-spaced">Síguenos en facebook</h2>
-                    <h3 class="subtitle">para noticias sobre el examen, descuentos exclusivos e infografías de estudio.</h3>
-                </div>
-
-                <!--Wrapper-->
-                <div class="content-wrapper">
-                    <!--First block-->
-                    <div class="columns is-vcentered is-methods">
-                        <div class="column">
-                            <h4 class="title is-6 grey-title has-text-centered">Aprende</h4>
-                            <img class="side-image is-tablet" src="assets/images/illustrations/propiedadesexponentes.png" alt="">
-                        </div>
-                        <!--Divider-->
-                        <div class="column is-1 is-hidden-mobile">
-                            <div class="divider-container">
-                                <div class="divider-bar is-top"></div>
-                                <div class="divider-text">y</div>
-                                <div class="divider-bar is-bot"></div>
-                            </div>
-                        </div>
-                        <!--Second block-->
-                        <div class="column">
-                            <h4 class="title is-6 primary-title has-text-centered">diviertete</h4>
-                            <img class="side-image is-tablet" src="assets/images/illustrations/complementariosysuplementarios.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="button-wrap has-text-centered is-single-reveal" data-sr-id="4" style="; visibility: visible;  -webkit-transform: translateY(0) scale(1); opacity: 1;transform: translateY(0) scale(1); opacity: 1;-webkit-transition: -webkit-transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s; transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s, opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s; ">
-                        <a href="https://www.facebook.com/2guiamx/" class="button cta-button primary-button is-raised is-long is-rounded">Facebook TuGuia™</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+			</div> <!--row-->
+		</div> <!-- Container-->
+	</div>
+	<!--   BEST PRICING ENDS  -->
 
 
+	<!--   TEXT BLOCK-1 STARTS -->
+
+	<div class="text-block-1 section-pad-sm section-pad nopb">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-lg-4">
+					<h2 class="sec-title-xxl">No hay una herramienta de estudio y preparación más accesible en el mercado</h2>
+				</div> <!-- col -->
+
+				<div class="col-lg-7">
+					<p class="lead">Pero no dejes que el costo te haga tener una idea errónea acerca de la calidad del material<p>
+						<p class="lead">La razón por la que podemos dar un precio tan bajo es que todo el material es digital por lo que no se eleva el precio por gastos como impresión del material o gastos de envío, pero mejor aún es que todo se encuentra en la plataforma única de TuGuia™ que te permite resolver las guías desde tu celular o computadora cuantas veces quieras, que te dará tus resultados inmediatamente al finalizar cada guía o simulador para que puedas conocer los temas más difíciles para ti y que puedas fortalecer tus conocimientos, podrás ver qué es lo que otros usuarios han respondido en las guías, podrás resolver el simulador con tiempo límite y estudiar los apuntes desde tu computadora a la hora que sea. </p>
+				</div> <!-- col -->
+
+			</div> <!-- row -->
+		</div>
+	</div>
+	<!--   TEXT BLOCK-1 ENDS -->
+
+	<!-- SUBSCRIBER STARTS -->
+	<div class="subscriber section-pad-sm section-pad nopb">
+		<div class="container">
+			<div class="cta-box subscriber-box" id="registro">
+
+				<div class="row justify-content-center text-center">
+					<h2 class="subscriber-text-xl">¿Estás listo para prepararte para el EXACER con TuGuia™?</h2>
+					<p class="sec-text-pad lead">Solo registrate con tu email y una contraseña en el siguiente formulario. A continuación te llevaremos a la plataforma para que puedas conocer más del material y que puedas pagarlo. Se aceptan pagos en efectivo y con tarjeta.<p>
+<p class="sec-text-pad lead">No olvides éstos datos porque con ellos vas a poder ingresar a la plataforma para estudiar una vez que compres el paquete.
+</p>
+				</div> <!-- row -->
+
+				<div class="row  justify-content-center">
+					<div class="col-md-4">
+						<form id="subscribe-form" action="/app" method="get" class="subscription-form inline-form">
+							<div class="input-field">
+								<input type="email" name="email" class="input-line required email text-center" placeholder="Tu mail">
+							</div>
+							<div class="input-field">
+								<input type="password" name="password" class="input-line text-center" placeholder="Tu contraseña (DEBE DE SER POR LO MENOS DE 6 DIGITOS)">
+							</div>
+														<div class="text-center">
+																<button class="btn-lg btn-xl" type="submit">Registrarme</button>
+														</div>
+						</form>
+					</div>
+				</div> <!-- row -->
+
+			</div> <!-- subscriber-box -->
+		</div> <!-- Container -->
+	</div>
+	<!-- SUBSCRIBER ENDS -->
+
+
+	<!--  FOOTER STARTS -->
+
+	<div class="footer-area nopd" id="contact">
+		<div class="container">
+			<div class="footer-content">
+				<div class="row">
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<a href="index-aster-v1.html"><img src="images/logo2guia.png" alt="footer-logo"></a>
+						</div>
+					</div> <!-- col -->
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<ul class="footer-list">
+								<li><a href="index-aster-v1.html">Inicio</a></li>
+								<li><a href="feature-aster.html#guias">Guías</a></li>
+								<li><a href="feature-aster.html#apuntes">Apuntes</a></li>
+								<li><a href="feature-aster.html#simulador">Simulador</a></li>
+								<li><a href="#precio">Precio</a></li>
+							</ul>
+						</div>
+					</div> <!-- col -->
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<ul class="footer-list">
+								<li><a href="feature-aster.html#faq1">FAQ Plataforma</a></li>
+							</ul>
+						</div>
+					</div> <!-- col -->
+
+					<div class="col-md-3">
+						<div class="footer-widget">
+							<ul class="footer-list">
+								<li>(+52) 55 6682 8512</li>
+								<li>hola@2guia.com.mx</li>
+							</ul>
+							<div class="social">
+								<div class="social-icon">
+									<a href="https://www.facebook.com/2guiamx"><i class="fab fa-facebook-f"></i></a>
+								</div>
+							</div>
+
+						</div>
+					</div> <!-- col -->
+
+				</div> <!-- row -->
+
+			</div> <!-- Footer-content -->
+			<div class="footer-text text-center">
+				<p>© 2020 TuGuia™, &nbsp;All rights reserved.</p>
+			</div>
+		</div> <!-- Container -->
+	</div>
+	<!--  FOOTER ENDS -->
+	<!-- JavaScript (include all script here) -->
+	<script src="assets/js/jquery.bundled751.js?ver=100"></script>
 
 
 
+</body>
 
-        <!--Footer-->
-        <footer class="footer">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-4">
-                        <img class="" src="assets/images/logo/logo-white.svg" width="250" height="200" alt="">
-                        <p class="footer-logo-text is-portrait-padded">
-                            Para aprobar necesitas practicar.
-                            <br>
-                            TuGuia™ solo desea que logres aprobar el examen y con ello que puedas seguir cumpliendo tus metas y sueños
-                        </p>
-                    </div>
-                    <div class="column">
-                        <h4 class="title is-light is-5">Features</h4>
-                        <ul class="footer-menu">
-                            <li><a href="#contenido-1">Guías</a></li>
-                            <li><a href="#contenido-2">Apuntes</a></li>
-                            <li><a href="#contenido-3">Simulador</a></li>
-                            <li><a href="#testimonios-1">Testimonios</a></li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4 class="title is-light is-5">Support</h4>
-                        <ul class="footer-menu">
-                            <li><a href="#register-1">¿Cómo me registro?</a></li>
-                            <li><a href="#buy-1">¿Cómo comprar?</a></li>
-                            <li><a href="#pricing">Precios</a></li>
-                            <li><a href="#faq-1">Preguntas frecuentes</a></li>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4 class="title is-light is-5">Contacto</h4>
-                        <ul class="footer-menu">
-                            <li>Ciudad de México, México</li>
-                            <li>(+52) 55 6682 8512</li>
-                            <li>apruebaexacer@2guia.com.mx</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <img class="copyright-logo" src="assets/images/logo/logo-white.svg" width="112" height="28" alt="">
-                    <div class="copyright-text">&copy;2019-2020, TuGuia, All Rights Reserved.</div>
-                </div>
-            </div>
-        </footer>
-
-        <!-- Back To Top Button -->
-        <div id="backtotop"><a href="#"></a></div>
-        <!-- Concatenated js plugins -->
-        <script src="assets/js/app.js"></script>
-
-        <script src="../../unpkg.com/animejs%402.2.0/anime.min.js"></script>
-        <!-- Bulkit js -->
-        <script src="assets/js/main.js"></script>
-    </body>
-
-<!-- Mirrored from bulkitv2.cssninja.io/one-pager-1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 23 Sep 2019 18:42:02 GMT -->
 </html>
