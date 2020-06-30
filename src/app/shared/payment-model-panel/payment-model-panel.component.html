@@ -210,17 +210,14 @@
         </div>
 
         <div class="col-md-12 text-center">
-          <p
-            *ngIf="totalSelectedApuntes !== apuntes?.length"
-            class="text-danger"
-          >
+          <p *ngIf="totalSelectedApuntes < 7" class="text-danger">
             Te damos un
             <strong>10% de descuento adicional en el precio final</strong> si
             adquieress todos los apuntes
           </p>
         </div>
 
-        <div class="col-md-12" *ngIf="totalSelectedApuntes === apuntes?.length">
+        <div class="col-md-12" *ngIf="totalSelectedApuntes >= 7">
           <p class="w-100 text-center text-danger">
             -10% por adquirir todos los apuntes disponibles
           </p>
