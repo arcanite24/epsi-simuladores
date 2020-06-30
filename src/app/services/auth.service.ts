@@ -97,6 +97,10 @@ export class AuthService {
     return false;
   }
 
+  get isBanner() {
+    return this.loggedIn && this.user[Roles.Banner];
+  }
+
   get isAdmin() {
     return this.loggedIn && this.user[Roles.Admin];
   }

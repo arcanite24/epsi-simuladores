@@ -1,136 +1,132 @@
 // TODO: Find a better way to enumerate globally the content types
 
 // Singletons
-import { Observable } from 'rxjs';
+import { Observable } from "rxjs";
 
-export const ContentTypes: string[] = [
-  'materia',
-  'bloque',
-  'tema',
-  'submtema'
-];
+export const ContentTypes: string[] = ["materia", "bloque", "tema", "submtema"];
 
 export enum ContentTypesEnum {
-  Materia = 'materia',
-  Bloque = 'bloque',
-  Tema = 'tema',
-  Subtema = 'submtema'
+  Materia = "materia",
+  Bloque = "bloque",
+  Tema = "tema",
+  Subtema = "submtema",
 }
 
 export enum HomeLists {
-  SimuladoresList = 'simuladores-list',
-  SimulacrosList = 'simulacros-list',
+  SimuladoresList = "simuladores-list",
+  SimulacrosList = "simulacros-list",
 }
 
 export enum UnlockTags {
-  TagPit = 'tag-pit',
-  TagPremium = 'tag-premium',
-  TagEsencial = 'tag-esencial'
+  TagPit = "tag-pit",
+  TagPremium = "tag-premium",
+  TagEsencial = "tag-esencial",
 }
 
 export enum Collections {
   // TODO: Add remaining collections
-  USER = 'user',
-  USER_STAT = 'user-stat',
-  EXAM = 'exam',
-  ASESORIA = 'livestream',
-  SLIDE = 'slide',
-  SLIDE_CATEGORY = 'slide-cat',
-  TODO = 'todo',
-  CONTENT = 'content',
-  NOTE = 'note',
-  COMMENT = 'comment',
-  RATING = 'rating',
-  SUGGESTION = 'suggestion',
-  EVENT = 'event',
-  GALLERY = 'gallery',
-  GALLERY_CATEGORY = 'gallery-cat',
-  THREAD_CATEGORY = 'thread-cat',
-  THREAD = 'thread',
-  THREAD_RESPONSE = 'thread-response',
-  LIVESTREAM = 'livestream',
-  MEDIA = 'media',
-  MEDIA_CATEGORY = 'media-cat',
-  QUESTION = 'question',
-  ANSWER = 'answer',
-  EXAM_RESULT = 'exam-result',
-  POST = 'post',
-  POST_COMMENT = 'post-comment',
-  TAG = 'tag',
-  STAT_VIEW = 'stat-view',
-  PAYMENT_MODEL = 'payment-model',
-  PAYMENT_REQUEST = 'payment-request',
-  NOTIFICATION = 'notification',
-  NOTIFICATION_RESPONSE = 'notification-response',
-  NOTIFICATION_COMMENT = 'notification-comment',
-  COUPON = 'coupon',
-  MERCADOPAGO_IPN = 'mercadopago-ipn',
-  PROGRAMA = 'programa',
-  STAT_COUNTER = 'stat-counter',
-  LIST = 'list',
-  QUESTION_STAT = 'question-stat',
-  CONTENT_ERROR = 'content-error',
-  EXAM_RANKING = 'exam-ranking',
-  LANDING_FIELD = 'landing-field',
-  TAG_POOL = 'tag-pool',
-  AD_TEXT = 'ad-text',
-  MOOD_RATE = 'mood-rate',
-  TUTORIAL = 'tutorial',
-  DAILY = 'daily-noti',
-  DAILY_REGISTER = 'daily-register',
-  HelpRequest = 'help-request',
-  Stat = 'stat',
-  ExtraUnlock = 'extra-unlock',
+  USER = "user",
+  USER_STAT = "user-stat",
+  EXAM = "exam",
+  ASESORIA = "livestream",
+  SLIDE = "slide",
+  SLIDE_CATEGORY = "slide-cat",
+  TODO = "todo",
+  CONTENT = "content",
+  NOTE = "note",
+  COMMENT = "comment",
+  RATING = "rating",
+  SUGGESTION = "suggestion",
+  EVENT = "event",
+  GALLERY = "gallery",
+  GALLERY_CATEGORY = "gallery-cat",
+  THREAD_CATEGORY = "thread-cat",
+  THREAD = "thread",
+  THREAD_RESPONSE = "thread-response",
+  LIVESTREAM = "livestream",
+  MEDIA = "media",
+  MEDIA_CATEGORY = "media-cat",
+  QUESTION = "question",
+  ANSWER = "answer",
+  EXAM_RESULT = "exam-result",
+  POST = "post",
+  POST_COMMENT = "post-comment",
+  TAG = "tag",
+  STAT_VIEW = "stat-view",
+  PAYMENT_MODEL = "payment-model",
+  PAYMENT_REQUEST = "payment-request",
+  NOTIFICATION = "notification",
+  NOTIFICATION_RESPONSE = "notification-response",
+  NOTIFICATION_COMMENT = "notification-comment",
+  COUPON = "coupon",
+  MERCADOPAGO_IPN = "mercadopago-ipn",
+  PROGRAMA = "programa",
+  STAT_COUNTER = "stat-counter",
+  LIST = "list",
+  QUESTION_STAT = "question-stat",
+  CONTENT_ERROR = "content-error",
+  EXAM_RANKING = "exam-ranking",
+  LANDING_FIELD = "landing-field",
+  TAG_POOL = "tag-pool",
+  AD_TEXT = "ad-text",
+  MOOD_RATE = "mood-rate",
+  TUTORIAL = "tutorial",
+  DAILY = "daily-noti",
+  DAILY_REGISTER = "daily-register",
+  HelpRequest = "help-request",
+  Stat = "stat",
+  ExtraUnlock = "extra-unlock",
 }
 
 export enum PaymentStatus {
-  Approved = 'approved',
-  Failed = 'rejected',
-  Pending = 'pending',
+  Approved = "approved",
+  Failed = "rejected",
+  Pending = "pending",
 }
 
 export enum Roles {
+  Admin = "isAdmin",
 
-  Admin = 'isAdmin',
+  Esencial = "isEsencial",
+  Premium = "isPremium",
+  Temprano = "isTemprano",
+  Premium2019 = "isPremium2019",
+  Zamna360_2019 = "is3602019",
 
-  Esencial = 'isEsencial',
-  Premium = 'isPremium',
-  Temprano = 'isTemprano',
-  Premium2019 = 'isPremium2019',
-  Zamna360_2019 = 'is3602019',
-
-  Esencial360 = 'isEsencial360', // CURSO_ESENCIAL_360
-  Premium360 = 'isPremium360', // CURSO_PREMIUM_360
-  Presencial = 'isPresencial', // CURSO_PRESENCIAL
+  Esencial360 = "isEsencial360", // CURSO_ESENCIAL_360
+  Premium360 = "isPremium360", // CURSO_PREMIUM_360
+  Presencial = "isPresencial", // CURSO_PRESENCIAL
 
   // 2guia materias
-  isMatematicas = 'isMatematicas',
-  isCienciasExperimentales = 'isCienciasExperimentales',
-  isComunicacion = 'isComunicacion',
-  isRh = 'isRh',
-  isInformatica = 'isInformatica',
-  isContabilidad = 'isContabilidad',
+  isMatematicas = "isMatematicas",
+  isCienciasExperimentales = "isCienciasExperimentales",
+  isComunicacion = "isComunicacion",
+  isRh = "isRh",
+  isInformatica = "isInformatica",
+  isContabilidad = "isContabilidad",
 
   // 2Guia paquetes
-  isFullSim = 'isFullSim',
+  isFullSim = "isFullSim",
 
-  Content = 'isContent',
-  Checklist = 'isChecklist',
-  Calendar = 'isCalendar',
-  SmartCalendar = 'isSmartCalendar',
-  TopUsers = 'isTopUsers',
-  Galleries = 'isGalleries',
-  Simuladores = 'isSimuladores',
-  Forum = 'isForum',
-  Streaming = 'isStreaming',
-  Media = 'isMedia',
-  Slides = 'isSlides',
-  Simulacros = 'isSimulacros',
-  Feed = 'isFeed',
-  Programa = 'isPrograma',
-  Pool = 'isPool',
-  TagPool = 'isTagPool',
-  ZonaEnarm = 'isZonaEnarm',
+  Banner = "isBanner",
+
+  Content = "isContent",
+  Checklist = "isChecklist",
+  Calendar = "isCalendar",
+  SmartCalendar = "isSmartCalendar",
+  TopUsers = "isTopUsers",
+  Galleries = "isGalleries",
+  Simuladores = "isSimuladores",
+  Forum = "isForum",
+  Streaming = "isStreaming",
+  Media = "isMedia",
+  Slides = "isSlides",
+  Simulacros = "isSimulacros",
+  Feed = "isFeed",
+  Programa = "isPrograma",
+  Pool = "isPool",
+  TagPool = "isTagPool",
+  ZonaEnarm = "isZonaEnarm",
 }
 
 export const EsencialModel: string[] = [
@@ -166,7 +162,7 @@ export const PremiumModel: string[] = [
   Roles.Content,
   Roles.Programa,
   Roles.Pool,
-  Roles.TagPool
+  Roles.TagPool,
 ];
 
 export const Premium2019Model: string[] = [
@@ -195,12 +191,10 @@ export const Zamna360_2019Model: string[] = [
   Roles.Forum,
   Roles.Media,
   Roles.Slides,
-  Roles.Feed
+  Roles.Feed,
 ];
 
-export const TempranoModel: string[] = [
-  Roles.Temprano
-];
+export const TempranoModel: string[] = [Roles.Temprano];
 
 export class User {
   displayName: string | null;
@@ -229,7 +223,7 @@ export class User {
   smartCalendarCreated?: boolean;
 
   // Stats
-  average_list?: { tag: string, promedio: number }[];
+  average_list?: { tag: string; promedio: number }[];
   structure?: {};
   promedio?: number;
 
@@ -243,7 +237,6 @@ export class User {
   isPremium360?: boolean;
   isPremium2019?: boolean;
   is3602019?: boolean;
-
 }
 
 export interface Content {
@@ -285,9 +278,9 @@ export interface Content {
 
 export interface Marker {
   time: {
-    hour: number | string,
-    minute: number | string,
-    second: number | string,
+    hour: number | string;
+    minute: number | string;
+    second: number | string;
   };
   tag: string;
 }
@@ -378,14 +371,14 @@ export interface ExamTagColor {
 }
 
 export enum ExamTypes {
-  SIMULADOR = 'simulador',
-  SIMULACRO = 'simulacro',
-  PRECLASE = 'preclase',
-  CONTENIDO = 'contenido',
-  POOL = 'pool',
-  TAGS = 'tags',
-  PRUEBA = 'demo',
-  MULTI = 'multi'
+  SIMULADOR = "simulador",
+  SIMULACRO = "simulacro",
+  PRECLASE = "preclase",
+  CONTENIDO = "contenido",
+  POOL = "pool",
+  TAGS = "tags",
+  PRUEBA = "demo",
+  MULTI = "multi",
 }
 
 export interface Livestream {
@@ -467,7 +460,7 @@ export interface Event {
   start?: Date;
   end?: string;
   fullDay?: boolean;
-  color?: { primary: string, secondary: string };
+  color?: { primary: string; secondary: string };
   tasks: EventTask[];
   links: EventLink[];
 }
@@ -580,16 +573,16 @@ export interface PaymentModel {
   canStore: boolean;
   canMeses: boolean;
   canDiscount: boolean;
-  packs?: { quantity: number, label: string, price: number }[];
+  packs?: { quantity: number; label: string; price: number }[];
   roles?: string[];
   type: PaymentModelType;
   canBuyIndividual?: boolean;
 }
 
 export enum PaymentModelType {
-  Simulador = 'simulador',
-  Guia = 'guia',
-  Apunte = 'apunte',
+  Simulador = "simulador",
+  Guia = "guia",
+  Apunte = "apunte",
 }
 
 export interface PaymentRequest {
@@ -654,7 +647,7 @@ export interface Programa {
   id: string;
   name: string;
   text: string;
-  links: { label: string, url: string }[];
+  links: { label: string; url: string }[];
   parent: Programa;
   unlockedBy: string;
 }
@@ -738,15 +731,15 @@ export interface DailyRegister {
 }
 
 export enum TuGuiaStats {
-  AtrajoFacebook = 'atrajo_facebook',
-  AtrajoMails = 'atrajo_mails',
-  AtrajoOtro = 'atrajo_otro',
+  AtrajoFacebook = "atrajo_facebook",
+  AtrajoMails = "atrajo_mails",
+  AtrajoOtro = "atrajo_otro",
 }
 
 export const TuGuiaStatsText = {
-  [TuGuiaStats.AtrajoFacebook]: 'Las infografías de Facebook',
-  [TuGuiaStats.AtrajoMails]: 'Los mails',
-  [TuGuiaStats.AtrajoOtro]: 'Otro',
+  [TuGuiaStats.AtrajoFacebook]: "Las infografías de Facebook",
+  [TuGuiaStats.AtrajoMails]: "Los mails",
+  [TuGuiaStats.AtrajoOtro]: "Otro",
 };
 
 export interface Stat {

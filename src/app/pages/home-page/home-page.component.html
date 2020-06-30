@@ -190,7 +190,7 @@
 <div class="container" style="margin-top: -1.25rem;">
   <div class="row" routerLink="/pagar/comprarHome">
     <!-- Home Ad Panel -->
-    <ng-container *ngIf="!auth.isComprado">
+    <ng-container *ngIf="!auth.isBanner">
       <div class="col-md-12 manita" *ngIf="fields['HOME_AD_TEXT']">
         <epsi-panel
           [title]="fields['HOME_AD_TEXT'] ? fields['HOME_AD_TEXT'] : null"
